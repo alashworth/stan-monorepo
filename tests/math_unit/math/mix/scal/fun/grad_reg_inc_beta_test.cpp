@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/scal/fun/util.hpp>
+#include <tests/math_unit/math/rev/scal/fun/util.hpp>
 
 TEST(ProbInternalMath, grad_reg_inc_beta_fv) {
   using stan::math::digamma;

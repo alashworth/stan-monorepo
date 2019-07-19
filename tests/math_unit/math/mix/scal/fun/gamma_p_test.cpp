@@ -1,6 +1,6 @@
 #include <stan/math/prim/scal/fun/gamma_p.hpp>
 #include <stan/math/prim/scal/fun/boost_policy.hpp>
-#include <test/unit/math/mix/mat/util/autodiff_tester.hpp>
+#include <tests/math_unit/math/mix/mat/util/autodiff_tester.hpp>
 
 #include <vector>
 

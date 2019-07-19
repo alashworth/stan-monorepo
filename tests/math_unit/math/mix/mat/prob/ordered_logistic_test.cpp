@@ -1,5 +1,5 @@
 #include <stan/math/mix/mat.hpp>
-#include <test/unit/math/rev/mat/fun/util.hpp>
+#include <tests/math_unit/math/rev/mat/fun/util.hpp>
 #include <gtest/gtest.h>
 #include <vector>
 

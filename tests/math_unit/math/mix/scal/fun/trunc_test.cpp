@@ -1,8 +1,8 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/scal/fun/util.hpp>
-#include <test/unit/math/fwd/scal/fun/nan_util.hpp>
-#include <test/unit/math/mix/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/rev/scal/fun/util.hpp>
+#include <tests/math_unit/math/fwd/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdTrunc, FvarVar_1stDeriv) {
   using stan::math::fvar;

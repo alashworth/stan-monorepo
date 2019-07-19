@@ -1,4 +1,4 @@
-#include <test/unit/math/mix/mat/util/autodiff_tester.hpp>
+#include <tests/math_unit/math/mix/mat/util/autodiff_tester.hpp>
 
 struct op_not_equal_f {
   template <typename T1, typename T2>

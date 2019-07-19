@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <stan/math/prim/arr/functor/integrate_ode_rk45.hpp>
 #include <stan/math/rev/core.hpp>
-#include <test/unit/util.hpp>
+#include <tests/math_unit/util.hpp>
 #include <sstream>
 #include <vector>
 #include <limits>

@@ -1,8 +1,8 @@
 #include <stan/math/rev/mat.hpp>
 #include <stan/math/rev/mat/fun/mdivide_left_tri.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/mat/fun/util.hpp>
-#include <test/unit/math/rev/mat/util.hpp>
+#include <tests/math_unit/math/rev/mat/fun/util.hpp>
+#include <tests/math_unit/math/rev/mat/util.hpp>
 #include <stdexcept>
 #include <iostream>
 

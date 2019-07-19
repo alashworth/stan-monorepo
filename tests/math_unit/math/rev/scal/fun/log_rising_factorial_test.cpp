@@ -1,8 +1,8 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/digamma.hpp>
-#include <test/unit/math/rev/scal/fun/nan_util.hpp>
-#include <test/unit/math/rev/scal/util.hpp>
+#include <tests/math_unit/math/rev/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/rev/scal/util.hpp>
 
 TEST(AgradRev, log_rising_factorial_var_double) {
   double a(1);

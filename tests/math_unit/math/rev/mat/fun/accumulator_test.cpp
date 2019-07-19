@@ -1,6 +1,6 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/mat/util.hpp>
+#include <tests/math_unit/math/rev/mat/util.hpp>
 #include <vector>
 
 // test sum of first n numbers for sum of a

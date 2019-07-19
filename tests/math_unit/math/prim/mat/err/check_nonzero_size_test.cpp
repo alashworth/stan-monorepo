@@ -1,6 +1,6 @@
 #include <stan/math/prim/mat.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/util.hpp>
+#include <tests/math_unit/util.hpp>
 #include <limits>
 
 TEST(ErrorHandlingMatrix, checkNonzeroSizeMatrix) {

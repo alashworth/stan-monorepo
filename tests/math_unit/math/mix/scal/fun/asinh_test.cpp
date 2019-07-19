@@ -1,8 +1,8 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/asinh.hpp>
-#include <test/unit/math/rev/scal/fun/util.hpp>
-#include <test/unit/math/mix/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/rev/scal/fun/util.hpp>
+#include <tests/math_unit/math/mix/scal/fun/nan_util.hpp>
 
 class AgradFwdAsinh : public testing::Test {
   void SetUp() { stan::math::recover_memory(); }

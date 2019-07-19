@@ -1,7 +1,7 @@
 #ifndef TEST_UNIT_MATH_PRIM_MAT_VECTORIZE_EXPECT_TYPES_HPP
 #define TEST_UNIT_MATH_PRIM_MAT_VECTORIZE_EXPECT_TYPES_HPP
 
-#include <test/unit/math/prim/mat/vectorize/expect_match_return_t.hpp>
+#include <tests/math_unit/math/prim/mat/vectorize/expect_match_return_t.hpp>
 #include <Eigen/Dense>
 #include <vector>
 

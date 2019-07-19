@@ -1,10 +1,10 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/mat/prob/expect_eq_diffs.hpp>
-#include <test/unit/math/rev/mat/prob/test_gradients.hpp>
-#include <test/unit/math/rev/mat/prob/test_gradients_multi_student_t.hpp>
-#include <test/unit/math/prim/mat/prob/agrad_distributions_multi_student_t.hpp>
-#include <test/unit/math/rev/mat/util.hpp>
+#include <tests/math_unit/math/rev/mat/prob/expect_eq_diffs.hpp>
+#include <tests/math_unit/math/rev/mat/prob/test_gradients.hpp>
+#include <tests/math_unit/math/rev/mat/prob/test_gradients_multi_student_t.hpp>
+#include <tests/math_unit/math/prim/mat/prob/agrad_distributions_multi_student_t.hpp>
+#include <tests/math_unit/math/rev/mat/util.hpp>
 #include <vector>
 #include <string>
 

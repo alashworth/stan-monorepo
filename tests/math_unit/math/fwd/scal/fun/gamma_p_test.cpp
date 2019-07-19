@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/fpclassify.hpp>
 #include <boost/math/special_functions/gamma.hpp>
-#include <test/unit/math/fwd/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/fwd/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdGammaP, gamma_p) {
   using boost::math::gamma_p;

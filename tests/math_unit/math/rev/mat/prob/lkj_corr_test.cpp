@@ -3,9 +3,9 @@
 #include <stan/math.hpp>
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/math/distributions.hpp>
-#include <test/unit/math/rev/mat/prob/lkj_corr_cholesky_test_functors.hpp>
-#include <test/unit/math/rev/mat/prob/test_gradients.hpp>
-#include <test/unit/math/rev/mat/util.hpp>
+#include <tests/math_unit/math/rev/mat/prob/lkj_corr_cholesky_test_functors.hpp>
+#include <tests/math_unit/math/rev/mat/prob/test_gradients.hpp>
+#include <tests/math_unit/math/rev/mat/util.hpp>
 
 TEST(ProbDistributionsLkjCorr, var) {
   using stan::math::var;

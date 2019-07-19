@@ -1,5 +1,5 @@
 #include <stan/math/prim/mat.hpp>
-#include <test/unit/math/prim/mat/vectorize/vector_builder.hpp>
+#include <tests/math_unit/math/prim/mat/vectorize/vector_builder.hpp>
 #include <gtest/gtest.h>
 #include <vector>
 

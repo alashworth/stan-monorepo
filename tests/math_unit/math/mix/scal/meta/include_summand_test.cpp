@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/util.hpp>
+#include <tests/math_unit/util.hpp>
 
 using stan::math::fvar;
 using stan::math::include_summand;

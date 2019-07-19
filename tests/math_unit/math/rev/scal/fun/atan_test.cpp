@@ -1,8 +1,8 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/fpclassify.hpp>
-#include <test/unit/math/rev/scal/fun/nan_util.hpp>
-#include <test/unit/math/rev/scal/util.hpp>
+#include <tests/math_unit/math/rev/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/rev/scal/util.hpp>
 #include <limits>
 
 TEST(AgradRev, atan_1) {

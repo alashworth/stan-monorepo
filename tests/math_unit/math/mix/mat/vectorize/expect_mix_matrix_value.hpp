@@ -1,8 +1,8 @@
 #ifndef TEST_UNIT_MATH_MIX_MAT_VECTORIZE_EXPECT_MIX_MATRIX_VALUE_HPP
 #define TEST_UNIT_MATH_MIX_MAT_VECTORIZE_EXPECT_MIX_MATRIX_VALUE_HPP
 
-#include <test/unit/math/mix/mat/vectorize/build_mix_matrix.hpp>
-#include <test/unit/math/mix/mat/vectorize/expect_val_deriv_eq.hpp>
+#include <tests/math_unit/math/mix/mat/vectorize/build_mix_matrix.hpp>
+#include <tests/math_unit/math/mix/mat/vectorize/expect_val_deriv_eq.hpp>
 #include <Eigen/Dense>
 #include <vector>
 

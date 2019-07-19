@@ -4,10 +4,10 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
 #include <boost/numeric/odeint.hpp>
-#include <test/unit/math/rev/arr/functor/util.hpp>
-#include <test/unit/math/prim/arr/functor/harmonic_oscillator.hpp>
-#include <test/unit/math/prim/arr/functor/forced_harmonic_oscillator.hpp>
-#include <test/unit/math/prim/arr/functor/lorenz.hpp>
+#include <tests/math_unit/math/rev/arr/functor/util.hpp>
+#include <tests/math_unit/math/prim/arr/functor/harmonic_oscillator.hpp>
+#include <tests/math_unit/math/prim/arr/functor/forced_harmonic_oscillator.hpp>
+#include <tests/math_unit/math/prim/arr/functor/lorenz.hpp>
 #include <iostream>
 #include <sstream>
 #include <vector>

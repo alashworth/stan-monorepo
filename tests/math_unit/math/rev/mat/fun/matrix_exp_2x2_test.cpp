@@ -1,8 +1,8 @@
 #include <stan/math/rev/mat.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp_2x2.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/mat/fun/expect_matrix_eq.hpp>
-#include <test/unit/math/rev/mat/fun/util.hpp>
+#include <tests/math_unit/math/rev/mat/fun/expect_matrix_eq.hpp>
+#include <tests/math_unit/math/rev/mat/fun/util.hpp>
 
 TEST(MathMatrix, matrix_exp_2x2) {
   // example from Moler & Van Loan, 2003

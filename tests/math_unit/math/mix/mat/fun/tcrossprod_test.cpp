@@ -1,6 +1,6 @@
 #include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/mat/fun/util.hpp>
+#include <tests/math_unit/math/rev/mat/fun/util.hpp>
 
 TEST(AgradMixMatrixTCrossProd, fv_3x3_matrix_1stDeriv) {
   using stan::math::matrix_d;

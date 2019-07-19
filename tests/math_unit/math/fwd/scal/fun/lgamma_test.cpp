@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/gamma.hpp>
 #include <boost/math/special_functions/digamma.hpp>
-#include <test/unit/math/fwd/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/fwd/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdLgamma, Fvar) {
   using boost::math::digamma;

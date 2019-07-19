@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <stan/math/rev/mat/fun/typedefs.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/util.hpp>
+#include <tests/math_unit/util.hpp>
 #include <vector>
 
 using stan::math::matrix_d;

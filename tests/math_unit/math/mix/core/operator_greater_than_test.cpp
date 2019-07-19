@@ -1,4 +1,4 @@
-#include <test/unit/math/mix/mat/util/autodiff_tester.hpp>
+#include <tests/math_unit/math/mix/mat/util/autodiff_tester.hpp>
 
 struct greater_than_f {
   template <typename T1, typename T2>

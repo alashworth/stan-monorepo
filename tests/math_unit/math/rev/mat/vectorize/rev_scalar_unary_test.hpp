@@ -3,9 +3,9 @@
 
 #include <stan/math/rev/core/var.hpp>
 #include <stan/math/rev/mat/vectorize/apply_scalar_unary.hpp>
-#include <test/unit/math/prim/mat/vectorize/expect_types.hpp>
-#include <test/unit/math/rev/mat/vectorize/expect_rev_values.hpp>
-#include <test/unit/math/rev/mat/vectorize/expect_rev_errors.hpp>
+#include <tests/math_unit/math/prim/mat/vectorize/expect_types.hpp>
+#include <tests/math_unit/math/rev/mat/vectorize/expect_rev_values.hpp>
+#include <tests/math_unit/math/rev/mat/vectorize/expect_rev_errors.hpp>
 #include <gtest/gtest.h>
 
 template <typename T>

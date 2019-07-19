@@ -1,9 +1,9 @@
 #ifndef TEST_UNIT_MATH_REV_MAT_FUN_UTIL_HPP
 #define TEST_UNIT_MATH_REV_MAT_FUN_UTIL_HPP
 
-#include <test/unit/math/rev/arr/fun/util.hpp>
+#include <tests/math_unit/math/rev/arr/fun/util.hpp>
 #include <stan/math/rev/mat.hpp>
-#include <test/unit/math/rev/mat/util.hpp>
+#include <tests/math_unit/math/rev/mat/util.hpp>
 #include <vector>
 
 double relative_diff(double u, double v) {

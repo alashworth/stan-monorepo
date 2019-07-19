@@ -1,7 +1,7 @@
 #ifndef TEST_UNIT_MATH_FWD_MAT_VECTORIZE_EXPECT_EQ_HPP
 #define TEST_UNIT_MATH_FWD_MAT_VECTORIZE_EXPECT_EQ_HPP
 
-#include <test/unit/math/prim/mat/vectorize/expect_val_eq.hpp>
+#include <tests/math_unit/math/prim/mat/vectorize/expect_val_eq.hpp>
 #include <stan/math/fwd/mat.hpp>
 #include <stan/math/prim/scal/fun/is_nan.hpp>
 

@@ -1,8 +1,8 @@
 #ifndef TEST_UNIT_MATH_MIX_MAT_VECTORIZE_STD_VECTOR_VALUE_HPP
 #define TEST_UNIT_MATH_MIX_MAT_VECTORIZE_STD_VECTOR_VALUE_HPP
 
-#include <test/unit/math/mix/mat/vectorize/build_mix_vector.hpp>
-#include <test/unit/math/mix/mat/vectorize/expect_val_deriv_eq.hpp>
+#include <tests/math_unit/math/mix/mat/vectorize/build_mix_vector.hpp>
+#include <tests/math_unit/math/mix/mat/vectorize/expect_val_deriv_eq.hpp>
 #include <vector>
 
 template <typename F, typename T>

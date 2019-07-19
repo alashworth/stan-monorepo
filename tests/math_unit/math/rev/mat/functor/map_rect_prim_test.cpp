@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
 
-#include <test/unit/math/prim/mat/functor/hard_work.hpp>
+#include <tests/math_unit/math/prim/mat/functor/hard_work.hpp>
 
 #include <iostream>
 #include <vector>

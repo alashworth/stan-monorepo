@@ -1,7 +1,7 @@
 #include <stan/math/rev/arr.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/arr/fun/util.hpp>
-#include <test/unit/math/rev/arr/util.hpp>
+#include <tests/math_unit/math/rev/arr/fun/util.hpp>
+#include <tests/math_unit/math/rev/arr/util.hpp>
 #include <vector>
 
 TEST(AgradRev, log_sum_exp_vector) {

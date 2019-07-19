@@ -1,4 +1,4 @@
-#include <test/unit/math/mix/mat/util/autodiff_tester.hpp>
+#include <tests/math_unit/math/mix/mat/util/autodiff_tester.hpp>
 #include <vector>
 
 struct log_modified_bessel_first_kind_f {

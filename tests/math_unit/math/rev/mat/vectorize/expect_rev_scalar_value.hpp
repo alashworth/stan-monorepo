@@ -3,8 +3,8 @@
 
 #include <stan/math/rev/core/var.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/math/rev/mat/vectorize/build_rev_vector.hpp>
-#include <test/unit/math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
+#include <tests/math_unit/math/rev/mat/vectorize/build_rev_vector.hpp>
+#include <tests/math_unit/math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
 #include <vector>
 
 template <typename F>

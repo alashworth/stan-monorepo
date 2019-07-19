@@ -1,8 +1,8 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/gamma.hpp>
-#include <test/unit/math/rev/scal/fun/nan_util.hpp>
-#include <test/unit/math/rev/scal/util.hpp>
+#include <tests/math_unit/math/rev/scal/fun/nan_util.hpp>
+#include <tests/math_unit/math/rev/scal/util.hpp>
 
 TEST(AgradRev, gamma_q_var_var) {
   AVAR a = 0.5;

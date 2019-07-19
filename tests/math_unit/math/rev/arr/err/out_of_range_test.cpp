@@ -1,6 +1,6 @@
 #include <stan/math/rev/arr.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/util.hpp>
+#include <tests/math_unit/util.hpp>
 #include <vector>
 #include <string>
 
