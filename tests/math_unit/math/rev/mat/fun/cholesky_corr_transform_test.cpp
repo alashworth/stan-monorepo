@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/fun/jacobian.hpp>
-#include <tests/math_unit/math/rev/mat/util.hpp>
+#include <math/rev/mat/fun/jacobian.hpp>
+#include <math/rev/mat/util.hpp>
 #include <vector>
 
 void test_cholesky_correlation_jacobian(

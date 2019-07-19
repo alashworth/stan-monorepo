@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/prob/expect_eq_diffs.hpp>
-#include <tests/math_unit/math/rev/mat/util.hpp>
+#include <math/rev/mat/prob/expect_eq_diffs.hpp>
+#include <math/rev/mat/util.hpp>
 #include <string>
 
 template <typename T_y, typename T_dof, typename T_scale>

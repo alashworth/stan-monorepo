@@ -1,6 +1,6 @@
 #include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
+#include <math/rev/mat/fun/util.hpp>
 #include <vector>
 
 TEST(AgradMixMatrixVariance, fv_vector_1stDeriv) {

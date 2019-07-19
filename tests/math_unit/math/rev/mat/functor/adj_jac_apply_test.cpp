@@ -1,5 +1,5 @@
 #include <stan/math/rev/core.hpp>
-#include <tests/math_unit/math/rev/mat/util.hpp>
+#include <math/rev/mat/util.hpp>
 #include <gtest/gtest.h>
 #include <algorithm>
 #include <sstream>

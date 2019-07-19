@@ -3,8 +3,8 @@
 
 #include <stan/math/rev/core/var.hpp>
 #include <stan/math/rev/core/set_zero_all_adjoints.hpp>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
-#include <tests/math_unit/math/prim/mat/vectorize/expect_val_eq.hpp>
+#include <math/rev/mat/fun/util.hpp>
+#include <math/prim/mat/vectorize/expect_val_eq.hpp>
 
 static inline void expect_val_deriv_eq(stan::math::var exp_var,
                                        stan::math::var base_exp_var,

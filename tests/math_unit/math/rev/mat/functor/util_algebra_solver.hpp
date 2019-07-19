@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <stan/math/rev/mat/functor/algebra_solver.hpp>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 #include <sstream>
 #include <vector>
 #include <limits>

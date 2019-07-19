@@ -1,5 +1,5 @@
 #include <stan/math/prim/scal.hpp>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 #include <gtest/gtest.h>
 
 TEST(prob_transform, corr) {

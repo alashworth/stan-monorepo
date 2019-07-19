@@ -1,5 +1,5 @@
 #include <stan/math/fwd/mat.hpp>
-#include <tests/math_unit/math/prim/mat/fun/sort_test_util.hpp>
+#include <math/prim/mat/fun/sort_test_util.hpp>
 #include <gtest/gtest.h>
 #include <vector>
 

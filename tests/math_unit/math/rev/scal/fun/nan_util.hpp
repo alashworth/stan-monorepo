@@ -1,7 +1,7 @@
 #ifndef TEST__UNIT_AGRAD_REV__NAN_UTIL_HPP
 #define TEST__UNIT_AGRAD_REV__NAN_UTIL_HPP
 
-#include <tests/math_unit/math/rev/arr/fun/util.hpp>
+#include <math/rev/arr/fun/util.hpp>
 #include <boost/math/special_functions/fpclassify.hpp>
 #include <gtest/gtest.h>
 #include <limits>

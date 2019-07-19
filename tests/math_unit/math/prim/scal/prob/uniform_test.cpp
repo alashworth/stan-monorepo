@@ -1,7 +1,7 @@
 #include <stan/math/prim/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/random/mersenne_twister.hpp>
-#include <tests/math_unit/math/prim/scal/prob/util.hpp>
+#include <math/prim/scal/prob/util.hpp>
 #include <vector>
 
 TEST(ProbDistributionsUniform, error_check) {

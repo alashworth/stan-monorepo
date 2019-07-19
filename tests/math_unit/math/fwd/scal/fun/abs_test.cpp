@@ -1,7 +1,7 @@
 #include <stan/math/fwd/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/fpclassify.hpp>
-#include <tests/math_unit/math/fwd/scal/fun/nan_util.hpp>
+#include <math/fwd/scal/fun/nan_util.hpp>
 #include <limits>
 
 TEST(AgradFwdAbs, Fvar) {

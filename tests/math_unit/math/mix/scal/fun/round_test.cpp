@@ -1,9 +1,9 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/round.hpp>
-#include <tests/math_unit/math/rev/scal/fun/util.hpp>
-#include <tests/math_unit/math/fwd/scal/fun/nan_util.hpp>
-#include <tests/math_unit/math/mix/scal/fun/nan_util.hpp>
+#include <math/rev/scal/fun/util.hpp>
+#include <math/fwd/scal/fun/nan_util.hpp>
+#include <math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdRound, FvarVar_1stDeriv) {
   using stan::math::fvar;

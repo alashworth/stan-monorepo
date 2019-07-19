@@ -2,8 +2,8 @@
 #define TEST_UNIT_MATH_TEST_AD_HPP
 
 #include <stan/math.hpp>
-#include <tests/math_unit/math/util.hpp>
-#include <tests/math_unit/math/mix/mat/util/autodiff_tester.hpp>
+#include <math/util.hpp>
+#include <math/mix/mat/util/autodiff_tester.hpp>
 #include <gtest/gtest.h>
 #include <string>
 #include <vector>

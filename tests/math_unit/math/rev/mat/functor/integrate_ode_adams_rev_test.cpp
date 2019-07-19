@@ -1,10 +1,10 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
 #include <boost/numeric/odeint.hpp>
-#include <tests/math_unit/math/rev/mat/functor/util_cvodes_adams.hpp>
-#include <tests/math_unit/math/prim/arr/functor/harmonic_oscillator.hpp>
-#include <tests/math_unit/math/prim/arr/functor/forced_harmonic_oscillator.hpp>
-#include <tests/math_unit/math/prim/arr/functor/lorenz.hpp>
+#include <math/rev/mat/functor/util_cvodes_adams.hpp>
+#include <math/prim/arr/functor/harmonic_oscillator.hpp>
+#include <math/prim/arr/functor/forced_harmonic_oscillator.hpp>
+#include <math/prim/arr/functor/lorenz.hpp>
 #include <iostream>
 #include <sstream>
 #include <vector>

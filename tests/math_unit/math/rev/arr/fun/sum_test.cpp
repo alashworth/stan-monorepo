@@ -1,6 +1,6 @@
 #include <stan/math/rev/arr.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/arr/util.hpp>
+#include <math/rev/arr/util.hpp>
 #include <vector>
 
 TEST(AgradRev, sum_std_vector) {

@@ -4,10 +4,10 @@
 
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 
-#include <tests/math_unit/math/prim/mat/functor/hard_work.hpp>
-#include <tests/math_unit/math/prim/mat/functor/faulty_functor.hpp>
+#include <math/prim/mat/functor/hard_work.hpp>
+#include <math/prim/mat/functor/faulty_functor.hpp>
 
 #include <iostream>
 #include <vector>

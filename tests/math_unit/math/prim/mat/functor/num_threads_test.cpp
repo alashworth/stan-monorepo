@@ -5,8 +5,8 @@
 #include <stan/math/prim/mat/functor/map_rect_concurrent.hpp>
 
 #include <gtest/gtest.h>
-#include <tests/math_unit/util.hpp>
-#include <tests/math_unit/math/prim/mat/functor/utils_threads.hpp>
+#include <util.hpp>
+#include <math/prim/mat/functor/utils_threads.hpp>
 
 TEST(num_threads, correct_values) {
   set_n_threads("10");

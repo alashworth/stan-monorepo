@@ -1,6 +1,6 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/prob/expect_eq_diffs.hpp>
+#include <math/rev/mat/prob/expect_eq_diffs.hpp>
 #include <string>
 
 template <typename T_prob>

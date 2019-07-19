@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/prim/mat/util.hpp>
+#include <math/prim/mat/util.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp_multiply.hpp>
 #include <vector>

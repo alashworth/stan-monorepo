@@ -1,9 +1,9 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/util.hpp>
-#include <tests/math_unit/math/prim/arr/functor/harmonic_oscillator.hpp>
-#include <tests/math_unit/math/prim/arr/functor/mock_ode_functor.hpp>
-#include <tests/math_unit/math/prim/arr/functor/mock_throwing_ode_functor.hpp>
+#include <util.hpp>
+#include <math/prim/arr/functor/harmonic_oscillator.hpp>
+#include <math/prim/arr/functor/mock_ode_functor.hpp>
+#include <math/prim/arr/functor/mock_throwing_ode_functor.hpp>
 #include <string>
 #include <vector>
 

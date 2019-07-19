@@ -2,8 +2,8 @@
 #define TEST_UNIT_MATH_REV_MAT_VECTORIZE_EXPECT_REV_STD_VECTOR_VALUE_HPP
 
 #include <stan/math/rev/core/var.hpp>
-#include <tests/math_unit/math/rev/mat/vectorize/build_rev_vector.hpp>
-#include <tests/math_unit/math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
+#include <math/rev/mat/vectorize/build_rev_vector.hpp>
+#include <math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
 #include <vector>
 
 template <typename F>

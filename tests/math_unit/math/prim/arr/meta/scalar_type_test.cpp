@@ -1,5 +1,5 @@
 #include <stan/math/prim/arr.hpp>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 #include <gtest/gtest.h>
 #include <vector>
 

@@ -1,9 +1,9 @@
 #include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/prob/lkj_corr_cholesky_test_functors.hpp>
+#include <math/rev/mat/prob/lkj_corr_cholesky_test_functors.hpp>
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/math/distributions.hpp>
-#include <tests/math_unit/math/mix/mat/prob/higher_order_utils.hpp>
+#include <math/mix/mat/prob/higher_order_utils.hpp>
 #include <vector>
 
 TEST(ProbDistributionsLkjCorr, fvar_var) {

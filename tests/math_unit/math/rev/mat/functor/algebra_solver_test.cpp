@@ -1,8 +1,8 @@
 #include <stan/math/rev/core.hpp>
 #include <stan/math/rev/mat/functor/algebra_solver.hpp>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
-#include <tests/math_unit/math/rev/mat/functor/util_algebra_solver.hpp>
-#include <tests/math_unit/util.hpp>
+#include <math/rev/mat/fun/util.hpp>
+#include <math/rev/mat/functor/util_algebra_solver.hpp>
+#include <util.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <fstream>

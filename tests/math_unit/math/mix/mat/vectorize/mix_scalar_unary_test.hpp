@@ -2,9 +2,9 @@
 #define TEST_UNIT_MATH_MIX_MAT_VECTORIZE_MIX_SCALAR_UNARY_TEST_HPP
 
 #include <stan/math/mix/mat.hpp>
-#include <tests/math_unit/math/prim/mat/vectorize/expect_types.hpp>
-#include <tests/math_unit/math/mix/mat/vectorize/expect_mix_values.hpp>
-#include <tests/math_unit/math/mix/mat/vectorize/expect_mix_errors.hpp>
+#include <math/prim/mat/vectorize/expect_types.hpp>
+#include <math/mix/mat/vectorize/expect_mix_values.hpp>
+#include <math/mix/mat/vectorize/expect_mix_errors.hpp>
 
 template <typename T>
 class mix_scalar_unary_test : public ::testing::Test {};

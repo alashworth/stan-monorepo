@@ -2,7 +2,7 @@
 #define TEST_UNIT_MATH_MIX_MAT_VECTORIZE_EXPECT_VAL_DERIV_EQ_HPP
 
 #include <stan/math/fwd/core/fvar.hpp>
-#include <tests/math_unit/math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
+#include <math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
 #include <gtest/gtest.h>
 
 template <typename V>

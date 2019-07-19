@@ -1,11 +1,11 @@
 #include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/prim/mat/vectorize/prim_scalar_unary_test.hpp>
-#include <tests/math_unit/math/rev/mat/vectorize/rev_scalar_unary_test.hpp>
-#include <tests/math_unit/math/fwd/mat/vectorize/fwd_scalar_unary_test.hpp>
-#include <tests/math_unit/math/mix/mat/vectorize/mix_scalar_unary_test.hpp>
+#include <math/prim/mat/vectorize/prim_scalar_unary_test.hpp>
+#include <math/rev/mat/vectorize/rev_scalar_unary_test.hpp>
+#include <math/fwd/mat/vectorize/fwd_scalar_unary_test.hpp>
+#include <math/mix/mat/vectorize/mix_scalar_unary_test.hpp>
 #include <stan/math/prim/mat/fun/tanh.hpp>
-#include <tests/math_unit/math/prim/mat/vectorize/vector_builder.hpp>
+#include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
 /**

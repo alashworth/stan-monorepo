@@ -1,6 +1,6 @@
 #include <stan/math/fwd/scal.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/fwd/scal/fun/nan_util.hpp>
+#include <math/fwd/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdModifiedBesselFirstKind, Fvar) {
   using stan::math::fvar;

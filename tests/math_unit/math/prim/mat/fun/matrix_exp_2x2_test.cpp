@@ -1,7 +1,7 @@
 #include <stan/math/prim/mat.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp_2x2.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/prim/mat/fun/expect_matrix_eq.hpp>
+#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 
 TEST(MathMatrix, matrix_exp_2x2_1) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(2, 2), m2(2, 2);

@@ -2,7 +2,7 @@
 #define TEST_UNIT_MATH_FWD_MAT_VECTORIZE_BUILD_FWD_MATRIX_HPP
 
 #include <stan/math/fwd/mat.hpp>
-#include <tests/math_unit/math/fwd/mat/vectorize/build_fwd_vector.hpp>
+#include <math/fwd/mat/vectorize/build_fwd_vector.hpp>
 #include <Eigen/Dense>
 #include <vector>
 

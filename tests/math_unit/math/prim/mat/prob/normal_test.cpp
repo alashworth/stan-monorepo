@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <boost/math/distributions.hpp>
 #include <stan/math/prim/mat.hpp>
-#include <tests/math_unit/math/prim/mat/prob/vector_rng_test_helper.hpp>
+#include <math/prim/mat/prob/vector_rng_test_helper.hpp>
 #include <limits>
 #include <vector>
 

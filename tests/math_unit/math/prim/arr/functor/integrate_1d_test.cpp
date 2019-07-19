@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <stan/math.hpp>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 #include <iostream>
 #include <limits>
 #include <sstream>

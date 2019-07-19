@@ -11,8 +11,8 @@
 #include <gtest/gtest.h>
 #include <stan/math/rev/mat.hpp>
 
-#include <tests/math_unit/math/prim/mat/functor/hard_work.hpp>
-#include <tests/math_unit/math/prim/mat/functor/utils_threads.hpp>
+#include <math/prim/mat/functor/hard_work.hpp>
+#include <math/prim/mat/functor/utils_threads.hpp>
 
 #include <iostream>
 #include <vector>

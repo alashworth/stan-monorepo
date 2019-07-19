@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
-#include <tests/math_unit/math/rev/mat/util.hpp>
+#include <math/rev/mat/fun/util.hpp>
+#include <math/rev/mat/util.hpp>
 
 void test_crossprod(const stan::math::matrix_v& L) {
   using stan::math::crossprod;

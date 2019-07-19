@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <stan/math.hpp>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
-#include <tests/math_unit/math/rev/scal/fun/nan_util.hpp>
-#include <tests/math_unit/util.hpp>
+#include <math/rev/mat/fun/util.hpp>
+#include <math/rev/scal/fun/nan_util.hpp>
+#include <util.hpp>
 #include <vector>
 #include <iostream>
 #include <limits>

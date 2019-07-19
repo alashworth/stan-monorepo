@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/fun/expect_matrix_eq.hpp>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
+#include <math/rev/mat/fun/expect_matrix_eq.hpp>
+#include <math/rev/mat/fun/util.hpp>
 #include <random>
 #include <cstdlib>
 #include <ctime>

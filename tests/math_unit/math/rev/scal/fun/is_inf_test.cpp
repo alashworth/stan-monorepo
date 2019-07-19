@@ -1,7 +1,7 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
-#include <tests/math_unit/math/rev/scal/fun/nan_util.hpp>
+#include <math/rev/mat/fun/util.hpp>
+#include <math/rev/scal/fun/nan_util.hpp>
 #include <limits>
 
 TEST(AgradRev, is_inf) {

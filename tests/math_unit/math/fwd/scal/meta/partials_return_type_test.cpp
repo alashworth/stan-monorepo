@@ -1,7 +1,7 @@
 #include <stan/math/fwd/scal.hpp>
 
 #include <gtest/gtest.h>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 
 using stan::math::fvar;
 using stan::partials_return_type;

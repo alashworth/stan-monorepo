@@ -1,7 +1,7 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/fpclassify.hpp>
-#include <tests/math_unit/math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/fun/util.hpp>
 #include <limits>
 
 TEST(AgradFwd, primitiveValueRevNested) {

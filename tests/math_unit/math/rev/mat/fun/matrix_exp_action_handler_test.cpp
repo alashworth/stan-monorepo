@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 // #include <stan/math/prim/scal/err/check_not_nan.hpp>
-#include <tests/math_unit/math/prim/mat/util.hpp>
+#include <math/prim/mat/util.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp_action_handler.hpp>
 #include <vector>

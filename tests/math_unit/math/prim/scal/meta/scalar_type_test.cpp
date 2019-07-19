@@ -1,6 +1,6 @@
 #include <stan/math/prim/scal.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 
 TEST(MetaTraits, ScalarTypeScal) {
   test::expect_same_type<double, stan::scalar_type<double>::type>();

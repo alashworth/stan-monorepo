@@ -1,6 +1,6 @@
 #include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
+#include <math/rev/mat/fun/util.hpp>
 
 TEST(AgradMixMatrixRows, ffd_vector) {
   using stan::math::row_vector_ffd;

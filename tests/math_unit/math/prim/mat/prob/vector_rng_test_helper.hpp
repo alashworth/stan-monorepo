@@ -5,10 +5,10 @@
 #include <boost/math/distributions.hpp>
 #include <boost/random/mersenne_twister.hpp>
 #include <stan/math/prim/mat.hpp>
-#include <tests/math_unit/math/prim/scal/prob/util.hpp>
-#include <tests/math_unit/math/prim/scal/meta/apply_template_permutations.hpp>
-#include <tests/math_unit/math/prim/mat/prob/VectorRealRNGTestRig.hpp>
-#include <tests/math_unit/math/prim/mat/prob/VectorIntRNGTestRig.hpp>
+#include <math/prim/scal/prob/util.hpp>
+#include <math/prim/scal/meta/apply_template_permutations.hpp>
+#include <math/prim/mat/prob/VectorRealRNGTestRig.hpp>
+#include <math/prim/mat/prob/VectorIntRNGTestRig.hpp>
 #include <algorithm>
 #include <map>
 #include <tuple>

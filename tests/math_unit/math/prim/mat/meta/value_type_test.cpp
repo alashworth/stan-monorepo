@@ -1,5 +1,5 @@
 #include <stan/math/prim/mat/meta/value_type.hpp>
-#include <tests/math_unit/math/prim/scal/fun/promote_type_test_util.hpp>
+#include <math/prim/scal/fun/promote_type_test_util.hpp>
 #include <gtest/gtest.h>
 #include <vector>
 

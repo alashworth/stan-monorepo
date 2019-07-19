@@ -1,6 +1,6 @@
 #include <stan/math/prim/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/prim/mat/fun/expect_matrix_eq.hpp>
+#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>

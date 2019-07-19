@@ -1,8 +1,8 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
 // #include <stan/math/prim/scal/err/check_not_nan.hpp>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
-#include <tests/math_unit/math/rev/mat/util.hpp>
+#include <math/rev/mat/fun/util.hpp>
+#include <math/rev/mat/util.hpp>
 #include <stan/math/rev/mat/fun/scale_matrix_exp_multiply.hpp>
 #include <stan/math/rev/mat/fun/to_var.hpp>
 #include <vector>

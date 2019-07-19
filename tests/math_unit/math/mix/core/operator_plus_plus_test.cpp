@@ -1,4 +1,4 @@
-#include <tests/math_unit/math/mix/mat/util/autodiff_tester.hpp>
+#include <math/mix/mat/util/autodiff_tester.hpp>
 
 struct op_plus_plus_pre_f {
   // ignoring second argument is OK for testing

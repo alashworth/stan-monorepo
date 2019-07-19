@@ -3,7 +3,7 @@
 
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/arr/util.hpp>
+#include <math/rev/arr/util.hpp>
 
 namespace test {
 

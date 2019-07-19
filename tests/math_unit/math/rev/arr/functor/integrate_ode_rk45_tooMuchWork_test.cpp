@@ -5,8 +5,8 @@
 #include <gtest/gtest.h>
 #include <boost/numeric/odeint.hpp>
 // very small michaelis menten example
-#include <tests/math_unit/math/rev/arr/functor/coupled_mm.hpp>
-#include <tests/math_unit/util.hpp>
+#include <math/rev/arr/functor/coupled_mm.hpp>
+#include <util.hpp>
 #include <vector>
 
 // test which triggers the too much work exception from odeint

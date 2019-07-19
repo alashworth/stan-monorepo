@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <stan/math/rev/mat/functor/integrate_ode_bdf.hpp>
-#include <tests/math_unit/util.hpp>
+#include <util.hpp>
 #include <sstream>
 #include <vector>
 #include <limits>

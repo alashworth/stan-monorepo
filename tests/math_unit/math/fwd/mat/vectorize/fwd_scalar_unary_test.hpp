@@ -4,9 +4,9 @@
 #include <gtest/gtest.h>
 #include <stan/math/fwd/mat.hpp>
 #include <stan/math/fwd/mat/vectorize/apply_scalar_unary.hpp>
-#include <tests/math_unit/math/prim/mat/vectorize/expect_types.hpp>
-#include <tests/math_unit/math/fwd/mat/vectorize/expect_fwd_values.hpp>
-#include <tests/math_unit/math/fwd/mat/vectorize/expect_fwd_errors.hpp>
+#include <math/prim/mat/vectorize/expect_types.hpp>
+#include <math/fwd/mat/vectorize/expect_fwd_values.hpp>
+#include <math/fwd/mat/vectorize/expect_fwd_errors.hpp>
 
 template <typename T>
 class fwd_scalar_unary_test : public ::testing::Test {};

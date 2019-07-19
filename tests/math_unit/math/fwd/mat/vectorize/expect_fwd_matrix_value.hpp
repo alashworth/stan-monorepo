@@ -2,8 +2,8 @@
 #define TEST_UNIT_MATH_FWD_MAT_VECTORIZE_EXPECT_FWD_MATRIX_VALUE_HPP
 
 #include <stan/math/fwd/mat.hpp>
-#include <tests/math_unit/math/fwd/mat/vectorize/build_fwd_matrix.hpp>
-#include <tests/math_unit/math/fwd/mat/vectorize/expect_val_deriv_eq.hpp>
+#include <math/fwd/mat/vectorize/build_fwd_matrix.hpp>
+#include <math/fwd/mat/vectorize/expect_val_deriv_eq.hpp>
 #include <Eigen/Dense>
 #include <vector>
 

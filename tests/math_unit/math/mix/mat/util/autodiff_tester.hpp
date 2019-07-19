@@ -2,8 +2,8 @@
 #define TEST_UNIT_MATH_MIX_MAT_UTIL_AUTODIFF_TESTER_HPP
 
 #include <stan/math/mix/mat.hpp>
-#include <tests/math_unit/math/mix/mat/seq_reader.hpp>
-#include <tests/math_unit/math/mix/mat/seq_writer.hpp>
+#include <math/mix/mat/seq_reader.hpp>
+#include <math/mix/mat/seq_writer.hpp>
 #include <gtest/gtest.h>
 #include <stdexcept>
 #include <string>

@@ -1,9 +1,9 @@
 #ifndef TEST_UNIT_MATH_PRIM_MAT_VECTORIZE_PRIM_SCALAR_UNARY_TEST_HPP
 #define TEST_UNIT_MATH_PRIM_MAT_VECTORIZE_PRIM_SCALAR_UNARY_TEST_HPP
 
-#include <tests/math_unit/math/prim/mat/vectorize/expect_types.hpp>
-#include <tests/math_unit/math/prim/mat/vectorize/expect_prim_values.hpp>
-#include <tests/math_unit/math/prim/mat/vectorize/expect_prim_errors.hpp>
+#include <math/prim/mat/vectorize/expect_types.hpp>
+#include <math/prim/mat/vectorize/expect_prim_values.hpp>
+#include <math/prim/mat/vectorize/expect_prim_errors.hpp>
 #include <gtest/gtest.h>
 
 template <typename T>

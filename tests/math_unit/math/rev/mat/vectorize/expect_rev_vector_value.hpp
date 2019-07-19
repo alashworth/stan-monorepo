@@ -3,8 +3,8 @@
 
 #include <stan/math/rev/core/var.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/vectorize/build_rev_matrix.hpp>
-#include <tests/math_unit/math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
+#include <math/rev/mat/vectorize/build_rev_matrix.hpp>
+#include <math/rev/mat/vectorize/expect_val_deriv_eq.hpp>
 #include <Eigen/Dense>
 #include <vector>
 

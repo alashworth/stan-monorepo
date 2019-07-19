@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-#include <tests/math_unit/math/rev/mat/fun/util.hpp>
-#include <tests/math_unit/math/rev/mat/util.hpp>
+#include <math/rev/mat/fun/util.hpp>
+#include <math/rev/mat/util.hpp>
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt) {
   using stan::math::matrix_d;
