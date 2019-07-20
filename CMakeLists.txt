@@ -1,5 +1,5 @@
 # Preamble
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 project(Stan
 		VERSION 2.19.1
 		DESCRIPTION "State-of-the-art package for statistical inference."
@@ -23,6 +23,7 @@ if(NOT WIN32)
 	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif()
 
+# set(CMAKE_FIND_DEBUG_MODE ON)
 if(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
 	include(${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
 endif()
@@ -44,12 +45,12 @@ endif()
 option(STAN_BUILD_DOCS "Enable documentation building." OFF)
 option(STAN_BUILD_TESTS "Enable project tests." ${BUILD_TESTING})
 option(STAN_BUILD_RVECTESTS "Enable generation of extended row-vector tests." OFF)
-option(STAN_OPENCL_DEVICEID "Desired device to run OpenCL-accelerated functions on." 0)
-option(STAN_OPENCL_PLATFORM_ID "Desired OpenCL platform to run OpenCL-accelerated functions on." 0)
+set(STAN_OPENCL_DEVICEID "0" CACHE STRING "Desired device to run OpenCL-accelerated functions on.")
+set(STAN_OPENCL_PLATFORM_ID "0" CACHE STRING "Desired OpenCL platform to run OpenCL-accelerated functions on.")
 
 # External project dependencies
 include(FeatureSummary)
-find_package(Boost 1.69 QUIET OPTIONAL_COMPONENTS serialization)
+find_package(Boost 1.69 QUIET OPTIONAL_COMPONENTS serialization mpi)
 set_package_properties(Boost PROPERTIES
 		DESCRIPTION "Free peer-reviewed portable C++ source libraries"
 		URL "https://www.boost.org/"
@@ -108,11 +109,11 @@ target_compile_definitions(Boost::boost INTERFACE
 		BOOST_DISABLE_ASSERTS
 		BOOST_PHOENIX_NO_VARIADIC_EXPRESSION)
 
-if(TARGET GTest::GTest)
-	target_compile_definitions(GTest::GTest INTERFACE
-			GTEST_USE_OWN_TR1_TUPLE
-			)
-endif()
+#if(TARGET GTest::GTest)
+#	target_compile_definitions(GTest::GTest INTERFACE
+#			GTEST_USE_OWN_TR1_TUPLE
+#			)
+#endif()
 
 
 # Main targets built by this project

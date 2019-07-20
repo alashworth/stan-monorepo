@@ -1,13 +1,16 @@
-file(GLOB_RECURSE math_sources CONFIGURE_DEPENDS *.[hc]pp )
+file(GLOB_RECURSE math_sources *.hpp )
 configure_file(version.hpp.in version.hpp @ONLY)
 list(APPEND math_sources
 		../math.hpp
 		${CMAKE_CURRENT_BINARY_DIR}/version.hpp)
 
 # Base math configuration
+message(STATUS "Configuring Stan math...")
 add_library(stan_math INTERFACE)
 add_library(Stan::Math ALIAS stan_math)
 set_property(TARGET stan_math PROPERTY EXPORT_NAME Math)
+
+target_sources(stan_math INTERFACE ${math_sources})
 
 target_include_directories(stan_math INTERFACE
 		$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
@@ -20,36 +23,42 @@ target_link_libraries(stan_math INTERFACE
 		Sundials::Idas)
 
 target_compile_definitions(stan_math INTERFACE _USE_MATH_DEFINES)
+message(STATUS "Configuring Stan math... [DONE]")
+
 
 # OpenCL
 if(OpenCL_FOUND)
+	message(STATUS "Configuring Stan math with OpenCL support...")
+	message(VERBOSE "Stan math using OpenCL version: ${OpenCL_VERSION_STRING}")
+	message(VERBOSE "OpenCL library: ${OpenCL_LIBRARY}")
 	add_library(stan_math_opencl INTERFACE)
 	add_library(Stan::MathOpenCL ALIAS stan_math_opencl)
 	set_property(TARGET stan_math_opencl PROPERTY EXPORT_NAME MathOpenCL)
 
 	target_link_libraries(stan_math_opencl INTERFACE
-			stan_math ${OpenCL_LIBRARIES})
-
-	target_include_directories(stan_math_opencl INTERFACE
-			${OpenCL_INCLUDE_DIRS})
+			stan_math OpenCL::OpenCL)
 
 	target_compile_definitions(stan_math_opencl INTERFACE
 			STAN_OPENCL
 			OPENCL_DEVICE_ID=${STAN_OPENCL_DEVICEID}
 			OPENCL_PLATFORM_ID=${STAN_OPENCL_PLATFORM_ID}
-			CL_USE_DEPRECATED_OPENCL_1_2_APIS
+			CL_TARGET_OPENCL_VERSION=120
 			__CL_ENABLE_EXCEPTIONS
-			CL_TARGET_OPENCL_VERSION=128
 			)
+	message(STATUS "Configuring Stan math with OpenCL support... [DONE]")
+else()
+	message(STATUS "Configuring Stan math with OpenCL support... [SKIPPED]")
 endif()
 
 # MPI
 if(MPI_CXX_FOUND)
-	add_library(stan_math_mpi INTERFACE)
+	add_library(stan_math_mpi)
 	add_library(Stan::MathMPI ALIAS stan_math_mpi)
 	set_property(TARGET stan_math_mpi PROPERTY EXPORT_NAME MathMPI)
 
-	target_link_libraries(stan_math_mpi INTERFACE MPI::MPI_CXX)
+	target_sources(stan_math_mpi PUBLIC prim/arr/functor/mpi_cluster_inst.cpp)
+
+	target_link_libraries(stan_math_mpi INTERFACE stan_math MPI::MPI_CXX)
 	target_compile_definitions(stan_math_mpi INTERFACE STAN_MPI)
 endif()
 

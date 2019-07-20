@@ -42,8 +42,9 @@ Then, to download, compile, and install all dependencies in a temporary director
 ```
 mkdir build
 cd build
-conan install .. --build
+conan install .. -s build_type=Release --build=missing
 ```
+If you are compiling a debug version of Stan, replace `build_type=Release` for `build_type=Debug`.
  
 #### Windows
 Stan is only supported when building with MinGW. However, Conan defaults to Visual Studio on Windows if Visual Studio is found. To override and build dependencies with GCC, you will need to create a MinGW profile at `~/.conan/profiles/mingw64`. Then add the following to it, changing the compiler version as appropriate to your installation.
@@ -66,7 +67,7 @@ Install dependencies using:
 ```
 mkdir build
 cd build
-conan install .. --build --profile mingw64
+conan install .. -s build_type=Release --build=missing --profile mingw64
 ```
 
 #### Build and Run Unit Tests
