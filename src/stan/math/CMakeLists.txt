@@ -17,7 +17,7 @@ target_include_directories(stan_math INTERFACE
 		$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/src>)
 
 target_link_libraries(stan_math INTERFACE
-		Boost::boost
+		Boost::headers
 		Eigen3::Eigen
 		Sundials::Cvodes
 		Sundials::Idas)
@@ -40,7 +40,7 @@ if(OpenCL_FOUND)
 
 	target_compile_definitions(stan_math_opencl INTERFACE
 			STAN_OPENCL
-			OPENCL_DEVICE_ID=${STAN_OPENCL_DEVICEID}
+			OPENCL_DEVICE_ID=${STAN_OPENCL_DEVICE_ID}
 			OPENCL_PLATFORM_ID=${STAN_OPENCL_PLATFORM_ID}
 			CL_TARGET_OPENCL_VERSION=120
 			__CL_ENABLE_EXCEPTIONS

@@ -76,10 +76,10 @@ void write_includes(vector<std::ostream*>& outs, const string& include) {
     std::ostream* out = outs[n];
     *out << "#include <gtest/gtest.h>" << endl;
     *out << "#include <boost/mpl/vector.hpp>" << endl;
-    *out << "#include <test/prob/test_fixture_distr.hpp>" << endl;
-    *out << "#include <test/prob/test_fixture_cdf.hpp>" << endl;
-    *out << "#include <test/prob/test_fixture_cdf_log.hpp>" << endl;
-    *out << "#include <test/prob/test_fixture_ccdf_log.hpp>" << endl;
+    *out << "#include <test_fixture_distr.hpp>" << endl;
+    *out << "#include <test_fixture_cdf.hpp>" << endl;
+    *out << "#include <test_fixture_cdf_log.hpp>" << endl;
+    *out << "#include <test_fixture_ccdf_log.hpp>" << endl;
     *out << "#include <" << include << ">" << endl;
     *out << endl;
   }

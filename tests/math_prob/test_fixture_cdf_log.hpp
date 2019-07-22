@@ -2,7 +2,7 @@
 #define TEST_PROB_TEST_FIXTURE_CDF_LOG_HPP
 
 #include <stan/math/rev/mat.hpp>
-#include <test/prob/utility.hpp>
+#include <utility.hpp>
 #include <type_traits>
 
 using Eigen::Dynamic;

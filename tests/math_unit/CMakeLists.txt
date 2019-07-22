@@ -5,6 +5,7 @@ set(base_test_srcs
 		math/fwd/arr/meta/partials_return_type_test.cpp
 		math/fwd/core/fvar_test.cpp
 		math/fwd/core/std_numeric_limits_test.cpp
+		math/fwd/mat/eigen_plugins_test.cpp
 		math/fwd/mat/fun/accumulator_test.cpp
 		math/fwd/mat/fun/append_col_test.cpp
 		math/fwd/mat/fun/append_row_test.cpp
@@ -170,6 +171,7 @@ set(base_test_srcs
 		math/fwd/scal/fun/inv_sqrt_test.cpp
 		math/fwd/scal/fun/inv_square_test.cpp
 		math/fwd/scal/fun/inv_test.cpp
+		math/fwd/scal/fun/is_any_nan_test.cpp
 		math/fwd/scal/fun/is_inf_test.cpp
 		math/fwd/scal/fun/is_nan_test.cpp
 		math/fwd/scal/fun/lbeta_test.cpp
@@ -251,6 +253,7 @@ set(base_test_srcs
 		math/mix/core/operator_unary_not_test.cpp
 		math/mix/core/operator_unary_plus_test.cpp
 		math/mix/core/std_numeric_limits_test.cpp
+		math/mix/mat/eigen_plugins_test.cpp
 		math/mix/mat/fun/accumulator_test.cpp
 		math/mix/mat/fun/acosh_test.cpp
 		math/mix/mat/fun/acos_test.cpp
@@ -463,6 +466,7 @@ set(base_test_srcs
 		math/mix/scal/fun/inv_sqrt_test.cpp
 		math/mix/scal/fun/inv_square_test.cpp
 		math/mix/scal/fun/inv_test.cpp
+		math/mix/scal/fun/is_any_nan_test.cpp
 		math/mix/scal/fun/lbeta_test.cpp
 		math/mix/scal/fun/lgamma_test.cpp
 		math/mix/scal/fun/lmgamma_test.cpp
@@ -921,6 +925,7 @@ set(base_test_srcs
 		math/prim/scal/fun/inv_sqrt_test.cpp
 		math/prim/scal/fun/inv_square_test.cpp
 		math/prim/scal/fun/inv_test.cpp
+		math/prim/scal/fun/is_any_nan_test.cpp
 		math/prim/scal/fun/is_inf_test.cpp
 		math/prim/scal/fun/is_nan_test.cpp
 		math/prim/scal/fun/is_uninitialized_test.cpp
@@ -1195,6 +1200,7 @@ set(base_test_srcs
 		math/rev/core/vvv_vari_test.cpp
 		math/rev/core/vv_vari_test.cpp
 		math/rev/core/v_vari_test.cpp
+		math/rev/mat/eigen_plugins_test.cpp
 		math/rev/mat/err/check_consistent_sizes_test.cpp
 		math/rev/mat/err/check_consistent_size_test.cpp
 		math/rev/mat/err/check_greater_or_equal_test.cpp
@@ -1405,6 +1411,7 @@ set(base_test_srcs
 		math/rev/scal/fun/inv_sqrt_test.cpp
 		math/rev/scal/fun/inv_square_test.cpp
 		math/rev/scal/fun/inv_test.cpp
+		math/rev/scal/fun/is_any_nan_test.cpp
 		math/rev/scal/fun/is_inf_test.cpp
 		math/rev/scal/fun/is_nan_test.cpp
 		math/rev/scal/fun/is_uninitialized_test.cpp
@@ -1526,7 +1533,6 @@ foreach(src IN LISTS base_test_srcs)
 endforeach()
 message(STATUS "Configuring Stan math unit tests... [DONE]")
 
-
 if(TARGET Stan::MathOpenCL)
 	message(STATUS "Configuring Stan math OpenCL unit tests...")
 	foreach(src IN LISTS opencl_test_srcs)
@@ -1540,4 +1546,24 @@ if(TARGET Stan::MathOpenCL)
 	message(STATUS "Configuring Stan math OpenCL unit tests... [DONE]")
 else()
 	message(STATUS "Configuring Stan math OpenCL unit tests... [SKIPPED]")
+endif()
+
+if(Boost_mpi_FOUND)
+	message(STATUS "Configuring Stan math MPI unit tests...")
+	foreach(src IN LISTS mpi_test_srcs)
+		string(REPLACE ".cpp" ".mpi" src_fn ${src})
+		string(MAKE_C_IDENTIFIER ${src_fn} src_fn)
+		add_executable(${src_fn} ${src})
+		target_link_libraries(${src_fn} Stan::MathMPI
+				GTest::GTest GTest::Main MPI::MPI_CXX)
+		add_test(NAME ${src_fn}
+				COMMAND ${MPIEXEC_EXECUTABLE}
+				${MPIEXEC_NUMPROC_FLAG}
+				2
+				${MPIEXEC_PREFLAGS}
+				${CMAKE_CURRENT_BINARY_DIR}/${src_fn}
+				${MPIEXEC_POSTFLAGS})
+		message(STATUS "Configuring Stan math MPI unit tests... [DONE]")
+else()
+	message(STATUS "Configuring Stan math MPI unit tests... [SKIPPED]")
 endif()

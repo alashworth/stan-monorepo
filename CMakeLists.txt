@@ -13,16 +13,23 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
-if(NOT WIN32)
-	include(CheckPIESupported)
-	check_pie_supported(OUTPUT_VARIABLE output LANGUAGES CXX)
-	if(NOT CMAKE_CXX_LINK_PIE_SUPPORTED)
-		message(FATAL_ERROR "PIE is not supported at link time: ${output}.\n"
-				"PIE link options will not be passed to linker.")
-	endif()
-	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+# Check for position-independent code linking capabilities
+# This will return false on MINGW-platforms since PIE is not optional on MINGW,
+# so the option doesn't even exist to choose it.
+include(CheckPIESupported)
+check_pie_supported(OUTPUT_VARIABLE output LANGUAGES CXX)
+if(NOT CMAKE_CXX_LINK_PIE_SUPPORTED)
+	message(STATUS "${output}.\n"
+			"PIE link options will not be passed to linker.")
+endif()
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+if (MINGW)
+	add_compile_options("-Wa,-mbig-obj")
 endif()
 
+
+# Uncomment below command to enable a debug print of dependency search directories
 # set(CMAKE_FIND_DEBUG_MODE ON)
 if(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
 	include(${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
@@ -30,7 +37,7 @@ endif()
 
 # Set a default build type if none was specified
 # Release is the safest since certain Stan libraries won't link successfully
-# if debug symbols are enabled due to template bloat.
+# if debug symbols are enabled due to number of templates.
 set(default_build_type "Release")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
@@ -45,7 +52,7 @@ endif()
 option(STAN_BUILD_DOCS "Enable documentation building." OFF)
 option(STAN_BUILD_TESTS "Enable project tests." ${BUILD_TESTING})
 option(STAN_BUILD_RVECTESTS "Enable generation of extended row-vector tests." OFF)
-set(STAN_OPENCL_DEVICEID "0" CACHE STRING "Desired device to run OpenCL-accelerated functions on.")
+set(STAN_OPENCL_DEVICE_ID "0" CACHE STRING "Desired device to run OpenCL-accelerated functions on.")
 set(STAN_OPENCL_PLATFORM_ID "0" CACHE STRING "Desired OpenCL platform to run OpenCL-accelerated functions on.")
 
 # External project dependencies
@@ -55,6 +62,8 @@ set_package_properties(Boost PROPERTIES
 		DESCRIPTION "Free peer-reviewed portable C++ source libraries"
 		URL "https://www.boost.org/"
 		TYPE REQUIRED)
+
+add_feature_info("Boost MPI" Boost_mpi_FOUND "Necessary for enabling MPI support. Disabled if library not found.")
 
 find_package(Eigen3 3.3.3 QUIET)
 set_package_properties(Eigen3 PROPERTIES
@@ -69,7 +78,7 @@ set_package_properties(Sundials PROPERTIES
 		URL "https://github.com/LLNL/sundials"
 		TYPE REQUIRED)
 
-find_package(OpenCL QUIET)
+find_package(OpenCL 1.2 QUIET)
 set_package_properties(OpenCL PROPERTIES
 		DESCRIPTION "Framework for writing programs that execute across heterogeneous platforms"
 		PURPOSE "Necessary for running OpenCL-enabled unit tests."
@@ -123,5 +132,5 @@ add_subdirectory(src/stan/math)
 if(STAN_BUILD_TESTS)
 	include(GoogleTest)
 	add_subdirectory(tests/math_unit)
-	#add_subdirectory(tests/math_prob)
+	add_subdirectory(tests/math_prob)
 endif()

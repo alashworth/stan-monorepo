@@ -2,7 +2,7 @@
 #define TEST_PROB_TEST_FIXTURE_DISTR_HPP
 
 #include <stan/math/mix/mat.hpp>
-#include <test/prob/utility.hpp>
+#include <utility.hpp>
 #include <type_traits>
 #include <stdexcept>
 
