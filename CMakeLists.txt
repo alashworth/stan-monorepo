@@ -1,7 +1,7 @@
 # Preamble
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 project(Stan
-		VERSION 2.19.1
+		VERSION 2.20.0
 		DESCRIPTION "State-of-the-art package for statistical inference."
 		HOMEPAGE_URL "https://github.com/stan-dev/stan"
 		LANGUAGES CXX)
@@ -128,9 +128,11 @@ target_compile_definitions(Boost::boost INTERFACE
 # Main targets built by this project
 include(GNUInstallDirs)
 add_subdirectory(src/stan/math)
+add_subdirectory(src/stan/util)
 
 if(STAN_BUILD_TESTS)
 	include(GoogleTest)
 	add_subdirectory(tests/math_unit)
 	add_subdirectory(tests/math_prob)
+	add_subdirectory(tests/util_unit)
 endif()

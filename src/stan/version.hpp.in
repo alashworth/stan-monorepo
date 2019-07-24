@@ -1,0 +1,19 @@
+#ifndef STAN_VERSION_HPP
+#define STAN_VERSION_HPP
+
+#include <string>
+
+namespace stan {
+
+/** Major version number for Stan math library. */
+	const std::string MAJOR_VERSION = "@Stan_VERSION_MAJOR@";
+
+/** Minor version number for Stan math library. */
+	const std::string MINOR_VERSION = "@Stan_VERSION_MINOR@";
+
+/** Patch version for Stan math library. */
+	const std::string PATCH_VERSION = "@Stan_VERSION_PATCH";
+
+}
+
+#endif

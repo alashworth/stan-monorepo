@@ -8,7 +8,7 @@ foreach(src IN LISTS srcs)
 	target_link_libraries(${src_fn} PRIVATE
 			Stan::Math GTest::GTest GTest::Main )
 	target_include_directories(${src_fn} PRIVATE
-			$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/tests/math_prob}>)
+			$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/tests/math_prob>)
 	add_test(NAME ${src_fn} COMMAND ${src_fn})
 	set_property(TEST ${src_fn} PROPERTY LABELS "DistTest")
 endforeach()
