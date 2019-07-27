@@ -50,7 +50,7 @@ TEST(ErrorHandlingScalar, CheckFinite_Matrix_one_indexed_message) {
   EXPECT_NE(std::string::npos, message.find("[3]")) << message;
 }
 
-TEST(ErrorHandlingScalar, CheckFinite_nan) {
+TEST(ErrorHandlingScalar, CheckFinite_Matrix_nan) {
   const char* function = "check_finite";
   double nan = std::numeric_limits<double>::quiet_NaN();
 
