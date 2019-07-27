@@ -14,25 +14,29 @@ set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
 # Check for position-independent code linking capabilities
-# This will return false on MINGW-platforms since PIE is not optional on MINGW,
-# so the option doesn't even exist to choose it.
-include(CheckPIESupported)
-check_pie_supported(OUTPUT_VARIABLE output LANGUAGES CXX)
-if(NOT CMAKE_CXX_LINK_PIE_SUPPORTED)
-	message(STATUS "${output}.\n"
-			"PIE link options will not be passed to linker.")
+if(NOT MINGW)	# MINGW: Always PIC, doesn't expose option to enable it.
+	include(CheckPIESupported)
+	check_pie_supported(OUTPUT_VARIABLE output LANGUAGES CXX)
+	if(NOT CMAKE_CXX_LINK_PIE_SUPPORTED)
+		message(STATUS "${output}.\n PIE link options will not be passed to linker.")
+	endif()
+	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif()
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-if (MINGW)
+# Global compiler specific flags and options
+include(CheckCXXCompilerFlag)
+check_cxx_compiler_flag("-Wa,-mbig-obj" STAN_FLAGS_BIGOBJ)
+if(STAN_FLAGS_BIGOBJ)
 	add_compile_options("-Wa,-mbig-obj")
 endif()
 
-
 # Uncomment below command to enable a debug print of dependency search directories
 # set(CMAKE_FIND_DEBUG_MODE ON)
-if(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
-	include(${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
+
+# If Conan was used to install dependencies, the following include prepends
+# the Conan install directory onto CMake's search path.
+if(EXISTS ${PROJECT_BINARY_DIR}/conan_paths.cmake)
+	include(${PROJECT_BINARY_DIR}/conan_paths.cmake)
 endif()
 
 # Set a default build type if none was specified
@@ -107,23 +111,22 @@ find_package(Threads QUIET)
 set_package_properties(Threads PROPERTIES
 		DESCRIPTION "System threading library.")
 
-feature_summary(INCLUDE_QUIET_PACKAGES
-		WHAT ALL
+feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
 		FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-# Configuring our found dependencies
-target_compile_definitions(Boost::boost INTERFACE
-		BOOST_RESULT_OF_USE_TR1
-		BOOST_NO_DECLTYPE
-		BOOST_DISABLE_ASSERTS
-		BOOST_PHOENIX_NO_VARIADIC_EXPRESSION)
+# TODO: Figure out why the below are in the original Makefiles.
+target_compile_definitions(Boost::headers INTERFACE
+#		BOOST_RESULT_OF_USE_TR1
+#		BOOST_NO_DECLTYPE
+#		BOOST_DISABLE_ASSERTS
+#		BOOST_PHOENIX_NO_VARIADIC_EXPRESSION
+		)
 
-#if(TARGET GTest::GTest)
-#	target_compile_definitions(GTest::GTest INTERFACE
+if(TARGET GTest::GTest)
+	target_compile_definitions(GTest::GTest INTERFACE
 #			GTEST_USE_OWN_TR1_TUPLE
-#			)
-#endif()
-
+			)
+endif()
 
 # Main targets built by this project
 include(GNUInstallDirs)

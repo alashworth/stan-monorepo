@@ -9,32 +9,28 @@ It is built on top of the Stan Math library, which provides a full first- and hi
 ## Getting Started
 
 The minimum prerequisites to build Stan from source are:
-* CMake 3.14
-* C++14-compatible compiler
-* Conan package manager OR required dependencies installed manually
+* CMake 3.15
+* C++14-compatible compiler (tested: GCC, Clang)
 
-Stan has the following required dependencies:
-* Boost header-only libraries >1.69
+Required dependencies:
+* Boost headers >1.69
 * Eigen >3.3.4
+* Sundials 4.1.0
 
-Stan has the following optional dependencies:
+Optional dependencies:
 * Boost MPI
-* OpenCL 1.2.8+
+* OpenCL >1.2.8
 * Doxygen
 * Google Test >1.8.1
 
 ### Quick Start
 
-These quick start instructions assume you have a Bash-compatible shell, Git, Python, and a C++14-compatible compiler, but not Conan or the latest CMake release.
-
-Execute the following instructions in the Stan source directory. This will install the Conan package manager and the latest official CMake release into a virtual environment.
+The following assumes you have a valid Conan (https://conan.io) package manager installation and are in the Stan source directory. The conan script in the base directory will install all required and optional dependencies for you that are vendor agnostic (i.e., everything except an OpenCL or MPI implementation, and Boost MPI). 
 ```
-python3 -m venv venv
-source venv/bin/activate
-pip3 install --upgrade pip
-pip3 install wheel
-pip3 install conan cmake
+# There is no official Sundials package, so please add the following PPA
 conan remote add alashworth_stan https://api.bintray.com/conan/alashworth/stan
+mkdir build && cd build
+conan install .. -s build_type=Release --build=missing
 ```
 
 #### Linux, OSX 
@@ -47,8 +43,9 @@ conan install .. -s build_type=Release --build=missing
 If you are compiling a debug version of Stan, replace `build_type=Release` for `build_type=Debug`.
  
 #### Windows
-Stan is only supported when building with MinGW. However, Conan defaults to Visual Studio on Windows if Visual Studio is found. To override and build dependencies with GCC, you will need to create a MinGW profile at `~/.conan/profiles/mingw64`. Then add the following to it, changing the compiler version as appropriate to your installation.
- Users of old RTools versions with GCC versions < 5.X should make sure to change `compiler.libcxx` to `libstdc++` as well, which has the effect of defining `_GLIBCXX_USE_CXX11_ABI=0`:
+Stan on Windows must be built with MSYS2. However, Conan defaults to Visual Studio on Windows if Visual Studio is found. To override and build dependencies with GCC, you will need to create a MinGW profile (i.e. a plain text file) at `~/.conan/profiles/mingw64`. Then add the following to it, changing the compiler version as appropriate to your installation.
+ 
+Users attempting to build with the RTools toolchain should change `compiler.libcxx` to `libstdc++`, which has the effect of defining `_GLIBCXX_USE_CXX11_ABI=0`. All users should adjust the compiler version. More documentation can be found at the Conan website.
 ```
 [build_requires]
 [settings]
@@ -70,22 +67,21 @@ cd build
 conan install .. -s build_type=Release --build=missing --profile mingw64
 ```
 
-#### Build and Run Unit Tests
+#### Build
 
+You're ready to go! Now, in the same directory,
+```
+cmake .. -G"Unix Makefiles" && cmake --build .
+```
 
+#### Build Customization
 
-## TODO
+The following build options are provided:
 
-Math unit tests:
+* STAN_BUILD_DOCS           [default: OFF]
+* STAN_BUILD_TESTS          [default: ON]
+* STAN_BUILD_RVECTESTS      [default: OFF]
+* STAN_OPENCL_DEVICE_ID     [default: 0]
+* STAN_OPENCL_PLATFORM_ID   [default: 0]
 
-4699 - ErrorHandlingMatrix.checkPosDefinite_not_square (Failed)
-4700 - ErrorHandlingMatrix.checkPosDefinite_0_size (Failed)
-4762 - ErrorHandlingMatrix.isPosDefinite_not_square (Failed)
-4763 - ErrorHandlingMatrix.isPosDefinite_0_size (Failed)
-4817 - ProbAutocorrelation.test1 (Failed)
-4818 - ProbAutocorrelation.test2 (Failed)
-4820 - ProbAutocovariance.test1 (Failed)
-4821 - ProbAutocovariance.test2 (Failed)
-5279 - BoostPrecompilerOption.BoostUseTr1Def (Failed)
-5280 - BoostPrecompilerOption.BoostNoDeclTypeDef (Failed)
-7047 - ProbDistributionsPoissonLogGLM.glm_matches_bernoulli_logit_error_checking (Failed)
+For further documentation, see the CMakeLists.txt or the wiki.

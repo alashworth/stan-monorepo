@@ -12,13 +12,13 @@ class StanConan(ConanFile):
     build_requires = [
         "cmake_installer/[>=3.15.0]@conan/stable"
     ]
-    generators = ["cmake_paths", "virtualrunenv", "txt"]
+    generators = ["cmake_paths"]
     default_options = {
         "boost:header_only": True
     }
 
     def build(self):
         cmake = CMake(self)
-        cmake.definitions["CMAKE_TOOLCHAIN_FILE"] = "conan_paths.cmake"
+        # cmake.definitions["CMAKE_TOOLCHAIN_FILE"] = "conan_paths.cmake"
         cmake.configure()
         cmake.build()
