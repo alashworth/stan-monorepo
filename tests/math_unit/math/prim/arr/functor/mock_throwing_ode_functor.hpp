@@ -6,6 +6,8 @@ struct mtof {
   static int mock_throwing_ode_functor_count;
 };
 
+template <class D> int mtof<D>::mock_throwing_ode_functor_count = 0;
+
 template <typename E>
 struct mock_throwing_ode_functor {
   using mtof = mtof<void>;
