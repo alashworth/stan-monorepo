@@ -14,11 +14,7 @@ namespace unit {
  *
  * @param[in] a Matrix to test.
  */
-void expect_symmetric(const Eigen::MatrixXd& a) {
-  for (int j = 1; j < a.cols(); ++j)
-    for (int i = 0; i < j; ++i)
-      EXPECT_EQ(a(i, j), a(j, i)) << "failed symmetry at " << i << ", " << j;
-}
+void expect_symmetric(const Eigen::MatrixXd &a);
 
 /**
  * Return a randomly generated symmetric, positive-definite
