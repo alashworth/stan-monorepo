@@ -1,11 +1,18 @@
 # Preamble
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+
+# Do not move this: it has to go before the project declaration.
+find_program(CCACHE_PROGRAM ccache)
+if (CCACHE_PROGRAM)
+	# Note: This does nothing unless you are using Make or Ninja.
+	set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+endif ()
+
 project(Stan
 		VERSION 2.20.0
 		DESCRIPTION "State-of-the-art package for statistical inference."
-		HOMEPAGE_URL "https://github.com/stan-dev/stan"
-		LANGUAGES CXX)
-include(CTest)
+		HOMEPAGE_URL "https://github.com/stan-dev/stan")
+enable_testing()
 
 # Project setup
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
@@ -25,9 +32,22 @@ endif()
 
 # Global compiler specific flags and options
 include(CheckCXXCompilerFlag)
-check_cxx_compiler_flag("-Wa,-mbig-obj" STAN_FLAGS_BIGOBJ)
-if(STAN_FLAGS_BIGOBJ)
-	add_compile_options("-Wa,-mbig-obj")
+
+# Unfortunately RTools35 doesn't support this flag, which increases
+# the maximum number of obj sections on Windows.
+if (MINGW AND CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+	check_cxx_compiler_flag("-Wa,-mbig-obj" STAN_FLAGS_BIGOBJ)
+	if (STAN_FLAGS_BIGOBJ)
+		add_compile_options("-Wa,-mbig-obj")
+	endif ()
+endif ()
+
+# Prefer LLD if available, because it is much faster than LD.
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+	check_cxx_compiler_flag("-fuse-ld=lld" STAN_FLAGS_LLD)
+	if (STAN_FLAGS_LLD)
+		add_compile_options("-fuse-ld=lld")
+	endif ()
 endif()
 
 # Uncomment below command to enable a debug print of dependency search directories
@@ -54,7 +74,7 @@ endif()
 
 # Project options
 option(STAN_BUILD_DOCS "Enable documentation building." OFF)
-option(STAN_BUILD_TESTS "Enable project tests." ${BUILD_TESTING})
+option(STAN_BUILD_TESTS "Enable project tests." ON)
 option(STAN_BUILD_RVECTESTS "Enable generation of extended row-vector tests." OFF)
 set(STAN_OPENCL_DEVICE_ID "0" CACHE STRING "Desired device to run OpenCL-accelerated functions on.")
 set(STAN_OPENCL_PLATFORM_ID "0" CACHE STRING "Desired OpenCL platform to run OpenCL-accelerated functions on.")
@@ -109,7 +129,9 @@ set_package_properties(GTest PROPERTIES
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads QUIET)
 set_package_properties(Threads PROPERTIES
-		DESCRIPTION "System threading library.")
+		DESCRIPTION "POSIX-compatible system threading library."
+		PURPOSE "Required to run multithreaded Stan tests."
+		TYPE OPTIONAL)
 
 feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
 		FATAL_ON_MISSING_REQUIRED_PACKAGES)
@@ -134,8 +156,11 @@ add_subdirectory(src/stan/math)
 add_subdirectory(src/stan/util)
 
 if(STAN_BUILD_TESTS)
+	if (NOT TARGET GTest::GTest)
+		message(FATAL_ERROR "GTest is a required dependency if you want to run tests.")
+	endif ()
 	include(GoogleTest)
 	add_subdirectory(tests/math_unit)
-	add_subdirectory(tests/math_prob)
-	add_subdirectory(tests/util_unit)
+	#	add_subdirectory(tests/math_prob)
+	#	add_subdirectory(tests/util_unit)
 endif()
