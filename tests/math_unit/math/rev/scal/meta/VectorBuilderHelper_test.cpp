@@ -1,7 +1,7 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
 
-TEST(MetaTraits, VectorBuilderHelper_false_true) {
+TEST(MetaTraits, VectorBuilderHelper_false_true_2) {
   using stan::VectorBuilderHelper;
   using stan::length;
   using stan::math::var;

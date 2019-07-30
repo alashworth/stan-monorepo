@@ -24,7 +24,7 @@ TEST(AgradFwdLogInvLogit, Fvar) {
   EXPECT_FLOAT_EQ(3.0 * exp(0.0) / (1 + exp(0.0)), c.d_);
 }
 
-TEST(AgradFwdLogInvLogit, FvarFvarDouble) {
+TEST(AgradFwdLogInvLogit, FvarFvarDouble_1) {
   using stan::math::fvar;
   using stan::math::log_inv_logit;
   using std::exp;
@@ -58,7 +58,7 @@ struct log_inv_logit_fun {
   }
 };
 
-TEST(AgradFwdLogInvLogit, log_inv_logit_NaN) {
+TEST(AgradFwdLogInvLogit, log_inv_logit_NaN_0) {
   log_inv_logit_fun log_inv_logit_;
   test_nan_fwd(log_inv_logit_, false);
 }

@@ -63,7 +63,7 @@ struct logit_fun {
   }
 };
 
-TEST_F(AgradFwdLogit, logit_NaN) {
+TEST_F(AgradFwdLogit, logit_NaN_0) {
   logit_fun logit_;
   test_nan_fwd(logit_, false);
 }

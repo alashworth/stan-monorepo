@@ -107,7 +107,7 @@ TEST(AgradRevLogSoftmax, Grad) {
   }
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_21) {
   stan::math::vector_v x(2);
   x << -1.0, 1.0;
   test::check_varis_on_stack(stan::math::log_softmax(x));

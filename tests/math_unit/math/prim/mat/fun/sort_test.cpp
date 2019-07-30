@@ -39,25 +39,25 @@ void test_sort_asc() {
   EXPECT_EQ(typename index_type<T>::type(0), z.size());
 }
 
-TEST(MathMatrix, sortAscStdVecNan) {
+TEST(MathMatrix, sortAscStdVecNan_2) {
   test_sort_asc_throws<std::vector<double> >();
 }
 
-TEST(MathMatrix, sortDescStdVecNan) {
+TEST(MathMatrix, sortDescStdVecNan_2) {
   test_sort_desc_throws<std::vector<double> >();
 }
 
-TEST(MathMatrix, sortAscEigenVecNan) {
+TEST(MathMatrix, sortAscEigenVecNan_2) {
   test_sort_asc_throws<Eigen::VectorXd>();
 }
-TEST(MathMatrix, sortAscEigenRowVecNan) {
+TEST(MathMatrix, sortAscEigenRowVecNan_2) {
   test_sort_asc_throws<Eigen::RowVectorXd>();
 }
 
-TEST(MathMatrix, sortDescEigenVecNan) {
+TEST(MathMatrix, sortDescEigenVecNan_2) {
   test_sort_desc_throws<Eigen::VectorXd>();
 }
-TEST(MathMatrix, sortDescEigenRowVecNan) {
+TEST(MathMatrix, sortDescEigenRowVecNan_2) {
   test_sort_desc_throws<Eigen::RowVectorXd>();
 }
 

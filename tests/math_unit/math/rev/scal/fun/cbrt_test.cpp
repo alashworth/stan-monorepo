@@ -26,7 +26,7 @@ TEST(AgradRev, cbrt_NaN) {
   test_nan(cbrt_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_6) {
   AVAR a = 27;
   test::check_varis_on_stack(stan::math::cbrt(a));
 }

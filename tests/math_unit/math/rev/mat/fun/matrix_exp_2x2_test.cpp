@@ -4,7 +4,7 @@
 #include <math/rev/mat/fun/expect_matrix_eq.hpp>
 #include <math/rev/mat/fun/util.hpp>
 
-TEST(MathMatrix, matrix_exp_2x2) {
+TEST(MathMatrix, matrix_exp_2x2_2) {
   // example from Moler & Van Loan, 2003
   for (size_t k = 0; k < 2; k++) {
     for (size_t l = 0; l < 2; l++) {

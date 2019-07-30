@@ -62,7 +62,7 @@ TEST(AgradRev, sinh_NaN) {
   test_nan(sinh_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_60) {
   AVAR a = 0.68;
   test::check_varis_on_stack(stan::math::sinh(a));
 }

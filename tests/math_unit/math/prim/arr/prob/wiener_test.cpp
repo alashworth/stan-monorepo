@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(mathPrimScalProbWiener, illegal_tau_gt_y) {
+TEST(mathPrimScalProbWiener, illegal_tau_gt_y_0) {
   using stan::math::wiener_log;
   std::vector<double> ys;
   ys.push_back(2.5);

@@ -122,7 +122,7 @@ struct floor_fun {
   }
 };
 
-TEST(AgradFwdFloor, floor_NaN) {
+TEST(AgradFwdFloor, floor_NaN_1) {
   floor_fun floor_;
   test_nan_mix(floor_, false);
 }

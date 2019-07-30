@@ -40,6 +40,6 @@ TEST(ProbDistributionsLogNormal, errorCheck) {
   check_dist_throws_all_types(LogNormalTestRig());
 }
 
-TEST(ProbDistributionsLogNormal, chiSquareGoodnessFitTest) {
+TEST(ProbDistributionsLogNormal, chiSquareGoodnessFitTest_0) {
   check_quantiles_real_real(LogNormalTestRig());
 }

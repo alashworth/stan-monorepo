@@ -30,7 +30,7 @@ TEST(AgradRevMatrix, eigenval_sum) {
   EXPECT_NEAR(0.0, g[4], 1.0E-10);
   EXPECT_NEAR(0.0, g[5], 1.0E-10);
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_10) {
   using stan::math::eigenvalues_sym;
   using stan::math::matrix_v;
 

@@ -319,7 +319,7 @@ struct owens_t_fun {
   }
 };
 
-TEST(AgradFwdOwensT, nan) {
+TEST(AgradFwdOwensT, nan_1) {
   owens_t_fun owens_t_;
   test_nan_mix(owens_t_, 3.0, 5.0, false);
 }

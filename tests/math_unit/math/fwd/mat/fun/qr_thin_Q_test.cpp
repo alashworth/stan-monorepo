@@ -1,7 +1,7 @@
 #include <stan/math/fwd/mat.hpp>
 #include <gtest/gtest.h>
 
-TEST(AgradFwdMatrixQrQ, fd) {
+TEST(AgradFwdMatrixQrQ, fd_1) {
   using stan::math::matrix_d;
   using stan::math::matrix_fd;
   matrix_fd m0(0, 0);
@@ -39,7 +39,7 @@ TEST(AgradFwdMatrixQrQ, fd) {
   // EXPECT_NEAR(0, res(2, 2).d_, 1.0E-12);
 }
 
-TEST(AgradFwdMatrixQrQ, ffd) {
+TEST(AgradFwdMatrixQrQ, ffd_1) {
   using stan::math::matrix_d;
   using stan::math::matrix_ffd;
   matrix_ffd m0(0, 0);

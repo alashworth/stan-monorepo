@@ -64,7 +64,7 @@ TEST(AgradRev, owens_t_nan) {
   test_nan(owens_t_, 1.0, 2.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_54) {
   stan::math::var h = 1.0;
   stan::math::var a = 2.0;
   test::check_varis_on_stack(stan::math::owens_t(h, a));

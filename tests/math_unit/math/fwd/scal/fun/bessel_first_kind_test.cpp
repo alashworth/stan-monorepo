@@ -52,7 +52,7 @@ struct bessel_first_kind_fun {
   }
 };
 
-TEST(AgradFwdBesselFirstKind, bessel_first_kind_NaN) {
+TEST(AgradFwdBesselFirstKind, bessel_first_kind_NaN_0) {
   bessel_first_kind_fun bessel_first_kind_;
   test_nan_fwd(bessel_first_kind_, true);
 }

@@ -135,7 +135,7 @@ struct inv_cloglog_fun {
   }
 };
 
-TEST(AgradFwdInvCLogLog, inv_cloglog_NaN) {
+TEST(AgradFwdInvCLogLog, inv_cloglog_NaN_1) {
   inv_cloglog_fun inv_cloglog_;
   test_nan_mix(inv_cloglog_, false);
 }

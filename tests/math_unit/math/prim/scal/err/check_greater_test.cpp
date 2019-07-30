@@ -35,7 +35,7 @@ TEST(ErrorHandlingScalar, CheckGreater) {
       << "check_greater should throw an exception with x == Inf and lb == Inf";
 }
 
-TEST(ErrorHandlingScalar, CheckGreater_nan) {
+TEST(ErrorHandlingScalar, CheckGreater_nan_1) {
   const char* function = "check_greater";
   double x = 10.0;
   double lb = 0.0;

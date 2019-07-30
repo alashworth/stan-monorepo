@@ -59,7 +59,7 @@ struct pow_fun {
   }
 };
 
-TEST(AgradFwdPow, nan) {
+TEST(AgradFwdPow, nan_0) {
   pow_fun pow_;
   test_nan_fwd(pow_, 3.0, 5.0, false);
 }

@@ -55,7 +55,7 @@ struct ceil_fun {
   }
 };
 
-TEST(AgradFwdCeil, ceil_NaN) {
+TEST(AgradFwdCeil, ceil_NaN_0) {
   ceil_fun ceil_;
   test_nan_fwd(ceil_, false);
 }

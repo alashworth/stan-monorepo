@@ -42,7 +42,7 @@ TEST(AgradRev, step_nan) {
   EXPECT_EQ(1U, stan::math::step(nan).val());
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_64) {
   AVAR a = 3.5;
   test::check_varis_on_stack(stan::math::step(a));
 }

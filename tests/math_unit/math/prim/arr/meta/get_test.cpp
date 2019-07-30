@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(MetaTraits, get) {
+TEST(MetaTraits, get_0) {
   using stan::get;
 
   std::vector<double> x(3);

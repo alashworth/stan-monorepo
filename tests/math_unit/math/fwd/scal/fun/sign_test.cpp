@@ -1,7 +1,7 @@
 #include <stan/math/fwd/scal.hpp>
 #include <gtest/gtest.h>
 
-TEST(AgradFwdSign, Fvar) {
+TEST(AgradFwdSign, Fvar_0) {
   using stan::math::fvar;
   fvar<double> x;
   x = 0;

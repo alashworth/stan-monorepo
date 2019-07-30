@@ -65,7 +65,7 @@ struct multiply_log_fun {
   }
 };
 
-TEST(AgradFwdMultiplyLog, nan) {
+TEST(AgradFwdMultiplyLog, nan_0) {
   multiply_log_fun multiply_log_;
   test_nan_fwd(multiply_log_, 3.0, 5.0, false);
 }

@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <math/rev/scal/util.hpp>
 
-TEST(MathFunctions, sign) {
+TEST(MathFunctions, sign_1) {
   using stan::math::var;
   var x;
   x = 0;

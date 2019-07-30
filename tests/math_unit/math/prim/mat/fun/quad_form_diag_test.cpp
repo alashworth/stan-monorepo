@@ -1,5 +1,5 @@
 #include <stan/math/prim/mat.hpp>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
+#include "expect_matrix_eq.hpp"
 #include <gtest/gtest.h>
 
 using Eigen::Dynamic;
@@ -35,7 +35,7 @@ TEST(MathMatrix, quadFormDiag2) {
   expect_matrix_eq(v_m * m * v_m, quad_form_diag(m, rv));
 }
 
-TEST(MathMatrix, quadFormDiagException) {
+TEST(MathMatrix, quadFormDiagException_0) {
   Matrix<double, Dynamic, Dynamic> m(2, 2);
   m << 2, 3, 4, 5;
   EXPECT_THROW(quad_form_diag(m, m), std::invalid_argument);

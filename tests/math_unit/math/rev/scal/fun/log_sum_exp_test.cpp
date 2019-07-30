@@ -183,7 +183,7 @@ TEST(AgradRev, log_sum_exp_nan) {
   test_nan(log_sum_exp_, 3.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_49) {
   AVAR a = 5.0;
   AVAR b = 2.0;
   test::check_varis_on_stack(log_sum_exp(a, b));

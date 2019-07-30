@@ -1,7 +1,7 @@
 #include <stan/math/fwd/mat.hpp>
 #include <gtest/gtest.h>
 
-TEST(AgradMatrix, value_of_rec) {
+TEST(AgradMatrix, value_of_rec_0) {
   using stan::math::fvar;
   using stan::math::value_of_rec;
 

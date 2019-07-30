@@ -60,7 +60,7 @@ TEST(AgradRev, logSumExpMatrix) {
   test_log_sum_exp_matrix(d);
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_22) {
   stan::math::vector_v a(2);
   a << 5, 2;
   test::check_varis_on_stack(stan::math::log_sum_exp(a));

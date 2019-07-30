@@ -4,7 +4,7 @@
 #include <math/rev/scal/util.hpp>
 #include <limits>
 
-TEST(MathFunctions, is_any_nan_variadic) {
+TEST(MathFunctions, is_any_nan_variadic_1) {
   using stan::math::is_any_nan;
 
   double dbl_inf = std::numeric_limits<double>::infinity();

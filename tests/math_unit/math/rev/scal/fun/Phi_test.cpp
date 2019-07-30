@@ -153,7 +153,7 @@ TEST(AgradRev, Phi_NaN) {
   test_nan(Phi_, true, false);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_56) {
   stan::math::var y = 0;
   test::check_varis_on_stack(stan::math::Phi(y));
 }

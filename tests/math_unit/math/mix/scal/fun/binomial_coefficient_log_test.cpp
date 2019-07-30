@@ -380,7 +380,7 @@ struct binomial_coefficient_log_fun {
   }
 };
 
-TEST(AgradFwdBinomialCoefficientLog, nan) {
+TEST(AgradFwdBinomialCoefficientLog, nan_1) {
   binomial_coefficient_log_fun binomial_coefficient_log_;
   test_nan_mix(binomial_coefficient_log_, 3.0, 5.0, false);
 }

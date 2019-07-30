@@ -99,7 +99,7 @@ void sho_error_test(F harm_osc, std::vector<double>& y0, double t0,
 }
 
 // TODO(carpenter): g++6 failure
-TEST(StanAgradRevOde_integrate_ode, harmonic_oscillator_finite_diff) {
+TEST(StanAgradRevOde_integrate_ode, harmonic_oscillator_finite_diff_0) {
   sho_finite_diff_test(0);
   sho_finite_diff_test(2.0);
   sho_finite_diff_test(-2.0);
@@ -109,7 +109,7 @@ TEST(StanAgradRevOde_integrate_ode, harmonic_oscillator_finite_diff) {
   sho_data_finite_diff_test(-2.5);
 }
 
-TEST(StanAgradRevOde_integrate_ode, harmonic_oscillator_error) {
+TEST(StanAgradRevOde_integrate_ode, harmonic_oscillator_error_0) {
   using stan::math::var;
   harm_osc_ode_wrong_size_1_fun harm_osc;
 

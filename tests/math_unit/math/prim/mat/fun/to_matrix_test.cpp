@@ -1,8 +1,8 @@
 #include <stan/math/prim/mat.hpp>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 #include <gtest/gtest.h>
 #include <vector>
 #include <stdexcept>
+#include "expect_matrix_eq.hpp"
 
 using stan::math::to_matrix;
 

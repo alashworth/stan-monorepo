@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <limits>
 
-TEST(ErrorHandlingScalar, CheckPositive) {
+TEST(ErrorHandlingScalar, CheckPositive_1) {
   using stan::math::check_positive;
   const char* function = "check_positive";
 
@@ -16,7 +16,7 @@ TEST(ErrorHandlingScalar, CheckPositive) {
   EXPECT_THROW(check_positive(function, "x", x_mat), std::domain_error);
 }
 
-TEST(ErrorHandlingScalar, CheckPositive_nan) {
+TEST(ErrorHandlingScalar, CheckPositive_nan_1) {
   using stan::math::check_positive;
   const char* function = "check_positive";
 

@@ -28,7 +28,7 @@ TEST(AgradRev, erf_NaN) {
   test_nan(erf_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_12) {
   AVAR a = 1.3;
   test::check_varis_on_stack(stan::math::erf(a));
 }

@@ -63,7 +63,7 @@ struct log_diff_exp_fun {
   }
 };
 
-TEST(AgradFwdLogDiffExp, nan) {
+TEST(AgradFwdLogDiffExp, nan_0) {
   log_diff_exp_fun log_diff_exp_;
   test_nan_fwd(log_diff_exp_, 3.0, 5.0, false);
 }

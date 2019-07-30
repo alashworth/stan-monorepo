@@ -144,7 +144,7 @@ TEST(AgradRevMatrix, sd_matrix_exception) {
   EXPECT_THROW(sd(d), std::invalid_argument);
   EXPECT_THROW(sd(v), std::invalid_argument);
 }
-TEST(AgradRevMatrix, sdStdVector) {
+TEST(AgradRevMatrix, sdStdVector_1) {
   // should use arg-dep lookup (and for sqrt)
   using stan::math::sd;
 
@@ -186,7 +186,7 @@ TEST(AgradRevSd, finiteDiffsMatchAnalytic) {
     EXPECT_FLOAT_EQ(analytic, finite_diff);
   }
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_45) {
   stan::math::vector_v v(6);
   v << 1, 2, 3, 4, 5, 6;
   test::check_varis_on_stack(stan::math::sd(v));

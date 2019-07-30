@@ -59,7 +59,7 @@ struct inv_cloglog_fun {
   }
 };
 
-TEST(AgradFwdInvCLogLog, inv_cloglog_NaN) {
+TEST(AgradFwdInvCLogLog, inv_cloglog_NaN_0) {
   inv_cloglog_fun inv_cloglog_;
   test_nan_fwd(inv_cloglog_, false);
 }

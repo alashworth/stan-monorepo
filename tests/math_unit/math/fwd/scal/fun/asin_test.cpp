@@ -81,7 +81,7 @@ struct asin_fun {
   }
 };
 
-TEST(AgradFwdAsin, asin_NaN) {
+TEST(AgradFwdAsin, asin_NaN_0) {
   asin_fun asin_;
   test_nan_fwd(asin_, false);
 }

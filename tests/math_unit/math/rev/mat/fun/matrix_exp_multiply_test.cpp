@@ -229,7 +229,7 @@ TEST(MathMatrix, matrix_exp_multiply_vv) {
   test_matrix_exp_multiply_vv(8, 2);
 }
 
-TEST(MathMatrix, matrix_exp_multiply_exception) {
+TEST(MathMatrix, matrix_exp_multiply_exception_1) {
   using stan::math::matrix_exp_multiply;
   using stan::math::var;
   {  // nonzero size

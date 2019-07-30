@@ -127,7 +127,7 @@ struct cos_fun {
   }
 };
 
-TEST(AgradFwdCos, cos_NaN) {
+TEST(AgradFwdCos, cos_NaN_1) {
   cos_fun cos_;
   test_nan_mix(cos_, false);
 }

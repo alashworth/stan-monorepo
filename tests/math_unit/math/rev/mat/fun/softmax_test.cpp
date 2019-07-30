@@ -4,7 +4,7 @@
 #include <math/rev/mat/util.hpp>
 #include <vector>
 
-TEST(AgradRevMatrix, softmax) {
+TEST(AgradRevMatrix, softmax_1) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::softmax;
@@ -64,7 +64,7 @@ TEST(AgradRevSoftmax, gradient_check) {
   }
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_47) {
   Eigen::Matrix<stan::math::var, Eigen::Dynamic, 1> alpha(3);
   alpha << 0.0, 3.0, -1.0;
   test::check_varis_on_stack(stan::math::softmax(alpha));

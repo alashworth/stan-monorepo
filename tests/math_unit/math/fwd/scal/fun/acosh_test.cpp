@@ -23,7 +23,7 @@ TEST(AgradFwdAcosh, excepts) {
   EXPECT_THROW(acosh(fvar<double>(0.5)), std::domain_error);
 }
 
-TEST(MathFunctions, acosh_inf_return) {
+TEST(MathFunctions, acosh_inf_return_0) {
   using stan::math::acosh;
   using stan::math::fvar;
   EXPECT_EQ(
@@ -65,7 +65,7 @@ struct acosh_fun {
   }
 };
 
-TEST(AgradFwdAcosh, acosh_NaN) {
+TEST(AgradFwdAcosh, acosh_NaN_0) {
   acosh_fun acosh_;
   test_nan_fwd(acosh_, false);
 }

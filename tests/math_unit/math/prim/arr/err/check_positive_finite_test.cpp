@@ -32,7 +32,7 @@ TEST(ErrorHandlingScalar, CheckPositiveFinite_Vector) {
       << "check_positive_finite should throw exception on NaN";
 }
 
-TEST(ErrorHandlingScalar, CheckPositiveFinite_nan) {
+TEST(ErrorHandlingScalar, CheckPositiveFinite_nan_0) {
   const char* function = "check_positive_finite";
   double nan = std::numeric_limits<double>::quiet_NaN();
 

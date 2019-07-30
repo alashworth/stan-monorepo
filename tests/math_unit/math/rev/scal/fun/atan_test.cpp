@@ -58,7 +58,7 @@ TEST(AgradRev, atan_NaN) {
   test_nan(atan_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_2) {
   AVAR a = 1;
   test::check_varis_on_stack(stan::math::atan(a));
 }

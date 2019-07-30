@@ -72,7 +72,7 @@ struct square_fun {
   }
 };
 
-TEST(AgradFwdSquare, square_NaN) {
+TEST(AgradFwdSquare, square_NaN_0) {
   square_fun square_;
   test_nan_fwd(square_, false);
 }

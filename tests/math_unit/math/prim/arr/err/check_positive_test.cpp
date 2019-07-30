@@ -3,7 +3,7 @@
 #include <limits>
 #include <vector>
 
-TEST(ErrorHandlingScalar, CheckPositive) {
+TEST(ErrorHandlingScalar, CheckPositive_0) {
   using stan::math::check_positive;
   const char* function = "check_positive";
 
@@ -14,7 +14,7 @@ TEST(ErrorHandlingScalar, CheckPositive) {
   }
 }
 
-TEST(ErrorHandlingScalar, CheckPositive_nan) {
+TEST(ErrorHandlingScalar, CheckPositive_nan_0) {
   using stan::math::check_positive;
   const char* function = "check_positive";
 

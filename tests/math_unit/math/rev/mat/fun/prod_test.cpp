@@ -3,7 +3,7 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <math/rev/mat/util.hpp>
 
-TEST(AgradRevMatrix, prod) {
+TEST(AgradRevMatrix, prod_1) {
   using stan::math::prod;
   using stan::math::vector_d;
   using stan::math::vector_v;
@@ -35,7 +35,7 @@ TEST(AgradRevMatrix, prod) {
   EXPECT_FLOAT_EQ(3.0, g[0]);
   EXPECT_FLOAT_EQ(2.0, g[1]);
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_37) {
   stan::math::vector_v v(1);
   v << 2.0;
   test::check_varis_on_stack(stan::math::prod(v));

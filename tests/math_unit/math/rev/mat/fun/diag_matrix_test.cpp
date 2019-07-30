@@ -3,7 +3,7 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <math/rev/mat/util.hpp>
 
-TEST(AgradRevMatrix, diagMatrix) {
+TEST(AgradRevMatrix, diagMatrix_0) {
   using stan::math::diag_matrix;
   using stan::math::matrix_v;
   using stan::math::vector_d;
@@ -22,7 +22,7 @@ TEST(AgradRevMatrix, diagMatrix) {
   EXPECT_EQ(9, m(2, 2).val());
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_3) {
   stan::math::vector_v v(3);
   v << 1, 4, 9;
   test::check_varis_on_stack(stan::math::diag_matrix(v));

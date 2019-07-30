@@ -1,7 +1,7 @@
 #include <stan/math/prim/mat.hpp>
 #include <gtest/gtest.h>
 
-TEST(MetaTraits, get) {
+TEST(MetaTraits, get_1) {
   using stan::get;
 
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m(2, 3);

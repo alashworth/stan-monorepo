@@ -19,7 +19,7 @@ TEST(ProbDistributionsLogNormal, error_check) {
       std::domain_error);
 }
 
-TEST(ProbDistributionsLogNormal, chiSquareGoodnessFitTest) {
+TEST(ProbDistributionsLogNormal, chiSquareGoodnessFitTest_1) {
   boost::random::mt19937 rng;
   int N = 10000;
   int K = stan::math::round(2 * std::pow(N, 0.4));

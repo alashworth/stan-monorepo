@@ -140,7 +140,7 @@ struct cosh_fun {
   }
 };
 
-TEST(AgradFwdCosh, cosh_NaN) {
+TEST(AgradFwdCosh, cosh_NaN_1) {
   cosh_fun cosh_;
   test_nan_mix(cosh_, false);
 }

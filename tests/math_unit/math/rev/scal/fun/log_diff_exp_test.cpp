@@ -188,7 +188,7 @@ TEST(AgradRev, log_diff_exp_nan) {
   test_nan(log_diff_exp_, 3.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_44) {
   stan::math::var a = 5.0;
   stan::math::var b = 2.0;
   test::check_varis_on_stack(stan::math::log_diff_exp(a, b));

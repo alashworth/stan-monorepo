@@ -53,7 +53,7 @@ TEST(ErrorHandlingScalar, CheckNonnegativeVectorized_one_indexed_message) {
   EXPECT_NE(std::string::npos, message.find("[3]"));
 }
 
-TEST(ErrorHandlingScalar, CheckNonnegative_nan) {
+TEST(ErrorHandlingScalar, CheckNonnegative_nan_0) {
   const char* function = "check_nonnegative";
   double nan = std::numeric_limits<double>::quiet_NaN();
 

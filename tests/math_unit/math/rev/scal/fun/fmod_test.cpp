@@ -55,7 +55,7 @@ TEST(AgradRev, fmod_nan) {
   test_nan(fmod_, 3.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_22) {
   AVAR a = 2.7;
   AVAR b = 1.3;
   test::check_varis_on_stack(stan::math::fmod(a, b));

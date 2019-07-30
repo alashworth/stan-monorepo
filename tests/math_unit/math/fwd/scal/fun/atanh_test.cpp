@@ -53,7 +53,7 @@ struct atanh_fun {
   }
 };
 
-TEST(AgradFwdAtanh, atanh_NaN) {
+TEST(AgradFwdAtanh, atanh_NaN_0) {
   atanh_fun atanh_;
   test_nan_fwd(atanh_, false);
 }

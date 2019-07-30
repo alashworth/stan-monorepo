@@ -58,7 +58,7 @@ struct inv_logit_fun {
   }
 };
 
-TEST(AgradFwdInvLogit, inv_logit_NaN) {
+TEST(AgradFwdInvLogit, inv_logit_NaN_0) {
   inv_logit_fun inv_logit_;
   test_nan_fwd(inv_logit_, false);
 }

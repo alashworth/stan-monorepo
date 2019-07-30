@@ -72,7 +72,7 @@ TEST(AgradRevMatrix, mv_lp_norm_inf) {
   EXPECT_FLOAT_EQ(0.0, g[3]);
 }
 
-TEST(AgradRevMatrix, UserCase1) {
+TEST(AgradRevMatrix, UserCase1_1) {
   using stan::math::assign;
   using stan::math::dot_product;
   using stan::math::get_base1;

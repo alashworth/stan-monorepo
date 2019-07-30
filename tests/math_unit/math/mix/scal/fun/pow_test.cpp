@@ -324,7 +324,7 @@ struct pow_fun {
   }
 };
 
-TEST(AgradFwdPow, nan) {
+TEST(AgradFwdPow, nan_1) {
   pow_fun pow_;
   test_nan_mix(pow_, 3.0, 5.0, false);
 }

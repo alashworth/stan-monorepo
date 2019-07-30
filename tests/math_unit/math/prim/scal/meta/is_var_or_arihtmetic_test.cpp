@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(MathMeta, is_var_or_arithmetic_simple) {
+TEST(MathMeta, is_var_or_arithmetic_simple_0) {
   using stan::is_var_or_arithmetic;
   EXPECT_TRUE(stan::is_var_or_arithmetic<double>::value);
   EXPECT_FALSE(stan::is_var_or_arithmetic<double&>::value);

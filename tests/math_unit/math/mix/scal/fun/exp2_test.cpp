@@ -143,7 +143,7 @@ struct exp2_fun {
   }
 };
 
-TEST_F(AgradFwdExp2, exp2_NaN) {
+TEST_F(AgradFwdExp2, exp2_NaN_1) {
   exp2_fun exp2_;
   test_nan_mix(exp2_, false);
 }

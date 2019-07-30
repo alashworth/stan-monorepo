@@ -61,7 +61,7 @@ struct erf_fun {
   }
 };
 
-TEST(AgradFwdErf, erf_NaN) {
+TEST(AgradFwdErf, erf_NaN_0) {
   erf_fun erf_;
   test_nan_fwd(erf_, false);
 }

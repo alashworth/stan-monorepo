@@ -73,7 +73,7 @@ struct sqrt_fun {
   }
 };
 
-TEST(AgradFwdSqrt, sqrt_NaN) {
+TEST(AgradFwdSqrt, sqrt_NaN_0) {
   sqrt_fun sqrt_;
   test_nan_fwd(sqrt_, false);
 }

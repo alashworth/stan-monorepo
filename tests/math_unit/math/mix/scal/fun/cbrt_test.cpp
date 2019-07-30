@@ -124,7 +124,7 @@ struct cbrt_fun {
   }
 };
 
-TEST(AgradFwdCbrt, cbrt_NaN) {
+TEST(AgradFwdCbrt, cbrt_NaN_1) {
   cbrt_fun cbrt_;
   test_nan_mix(cbrt_, false);
 }

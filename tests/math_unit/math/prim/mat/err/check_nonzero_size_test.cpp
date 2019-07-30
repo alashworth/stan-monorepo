@@ -3,7 +3,7 @@
 #include <util.hpp>
 #include <limits>
 
-TEST(ErrorHandlingMatrix, checkNonzeroSizeMatrix) {
+TEST(ErrorHandlingMatrix, checkNonzeroSizeMatrix_1) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   using stan::math::check_nonzero_size;
 
@@ -17,7 +17,7 @@ TEST(ErrorHandlingMatrix, checkNonzeroSizeMatrix) {
                    std::invalid_argument, "has size 0");
 }
 
-TEST(ErrorHandlingMatrix, checkNonzeroSizeMatrix_nan) {
+TEST(ErrorHandlingMatrix, checkNonzeroSizeMatrix_nan_1) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   double nan = std::numeric_limits<double>::quiet_NaN();
 

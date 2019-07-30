@@ -29,7 +29,7 @@ struct trunc_fun {
   }
 };
 
-TEST(AgradFwdTrunc, trunc_NaN) {
+TEST(AgradFwdTrunc, trunc_NaN_0) {
   trunc_fun trunc_;
   test_nan_fwd(trunc_, false);
 }

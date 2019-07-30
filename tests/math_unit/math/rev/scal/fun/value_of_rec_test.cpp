@@ -1,7 +1,7 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
 
-TEST(AgradRev, value_of_rec) {
+TEST(AgradRev, value_of_rec_1) {
   using stan::math::value_of_rec;
   using stan::math::var;
 

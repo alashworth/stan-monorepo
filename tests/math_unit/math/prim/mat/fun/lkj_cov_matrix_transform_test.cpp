@@ -5,7 +5,7 @@
 using Eigen::Dynamic;
 using Eigen::Matrix;
 
-TEST(prob_transform, lkj_cov_matrix_rt) {
+TEST(prob_transform, lkj_cov_matrix_rt_1) {
   unsigned int K = 4;
   unsigned int K_choose_2 = 6;
   Matrix<double, Dynamic, 1> x(K_choose_2 + K);
@@ -18,7 +18,7 @@ TEST(prob_transform, lkj_cov_matrix_rt) {
     EXPECT_FLOAT_EQ(x[i], xrt[i]);
   }
 }
-TEST(prob_transform, lkj_cov_matrix_free_exception) {
+TEST(prob_transform, lkj_cov_matrix_free_exception_1) {
   Matrix<double, Dynamic, Dynamic> y(0, 0);
 
   EXPECT_THROW(stan::math::cov_matrix_free_lkj(y), std::invalid_argument);

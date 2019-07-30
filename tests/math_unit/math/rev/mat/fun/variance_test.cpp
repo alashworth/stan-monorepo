@@ -150,7 +150,7 @@ TEST(AgradRevMatrix, variance_matrix_exception) {
   EXPECT_THROW(variance(d1), std::invalid_argument);
   EXPECT_THROW(variance(v1), std::invalid_argument);
 }
-TEST(AgradRevMatrix, varianceStdVector) {
+TEST(AgradRevMatrix, varianceStdVector_1) {
   // should use arg-dep lookup
   using stan::math::variance;
 
@@ -178,7 +178,7 @@ TEST(AgradRevMatrix, varianceStdVector) {
   }
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_62) {
   stan::math::vector_v v1(6);
   v1 << 1, 2, 3, 4, 5, 6;
   stan::math::row_vector_v v2(6);

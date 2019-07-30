@@ -2,7 +2,7 @@
 #include <math/prim/scal/fun/promote_type_test_util.hpp>
 #include <gtest/gtest.h>
 
-TEST(MathMeta, index_type) {
+TEST(MathMeta, index_type_1) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::index_type;

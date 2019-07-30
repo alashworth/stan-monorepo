@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(MetaTraits, length_mvt) {
+TEST(MetaTraits, length_mvt_0) {
   using stan::length_mvt;
 
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> x1(2, 3);

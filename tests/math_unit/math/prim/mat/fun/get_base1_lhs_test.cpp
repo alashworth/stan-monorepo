@@ -14,7 +14,7 @@ TEST(MathMatrix, failing_in_26) {
       EXPECT_FLOAT_EQ(y(i - 1, j - 1), get_base1_lhs(y, i, j, "y", 2));
 }
 
-TEST(MathMatrix, failing_pre_20) {
+TEST(MathMatrix, failing_pre_20_0) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::get_base1_lhs;

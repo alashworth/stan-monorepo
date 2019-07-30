@@ -127,7 +127,7 @@ struct binary_log_loss_fun {
   }
 };
 
-TEST(AgradFwdBinaryLogLoss, binary_log_loss_NaN) {
+TEST(AgradFwdBinaryLogLoss, binary_log_loss_NaN_0) {
   binary_log_loss_fun binary_log_loss_;
   test_nan_fwd(binary_log_loss_, false);
 }

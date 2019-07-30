@@ -63,7 +63,7 @@ TEST(AgradRev, cosh_NaN) {
   test_nan(cosh_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_8) {
   AVAR a = 0.68;
   test::check_varis_on_stack(stan::math::cosh(a));
 }

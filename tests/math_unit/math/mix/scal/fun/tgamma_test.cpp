@@ -153,7 +153,7 @@ struct tgamma_fun {
   }
 };
 
-TEST(AgradFwdTgamma, tgamma_NaN) {
+TEST(AgradFwdTgamma, tgamma_NaN_1) {
   tgamma_fun tgamma_;
   test_nan_mix(tgamma_, false);
 }

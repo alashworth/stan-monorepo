@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <math/rev/scal/fun/util.hpp>
 
-TEST(AgradFwdSign, Fvar) {
+TEST(AgradFwdSign, Fvar_1) {
   using stan::math::fvar;
   using stan::math::var;
 

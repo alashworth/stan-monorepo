@@ -42,7 +42,7 @@ TEST(AgradRev, bessel_first_kind_NaN) {
   test_nan(bessel_first_kind_, true, false);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_3) {
   AVAR b(4.0);
   test::check_varis_on_stack(stan::math::bessel_first_kind(0, b));
 }

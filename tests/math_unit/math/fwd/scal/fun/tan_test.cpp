@@ -69,7 +69,7 @@ struct tan_fun {
   }
 };
 
-TEST(AgradFwdTan, tan_NaN) {
+TEST(AgradFwdTan, tan_NaN_0) {
   tan_fun tan_;
   test_nan_fwd(tan_, false);
 }

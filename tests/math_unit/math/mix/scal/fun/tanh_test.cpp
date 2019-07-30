@@ -130,7 +130,7 @@ struct tanh_fun {
   }
 };
 
-TEST_F(AgradFwdTanh, tanh_NaN) {
+TEST_F(AgradFwdTanh, tanh_NaN_1) {
   tanh_fun tanh_;
   test_nan_mix(tanh_, false);
 }

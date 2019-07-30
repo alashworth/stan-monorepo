@@ -49,7 +49,7 @@ TEST(AgradRev, fabs_NaN) {
   test_nan(fabs_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_16) {
   AVAR a = 0.68;
   test::check_varis_on_stack(stan::math::fabs(a));
 }

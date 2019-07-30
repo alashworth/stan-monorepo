@@ -47,7 +47,7 @@ TEST(AgradRev, cos_NaN) {
   test_nan(cos_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_9) {
   AVAR a = 0.49;
   test::check_varis_on_stack(stan::math::cos(a));
 }

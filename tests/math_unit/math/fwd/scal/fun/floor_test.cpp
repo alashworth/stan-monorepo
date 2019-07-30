@@ -55,7 +55,7 @@ struct floor_fun {
   }
 };
 
-TEST(AgradFwdFloor, floor_NaN) {
+TEST(AgradFwdFloor, floor_NaN_0) {
   floor_fun floor_;
   test_nan_fwd(floor_, false);
 }

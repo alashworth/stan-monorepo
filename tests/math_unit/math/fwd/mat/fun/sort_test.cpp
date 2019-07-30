@@ -347,33 +347,33 @@ TEST(AgradFwdSort, ffd_no_thrown) {
   EXPECT_NO_THROW(sort_desc(vec2));
 }
 
-TEST(MathMatrix, sortAscStdVecNan) {
+TEST(MathMatrix, sortAscStdVecNan_0) {
   test_sort_asc_throws<std::vector<stan::math::fvar<double> > >();
   test_sort_asc_throws<std::vector<stan::math::fvar<fvar<double> > > >();
 }
 
-TEST(MathMatrix, sortDescStdVecNan) {
+TEST(MathMatrix, sortDescStdVecNan_0) {
   test_sort_desc_throws<std::vector<stan::math::fvar<double> > >();
   test_sort_desc_throws<std::vector<stan::math::fvar<fvar<double> > > >();
 }
 
-TEST(MathMatrix, sortAscEigenVecNan) {
+TEST(MathMatrix, sortAscEigenVecNan_0) {
   test_sort_asc_throws<Eigen::Matrix<stan::math::fvar<double>, -1, 1> >();
   test_sort_asc_throws<
       Eigen::Matrix<stan::math::fvar<fvar<double> >, -1, 1> >();
 }
-TEST(MathMatrix, sortAscEigenRowVecNan) {
+TEST(MathMatrix, sortAscEigenRowVecNan_0) {
   test_sort_asc_throws<Eigen::Matrix<stan::math::fvar<double>, 1, -1> >();
   test_sort_asc_throws<
       Eigen::Matrix<stan::math::fvar<fvar<double> >, 1, -1> >();
 }
 
-TEST(MathMatrix, sortDescEigenVecNan) {
+TEST(MathMatrix, sortDescEigenVecNan_0) {
   test_sort_desc_throws<Eigen::Matrix<stan::math::fvar<double>, -1, 1> >();
   test_sort_desc_throws<
       Eigen::Matrix<stan::math::fvar<fvar<double> >, -1, 1> >();
 }
-TEST(MathMatrix, sortDescEigenRowVecNan) {
+TEST(MathMatrix, sortDescEigenRowVecNan_0) {
   test_sort_desc_throws<Eigen::Matrix<stan::math::fvar<double>, 1, -1> >();
   test_sort_desc_throws<
       Eigen::Matrix<stan::math::fvar<fvar<double> >, 1, -1> >();

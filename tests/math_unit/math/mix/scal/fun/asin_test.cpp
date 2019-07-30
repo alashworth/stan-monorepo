@@ -125,7 +125,7 @@ struct asin_fun {
   }
 };
 
-TEST(AgradFwdAsin, asin_NaN) {
+TEST(AgradFwdAsin, asin_NaN_1) {
   asin_fun asin_;
   test_nan_mix(asin_, false);
 }

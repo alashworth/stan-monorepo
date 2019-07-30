@@ -17,7 +17,7 @@ TEST(MathMatrix, initialize) {
   EXPECT_FLOAT_EQ(z, y);
 }
 
-TEST(MathMatrix, initMatrix) {
+TEST(MathMatrix, initMatrix_0) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::initialize;

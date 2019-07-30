@@ -102,7 +102,7 @@ struct inv_sqrt_fun {
   }
 };
 
-TEST(AgradFwdInvSqrt, inv_sqrt_NaN) {
+TEST(AgradFwdInvSqrt, inv_sqrt_NaN_1) {
   inv_sqrt_fun inv_sqrt_;
   test_nan_mix(inv_sqrt_, false);
 }

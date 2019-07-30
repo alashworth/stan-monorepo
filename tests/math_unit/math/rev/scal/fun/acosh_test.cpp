@@ -31,7 +31,7 @@ TEST(AgradRev, acosh_1) {
   EXPECT_FLOAT_EQ(1 / sqrt(-1 * -1 - 1), g[0]);
 }
 
-TEST(MathFunctions, acosh_exception) {
+TEST(MathFunctions, acosh_exception_1) {
   using stan::math::acosh;
   using stan::math::var;
   EXPECT_THROW(acosh(var(0.5)), std::domain_error);
@@ -57,7 +57,7 @@ TEST(AgradRev, acosh_NaN) {
   test_nan(acosh_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_1) {
   AVAR a = 1.3;
   test::check_varis_on_stack(stan::math::acosh(a));
 }

@@ -50,7 +50,7 @@ TEST(AgradFwdFvar, Fvar) {
   EXPECT_TRUE(stan::math::is_nan(i.d_));
 }
 
-TEST(AgradFwdFvar, insertion_operator) {
+TEST(AgradFwdFvar, insertion_operator_0) {
   using stan::math::fvar;
   fvar<double> a(5.0);
   std::stringstream ss;

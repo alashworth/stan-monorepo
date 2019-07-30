@@ -326,7 +326,7 @@ struct fmod_fun {
   }
 };
 
-TEST(AgradFwdFmod, nan) {
+TEST(AgradFwdFmod, nan_1) {
   fmod_fun fmod_;
   test_nan_mix(fmod_, 3.0, 5.0, false);
 }

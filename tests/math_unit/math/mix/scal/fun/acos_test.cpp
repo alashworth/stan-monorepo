@@ -122,7 +122,7 @@ struct acos_fun {
   }
 };
 
-TEST(AgradFwdAcos, acos_NaN) {
+TEST(AgradFwdAcos, acos_NaN_1) {
   acos_fun acos_;
   test_nan_mix(acos_, false);
 }

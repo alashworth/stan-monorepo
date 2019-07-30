@@ -64,7 +64,7 @@ struct log1p_fun {
   }
 };
 
-TEST(AgradFwdLog1p, log1p_NaN) {
+TEST(AgradFwdLog1p, log1p_NaN_0) {
   log1p_fun log1p_;
   test_nan_fwd(log1p_, false);
 }

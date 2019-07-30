@@ -367,7 +367,7 @@ struct fdim_fun {
   }
 };
 
-TEST(AgradFwdFdim, nan) {
+TEST(AgradFwdFdim, nan_1) {
   fdim_fun fdim_;
   test_nan_mix(fdim_, 3.0, 5.0, false);
 }

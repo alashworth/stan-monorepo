@@ -27,7 +27,7 @@ TEST(AgradRev, lgamma_NaN) {
   test_nan(lgamma_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_34) {
   AVAR a = 3.0;
   test::check_varis_on_stack(stan::math::lgamma(a));
 }

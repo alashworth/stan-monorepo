@@ -182,7 +182,7 @@ TEST(MathMatrix, scale_matrix_exp_multiply_vv) {
   test_scale_matrix_exp_multiply_vv(8, 2);
 }
 
-TEST(MathMatrix, scale_matrix_exp_multiply_exception) {
+TEST(MathMatrix, scale_matrix_exp_multiply_exception_1) {
   using stan::math::var;
   const double t = 1.0;
   {  // nonzero size

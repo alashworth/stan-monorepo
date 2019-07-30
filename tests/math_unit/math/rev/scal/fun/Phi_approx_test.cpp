@@ -54,7 +54,7 @@ TEST(AgradRev, Phi_approx_NaN) {
   test_nan(Phi_approx_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_55) {
   stan::math::var y(0);
   test::check_varis_on_stack(stan::math::Phi_approx(y));
 }

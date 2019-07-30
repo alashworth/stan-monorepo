@@ -159,7 +159,7 @@ struct erf_fun {
   }
 };
 
-TEST(AgradFwdErf, erf_NaN) {
+TEST(AgradFwdErf, erf_NaN_1) {
   erf_fun erf_;
   test_nan_mix(erf_, false);
 }

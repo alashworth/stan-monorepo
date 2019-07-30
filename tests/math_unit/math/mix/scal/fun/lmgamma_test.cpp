@@ -120,7 +120,7 @@ struct lmgamma_fun {
   }
 };
 
-TEST(AgradFwdLmgamma, lmgamma_NaN) {
+TEST(AgradFwdLmgamma, lmgamma_NaN_1) {
   lmgamma_fun lmgamma_;
   test_nan_mix(lmgamma_, false);
 }

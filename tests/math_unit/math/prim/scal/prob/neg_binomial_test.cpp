@@ -4,7 +4,7 @@
 #include <boost/math/distributions.hpp>
 #include <string>
 
-TEST(ProbDistributionsNegBinomial, error_check) {
+TEST(ProbDistributionsNegBinomial, error_check_2) {
   boost::random::mt19937 rng;
   EXPECT_NO_THROW(stan::math::neg_binomial_rng(6, 2, rng));
   EXPECT_NO_THROW(stan::math::neg_binomial_rng(0.5, 1, rng));
@@ -49,7 +49,7 @@ void expected_bin_sizes(double* expect, const int K, const int N,
   expect[K - 1] = N * (1.0 - p);
 }
 
-TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest) {
+TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest_2) {
   boost::random::mt19937 rng;
   double p = 0.6;
   double alpha = 5;
@@ -87,7 +87,7 @@ TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest) {
   EXPECT_LT(chi, boost::math::quantile(boost::math::complement(mydist, 1e-6)));
 }
 
-TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest2) {
+TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest2_2) {
   boost::random::mt19937 rng;
   double p = 0.8;
   double alpha = 2.4;
@@ -125,7 +125,7 @@ TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest2) {
   EXPECT_LT(chi, boost::math::quantile(boost::math::complement(mydist, 1e-6)));
 }
 
-TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest3) {
+TEST(ProbDistributionsNegBinomial, chiSquareGoodnessFitTest3_2) {
   boost::random::mt19937 rng;
   double p = 0.2;
   double alpha = 0.4;

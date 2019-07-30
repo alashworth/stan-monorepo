@@ -62,7 +62,7 @@ TEST(AgradRev, tanh_NaN) {
   test_nan(tanh_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_65) {
   AVAR a = 0.68;
   test::check_varis_on_stack(stan::math::tanh(a));
 }

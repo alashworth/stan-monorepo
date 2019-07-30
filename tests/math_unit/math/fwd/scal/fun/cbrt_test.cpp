@@ -69,7 +69,7 @@ struct cbrt_fun {
   }
 };
 
-TEST(AgradFwdCbrt, cbrt_NaN) {
+TEST(AgradFwdCbrt, cbrt_NaN_0) {
   cbrt_fun cbrt_;
   test_nan_fwd(cbrt_, false);
 }

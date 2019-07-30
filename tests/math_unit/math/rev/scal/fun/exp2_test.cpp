@@ -31,7 +31,7 @@ TEST(AgradRev, exp2_NaN) {
   test_nan(exp2_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_13) {
   AVAR a = 1.3;
   test::check_varis_on_stack(stan::math::exp2(a));
 }

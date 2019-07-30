@@ -96,7 +96,7 @@ TEST(ErrorHandlingScalar, CheckPositiveFinite_Matrix_one_indexed_message_3) {
   EXPECT_NE(std::string::npos, message.find("[2]")) << message;
 }
 
-TEST(ErrorHandlingScalar, CheckPositiveFinite_nan) {
+TEST(ErrorHandlingScalar, CheckPositiveFinite_nan_1) {
   const char* function = "check_positive_finite";
   double nan = std::numeric_limits<double>::quiet_NaN();
 

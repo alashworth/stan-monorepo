@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(AgradRevErrorHandlingScalar, CheckConsistentSizeVarCheckVectorized) {
+TEST(AgradRevErrorHandlingScalar, CheckConsistentSizeVarCheckVectorized_1) {
   using stan::math::check_consistent_size;
   using stan::math::var;
   using std::vector;

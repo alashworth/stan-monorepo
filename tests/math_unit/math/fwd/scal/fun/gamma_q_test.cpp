@@ -60,7 +60,7 @@ struct gamma_q_fun {
   }
 };
 
-TEST(AgradFwdGammaQ, nan) {
+TEST(AgradFwdGammaQ, nan_0) {
   gamma_q_fun gamma_q_;
   test_nan_fwd(gamma_q_, 3.0, 5.0, false);
 }

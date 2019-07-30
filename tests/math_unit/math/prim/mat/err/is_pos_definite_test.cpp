@@ -5,14 +5,8 @@
 
 using stan::math::is_pos_definite;
 
-class ErrorHandlingMatrix : public ::testing::Test {
- public:
-  void SetUp() {}
-
+TEST(ErrorHandlingMatrix, isPosDefinite) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
-};
-
-TEST_F(ErrorHandlingMatrix, isPosDefinite) {
   y.resize(1, 1);
   y << 1;
   EXPECT_TRUE(is_pos_definite(y));
@@ -36,7 +30,8 @@ TEST_F(ErrorHandlingMatrix, isPosDefinite) {
   EXPECT_TRUE(is_pos_definite(ldlt_2));
 }
 
-TEST_F(ErrorHandlingMatrix, isPosDefinite_not_square) {
+TEST(ErrorHandlingMatrix, isPosDefinite_not_square) {
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   y.resize(3, 4);
   EXPECT_FALSE(is_pos_definite(y));
   y.resize(2, 3);
@@ -50,7 +45,8 @@ TEST_F(ErrorHandlingMatrix, isPosDefinite_not_square) {
   EXPECT_DEATH(y.ldlt(), "");
 }
 
-TEST_F(ErrorHandlingMatrix, isPosDefinite_0_size) {
+TEST(ErrorHandlingMatrix, isPosDefinite_0_size) {
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   EXPECT_FALSE(is_pos_definite(y));
 
   Eigen::MatrixXd x;
@@ -65,7 +61,8 @@ TEST_F(ErrorHandlingMatrix, isPosDefinite_0_size) {
   EXPECT_DEATH(ldlt.compute(x), "");
 }
 
-TEST_F(ErrorHandlingMatrix, isPosDefinite_non_symmetric) {
+TEST(ErrorHandlingMatrix, isPosDefinite_non_symmetric) {
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   y.resize(3, 3);
   y << 1, 0, 0, 0, 1, 0.5, 0, 0, 1;
   EXPECT_FALSE(is_pos_definite(y));
@@ -78,7 +75,8 @@ TEST_F(ErrorHandlingMatrix, isPosDefinite_non_symmetric) {
   EXPECT_TRUE(is_pos_definite(ldlt));
 }
 
-TEST_F(ErrorHandlingMatrix, isPosDefinite_non_pos_definite) {
+TEST(ErrorHandlingMatrix, isPosDefinite_non_pos_definite) {
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   y.resize(3, 3);
   y << -1, 0, 0, 0, -1, 0, 0, 0, -1;
   EXPECT_FALSE(is_pos_definite(y));
@@ -115,7 +113,8 @@ TEST_F(ErrorHandlingMatrix, isPosDefinite_non_pos_definite) {
   EXPECT_FALSE(is_pos_definite(ldlt_err3));
 }
 
-TEST_F(ErrorHandlingMatrix, isPosDefinite_nan) {
+TEST(ErrorHandlingMatrix, isPosDefinite_nan) {
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   double nan = std::numeric_limits<double>::quiet_NaN();
 
   y.resize(1, 1);

@@ -6,7 +6,7 @@
 #include <vector>
 #include <type_traits>
 
-TEST(MathPrimMat, vec_double_gp_matern52_cov1) {
+TEST(MathPrimMat, vec_double_gp_matern52_cov1_1) {
   stan::math::var sigma = 0.2;
   stan::math::var l = 5.0;
 

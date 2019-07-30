@@ -123,7 +123,7 @@ struct Phi_approx_fun {
   }
 };
 
-TEST(AgradFwdPhi_approx, Phi_approx_NaN) {
+TEST(AgradFwdPhi_approx, Phi_approx_NaN_1) {
   Phi_approx_fun Phi_approx_;
   test_nan_mix(Phi_approx_, false);
 }

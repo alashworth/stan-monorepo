@@ -121,7 +121,7 @@ struct fabs_fun {
   }
 };
 
-TEST(AgradFwdFabs, fabs_NaN) {
+TEST(AgradFwdFabs, fabs_NaN_1) {
   fabs_fun fabs_;
   test_nan_mix(fabs_, false);
 }

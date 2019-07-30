@@ -58,7 +58,7 @@ struct cosh_fun {
   }
 };
 
-TEST(AgradFwdCosh, cosh_NaN) {
+TEST(AgradFwdCosh, cosh_NaN_0) {
   cosh_fun cosh_;
   test_nan_fwd(cosh_, false);
 }

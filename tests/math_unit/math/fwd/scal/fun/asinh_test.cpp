@@ -61,7 +61,7 @@ struct asinh_fun {
   }
 };
 
-TEST_F(AgradFwdAsinh, asinh_NaN) {
+TEST_F(AgradFwdAsinh, asinh_NaN_0) {
   asinh_fun asinh_;
   test_nan_fwd(asinh_, false);
 }

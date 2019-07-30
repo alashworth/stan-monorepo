@@ -118,7 +118,7 @@ TEST(AgradRev, multiply_log_nan) {
   test_nan(multiply_log_, 3.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_53) {
   AVAR a = 19.7;
   AVAR b = 1299.1;
   test::check_varis_on_stack(multiply_log(a, b));

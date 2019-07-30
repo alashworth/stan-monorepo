@@ -1361,7 +1361,7 @@ struct log_mix_fun {
   }
 };
 
-TEST(AgradFwdLogMix, log_mix_NaN) {
+TEST(AgradFwdLogMix, log_mix_NaN_1) {
   log_mix_fun log_mix_;
   test_nan_mix(log_mix_, 0.7, 3.0, 5.0, true);
 }

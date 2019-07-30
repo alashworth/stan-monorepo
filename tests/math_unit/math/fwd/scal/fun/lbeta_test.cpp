@@ -57,7 +57,7 @@ struct lbeta_fun {
   }
 };
 
-TEST(AgradFwdLbeta, nan) {
+TEST(AgradFwdLbeta, nan_0) {
   lbeta_fun lbeta_;
   test_nan_fwd(lbeta_, 3.0, 5.0, false);
 }

@@ -235,7 +235,7 @@ void test_derivatives(const F &f, double a, double b,
   }
 }
 
-TEST(StanMath_integrate_1d, test_integer_arguments) {
+TEST(StanMath_integrate_1d, test_integer_arguments_1) {
   stan::math::var v;
   std::vector<stan::math::var> theta = {0.5};
   EXPECT_NO_THROW(

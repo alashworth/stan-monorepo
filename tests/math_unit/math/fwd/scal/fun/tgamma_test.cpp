@@ -22,7 +22,7 @@ struct tgamma_fun {
   }
 };
 
-TEST(AgradFwdTgamma, tgamma_NaN) {
+TEST(AgradFwdTgamma, tgamma_NaN_0) {
   tgamma_fun tgamma_;
   test_nan_fwd(tgamma_, false);
 }

@@ -46,7 +46,7 @@ TEST(AgradRev, log_inv_logit_NaN) {
   test_nan(log_inv_logit_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_46) {
   stan::math::var x = 0;
   test::check_varis_on_stack(stan::math::log_inv_logit(x));
 }

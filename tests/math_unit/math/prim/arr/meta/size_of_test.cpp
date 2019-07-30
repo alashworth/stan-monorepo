@@ -3,7 +3,7 @@
 #include <Eigen/Dense>
 #include <vector>
 
-TEST(MetaTraits, size_of) {
+TEST(MetaTraits, size_of_0) {
   using stan::size_of;
 
   std::vector<double> x2(3);

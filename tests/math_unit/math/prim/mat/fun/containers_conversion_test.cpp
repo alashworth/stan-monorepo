@@ -1,5 +1,5 @@
 #include <stan/math/prim/mat.hpp>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
+#include "expect_matrix_eq.hpp"
 #include <gtest/gtest.h>
 #include <vector>
 

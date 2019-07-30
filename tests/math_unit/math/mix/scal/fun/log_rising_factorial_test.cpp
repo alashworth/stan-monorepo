@@ -328,7 +328,7 @@ struct log_rising_factorial_fun {
   }
 };
 
-TEST(AgradFwdLogRisingFactorial, nan) {
+TEST(AgradFwdLogRisingFactorial, nan_1) {
   log_rising_factorial_fun log_rising_factorial_;
   test_nan_mix(log_rising_factorial_, 3.0, 5.0, false);
 }

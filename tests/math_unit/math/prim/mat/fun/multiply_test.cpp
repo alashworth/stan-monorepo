@@ -120,7 +120,7 @@ TEST(AgradRevMatrix, multiply_int) {
   assign(t_vec, multiply(vec, d_int));
 }
 
-TEST(AgradRevMatrix, multiply_vector_int) {
+TEST(AgradRevMatrix, multiply_vector_int_0) {
   using stan::math::multiply;
   using stan::math::vector_d;
 

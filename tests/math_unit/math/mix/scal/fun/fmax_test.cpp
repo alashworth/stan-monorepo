@@ -313,7 +313,7 @@ struct fmax_fun {
   }
 };
 
-TEST(AgradFwdFmax, nan) {
+TEST(AgradFwdFmax, nan_1) {
   fmax_fun fmax_;
   double nan = std::numeric_limits<double>::quiet_NaN();
   test_nan_mix(fmax_, nan, nan, false);

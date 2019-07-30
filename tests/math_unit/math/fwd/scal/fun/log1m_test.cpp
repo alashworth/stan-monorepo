@@ -21,7 +21,7 @@ TEST(AgradFwdLog1m, FvarExcepts) {
   EXPECT_THROW(stan::math::log1m(fvar<double>(2)), std::domain_error);
 }
 
-TEST(MathFunctions, log1m_inf_return) {
+TEST(MathFunctions, log1m_inf_return_0) {
   using stan::math::fvar;
   using stan::math::log1m;
   EXPECT_EQ(-std::numeric_limits<double>::infinity(), log1m(fvar<double>(1.0)));
@@ -61,7 +61,7 @@ struct log1m_fun {
   }
 };
 
-TEST(AgradFwdLog1m, log1m_NaN) {
+TEST(AgradFwdLog1m, log1m_NaN_0) {
   log1m_fun log1m_;
   test_nan_fwd(log1m_, false);
 }

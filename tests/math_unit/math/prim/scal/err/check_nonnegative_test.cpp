@@ -28,7 +28,7 @@ TEST(ErrorHandlingScalar, CheckNonnegative) {
       << "check_nonnegative should throw exception on NaN: " << x;
 }
 
-TEST(ErrorHandlingScalar, CheckNonnegative_nan) {
+TEST(ErrorHandlingScalar, CheckNonnegative_nan_1) {
   const char* function = "check_nonnegative";
   double nan = std::numeric_limits<double>::quiet_NaN();
 

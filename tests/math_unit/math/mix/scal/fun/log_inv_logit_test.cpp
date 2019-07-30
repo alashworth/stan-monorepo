@@ -131,7 +131,7 @@ struct log_inv_logit_fun {
   }
 };
 
-TEST(AgradFwdLogInvLogit, log_inv_logit_NaN) {
+TEST(AgradFwdLogInvLogit, log_inv_logit_NaN_1) {
   log_inv_logit_fun log_inv_logit_;
   test_nan_mix(log_inv_logit_, false);
 }

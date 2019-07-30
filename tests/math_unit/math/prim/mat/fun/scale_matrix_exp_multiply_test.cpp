@@ -37,7 +37,7 @@ TEST(MathMatrix, scale_matrix_exp_multiply) {
   test_scale_matrix_exp_multiply<20, 2>();
 }
 
-TEST(MathMatrix, scale_matrix_exp_multiply_exception) {
+TEST(MathMatrix, scale_matrix_exp_multiply_exception_0) {
   using stan::math::scale_matrix_exp_multiply;
   const double t = 1.0;
   {  // nonzero size

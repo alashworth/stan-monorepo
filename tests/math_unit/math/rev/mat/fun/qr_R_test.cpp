@@ -3,7 +3,7 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <math/rev/mat/util.hpp>
 
-TEST(MathMatrix, qr_R) {
+TEST(MathMatrix, qr_R_1) {
   stan::math::matrix_v m0(0, 0);
   stan::math::matrix_v m1(3, 2);
   m1 << 1, 2, 3, 4, 5, 6;
@@ -22,7 +22,7 @@ TEST(MathMatrix, qr_R) {
     }
   }
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_39) {
   stan::math::matrix_v m1(3, 2);
   m1 << 1, 2, 3, 4, 5, 6;
   test::check_varis_on_stack(stan::math::qr_R(m1));

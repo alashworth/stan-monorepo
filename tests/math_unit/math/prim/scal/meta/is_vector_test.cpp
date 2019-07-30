@@ -1,7 +1,7 @@
 #include <stan/math/prim/scal.hpp>
 #include <gtest/gtest.h>
 
-TEST(MetaTraits, is_vector) {
+TEST(MetaTraits, is_vector_2) {
   using stan::is_vector;
   EXPECT_FALSE(is_vector<double>::value);
   EXPECT_FALSE(is_vector<int>::value);

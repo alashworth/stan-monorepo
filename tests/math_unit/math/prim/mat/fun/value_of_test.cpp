@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <type_traits>
 
-TEST(MathMatrix, value_of) {
+TEST(MathMatrix, value_of_3) {
   using stan::math::value_of;
 
   Eigen::Matrix<double, 2, 5> a;

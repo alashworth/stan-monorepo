@@ -28,7 +28,7 @@ TEST(AgradRev, digamma_NaN) {
   test_nan(digamma_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_10) {
   AVAR a = 0.5;
   test::check_varis_on_stack(stan::math::digamma(a));
 }

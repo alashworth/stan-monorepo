@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(MetaTraits, partials_return_type) {
+TEST(MetaTraits, partials_return_type_1) {
   using stan::math::var;
   using stan::partials_return_type;
 

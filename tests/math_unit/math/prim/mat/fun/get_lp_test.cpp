@@ -1,7 +1,7 @@
 #include <stan/math/prim/mat.hpp>
 #include <gtest/gtest.h>
 
-TEST(mathMatrix, getLp) {
+TEST(mathMatrix, getLp_0) {
   using stan::math::accumulator;
   using stan::math::get_lp;
 

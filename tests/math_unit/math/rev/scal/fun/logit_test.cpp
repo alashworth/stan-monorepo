@@ -37,12 +37,12 @@ struct logit_fun {
   }
 };
 
-TEST(AgradRev, inv_logit_NaN) {
+TEST(AgradRev, inv_logit_NaN_1) {
   logit_fun logit_;
   test_nan(logit_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_43) {
   AVAR u = 0.3;
   test::check_varis_on_stack(stan::math::logit(u));
 }

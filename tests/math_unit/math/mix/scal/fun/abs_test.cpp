@@ -95,7 +95,7 @@ struct abs_fun {
   }
 };
 
-TEST(AgradFwdAbs, abs_NaN) {
+TEST(AgradFwdAbs, abs_NaN_1) {
   abs_fun abs_;
   test_nan_mix(abs_, false);
 }

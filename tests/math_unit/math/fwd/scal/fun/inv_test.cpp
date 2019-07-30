@@ -49,7 +49,7 @@ struct inv_fun {
   }
 };
 
-TEST(AgradFwdInv, inv_NaN) {
+TEST(AgradFwdInv, inv_NaN_0) {
   inv_fun inv_;
   test_nan_fwd(inv_, false);
 }

@@ -12,12 +12,12 @@ TEST(MathFunctions, acosh) {
   EXPECT_FLOAT_EQ(3.0797991, acosh(10.9));
 }
 
-TEST(MathFunctions, acosh_exception) {
+TEST(MathFunctions, acosh_exception_0) {
   using stan::math::acosh;
   EXPECT_THROW(acosh(0.5), std::domain_error);
 }
 
-TEST(MathFunctions, acosh_inf_return) {
+TEST(MathFunctions, acosh_inf_return_1) {
   EXPECT_EQ(std::numeric_limits<double>::infinity(),
             stan::math::acosh(std::numeric_limits<double>::infinity()));
 }

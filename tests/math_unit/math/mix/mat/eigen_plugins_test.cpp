@@ -1,5 +1,5 @@
 #include <stan/math/mix/mat.hpp>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
+#include
 #include <gtest/gtest.h>
 
 TEST(AgradMixMatrixAddons, matrix_fv) {

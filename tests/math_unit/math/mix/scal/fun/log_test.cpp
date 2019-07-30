@@ -121,7 +121,7 @@ struct log_fun {
   }
 };
 
-TEST(AgradFwdLog, log_NaN) {
+TEST(AgradFwdLog, log_NaN_1) {
   log_fun log_;
   test_nan_mix(log_, false);
 }

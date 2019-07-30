@@ -42,7 +42,7 @@ void test_mult_LLT(const stan::math::matrix_v& L) {
       EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
 }
 
-TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad1) {
+TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad1_1) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
 
@@ -63,7 +63,7 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad1) {
   EXPECT_FLOAT_EQ(6.0, J[0][0]);
 }
 
-TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2) {
+TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2_1) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
 
@@ -113,7 +113,7 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2) {
   EXPECT_FLOAT_EQ(6.0, J[3][2]);
 }
 
-TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad3) {
+TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad3_1) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
 
@@ -220,7 +220,7 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad3) {
   EXPECT_FLOAT_EQ(12.0, J[8][5]);
 }
 
-TEST(AgradRevMatrix, multiplyLowerTriSelfTranspose) {
+TEST(AgradRevMatrix, multiplyLowerTriSelfTranspose_1) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
 
@@ -256,7 +256,7 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTranspose) {
   matrix_v K(0, 0);
   test_mult_LLT(K);
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_33) {
   using stan::math::matrix_v;
 
   stan::math::matrix_v L(3, 3);

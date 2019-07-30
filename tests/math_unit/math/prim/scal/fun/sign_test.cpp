@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <limits>
 
-TEST(MathFunctions, sign) {
+TEST(MathFunctions, sign_0) {
   double x;
 
   x = 0;

@@ -19,7 +19,7 @@ struct trigamma_fun {
   }
 };
 
-TEST(AgradFwdTrigamma, trigamma_NaN) {
+TEST(AgradFwdTrigamma, trigamma_NaN_0) {
   trigamma_fun trigamma_;
   test_nan_fwd(trigamma_, false);
 }

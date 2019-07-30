@@ -59,7 +59,7 @@ TEST(AgradRev, round_NaN) {
   test_nan(round_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_59) {
   AVAR a = 1.2;
   test::check_varis_on_stack(stan::math::round(a));
 }

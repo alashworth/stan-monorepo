@@ -1,12 +1,12 @@
 #include <stan/math/prim/mat.hpp>
 #include <gtest/gtest.h>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
+#include "expect_matrix_eq.hpp"
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
 #include <random>
 
-TEST(MathMatrix, matrix_exp_1x1) {
+TEST(MathMatrix, matrix_exp_1x1_1) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(1, 1), m2(1, 1);
   m1 << 0;
   m2 << 1;
@@ -14,7 +14,7 @@ TEST(MathMatrix, matrix_exp_1x1) {
   expect_matrix_eq(m2, stan::math::matrix_exp(m1));
 }
 
-TEST(MathMatrix, matrix_exp_2x2) {
+TEST(MathMatrix, matrix_exp_2x2_1) {
   // example from Moler & Van Loan, 2003
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(2, 2), m2(2, 2);
   m1 << -49, 24, -64, 31;
@@ -23,7 +23,7 @@ TEST(MathMatrix, matrix_exp_2x2) {
   expect_matrix_eq(m2, stan::math::matrix_exp(m1));
 }
 
-TEST(MathMatrix, matrix_exp_2x2_2) {
+TEST(MathMatrix, matrix_exp_2x2_2_3) {
   // make sure matrix_exp doesn't use matrix_exp_2x2,
   // which would return NaN for this matrix
   // Compare to result from http:// comnuan.com/cmnn01015/
@@ -36,7 +36,7 @@ TEST(MathMatrix, matrix_exp_2x2_2) {
   expect_matrix_eq(exp_m, stan::math::matrix_exp(m));
 }
 
-TEST(MathMatrix, matrix_exp_3x3) {
+TEST(MathMatrix, matrix_exp_3x3_1) {
   // example from http:// www.sosmath.com/matrix/expo/expo.html
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(3, 3), m2(3, 3);
   m1 << 0, 1, 2, 0, 0, -1, 0, 0, 0;
@@ -54,7 +54,7 @@ TEST(MathMatrix, matrix_exp_3x3_2) {
   expect_matrix_eq(m2, stan::math::matrix_exp(m1));
 }
 
-TEST(MathMatrix, matrix_exp_100x100) {
+TEST(MathMatrix, matrix_exp_100x100_3) {
   int size = 100;
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> S
       = Eigen::MatrixXd::Identity(size, size),
@@ -90,7 +90,7 @@ TEST(MathMatrix, matrix_exp_100x100) {
       EXPECT_NEAR(exp_A(i, j), expm_A(i, j), rel_err);
 }
 
-TEST(MathMatrix, matrix_exp_exceptions) {
+TEST(MathMatrix, matrix_exp_exceptions_1) {
   using stan::math::matrix_exp;
 
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(0, 0), m2(1, 2);

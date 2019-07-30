@@ -146,7 +146,7 @@ struct erfc_fun {
   }
 };
 
-TEST(AgradFwdErfc, erfc_NaN) {
+TEST(AgradFwdErfc, erfc_NaN_1) {
   erfc_fun erfc_;
   test_nan_mix(erfc_, false);
 }

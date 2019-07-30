@@ -134,7 +134,7 @@ struct asinh_fun {
   }
 };
 
-TEST_F(AgradFwdAsinh, asinh_NaN) {
+TEST_F(AgradFwdAsinh, asinh_NaN_1) {
   asinh_fun asinh_;
   test_nan_mix(asinh_, false);
 }

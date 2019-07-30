@@ -71,7 +71,7 @@ TEST(AgradRevMatrix, inverse_inverse_sum) {
     EXPECT_FLOAT_EQ(1.0, g[k]);
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_17) {
   using stan::math::inverse;
   using stan::math::matrix_v;
 

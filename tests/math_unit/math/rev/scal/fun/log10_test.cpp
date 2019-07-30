@@ -25,7 +25,7 @@ TEST(AgradRev, log10_NaN) {
   test_nan(log10_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_36) {
   stan::math::var x = 4.0;
   test::check_varis_on_stack(stan::math::log10(x));
 }

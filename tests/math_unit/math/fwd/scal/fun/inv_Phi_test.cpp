@@ -3,7 +3,7 @@
 #include <math/fwd/scal/fun/nan_util.hpp>
 #include <limits>
 
-TEST(MathFunctions, inv_Phi) {
+TEST(MathFunctions, inv_Phi_0) {
   using stan::math::Phi;
   using stan::math::fvar;
   using stan::math::inv_Phi;
@@ -21,7 +21,7 @@ TEST(MathFunctions, inv_Phi) {
   p = 0.97575;
   EXPECT_FLOAT_EQ(p.val_, Phi(inv_Phi(p)).val_);
 }
-TEST(MathFunctions, inv_Phi_inf) {
+TEST(MathFunctions, inv_Phi_inf_0) {
   using stan::math::fvar;
   using stan::math::inv_Phi;
   fvar<double> p = 7e-311;
@@ -30,7 +30,7 @@ TEST(MathFunctions, inv_Phi_inf) {
   p = 1.0;
   EXPECT_EQ(inv_Phi(p), inf);
 }
-TEST(MathFunctions, inv_Phi_nan) {
+TEST(MathFunctions, inv_Phi_nan_0) {
   using stan::math::fvar;
   using stan::math::inv_Phi;
   fvar<double> nan = std::numeric_limits<fvar<double> >::quiet_NaN();

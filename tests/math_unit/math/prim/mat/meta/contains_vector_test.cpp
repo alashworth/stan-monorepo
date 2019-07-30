@@ -1,7 +1,7 @@
 #include <stan/math/prim/mat.hpp>
 #include <gtest/gtest.h>
 
-TEST(MetaTraits, contains_vector) {
+TEST(MetaTraits, contains_vector_1) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::contains_vector;

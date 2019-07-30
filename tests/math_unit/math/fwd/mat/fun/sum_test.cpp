@@ -98,7 +98,7 @@ TEST(AgradFwdMatrixSum, fd_matrix) {
   EXPECT_FLOAT_EQ(0.0, sum(v).val_);
   EXPECT_FLOAT_EQ(0.0, sum(v).d_);
 }
-TEST(AgradFwdMatrixSum, ffd_vector) {
+TEST(AgradFwdMatrixSum, ffd_vector_1) {
   using stan::math::sum;
   using stan::math::vector_d;
   using stan::math::vector_ffd;

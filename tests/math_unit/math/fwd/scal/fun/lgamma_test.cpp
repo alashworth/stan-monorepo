@@ -50,7 +50,7 @@ struct lgamma_fun {
   }
 };
 
-TEST(AgradFwdLgamma, lgamma_NaN) {
+TEST(AgradFwdLgamma, lgamma_NaN_0) {
   lgamma_fun lgamma_;
   test_nan_fwd(lgamma_, false);
 }

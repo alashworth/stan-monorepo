@@ -126,7 +126,7 @@ struct tan_fun {
   }
 };
 
-TEST(AgradFwdTan, tan_NaN) {
+TEST(AgradFwdTan, tan_NaN_1) {
   tan_fun tan_;
   test_nan_mix(tan_, false);
 }

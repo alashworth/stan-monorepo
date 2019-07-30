@@ -96,7 +96,7 @@ TEST(AgradRev, binary_log_loss_NaN) {
   test_nan(binary_log_loss_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_5) {
   AVAR y_hat = 0.0;
   test::check_varis_on_stack(stan::math::binary_log_loss(0, y_hat));
   test::check_varis_on_stack(stan::math::binary_log_loss(1, y_hat));

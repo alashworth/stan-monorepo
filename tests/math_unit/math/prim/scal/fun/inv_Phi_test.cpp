@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <limits>
 
-TEST(MathFunctions, inv_Phi) {
+TEST(MathFunctions, inv_Phi_1) {
   using stan::math::Phi;
   using stan::math::inv_Phi;
   EXPECT_FLOAT_EQ(0.0, inv_Phi(0.5));
@@ -20,7 +20,7 @@ TEST(MathFunctions, inv_Phi) {
   p = 0.97575;
   EXPECT_FLOAT_EQ(p, Phi(inv_Phi(p)));
 }
-TEST(MathFunctions, inv_Phi_inf) {
+TEST(MathFunctions, inv_Phi_inf_1) {
   using stan::math::inv_Phi;
   double p = 7e-311;
   const double inf = std::numeric_limits<double>::infinity();
@@ -28,7 +28,7 @@ TEST(MathFunctions, inv_Phi_inf) {
   p = 1.0;
   EXPECT_EQ(inv_Phi(p), inf);
 }
-TEST(MathFunctions, inv_Phi_nan) {
+TEST(MathFunctions, inv_Phi_nan_1) {
   using stan::math::inv_Phi;
   double nan = std::numeric_limits<double>::quiet_NaN();
   EXPECT_THROW(inv_Phi(nan), std::domain_error);

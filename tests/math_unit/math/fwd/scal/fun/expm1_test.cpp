@@ -69,7 +69,7 @@ struct expm1_fun {
   }
 };
 
-TEST(AgradFwdExpm1, expm1_NaN) {
+TEST(AgradFwdExpm1, expm1_NaN_0) {
   expm1_fun expm1_;
   test_nan_fwd(expm1_, false);
 }

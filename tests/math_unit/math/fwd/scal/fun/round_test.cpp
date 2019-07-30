@@ -62,7 +62,7 @@ struct round_fun {
   }
 };
 
-TEST(AgradFwdRound, round_NaN) {
+TEST(AgradFwdRound, round_NaN_0) {
   round_fun round_;
   test_nan_fwd(round_, false);
 }

@@ -17,7 +17,7 @@ TEST(AgradFwdLogInvLogitDiff, Fvar) {
   EXPECT_FLOAT_EQ(-2.09997629431, b.val_);
   EXPECT_FLOAT_EQ(-4.20544749628, b.d_);
 }
-TEST(AgradFwdLogInvLogit, FvarFvarDouble) {
+TEST(AgradFwdLogInvLogit, FvarFvarDouble_0) {
   using stan::math::fvar;
   using stan::math::log_inv_logit_diff;
 

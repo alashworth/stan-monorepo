@@ -120,7 +120,7 @@ struct log1m_fun {
   }
 };
 
-TEST(AgradFwdLog1m, log1m_NaN) {
+TEST(AgradFwdLog1m, log1m_NaN_1) {
   log1m_fun log1m_;
   test_nan_mix(log1m_, false);
 }

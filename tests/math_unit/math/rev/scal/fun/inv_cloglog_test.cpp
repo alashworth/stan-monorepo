@@ -36,7 +36,7 @@ TEST(AgradRev, inv_cloglog_NaN) {
   test_nan(inv_cloglog_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_28) {
   AVAR a = 2.7;
   test::check_varis_on_stack(stan::math::inv_cloglog(a));
 }

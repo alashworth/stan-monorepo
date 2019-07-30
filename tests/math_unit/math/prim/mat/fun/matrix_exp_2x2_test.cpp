@@ -1,9 +1,9 @@
 #include <stan/math/prim/mat.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp_2x2.hpp>
 #include <gtest/gtest.h>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
+#include "expect_matrix_eq.hpp"
 
-TEST(MathMatrix, matrix_exp_2x2_1) {
+TEST(MathMatrix, matrix_exp_2x2_1_1) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(2, 2), m2(2, 2);
 
   m1 << 3, 0, 0, 4;
@@ -12,7 +12,7 @@ TEST(MathMatrix, matrix_exp_2x2_1) {
   expect_matrix_eq(m2, stan::math::matrix_exp_2x2(m1));
 }
 
-TEST(MathMatrix, matrix_exp_2x2_2) {
+TEST(MathMatrix, matrix_exp_2x2_2_2) {
   // example from Moler & Van Loan, 2003
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(2, 2), m2(2, 2);
 

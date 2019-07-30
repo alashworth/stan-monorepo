@@ -45,7 +45,7 @@ void test_cumulative_sum() {
   EXPECT_FLOAT_EQ(1.0, grad[1]);
   EXPECT_FLOAT_EQ(1.0, grad[2]);
 }
-TEST(AgradRevMatrix, cumulative_sum) {
+TEST(AgradRevMatrix, cumulative_sum_0) {
   using stan::math::cumulative_sum;
   using stan::math::var;
 
@@ -62,7 +62,7 @@ TEST(AgradRevMatrix, cumulative_sum) {
   test_cumulative_sum<Eigen::Matrix<var, 1, Eigen::Dynamic> >();
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_2) {
   stan::math::vector_v x(2);
   x << 1, 2;
   test::check_varis_on_stack(stan::math::cumulative_sum(x));

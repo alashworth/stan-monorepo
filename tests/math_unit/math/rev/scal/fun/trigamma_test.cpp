@@ -26,7 +26,7 @@ TEST(AgradRev, trigamma_NaN) {
   test_nan(trigamma_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_68) {
   AVAR a = 0.5;
   test::check_varis_on_stack(stan::math::trigamma(a));
 }

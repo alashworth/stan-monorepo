@@ -126,7 +126,7 @@ struct logit_fun {
   }
 };
 
-TEST_F(AgradFwdLogit, logit_NaN) {
+TEST_F(AgradFwdLogit, logit_NaN_1) {
   logit_fun logit_;
   test_nan_mix(logit_, false);
 }

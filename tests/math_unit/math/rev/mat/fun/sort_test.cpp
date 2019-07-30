@@ -178,28 +178,28 @@ TEST(AgradRev, sort_no_thrown) {
   EXPECT_NO_THROW(sort_desc(vec2));
 }
 
-TEST(MathMatrix, sortAscStdVecNan) {
+TEST(MathMatrix, sortAscStdVecNan_3) {
   test_sort_asc_throws<std::vector<stan::math::var> >();
 }
 
-TEST(MathMatrix, sortDescStdVecNan) {
+TEST(MathMatrix, sortDescStdVecNan_3) {
   test_sort_desc_throws<std::vector<stan::math::var> >();
 }
 
-TEST(MathMatrix, sortAscEigenVecNan) {
+TEST(MathMatrix, sortAscEigenVecNan_3) {
   test_sort_asc_throws<Eigen::Matrix<stan::math::var, -1, 1> >();
 }
-TEST(MathMatrix, sortAscEigenRowVecNan) {
+TEST(MathMatrix, sortAscEigenRowVecNan_3) {
   test_sort_asc_throws<Eigen::Matrix<stan::math::var, 1, -1> >();
 }
 
-TEST(MathMatrix, sortDescEigenVecNan) {
+TEST(MathMatrix, sortDescEigenVecNan_3) {
   test_sort_desc_throws<Eigen::Matrix<stan::math::var, -1, 1> >();
 }
-TEST(MathMatrix, sortDescEigenRowVecNan) {
+TEST(MathMatrix, sortDescEigenRowVecNan_3) {
   test_sort_desc_throws<Eigen::Matrix<stan::math::var, 1, -1> >();
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_48) {
   using stan::math::to_var;
   using stan::math::var;
 

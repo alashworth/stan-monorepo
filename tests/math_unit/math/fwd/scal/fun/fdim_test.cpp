@@ -69,7 +69,7 @@ struct fdim_fun {
   }
 };
 
-TEST(AgradFwdFdim, nan) {
+TEST(AgradFwdFdim, nan_0) {
   fdim_fun fdim_;
   test_nan_fwd(fdim_, 3.0, 5.0, false);
 }

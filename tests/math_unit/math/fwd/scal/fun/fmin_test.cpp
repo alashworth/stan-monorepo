@@ -65,7 +65,7 @@ struct fmin_fun {
   }
 };
 
-TEST(AgradFwdFmin, nan) {
+TEST(AgradFwdFmin, nan_0) {
   fmin_fun fmin_;
   double nan = std::numeric_limits<double>::quiet_NaN();
   test_nan_fwd(fmin_, nan, nan, false);

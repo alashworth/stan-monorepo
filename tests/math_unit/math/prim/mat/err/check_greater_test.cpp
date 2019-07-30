@@ -166,7 +166,7 @@ TEST(ErrorHandlingScalar, CheckGreater_Matrix_one_indexed_message) {
       << message;
 }
 
-TEST(ErrorHandlingScalar, CheckGreater_nan) {
+TEST(ErrorHandlingScalar, CheckGreater_nan_0) {
   const char* function = "check_greater";
   double x = 10.0;
   double lb = 0.0;

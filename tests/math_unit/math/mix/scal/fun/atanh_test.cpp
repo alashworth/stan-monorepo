@@ -132,7 +132,7 @@ struct atanh_fun {
   }
 };
 
-TEST(AgradFwdAtanh, atanh_NaN) {
+TEST(AgradFwdAtanh, atanh_NaN_1) {
   atanh_fun atanh_;
   test_nan_mix(atanh_, false);
 }

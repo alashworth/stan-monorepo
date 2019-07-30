@@ -1,7 +1,7 @@
 #include <stan/math/prim/scal.hpp>
 #include <gtest/gtest.h>
 
-TEST(MetaTraits, contains_vector) {
+TEST(MetaTraits, contains_vector_2) {
   using stan::contains_vector;
   EXPECT_FALSE(contains_vector<double>::value);
   EXPECT_FALSE(contains_vector<int>::value);

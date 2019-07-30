@@ -38,7 +38,7 @@ struct falling_factorial_fun {
   }
 };
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_17) {
   int a(2);
   AVAR b(4.0);
   test::check_varis_on_stack(stan::math::falling_factorial(b.val(), a));

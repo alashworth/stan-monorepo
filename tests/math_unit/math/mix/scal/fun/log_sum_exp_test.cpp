@@ -348,7 +348,7 @@ struct log_sum_exp_fun {
   }
 };
 
-TEST(AgradFwdLogSumExp, nan) {
+TEST(AgradFwdLogSumExp, nan_1) {
   log_sum_exp_fun log_sum_exp_;
   test_nan_mix(log_sum_exp_, 3.0, 5.0, false);
 }

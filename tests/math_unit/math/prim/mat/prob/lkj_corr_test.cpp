@@ -3,7 +3,7 @@
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/math/distributions.hpp>
 
-TEST(ProbDistributionsLkjCorr, testIdentity) {
+TEST(ProbDistributionsLkjCorr, testIdentity_0) {
   boost::random::mt19937 rng;
   unsigned int K = 4;
   Eigen::MatrixXd Sigma(K, K);
@@ -17,7 +17,7 @@ TEST(ProbDistributionsLkjCorr, testIdentity) {
   EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
 }
 
-TEST(ProbDistributionsLkjCorr, testHalf) {
+TEST(ProbDistributionsLkjCorr, testHalf_0) {
   boost::random::mt19937 rng;
   unsigned int K = 4;
   Eigen::MatrixXd Sigma(K, K);
@@ -32,7 +32,7 @@ TEST(ProbDistributionsLkjCorr, testHalf) {
   EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
 }
 
-TEST(ProbDistributionsLkjCorr, Sigma) {
+TEST(ProbDistributionsLkjCorr, Sigma_0) {
   boost::random::mt19937 rng;
   unsigned int K = 4;
   Eigen::MatrixXd Sigma(K, K);

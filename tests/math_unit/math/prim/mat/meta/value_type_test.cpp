@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(MathMeta, index_type) {
+TEST(MathMeta, index_type_2) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::value_type;

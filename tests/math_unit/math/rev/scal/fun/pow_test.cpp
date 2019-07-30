@@ -95,7 +95,7 @@ TEST(AgradRev, pow_nan) {
   test_nan(pow_, 0.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_57) {
   AVAR a(3.0);
   AVAR b(4.0);
   test::check_varis_on_stack(stan::math::pow(a, b));

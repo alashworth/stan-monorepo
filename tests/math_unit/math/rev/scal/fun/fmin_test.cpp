@@ -133,7 +133,7 @@ TEST(AgradRev, fmin_nan) {
   test_nan_vd(fmin_, nan, nan, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_21) {
   AVAR a = 1.3;
   AVAR b = 2.0;
   test::check_varis_on_stack(stan::math::fmin(a, b));

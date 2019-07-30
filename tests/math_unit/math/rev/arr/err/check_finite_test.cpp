@@ -3,7 +3,7 @@
 #include <vector>
 #include <limits>
 
-TEST(AgradRevErrorHandlingScalar, CheckFiniteVarCheckVectorized) {
+TEST(AgradRevErrorHandlingScalar, CheckFiniteVarCheckVectorized_0) {
   using stan::math::check_finite;
   using stan::math::var;
   using std::vector;

@@ -16,7 +16,7 @@ void assert_val_grad(Eigen::Matrix<stan::math::var, R, C>& v) {
   EXPECT_FLOAT_EQ(6.0, g[2]);
 }
 
-TEST(AgradRevMatrix, dot_self_vec) {
+TEST(AgradRevMatrix, dot_self_vec_1) {
   using stan::math::dot_self;
 
   Eigen::Matrix<AVAR, Eigen::Dynamic, 1> v1(1);
@@ -42,7 +42,7 @@ TEST(AgradRevMatrix, dot_self_vec) {
   assert_val_grad(vvvv);
 }
 
-TEST(AgradRevMatrix, columns_dot_self) {
+TEST(AgradRevMatrix, columns_dot_self_1) {
   using stan::math::columns_dot_self;
 
   Eigen::Matrix<AVAR, Eigen::Dynamic, Eigen::Dynamic> m1(1, 1);
@@ -67,7 +67,7 @@ TEST(AgradRevMatrix, columns_dot_self) {
   assert_val_grad(vvvv);
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_9) {
   Eigen::Matrix<AVAR, Eigen::Dynamic, 1> v2(2);
   v2 << 2.0, 3.0;
   test::check_varis_on_stack(stan::math::dot_self(v2));

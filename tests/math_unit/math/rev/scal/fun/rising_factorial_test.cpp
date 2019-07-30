@@ -39,7 +39,7 @@ struct rising_factorial_fun {
   }
 };
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_58) {
   int a(1);
   stan::math::var b(4.0);
 

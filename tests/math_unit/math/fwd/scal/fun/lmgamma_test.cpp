@@ -48,7 +48,7 @@ struct lmgamma_fun {
   }
 };
 
-TEST(AgradFwdLmgamma, lmgamma_NaN) {
+TEST(AgradFwdLmgamma, lmgamma_NaN_0) {
   lmgamma_fun lmgamma_;
   test_nan_fwd(lmgamma_, false);
 }

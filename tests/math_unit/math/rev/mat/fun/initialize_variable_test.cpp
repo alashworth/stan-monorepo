@@ -3,7 +3,7 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <vector>
 
-TEST(AgradRevMatrix, initializeVariable) {
+TEST(AgradRevMatrix, initializeVariable_1) {
   using stan::math::initialize_variable;
   using std::vector;
 

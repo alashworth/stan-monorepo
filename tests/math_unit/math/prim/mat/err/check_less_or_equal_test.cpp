@@ -141,7 +141,7 @@ TEST(ErrorHandlingScalar, CheckLessOrEqual_Matrix_one_indexed_message) {
       << message;
 }
 
-TEST(ErrorHandlingScalar, CheckLessOrEqual_nan) {
+TEST(ErrorHandlingScalar, CheckLessOrEqual_nan_0) {
   const char* function = "check_less_or_equal";
   double nan = std::numeric_limits<double>::quiet_NaN();
   Eigen::Matrix<double, Eigen::Dynamic, 1> x_vec(3);

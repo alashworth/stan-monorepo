@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(MetaTraits, is_vector) {
+TEST(MetaTraits, is_vector_0) {
   using stan::is_vector;
   using std::vector;
 

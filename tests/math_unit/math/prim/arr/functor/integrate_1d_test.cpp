@@ -284,7 +284,7 @@ TEST(StanMath_integrate_1d, TestThrows) {
       f11{}, 0.0, 1.0, std::vector<double>(), {}, {}, msgs, 1e-6));
 }
 
-TEST(StanMath_integrate_1d, test_integer_arguments) {
+TEST(StanMath_integrate_1d, test_integer_arguments_0) {
   double v;
   EXPECT_NO_THROW(v = stan::math::integrate_1d(
                       f2{}, 0, 1, std::vector<double>(), {}, {}, msgs, 1e-6));

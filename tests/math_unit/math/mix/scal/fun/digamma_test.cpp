@@ -126,7 +126,7 @@ struct digamma_fun {
   }
 };
 
-TEST(AgradFwdDigamma, digamma_NaN) {
+TEST(AgradFwdDigamma, digamma_NaN_1) {
   digamma_fun digamma_;
   test_nan_mix(digamma_, false);
 }

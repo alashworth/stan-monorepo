@@ -26,7 +26,7 @@ TEST(AgradRev, ceil_NaN) {
   test_nan(ceil_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_7) {
   AVAR a = 1.9;
   test::check_varis_on_stack(stan::math::ceil(a));
 }

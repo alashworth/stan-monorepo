@@ -122,7 +122,7 @@ struct bessel_second_kind_fun {
   }
 };
 
-TEST(AgradFwdBesselSecondKind, bessel_second_kind_NaN) {
+TEST(AgradFwdBesselSecondKind, bessel_second_kind_NaN_1) {
   bessel_second_kind_fun bessel_second_kind_;
   test_nan_mix(bessel_second_kind_, false);
 }

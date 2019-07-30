@@ -130,7 +130,7 @@ TEST(AgradRevMatrix, dot_product_rowvector_rowvector_exception) {
   EXPECT_THROW(stan::math::dot_product(v1, v2), std::invalid_argument);
 }
 
-TEST(AgradRevMatrix, dot_product_vv) {
+TEST(AgradRevMatrix, dot_product_vv_1) {
   AVEC a, b;
   AVAR c;
   // a = (-1, 0, 1), b = (1, 2, 3)
@@ -154,7 +154,7 @@ TEST(AgradRevMatrix, dot_product_vv) {
   EXPECT_EQ(grad[4], 3);
   EXPECT_EQ(grad[5], 1);
 }
-TEST(AgradRevMatrix, dot_product_dv) {
+TEST(AgradRevMatrix, dot_product_dv_1) {
   VEC a;
   AVEC b;
   AVAR c;
@@ -171,7 +171,7 @@ TEST(AgradRevMatrix, dot_product_dv) {
   EXPECT_EQ(grad[1], 0);
   EXPECT_EQ(grad[2], 1);
 }
-TEST(AgradRevMatrix, dot_product_vd) {
+TEST(AgradRevMatrix, dot_product_vd_1) {
   AVEC a;
   VEC b;
   AVAR c;
@@ -188,7 +188,7 @@ TEST(AgradRevMatrix, dot_product_vd) {
   EXPECT_EQ(grad[1], 2);
   EXPECT_EQ(grad[2], 3);
 }
-TEST(AgradRevMatrix, dot_product_vv_vec) {
+TEST(AgradRevMatrix, dot_product_vv_vec_1) {
   AVEC a, b;
   AVAR c;
   // a = (-1, 0, 1), b = (1, 2, 3)
@@ -212,7 +212,7 @@ TEST(AgradRevMatrix, dot_product_vv_vec) {
   EXPECT_EQ(grad[4], 3);
   EXPECT_EQ(grad[5], 1);
 }
-TEST(AgradRevMatrix, dot_product_dv_vec) {
+TEST(AgradRevMatrix, dot_product_dv_vec_1) {
   VEC a;
   AVEC b;
   AVAR c;
@@ -229,7 +229,7 @@ TEST(AgradRevMatrix, dot_product_dv_vec) {
   EXPECT_EQ(grad[1], 0);
   EXPECT_EQ(grad[2], 1);
 }
-TEST(AgradRevMatrix, dot_product_vd_vec) {
+TEST(AgradRevMatrix, dot_product_vd_vec_1) {
   AVEC a;
   VEC b;
   AVAR c;
@@ -247,7 +247,7 @@ TEST(AgradRevMatrix, dot_product_vd_vec) {
   EXPECT_EQ(grad[2], 3);
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_8) {
   using stan::math::value_of;
   stan::math::vector_v v1(3), v2(3);
   v1 << 1, 3, -5;

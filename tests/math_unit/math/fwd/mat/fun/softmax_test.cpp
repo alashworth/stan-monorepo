@@ -46,7 +46,7 @@ TEST(AgradFwdMatrixSoftmax, fd) {
   EXPECT_FLOAT_EQ(-2.0605762e-09, theta3[1].d_);
   EXPECT_FLOAT_EQ(-1.6697022e-05, theta3[2].d_);
 }
-TEST(AgradFwdMatrixSoftmax, ffd) {
+TEST(AgradFwdMatrixSoftmax, ffd_0) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::fvar;

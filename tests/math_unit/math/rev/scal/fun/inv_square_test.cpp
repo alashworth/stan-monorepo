@@ -35,7 +35,7 @@ TEST(AgradRev, inv_square_NaN) {
   test_nan(inv_square_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_32) {
   AVAR a = 7.0;
   test::check_varis_on_stack(inv_square(a));
 }

@@ -5,7 +5,7 @@
 #include <vector>
 #include <limits>
 
-TEST(MathFunctions, inv_Phi) {
+TEST(MathFunctions, inv_Phi_2) {
   using stan::math::Phi;
   using stan::math::inv_Phi;
   using stan::math::var;
@@ -23,7 +23,7 @@ TEST(MathFunctions, inv_Phi) {
   p = 0.97575;
   EXPECT_FLOAT_EQ(p.val(), Phi(inv_Phi(p)).val());
 }
-TEST(MathFunctions, inv_Phi_inf) {
+TEST(MathFunctions, inv_Phi_inf_2) {
   using stan::math::inv_Phi;
   using stan::math::var;
   var p = 7e-311;
@@ -32,7 +32,7 @@ TEST(MathFunctions, inv_Phi_inf) {
   p = 1.0;
   EXPECT_EQ(inv_Phi(p), inf);
 }
-TEST(MathFunctions, inv_Phi_nan) {
+TEST(MathFunctions, inv_Phi_nan_2) {
   using stan::math::inv_Phi;
   using stan::math::var;
   var nan = std::numeric_limits<var>::quiet_NaN();
@@ -74,7 +74,7 @@ TEST(AgradRev, inv_Phi_NaN) {
   test_nan(foo, true, false);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_30) {
   stan::math::var p = 0.5;
   test::check_varis_on_stack(stan::math::inv_Phi(p));
 }

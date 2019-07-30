@@ -44,7 +44,7 @@ struct inv_square_fun {
   }
 };
 
-TEST(AgradFwdInvSquare, inv_square_NaN) {
+TEST(AgradFwdInvSquare, inv_square_NaN_0) {
   inv_square_fun inv_square_;
   test_nan_fwd(inv_square_, false);
 }

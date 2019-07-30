@@ -72,7 +72,7 @@ struct abs_fun {
   }
 };
 
-TEST(AgradFwdAbs, abs_NaN) {
+TEST(AgradFwdAbs, abs_NaN_0) {
   abs_fun abs_;
   test_nan_fwd(abs_, false);
 }

@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <vector>
 
-TEST(MathMatrix, matrix_exp_1x1) {
+TEST(MathMatrix, matrix_exp_1x1_2) {
   stan::math::matrix_v m1(1, 1), m2(1, 1), m1_exp;
   Eigen::Matrix<stan::math::var, 1, 1> m3, m3_exp;
   m1 << 0;
@@ -28,7 +28,7 @@ TEST(MathMatrix, matrix_exp_1x1) {
   EXPECT_FLOAT_EQ(m3_exp(0, 0).val(), g[0]);
 }
 
-TEST(MathMatrix, matrix_exp_2x2) {
+TEST(MathMatrix, matrix_exp_2x2_3) {
   using stan::math::matrix_v;
 
   // example from Moler & Van Loan, 2003
@@ -56,7 +56,7 @@ TEST(MathMatrix, matrix_exp_2x2) {
   }
 }
 
-TEST(MathMatrix, matrix_exp_2x2_2) {
+TEST(MathMatrix, matrix_exp_2x2_2_4) {
   // make sure matrix_exp doesn't use matrix_exp_2x2,
   // which would return NaN for this matrix
   // Compare to result from http:// comnuan.com/cmnn01015/
@@ -71,7 +71,7 @@ TEST(MathMatrix, matrix_exp_2x2_2) {
   expect_matrix_eq(exp_m, stan::math::matrix_exp(m));
 }
 
-TEST(MathMatrix, matrix_exp_3x3) {
+TEST(MathMatrix, matrix_exp_3x3_2) {
   using stan::math::matrix_v;
 
   for (size_t k = 0; k < 3; k++) {
@@ -116,7 +116,7 @@ TEST(MathMatrix, matrix_exp_3x3) {
   }
 }
 
-TEST(MathMatrix, matrix_exp_25x25) {
+TEST(MathMatrix, matrix_exp_25x25_1) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::matrix_v;
@@ -184,7 +184,7 @@ TEST(MathMatrix, matrix_exp_25x25) {
   }
 }
 
-TEST(MathMatrix, matrix_exp_exceptions) {
+TEST(MathMatrix, matrix_exp_exceptions_2) {
   stan::math::matrix_v m1(0, 0), m2(1, 2);
   m2 << 1, 2;
 

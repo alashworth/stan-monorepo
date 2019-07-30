@@ -24,55 +24,55 @@ void expect_propto(T_y y1, T_loc mu1, T_scale sigma1, T_y y2, T_loc mu2,
 using stan::math::to_var;
 using stan::math::var;
 
-TEST_F(agrad_distributions_multi_normal, Propto) {
+TEST_F(agrad_distributions_multi_normal, Propto_0) {
   expect_propto(to_var(y), to_var(mu), to_var(Sigma), to_var(y2), to_var(mu2),
                 to_var(Sigma2), "All vars: y, mu, sigma");
 }
-TEST_F(agrad_distributions_multi_normal, ProptoY) {
+TEST_F(agrad_distributions_multi_normal, ProptoY_0) {
   expect_propto(to_var(y), mu, Sigma, to_var(y2), mu, Sigma, "var: y");
 }
-TEST_F(agrad_distributions_multi_normal, ProptoYMu) {
+TEST_F(agrad_distributions_multi_normal, ProptoYMu_0) {
   expect_propto(to_var(y), to_var(mu), Sigma, to_var(y2), to_var(mu2), Sigma,
                 "var: y and mu");
 }
-TEST_F(agrad_distributions_multi_normal, ProptoYSigma) {
+TEST_F(agrad_distributions_multi_normal, ProptoYSigma_0) {
   expect_propto(to_var(y), mu, to_var(Sigma), to_var(y2), mu, to_var(Sigma2),
                 "var: y and sigma");
 }
-TEST_F(agrad_distributions_multi_normal, ProptoMu) {
+TEST_F(agrad_distributions_multi_normal, ProptoMu_0) {
   expect_propto(y, to_var(mu), Sigma, y, to_var(mu2), Sigma, "var: mu");
 }
-TEST_F(agrad_distributions_multi_normal, ProptoMuSigma) {
+TEST_F(agrad_distributions_multi_normal, ProptoMuSigma_0) {
   expect_propto(y, to_var(mu), to_var(Sigma), y, to_var(mu2), to_var(Sigma2),
                 "var: mu and sigma");
 }
-TEST_F(agrad_distributions_multi_normal, ProptoSigma) {
+TEST_F(agrad_distributions_multi_normal, ProptoSigma_0) {
   expect_propto(y, mu, to_var(Sigma), y, mu, to_var(Sigma2), "var: sigma");
 }
 
-TEST_F(agrad_distributions_multi_normal_multi_row, Propto) {
+TEST_F(agrad_distributions_multi_normal_multi_row, Propto_0) {
   expect_propto(to_var(y), to_var(mu), to_var(Sigma), to_var(y2), to_var(mu2),
                 to_var(Sigma2), "All vars: y, mu, sigma");
 }
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoY) {
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoY_0) {
   expect_propto(to_var(y), mu, Sigma, to_var(y2), mu, Sigma, "var: y");
 }
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYMu) {
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYMu_0) {
   expect_propto(to_var(y), to_var(mu), Sigma, to_var(y2), to_var(mu2), Sigma,
                 "var: y and mu");
 }
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYSigma) {
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYSigma_0) {
   expect_propto(to_var(y), mu, to_var(Sigma), to_var(y2), mu, to_var(Sigma2),
                 "var: y and sigma");
 }
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMu) {
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMu_0) {
   expect_propto(y, to_var(mu), Sigma, y, to_var(mu2), Sigma, "var: mu");
 }
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMuSigma) {
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMuSigma_0) {
   expect_propto(y, to_var(mu), to_var(Sigma), y, to_var(mu2), to_var(Sigma2),
                 "var: mu and sigma");
 }
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoSigma) {
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoSigma_0) {
   expect_propto(y, mu, to_var(Sigma), y, mu, to_var(Sigma2), "var: sigma");
 }
 
@@ -411,7 +411,7 @@ void test_all() {
   }
 }
 
-TEST(MultiNormal, TestGradFunctionalVectorized) {
+TEST(MultiNormal, TestGradFunctionalVectorized_0) {
   test_all<1, 1>();
   test_all<1, -1>();
   test_all<-1, 1>();

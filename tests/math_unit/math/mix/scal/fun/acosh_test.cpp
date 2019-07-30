@@ -127,7 +127,7 @@ struct acosh_fun {
   }
 };
 
-TEST(AgradFwdAcosh, acosh_NaN) {
+TEST(AgradFwdAcosh, acosh_NaN_1) {
   acosh_fun acosh_;
   test_nan_mix(acosh_, false);
 }

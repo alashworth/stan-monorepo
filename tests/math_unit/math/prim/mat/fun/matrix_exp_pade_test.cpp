@@ -1,11 +1,11 @@
 #include <stan/math/prim/mat.hpp>
 #include <stan/math/prim/mat/fun/matrix_exp_pade.hpp>
 #include <gtest/gtest.h>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 #include <algorithm>
 #include <random>
+#include "expect_matrix_eq.hpp"
 
-TEST(MathMatrix, matrix_exp_pade_1x1) {
+TEST(MathMatrix, matrix_exp_pade_1x1_1) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(1, 1), m2(1, 1);
   m1 << 0;
   m2 << 1;
@@ -13,7 +13,7 @@ TEST(MathMatrix, matrix_exp_pade_1x1) {
   expect_matrix_eq(m2, stan::math::matrix_exp_pade(m1));
 }
 
-TEST(MathMatrix, matrix_exp_pade_2x2) {
+TEST(MathMatrix, matrix_exp_pade_2x2_1) {
   // example from Moler & Van Loan, 2003
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(2, 2), m2(2, 2);
 
@@ -23,7 +23,7 @@ TEST(MathMatrix, matrix_exp_pade_2x2) {
   expect_matrix_eq(m2, stan::math::matrix_exp_pade(m1));
 }
 
-TEST(MathMatrix, matrix_exp_pade_3x3) {
+TEST(MathMatrix, matrix_exp_pade_3x3_1) {
   // example from http:// www.sosmath.com/matrix/expo/expo.html
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(3, 3), m2(3, 3);
   m1 << 0, 1, 2, 0, 0, -1, 0, 0, 0;
@@ -41,7 +41,7 @@ TEST(MathMatrix, matrix_exp_pade_3x3_2) {
   expect_matrix_eq(m2, stan::math::matrix_exp_pade(m1));
 }
 
-TEST(MathMatrix, matrix_exp_100x100) {
+TEST(MathMatrix, matrix_exp_100x100_2) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
 

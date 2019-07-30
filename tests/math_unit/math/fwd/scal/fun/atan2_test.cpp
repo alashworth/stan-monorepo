@@ -68,7 +68,7 @@ struct atan2_fun {
   }
 };
 
-TEST(AgradFwdAtan2, nan) {
+TEST(AgradFwdAtan2, nan_0) {
   atan2_fun atan2_;
   test_nan_fwd(atan2_, 3.0, 5.0, false);
 }

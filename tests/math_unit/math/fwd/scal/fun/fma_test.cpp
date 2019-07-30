@@ -74,7 +74,7 @@ struct fma_fun {
   }
 };
 
-TEST(AgradFwdFma, fma_NaN) {
+TEST(AgradFwdFma, fma_NaN_0) {
   fma_fun fma_;
   test_nan_fwd(fma_, 0.6, 0.3, 0.5, false);
 }

@@ -38,7 +38,7 @@ TEST(AgradRev, trunc_NaN) {
   test_nan(trunc_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_69) {
   AVAR a = -1.2;
   test::check_varis_on_stack(stan::math::trunc(a));
 }

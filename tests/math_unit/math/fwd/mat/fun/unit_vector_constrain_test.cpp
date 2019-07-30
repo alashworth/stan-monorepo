@@ -43,7 +43,7 @@ TEST(AgradFwdMatrixUnitVectorConstrain, fd) {
   }
 }
 
-TEST(AgradFwdMatrixSoftmax, ffd) {
+TEST(AgradFwdMatrixSoftmax, ffd_1) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::fvar;

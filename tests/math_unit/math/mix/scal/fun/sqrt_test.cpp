@@ -121,7 +121,7 @@ struct sqrt_fun {
   }
 };
 
-TEST(AgradFwdSqrt, sqrt_NaN) {
+TEST(AgradFwdSqrt, sqrt_NaN_1) {
   sqrt_fun sqrt_;
   test_nan_mix(sqrt_, false);
 }

@@ -62,7 +62,7 @@ struct sinh_fun {
   }
 };
 
-TEST_F(AgradFwdSinh, sinh_NaN) {
+TEST_F(AgradFwdSinh, sinh_NaN_0) {
   sinh_fun sinh_;
   test_nan_fwd(sinh_, false);
 }

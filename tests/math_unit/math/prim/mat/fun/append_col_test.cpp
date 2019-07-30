@@ -1,5 +1,4 @@
 #include <stan/math/prim/mat.hpp>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 #include <gtest/gtest.h>
 
 using stan::math::append_col;

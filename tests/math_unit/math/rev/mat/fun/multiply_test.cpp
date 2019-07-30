@@ -664,7 +664,7 @@ TEST(AgradRevMatrix, multiply_scalar_matrix_vc) {
   EXPECT_FLOAT_EQ(4.0, g[0]);
 }
 
-TEST(AgradRevMatrix, multiply_vector_int) {
+TEST(AgradRevMatrix, multiply_vector_int_1) {
   // test namespace resolution
   using stan::math::multiply;
   using stan::math::multiply;
@@ -1668,7 +1668,7 @@ TEST(AgradRevMatrix, multiply_vector_row_vector_grad_ex_vd) {
     }
   }
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_34) {
   using stan::math::value_of;
   stan::math::matrix_v m(3, 3);
   m << 1, 2, 3, 4, 5, 6, 7, 8, 9;

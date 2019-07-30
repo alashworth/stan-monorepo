@@ -43,7 +43,7 @@ TEST(AgradRev, inv_sqrt_NaN) {
   test_nan(inv_sqrt_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_31) {
   AVAR a = 49.0;
   test::check_varis_on_stack(stan::math::inv_sqrt(a));
 }

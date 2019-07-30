@@ -72,7 +72,7 @@ struct cos_fun {
   }
 };
 
-TEST(AgradFwdCos, cos_NaN) {
+TEST(AgradFwdCos, cos_NaN_0) {
   cos_fun cos_;
   test_nan_fwd(cos_, false);
 }

@@ -68,7 +68,7 @@ struct log_falling_factorial_fun {
   }
 };
 
-TEST(AgradFwdLogFallingFactorial, nan) {
+TEST(AgradFwdLogFallingFactorial, nan_0) {
   log_falling_factorial_fun log_falling_factorial_;
   test_nan_fwd(log_falling_factorial_, 3.0, 5.0, false);
 }

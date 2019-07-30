@@ -1,5 +1,5 @@
 #include <stan/math/prim/mat.hpp>
-#include <math/prim/mat/fun/expect_matrix_eq.hpp>
+#include "expect_matrix_eq.hpp"
 #include <gtest/gtest.h>
 
 using Eigen::Dynamic;
@@ -35,7 +35,7 @@ TEST(MathMatrix, diagPostMultiply2) {
   expect_matrix_eq(m * v_m, diag_post_multiply(m, rv));
 }
 
-TEST(MathMatrix, diagPostMultiplyException) {
+TEST(MathMatrix, diagPostMultiplyException_0) {
   Matrix<double, Dynamic, Dynamic> m(2, 2);
   m << 2, 3, 4, 5;
   EXPECT_THROW(diag_post_multiply(m, m), std::invalid_argument);

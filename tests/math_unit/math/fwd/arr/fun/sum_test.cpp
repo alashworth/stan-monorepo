@@ -24,7 +24,7 @@ TEST(AgradFwdMatrixSum, vectorFvar) {
   EXPECT_FLOAT_EQ(0.0, sum(ve).d_);
 }
 
-TEST(AgradFwdMatrixSum, ffd_vector) {
+TEST(AgradFwdMatrixSum, ffd_vector_0) {
   using stan::math::fvar;
   using stan::math::sum;
   using std::vector;

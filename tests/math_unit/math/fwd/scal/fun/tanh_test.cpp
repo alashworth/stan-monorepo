@@ -58,7 +58,7 @@ struct tanh_fun {
   }
 };
 
-TEST_F(AgradFwdTanh, tanh_NaN) {
+TEST_F(AgradFwdTanh, tanh_NaN_0) {
   tanh_fun tanh_;
   test_nan_fwd(tanh_, false);
 }

@@ -810,7 +810,7 @@ struct fma_fun {
   }
 };
 
-TEST(AgradFwdFma, fma_NaN) {
+TEST(AgradFwdFma, fma_NaN_1) {
   fma_fun fma_;
   test_nan_mix(fma_, 0.6, 0.3, 0.5, false);
 }

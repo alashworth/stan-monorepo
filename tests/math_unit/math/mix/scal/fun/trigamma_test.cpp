@@ -145,7 +145,7 @@ struct trigamma_fun {
   }
 };
 
-TEST(AgradFwdTrigamma, trigamma_NaN) {
+TEST(AgradFwdTrigamma, trigamma_NaN_1) {
   trigamma_fun trigamma_;
   test_nan_mix(trigamma_, false);
 }

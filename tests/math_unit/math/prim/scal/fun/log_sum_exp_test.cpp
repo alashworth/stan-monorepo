@@ -22,7 +22,7 @@ void test_log_sum_exp(const std::vector<double>& as) {
   EXPECT_FLOAT_EQ(log(sum_exp), log_sum_exp(as));
 }
 
-TEST(MathFunctions, log_sum_exp) {
+TEST(MathFunctions, log_sum_exp_1) {
   using stan::math::log_sum_exp;
   std::vector<double> as;
   test_log_sum_exp(as);

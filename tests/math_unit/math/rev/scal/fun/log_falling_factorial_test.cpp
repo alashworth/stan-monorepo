@@ -82,7 +82,7 @@ TEST(AgradRev, log_falling_factorial_nan) {
   test_nan(log_falling_factorial_, 4.0, 4.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_45) {
   AVAR a(2.0);
   AVAR b(4.0);
   test::check_varis_on_stack(stan::math::log_falling_factorial(b, a));

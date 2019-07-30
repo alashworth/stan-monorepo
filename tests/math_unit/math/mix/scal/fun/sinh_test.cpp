@@ -135,7 +135,7 @@ struct sinh_fun {
   }
 };
 
-TEST_F(AgradFwdSinh, sinh_NaN) {
+TEST_F(AgradFwdSinh, sinh_NaN_1) {
   sinh_fun sinh_;
   test_nan_mix(sinh_, false);
 }

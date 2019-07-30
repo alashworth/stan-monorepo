@@ -110,7 +110,7 @@ struct sin_fun {
   }
 };
 
-TEST(AgradFwdSin, sin_NaN) {
+TEST(AgradFwdSin, sin_NaN_1) {
   sin_fun sin_;
   test_nan_mix(sin_, false);
 }

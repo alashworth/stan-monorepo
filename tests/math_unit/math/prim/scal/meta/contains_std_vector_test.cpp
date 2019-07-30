@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(MetaTraits, contains_std_vector_false) {
+TEST(MetaTraits, contains_std_vector_false_1) {
   using stan::contains_std_vector;
 
   EXPECT_FALSE(contains_std_vector<double>::value);

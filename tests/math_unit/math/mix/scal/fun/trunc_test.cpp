@@ -147,7 +147,7 @@ struct trunc_fun {
   }
 };
 
-TEST(AgradFwdTrunc, trunc_NaN) {
+TEST(AgradFwdTrunc, trunc_NaN_1) {
   trunc_fun trunc_;
   test_nan_mix(trunc_, false);
 }

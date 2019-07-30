@@ -31,7 +31,7 @@ TEST(AgradRev, log2_NaN) {
   test_nan(log2_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_42) {
   AVAR a = 3.0;
   test::check_varis_on_stack(stan::math::log2(a));
 }

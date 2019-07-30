@@ -20,7 +20,7 @@ TEST(AgradRev, excepts) {
   EXPECT_THROW(log1m(AVAR(10)), std::domain_error);
 }
 
-TEST(MathFunctions, log1m_inf_return) {
+TEST(MathFunctions, log1m_inf_return_1) {
   EXPECT_EQ(-std::numeric_limits<double>::infinity(), stan::math::log1m(1));
 }
 
@@ -36,7 +36,7 @@ TEST(AgradRev, log1m_NaN) {
   test_nan(log1m_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_39) {
   AVAR a = 0.1;
   test::check_varis_on_stack(stan::math::log1m(a));
 }

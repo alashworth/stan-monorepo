@@ -101,7 +101,7 @@ struct inv_fun {
   }
 };
 
-TEST(AgradFwdInv, inv_NaN) {
+TEST(AgradFwdInv, inv_NaN_1) {
   inv_fun inv_;
   test_nan_mix(inv_, false);
 }

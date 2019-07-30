@@ -59,7 +59,7 @@ struct hypot_fun {
   }
 };
 
-TEST(AgradFwdHypot, nan) {
+TEST(AgradFwdHypot, nan_0) {
   hypot_fun hypot_;
   test_nan_fwd(hypot_, 3.0, 5.0, false);
 }

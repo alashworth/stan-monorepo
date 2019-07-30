@@ -6,15 +6,10 @@
 
 using stan::math::check_pos_definite;
 
-const char* function = "function";
-class ErrorHandlingMatrix : public ::testing::Test {
- public:
-  void SetUp() {}
-
+TEST(ErrorHandlingMatrix, checkPosDefinite) {
+  const char* function = "function";
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
-};
 
-TEST_F(ErrorHandlingMatrix, checkPosDefinite) {
   y.resize(1, 1);
   y << 1;
   EXPECT_NO_THROW(check_pos_definite(function, "y", y));
@@ -38,7 +33,9 @@ TEST_F(ErrorHandlingMatrix, checkPosDefinite) {
   EXPECT_NO_THROW(check_pos_definite(function, "y", ldlt_2));
 }
 
-TEST_F(ErrorHandlingMatrix, checkPosDefinite_not_square) {
+TEST(ErrorHandlingMatrix, checkPosDefinite_not_square) {
+  const char* function = "function";
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   std::stringstream expected_msg;
 
   y.resize(3, 4);
@@ -57,8 +54,10 @@ TEST_F(ErrorHandlingMatrix, checkPosDefinite_not_square) {
   EXPECT_DEATH(y.ldlt(), "");
 }
 
-TEST_F(ErrorHandlingMatrix, checkPosDefinite_0_size) {
+TEST(ErrorHandlingMatrix, checkPosDefinite_0_size) {
   std::string expected_msg;
+  const char* function = "function";
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
 
   expected_msg
       = "y must have a positive size, but is 0; "
@@ -76,7 +75,9 @@ TEST_F(ErrorHandlingMatrix, checkPosDefinite_0_size) {
   EXPECT_DEATH(ldlt.compute(x), "");
 }
 
-TEST_F(ErrorHandlingMatrix, checkPosDefinite_non_symmetric) {
+TEST(ErrorHandlingMatrix, checkPosDefinite_non_symmetric) {
+  const char* function = "function";
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
   std::string expected_msg;
 
   y.resize(3, 3);
@@ -94,13 +95,16 @@ TEST_F(ErrorHandlingMatrix, checkPosDefinite_non_symmetric) {
   EXPECT_NO_THROW(check_pos_definite(function, "y", ldlt));
 }
 
-TEST_F(ErrorHandlingMatrix, checkPosDefinite_non_pos_definite) {
+TEST(ErrorHandlingMatrix, checkPosDefinite_non_pos_definite) {
   std::stringstream expected_msg1_mat;
   std::stringstream expected_msg1_llt;
   std::stringstream expected_msg1_ldlt;
   std::stringstream expected_msg2_mat;
   std::stringstream expected_msg3_mat;
   std::stringstream expected_msg4;
+
+  const char* function = "function";
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
 
   y.resize(3, 3);
   y << -1, 0, 0, 0, -1, 0, 0, 0, -1;
@@ -148,8 +152,10 @@ TEST_F(ErrorHandlingMatrix, checkPosDefinite_non_pos_definite) {
                    std::domain_error, expected_msg1_ldlt.str());
 }
 
-TEST_F(ErrorHandlingMatrix, checkPosDefinite_nan) {
+TEST(ErrorHandlingMatrix, checkPosDefinite_nan) {
   double nan = std::numeric_limits<double>::quiet_NaN();
+  const char* function = "function";
+  Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> y;
 
   y.resize(1, 1);
   y << nan;

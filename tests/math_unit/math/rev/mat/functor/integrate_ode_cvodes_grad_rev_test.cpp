@@ -123,7 +123,7 @@ class test_functor_double_var_2 {
   }
 };
 
-TEST(StanMathOdeIntegrateODEGrad, double_var) {
+TEST(StanMathOdeIntegrateODEGrad, double_var_1) {
   double omega = 0.5;
   double chi = 1.25;
   double t = 5;
@@ -233,7 +233,7 @@ class test_functor_var_double_2 {
   }
 };
 
-TEST(StanMathOdeIntegrateODEGrad, var_double) {
+TEST(StanMathOdeIntegrateODEGrad, var_double_1) {
   double omega = 0.5;
   double chi = 1.25;
   double t = 5;
@@ -343,7 +343,7 @@ class test_functor_var_var_2 {
   }
 };
 
-TEST(StanMathOdeIntegrateODEGrad, var_var) {
+TEST(StanMathOdeIntegrateODEGrad, var_var_1) {
   double omega = 0.5;
   double chi = 1.25;
   double t = 5;

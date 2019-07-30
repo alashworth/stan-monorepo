@@ -218,7 +218,7 @@ TEST(AgradRev, ibeta_NaN) {
   test_nan(ibeta_, 0.6, 0.3, 0.5, true, false);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_26) {
   AVAR a = 0.6;
   AVAR b = 0.3;
   AVAR c = 0.5;

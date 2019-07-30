@@ -176,7 +176,7 @@ struct Phi_fun {
   }
 };
 
-TEST(AgradFwdPhi, Phi_NaN) {
+TEST(AgradFwdPhi, Phi_NaN_0) {
   Phi_fun Phi_;
   test_nan_fwd(Phi_, true);
 }

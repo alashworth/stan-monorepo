@@ -16,7 +16,7 @@ void test_tcrossprod(const stan::math::matrix_v& L) {
     for (int n = 0; n < LLT_eigen.cols(); ++n)
       EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
 }
-TEST(AgradRevMatrix, tcrossprod) {
+TEST(AgradRevMatrix, tcrossprod_1) {
   using stan::math::matrix_v;
 
   matrix_v L(3, 3);
@@ -50,7 +50,7 @@ TEST(AgradRevMatrix, tcrossprod) {
   Q << 1, 2, 3, -1, 4, -9;
   test_tcrossprod(Q);
 }
-TEST(AgradRevMatrix, tcrossprodGrad1) {
+TEST(AgradRevMatrix, tcrossprodGrad1_1) {
   using stan::math::matrix_v;
   using stan::math::tcrossprod;
 
@@ -71,7 +71,7 @@ TEST(AgradRevMatrix, tcrossprodGrad1) {
   EXPECT_FLOAT_EQ(6.0, J[0][0]);
 }
 
-TEST(AgradRevMatrix, tcrossprodGrad2) {
+TEST(AgradRevMatrix, tcrossprodGrad2_1) {
   using stan::math::matrix_v;
   using stan::math::tcrossprod;
 
@@ -121,7 +121,7 @@ TEST(AgradRevMatrix, tcrossprodGrad2) {
   EXPECT_FLOAT_EQ(6.0, J[3][2]);
 }
 
-TEST(AgradRevMatrix, tcrossprodGrad3) {
+TEST(AgradRevMatrix, tcrossprodGrad3_1) {
   using stan::math::matrix_v;
   using stan::math::tcrossprod;
 
@@ -228,7 +228,7 @@ TEST(AgradRevMatrix, tcrossprodGrad3) {
   EXPECT_FLOAT_EQ(12.0, J[8][5]);
 }
 
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_53) {
   stan::math::matrix_v L(3, 3);
   L << 1, 0, 0, 2, 3, 0, 4, 5, 6;
 

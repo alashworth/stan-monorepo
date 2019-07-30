@@ -47,7 +47,7 @@ TEST(AgradRev, sin_NaN) {
   test_nan(sin_, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_61) {
   AVAR a = 0.49;
   test::check_varis_on_stack(stan::math::sin(a));
 }

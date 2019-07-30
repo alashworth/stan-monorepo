@@ -90,7 +90,7 @@ TEST(AgradRev, gamma_q_nan) {
   test_nan(gamma_q_, 3.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_24) {
   AVAR a = 0.5;
   AVAR b = 1.0;
   test::check_varis_on_stack(stan::math::gamma_q(a, b));

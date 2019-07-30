@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <limits>
 
-TEST(AgradRevErrorHandlingMatrix, checkPosDefiniteMatrix_nan) {
+TEST(AgradRevErrorHandlingMatrix, checkPosDefiniteMatrix_nan_1) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
   using stan::math::var;

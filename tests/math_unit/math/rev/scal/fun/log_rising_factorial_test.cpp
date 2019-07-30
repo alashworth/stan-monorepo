@@ -83,7 +83,7 @@ TEST(AgradRev, log_rising_factorial_nan) {
   test_nan(log_rising_factorial_, 3.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_48) {
   AVAR a(1.0);
   AVAR b(4.0);
   test::check_varis_on_stack(stan::math::log_rising_factorial(b, a));
