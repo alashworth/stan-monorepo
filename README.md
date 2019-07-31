@@ -117,6 +117,8 @@ Alternative: if requiring Conan is not possible, you can set CMake up to automat
 
 * I should probably write an export target so that users can call `make install`.
 
+* If I write code to support an install target, I may as well go all the way and use CPack to automatically generate a package for MSYS2 and the RTools 4.0 package repository.
+
 ##### Wishful Thinking
 
 * It is possible to automatically install git hooks via CMake.
