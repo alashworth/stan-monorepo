@@ -1,6 +1,6 @@
 #include <stan/math/fwd/mat.hpp>
-#include
 #include <gtest/gtest.h>
+#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 
 TEST(AgradFwdMatrixAddons, fvar_double_matrix) {
   using Eigen::MatrixXd;

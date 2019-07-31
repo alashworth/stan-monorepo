@@ -25,18 +25,17 @@ target_link_libraries(stan_math INTERFACE
 target_compile_definitions(stan_math INTERFACE _USE_MATH_DEFINES)
 message(STATUS "Configuring Stan math... [DONE]")
 
-
 # OpenCL
 if(OpenCL_FOUND)
 	message(STATUS "Configuring Stan math with OpenCL support...")
 	message(VERBOSE "Stan math using OpenCL version: ${OpenCL_VERSION_STRING}")
 	message(VERBOSE "OpenCL library: ${OpenCL_LIBRARY}")
 	add_library(stan_math_opencl INTERFACE)
-	add_library(Stan::MathOpenCL ALIAS stan_math_opencl)
+    add_library(Stan::MathOpenCl ALIAS stan_math_opencl)
 	set_property(TARGET stan_math_opencl PROPERTY EXPORT_NAME MathOpenCL)
 
 	target_link_libraries(stan_math_opencl INTERFACE
-			stan_math OpenCL::OpenCL)
+            stan_math OpenCL::OpenCl)
 
 	target_compile_definitions(stan_math_opencl INTERFACE
 			STAN_OPENCL

@@ -3,7 +3,7 @@ Instructions for implementing and testing a vectorized function
 
 * Implement the function itself with vectorization in a single file.
 
-  For an example, see: test/unit/math/prim/mat/vectorize/foo_fun.hpp
+    For an example, see: math/prim/mat/vectorize/foo_fun.hpp
 
     *  Define a struct definining the function for scalars which works
        for all of the scalar types (prim, rev, fwd, and mix);
@@ -16,8 +16,8 @@ Instructions for implementing and testing a vectorized function
   the function independently and supplies sequences of legal and
   illegal double and int inputs.
 
-  For an example, see the definition of struct foo_base_test in
-    test/unit/math/prim/mat/vectorize/foo_base_test.hpp
+    For an example, see the definition of struct foo_base_test in
+    math/prim/mat/vectorize/foo_base_test.hpp
 
   * Need all of the functions to be defined
 

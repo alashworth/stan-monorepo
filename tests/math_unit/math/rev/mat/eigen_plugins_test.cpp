@@ -1,5 +1,5 @@
 #include <stan/math/rev/mat.hpp>
-#include
+#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 #include <gtest/gtest.h>
 
 TEST(AgradRevMatrixAddons, var_matrix) {

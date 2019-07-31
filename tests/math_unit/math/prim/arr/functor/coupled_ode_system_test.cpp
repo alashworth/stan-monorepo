@@ -4,14 +4,9 @@
 #include <math/prim/arr/functor/harmonic_oscillator.hpp>
 #include <math/prim/arr/functor/mock_ode_functor.hpp>
 #include <math/prim/arr/functor/mock_throwing_ode_functor.hpp>
+#include "coupled_ode.hpp"
 #include <vector>
 #include <string>
-
-struct StanMathOde : public ::testing::Test {
-  std::stringstream msgs;
-  std::vector<double> x;
-  std::vector<int> x_int;
-};
 
 TEST_F(StanMathOde, initial_state_dd) {
   using stan::math::coupled_ode_system;
