@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake
+from conans import ConanFile
 
 
 class StanConan(ConanFile):
@@ -16,9 +16,3 @@ class StanConan(ConanFile):
     default_options = {
         "boost:header_only": True
     }
-
-    def build(self):
-        cmake = CMake(self)
-        # cmake.definitions["CMAKE_TOOLCHAIN_FILE"] = "conan_paths.cmake"
-        cmake.configure()
-        cmake.build()

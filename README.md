@@ -25,27 +25,21 @@ Optional dependencies:
 
 ### Quick Start
 
-The following assumes you have a valid Conan (https://conan.io) package manager installation and are in the Stan source directory. The conan script in the base directory will install all required and optional dependencies for you that are vendor agnostic (i.e., everything except an OpenCL or MPI implementation, and Boost MPI). 
+The following assumes you have a valid Conan (https://conan.io) package manager installation and are in the Stan source directory. The Conan script in the base directory will install all required and optional dependencies for you that are vendor agnostic (i.e., everything except an OpenCL or MPI implementation, and Boost MPI). Users who need such functionality will need to understand CMake and set the appropriate library search paths by hand.
 ```
 # There is no official Sundials package, so please add the following PPA
 conan remote add alashworth_stan https://api.bintray.com/conan/alashworth/stan
 mkdir build && cd build
 conan install .. -s build_type=Release --build=missing
+cmake .. -G"Unix Makefiles" && make -j8
+# Optionally run unit tests
+ctest -j8
 ```
-
-#### Linux, OSX 
-Then, to download, compile, and install all dependencies in a temporary directory named `build`:
-```
-mkdir build
-cd build
-conan install .. -s build_type=Release --build=missing
-```
-If you are compiling a debug version of Stan, replace `build_type=Release` for `build_type=Debug`.
  
-#### Windows
-Stan on Windows must be built with MSYS2. However, Conan defaults to Visual Studio on Windows if Visual Studio is found. To override and build dependencies with GCC, you will need to create a MinGW profile (i.e. a plain text file) at `~/.conan/profiles/mingw64`. Then add the following to it, changing the compiler version as appropriate to your installation.
+#### Windows-specific notes
+Stan on Windows must be built with MinGW (not that building with Visual Studio is impossible, but it is unsupported, and would require changes in how threading is handled). However, Conan defaults to Visual Studio on Windows if Visual Studio is found. To override and build dependencies with GCC, you will need to create a MinGW profile (i.e. a plain text file) inside `~/.conan/profiles`. Then add the following to it, changing the compiler version as appropriate to your installation (same applies if you wish to use Clang). 
  
-Users attempting to build with the RTools toolchain should change `compiler.libcxx` to `libstdc++`, which has the effect of defining `_GLIBCXX_USE_CXX11_ABI=0`. All users should adjust the compiler version. More documentation can be found at the Conan website.
+Users attempting to build with the RTools toolchain should change `compiler.libcxx` to `libstdc++`, which has the effect of defining `_GLIBCXX_USE_CXX11_ABI=0`. All users should adjust the compiler version. More documentation can be found at the Conan website (https://docs.conan.io/en/latest/systems_cross_building/windows_subsystems.html).
 ```
 [build_requires]
 [settings]
@@ -54,6 +48,8 @@ Users attempting to build with the RTools toolchain should change `compiler.libc
     arch=x86_64
     arch_build=x86_64
     compiler=gcc
+    compiler.exception=seh
+    compiler.threads=posix
     compiler.version=9.1
     compiler.libcxx=libstdc++11
     build_type=Release
@@ -64,14 +60,7 @@ Install dependencies using:
 ```
 mkdir build
 cd build
-conan install .. -s build_type=Release --build=missing --profile mingw64
-```
-
-#### Build
-
-You're ready to go! Now, in the same directory,
-```
-cmake .. -G"Unix Makefiles" && cmake --build .
+conan install .. -s build_type=Release --build=missing --profile <YOURTEXTFILE>
 ```
 
 #### Build Customization
