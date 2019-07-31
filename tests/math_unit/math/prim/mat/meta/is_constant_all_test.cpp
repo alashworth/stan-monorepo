@@ -1,13 +1,7 @@
 #include <stan/math/prim/mat.hpp>
 #include <gtest/gtest.h>
 #include <vector>
-
-template <typename... Ts>
-void expect_is_const() {
-  using stan::is_constant_all;
-  bool temp = is_constant_all<Ts...>::value;
-  EXPECT_TRUE(temp);
-}
+#include "common.hpp"
 
 typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> const_t1;
 typedef std::vector<const_t1> const_t2;

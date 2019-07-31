@@ -34,7 +34,9 @@ endif()
 include(CheckCXXCompilerFlag)
 
 # Unfortunately RTools35 doesn't support this flag, which increases
-# the maximum number of obj sections on Windows.
+# the maximum number of obj sections on Windows. Clang does the right thing
+# and transparently enables this if it runs out of space. If VS is ever supported
+# the same thing is achieved by passing /BIGOBJ
 if (MINGW AND CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	check_cxx_compiler_flag("-Wa,-mbig-obj" STAN_FLAGS_BIGOBJ)
 	if (STAN_FLAGS_BIGOBJ)
@@ -42,7 +44,10 @@ if (MINGW AND CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	endif ()
 endif ()
 
-# Prefer LLD if available, because it is much faster than LD.
+# FIXME: Both Clang and GCC silently swallow this flag and do nothing in MYS2,
+# even if the LLD system package is installed and GCC 9 is present, which is when
+# LLD gained decent Windows COFF file support. Need to figure out why.
+# LLD links much faster than LD, so use it if found.
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
 	check_cxx_compiler_flag("-fuse-ld=lld" STAN_FLAGS_LLD)
 	if (STAN_FLAGS_LLD)
@@ -136,18 +141,15 @@ set_package_properties(Threads PROPERTIES
 feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
 		FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-# TODO: Figure out why the below are in the original Makefiles.
 target_compile_definitions(Boost::headers INTERFACE
-#		BOOST_RESULT_OF_USE_TR1
-#		BOOST_NO_DECLTYPE
+		BOOST_RESULT_OF_USE_TR1
+		BOOST_NO_DECLTYPE
 #		BOOST_DISABLE_ASSERTS
 #		BOOST_PHOENIX_NO_VARIADIC_EXPRESSION
 		)
 
-if(TARGET GTest::GTest)
-	target_compile_definitions(GTest::GTest INTERFACE
-#			GTEST_USE_OWN_TR1_TUPLE
-			)
+if (TARGET GTest::GTest AND APPLE) # is this still necessary?
+	target_compile_definitions(GTest::GTest INTERFACE GTEST_USE_OWN_TR1_TUPLE)
 endif()
 
 # Main targets built by this project

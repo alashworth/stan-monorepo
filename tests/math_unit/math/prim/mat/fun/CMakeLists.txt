@@ -70,8 +70,6 @@ target_sources(stan_math_unit_tests PRIVATE
         simplex_transform_test.cpp
         fill_test.cpp
         assign_test.cpp
-        expect_matrix_eq.hpp
-        expect_matrix_eq.cpp
         mdivide_left_tri_low_test.cpp
         rows_dot_product_test.cpp
         mdivide_right_tri_test.cpp
@@ -86,6 +84,8 @@ target_sources(stan_math_unit_tests PRIVATE
         multiply_lower_tri_self_transpose_test.cpp
         elt_multiply_test.cpp
         LDLT_factor_test.cpp
+        expect_matrix_eq.hpp
+        expect_matrix_eq.cpp
         promote_elements_test.cpp
         positive_ordered_transform_test.cpp
         minus_test.cpp
@@ -144,4 +144,5 @@ target_sources(stan_math_unit_tests PRIVATE
         autocovariance_test.cpp
         promote_scalar_type_test.cpp
         gp_matern52_cov_test.cpp
-        softmax_test.cpp)
+        softmax_test.cpp
+        )

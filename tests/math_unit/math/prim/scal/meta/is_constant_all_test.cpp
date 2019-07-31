@@ -1,12 +1,7 @@
 #include <stan/math/prim/scal.hpp>
 #include <gtest/gtest.h>
+#include <math/prim/mat/meta/common.hpp>
 
-template <typename... Ts>
-void expect_is_const() {
-  using stan::is_constant_all;
-  bool temp = is_constant_all<Ts...>::value;
-  EXPECT_TRUE(temp);
-}
 TEST(MetaTraits, isConstantStruct_2) {
   expect_is_const<>();
   expect_is_const<int>();

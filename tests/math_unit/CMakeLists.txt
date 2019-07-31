@@ -1,3 +1,4 @@
+message(STATUS "Configuring Stan math unit tests...")
 add_executable(stan_math_unit_tests
         math_include_test.cpp
         util.hpp)
@@ -17,8 +18,8 @@ if (MPI_CXX_FOUND)
 endif()
 
 add_subdirectory(math)
-
 gtest_discover_tests(stan_math_unit_tests)
+message(STATUS "Configuring Stan math unit tests... [DONE]")
 
 #set(mpi_test_srcs
 #		math/prim/arr/functor/mpi_cluster_test.cpp

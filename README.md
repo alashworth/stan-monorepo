@@ -75,6 +75,22 @@ The following build options are provided:
 
 For further documentation, see the CMakeLists.txt or the wiki.
 
+#### Important CMake Targets
+
+The following are the main CMake targets of Stan:
+
+* `Stan::Math`
+* `Stan::MathOpenCl`
+* `Stan::MathMpi`
+* `Stan::MathMt`
+* `Stan::Util`
+* `Stan::Services`
+* `Stan::Language`
+* `Stan::Algorithms`
+* `Stan::StanC`
+
+There are too many unit-test targets to name; if you want a run a specific test, use CTest with its regex filter option.
+
 #### TODO
 
 ##### Critical
@@ -85,6 +101,10 @@ For further documentation, see the CMakeLists.txt or the wiki.
 
 Alternative: if requiring Conan is not possible, you can set CMake up to automatically download and patch dependencies at configure time using FetchContent and ExternalProject_Add. However, after trying both ways out to manage Sundials + printf stripping patch, it is not as featureful as using an actual package manager, and just as much work, especially since I can't imagine a C++ developer without Python 3 and pip access. You can even install CMake via pip (https://pypi.org/project/cmake/). Using a package manager also means potentially in the future binary package dependencies could be provided like Python does with wheels.
 
+* Finish rebase onto Stan 2.20
+
+* Delete `tests/math_unit/rename_tests.py`.
+
 ##### Important
 
 * Some EXPECT_DEATH unit tests don't work with empty strings in the Stan math unit tests. This is after I changed the existing string matching test code to use std::regex, which had to be done since the original string matching code didn't work if the compiler error string format changed.
@@ -94,6 +114,8 @@ Alternative: if requiring Conan is not possible, you can set CMake up to automat
 ##### Not Unimportant
 
 * While messing around with Cotire unity builds, I discovered that a lot of the unit tests erroneously use `EXPECT_FLOAT_EQ` instead of `EXPECT_DOUBLE_EQ` for tests with `double` and `fvar<double>`, and I was getting angry compiler errors about ambiguous template function calls having to do with type widening and type narrowing. I started fixing them but there were too many to just go off and spend time to resolve them all.
+
+* I should probably write an export target so that users can call `make install`.
 
 ##### Wishful Thinking
 

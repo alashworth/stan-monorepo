@@ -6,7 +6,7 @@
 
 namespace test {
 
-void check_varis_on_stack(const stan::math::var& x) {
+inline void check_varis_on_stack(const stan::math::var& x) {
   EXPECT_TRUE(stan::math::ChainableStack::instance_->memalloc_.in_stack(x.vi_))
       << "not on the stack";
 }

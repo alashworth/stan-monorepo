@@ -1,13 +1,7 @@
 #include <stan/math/prim/arr.hpp>
 #include <gtest/gtest.h>
 #include <vector>
-
-template <typename... Ts>
-void expect_is_const() {
-  using stan::is_constant_all;
-  bool temp = is_constant_all<Ts...>::value;
-  EXPECT_TRUE(temp);
-}
+#include <math/prim/mat/meta/common.hpp>
 
 TEST(MetaTraits, isConstantStruct_0) {
   using std::vector;

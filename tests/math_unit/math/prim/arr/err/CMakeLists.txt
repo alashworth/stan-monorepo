@@ -10,4 +10,4 @@ target_sources(stan_math_unit_tests PRIVATE
         is_matching_size_test.cpp
         is_nonzero_size_test.cpp
         is_ordered_test.cpp
-        out_of_range_test.cpp)
+        )
