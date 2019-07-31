@@ -136,8 +136,9 @@ http://herbie.uwplse.org/ and PVS Studio analysis.
 
 * Rewrite the distribution tests and test generator. They have two problems: 1) the generator can't be configured to output sources in another directory. 2) the resultant test files can't be linked together due to multiple definition hell. This is a problem since CMake is so terrible at scaling to thousands of executable targets, whereas compilers are much better. (Linkers are bad too, but at least LLD exists.) This is even more noticeable if you are a developer repeatedly rebuilding the entire project, and your CCACHE is hot and you are using LLD; CMake configuration can dominate build time.
 
-
 * The new fad in unit testing is DocTest, it's claim to fame being that it is much less burdensome on the compiler compared to Catch or GTest while still being a header-only library. This is a good and valid reason to be famous.
+
+* You can package binary build tools in Conan. This might be a good halfway-house to reproducible builds on the Jenkins build machines and on user machines, since most people don't want to develop in a virtual machine or container.
 
 ##### Useful links are useful
 
