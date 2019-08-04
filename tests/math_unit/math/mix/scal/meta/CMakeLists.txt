@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_mix_scal_unit_tests PRIVATE
         child_type_test.cpp
         include_summand_test.cpp
         ad_promotable_test.cpp

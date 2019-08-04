@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized Phi (defined in the
  * testing framework).
@@ -96,8 +97,9 @@ struct Phi_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, Phi_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, Phi_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, Phi_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, Phi_test);
+INSTANTIATE_TYPED_TEST_CASE_P(Phi, prim_scalar_unary_test, Phi_test);
+INSTANTIATE_TYPED_TEST_CASE_P(Phi, rev_scalar_unary_test, Phi_test);
+INSTANTIATE_TYPED_TEST_CASE_P(Phi, fwd_scalar_unary_test, Phi_test);
+INSTANTIATE_TYPED_TEST_CASE_P(Phi, mix_scalar_unary_test, Phi_test);

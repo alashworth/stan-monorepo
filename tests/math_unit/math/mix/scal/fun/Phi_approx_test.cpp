@@ -1,7 +1,7 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
 // Phi_approx needs inv_logit in order for this to work
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdPhi_approx, FvarVar_1stDeriv) {
@@ -12,13 +12,13 @@ TEST(AgradFwdPhi_approx, FvarVar_1stDeriv) {
   fvar<var> x(1.0, 1.3);
   fvar<var> a = Phi_approx(x);
 
-  EXPECT_FLOAT_EQ(Phi_approx(1.0), a.val_.val());
-  EXPECT_FLOAT_EQ(0.31398547, a.d_.val());
+  EXPECT_DOUBLE_EQ(Phi_approx(1.0), a.val_.val());
+  EXPECT_DOUBLE_EQ(0.31398547, a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.24152729, g[0]);
+  EXPECT_DOUBLE_EQ(0.24152729, g[0]);
 }
 TEST(AgradFwdPhi_approx, FvarVar_2ndDeriv) {
   using stan::math::Phi_approx;
@@ -31,7 +31,7 @@ TEST(AgradFwdPhi_approx, FvarVar_2ndDeriv) {
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(-0.3143405, g[0]);
+  EXPECT_DOUBLE_EQ(-0.3143405, g[0]);
 }
 
 TEST(AgradFwdPhi_approx, FvarFvarVar_1stDeriv) {
@@ -45,30 +45,30 @@ TEST(AgradFwdPhi_approx, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = Phi_approx(x);
 
-  EXPECT_FLOAT_EQ(Phi_approx(1.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.24152729, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(Phi_approx(1.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.24152729, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.24152729, g[0]);
+  EXPECT_DOUBLE_EQ(0.24152729, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.0;
   y.d_.val_ = 1.0;
 
   fvar<fvar<var> > b = Phi_approx(y);
-  EXPECT_FLOAT_EQ(0.84133035, b.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
-  EXPECT_FLOAT_EQ(0.24152729, b.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0.84133035, b.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0.24152729, b.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.24152729, r[0]);
+  EXPECT_DOUBLE_EQ(0.24152729, r[0]);
 }
 
 TEST(AgradFwdPhi_approx, FvarFvarVar_2ndDeriv) {
@@ -85,7 +85,7 @@ TEST(AgradFwdPhi_approx, FvarFvarVar_2ndDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-0.24180038, g[0]);
+  EXPECT_DOUBLE_EQ(-0.24180038, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.0;
@@ -96,7 +96,7 @@ TEST(AgradFwdPhi_approx, FvarFvarVar_2ndDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(-0.24180038, r[0]);
+  EXPECT_DOUBLE_EQ(-0.24180038, r[0]);
 }
 TEST(AgradFwdPhi_approx, FvarFvarVar_3rdDeriv) {
   using stan::math::Phi_approx;
@@ -113,7 +113,7 @@ TEST(AgradFwdPhi_approx, FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.1590839, g[0]);
+  EXPECT_DOUBLE_EQ(0.1590839, g[0]);
 }
 
 struct Phi_approx_fun {

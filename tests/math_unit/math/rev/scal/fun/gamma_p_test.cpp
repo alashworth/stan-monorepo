@@ -9,13 +9,13 @@ TEST(AgradRev, gamma_p_var_var) {
   AVAR a = 0.5001;
   AVAR b = 1.0001;
   AVAR f = gamma_p(a, b);
-  EXPECT_FLOAT_EQ(boost::math::gamma_p(0.5001, 1.0001), f.val());
+  EXPECT_DOUBLE_EQ(boost::math::gamma_p(0.5001, 1.0001), f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(-0.3898178624664172, g[0]);
-  EXPECT_FLOAT_EQ(boost::math::gamma_p_derivative(0.5001, 1.0001), g[1]);
+  EXPECT_DOUBLE_EQ(-0.3898178624664172, g[0]);
+  EXPECT_DOUBLE_EQ(boost::math::gamma_p_derivative(0.5001, 1.0001), g[1]);
 
   a = -0.5001;
   EXPECT_THROW(gamma_p(a, b), std::domain_error);
@@ -27,12 +27,12 @@ TEST(AgradRev, gamma_p_double_var) {
   double a = 0.5001;
   AVAR b = 1.0001;
   AVAR f = gamma_p(a, b);
-  EXPECT_FLOAT_EQ(boost::math::gamma_p(0.5001, 1.0001), f.val());
+  EXPECT_DOUBLE_EQ(boost::math::gamma_p(0.5001, 1.0001), f.val());
 
   AVEC x = createAVEC(b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(boost::math::gamma_p_derivative(0.5001, 1.0001), g[0]);
+  EXPECT_DOUBLE_EQ(boost::math::gamma_p_derivative(0.5001, 1.0001), g[0]);
 
   a = -0.5;
   EXPECT_THROW(gamma_p(a, b), std::domain_error);
@@ -44,12 +44,12 @@ TEST(AgradRev, gamma_p_var_double) {
   AVAR a = 0.5001;
   double b = 1.0001;
   AVAR f = gamma_p(a, b);
-  EXPECT_FLOAT_EQ(boost::math::gamma_p(0.5001, 1.0001), f.val());
+  EXPECT_DOUBLE_EQ(boost::math::gamma_p(0.5001, 1.0001), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(-0.3898178624664172, g[0]);
+  EXPECT_DOUBLE_EQ(-0.3898178624664172, g[0]);
 
   a = -0.5;
   EXPECT_THROW(gamma_p(a, b), std::domain_error);
@@ -58,6 +58,7 @@ TEST(AgradRev, gamma_p_var_double) {
   EXPECT_THROW(gamma_p(a, b), std::domain_error);
 }
 
+namespace {
 struct gamma_p_fun {
   template <typename T0, typename T1>
   inline typename stan::return_type<T0, T1>::type operator()(
@@ -65,6 +66,7 @@ struct gamma_p_fun {
     return gamma_p(arg1, arg2);
   }
 };
+}  // namespace
 
 TEST(AgradRev, gamma_p_nan) {
   gamma_p_fun gamma_p_;

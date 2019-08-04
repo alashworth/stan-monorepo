@@ -55,41 +55,41 @@ TEST(AgradFwdBinaryLogLoss, Fvar) {
   y = 0;
   y_hat = fvar<double>(0.0, 1.0);
   f = binary_log_loss(y, y_hat);
-  EXPECT_FLOAT_EQ(binary_log_loss(y, 0.0), f.val_);
-  EXPECT_FLOAT_EQ(deriv(y, 0.0), f.d_);
+  EXPECT_DOUBLE_EQ(binary_log_loss(y, 0.0), f.val_);
+  EXPECT_DOUBLE_EQ(deriv(y, 0.0), f.d_);
 
   y = 1;
   y_hat = fvar<double>(1.0, 1.0);
   f = binary_log_loss(y, y_hat);
-  EXPECT_FLOAT_EQ(binary_log_loss(y, 1.0), f.val_);
-  EXPECT_FLOAT_EQ(deriv(y, 1.0), f.d_);
+  EXPECT_DOUBLE_EQ(binary_log_loss(y, 1.0), f.val_);
+  EXPECT_DOUBLE_EQ(deriv(y, 1.0), f.d_);
 
   y = 0;
   y_hat = fvar<double>(0.5, 1.0);
   f = binary_log_loss(y, y_hat);
-  EXPECT_FLOAT_EQ(-std::log(0.5), f.val_);
-  EXPECT_FLOAT_EQ(deriv(0, 0.5), f.d_);
+  EXPECT_DOUBLE_EQ(-std::log(0.5), f.val_);
+  EXPECT_DOUBLE_EQ(deriv(0, 0.5), f.d_);
   EXPECT_NEAR(finite_diff(0, 0.5), f.d_, 1e-5);
 
   y = 1;
   y_hat = fvar<double>(0.5, 1.0);
   f = binary_log_loss(y, y_hat);
-  EXPECT_FLOAT_EQ(-std::log(0.5), f.val_);
-  EXPECT_FLOAT_EQ(deriv(1, 0.5), f.d_);
+  EXPECT_DOUBLE_EQ(-std::log(0.5), f.val_);
+  EXPECT_DOUBLE_EQ(deriv(1, 0.5), f.d_);
   EXPECT_NEAR(finite_diff(1, 0.5), f.d_, 1e-5);
 
   y = 0;
   y_hat = fvar<double>(0.25, 1.0);
   f = binary_log_loss(y, y_hat);
-  EXPECT_FLOAT_EQ(-std::log(0.75), f.val_);
-  EXPECT_FLOAT_EQ(deriv(0, 0.25), f.d_);
+  EXPECT_DOUBLE_EQ(-std::log(0.75), f.val_);
+  EXPECT_DOUBLE_EQ(deriv(0, 0.25), f.d_);
   EXPECT_NEAR(finite_diff(0, 0.25), f.d_, 1e-5);
 
   y = 1;
   y_hat = fvar<double>(0.75, 1.0);
   f = binary_log_loss(y, y_hat);
-  EXPECT_FLOAT_EQ(-std::log(0.75), f.val_);
-  EXPECT_FLOAT_EQ(deriv(1, 0.75), f.d_);
+  EXPECT_DOUBLE_EQ(-std::log(0.75), f.val_);
+  EXPECT_DOUBLE_EQ(deriv(1, 0.75), f.d_);
   EXPECT_NEAR(finite_diff(1, 0.75), f.d_, 1e-5);
 }
 
@@ -102,22 +102,22 @@ TEST(AgradFwdBinaryLogLoss, FvarFvarDouble) {
   y.d_.val_ = 1.0;
   fvar<fvar<double> > a = binary_log_loss(0.0, y);
 
-  EXPECT_FLOAT_EQ(binary_log_loss(0.0, 0.4), a.val_.val_);
-  EXPECT_FLOAT_EQ(0, a.val_.d_);
-  EXPECT_FLOAT_EQ(deriv(0, 0.4), a.d_.val_);
+  EXPECT_DOUBLE_EQ(binary_log_loss(0.0, 0.4), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(deriv(0, 0.4), a.d_.val_);
   EXPECT_NEAR(finite_diff(0, 0.4), a.d_.val_, 1e-5);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > x;
   x.val_.val_ = 0.4;
   x.val_.d_ = 1.0;
   fvar<fvar<double> > b = binary_log_loss(1.0, x);
 
-  EXPECT_FLOAT_EQ(binary_log_loss(1.0, 0.4), b.val_.val_);
-  EXPECT_FLOAT_EQ(deriv(1, 0.4), b.val_.d_);
+  EXPECT_DOUBLE_EQ(binary_log_loss(1.0, 0.4), b.val_.val_);
+  EXPECT_DOUBLE_EQ(deriv(1, 0.4), b.val_.d_);
   EXPECT_NEAR(finite_diff(1, 0.4), b.val_.d_, 1e-5);
-  EXPECT_FLOAT_EQ(0, b.d_.val_);
-  EXPECT_FLOAT_EQ(0, b.d_.d_);
+  EXPECT_DOUBLE_EQ(0, b.d_.val_);
+  EXPECT_DOUBLE_EQ(0, b.d_.d_);
 }
 
 struct binary_log_loss_fun {

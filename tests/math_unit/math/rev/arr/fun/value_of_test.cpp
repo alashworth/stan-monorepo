@@ -26,8 +26,8 @@ TEST(MathMatrix, value_of_4) {
   vector<double> d_b = value_of(b);
 
   for (int i = 0; i < 5; ++i)
-    EXPECT_FLOAT_EQ(b[i].val(), d_b[i]);
+    EXPECT_DOUBLE_EQ(b[i].val(), d_b[i]);
 
   for (int i = 0; i < 10; ++i)
-    EXPECT_FLOAT_EQ(a[i].val(), d_a[i]);
+    EXPECT_DOUBLE_EQ(a[i].val(), d_a[i]);
 }

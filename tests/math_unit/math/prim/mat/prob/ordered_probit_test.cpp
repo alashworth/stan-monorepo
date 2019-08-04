@@ -9,6 +9,7 @@ using Eigen::Matrix;
 
 typedef Eigen::Matrix<double, Eigen::Dynamic, 1> vector_d;
 
+namespace {
 vector_d get_simplex(double lambda, const vector_d& c) {
   using stan::math::Phi;
   int K = c.size() + 1;
@@ -20,13 +21,15 @@ vector_d get_simplex(double lambda, const vector_d& c) {
   theta(K - 1) = Phi(lambda - c(K - 2));
   return theta;
 }
+void expect_nan(double x) { EXPECT_TRUE(std::isnan(x)); }
+}  // namespace
 
 TEST(ProbDistributions, ordered_probit_vals) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
 
-  using stan::math::Phi;
   using stan::math::ordered_probit_log;
+  using stan::math::Phi;
 
   int K = 5;
   Matrix<double, Dynamic, 1> c(K - 1);
@@ -38,10 +41,10 @@ TEST(ProbDistributions, ordered_probit_vals) {
   double sum = 0.0;
   for (int k = 0; k < theta.size(); ++k)
     sum += theta(k);
-  EXPECT_FLOAT_EQ(1.0, sum);
+  EXPECT_DOUBLE_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_FLOAT_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
+    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
 
   EXPECT_THROW(ordered_probit_log(0, lambda, c), std::domain_error);
   EXPECT_THROW(ordered_probit_log(6, lambda, c), std::domain_error);
@@ -51,8 +54,8 @@ TEST(ProbDistributions, ordered_probit_vals_2) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
 
-  using stan::math::Phi;
   using stan::math::ordered_probit_log;
+  using stan::math::Phi;
 
   int K = 3;
   Matrix<double, Dynamic, 1> c(K - 1);
@@ -64,10 +67,10 @@ TEST(ProbDistributions, ordered_probit_vals_2) {
   double sum = 0.0;
   for (int k = 0; k < theta.size(); ++k)
     sum += theta(k);
-  EXPECT_FLOAT_EQ(1.0, sum);
+  EXPECT_DOUBLE_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_FLOAT_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
+    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
 
   EXPECT_THROW(ordered_probit_log(0, lambda, c), std::domain_error);
   EXPECT_THROW(ordered_probit_log(4, lambda, c), std::domain_error);
@@ -126,8 +129,6 @@ TEST(ProbDistributions, ordered_probit) {
   cbad3[1] = nan;
   EXPECT_THROW(ordered_probit_log(1, 1.0, cbad3), std::domain_error);
 }
-
-void expect_nan(double x) { EXPECT_TRUE(std::isnan(x)); }
 
 TEST(ProbDistributionOrderedProbit, error_check) {
   boost::random::mt19937 rng;

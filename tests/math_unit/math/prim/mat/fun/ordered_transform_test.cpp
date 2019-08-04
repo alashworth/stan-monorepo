@@ -30,9 +30,9 @@ TEST(prob_transform, ordered_f) {
   y << -12.0, 1.1, 172.1;
   Matrix<double, Dynamic, 1> x = stan::math::ordered_free(y);
   EXPECT_EQ(y.size(), x.size());
-  EXPECT_FLOAT_EQ(-12.0, x[0]);
-  EXPECT_FLOAT_EQ(log(1.1 + 12.0), x[1]);
-  EXPECT_FLOAT_EQ(log(172.1 - 1.1), x[2]);
+  EXPECT_DOUBLE_EQ(-12.0, x[0]);
+  EXPECT_DOUBLE_EQ(log(1.1 + 12.0), x[1]);
+  EXPECT_DOUBLE_EQ(log(172.1 - 1.1), x[2]);
 }
 TEST(prob_transform, ordered_f_exception) {
   Matrix<double, Dynamic, 1> y(3);
@@ -50,6 +50,6 @@ TEST(prob_transform, ordered_rt) {
   Matrix<double, Dynamic, 1> xrt = stan::math::ordered_free(y);
   EXPECT_EQ(x.size(), xrt.size());
   for (int i = 0; i < x.size(); ++i) {
-    EXPECT_FLOAT_EQ(x[i], xrt[i]);
+    EXPECT_DOUBLE_EQ(x[i], xrt[i]);
   }
 }

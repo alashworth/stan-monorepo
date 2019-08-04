@@ -20,7 +20,7 @@ void test_log_softmax(const Eigen::Matrix<double, Eigen::Dynamic, 1>& theta) {
 
   EXPECT_EQ(log_softmax_theta_expected.size(), log_softmax_theta.size());
   for (int i = 0; i < theta.size(); ++i)
-    EXPECT_FLOAT_EQ(log_softmax_theta_expected(i), log_softmax_theta(i));
+    EXPECT_DOUBLE_EQ(log_softmax_theta_expected(i), log_softmax_theta(i));
 }
 
 TEST(MathMatrix, softmax_0) {

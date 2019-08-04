@@ -1,4 +1,3 @@
-#include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
 #include <math/prim/mat/vectorize/prim_scalar_unary_test.hpp>
 #include <math/rev/mat/vectorize/rev_scalar_unary_test.hpp>
@@ -8,6 +7,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized expm1 (defined in the
  * testing framework).
@@ -92,8 +92,9 @@ struct expm1_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, expm1_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, expm1_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, expm1_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, expm1_test);
+INSTANTIATE_TYPED_TEST_CASE_P(expm1, prim_scalar_unary_test, expm1_test);
+INSTANTIATE_TYPED_TEST_CASE_P(expm1, rev_scalar_unary_test, expm1_test);
+INSTANTIATE_TYPED_TEST_CASE_P(expm1, fwd_scalar_unary_test, expm1_test);
+INSTANTIATE_TYPED_TEST_CASE_P(expm1, mix_scalar_unary_test, expm1_test);

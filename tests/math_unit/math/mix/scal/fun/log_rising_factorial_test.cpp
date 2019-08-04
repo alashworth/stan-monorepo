@@ -1,7 +1,7 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/digamma.hpp>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdLogRisingFactorial, FvarVar_FvarVar_1stDeriv) {
@@ -14,14 +14,14 @@ TEST(AgradFwdLogRisingFactorial, FvarVar_FvarVar_1stDeriv) {
   fvar<var> b(3.0, 1.0);
   fvar<var> c = log_rising_factorial(a, b);
 
-  EXPECT_FLOAT_EQ(std::log(120.0), c.val_.val());
-  EXPECT_FLOAT_EQ(2.4894509, c.d_.val());
+  EXPECT_DOUBLE_EQ(std::log(120.0), c.val_.val());
+  EXPECT_DOUBLE_EQ(2.4894509, c.d_.val());
 
   AVEC y = createAVEC(a.val_, b.val_);
   VEC g;
   c.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.61666667, g[0]);
-  EXPECT_FLOAT_EQ(1.8727844, g[1]);
+  EXPECT_DOUBLE_EQ(0.61666667, g[0]);
+  EXPECT_DOUBLE_EQ(1.8727844, g[1]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarVar_Double_1stDeriv) {
   using boost::math::digamma;
@@ -33,13 +33,13 @@ TEST(AgradFwdLogRisingFactorial, FvarVar_Double_1stDeriv) {
   double b(3.0);
   fvar<var> c = log_rising_factorial(a, b);
 
-  EXPECT_FLOAT_EQ(std::log(120.0), c.val_.val());
-  EXPECT_FLOAT_EQ(0.61666667, c.d_.val());
+  EXPECT_DOUBLE_EQ(std::log(120.0), c.val_.val());
+  EXPECT_DOUBLE_EQ(0.61666667, c.d_.val());
 
   AVEC y = createAVEC(a.val_);
   VEC g;
   c.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.61666667, g[0]);
+  EXPECT_DOUBLE_EQ(0.61666667, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, Double_FvarVar_1stDeriv) {
   using boost::math::digamma;
@@ -51,13 +51,13 @@ TEST(AgradFwdLogRisingFactorial, Double_FvarVar_1stDeriv) {
   fvar<var> b(3.0, 1.0);
   fvar<var> c = log_rising_factorial(a, b);
 
-  EXPECT_FLOAT_EQ(std::log(120.0), c.val_.val());
-  EXPECT_FLOAT_EQ(1.8727844, c.d_.val());
+  EXPECT_DOUBLE_EQ(std::log(120.0), c.val_.val());
+  EXPECT_DOUBLE_EQ(1.8727844, c.d_.val());
 
   AVEC y = createAVEC(b.val_);
   VEC g;
   c.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(1.8727844, g[0]);
+  EXPECT_DOUBLE_EQ(1.8727844, g[0]);
 }
 
 TEST(AgradFwdLogRisingFactorial, FvarVar_FvarVar_2ndDeriv) {
@@ -73,8 +73,8 @@ TEST(AgradFwdLogRisingFactorial, FvarVar_FvarVar_2ndDeriv) {
   AVEC y = createAVEC(a.val_, b.val_);
   VEC g;
   c.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.023267401, g[0]);
-  EXPECT_FLOAT_EQ(0.30709034, g[1]);
+  EXPECT_DOUBLE_EQ(0.023267401, g[0]);
+  EXPECT_DOUBLE_EQ(0.30709034, g[1]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarVar_Double_2ndDeriv) {
   using boost::math::digamma;
@@ -89,7 +89,7 @@ TEST(AgradFwdLogRisingFactorial, FvarVar_Double_2ndDeriv) {
   AVEC y = createAVEC(a.val_);
   VEC g;
   c.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(-0.13027778, g[0]);
+  EXPECT_DOUBLE_EQ(-0.13027778, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, Double_FvarVar_2ndDeriv) {
   using boost::math::digamma;
@@ -104,7 +104,7 @@ TEST(AgradFwdLogRisingFactorial, Double_FvarVar_2ndDeriv) {
   AVEC y = createAVEC(b.val_);
   VEC g;
   c.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.15354517, g[0]);
+  EXPECT_DOUBLE_EQ(0.15354517, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_1stDeriv) {
   using boost::math::digamma;
@@ -122,16 +122,16 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = log_rising_factorial(x, y);
 
-  EXPECT_FLOAT_EQ(std::log(120.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.61666667, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(1.8727844, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0.15354517, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(std::log(120.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.61666667, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(1.8727844, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.15354517, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.61666667, g[0]);
-  EXPECT_FLOAT_EQ(1.8727844, g[1]);
+  EXPECT_DOUBLE_EQ(0.61666667, g[0]);
+  EXPECT_DOUBLE_EQ(1.8727844, g[1]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarFvarVar_Double_1stDeriv) {
   using boost::math::digamma;
@@ -146,15 +146,15 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarVar_Double_1stDeriv) {
 
   fvar<fvar<var> > a = log_rising_factorial(x, y);
 
-  EXPECT_FLOAT_EQ(std::log(120.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.61666667, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(std::log(120.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.61666667, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.61666667, g[0]);
+  EXPECT_DOUBLE_EQ(0.61666667, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, Double_FvarFvarVar_1stDeriv) {
   using boost::math::digamma;
@@ -169,15 +169,15 @@ TEST(AgradFwdLogRisingFactorial, Double_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = log_rising_factorial(x, y);
 
-  EXPECT_FLOAT_EQ(std::log(120.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(1.8727844, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(std::log(120.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(1.8727844, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(1.8727844, g[0]);
+  EXPECT_DOUBLE_EQ(1.8727844, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
   using boost::math::digamma;
@@ -198,8 +198,8 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-0.13027778, g[0]);
-  EXPECT_FLOAT_EQ(0.15354517, g[1]);
+  EXPECT_DOUBLE_EQ(-0.13027778, g[0]);
+  EXPECT_DOUBLE_EQ(0.15354517, g[1]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
   using boost::math::digamma;
@@ -220,8 +220,8 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.d_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.15354517, g[0]);
-  EXPECT_FLOAT_EQ(0.15354517, g[1]);
+  EXPECT_DOUBLE_EQ(0.15354517, g[0]);
+  EXPECT_DOUBLE_EQ(0.15354517, g[1]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarFvarVar_Double_2ndDeriv) {
   using boost::math::digamma;
@@ -239,7 +239,7 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarVar_Double_2ndDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-0.13027778, g[0]);
+  EXPECT_DOUBLE_EQ(-0.13027778, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, Double_FvarFvarVar_2ndDeriv) {
   using boost::math::digamma;
@@ -257,7 +257,7 @@ TEST(AgradFwdLogRisingFactorial, Double_FvarFvarVar_2ndDeriv) {
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.15354517, g[0]);
+  EXPECT_DOUBLE_EQ(0.15354517, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   using boost::math::digamma;
@@ -278,8 +278,8 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-0.023530472, g[0]);
-  EXPECT_FLOAT_EQ(-0.023530472, g[1]);
+  EXPECT_DOUBLE_EQ(-0.023530472, g[0]);
+  EXPECT_DOUBLE_EQ(-0.023530472, g[1]);
 }
 TEST(AgradFwdLogRisingFactorial, FvarFvarVar_Double_3rdDeriv) {
   using boost::math::digamma;
@@ -298,7 +298,7 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarVar_Double_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.056509256, g[0]);
+  EXPECT_DOUBLE_EQ(0.056509256, g[0]);
 }
 TEST(AgradFwdLogRisingFactorial, Double_FvarFvarVar_3rdDeriv) {
   using boost::math::digamma;
@@ -317,7 +317,7 @@ TEST(AgradFwdLogRisingFactorial, Double_FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-0.023530472, g[0]);
+  EXPECT_DOUBLE_EQ(-0.023530472, g[0]);
 }
 
 struct log_rising_factorial_fun {

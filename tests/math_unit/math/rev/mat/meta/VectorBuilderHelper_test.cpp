@@ -35,9 +35,9 @@ TEST(MetaTraits, VectorBuilderHelper_true_true_1) {
   dvv3[0] = 0.0;
   dvv3[1] = 1.0;
   dvv3[2] = 2.0;
-  EXPECT_FLOAT_EQ(0.0, dvv3[0]);
-  EXPECT_FLOAT_EQ(1.0, dvv3[1]);
-  EXPECT_FLOAT_EQ(2.0, dvv3[2]);
+  EXPECT_DOUBLE_EQ(0.0, dvv3[0]);
+  EXPECT_DOUBLE_EQ(1.0, dvv3[1]);
+  EXPECT_DOUBLE_EQ(2.0, dvv3[2]);
   std::vector<double> data3;
   EXPECT_NO_THROW(data3 = dvv3.data());
   EXPECT_EQ(length(a_vector), data3.size());
@@ -46,9 +46,9 @@ TEST(MetaTraits, VectorBuilderHelper_true_true_1) {
   dvv4[0] = 0.0;
   dvv4[1] = 1.0;
   dvv4[2] = 2.0;
-  EXPECT_FLOAT_EQ(0.0, dvv4[0]);
-  EXPECT_FLOAT_EQ(1.0, dvv4[1]);
-  EXPECT_FLOAT_EQ(2.0, dvv4[2]);
+  EXPECT_DOUBLE_EQ(0.0, dvv4[0]);
+  EXPECT_DOUBLE_EQ(1.0, dvv4[1]);
+  EXPECT_DOUBLE_EQ(2.0, dvv4[2]);
   std::vector<double> data4;
   EXPECT_NO_THROW(data4 = dvv4.data());
   EXPECT_EQ(length(a_row_vector), data4.size());

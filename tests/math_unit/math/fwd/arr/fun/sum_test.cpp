@@ -16,12 +16,12 @@ TEST(AgradFwdMatrixSum, vectorFvar) {
 
   fvar<double> output;
   output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_);
-  EXPECT_FLOAT_EQ(6.0, output.d_);
+  EXPECT_DOUBLE_EQ(21.0, output.val_);
+  EXPECT_DOUBLE_EQ(6.0, output.d_);
 
   vector<fvar<double> > ve;
-  EXPECT_FLOAT_EQ(0.0, sum(ve).val_);
-  EXPECT_FLOAT_EQ(0.0, sum(ve).d_);
+  EXPECT_DOUBLE_EQ(0.0, sum(ve).val_);
+  EXPECT_DOUBLE_EQ(0.0, sum(ve).d_);
 }
 
 TEST(AgradFwdMatrixSum, ffd_vector_0) {
@@ -37,10 +37,10 @@ TEST(AgradFwdMatrixSum, ffd_vector_0) {
   }
 
   fvar<fvar<double> > output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_.val());
-  EXPECT_FLOAT_EQ(6.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(21.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(6.0, output.d_.val());
 
   vector<fvar<fvar<double> > > ve;
-  EXPECT_FLOAT_EQ(0.0, sum(ve).val_.val());
-  EXPECT_FLOAT_EQ(0.0, sum(ve).d_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(ve).val_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(ve).d_.val());
 }

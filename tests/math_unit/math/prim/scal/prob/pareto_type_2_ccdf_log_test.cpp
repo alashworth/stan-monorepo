@@ -7,9 +7,9 @@ TEST(ProbParetoType2, ccdf_log_matches_lccdf) {
   double lambda = 2;
   double alpha = 2.3;
 
-  EXPECT_FLOAT_EQ((stan::math::pareto_type_2_lccdf(y, mu, lambda, alpha)),
-                  (stan::math::pareto_type_2_ccdf_log(y, mu, lambda, alpha)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::pareto_type_2_lccdf(y, mu, lambda, alpha)),
+                   (stan::math::pareto_type_2_ccdf_log(y, mu, lambda, alpha)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::pareto_type_2_lccdf<double, double, double, double>(
           y, mu, lambda, alpha)),
       (stan::math::pareto_type_2_ccdf_log<double, double, double, double>(

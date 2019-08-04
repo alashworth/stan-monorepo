@@ -4,6 +4,7 @@
 #include <math/rev/mat/util.hpp>
 #include <vector>
 
+namespace {
 void test_cholesky_correlation_jacobian(
     const Eigen::Matrix<stan::math::var, Eigen::Dynamic, 1>& y, int K) {
   using Eigen::Dynamic;
@@ -37,9 +38,10 @@ void test_cholesky_correlation_jacobian(
   double det_J = J.determinant();
   double log_det_J = log(fabs(det_J));
 
-  EXPECT_FLOAT_EQ(log_det_J, lp.val()) << "J = " << J << std::endl
-                                       << "det_J = " << det_J;
+  EXPECT_DOUBLE_EQ(log_det_J, lp.val()) << "J = " << J << std::endl
+                                        << "det_J = " << det_J;
 }
+}  // namespace
 
 TEST(probTransform, choleskyCorrJacobian) {
   using Eigen::Dynamic;
@@ -66,7 +68,7 @@ TEST(probTransform, choleskyCorrJacobian) {
   y4 << 1.0, 2.0, -3.0, 1.5, 0.2, 2.0;
   test_cholesky_correlation_jacobian(y4, 4);
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_103) {
   stan::math::vector_v y(3);
   y << -1.7, 2.9, 0.01;
   stan::math::var lp(0);

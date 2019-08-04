@@ -50,5 +50,5 @@ TEST(MathMatrixSubCol, SubCol6) {
   Eigen::VectorXd v = sub_col(m, 1, 2, 2);
   EXPECT_EQ(2, v.size());
   for (int i = 0; i < 2; ++i)
-    EXPECT_FLOAT_EQ(m(0 + i, 1), v(i));
+    EXPECT_DOUBLE_EQ(m(0 + i, 1), v(i));
 }

@@ -75,7 +75,7 @@ TEST(AgradRevMatrix, solve) {
 
   for (int i = 0; i < 2; i++)
     for (int j = 0; j < 2; j++)
-      EXPECT_FLOAT_EQ(expected_solve(i, j), solve(i, j));
+      EXPECT_DOUBLE_EQ(expected_solve(i, j), solve(i, j));
 }
 
 TEST(AgradRevMatrix, vectorD) {
@@ -96,7 +96,7 @@ TEST(AgradRevMatrix, vectorD) {
   ASSERT_TRUE(ldlt_A.success());
   EXPECT_NO_THROW(vectorD = ldlt_A.vectorD());
   for (int i = 0; i < 2; i++)
-    EXPECT_FLOAT_EQ(expected_vectorD(i), vectorD(i));
+    EXPECT_DOUBLE_EQ(expected_vectorD(i), vectorD(i));
 }
 
 TEST(AgradRevMatrix, rows) {
@@ -146,7 +146,7 @@ TEST(AgradRevMatrix, compute) {
   expected_mat = ldlt_double.matrixLDLT();
   for (int i = 0; i < 2; i++)
     for (int j = 0; j < 2; j++)
-      EXPECT_FLOAT_EQ(expected_mat(i, j), mat(i, j))
+      EXPECT_DOUBLE_EQ(expected_mat(i, j), mat(i, j))
           << "element (" << i << ", " << j << ")";
 
   // tests on A: [0, 0][0, 0]

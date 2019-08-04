@@ -12,6 +12,7 @@ using Eigen::Dynamic;
 using Eigen::Matrix;
 using std::vector;
 
+namespace {
 template <typename T_y, typename T_loc, typename T_scale>
 void expect_propto(T_y y1, T_loc mu1, T_scale sigma1, T_y y2, T_loc mu2,
                    T_scale sigma2, std::string message = "") {
@@ -19,136 +20,6 @@ void expect_propto(T_y y1, T_loc mu1, T_scale sigma1, T_y y2, T_loc mu2,
                   stan::math::multi_normal_log<false>(y2, mu2, sigma2),
                   stan::math::multi_normal_log<true>(y1, mu1, sigma1),
                   stan::math::multi_normal_log<true>(y2, mu2, sigma2), message);
-}
-
-using stan::math::to_var;
-using stan::math::var;
-
-TEST_F(agrad_distributions_multi_normal, Propto_0) {
-  expect_propto(to_var(y), to_var(mu), to_var(Sigma), to_var(y2), to_var(mu2),
-                to_var(Sigma2), "All vars: y, mu, sigma");
-}
-TEST_F(agrad_distributions_multi_normal, ProptoY_0) {
-  expect_propto(to_var(y), mu, Sigma, to_var(y2), mu, Sigma, "var: y");
-}
-TEST_F(agrad_distributions_multi_normal, ProptoYMu_0) {
-  expect_propto(to_var(y), to_var(mu), Sigma, to_var(y2), to_var(mu2), Sigma,
-                "var: y and mu");
-}
-TEST_F(agrad_distributions_multi_normal, ProptoYSigma_0) {
-  expect_propto(to_var(y), mu, to_var(Sigma), to_var(y2), mu, to_var(Sigma2),
-                "var: y and sigma");
-}
-TEST_F(agrad_distributions_multi_normal, ProptoMu_0) {
-  expect_propto(y, to_var(mu), Sigma, y, to_var(mu2), Sigma, "var: mu");
-}
-TEST_F(agrad_distributions_multi_normal, ProptoMuSigma_0) {
-  expect_propto(y, to_var(mu), to_var(Sigma), y, to_var(mu2), to_var(Sigma2),
-                "var: mu and sigma");
-}
-TEST_F(agrad_distributions_multi_normal, ProptoSigma_0) {
-  expect_propto(y, mu, to_var(Sigma), y, mu, to_var(Sigma2), "var: sigma");
-}
-
-TEST_F(agrad_distributions_multi_normal_multi_row, Propto_0) {
-  expect_propto(to_var(y), to_var(mu), to_var(Sigma), to_var(y2), to_var(mu2),
-                to_var(Sigma2), "All vars: y, mu, sigma");
-}
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoY_0) {
-  expect_propto(to_var(y), mu, Sigma, to_var(y2), mu, Sigma, "var: y");
-}
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYMu_0) {
-  expect_propto(to_var(y), to_var(mu), Sigma, to_var(y2), to_var(mu2), Sigma,
-                "var: y and mu");
-}
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYSigma_0) {
-  expect_propto(to_var(y), mu, to_var(Sigma), to_var(y2), mu, to_var(Sigma2),
-                "var: y and sigma");
-}
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMu_0) {
-  expect_propto(y, to_var(mu), Sigma, y, to_var(mu2), Sigma, "var: mu");
-}
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMuSigma_0) {
-  expect_propto(y, to_var(mu), to_var(Sigma), y, to_var(mu2), to_var(Sigma2),
-                "var: mu and sigma");
-}
-TEST_F(agrad_distributions_multi_normal_multi_row, ProptoSigma_0) {
-  expect_propto(y, mu, to_var(Sigma), y, mu, to_var(Sigma2), "var: sigma");
-}
-
-TEST(ProbDistributionsMultiNormal, MultiNormalVar) {
-  using stan::math::var;
-  Matrix<var, Dynamic, 1> y(3, 1);
-  y << 2.0, -2.0, 11.0;
-  Matrix<var, Dynamic, 1> mu(3, 1);
-  mu << 1.0, -1.0, 3.0;
-  Matrix<var, Dynamic, Dynamic> Sigma(3, 3);
-  Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
-  EXPECT_FLOAT_EQ(-11.73908, stan::math::multi_normal_log(y, mu, Sigma).val());
-}
-TEST(ProbDistributionsMultiNormal, MultiNormalGradientUnivariate) {
-  using Eigen::VectorXd;
-  using stan::math::multi_normal_log;
-  using stan::math::var;
-  using std::vector;
-
-  Matrix<var, Dynamic, 1> y_var(1, 1);
-  y_var << 2.0;
-
-  Matrix<var, Dynamic, 1> mu_var(1, 1);
-  mu_var << 1.0;
-
-  Matrix<var, Dynamic, Dynamic> Sigma_var(1, 1);
-  Sigma_var(0, 0) = 9.0;
-
-  std::vector<var> x;
-  x.push_back(y_var(0));
-  x.push_back(mu_var(0));
-  x.push_back(Sigma_var(0, 0));
-
-  var lp = stan::math::multi_normal_log(y_var, mu_var, Sigma_var);
-  vector<double> grad;
-  lp.grad(x, grad);
-
-  // ===================================
-
-  Matrix<double, Dynamic, 1> y(1, 1);
-  y << 2.0;
-
-  Matrix<double, Dynamic, 1> mu(1, 1);
-  mu << 1.0;
-
-  Matrix<double, Dynamic, Dynamic> Sigma(1, 1);
-  Sigma << 9.0;
-
-  double epsilon = 1e-6;
-
-  Matrix<double, Dynamic, 1> y_m(1, 1);
-  Matrix<double, Dynamic, 1> y_p(1, 1);
-  y_p[0] = y[0] + epsilon;
-  y_m[0] = y[0] - epsilon;
-  double grad_diff
-      = (multi_normal_log(y_p, mu, Sigma) - multi_normal_log(y_m, mu, Sigma))
-        / (2 * epsilon);
-  EXPECT_FLOAT_EQ(grad_diff, grad[0]);
-
-  Matrix<double, Dynamic, 1> mu_m(1, 1);
-  Matrix<double, Dynamic, 1> mu_p(1, 1);
-  mu_p[0] = mu[0] + epsilon;
-  mu_m[0] = mu[0] - epsilon;
-  grad_diff
-      = (multi_normal_log(y, mu_p, Sigma) - multi_normal_log(y, mu_m, Sigma))
-        / (2 * epsilon);
-  EXPECT_FLOAT_EQ(grad_diff, grad[1]);
-
-  Matrix<double, Dynamic, Dynamic> Sigma_m(1, 1);
-  Matrix<double, Dynamic, Dynamic> Sigma_p(1, 1);
-  Sigma_p(0) = Sigma(0) + epsilon;
-  Sigma_m(0) = Sigma(0) - epsilon;
-  grad_diff
-      = (multi_normal_log(y, mu, Sigma_p) - multi_normal_log(y, mu, Sigma_m))
-        / (2 * epsilon);
-  EXPECT_FLOAT_EQ(grad_diff, grad[2]);
 }
 
 struct multi_normal_fun {
@@ -178,34 +49,6 @@ struct multi_normal_fun {
     return stan::math::multi_normal_log<false>(y, mu, Sigma);
   }
 };
-
-TEST(MultiNormal, TestGradFunctional) {
-  std::vector<double> x(3 + 3 + 3 * 2);
-  // y
-  x[0] = 1.0;
-  x[1] = 2.0;
-  x[2] = -3.0;
-  // mu
-  x[3] = 0.0;
-  x[4] = -2.0;
-  x[5] = -3.0;
-  // Sigma
-  x[6] = 1;
-  x[7] = -1;
-  x[8] = 10;
-  x[9] = -2;
-  x[10] = 20;
-  x[11] = 56;
-
-  test_grad(multi_normal_fun(3), x);
-
-  std::vector<double> u(3);
-  u[0] = 1.9;
-  u[1] = -2.7;
-  u[2] = 0.48;
-
-  test_grad(multi_normal_fun(1), u);
-}
 
 template <int is_row_vec_y, int is_row_vec_mu>
 struct vectorized_multi_normal_fun {
@@ -411,7 +254,167 @@ void test_all() {
   }
 }
 
-TEST(MultiNormal, TestGradFunctionalVectorized_0) {
+}  // namespace
+
+using stan::math::to_var;
+using stan::math::var;
+
+TEST_F(agrad_distributions_multi_normal, Propto_0) {
+  expect_propto(to_var(y), to_var(mu), to_var(Sigma), to_var(y2), to_var(mu2),
+                to_var(Sigma2), "All vars: y, mu, sigma");
+}
+TEST_F(agrad_distributions_multi_normal, ProptoY_0) {
+  expect_propto(to_var(y), mu, Sigma, to_var(y2), mu, Sigma, "var: y");
+}
+TEST_F(agrad_distributions_multi_normal, ProptoYMu_0) {
+  expect_propto(to_var(y), to_var(mu), Sigma, to_var(y2), to_var(mu2), Sigma,
+                "var: y and mu");
+}
+TEST_F(agrad_distributions_multi_normal, ProptoYSigma_0) {
+  expect_propto(to_var(y), mu, to_var(Sigma), to_var(y2), mu, to_var(Sigma2),
+                "var: y and sigma");
+}
+TEST_F(agrad_distributions_multi_normal, ProptoMu_0) {
+  expect_propto(y, to_var(mu), Sigma, y, to_var(mu2), Sigma, "var: mu");
+}
+TEST_F(agrad_distributions_multi_normal, ProptoMuSigma_0) {
+  expect_propto(y, to_var(mu), to_var(Sigma), y, to_var(mu2), to_var(Sigma2),
+                "var: mu and sigma");
+}
+TEST_F(agrad_distributions_multi_normal, ProptoSigma_0) {
+  expect_propto(y, mu, to_var(Sigma), y, mu, to_var(Sigma2), "var: sigma");
+}
+
+TEST_F(agrad_distributions_multi_normal_multi_row, Propto_0) {
+  expect_propto(to_var(y), to_var(mu), to_var(Sigma), to_var(y2), to_var(mu2),
+                to_var(Sigma2), "All vars: y, mu, sigma");
+}
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoY_0) {
+  expect_propto(to_var(y), mu, Sigma, to_var(y2), mu, Sigma, "var: y");
+}
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYMu_0) {
+  expect_propto(to_var(y), to_var(mu), Sigma, to_var(y2), to_var(mu2), Sigma,
+                "var: y and mu");
+}
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoYSigma_0) {
+  expect_propto(to_var(y), mu, to_var(Sigma), to_var(y2), mu, to_var(Sigma2),
+                "var: y and sigma");
+}
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMu_0) {
+  expect_propto(y, to_var(mu), Sigma, y, to_var(mu2), Sigma, "var: mu");
+}
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoMuSigma_0) {
+  expect_propto(y, to_var(mu), to_var(Sigma), y, to_var(mu2), to_var(Sigma2),
+                "var: mu and sigma");
+}
+TEST_F(agrad_distributions_multi_normal_multi_row, ProptoSigma_0) {
+  expect_propto(y, mu, to_var(Sigma), y, mu, to_var(Sigma2), "var: sigma");
+}
+
+TEST(ProbDistributionsMultiNormal, MultiNormalVar) {
+  using stan::math::var;
+  Matrix<var, Dynamic, 1> y(3, 1);
+  y << 2.0, -2.0, 11.0;
+  Matrix<var, Dynamic, 1> mu(3, 1);
+  mu << 1.0, -1.0, 3.0;
+  Matrix<var, Dynamic, Dynamic> Sigma(3, 3);
+  Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
+  EXPECT_DOUBLE_EQ(-11.73908, stan::math::multi_normal_log(y, mu, Sigma).val());
+}
+TEST(ProbDistributionsMultiNormal, MultiNormalGradientUnivariate) {
+  using Eigen::VectorXd;
+  using stan::math::multi_normal_log;
+  using stan::math::var;
+  using std::vector;
+
+  Matrix<var, Dynamic, 1> y_var(1, 1);
+  y_var << 2.0;
+
+  Matrix<var, Dynamic, 1> mu_var(1, 1);
+  mu_var << 1.0;
+
+  Matrix<var, Dynamic, Dynamic> Sigma_var(1, 1);
+  Sigma_var(0, 0) = 9.0;
+
+  std::vector<var> x;
+  x.push_back(y_var(0));
+  x.push_back(mu_var(0));
+  x.push_back(Sigma_var(0, 0));
+
+  var lp = stan::math::multi_normal_log(y_var, mu_var, Sigma_var);
+  vector<double> grad;
+  lp.grad(x, grad);
+
+  // ===================================
+
+  Matrix<double, Dynamic, 1> y(1, 1);
+  y << 2.0;
+
+  Matrix<double, Dynamic, 1> mu(1, 1);
+  mu << 1.0;
+
+  Matrix<double, Dynamic, Dynamic> Sigma(1, 1);
+  Sigma << 9.0;
+
+  double epsilon = 1e-6;
+
+  Matrix<double, Dynamic, 1> y_m(1, 1);
+  Matrix<double, Dynamic, 1> y_p(1, 1);
+  y_p[0] = y[0] + epsilon;
+  y_m[0] = y[0] - epsilon;
+  double grad_diff
+      = (multi_normal_log(y_p, mu, Sigma) - multi_normal_log(y_m, mu, Sigma))
+        / (2 * epsilon);
+  EXPECT_DOUBLE_EQ(grad_diff, grad[0]);
+
+  Matrix<double, Dynamic, 1> mu_m(1, 1);
+  Matrix<double, Dynamic, 1> mu_p(1, 1);
+  mu_p[0] = mu[0] + epsilon;
+  mu_m[0] = mu[0] - epsilon;
+  grad_diff
+      = (multi_normal_log(y, mu_p, Sigma) - multi_normal_log(y, mu_m, Sigma))
+        / (2 * epsilon);
+  EXPECT_DOUBLE_EQ(grad_diff, grad[1]);
+
+  Matrix<double, Dynamic, Dynamic> Sigma_m(1, 1);
+  Matrix<double, Dynamic, Dynamic> Sigma_p(1, 1);
+  Sigma_p(0) = Sigma(0) + epsilon;
+  Sigma_m(0) = Sigma(0) - epsilon;
+  grad_diff
+      = (multi_normal_log(y, mu, Sigma_p) - multi_normal_log(y, mu, Sigma_m))
+        / (2 * epsilon);
+  EXPECT_DOUBLE_EQ(grad_diff, grad[2]);
+}
+
+TEST(MultiNormal, TestGradFunctional) {
+  std::vector<double> x(3 + 3 + 3 * 2);
+  // y
+  x[0] = 1.0;
+  x[1] = 2.0;
+  x[2] = -3.0;
+  // mu
+  x[3] = 0.0;
+  x[4] = -2.0;
+  x[5] = -3.0;
+  // Sigma
+  x[6] = 1;
+  x[7] = -1;
+  x[8] = 10;
+  x[9] = -2;
+  x[10] = 20;
+  x[11] = 56;
+
+  test_grad(multi_normal_fun(3), x);
+
+  std::vector<double> u(3);
+  u[0] = 1.9;
+  u[1] = -2.7;
+  u[2] = 0.48;
+
+  test_grad(multi_normal_fun(1), u);
+}
+
+TEST(MultiNormal, TestGradFunctionalVectorized_3) {
   test_all<1, 1>();
   test_all<1, -1>();
   test_all<-1, 1>();

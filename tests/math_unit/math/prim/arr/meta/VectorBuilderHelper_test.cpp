@@ -22,10 +22,10 @@ TEST(MetaTraits, VectorBuilderHelper_true_false_0) {
   std::vector<double> a_std_vector(3);
 
   VectorBuilderHelper<double, true, false> dvv2(length(a_std_vector));
-  EXPECT_FLOAT_EQ(0.0, dvv2[0]);
-  EXPECT_FLOAT_EQ(0.0, dvv2[1]);
-  EXPECT_FLOAT_EQ(0.0, dvv2[2]);
+  EXPECT_DOUBLE_EQ(0.0, dvv2[0]);
+  EXPECT_DOUBLE_EQ(0.0, dvv2[1]);
+  EXPECT_DOUBLE_EQ(0.0, dvv2[2]);
   double data2(10);
   EXPECT_NO_THROW(data2 = dvv2.data());
-  EXPECT_FLOAT_EQ(0.0, data2);
+  EXPECT_DOUBLE_EQ(0.0, data2);
 }

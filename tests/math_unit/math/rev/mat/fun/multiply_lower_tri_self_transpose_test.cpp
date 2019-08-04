@@ -5,6 +5,7 @@
 #include <math/rev/mat/util.hpp>
 #include <vector>
 
+namespace {
 stan::math::matrix_v generate_large_L_tri_mat() {
   using stan::math::matrix_d;
   using stan::math::matrix_v;
@@ -39,8 +40,9 @@ void test_mult_LLT(const stan::math::matrix_v& L) {
   EXPECT_EQ(L.rows(), LLT_stan.cols());
   for (int m = 0; m < L.rows(); ++m)
     for (int n = 0; n < L.rows(); ++n)
-      EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
+      EXPECT_DOUBLE_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
 }
+}  // namespace
 
 TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad1_1) {
   using stan::math::matrix_v;
@@ -55,12 +57,12 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad1_1) {
   AVEC y(1);
   y[0] = LLt(0, 0);
 
-  EXPECT_FLOAT_EQ(9.0, LLt(0, 0).val());
+  EXPECT_DOUBLE_EQ(9.0, LLt(0, 0).val());
 
   std::vector<VEC> J;
   stan::math::jacobian(y, x, J);
 
-  EXPECT_FLOAT_EQ(6.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(6.0, J[0][0]);
 }
 
 TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2_1) {
@@ -81,10 +83,10 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2_1) {
   y[2] = LLt(1, 0);
   y[3] = LLt(1, 1);
 
-  EXPECT_FLOAT_EQ(1.0, LLt(0, 0).val());
-  EXPECT_FLOAT_EQ(2.0, LLt(0, 1).val());
-  EXPECT_FLOAT_EQ(2.0, LLt(1, 0).val());
-  EXPECT_FLOAT_EQ(13.0, LLt(1, 1).val());
+  EXPECT_DOUBLE_EQ(1.0, LLt(0, 0).val());
+  EXPECT_DOUBLE_EQ(2.0, LLt(0, 1).val());
+  EXPECT_DOUBLE_EQ(2.0, LLt(1, 0).val());
+  EXPECT_DOUBLE_EQ(13.0, LLt(1, 1).val());
 
   std::vector<VEC> J;
   stan::math::jacobian(y, x, J);
@@ -96,21 +98,21 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2_1) {
   //     2 1 0
   //     2 1 0
   //     0 4 6
-  EXPECT_FLOAT_EQ(2.0, J[0][0]);
-  EXPECT_FLOAT_EQ(0.0, J[0][1]);
-  EXPECT_FLOAT_EQ(0.0, J[0][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][2]);
 
-  EXPECT_FLOAT_EQ(2.0, J[1][0]);
-  EXPECT_FLOAT_EQ(1.0, J[1][1]);
-  EXPECT_FLOAT_EQ(0.0, J[1][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[1][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[1][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][2]);
 
-  EXPECT_FLOAT_EQ(2.0, J[2][0]);
-  EXPECT_FLOAT_EQ(1.0, J[2][1]);
-  EXPECT_FLOAT_EQ(0.0, J[2][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[2][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[2][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][2]);
 
-  EXPECT_FLOAT_EQ(0.0, J[3][0]);
-  EXPECT_FLOAT_EQ(4.0, J[3][1]);
-  EXPECT_FLOAT_EQ(6.0, J[3][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[3][1]);
+  EXPECT_DOUBLE_EQ(6.0, J[3][2]);
 }
 
 TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad3_1) {
@@ -156,68 +158,68 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad3_1) {
   //     0 4 5 2 3 0
   //     0 0 0 8 10 12
 
-  EXPECT_FLOAT_EQ(2.0, J[0][0]);
-  EXPECT_FLOAT_EQ(0.0, J[0][1]);
-  EXPECT_FLOAT_EQ(0.0, J[0][2]);
-  EXPECT_FLOAT_EQ(0.0, J[0][3]);
-  EXPECT_FLOAT_EQ(0.0, J[0][4]);
-  EXPECT_FLOAT_EQ(0.0, J[0][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][5]);
 
-  EXPECT_FLOAT_EQ(2.0, J[1][0]);
-  EXPECT_FLOAT_EQ(1.0, J[1][1]);
-  EXPECT_FLOAT_EQ(0.0, J[1][2]);
-  EXPECT_FLOAT_EQ(0.0, J[1][3]);
-  EXPECT_FLOAT_EQ(0.0, J[1][4]);
-  EXPECT_FLOAT_EQ(0.0, J[1][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[1][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[1][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][5]);
 
-  EXPECT_FLOAT_EQ(4.0, J[2][0]);
-  EXPECT_FLOAT_EQ(0.0, J[2][1]);
-  EXPECT_FLOAT_EQ(0.0, J[2][2]);
-  EXPECT_FLOAT_EQ(1.0, J[2][3]);
-  EXPECT_FLOAT_EQ(0.0, J[2][4]);
-  EXPECT_FLOAT_EQ(0.0, J[2][5]);
+  EXPECT_DOUBLE_EQ(4.0, J[2][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][2]);
+  EXPECT_DOUBLE_EQ(1.0, J[2][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][5]);
 
-  EXPECT_FLOAT_EQ(2.0, J[3][0]);
-  EXPECT_FLOAT_EQ(1.0, J[3][1]);
-  EXPECT_FLOAT_EQ(0.0, J[3][2]);
-  EXPECT_FLOAT_EQ(0.0, J[3][3]);
-  EXPECT_FLOAT_EQ(0.0, J[3][4]);
-  EXPECT_FLOAT_EQ(0.0, J[3][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[3][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[3][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[4][0]);
-  EXPECT_FLOAT_EQ(4.0, J[4][1]);
-  EXPECT_FLOAT_EQ(6.0, J[4][2]);
-  EXPECT_FLOAT_EQ(0.0, J[4][3]);
-  EXPECT_FLOAT_EQ(0.0, J[4][4]);
-  EXPECT_FLOAT_EQ(0.0, J[4][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[4][1]);
+  EXPECT_DOUBLE_EQ(6.0, J[4][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[5][0]);
-  EXPECT_FLOAT_EQ(4.0, J[5][1]);
-  EXPECT_FLOAT_EQ(5.0, J[5][2]);
-  EXPECT_FLOAT_EQ(2.0, J[5][3]);
-  EXPECT_FLOAT_EQ(3.0, J[5][4]);
-  EXPECT_FLOAT_EQ(0.0, J[5][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[5][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[5][1]);
+  EXPECT_DOUBLE_EQ(5.0, J[5][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[5][3]);
+  EXPECT_DOUBLE_EQ(3.0, J[5][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[5][5]);
 
-  EXPECT_FLOAT_EQ(4.0, J[6][0]);
-  EXPECT_FLOAT_EQ(0.0, J[6][1]);
-  EXPECT_FLOAT_EQ(0.0, J[6][2]);
-  EXPECT_FLOAT_EQ(1.0, J[6][3]);
-  EXPECT_FLOAT_EQ(0.0, J[6][4]);
-  EXPECT_FLOAT_EQ(0.0, J[6][5]);
+  EXPECT_DOUBLE_EQ(4.0, J[6][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][2]);
+  EXPECT_DOUBLE_EQ(1.0, J[6][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[7][0]);
-  EXPECT_FLOAT_EQ(4.0, J[7][1]);
-  EXPECT_FLOAT_EQ(5.0, J[7][2]);
-  EXPECT_FLOAT_EQ(2.0, J[7][3]);
-  EXPECT_FLOAT_EQ(3.0, J[7][4]);
-  EXPECT_FLOAT_EQ(0.0, J[7][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[7][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[7][1]);
+  EXPECT_DOUBLE_EQ(5.0, J[7][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[7][3]);
+  EXPECT_DOUBLE_EQ(3.0, J[7][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[7][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[8][0]);
-  EXPECT_FLOAT_EQ(0.0, J[8][1]);
-  EXPECT_FLOAT_EQ(0.0, J[8][2]);
-  EXPECT_FLOAT_EQ(8.0, J[8][3]);
-  EXPECT_FLOAT_EQ(10.0, J[8][4]);
-  EXPECT_FLOAT_EQ(12.0, J[8][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][2]);
+  EXPECT_DOUBLE_EQ(8.0, J[8][3]);
+  EXPECT_DOUBLE_EQ(10.0, J[8][4]);
+  EXPECT_DOUBLE_EQ(12.0, J[8][5]);
 }
 
 TEST(AgradRevMatrix, multiplyLowerTriSelfTranspose_1) {

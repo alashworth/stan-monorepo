@@ -7,17 +7,17 @@ TEST(AgradRev, log_falling_factorial_var_double) {
   double a(2);
   AVAR b(4.0);
   AVAR f = stan::math::log_falling_factorial(b, a);
-  EXPECT_FLOAT_EQ(std::log(12.0), f.val());
+  EXPECT_DOUBLE_EQ(std::log(12.0), f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
-  EXPECT_FLOAT_EQ((boost::math::digamma(5) - boost::math::digamma(3)), g[1]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ((boost::math::digamma(5) - boost::math::digamma(3)), g[1]);
 
   double eps = 1e-6;
-  EXPECT_FLOAT_EQ((stan::math::log_falling_factorial(4.0 + eps, 2.0)
-                   - stan::math::log_falling_factorial(4.0 - eps, 2.0))
+  EXPECT_DOUBLE_EQ((stan::math::log_falling_factorial(4.0 + eps, 2.0)
+                    - stan::math::log_falling_factorial(4.0 - eps, 2.0))
                       / (2 * eps),
                   g[1]);
 }
@@ -33,16 +33,16 @@ TEST(AgradRev, log_falling_factorial_double_var) {
   double a(5);
   AVAR b(4.0);
   AVAR f = stan::math::log_falling_factorial(a, b);
-  EXPECT_FLOAT_EQ(std::log(120.0), f.val());
+  EXPECT_DOUBLE_EQ(std::log(120.0), f.val());
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
-  EXPECT_FLOAT_EQ(boost::math::digamma(2), g[1]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(boost::math::digamma(2), g[1]);
 
   double eps = 1e-6;
-  EXPECT_FLOAT_EQ((stan::math::log_falling_factorial(5.0, 4.0 + eps)
-                   - stan::math::log_falling_factorial(5.0, 4.0 - eps))
+  EXPECT_DOUBLE_EQ((stan::math::log_falling_factorial(5.0, 4.0 + eps)
+                    - stan::math::log_falling_factorial(5.0, 4.0 - eps))
                       / (2 * eps),
                   g[1]);
 }
@@ -51,20 +51,20 @@ TEST(AgradRev, log_falling_factorial_var_var) {
   AVAR a(6.0);
   AVAR b(4.0);
   AVAR f = stan::math::log_falling_factorial(a, b);
-  EXPECT_FLOAT_EQ(std::log(360.0), f.val());
+  EXPECT_DOUBLE_EQ(std::log(360.0), f.val());
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ((boost::math::digamma(7) - boost::math::digamma(3)), g[0]);
-  EXPECT_FLOAT_EQ(boost::math::digamma(3), g[1]);
+  EXPECT_DOUBLE_EQ((boost::math::digamma(7) - boost::math::digamma(3)), g[0]);
+  EXPECT_DOUBLE_EQ(boost::math::digamma(3), g[1]);
 
   double eps = 1e-6;
-  EXPECT_FLOAT_EQ((stan::math::log_falling_factorial(6.0 + eps, 4.0)
-                   - stan::math::log_falling_factorial(6.0 - eps, 4.0))
+  EXPECT_DOUBLE_EQ((stan::math::log_falling_factorial(6.0 + eps, 4.0)
+                    - stan::math::log_falling_factorial(6.0 - eps, 4.0))
                       / (2 * eps),
                   g[0]);
-  EXPECT_FLOAT_EQ((stan::math::log_falling_factorial(6.0, 4.0 + eps)
-                   - stan::math::log_falling_factorial(6.0, 4.0 - eps))
+  EXPECT_DOUBLE_EQ((stan::math::log_falling_factorial(6.0, 4.0 + eps)
+                    - stan::math::log_falling_factorial(6.0, 4.0 - eps))
                       / (2 * eps),
                   g[1]);
 }

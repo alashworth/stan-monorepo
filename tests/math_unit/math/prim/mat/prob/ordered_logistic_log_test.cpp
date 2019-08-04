@@ -41,18 +41,18 @@ TEST(ProbOrderedLogistic, log_matches_lpmf) {
   std::vector<Eigen::Matrix<double, Eigen::Dynamic, 1>> cutvec{c_1, c_2, c_3,
                                                                c_4, c_5};
 
-  EXPECT_FLOAT_EQ((stan::math::ordered_logistic_lpmf(3, lambda, c)),
-                  (stan::math::ordered_logistic_log(3, lambda, c)));
+  EXPECT_DOUBLE_EQ((stan::math::ordered_logistic_lpmf(3, lambda, c)),
+                   (stan::math::ordered_logistic_log(3, lambda, c)));
 
-  EXPECT_FLOAT_EQ((stan::math::ordered_logistic_lpmf(kvec, lamvec, c)),
-                  (stan::math::ordered_logistic_log(kvec, lamvec, c)));
+  EXPECT_DOUBLE_EQ((stan::math::ordered_logistic_lpmf(kvec, lamvec, c)),
+                   (stan::math::ordered_logistic_log(kvec, lamvec, c)));
 
-  EXPECT_FLOAT_EQ((stan::math::ordered_logistic_lpmf(kvec, lamvec, cutvec)),
-                  (stan::math::ordered_logistic_log(kvec, lamvec, cutvec)));
+  EXPECT_DOUBLE_EQ((stan::math::ordered_logistic_lpmf(kvec, lamvec, cutvec)),
+                   (stan::math::ordered_logistic_log(kvec, lamvec, cutvec)));
 
-  EXPECT_FLOAT_EQ((stan::math::ordered_logistic_lpmf<true>(3, lambda, c)),
-                  (stan::math::ordered_logistic_log<true>(3, lambda, c)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::ordered_logistic_lpmf<true>(3, lambda, c)),
+                   (stan::math::ordered_logistic_log<true>(3, lambda, c)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::ordered_logistic_lpmf<double, double>(3, lambda, c)),
       (stan::math::ordered_logistic_log<double, double>(3, lambda, c)));
 }

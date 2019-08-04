@@ -1,5 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
-        eigen_plugins_test.cpp)
+add_math_unit_test(stan_math_fwd_mat_unit_tests eigen_plugins_test.cpp)
 
 add_subdirectory(fun)
 add_subdirectory(functor)

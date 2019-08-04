@@ -3,16 +3,16 @@
 #include <math/rev/scal/fun/nan_util.hpp>
 #include <math/rev/scal/util.hpp>
 
+namespace {
 void test_log1p_exp(double val) {
   using stan::math::exp;
-  using stan::math::log1p_exp;
   using stan::math::log1p_exp;
   using std::exp;
 
   AVAR a(val);
   AVEC x = createAVEC(a);
   AVAR f = log1p_exp(a);
-  EXPECT_FLOAT_EQ(log1p_exp(val), f.val());
+  EXPECT_DOUBLE_EQ(log1p_exp(val), f.val());
   VEC g;
   f.grad(x, g);
   double f_val = f.val();
@@ -25,11 +25,18 @@ void test_log1p_exp(double val) {
 
   EXPECT_EQ(1U, g.size());
   EXPECT_EQ(1U, g2.size());
-  EXPECT_FLOAT_EQ(g2[0], g[0]);
+  EXPECT_DOUBLE_EQ(g2[0], g[0]);
   // analytic deriv
-  EXPECT_FLOAT_EQ(g2[0], 1.0 / (1.0 + exp(-val)));
-  EXPECT_FLOAT_EQ(f2.val(), f_val);
+  EXPECT_DOUBLE_EQ(g2[0], 1.0 / (1.0 + exp(-val)));
+  EXPECT_DOUBLE_EQ(f2.val(), f_val);
 }
+struct log1p_exp_fun {
+  template <typename T0>
+  inline T0 operator()(const T0& arg1) const {
+    return log1p_exp(arg1);
+  }
+};
+}  // namespace
 
 TEST(AgradRev, log1p_exp) {
   test_log1p_exp(-15.0);
@@ -40,13 +47,6 @@ TEST(AgradRev, log1p_exp) {
   test_log1p_exp(32.0);
   test_log1p_exp(64.0);
 }
-
-struct log1p_exp_fun {
-  template <typename T0>
-  inline T0 operator()(const T0& arg1) const {
-    return log1p_exp(arg1);
-  }
-};
 
 TEST(AgradRev, log1p_exp_NaN) {
   log1p_exp_fun log1p_exp_;

@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 
 TEST(ProbInternalMath, gradRegIncGamma_typical) {
   double a = 0.5;
@@ -8,7 +8,7 @@ TEST(ProbInternalMath, gradRegIncGamma_typical) {
   double g = 1.77245;
   double dig = -1.96351;
 
-  EXPECT_FLOAT_EQ(0.38984156, stan::math::grad_reg_inc_gamma(a, b, g, dig));
+  EXPECT_DOUBLE_EQ(0.38984156, stan::math::grad_reg_inc_gamma(a, b, g, dig));
 }
 
 TEST(ProbInternalMath, gradRegIncGamma_infLoopInVersion2_0_1) {
@@ -17,7 +17,7 @@ TEST(ProbInternalMath, gradRegIncGamma_infLoopInVersion2_0_1) {
   double g = 5143.28;
   double dig = 2.01698;
 
-  EXPECT_FLOAT_EQ(0, stan::math::grad_reg_inc_gamma(a, b, g, dig));
+  EXPECT_DOUBLE_EQ(0, stan::math::grad_reg_inc_gamma(a, b, g, dig));
 }
 
 TEST(ProbInternalMath, gradRegIncGamma_largeZ) {
@@ -26,8 +26,8 @@ TEST(ProbInternalMath, gradRegIncGamma_largeZ) {
   double g = 2.0;
   double dig = 0.9227843;
 
-  EXPECT_FLOAT_EQ(5.08294581508e-18,
-                  stan::math::grad_reg_inc_gamma(a, z, g, dig));
+  EXPECT_DOUBLE_EQ(5.08294581508e-18,
+                   stan::math::grad_reg_inc_gamma(a, z, g, dig));
 }
 
 TEST(ProbInternalMath, gradRegIncGamma_fd) {
@@ -38,8 +38,8 @@ TEST(ProbInternalMath, gradRegIncGamma_fd) {
   fvar<double> g = 1.77245;
   fvar<double> dig = -1.96351;
 
-  EXPECT_FLOAT_EQ(0.38984156,
-                  stan::math::grad_reg_inc_gamma(a, b, g, dig).val());
+  EXPECT_DOUBLE_EQ(0.38984156,
+                   stan::math::grad_reg_inc_gamma(a, b, g, dig).val());
 }
 TEST(ProbInternalMath, gradRegIncGamma_ffd) {
   using stan::math::fvar;
@@ -49,8 +49,8 @@ TEST(ProbInternalMath, gradRegIncGamma_ffd) {
   fvar<fvar<double> > g = 1.77245;
   fvar<fvar<double> > dig = -1.96351;
 
-  EXPECT_FLOAT_EQ(0.38984156,
-                  stan::math::grad_reg_inc_gamma(a, b, g, dig).val_.val_);
+  EXPECT_DOUBLE_EQ(0.38984156,
+                   stan::math::grad_reg_inc_gamma(a, b, g, dig).val_.val_);
 }
 
 TEST(ProbInternalMath, gradRegIncGamma_fv) {
@@ -63,8 +63,8 @@ TEST(ProbInternalMath, gradRegIncGamma_fv) {
   fvar<var> g = 1.77245;
   fvar<var> dig = digamma(a);
 
-  EXPECT_FLOAT_EQ(0.38984156,
-                  stan::math::grad_reg_inc_gamma(a, b, g, dig).val_.val());
+  EXPECT_DOUBLE_EQ(0.38984156,
+                   stan::math::grad_reg_inc_gamma(a, b, g, dig).val_.val());
 }
 
 TEST(ProbInternalMath, gradRegIncGamma_fv_1stderiv) {

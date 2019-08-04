@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+add_math_unit_test(stan_math_rev_core_unit_tests
         precomp_v_vari_test.cpp
         vd_vari_test.cpp
         vdd_vari_test.cpp
@@ -14,7 +14,6 @@ target_sources(stan_math_unit_tests PRIVATE
         precomp_vvv_vari_test.cpp
         v_vari_test.cpp
         ddv_vari_test.cpp
-        thread_stack_instance_test.cpp
         dv_vari_test.cpp
         vdv_vari_test.cpp
         build_vari_array_test.cpp
@@ -25,3 +24,12 @@ target_sources(stan_math_unit_tests PRIVATE
         operator_logical_and_test.cpp
         dvd_vari_test.cpp
         )
+
+if (TARGET Stan::MathMt)
+    target_sources(stan_math_mt_unit_tests PRIVATE
+            thread_stack_instance_test.cpp)
+endif ()
+
+
+target_link_libraries(stan_math_rev_core_unit_tests
+        PRIVATE stan_math_rev_scal_utils)

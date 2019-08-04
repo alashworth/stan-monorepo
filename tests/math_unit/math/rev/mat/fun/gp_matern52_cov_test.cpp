@@ -19,7 +19,7 @@ TEST(MathPrimMat, vec_double_gp_matern52_cov1_1) {
   EXPECT_NO_THROW(cov = stan::math::gp_matern52_cov(x, sigma, l));
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           stan::math::value_of(
               sigma * sigma
               * (1

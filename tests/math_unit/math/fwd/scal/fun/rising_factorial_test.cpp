@@ -9,13 +9,13 @@ TEST(AgradFwdRisingFactorial, Fvar) {
 
   fvar<double> a(4.0, 1.0);
   fvar<double> x = rising_factorial(a, 1);
-  EXPECT_FLOAT_EQ(4.0, x.val_);
-  EXPECT_FLOAT_EQ(1.0, x.d_);
+  EXPECT_DOUBLE_EQ(4.0, x.val_);
+  EXPECT_DOUBLE_EQ(1.0, x.d_);
 
   // finite diff
   double eps = 1e-6;
-  EXPECT_FLOAT_EQ((stan::math::rising_factorial(4.0 + eps, 1)
-                   - stan::math::rising_factorial(4.0 - eps, 1))
+  EXPECT_DOUBLE_EQ((stan::math::rising_factorial(4.0 + eps, 1)
+                    - stan::math::rising_factorial(4.0 - eps, 1))
                       / (2 * eps),
                   x.d_);
 
@@ -35,8 +35,8 @@ TEST(AgradFwdRisingFactorial, FvarFvarDouble) {
 
   fvar<fvar<double> > a = rising_factorial(x, 4);
 
-  EXPECT_FLOAT_EQ((840.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(840. * (digamma(8) - digamma(4)), a.val_.d_);
+  EXPECT_DOUBLE_EQ((840.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(840. * (digamma(8) - digamma(4)), a.val_.d_);
 }
 
 struct rising_factorial_fun {

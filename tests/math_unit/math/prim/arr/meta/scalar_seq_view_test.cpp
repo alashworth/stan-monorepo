@@ -10,8 +10,8 @@ TEST(MetaTraits, ScalarSeqViewArray) {
   v.push_back(2.2);
   v.push_back(0.0001);
   scalar_seq_view<vector<double> > sv(v);
-  EXPECT_FLOAT_EQ(v[0], sv[0]);
-  EXPECT_FLOAT_EQ(v[1], sv[1]);
+  EXPECT_DOUBLE_EQ(v[0], sv[0]);
+  EXPECT_DOUBLE_EQ(v[1], sv[1]);
 
   EXPECT_EQ(v.size(), sv.size());
 }

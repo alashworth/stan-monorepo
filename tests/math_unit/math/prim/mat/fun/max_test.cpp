@@ -16,54 +16,54 @@ TEST(MathMatrix, max) {
   EXPECT_EQ(2, max(n));
 
   std::vector<double> x;
-  EXPECT_FLOAT_EQ(-std::numeric_limits<double>::infinity(), max(x));
+  EXPECT_DOUBLE_EQ(-std::numeric_limits<double>::infinity(), max(x));
   x.push_back(1.0);
-  EXPECT_FLOAT_EQ(1.0, max(x));
+  EXPECT_DOUBLE_EQ(1.0, max(x));
   x.push_back(0.0);
-  EXPECT_FLOAT_EQ(1.0, max(x));
+  EXPECT_DOUBLE_EQ(1.0, max(x));
   x.push_back(2.0);
-  EXPECT_FLOAT_EQ(2.0, max(x));
+  EXPECT_DOUBLE_EQ(2.0, max(x));
   x.push_back(-10.0);
-  EXPECT_FLOAT_EQ(2.0, max(x));
+  EXPECT_DOUBLE_EQ(2.0, max(x));
 
   stan::math::vector_d v;
-  EXPECT_FLOAT_EQ(-std::numeric_limits<double>::infinity(), max(v));
+  EXPECT_DOUBLE_EQ(-std::numeric_limits<double>::infinity(), max(v));
   v = stan::math::vector_d(1);
   v << 1.0;
-  EXPECT_FLOAT_EQ(1.0, max(v));
+  EXPECT_DOUBLE_EQ(1.0, max(v));
   v = stan::math::vector_d(2);
   v << 1.0, 0.0;
-  EXPECT_FLOAT_EQ(1.0, max(v));
+  EXPECT_DOUBLE_EQ(1.0, max(v));
   v = stan::math::vector_d(3);
   v << 1.0, 0.0, 2.0;
-  EXPECT_FLOAT_EQ(2.0, max(v));
+  EXPECT_DOUBLE_EQ(2.0, max(v));
   v = stan::math::vector_d(4);
   v << 1.0, 0.0, 2.0, -10.0;
-  EXPECT_FLOAT_EQ(2.0, max(v));
+  EXPECT_DOUBLE_EQ(2.0, max(v));
 
   stan::math::row_vector_d rv;
-  EXPECT_FLOAT_EQ(-std::numeric_limits<double>::infinity(), max(rv));
+  EXPECT_DOUBLE_EQ(-std::numeric_limits<double>::infinity(), max(rv));
   rv = stan::math::row_vector_d(1);
   rv << 1.0;
-  EXPECT_FLOAT_EQ(1.0, max(rv));
+  EXPECT_DOUBLE_EQ(1.0, max(rv));
   rv = stan::math::row_vector_d(2);
   rv << 1.0, 0.0;
-  EXPECT_FLOAT_EQ(1.0, max(rv));
+  EXPECT_DOUBLE_EQ(1.0, max(rv));
   rv = stan::math::row_vector_d(3);
   rv << 1.0, 0.0, 2.0;
-  EXPECT_FLOAT_EQ(2.0, max(rv));
+  EXPECT_DOUBLE_EQ(2.0, max(rv));
   rv = stan::math::row_vector_d(4);
   rv << 1.0, 0.0, 2.0, -10.0;
-  EXPECT_FLOAT_EQ(2.0, max(rv));
+  EXPECT_DOUBLE_EQ(2.0, max(rv));
 
   stan::math::matrix_d m;
-  EXPECT_FLOAT_EQ(-std::numeric_limits<double>::infinity(), max(m));
+  EXPECT_DOUBLE_EQ(-std::numeric_limits<double>::infinity(), max(m));
   m = stan::math::matrix_d(1, 1);
   m << 1.0;
-  EXPECT_FLOAT_EQ(1.0, max(m));
+  EXPECT_DOUBLE_EQ(1.0, max(m));
   m = stan::math::matrix_d(2, 2);
   m << 1.0, 0.0, 2.0, -10.0;
-  EXPECT_FLOAT_EQ(2.0, max(m));
+  EXPECT_DOUBLE_EQ(2.0, max(m));
 }
 
 TEST(MathMatrix, max_exception) {

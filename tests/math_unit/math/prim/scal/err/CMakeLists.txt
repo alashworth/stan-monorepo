@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_scal_unit_tests PRIVATE
         check_2F1_converges_test.cpp
         check_positive_finite_test.cpp
         invalid_argument_test.cpp

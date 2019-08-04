@@ -28,10 +28,10 @@ TEST(AgradRevMatrix, log_determinant_ldlt_diff) {
   std::vector<double> g2;
   det2.grad(x2, g2);
 
-  EXPECT_FLOAT_EQ(det1.val(), det2.val());
+  EXPECT_DOUBLE_EQ(det1.val(), det2.val());
   EXPECT_EQ(g1.size(), g2.size());
   for (size_t i = 0; i < g1.size(); ++i)
-    EXPECT_FLOAT_EQ(g1[i], g2[i]);
+    EXPECT_DOUBLE_EQ(g1[i], g2[i]);
 }
 
 TEST(AgradRevMatrix, log_determinant_ldlt) {
@@ -50,12 +50,12 @@ TEST(AgradRevMatrix, log_determinant_ldlt) {
   f.grad(v_vec, grad);
 
   // derivative is: 1/det(A) * adj(A)
-  EXPECT_FLOAT_EQ(std::log(3.0), f.val());
+  EXPECT_DOUBLE_EQ(std::log(3.0), f.val());
   ASSERT_EQ(4U, grad.size());
-  EXPECT_FLOAT_EQ(1.0, grad[0]);
-  EXPECT_FLOAT_EQ(0, grad[1]);
-  EXPECT_FLOAT_EQ(0, grad[2]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, grad[3]);
+  EXPECT_DOUBLE_EQ(1.0, grad[0]);
+  EXPECT_DOUBLE_EQ(0, grad[1]);
+  EXPECT_DOUBLE_EQ(0, grad[2]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, grad[3]);
 }
 
 TEST(AgradRevMatrix, check_varis_on_stack_18) {

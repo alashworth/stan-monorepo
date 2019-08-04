@@ -24,8 +24,8 @@ TEST(MathMatrix, matrix_exp_2x2_2) {
       AVEC x = createAVEC(a, b);
       VEC g;
       m1_exp(k, l).grad(x, g);
-      EXPECT_FLOAT_EQ(dm1_exp_da(k, l).val(), g[0]);
-      EXPECT_FLOAT_EQ(dm1_exp_db(k, l).val(), g[1]);
+      EXPECT_DOUBLE_EQ(dm1_exp_da(k, l).val(), g[0]);
+      EXPECT_DOUBLE_EQ(dm1_exp_db(k, l).val(), g[1]);
     }
   }
 }

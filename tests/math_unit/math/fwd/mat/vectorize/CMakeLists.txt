@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_fwd_mat_unit_tests PRIVATE
         expect_fwd_values.hpp
         expect_fwd_scalar_value.hpp
         expect_fwd_vector_value.hpp

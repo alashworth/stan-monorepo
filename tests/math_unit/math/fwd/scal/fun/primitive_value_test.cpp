@@ -8,10 +8,10 @@ TEST(AgradFwd, primitiveValue) {
   using stan::math::primitive_value;
 
   fvar<double> a = 5.0;
-  EXPECT_FLOAT_EQ(5.0, primitive_value(a));
+  EXPECT_DOUBLE_EQ(5.0, primitive_value(a));
 
   // make sure all work together
-  EXPECT_FLOAT_EQ(5.0, primitive_value(5.0));
+  EXPECT_DOUBLE_EQ(5.0, primitive_value(5.0));
   EXPECT_EQ(5, primitive_value(5));
 }
 
@@ -30,10 +30,10 @@ TEST(AgradFwd, primitiveValueNested) {
   using stan::math::primitive_value;
 
   fvar<fvar<double> > a = 5.0;
-  EXPECT_FLOAT_EQ(5.0, primitive_value(a));
+  EXPECT_DOUBLE_EQ(5.0, primitive_value(a));
 
   // make sure all work together
-  EXPECT_FLOAT_EQ(5.0, primitive_value(5.0));
+  EXPECT_DOUBLE_EQ(5.0, primitive_value(5.0));
   EXPECT_EQ(5, primitive_value(5));
 }
 

@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized inv_logit (defined in the
  * testing framework).
@@ -92,8 +93,10 @@ struct inv_logit_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, inv_logit_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, inv_logit_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, inv_logit_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, inv_logit_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_logit, prim_scalar_unary_test,
+                              inv_logit_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_logit, rev_scalar_unary_test, inv_logit_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_logit, fwd_scalar_unary_test, inv_logit_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_logit, mix_scalar_unary_test, inv_logit_test);

@@ -11,13 +11,13 @@ TEST(AgradRevMatrix, varianceZeroBoundaryCase) {
 
   vector<var> y(3, 1.7);
   var f = variance(y);
-  EXPECT_FLOAT_EQ(0.0, f.val());
+  EXPECT_DOUBLE_EQ(0.0, f.val());
 
   vector<double> g;
   f.grad(y, g);
   EXPECT_EQ(y.size(), g.size());
   for (size_t i = 0; i < g.size(); ++i)
-    EXPECT_FLOAT_EQ(0.0, g[i]);
+    EXPECT_DOUBLE_EQ(0.0, g[i]);
 }
 
 TEST(AgradRevMatrix, variance_vector) {
@@ -27,7 +27,7 @@ TEST(AgradRevMatrix, variance_vector) {
 
   vector_d d(1);
   d << 12.9;
-  EXPECT_FLOAT_EQ(0.0, variance(d));
+  EXPECT_DOUBLE_EQ(0.0, variance(d));
 
   vector_d d1(6);
   vector_v v1(6);
@@ -35,14 +35,14 @@ TEST(AgradRevMatrix, variance_vector) {
   d1 << 1, 2, 3, 4, 5, 6;
   v1 << 1, 2, 3, 4, 5, 6;
 
-  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val());
+  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val());
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_FLOAT_EQ(0.0, variance(d1));
-  EXPECT_FLOAT_EQ(0.0, variance(v1).val());
+  EXPECT_DOUBLE_EQ(0.0, variance(d1));
+  EXPECT_DOUBLE_EQ(0.0, variance(v1).val());
 }
 
 TEST(AgradRevMatrix, variance_avoid_precision_loss) {
@@ -55,10 +55,10 @@ TEST(AgradRevMatrix, variance_avoid_precision_loss) {
   stan::math::var output = variance(v);
   output.grad();
 
-  EXPECT_FLOAT_EQ(10.0 / 3.0, output.val());
+  EXPECT_DOUBLE_EQ(10.0 / 3.0, output.val());
 
   for (int i = 0; i < v.size(); ++i) {
-    EXPECT_FLOAT_EQ(2.0 * (v(i).val() - 3.0) / 3.0, v(i).adj());
+    EXPECT_DOUBLE_EQ(2.0 * (v(i).val() - 3.0) / 3.0, v(i).adj());
   }
 }
 
@@ -79,7 +79,7 @@ TEST(AgradRevMatrix, variance_rowvector) {
 
   row_vector_d d(1);
   d << 12.9;
-  EXPECT_FLOAT_EQ(0.0, variance(d));
+  EXPECT_DOUBLE_EQ(0.0, variance(d));
 
   row_vector_d d1(6);
   row_vector_v v1(6);
@@ -87,14 +87,14 @@ TEST(AgradRevMatrix, variance_rowvector) {
   d1 << 1, 2, 3, 4, 5, 6;
   v1 << 1, 2, 3, 4, 5, 6;
 
-  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val());
+  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val());
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_FLOAT_EQ(0.0, variance(d1));
-  EXPECT_FLOAT_EQ(0.0, variance(v1).val());
+  EXPECT_DOUBLE_EQ(0.0, variance(d1));
+  EXPECT_DOUBLE_EQ(0.0, variance(v1).val());
 }
 TEST(AgradRevMatrix, variance_rowvector_exception) {
   using stan::math::row_vector_d;
@@ -113,7 +113,7 @@ TEST(AgradRevMatrix, variance_matrix) {
 
   matrix_d m(1, 1);
   m << 12.9;
-  EXPECT_FLOAT_EQ(0.0, variance(m));
+  EXPECT_DOUBLE_EQ(0.0, variance(m));
 
   matrix_d d1(2, 3);
   matrix_v v1(2, 3);
@@ -121,14 +121,14 @@ TEST(AgradRevMatrix, variance_matrix) {
   d1 << 1, 2, 3, 4, 5, 6;
   v1 << 1, 2, 3, 4, 5, 6;
 
-  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val());
+  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val());
 
   d1.resize(1, 1);
   v1.resize(1, 1);
-  EXPECT_FLOAT_EQ(0.0, variance(d1));
-  EXPECT_FLOAT_EQ(0.0, variance(v1).val());
+  EXPECT_DOUBLE_EQ(0.0, variance(d1));
+  EXPECT_DOUBLE_EQ(0.0, variance(v1).val());
 }
 TEST(AgradRevMatrix, variance_matrix_exception) {
   using stan::math::matrix_d;
@@ -174,7 +174,7 @@ TEST(AgradRevMatrix, varianceStdVector_1) {
   EXPECT_EQ(3U, grad1.size());
   EXPECT_EQ(3U, grad2.size());
   for (size_t i = 0; i < 3; ++i) {
-    EXPECT_FLOAT_EQ(grad2[i], grad1[i]);
+    EXPECT_DOUBLE_EQ(grad2[i], grad1[i]);
   }
 }
 

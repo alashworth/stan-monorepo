@@ -4,6 +4,7 @@
 #include <math/rev/scal/util.hpp>
 #include <math/rev/mat/fun/util.hpp>
 
+namespace {
 void test_logit(double u) {
   using stan::math::log;
   using stan::math::logit;
@@ -21,13 +22,8 @@ void test_logit(double u) {
   f2.grad(uv2, grad_f2);
   double g2 = grad_f2[0];
 
-  EXPECT_FLOAT_EQ(log(u / (1 - u)), f2.val());
-  EXPECT_FLOAT_EQ(g1, g2);
-}
-
-TEST(AgradRev, logitDeriv) {
-  test_logit(0.3);
-  test_logit(0.5);
+  EXPECT_DOUBLE_EQ(log(u / (1 - u)), f2.val());
+  EXPECT_DOUBLE_EQ(g1, g2);
 }
 
 struct logit_fun {
@@ -36,6 +32,12 @@ struct logit_fun {
     return stan::math::logit(arg1);
   }
 };
+}  // namespace
+
+TEST(AgradRev, logitDeriv) {
+  test_logit(0.3);
+  test_logit(0.5);
+}
 
 TEST(AgradRev, inv_logit_NaN_1) {
   logit_fun logit_;

@@ -39,27 +39,28 @@ TEST(AgradRevMatrix, log_softmax) {
 
   Matrix<AVAR, Dynamic, 1> theta = log_softmax(x);
   EXPECT_EQ(1, theta.size());
-  EXPECT_FLOAT_EQ(log(1.0), theta[0].val());
+  EXPECT_DOUBLE_EQ(log(1.0), theta[0].val());
 
   Matrix<AVAR, Dynamic, 1> x2(2);
   x2 << -1.0, 1.0;
   Matrix<AVAR, Dynamic, 1> theta2 = log_softmax(x2);
   EXPECT_EQ(2, theta2.size());
-  EXPECT_FLOAT_EQ(log(exp(-1) / (exp(-1) + exp(1))), theta2[0].val());
-  EXPECT_FLOAT_EQ(log(exp(1) / (exp(-1) + exp(1))), theta2[1].val());
+  EXPECT_DOUBLE_EQ(log(exp(-1) / (exp(-1) + exp(1))), theta2[0].val());
+  EXPECT_DOUBLE_EQ(log(exp(1) / (exp(-1) + exp(1))), theta2[1].val());
 
   Matrix<AVAR, Dynamic, 1> x3(3);
   x3 << -1.0, 1.0, 10.0;
   Matrix<AVAR, Dynamic, 1> theta3 = log_softmax(x3);
   EXPECT_EQ(3, theta3.size());
-  EXPECT_FLOAT_EQ(log(exp(-1) / (exp(-1) + exp(1) + exp(10.0))),
-                  theta3[0].val());
-  EXPECT_FLOAT_EQ(log(exp(1) / (exp(-1) + exp(1) + exp(10.0))),
-                  theta3[1].val());
-  EXPECT_FLOAT_EQ(log(exp(10) / (exp(-1) + exp(1) + exp(10.0))),
-                  theta3[2].val());
+  EXPECT_DOUBLE_EQ(log(exp(-1) / (exp(-1) + exp(1) + exp(10.0))),
+                   theta3[0].val());
+  EXPECT_DOUBLE_EQ(log(exp(1) / (exp(-1) + exp(1) + exp(10.0))),
+                   theta3[1].val());
+  EXPECT_DOUBLE_EQ(log(exp(10) / (exp(-1) + exp(1) + exp(10.0))),
+                   theta3[2].val());
 }
 
+namespace {
 // compute grad using templated definition in math
 // to check custom derivatives
 std::vector<double> log_softmax_grad(
@@ -81,6 +82,7 @@ std::vector<double> log_softmax_grad(
   fx_k.grad(x, grad);
   return grad;
 }
+}  // namespace
 TEST(AgradRevLogSoftmax, Grad) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
@@ -103,7 +105,7 @@ TEST(AgradRevLogSoftmax, Grad) {
     std::vector<double> grad_expected = log_softmax_grad(alpha_dbl, k);
     EXPECT_EQ(grad_expected.size(), grad.size());
     for (size_t i = 0; i < grad_expected.size(); ++i)
-      EXPECT_FLOAT_EQ(grad_expected[i], grad[i]);
+      EXPECT_DOUBLE_EQ(grad_expected[i], grad[i]);
   }
 }
 

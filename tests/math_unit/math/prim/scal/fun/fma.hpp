@@ -5,14 +5,14 @@
 
 TEST(MathFunctions, fma_double) {
   using stan::math::fma;
-  EXPECT_FLOAT_EQ(1.0, fma(3.0, 2.0, -5));
-  EXPECT_FLOAT_EQ(0.0, fma(2.0, 3.0, -6));
-  EXPECT_FLOAT_EQ(46.9, fma(4.5, 2.0, 37.9));
+  EXPECT_DOUBLE_EQ(1.0, fma(3.0, 2.0, -5));
+  EXPECT_DOUBLE_EQ(0.0, fma(2.0, 3.0, -6));
+  EXPECT_DOUBLE_EQ(46.9, fma(4.5, 2.0, 37.9));
 }
 
 TEST(MathFunctions, fma_int) {
   using stan::math::fma;
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ(
       11.0, fma(static_cast<int>(3), static_cast<int>(2), static_cast<int>(5)));
 }
 

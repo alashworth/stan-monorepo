@@ -10,6 +10,8 @@
 #include <vector>
 #include <string>
 
+namespace {
+
 template <typename F, typename T_y0, typename T_theta>
 void sho_value_test(F harm_osc, std::vector<double>& y0, double t0,
                     std::vector<double>& ts, std::vector<double>& theta,
@@ -28,7 +30,7 @@ void sho_value_test(F harm_osc, std::vector<double>& y0, double t0,
   EXPECT_NEAR(0.246407, ode_res_vd[99][1].val(), 1e-5);
 }
 
-void sho_finite_diff_test(double t0) {
+static void sho_finite_diff_test(double t0) {
   using stan::math::var;
   harm_osc_ode_fun harm_osc;
 
@@ -239,11 +241,11 @@ TEST(StanAgradRevOde_integrate_ode_bdf, time_steps_as_param_AD) {
         res[i][j].grad(ts, g);
         for (auto k = 0; k < nt; ++k) {
           if (k != i) {
-            EXPECT_FLOAT_EQ(g[k], 0.0);
+            EXPECT_DOUBLE_EQ(g[k], 0.0);
           } else {
             std::vector<double> y0(res_d.begin(), res_d.begin() + ns);
-            EXPECT_FLOAT_EQ(g[k],
-                            ode(ts[i].val(), y0, theta, x, x_int, msgs)[j]);
+            EXPECT_DOUBLE_EQ(g[k],
+                             ode(ts[i].val(), y0, theta, x, x_int, msgs)[j]);
           }
         }
         stan::math::set_zero_all_adjoints();
@@ -291,7 +293,7 @@ TEST(StanAgradRevOde_integrate_ode_bdf, t0_as_param_AD) {
       for (auto j = 0; j < ns; ++j) {
         res[i][j].grad();
         for (auto k = 0; k < nt; ++k) {
-          EXPECT_FLOAT_EQ(t0v.adj(), 0.0);
+          EXPECT_DOUBLE_EQ(t0v.adj(), 0.0);
         }
         stan::math::set_zero_all_adjoints();
       }
@@ -305,4 +307,5 @@ TEST(StanAgradRevOde_integrate_ode_bdf, t0_as_param_AD) {
   test_ad();
   res = integrate_ode_bdf(ode, y0v, t0v, ts, thetav, x, x_int);
   test_ad();
+}
 }

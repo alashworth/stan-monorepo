@@ -1,6 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
 #include <math/rev/mat/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <vector>
 
 TEST(StoredGradientVari, propagate3) {
@@ -26,7 +27,7 @@ TEST(StoredGradientVari, propagate3) {
   partials[2] = 1000;
 
   var sum = var(new stan::math::stored_gradient_vari(-14.7, 3, xs, partials));
-  EXPECT_FLOAT_EQ(-14.7, sum.val());
+  EXPECT_DOUBLE_EQ(-14.7, sum.val());
 
   std::vector<var> in(3);
   in[0] = var(xs1);
@@ -50,7 +51,7 @@ TEST(StoredGradientVari, propagate0) {
   double* partials = reinterpret_cast<double*>(0);
 
   var sum = var(new stan::math::stored_gradient_vari(-14.7, 0, xs, partials));
-  EXPECT_FLOAT_EQ(-14.7, sum.val());
+  EXPECT_DOUBLE_EQ(-14.7, sum.val());
 
   std::vector<var> dummy(3);
   dummy[0] = 1;
@@ -63,7 +64,7 @@ TEST(StoredGradientVari, propagate0) {
   f.grad(dummy, g);
   EXPECT_EQ(3U, g.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(0, g[i]);
+    EXPECT_DOUBLE_EQ(0, g[i]);
 }
 TEST(AgradRevMatrix, check_varis_on_stack_50) {
   using stan::math::var;

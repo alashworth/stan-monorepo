@@ -46,7 +46,7 @@ TEST(MathPrimMat, vec_double_gp_matern52_cov1_0) {
   cov = stan::math::gp_matern52_cov(x, sigma, l);
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * (1
                  + std::pow(5, 0.5) / l
@@ -76,7 +76,7 @@ TEST(MathPrimMat, vec_eigen_gp_matern52_cov1) {
   EXPECT_NO_THROW(cov = stan::math::gp_matern52_cov(x1, sigma, l));
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * (1
                  + std::pow(5, 0.5) / l
@@ -114,7 +114,7 @@ TEST(MathPrimMat, vec_eigen_eigen_gp_matern52_cov1) {
   EXPECT_NO_THROW(cov = stan::math::gp_matern52_cov(x1, x2, sigma, l));
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * (1
                  + std::pow(5, 0.5) / l
@@ -150,7 +150,7 @@ TEST(MathPrimMat, vec_double_double_gp_matern52_cov1) {
   EXPECT_NO_THROW(cov = stan::math::gp_matern52_cov(x1, x2, sigma, l));
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * (1
                  + std::pow(5, 0.5) / l
@@ -189,7 +189,7 @@ TEST(MathPrimMat, vec_eigen_ard_gp_matern52_cov1) {
   EXPECT_NO_THROW(cov = stan::math::gp_matern52_cov(x1, sigma, l));
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * (1
                  + std::pow(5.0, 0.5)
@@ -242,7 +242,7 @@ TEST(MathPrimMat, vec_eigen_eigen_ard_gp_matern52_cov1) {
   EXPECT_NO_THROW(cov = stan::math::gp_matern52_cov(x1, x2, sigma, l));
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * (1
                  + std::pow(5.0, 0.5)
@@ -273,7 +273,7 @@ TEST(MathPrimMat, rvec_eigen_gp_matern52_cov1) {
   cov = stan::math::gp_matern52_cov(x1, sigma, l);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * (1
                  + std::pow(5, 0.5) / l

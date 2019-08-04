@@ -14,28 +14,28 @@ TEST(AgradFwdFabs, Fvar) {
   y.d_ = 2.0;
 
   fvar<double> a = fabs(x);
-  EXPECT_FLOAT_EQ(fabs(2), a.val_);
-  EXPECT_FLOAT_EQ(1.0, a.d_);
+  EXPECT_DOUBLE_EQ(fabs(2), a.val_);
+  EXPECT_DOUBLE_EQ(1.0, a.d_);
 
   fvar<double> b = fabs(-x);
-  EXPECT_FLOAT_EQ(fabs(-2), b.val_);
-  EXPECT_FLOAT_EQ(1.0, b.d_);
+  EXPECT_DOUBLE_EQ(fabs(-2), b.val_);
+  EXPECT_DOUBLE_EQ(1.0, b.d_);
 
   fvar<double> c = fabs(y);
-  EXPECT_FLOAT_EQ(fabs(-3), c.val_);
-  EXPECT_FLOAT_EQ(-2.0, c.d_);
+  EXPECT_DOUBLE_EQ(fabs(-3), c.val_);
+  EXPECT_DOUBLE_EQ(-2.0, c.d_);
 
   fvar<double> d = fabs(x * 2);
-  EXPECT_FLOAT_EQ(fabs(2 * 2), d.val_);
-  EXPECT_FLOAT_EQ(2 * 1.0, d.d_);
+  EXPECT_DOUBLE_EQ(fabs(2 * 2), d.val_);
+  EXPECT_DOUBLE_EQ(2 * 1.0, d.d_);
 
   fvar<double> e = fabs(y + 4);
-  EXPECT_FLOAT_EQ(fabs(-3.0 + 4), e.val_);
-  EXPECT_FLOAT_EQ(2.0, e.d_);
+  EXPECT_DOUBLE_EQ(fabs(-3.0 + 4), e.val_);
+  EXPECT_DOUBLE_EQ(2.0, e.d_);
 
   fvar<double> f = fabs(x - 2);
-  EXPECT_FLOAT_EQ(fabs(2.0 - 2), f.val_);
-  EXPECT_FLOAT_EQ(0, f.d_);
+  EXPECT_DOUBLE_EQ(fabs(2.0 - 2), f.val_);
+  EXPECT_DOUBLE_EQ(0, f.d_);
 
   fvar<double> w = std::numeric_limits<double>::quiet_NaN();
   fvar<double> h = fabs(w);
@@ -44,8 +44,8 @@ TEST(AgradFwdFabs, Fvar) {
 
   fvar<double> u = 0;
   fvar<double> j = fabs(u);
-  EXPECT_FLOAT_EQ(0.0, j.val_);
-  EXPECT_FLOAT_EQ(0.0, j.d_);
+  EXPECT_DOUBLE_EQ(0.0, j.val_);
+  EXPECT_DOUBLE_EQ(0.0, j.d_);
 }
 
 TEST(AgradFwdFabs, FvarFvarDouble) {
@@ -58,20 +58,20 @@ TEST(AgradFwdFabs, FvarFvarDouble) {
 
   fvar<fvar<double> > a = fabs(x);
 
-  EXPECT_FLOAT_EQ(fabs(1.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(2.0, a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(fabs(1.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(2.0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   a = fabs(y);
-  EXPECT_FLOAT_EQ(fabs(1.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(0, a.val_.d_);
-  EXPECT_FLOAT_EQ(2.0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(fabs(1.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(2.0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 }
 
 struct fabs_fun {

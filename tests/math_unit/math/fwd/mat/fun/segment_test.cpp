@@ -31,7 +31,7 @@ TEST(AgradFwdMatrixSegment, SegmentVector4_fd) {
   stan::math::vector_fd v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1].val_, v23[n].val_);
+    EXPECT_DOUBLE_EQ(v[n + 1].val_, v23[n].val_);
 }
 
 TEST(AgradFwdMatrixSegment, SegmentRowVector1_fd) {
@@ -60,7 +60,7 @@ TEST(AgradFwdMatrixSegment, SegmentRowVector4_fd) {
   stan::math::row_vector_fd v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1].val_, v23[n].val_);
+    EXPECT_DOUBLE_EQ(v[n + 1].val_, v23[n].val_);
 }
 
 TEST(AgradFwdMatrixSegment, SegmentStdVector1_fd) {
@@ -96,7 +96,7 @@ TEST(AgradFwdMatrixSegment, SegmentStdVector4_fd) {
   std::vector<fvar<double> > v23 = segment(v, 2, 2);
   EXPECT_EQ(2U, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1].val_, v23[n].val_);
+    EXPECT_DOUBLE_EQ(v[n + 1].val_, v23[n].val_);
 }
 
 TEST(AgradFwdMatrixSegment, SegmentVector1_ffd) {
@@ -125,7 +125,7 @@ TEST(AgradFwdMatrixSegment, SegmentVector4_ffd) {
   stan::math::vector_ffd v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1].val_.val_, v23[n].val_.val_);
+    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_, v23[n].val_.val_);
 }
 
 TEST(AgradFwdMatrixSegment, SegmentRowVector1_ffd) {
@@ -154,7 +154,7 @@ TEST(AgradFwdMatrixSegment, SegmentRowVector4_ffd) {
   stan::math::row_vector_ffd v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1].val_.val_, v23[n].val_.val_);
+    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_, v23[n].val_.val_);
 }
 
 TEST(AgradFwdMatrixSegment, SegmentStdVector1_ffd) {
@@ -190,5 +190,5 @@ TEST(AgradFwdMatrixSegment, SegmentStdVector4_ffd) {
   std::vector<fvar<fvar<double> > > v23 = segment(v, 2, 2);
   EXPECT_EQ(2U, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1].val_.val_, v23[n].val_.val_);
+    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_, v23[n].val_.val_);
 }

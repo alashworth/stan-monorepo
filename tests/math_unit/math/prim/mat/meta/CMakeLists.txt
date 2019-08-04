@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_mat_unit_tests PRIVATE
         contains_std_vector_test.cpp
         contains_vector_test.cpp
         get_test.cpp

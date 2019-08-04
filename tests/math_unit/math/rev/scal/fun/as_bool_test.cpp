@@ -1,6 +1,5 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
 #include <limits>
 
 TEST(AgradRev, asBool) {

@@ -7,9 +7,9 @@ TEST(mathMatrix, getLp_0) {
 
   double lp = 12.5;
   accumulator<double> lp_accum;
-  EXPECT_FLOAT_EQ(12.5, get_lp(lp, lp_accum));
+  EXPECT_DOUBLE_EQ(12.5, get_lp(lp, lp_accum));
 
   lp_accum.add(2);
   lp_accum.add(3);
-  EXPECT_FLOAT_EQ(17.5, get_lp(lp, lp_accum));
+  EXPECT_DOUBLE_EQ(17.5, get_lp(lp, lp_accum));
 }

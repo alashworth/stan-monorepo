@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_rev_mat_unit_tests PRIVATE
         expect_rev_scalar_value.hpp
         expect_rev_matrix_value.hpp
         expect_rev_values.hpp

@@ -10,6 +10,7 @@ using Eigen::Matrix;
 using stan::math::var;
 using std::vector;
 
+namespace {
 template <int R, int C>
 void test_log_sum_exp_matrix(const Matrix<double, R, C>& m) {
   using std::exp;
@@ -36,10 +37,11 @@ void test_log_sum_exp_matrix(const Matrix<double, R, C>& m) {
   vector<double> g(m.size());
   f.grad(x, g);
 
-  EXPECT_FLOAT_EQ(val_expected, val);
+  EXPECT_DOUBLE_EQ(val_expected, val);
   EXPECT_EQ(g_expected.size(), g.size());
   for (size_t i = 0; i < g.size(); ++i)
-    EXPECT_FLOAT_EQ(g_expected[i], g[i]);
+    EXPECT_DOUBLE_EQ(g_expected[i], g[i]);
+}
 }
 
 TEST(AgradRev, logSumExpMatrix) {

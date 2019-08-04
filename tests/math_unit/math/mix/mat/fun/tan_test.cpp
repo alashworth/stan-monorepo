@@ -9,6 +9,7 @@
 #include <stan/math/prim/scal/fun/constants.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized tan (defined in the
  * testing framework).
@@ -95,8 +96,9 @@ struct tan_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, tan_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, tan_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, tan_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, tan_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tan, prim_scalar_unary_test, tan_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tan, rev_scalar_unary_test, tan_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tan, fwd_scalar_unary_test, tan_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tan, mix_scalar_unary_test, tan_test);

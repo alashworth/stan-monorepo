@@ -48,8 +48,8 @@ TEST(AgradFwdMatrixTraceGenQuadForm, mat_fd) {
 
   // fvar<double> - fvar<double> - fvar<double>
   res = trace_gen_quad_form(cd, ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val_);
-  EXPECT_FLOAT_EQ(49736, res.d_);
+  EXPECT_DOUBLE_EQ(26758, res.val_);
+  EXPECT_DOUBLE_EQ(49736, res.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenQuadForm, mat_ffd) {
@@ -97,6 +97,6 @@ TEST(AgradFwdMatrixTraceGenQuadForm, mat_ffd) {
 
   // fvar<fvar<double> > - fvar<fvar<double> > - fvar<fvar<double> >
   res = trace_gen_quad_form(cd, ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val_.val_);
-  EXPECT_FLOAT_EQ(49736, res.d_.val_);
+  EXPECT_DOUBLE_EQ(26758, res.val_.val_);
+  EXPECT_DOUBLE_EQ(49736, res.d_.val_);
 }

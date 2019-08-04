@@ -87,16 +87,16 @@ TEST(AgradFiniteDiff, hessian) {
   stan::math::finite_diff_hessian(f, f_vec, f_fin_diff_eval, fin_diff_grad_f,
                                   fin_diff_H_f);
 
-  EXPECT_FLOAT_EQ(f_eval, f_fin_diff_eval);
+  EXPECT_DOUBLE_EQ(f_eval, f_fin_diff_eval);
 
   stan::math::hessian(norm, norm_vec, norm_eval, grad_norm, H_norm);
   stan::math::finite_diff_hessian(norm, norm_vec, norm_fin_diff_eval,
                                   fin_diff_grad_norm, fin_diff_H_norm);
 
-  EXPECT_FLOAT_EQ(norm_eval, norm_fin_diff_eval);
+  EXPECT_DOUBLE_EQ(norm_eval, norm_fin_diff_eval);
   Matrix<double, 3, 3> an_H_norm = norm_hess(norm_vec);
 
-  EXPECT_FLOAT_EQ(f_eval, f_fin_diff_eval);
+  EXPECT_DOUBLE_EQ(f_eval, f_fin_diff_eval);
 
   for (int i = 0; i < 3; ++i) {
     for (int j = 0; j < 3; ++j) {
@@ -150,7 +150,7 @@ TEST(AgradFiniteDiff, grad_hessian) {
   std::vector<Matrix<double, Dynamic, Dynamic> > an_grad_H_f
       = third_order_mixed_grad_hess(f_vec);
 
-  EXPECT_FLOAT_EQ(f_eval, f_fin_diff_eval);
+  EXPECT_DOUBLE_EQ(f_eval, f_fin_diff_eval);
 
   double norm_eval;
   Matrix<double, Dynamic, Dynamic> H_norm;
@@ -166,7 +166,7 @@ TEST(AgradFiniteDiff, grad_hessian) {
   std::vector<Matrix<double, Dynamic, Dynamic> > an_grad_H_norm
       = norm_grad_hess(norm_vec);
 
-  EXPECT_FLOAT_EQ(norm_eval, norm_fin_diff_eval);
+  EXPECT_DOUBLE_EQ(norm_eval, norm_fin_diff_eval);
 
   for (size_t i = 0; i < 3; ++i) {
     for (int j = 0; j < 3; ++j) {
@@ -180,8 +180,8 @@ TEST(AgradFiniteDiff, grad_hessian) {
             << " i: " << i << " j: " << j << " k: " << k;
         EXPECT_NEAR(grad_H_norm[i](j, k), fin_diff_grad_H_norm[i](j, k), 1e-10)
             << " i: " << i << " j: " << j << " k: " << k;
-        EXPECT_FLOAT_EQ(H_norm(j, k), fin_diff_H_norm(j, k));
-        EXPECT_FLOAT_EQ(H_f(j, k), fin_diff_H_f(j, k));
+        EXPECT_DOUBLE_EQ(H_norm(j, k), fin_diff_H_norm(j, k));
+        EXPECT_DOUBLE_EQ(H_f(j, k), fin_diff_H_f(j, k));
       }
     }
   }

@@ -12,20 +12,20 @@ TEST(AgradFwdAcos, Fvar) {
   fvar<double> x(0.5, 1.0);
 
   fvar<double> a = acos(x);
-  EXPECT_FLOAT_EQ(acos(0.5), a.val_);
-  EXPECT_FLOAT_EQ(1 / -sqrt(1 - 0.5 * 0.5), a.d_);
+  EXPECT_DOUBLE_EQ(acos(0.5), a.val_);
+  EXPECT_DOUBLE_EQ(1 / -sqrt(1 - 0.5 * 0.5), a.d_);
 
   fvar<double> b = 2 * acos(x) + 4;
-  EXPECT_FLOAT_EQ(2 * acos(0.5) + 4, b.val_);
-  EXPECT_FLOAT_EQ(2 / -sqrt(1 - 0.5 * 0.5), b.d_);
+  EXPECT_DOUBLE_EQ(2 * acos(0.5) + 4, b.val_);
+  EXPECT_DOUBLE_EQ(2 / -sqrt(1 - 0.5 * 0.5), b.d_);
 
   fvar<double> c = -acos(x) + 5;
-  EXPECT_FLOAT_EQ(-acos(0.5) + 5, c.val_);
-  EXPECT_FLOAT_EQ(-1 / -sqrt(1 - 0.5 * 0.5), c.d_);
+  EXPECT_DOUBLE_EQ(-acos(0.5) + 5, c.val_);
+  EXPECT_DOUBLE_EQ(-1 / -sqrt(1 - 0.5 * 0.5), c.d_);
 
   fvar<double> d = -3 * acos(x) + 5 * x;
-  EXPECT_FLOAT_EQ(-3 * acos(0.5) + 5 * 0.5, d.val_);
-  EXPECT_FLOAT_EQ(-3 / -sqrt(1 - 0.5 * 0.5) + 5, d.d_);
+  EXPECT_DOUBLE_EQ(-3 * acos(0.5) + 5 * 0.5, d.val_);
+  EXPECT_DOUBLE_EQ(-3 / -sqrt(1 - 0.5 * 0.5) + 5, d.d_);
 
   fvar<double> y(3.4);
   y.d_ = 1.0;
@@ -36,8 +36,8 @@ TEST(AgradFwdAcos, Fvar) {
   fvar<double> z(1.0);
   z.d_ = 1.0;
   fvar<double> f = acos(z);
-  EXPECT_FLOAT_EQ(acos(1.0), f.val_);
-  EXPECT_FLOAT_EQ(NEGATIVE_INFTY, f.d_);
+  EXPECT_DOUBLE_EQ(acos(1.0), f.val_);
+  EXPECT_DOUBLE_EQ(NEGATIVE_INFTY, f.d_);
 
   fvar<double> z2(1.0 + stan::math::EPSILON, 1.0);
   fvar<double> f2 = acos(z2);
@@ -60,20 +60,20 @@ TEST(AgradFwdAcos, FvarFvarDouble) {
 
   fvar<fvar<double> > a = acos(x);
 
-  EXPECT_FLOAT_EQ(acos(0.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(-2.0 / sqrt(1.0 - 0.5 * 0.5), a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(acos(0.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(-2.0 / sqrt(1.0 - 0.5 * 0.5), a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 2.0;
 
   a = acos(y);
-  EXPECT_FLOAT_EQ(acos(0.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(-2.0 / sqrt(1.0 - 0.5 * 0.5), a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(acos(0.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(-2.0 / sqrt(1.0 - 0.5 * 0.5), a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 }
 
 struct acos_fun {

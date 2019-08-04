@@ -13,7 +13,7 @@ TEST(MathFunctions, sign_1) {
   EXPECT_EQ(-1, stan::math::sign(x));
 }
 
-TEST(MathFunctions, check_varis_on_stack) {
+TEST(MathFunctions, check_varis_on_stack_207) {
   stan::math::var x = 0;
   test::check_varis_on_stack(stan::math::sign(x));
 }

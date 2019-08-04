@@ -12,8 +12,8 @@ TEST(AgradRevMatrix, col_v) {
   y << 1, 2, 3, 4, 5, 6;
   vector_v z = col(y, 1);
   EXPECT_EQ(2, z.size());
-  EXPECT_FLOAT_EQ(1.0, z[0].val());
-  EXPECT_FLOAT_EQ(4.0, z[1].val());
+  EXPECT_DOUBLE_EQ(1.0, z[0].val());
+  EXPECT_DOUBLE_EQ(4.0, z[1].val());
 
   vector_v w = col(y, 2);
   EXPECT_EQ(2, w.size());
@@ -38,7 +38,7 @@ TEST(AgradRevMatrix, col_v_excHigh) {
   EXPECT_THROW(col(y, 0), std::out_of_range);
   EXPECT_THROW(col(y, 5), std::out_of_range);
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, check_varis_on_stack_100) {
   stan::math::matrix_v y(2, 3);
   y << 1, 2, 3, 4, 5, 6;
   test::check_varis_on_stack(stan::math::col(y, 2));

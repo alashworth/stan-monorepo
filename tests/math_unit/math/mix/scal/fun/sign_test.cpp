@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 
 TEST(AgradFwdSign, Fvar_1) {
   using stan::math::fvar;
@@ -26,7 +26,7 @@ TEST(AgradFwdSign, FvarVar_2ndDeriv) {
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
 }
 
 TEST(AgradFwdSign, FvarFvarVar_1stDeriv) {
@@ -37,30 +37,30 @@ TEST(AgradFwdSign, FvarFvarVar_1stDeriv) {
   fvar<fvar<var> > x(1.5, 1.3);
   fvar<fvar<var> > a = sign(x);
 
-  EXPECT_FLOAT_EQ(sign(1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(sign(1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   fvar<fvar<var> > b = sign(y);
-  EXPECT_FLOAT_EQ(sign(1.5), b.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, b.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
+  EXPECT_DOUBLE_EQ(sign(1.5), b.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, b.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(0, r[0]);
+  EXPECT_DOUBLE_EQ(0, r[0]);
 }
 TEST(AgradFwdSign, FvarFvarVar_2ndDeriv) {
   using stan::math::fvar;
@@ -76,7 +76,7 @@ TEST(AgradFwdSign, FvarFvarVar_2ndDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.5;
@@ -87,7 +87,7 @@ TEST(AgradFwdSign, FvarFvarVar_2ndDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(0, r[0]);
+  EXPECT_DOUBLE_EQ(0, r[0]);
 }
 TEST(AgradFwdSign, FvarFvarVar_3rdDeriv) {
   using stan::math::fvar;
@@ -104,5 +104,5 @@ TEST(AgradFwdSign, FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
 }

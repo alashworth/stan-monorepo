@@ -6,20 +6,22 @@
 TEST(AgradRev, trigamma) {
   AVAR a = 0.5;
   AVAR f = stan::math::trigamma(a);
-  EXPECT_FLOAT_EQ(4.9348022005446793094, f.val());
+  EXPECT_DOUBLE_EQ(4.9348022005446793094, f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_FLOAT_EQ(-16.8288, grad_f[0]);
+  EXPECT_DOUBLE_EQ(-16.8288, grad_f[0]);
 }
 
+namespace {
 struct trigamma_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return stan::math::trigamma(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, trigamma_NaN) {
   trigamma_fun trigamma_;

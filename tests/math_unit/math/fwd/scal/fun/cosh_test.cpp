@@ -10,18 +10,18 @@ TEST(AgradFwdCosh, Fvar) {
   fvar<double> x(0.5, 1.0);
 
   fvar<double> a = cosh(x);
-  EXPECT_FLOAT_EQ(cosh(0.5), a.val_);
-  EXPECT_FLOAT_EQ(sinh(0.5), a.d_);
+  EXPECT_DOUBLE_EQ(cosh(0.5), a.val_);
+  EXPECT_DOUBLE_EQ(sinh(0.5), a.d_);
 
   fvar<double> y(-1.2, 1.0);
 
   fvar<double> b = cosh(y);
-  EXPECT_FLOAT_EQ(cosh(-1.2), b.val_);
-  EXPECT_FLOAT_EQ(sinh(-1.2), b.d_);
+  EXPECT_DOUBLE_EQ(cosh(-1.2), b.val_);
+  EXPECT_DOUBLE_EQ(sinh(-1.2), b.d_);
 
   fvar<double> c = cosh(-x);
-  EXPECT_FLOAT_EQ(cosh(-0.5), c.val_);
-  EXPECT_FLOAT_EQ(-sinh(-0.5), c.d_);
+  EXPECT_DOUBLE_EQ(cosh(-0.5), c.val_);
+  EXPECT_DOUBLE_EQ(-sinh(-0.5), c.d_);
 }
 
 TEST(AgradFwdCosh, FvarFvarDouble) {
@@ -35,20 +35,20 @@ TEST(AgradFwdCosh, FvarFvarDouble) {
 
   fvar<fvar<double> > a = cosh(x);
 
-  EXPECT_FLOAT_EQ(cosh(1.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(2.0 * sinh(1.5), a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(cosh(1.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(2.0 * sinh(1.5), a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   a = cosh(y);
-  EXPECT_FLOAT_EQ(cosh(1.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(0, a.val_.d_);
-  EXPECT_FLOAT_EQ(2.0 * sinh(1.5), a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(cosh(1.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(2.0 * sinh(1.5), a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 }
 
 struct cosh_fun {

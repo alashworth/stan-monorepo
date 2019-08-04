@@ -10,15 +10,15 @@ TEST(AgradFwdInvSqrt, Fvar) {
   x.d_ = 1.0;  // Derivatives w.r.t. x
   fvar<double> a = inv_sqrt(x);
 
-  EXPECT_FLOAT_EQ(inv_sqrt(0.5), a.val_);
-  EXPECT_FLOAT_EQ(-0.5 / (0.5 * std::sqrt(0.5)), a.d_);
+  EXPECT_DOUBLE_EQ(inv_sqrt(0.5), a.val_);
+  EXPECT_DOUBLE_EQ(-0.5 / (0.5 * std::sqrt(0.5)), a.d_);
 
   fvar<double> y(0.0);
   y.d_ = 1.0;
   fvar<double> g = inv_sqrt(y);
 
-  EXPECT_FLOAT_EQ(stan::math::positive_infinity(), g.val_);
-  EXPECT_FLOAT_EQ(stan::math::negative_infinity(), g.d_);
+  EXPECT_DOUBLE_EQ(stan::math::positive_infinity(), g.val_);
+  EXPECT_DOUBLE_EQ(stan::math::negative_infinity(), g.d_);
 
   fvar<double> z(-1.0);
   z.d_ = 2.0;
@@ -39,10 +39,10 @@ TEST(AgradFwdInvSqrt, FvarFvarDouble) {
 
   fvar<fvar<double> > a = inv_sqrt(x);
 
-  EXPECT_FLOAT_EQ(inv_sqrt(0.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(-0.5 * inv_sqrt(0.5) / (0.5), a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(inv_sqrt(0.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(-0.5 * inv_sqrt(0.5) / (0.5), a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 }
 
 struct inv_sqrt_fun {

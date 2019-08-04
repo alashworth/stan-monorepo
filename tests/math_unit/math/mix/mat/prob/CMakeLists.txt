@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_mix_mat_unit_tests PRIVATE
         multi_student_t_test.cpp
         multinomial_test.cpp
         lkj_corr_test.cpp

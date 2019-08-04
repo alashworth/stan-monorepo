@@ -16,9 +16,9 @@ TEST(MathMatrix, getAssignRowVar) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_FLOAT_EQ(10.0, m(0, 0).val());
-  EXPECT_FLOAT_EQ(100.0, m(0, 1).val());
-  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val());
+  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val());
+  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val());
+  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val());
 }
 
 TEST(AgradRevMatrix, assign) {
@@ -29,21 +29,21 @@ TEST(AgradRevMatrix, assign) {
 
   AVAR x;
   assign(x, 2.0);
-  EXPECT_FLOAT_EQ(2.0, x.val());
+  EXPECT_DOUBLE_EQ(2.0, x.val());
 
   assign(x, 2);
-  EXPECT_FLOAT_EQ(2.0, x.val());
+  EXPECT_DOUBLE_EQ(2.0, x.val());
 
   AVAR y(3.0);
   assign(x, y);
-  EXPECT_FLOAT_EQ(3.0, x.val());
+  EXPECT_DOUBLE_EQ(3.0, x.val());
 
   double xd;
   assign(xd, 2.0);
-  EXPECT_FLOAT_EQ(2.0, xd);
+  EXPECT_DOUBLE_EQ(2.0, xd);
 
   assign(xd, 2);
-  EXPECT_FLOAT_EQ(2.0, xd);
+  EXPECT_DOUBLE_EQ(2.0, xd);
 
   int iii;
   assign(iii, 2);
@@ -59,23 +59,23 @@ TEST(AgradRevMatrix, assign) {
 
   AVEC y_var(2);
   assign(y_var, y_dbl);
-  EXPECT_FLOAT_EQ(2.0, y_var[0].val());
-  EXPECT_FLOAT_EQ(3.0, y_var[1].val());
+  EXPECT_DOUBLE_EQ(2.0, y_var[0].val());
+  EXPECT_DOUBLE_EQ(3.0, y_var[1].val());
 
   Matrix<double, Dynamic, 1> v_dbl(6);
   v_dbl << 1, 2, 3, 4, 5, 6;
   Matrix<AVAR, Dynamic, 1> v_var(6);
   assign(v_var, v_dbl);
-  EXPECT_FLOAT_EQ(1, v_var(0).val());
-  EXPECT_FLOAT_EQ(6, v_var(5).val());
+  EXPECT_DOUBLE_EQ(1, v_var(0).val());
+  EXPECT_DOUBLE_EQ(6, v_var(5).val());
 
   Matrix<double, 1, Dynamic> rv_dbl(3);
   rv_dbl << 2, 4, 6;
   Matrix<AVAR, 1, Dynamic> rv_var(3);
   assign(rv_var, rv_dbl);
-  EXPECT_FLOAT_EQ(2, rv_var(0).val());
-  EXPECT_FLOAT_EQ(4, rv_var(1).val());
-  EXPECT_FLOAT_EQ(6, rv_var(2).val());
+  EXPECT_DOUBLE_EQ(2, rv_var(0).val());
+  EXPECT_DOUBLE_EQ(4, rv_var(1).val());
+  EXPECT_DOUBLE_EQ(6, rv_var(2).val());
 
   Matrix<double, Dynamic, Dynamic> m_dbl(2, 3);
   m_dbl << 2, 4, 6, 100, 200, 300;
@@ -83,9 +83,9 @@ TEST(AgradRevMatrix, assign) {
   assign(m_var, m_dbl);
   EXPECT_EQ(2, m_var.rows());
   EXPECT_EQ(3, m_var.cols());
-  EXPECT_FLOAT_EQ(2, m_var(0, 0).val());
-  EXPECT_FLOAT_EQ(100, m_var(1, 0).val());
-  EXPECT_FLOAT_EQ(300, m_var(1, 2).val());
+  EXPECT_DOUBLE_EQ(2, m_var(0, 0).val());
+  EXPECT_DOUBLE_EQ(100, m_var(1, 0).val());
+  EXPECT_DOUBLE_EQ(300, m_var(1, 2).val());
 }
 TEST(AgradRevMatrix, assign_error) {
   using Eigen::Dynamic;
@@ -122,5 +122,5 @@ TEST(MathAssign, VarDouble) {
   var x;
   double y = 10.1;
   assign(x, y);
-  EXPECT_FLOAT_EQ(10.1, x.val());
+  EXPECT_DOUBLE_EQ(10.1, x.val());
 }

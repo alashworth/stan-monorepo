@@ -23,10 +23,10 @@ TEST(AgradRevMatrix, determinant) {
   std::vector<double> g2;
   det2.grad(x2, g2);
 
-  EXPECT_FLOAT_EQ(det1.val(), det2.val());
+  EXPECT_DOUBLE_EQ(det1.val(), det2.val());
   EXPECT_EQ(g1.size(), g2.size());
   for (size_t i = 0; i < g1.size(); ++i)
-    EXPECT_FLOAT_EQ(g1[i], g2[i]);
+    EXPECT_DOUBLE_EQ(g1[i], g2[i]);
 }
 TEST(AgradRevMatrix, deteriminant_exception) {
   using stan::math::determinant;
@@ -50,14 +50,14 @@ TEST(AgradRevMatrix, determinant_grad) {
   AVAR f = determinant(X);
 
   // det = ad - bc
-  EXPECT_FLOAT_EQ(-1.0, f.val());
+  EXPECT_DOUBLE_EQ(-1.0, f.val());
 
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(7.0, g[0]);
-  EXPECT_FLOAT_EQ(-5.0, g[1]);
-  EXPECT_FLOAT_EQ(-3.0, g[2]);
-  EXPECT_FLOAT_EQ(2.0, g[3]);
+  EXPECT_DOUBLE_EQ(7.0, g[0]);
+  EXPECT_DOUBLE_EQ(-5.0, g[1]);
+  EXPECT_DOUBLE_EQ(-3.0, g[2]);
+  EXPECT_DOUBLE_EQ(2.0, g[3]);
 }
 TEST(AgradRevMatrix, determinant3by3) {
   // just test it can handle it
@@ -72,7 +72,7 @@ TEST(AgradRevMatrix, determinant3by3) {
   // supresses set but not used warning
   h = h;
 }
-TEST(AgradRevMatrix, check_varis_on_stack) {
+TEST(AgradRevMatrix, det_check_varis_on_stack) {
   stan::math::matrix_v X(2, 2);
   X << 2, 3, 5, 7;
   test::check_varis_on_stack(stan::math::determinant(X));

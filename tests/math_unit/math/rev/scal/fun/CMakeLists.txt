@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_rev_scal_unit_tests PRIVATE
         cbrt_test.cpp
         lgamma_test.cpp
         sin_test.cpp
@@ -45,8 +45,6 @@ target_sources(stan_math_unit_tests PRIVATE
         log_falling_factorial_test.cpp
         value_of_test.cpp
         fabs_test.cpp
-        util.hpp
-        util.cpp
         acos_test.cpp
         fdim_test.cpp
         Phi_test.cpp
@@ -84,7 +82,6 @@ target_sources(stan_math_unit_tests PRIVATE
         log2_test.cpp
         log1p_test.cpp
         lbeta_test.cpp
-        calculate_chain_test.cpp
         log10_test.cpp
         log1m_inv_logit_test.cpp
         square_test.cpp

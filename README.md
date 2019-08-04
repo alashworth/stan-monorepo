@@ -10,7 +10,7 @@ It is built on top of the Stan Math library, which provides a full first- and hi
 
 The minimum prerequisites to build Stan from source are:
 * CMake 3.15
-* C++14-compatible compiler (tested: GCC, Clang)
+* C++11-compatible compiler + auto(decl) + generic lambdas (GCC >4.9.3)
 
 Required dependencies:
 * Boost headers >1.69
@@ -25,15 +25,15 @@ Optional dependencies:
 
 ### Quick Start
 
-The following assumes you have a valid Conan (https://conan.io) package manager installation and are in the Stan source directory. The Conan script in the base directory will install all required and optional dependencies for you that are vendor agnostic (i.e., everything except an OpenCL or MPI implementation, and Boost MPI). Users who need such functionality will need to understand CMake and set the appropriate library search paths by hand.
+The following assumes you have a valid Conan (https://conan.io) package manager installation and are in the Stan source directory. The Conan script in the base directory will install all required and optional dependencies for you that are vendor agnostic (i.e., everything except an OpenCL or MPI implementation, and Boost MPI). Users who need such functionality will need to understand CMake and make sure such libraries can be found in $PATH during configuration.
 ```
 # There is no official Sundials Conan package, so please add the following PPA
 conan remote add alashworth_stan https://api.bintray.com/conan/alashworth/stan
 mkdir build && cd build
 conan install .. -s build_type=Release --build=missing
-cmake .. -G"Unix Makefiles" && make -j8
-# Optionally run unit tests
-ctest -j8
+cmake .. -G"Unix Makefiles" && make
+# Run unit tests.
+ctest --output-on-failure
 ```
  
 #### Windows-specific notes

@@ -31,6 +31,8 @@ void sho_value_test(F harm_osc, std::vector<double>& y0, double t0,
   EXPECT_NEAR(0.246407, ode_res_vd[99][1], 1e-5);
 }
 
+namespace {
+
 void sho_test(double t0) {
   harm_osc_ode_fun harm_osc;
 
@@ -70,6 +72,8 @@ void sho_data_test(double t0) {
 
   sho_value_test(harm_osc, y0, t0, ts, theta, x, x_int);
 }
+
+}  // namespace
 
 TEST(StanMathOde_integrate_ode_rk45, harmonic_oscillator) {
   sho_test(0.0);

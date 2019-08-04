@@ -24,9 +24,9 @@ TEST(ProbDistributionsBernoulliLogitGLM, glm_matches_bernoulli_logit_doubles) {
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta = x * beta + alphavec;
 
-  EXPECT_FLOAT_EQ((stan::math::bernoulli_logit_lpmf(y, theta)),
-                  (stan::math::bernoulli_logit_glm_lpmf(y, x, alpha, beta)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::bernoulli_logit_lpmf(y, theta)),
+                   (stan::math::bernoulli_logit_glm_lpmf(y, x, alpha, beta)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::bernoulli_logit_lpmf<true>(y, theta)),
       (stan::math::bernoulli_logit_glm_lpmf<true>(y, x, alpha, beta)));
 }
@@ -50,9 +50,9 @@ TEST(ProbDistributionsBernoulliLogitGLM,
     Matrix<double, Dynamic, 1> theta(3, 1);
     theta = x * beta + alphavec;
 
-    EXPECT_FLOAT_EQ((stan::math::bernoulli_logit_lpmf(y, theta)),
-                    (stan::math::bernoulli_logit_glm_lpmf(y, x, alpha, beta)));
-    EXPECT_FLOAT_EQ(
+    EXPECT_DOUBLE_EQ((stan::math::bernoulli_logit_lpmf(y, theta)),
+                     (stan::math::bernoulli_logit_glm_lpmf(y, x, alpha, beta)));
+    EXPECT_DOUBLE_EQ(
         (stan::math::bernoulli_logit_lpmf<true>(y, theta)),
         (stan::math::bernoulli_logit_glm_lpmf<true>(y, x, alpha, beta)));
   }
@@ -99,12 +99,12 @@ TEST(ProbDistributionsBernoulliLogitGLM, glm_matches_bernoulli_logit_vars) {
   var lp2 = stan::math::bernoulli_logit_glm_lpmf(y2, x2, alpha2, beta2);
   lp2.grad();
 
-  EXPECT_FLOAT_EQ(lp_val, lp2.val());
-  EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
+  EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+  EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
   for (size_t i = 0; i < 2; i++) {
-    EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
+    EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
+      EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
     }
   }
 }
@@ -155,12 +155,12 @@ TEST(ProbDistributionsBernoulliLogitGLM,
     var lp2 = stan::math::bernoulli_logit_glm_lpmf(y, x2, alpha2, beta2);
     lp2.grad();
 
-    EXPECT_FLOAT_EQ(lp_val, lp2.val());
-    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
+    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
       for (size_t j = 0; j < 3; j++) {
-        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
   }
@@ -203,11 +203,11 @@ TEST(ProbDistributionsBernoulliLogitGLM,
     var alpha2 = alphareal[0];
     var lp2 = stan::math::bernoulli_logit_glm_lpmf(y, x2, alpha2, beta2);
     lp2.grad();
-    EXPECT_FLOAT_EQ(lp_val, lp2.val());
-    EXPECT_FLOAT_EQ(beta_adj, beta2.adj());
-    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
+    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+    EXPECT_DOUBLE_EQ(beta_adj, beta2.adj());
+    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(x_adj(j, 0), x2(j, 0).adj());
+      EXPECT_DOUBLE_EQ(x_adj(j, 0), x2(j, 0).adj());
     }
   }
 }
@@ -260,15 +260,15 @@ TEST(ProbDistributionsBernoulliLogitGLM,
     var lp2 = stan::math::bernoulli_logit_glm_lpmf(y, x2, alpha2, beta2);
     lp2.grad();
 
-    EXPECT_FLOAT_EQ(lp_val, lp2.val());
+    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
       for (size_t j = 0; j < 3; j++) {
-        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(alpha_adj[j], alpha2[j].adj());
+      EXPECT_DOUBLE_EQ(alpha_adj[j], alpha2[j].adj());
     }
   }
 }
@@ -313,7 +313,7 @@ TEST(ProbDistributionsBernoulliLogitGLM,
   value2 += stan::math::bernoulli_logit_glm_lpmf(vi, mv, evv, evv).val();
   value2 += stan::math::bernoulli_logit_glm_lpmf(vi, mv, rvv, rvv).val();
 
-  EXPECT_FLOAT_EQ(value, value2);
+  EXPECT_DOUBLE_EQ(value, value2);
 }
 
 //  We check that the right errors are thrown.

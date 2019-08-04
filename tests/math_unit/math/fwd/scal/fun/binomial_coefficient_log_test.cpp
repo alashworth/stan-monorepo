@@ -12,8 +12,8 @@ TEST(AgradFwdBinomialCoefficientLog, Fvar) {
   fvar<double> y(1002.0, 2.0);
 
   fvar<double> a = stan::math::binomial_coefficient_log(x, y);
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_);
-  EXPECT_FLOAT_EQ(0.69289774, a.d_);
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_);
+  EXPECT_DOUBLE_EQ(0.69289774, a.d_);
 }
 
 TEST(AgradFwdBinomialCoefficientLog, FvarFvarDouble) {
@@ -31,10 +31,10 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarDouble) {
 
   fvar<fvar<double> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_);
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_);
   EXPECT_NEAR(0, a.d_.val_, 1e-8);
-  EXPECT_FLOAT_EQ(0.0009975062, a.d_.d_);
+  EXPECT_DOUBLE_EQ(0.0009975062, a.d_.d_);
 }
 
 struct binomial_coefficient_log_fun {

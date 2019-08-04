@@ -8,17 +8,17 @@ TEST(AgradRev, falling_factorial_var_int) {
   int a(2);
   AVAR b(4.0);
   AVAR f = stan::math::falling_factorial(b, a);
-  EXPECT_FLOAT_EQ(12, f.val());
+  EXPECT_DOUBLE_EQ(12, f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
-  EXPECT_FLOAT_EQ((digamma(5) - digamma(3)) * 12.0, g[1]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ((digamma(5) - digamma(3)) * 12.0, g[1]);
 
   double eps = 1e-6;
-  EXPECT_FLOAT_EQ((stan::math::falling_factorial(4.0 + eps, 2)
-                   - stan::math::falling_factorial(4.0 - eps, 2))
+  EXPECT_DOUBLE_EQ((stan::math::falling_factorial(4.0 + eps, 2)
+                    - stan::math::falling_factorial(4.0 - eps, 2))
                       / (2 * eps),
                   g[1]);
 }
@@ -30,6 +30,7 @@ TEST(AgradRev, falling_factorial_exceptions) {
   EXPECT_NO_THROW(stan::math::falling_factorial(b, 1));
 }
 
+namespace {
 struct falling_factorial_fun {
   template <typename T>
   inline typename stan::return_type<T>::type operator()(const T& arg1,
@@ -37,6 +38,7 @@ struct falling_factorial_fun {
     return falling_factorial(arg1, arg2);
   }
 };
+}  // namespace
 
 TEST(AgradRev, check_varis_on_stack_17) {
   int a(2);

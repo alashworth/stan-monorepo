@@ -31,7 +31,7 @@ TEST(AgradFwdMatrixHead, HeadVector4_fd) {
   stan::math::vector_fd v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_, v01[n].val_);
+    EXPECT_DOUBLE_EQ(v[n].val_, v01[n].val_);
   }
 }
 
@@ -61,7 +61,7 @@ TEST(AgradFwdMatrixHead, HeadRowVector4_fd) {
   stan::math::row_vector_fd v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_, v01[n].val_);
+    EXPECT_DOUBLE_EQ(v[n].val_, v01[n].val_);
   }
 }
 
@@ -98,7 +98,7 @@ TEST(AgradFwdMatrixHead, HeadStdVector4_fd) {
   std::vector<fvar<double> > v01 = head(v, 2);
   EXPECT_EQ(2U, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_, v01[n].val_);
+    EXPECT_DOUBLE_EQ(v[n].val_, v01[n].val_);
   }
 }
 TEST(AgradFwdMatrixHead, HeadVector1_ffd) {
@@ -127,7 +127,7 @@ TEST(AgradFwdMatrixHead, HeadVector4_ffd) {
   stan::math::vector_ffd v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val_, v01[n].val_.val_);
+    EXPECT_DOUBLE_EQ(v[n].val_.val_, v01[n].val_.val_);
   }
 }
 
@@ -157,7 +157,7 @@ TEST(AgradFwdMatrixHead, HeadRowVector4_ffd) {
   stan::math::row_vector_ffd v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val_, v01[n].val_.val_);
+    EXPECT_DOUBLE_EQ(v[n].val_.val_, v01[n].val_.val_);
   }
 }
 
@@ -194,6 +194,6 @@ TEST(AgradFwdMatrixHead, HeadStdVector4_ffd) {
   std::vector<fvar<fvar<double> > > v01 = head(v, 2);
   EXPECT_EQ(2U, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val_, v01[n].val_.val_);
+    EXPECT_DOUBLE_EQ(v[n].val_.val_, v01[n].val_.val_);
   }
 }

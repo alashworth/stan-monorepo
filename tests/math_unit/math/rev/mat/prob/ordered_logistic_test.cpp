@@ -20,11 +20,11 @@ TEST(ProbDistributionsOrdLog, vv) {
   AVAR out_v = ordered_logistic_lpmf(y, lam_v, c_v);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -0.52516294973063);
-  EXPECT_FLOAT_EQ(lam_v.adj(), -0.40854102156722);
-  EXPECT_FLOAT_EQ(c_v[0].adj(), -lam_v.adj());
-  EXPECT_FLOAT_EQ(c_v[1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(c_v[2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(out_v.val(), -0.52516294973063);
+  EXPECT_DOUBLE_EQ(lam_v.adj(), -0.40854102156722);
+  EXPECT_DOUBLE_EQ(c_v[0].adj(), -lam_v.adj());
+  EXPECT_DOUBLE_EQ(c_v[1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(c_v[2].adj(), 0.0);
 }
 
 TEST(ProbDistributionsOrdLog, vd) {
@@ -47,16 +47,16 @@ TEST(ProbDistributionsOrdLog, vd) {
   AVAR out_v = ordered_logistic_lpmf(y, lam_v, c_d);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -0.52516294973063);
-  EXPECT_FLOAT_EQ(lam_v.adj(), -0.40854102156722);
+  EXPECT_DOUBLE_EQ(out_v.val(), -0.52516294973063);
+  EXPECT_DOUBLE_EQ(lam_v.adj(), -0.40854102156722);
 
   out_v = ordered_logistic_lpmf(y, lam_d, c_v);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -0.52516294973063);
-  EXPECT_FLOAT_EQ(c_v[0].adj(), 0.40854102156722);
-  EXPECT_FLOAT_EQ(c_v[1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(c_v[2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(out_v.val(), -0.52516294973063);
+  EXPECT_DOUBLE_EQ(c_v[0].adj(), 0.40854102156722);
+  EXPECT_DOUBLE_EQ(c_v[1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(c_v[2].adj(), 0.0);
 }
 
 TEST(ProbDistributionsOrdLog, vv_vec) {
@@ -76,16 +76,16 @@ TEST(ProbDistributionsOrdLog, vv_vec) {
   AVAR out_v = ordered_logistic_lpmf(y, lam_v, c_v);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -3.18600232948363);
+  EXPECT_DOUBLE_EQ(out_v.val(), -3.18600232948363);
 
-  EXPECT_FLOAT_EQ(lam_v[0].adj(), -0.432907095034546);
-  EXPECT_FLOAT_EQ(lam_v[1].adj(), -0.193628733286255);
-  EXPECT_FLOAT_EQ(lam_v[2].adj(), -0.545897133850042);
-  EXPECT_FLOAT_EQ(lam_v[3].adj(), 0.097968804297554);
+  EXPECT_DOUBLE_EQ(lam_v[0].adj(), -0.432907095034546);
+  EXPECT_DOUBLE_EQ(lam_v[1].adj(), -0.193628733286255);
+  EXPECT_DOUBLE_EQ(lam_v[2].adj(), -0.545897133850042);
+  EXPECT_DOUBLE_EQ(lam_v[3].adj(), 0.097968804297554);
 
-  EXPECT_FLOAT_EQ(c_v[0].adj(), -0.299384935778303);
-  EXPECT_FLOAT_EQ(c_v[1].adj(), 0.6910188226123);
-  EXPECT_FLOAT_EQ(c_v[2].adj(), 0.682830271039293);
+  EXPECT_DOUBLE_EQ(c_v[0].adj(), -0.299384935778303);
+  EXPECT_DOUBLE_EQ(c_v[1].adj(), 0.6910188226123);
+  EXPECT_DOUBLE_EQ(c_v[2].adj(), 0.682830271039293);
 }
 
 TEST(ProbDistributionsOrdLog, vd_vec) {
@@ -111,21 +111,21 @@ TEST(ProbDistributionsOrdLog, vd_vec) {
   AVAR out_v = ordered_logistic_lpmf(y, lam_v, c_d);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -6.29875293667739);
+  EXPECT_DOUBLE_EQ(out_v.val(), -6.29875293667739);
 
-  EXPECT_FLOAT_EQ(lam_v[0].adj(), -0.661503159202952);
-  EXPECT_FLOAT_EQ(lam_v[1].adj(), -0.644651092531256);
-  EXPECT_FLOAT_EQ(lam_v[2].adj(), -0.905382008878854);
-  EXPECT_FLOAT_EQ(lam_v[3].adj(), 0.014063627043246);
+  EXPECT_DOUBLE_EQ(lam_v[0].adj(), -0.661503159202952);
+  EXPECT_DOUBLE_EQ(lam_v[1].adj(), -0.644651092531256);
+  EXPECT_DOUBLE_EQ(lam_v[2].adj(), -0.905382008878854);
+  EXPECT_DOUBLE_EQ(lam_v[3].adj(), 0.014063627043246);
 
   out_v = ordered_logistic_lpmf(y, lam_d, c_v);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -6.29875293667739);
+  EXPECT_DOUBLE_EQ(out_v.val(), -6.29875293667739);
 
-  EXPECT_FLOAT_EQ(c_v[0].adj(), -0.394307508232632);
-  EXPECT_FLOAT_EQ(c_v[1].adj(), 1.3151170652951);
-  EXPECT_FLOAT_EQ(c_v[2].adj(), 1.27666307650735);
+  EXPECT_DOUBLE_EQ(c_v[0].adj(), -0.394307508232632);
+  EXPECT_DOUBLE_EQ(c_v[1].adj(), 1.3151170652951);
+  EXPECT_DOUBLE_EQ(c_v[2].adj(), 1.27666307650735);
 }
 
 TEST(ProbDistributionsOrdLog, vv_stvec) {
@@ -156,28 +156,28 @@ TEST(ProbDistributionsOrdLog, vv_stvec) {
   AVAR out_v = ordered_logistic_lpmf(y, lam_v, std_c_v);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -4.84793751666795);
+  EXPECT_DOUBLE_EQ(out_v.val(), -4.84793751666795);
 
-  EXPECT_FLOAT_EQ(lam_v[0].adj(), -0.432907095034546);
-  EXPECT_FLOAT_EQ(lam_v[1].adj(), -0.644651092531256);
-  EXPECT_FLOAT_EQ(lam_v[2].adj(), -0.143927113767638);
-  EXPECT_FLOAT_EQ(lam_v[3].adj(), 0.766741064228543);
+  EXPECT_DOUBLE_EQ(lam_v[0].adj(), -0.432907095034546);
+  EXPECT_DOUBLE_EQ(lam_v[1].adj(), -0.644651092531256);
+  EXPECT_DOUBLE_EQ(lam_v[2].adj(), -0.143927113767638);
+  EXPECT_DOUBLE_EQ(lam_v[3].adj(), 0.766741064228543);
 
-  EXPECT_FLOAT_EQ(std_c_v[0][0].adj(), 0.432907095034546);
-  EXPECT_FLOAT_EQ(std_c_v[0][1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[0][2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[0][0].adj(), 0.432907095034546);
+  EXPECT_DOUBLE_EQ(std_c_v[0][1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[0][2].adj(), 0.0);
 
-  EXPECT_FLOAT_EQ(std_c_v[1][0].adj(), -1.05581066743558);
-  EXPECT_FLOAT_EQ(std_c_v[1][1].adj(), 1.70046175996684);
-  EXPECT_FLOAT_EQ(std_c_v[1][2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[1][0].adj(), -1.05581066743558);
+  EXPECT_DOUBLE_EQ(std_c_v[1][1].adj(), 1.70046175996684);
+  EXPECT_DOUBLE_EQ(std_c_v[1][2].adj(), 0.0);
 
-  EXPECT_FLOAT_EQ(std_c_v[2][0].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[2][1].adj(), -0.215120225537197);
-  EXPECT_FLOAT_EQ(std_c_v[2][2].adj(), 0.359047339304835);
+  EXPECT_DOUBLE_EQ(std_c_v[2][0].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[2][1].adj(), -0.215120225537197);
+  EXPECT_DOUBLE_EQ(std_c_v[2][2].adj(), 0.359047339304835);
 
-  EXPECT_FLOAT_EQ(std_c_v[3][0].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[3][1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[3][2].adj(), -0.766741064228543);
+  EXPECT_DOUBLE_EQ(std_c_v[3][0].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[3][1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[3][2].adj(), -0.766741064228543);
 }
 
 TEST(ProbDistributionsOrdLog, vd_stvec) {
@@ -224,33 +224,33 @@ TEST(ProbDistributionsOrdLog, vd_stvec) {
   AVAR out_v = ordered_logistic_lpmf(y, lam_v, std_c_d);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -4.44439619529986);
+  EXPECT_DOUBLE_EQ(out_v.val(), -4.44439619529986);
 
-  EXPECT_FLOAT_EQ(lam_v[0].adj(), -0.840238003056331);
-  EXPECT_FLOAT_EQ(lam_v[1].adj(), -0.167981866608475);
-  EXPECT_FLOAT_EQ(lam_v[2].adj(), 0.216999039274605);
-  EXPECT_FLOAT_EQ(lam_v[3].adj(), 0.792489941440364);
+  EXPECT_DOUBLE_EQ(lam_v[0].adj(), -0.840238003056331);
+  EXPECT_DOUBLE_EQ(lam_v[1].adj(), -0.167981866608475);
+  EXPECT_DOUBLE_EQ(lam_v[2].adj(), 0.216999039274605);
+  EXPECT_DOUBLE_EQ(lam_v[3].adj(), 0.792489941440364);
 
   out_v = ordered_logistic_lpmf(y, lam_d, std_c_v);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -4.44439619529986);
+  EXPECT_DOUBLE_EQ(out_v.val(), -4.44439619529986);
 
-  EXPECT_FLOAT_EQ(std_c_v[0][0].adj(), 0.840238003056331);
-  EXPECT_FLOAT_EQ(std_c_v[0][1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[0][2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[0][0].adj(), 0.840238003056331);
+  EXPECT_DOUBLE_EQ(std_c_v[0][1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[0][2].adj(), 0.0);
 
-  EXPECT_FLOAT_EQ(std_c_v[1][0].adj(), -0.271612889970549);
-  EXPECT_FLOAT_EQ(std_c_v[1][1].adj(), 0.439594756579024);
-  EXPECT_FLOAT_EQ(std_c_v[1][2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[1][0].adj(), -0.271612889970549);
+  EXPECT_DOUBLE_EQ(std_c_v[1][1].adj(), 0.439594756579024);
+  EXPECT_DOUBLE_EQ(std_c_v[1][2].adj(), 0.0);
 
-  EXPECT_FLOAT_EQ(std_c_v[2][0].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[2][1].adj(), -0.272076744615968);
-  EXPECT_FLOAT_EQ(std_c_v[2][2].adj(), 0.055077705341364);
+  EXPECT_DOUBLE_EQ(std_c_v[2][0].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[2][1].adj(), -0.272076744615968);
+  EXPECT_DOUBLE_EQ(std_c_v[2][2].adj(), 0.055077705341364);
 
-  EXPECT_FLOAT_EQ(std_c_v[3][0].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[3][1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[3][2].adj(), -0.792489941440364);
+  EXPECT_DOUBLE_EQ(std_c_v[3][0].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[3][1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[3][2].adj(), -0.792489941440364);
 }
 
 TEST(ProbDistributionsOrdLog, intErrors) {
@@ -278,23 +278,23 @@ TEST(ProbDistributionsOrdLog, intErrors) {
   AVAR out_v = ordered_logistic_lpmf(y, lam_i, std_c_v);
   out_v.grad();
 
-  EXPECT_FLOAT_EQ(out_v.val(), -4.80919533214772);
+  EXPECT_DOUBLE_EQ(out_v.val(), -4.80919533214772);
 
-  EXPECT_FLOAT_EQ(std_c_v[0][0].adj(), 0.898439072102363);
-  EXPECT_FLOAT_EQ(std_c_v[0][1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[0][2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[0][0].adj(), 0.898439072102363);
+  EXPECT_DOUBLE_EQ(std_c_v[0][1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[0][2].adj(), 0.0);
 
-  EXPECT_FLOAT_EQ(std_c_v[1][0].adj(), -0.213051918269699);
-  EXPECT_FLOAT_EQ(std_c_v[1][1].adj(), 0.5604249106041);
-  EXPECT_FLOAT_EQ(std_c_v[1][2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[1][0].adj(), -0.213051918269699);
+  EXPECT_DOUBLE_EQ(std_c_v[1][1].adj(), 0.5604249106041);
+  EXPECT_DOUBLE_EQ(std_c_v[1][2].adj(), 0.0);
 
-  EXPECT_FLOAT_EQ(std_c_v[2][0].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[2][1].adj(), -0.364548741344827);
-  EXPECT_FLOAT_EQ(std_c_v[2][2].adj(), 0.041106609543937);
+  EXPECT_DOUBLE_EQ(std_c_v[2][0].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[2][1].adj(), -0.364548741344827);
+  EXPECT_DOUBLE_EQ(std_c_v[2][2].adj(), 0.041106609543937);
 
-  EXPECT_FLOAT_EQ(std_c_v[3][0].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[3][1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(std_c_v[3][2].adj(), -0.70889017256612);
+  EXPECT_DOUBLE_EQ(std_c_v[3][0].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[3][1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(std_c_v[3][2].adj(), -0.70889017256612);
 }
 
 TEST(ProbDistributionsOrdLog, vv_vec_y1) {
@@ -319,10 +319,10 @@ TEST(ProbDistributionsOrdLog, vv_vec_y1) {
 
   for (int i = 0; i < 4; ++i) {
     c_adj[i] = inv_logit(lam_v[i].val() - c_v[0].val());
-    EXPECT_FLOAT_EQ(lam_v[i].adj(), -c_adj[i]);
+    EXPECT_DOUBLE_EQ(lam_v[i].adj(), -c_adj[i]);
   }
 
-  EXPECT_FLOAT_EQ(c_v[0].adj(), c_adj.sum());
-  EXPECT_FLOAT_EQ(c_v[1].adj(), 0.0);
-  EXPECT_FLOAT_EQ(c_v[2].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(c_v[0].adj(), c_adj.sum());
+  EXPECT_DOUBLE_EQ(c_v[1].adj(), 0.0);
+  EXPECT_DOUBLE_EQ(c_v[2].adj(), 0.0);
 }

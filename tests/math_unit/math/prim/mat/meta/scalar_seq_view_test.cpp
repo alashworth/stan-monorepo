@@ -7,10 +7,10 @@ void expect_scalar_seq_view_values(C v) {
 
   v << 1.1, 2.2, 3.3, 4.4;
   scalar_seq_view<C> sv(v);
-  EXPECT_FLOAT_EQ(v(0), sv[0]);
-  EXPECT_FLOAT_EQ(v(1), sv[1]);
-  EXPECT_FLOAT_EQ(v(2), sv[2]);
-  EXPECT_FLOAT_EQ(v(3), sv[3]);
+  EXPECT_DOUBLE_EQ(v(0), sv[0]);
+  EXPECT_DOUBLE_EQ(v(1), sv[1]);
+  EXPECT_DOUBLE_EQ(v(2), sv[2]);
+  EXPECT_DOUBLE_EQ(v(3), sv[3]);
 
   EXPECT_EQ(v.size(), sv.size());
 }

@@ -8,7 +8,7 @@
 
 namespace test {
 
-inline void check_varis_on_stack(const std::vector<stan::math::var>& x) {
+static inline void check_varis_on_stack(const std::vector<stan::math::var>& x) {
   for (size_t n = 0; n < x.size(); ++n)
     EXPECT_TRUE(
         stan::math::ChainableStack::instance_->memalloc_.in_stack(x[n].vi_))

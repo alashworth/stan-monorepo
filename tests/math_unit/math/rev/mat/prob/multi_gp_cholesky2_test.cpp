@@ -4,6 +4,7 @@
 #include <math/rev/mat/prob/test_gradients.hpp>
 #include <math/prim/mat/prob/agrad_distributions_multi_gp_cholesky.hpp>
 #include <math/rev/mat/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <string>
 #include <vector>
 
@@ -57,7 +58,8 @@ TEST(ProbDistributionsMultiGPCholesky, MultiGPCholeskyVar) {
   Matrix<var, Dynamic, Dynamic> Sigma(3, 3);
   Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
   Matrix<var, Dynamic, Dynamic> L = Sigma.llt().matrixL();
-  EXPECT_FLOAT_EQ(-46.087162, stan::math::multi_gp_cholesky_log(y, L, w).val());
+  EXPECT_DOUBLE_EQ(-46.087162,
+                   stan::math::multi_gp_cholesky_log(y, L, w).val());
 }
 
 TEST(ProbDistributionsMultiGPCholesky, MultiGPCholeskyGradientUnivariate) {
@@ -104,7 +106,7 @@ TEST(ProbDistributionsMultiGPCholesky, MultiGPCholeskyGradientUnivariate) {
   double grad_diff
       = (multi_gp_cholesky_log(y_p, L, w) - multi_gp_cholesky_log(y_m, L, w))
         / (2 * epsilon);
-  EXPECT_FLOAT_EQ(grad_diff, grad[0]);
+  EXPECT_DOUBLE_EQ(grad_diff, grad[0]);
 
   Matrix<double, Dynamic, 1> w_m(1, 1);
   Matrix<double, Dynamic, 1> w_p(1, 1);
@@ -113,7 +115,7 @@ TEST(ProbDistributionsMultiGPCholesky, MultiGPCholeskyGradientUnivariate) {
   grad_diff
       = (multi_gp_cholesky_log(y, L, w_p) - multi_gp_cholesky_log(y, L, w_m))
         / (2 * epsilon);
-  EXPECT_FLOAT_EQ(grad_diff, grad[1]);
+  EXPECT_DOUBLE_EQ(grad_diff, grad[1]);
 
   Matrix<double, Dynamic, Dynamic> L_m(1, 1);
   Matrix<double, Dynamic, Dynamic> L_p(1, 1);
@@ -122,7 +124,7 @@ TEST(ProbDistributionsMultiGPCholesky, MultiGPCholeskyGradientUnivariate) {
   grad_diff
       = (multi_gp_cholesky_log(y, L_p, w) - multi_gp_cholesky_log(y, L_m, w))
         / (2 * epsilon);
-  EXPECT_FLOAT_EQ(grad_diff, grad[2]);
+  EXPECT_DOUBLE_EQ(grad_diff, grad[2]);
 }
 
 struct multi_gp_cholesky_fun {
@@ -187,7 +189,7 @@ TEST(MultiGPCholesky, TestGradFunctional) {
   test_grad(multi_gp_cholesky_fun(1, 1), u);
 }
 
-TEST(ProbDistributionsMultiGPCholesky, check_varis_on_stack) {
+TEST(ProbDistributionsMultiGPCholesky, check_varis_on_stack_307) {
   using stan::math::to_var;
   Matrix<double, Dynamic, Dynamic> y(3, 3);
   y << 2.0, -2.0, 11.0, -4.0, 0.0, 2.0, 1.0, 5.0, 3.3;

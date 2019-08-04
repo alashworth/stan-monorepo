@@ -28,7 +28,7 @@ TEST(MathMatrixHead, HeadVector4) {
   Eigen::VectorXd v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n], v01[n]);
+    EXPECT_DOUBLE_EQ(v[n], v01[n]);
 }
 
 TEST(MathMatrixHead, HeadRowVector1) {
@@ -57,7 +57,7 @@ TEST(MathMatrixHead, HeadRowVector4) {
   Eigen::RowVectorXd v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n], v01[n]);
+    EXPECT_DOUBLE_EQ(v[n], v01[n]);
 }
 
 TEST(MathMatrixHead, HeadStdVector1) {
@@ -93,5 +93,5 @@ TEST(MathMatrixHead, HeadStdVector4) {
   std::vector<int> v01 = head(v, 2);
   EXPECT_EQ(2U, v01.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n], v01[n]);
+    EXPECT_DOUBLE_EQ(v[n], v01[n]);
 }

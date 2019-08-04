@@ -31,8 +31,8 @@ void fvar_test(T_a a, T_b b) {
 
   fvar<double> out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_, -4.8474302);
-  EXPECT_FLOAT_EQ(out.d_, 4.093988932);
+  EXPECT_DOUBLE_EQ(out.val_, -4.8474302);
+  EXPECT_DOUBLE_EQ(out.d_, 4.093988932);
 
   T_b b2(4), b3(4);
 
@@ -58,8 +58,8 @@ void fvar_test(T_a a, T_b b) {
 
   fvar<double> std_out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(std_out.val_, -15.457609);
-  EXPECT_FLOAT_EQ(std_out.d_, 15.164879);
+  EXPECT_DOUBLE_EQ(std_out.val_, -15.457609);
+  EXPECT_DOUBLE_EQ(std_out.d_, 15.164879);
 }
 
 template <typename T_a, typename T_b>
@@ -84,8 +84,8 @@ void fvarfvar_test(T_a a, T_b b) {
 
   fvar<fvar<double> > out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_.val_, -4.8474302);
-  EXPECT_FLOAT_EQ(out.d_.val_, 4.093988932);
+  EXPECT_DOUBLE_EQ(out.val_.val_, -4.8474302);
+  EXPECT_DOUBLE_EQ(out.d_.val_, 4.093988932);
 
   T_b b2(4), b3(4);
 
@@ -111,8 +111,8 @@ void fvarfvar_test(T_a a, T_b b) {
 
   fvar<fvar<double> > std_out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(std_out.val_.val_, -15.457609);
-  EXPECT_FLOAT_EQ(std_out.d_.val_, 15.164879);
+  EXPECT_DOUBLE_EQ(std_out.val_.val_, -15.457609);
+  EXPECT_DOUBLE_EQ(std_out.d_.val_, 15.164879);
 }
 
 TEST(AgradFwdMatrixLogMix, fdValues) {
@@ -186,8 +186,8 @@ TEST(AgradFwdMatrixLogMix, vector_fd) {
 
   fvar<double> a = log_mix(prob, dens);
 
-  EXPECT_FLOAT_EQ(-1.85911088, a.val_);
-  EXPECT_FLOAT_EQ(4.66673118, a.d_);
+  EXPECT_DOUBLE_EQ(-1.85911088, a.val_);
+  EXPECT_DOUBLE_EQ(4.66673118, a.d_);
 }
 
 TEST(AgradFwdMatrixLogMix, row_vector_fd) {
@@ -209,8 +209,8 @@ TEST(AgradFwdMatrixLogMix, row_vector_fd) {
 
   fvar<double> a = log_mix(prob, dens);
 
-  EXPECT_FLOAT_EQ(-1.85911088, a.val_);
-  EXPECT_FLOAT_EQ(4.66673118, a.d_);
+  EXPECT_DOUBLE_EQ(-1.85911088, a.val_);
+  EXPECT_DOUBLE_EQ(4.66673118, a.d_);
 }
 
 TEST(AgradFwdMatrixLogMix, std_vector_fd) {
@@ -236,8 +236,8 @@ TEST(AgradFwdMatrixLogMix, std_vector_fd) {
 
   fvar<double> a = log_mix(prob, dens);
 
-  EXPECT_FLOAT_EQ(-1.85911088, a.val_);
-  EXPECT_FLOAT_EQ(4.66673118, a.d_);
+  EXPECT_DOUBLE_EQ(-1.85911088, a.val_);
+  EXPECT_DOUBLE_EQ(4.66673118, a.d_);
 }
 
 TEST(AgradFwdMatrixLogMix, vector_ffd) {
@@ -259,8 +259,8 @@ TEST(AgradFwdMatrixLogMix, vector_ffd) {
 
   fvar<fvar<double> > a = log_mix(prob, dens);
 
-  EXPECT_FLOAT_EQ(-1.85911088, a.val_.val_);
-  EXPECT_FLOAT_EQ(4.66673118, a.d_.val_);
+  EXPECT_DOUBLE_EQ(-1.85911088, a.val_.val_);
+  EXPECT_DOUBLE_EQ(4.66673118, a.d_.val_);
 }
 
 TEST(AgradFwdMatrixLogMix, row_vector_ffd) {
@@ -282,8 +282,8 @@ TEST(AgradFwdMatrixLogMix, row_vector_ffd) {
 
   fvar<fvar<double> > a = log_mix(prob, dens);
 
-  EXPECT_FLOAT_EQ(-1.85911088, a.val_.val_);
-  EXPECT_FLOAT_EQ(4.66673118, a.d_.val_);
+  EXPECT_DOUBLE_EQ(-1.85911088, a.val_.val_);
+  EXPECT_DOUBLE_EQ(4.66673118, a.d_.val_);
 }
 
 TEST(AgradFwdMatrixLogMix, std_vector_ffd) {
@@ -309,6 +309,6 @@ TEST(AgradFwdMatrixLogMix, std_vector_ffd) {
 
   fvar<fvar<double> > a = log_mix(prob, dens);
 
-  EXPECT_FLOAT_EQ(-1.85911088, a.val_.val_);
-  EXPECT_FLOAT_EQ(4.66673118, a.d_.val_);
+  EXPECT_DOUBLE_EQ(-1.85911088, a.val_.val_);
+  EXPECT_DOUBLE_EQ(4.66673118, a.d_.val_);
 }

@@ -30,7 +30,7 @@ void test_multiply_lower_tri_self_transpose(const matrix_d& x) {
   EXPECT_EQ(y.cols(), xxt.cols());
   for (int m = 0; m < y.rows(); ++m)
     for (int n = 0; n < y.cols(); ++n)
-      EXPECT_FLOAT_EQ(xxt(m, n), y(m, n));
+      EXPECT_DOUBLE_EQ(xxt(m, n), y(m, n));
 }
 
 TEST(MathMatrix, multiply_lower_tri_self_transpose) {

@@ -7,20 +7,22 @@ TEST(AgradRev, lmgamma) {
   using stan::math::lmgamma;
   AVAR a = 3.2;
   AVAR f = stan::math::lmgamma(3, a);
-  EXPECT_FLOAT_EQ(lmgamma(3, 3.2), f.val());
+  EXPECT_DOUBLE_EQ(lmgamma(3, 3.2), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_FLOAT_EQ(4.9138227 / 2.1, grad_f[0]);
+  EXPECT_DOUBLE_EQ(4.9138227 / 2.1, grad_f[0]);
 }
 
+namespace {
 struct lmgamma_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return lmgamma(3, arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, lmgamma_NaN) {
   lmgamma_fun lmgamma_;

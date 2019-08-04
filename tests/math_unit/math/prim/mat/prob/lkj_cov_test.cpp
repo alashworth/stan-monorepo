@@ -11,10 +11,10 @@ TEST(ProbDistributionsLkjCorr, testIdentity_1) {
   Sigma.diagonal().setOnes();
   double eta = rd() / static_cast<double>(RAND_MAX) + 0.5;
   double f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
   eta = 1.0;
   f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
 }
 
 TEST(ProbDistributionsLkjCorr, testHalf_1) {
@@ -26,11 +26,11 @@ TEST(ProbDistributionsLkjCorr, testHalf_1) {
   Sigma.diagonal().setOnes();
   double eta = rd() / static_cast<double>(RAND_MAX) + 0.5;
   double f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f + (eta - 1.0) * log(0.3125),
-                  stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f + (eta - 1.0) * log(0.3125),
+                   stan::math::lkj_corr_log(Sigma, eta));
   eta = 1.0;
   f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
 }
 
 TEST(ProbDistributionsLkjCorr, Sigma_1) {

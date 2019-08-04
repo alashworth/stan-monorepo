@@ -27,9 +27,9 @@ TEST(AgradMixMatrixDotSelf, vec_fv_1stDeriv) {
   AVEC z = createAVEC(a.val(), b.val(), c.val());
   VEC h;
   dot_self(v3).val_.grad(z, h);
-  EXPECT_FLOAT_EQ(4.0, h[0]);
-  EXPECT_FLOAT_EQ(6.0, h[1]);
-  EXPECT_FLOAT_EQ(8.0, h[2]);
+  EXPECT_DOUBLE_EQ(4.0, h[0]);
+  EXPECT_DOUBLE_EQ(6.0, h[1]);
+  EXPECT_DOUBLE_EQ(8.0, h[2]);
 }
 TEST(AgradMixMatrixDotSelf, vec_fv_2ndDeriv) {
   using stan::math::dot_self;
@@ -45,9 +45,9 @@ TEST(AgradMixMatrixDotSelf, vec_fv_2ndDeriv) {
   AVEC z = createAVEC(a.val(), b.val(), c.val());
   VEC h;
   dot_self(v3).d_.grad(z, h);
-  EXPECT_FLOAT_EQ(2.0, h[0]);
-  EXPECT_FLOAT_EQ(2.0, h[1]);
-  EXPECT_FLOAT_EQ(2.0, h[2]);
+  EXPECT_DOUBLE_EQ(2.0, h[0]);
+  EXPECT_DOUBLE_EQ(2.0, h[1]);
+  EXPECT_DOUBLE_EQ(2.0, h[2]);
 }
 TEST(AgradMixMatrixDotSelf, vec_ffv_1stDeriv) {
   using stan::math::dot_self;
@@ -73,9 +73,9 @@ TEST(AgradMixMatrixDotSelf, vec_ffv_1stDeriv) {
   AVEC z = createAVEC(a.val().val(), b.val().val(), c.val().val());
   VEC h;
   dot_self(v3).val_.val().grad(z, h);
-  EXPECT_FLOAT_EQ(4.0, h[0]);
-  EXPECT_FLOAT_EQ(6.0, h[1]);
-  EXPECT_FLOAT_EQ(8.0, h[2]);
+  EXPECT_DOUBLE_EQ(4.0, h[0]);
+  EXPECT_DOUBLE_EQ(6.0, h[1]);
+  EXPECT_DOUBLE_EQ(8.0, h[2]);
 }
 TEST(AgradMixMatrixDotSelf, vec_ffv_2ndDeriv_1) {
   using stan::math::dot_self;
@@ -91,9 +91,9 @@ TEST(AgradMixMatrixDotSelf, vec_ffv_2ndDeriv_1) {
   AVEC z = createAVEC(a.val().val(), b.val().val(), c.val().val());
   VEC h;
   dot_self(v3).val().d_.grad(z, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 
 TEST(AgradMixMatrixDotSelf, vec_ffv_2ndDeriv_2) {
@@ -110,9 +110,9 @@ TEST(AgradMixMatrixDotSelf, vec_ffv_2ndDeriv_2) {
   AVEC z = createAVEC(a.val().val(), b.val().val(), c.val().val());
   VEC h;
   dot_self(v3).d_.val().grad(z, h);
-  EXPECT_FLOAT_EQ(2.0, h[0]);
-  EXPECT_FLOAT_EQ(2.0, h[1]);
-  EXPECT_FLOAT_EQ(2.0, h[2]);
+  EXPECT_DOUBLE_EQ(2.0, h[0]);
+  EXPECT_DOUBLE_EQ(2.0, h[1]);
+  EXPECT_DOUBLE_EQ(2.0, h[2]);
 }
 TEST(AgradMixMatrixDotSelf, vec_ffv_3rdDeriv) {
   using stan::math::dot_self;
@@ -131,7 +131,7 @@ TEST(AgradMixMatrixDotSelf, vec_ffv_3rdDeriv) {
   AVEC z = createAVEC(a.val().val(), b.val().val(), c.val().val());
   VEC h;
   dot_self(v3).d_.d_.grad(z, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }

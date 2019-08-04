@@ -12,6 +12,6 @@ TEST(mathVectorBuilder, test1) {
 
   std::vector<double> v = x.add(1).add(2).build();
   EXPECT_EQ(2, v.size());
-  EXPECT_FLOAT_EQ(1, v[0]);
-  EXPECT_FLOAT_EQ(2, v[1]);
+  EXPECT_DOUBLE_EQ(1, v[0]);
+  EXPECT_DOUBLE_EQ(2, v[1]);
 }

@@ -11,8 +11,8 @@ TEST(AgradFwdPhi_approx, Fvar) {
 
   fvar<double> Phi_approx_x = Phi_approx(x);
 
-  EXPECT_FLOAT_EQ(Phi_approx(1.0), Phi_approx_x.val_);
-  EXPECT_FLOAT_EQ(0.24152729, Phi_approx_x.d_);
+  EXPECT_DOUBLE_EQ(Phi_approx(1.0), Phi_approx_x.val_);
+  EXPECT_DOUBLE_EQ(0.24152729, Phi_approx_x.d_);
 }
 TEST(AgradFwdPhi_approx, FvarDerivUnderOverFlow) {
   using stan::math::Phi_approx;
@@ -21,12 +21,12 @@ TEST(AgradFwdPhi_approx, FvarDerivUnderOverFlow) {
   fvar<double> x = -27.5;
   x.d_ = 1.0;
   fvar<double> Phi_approx_x = Phi_approx(x);
-  EXPECT_FLOAT_EQ(0, Phi_approx_x.d_);
+  EXPECT_DOUBLE_EQ(0, Phi_approx_x.d_);
 
   fvar<double> y = 27.5;
   y.d_ = 1.0;
   fvar<double> Phi_approx_y = Phi_approx(y);
-  EXPECT_FLOAT_EQ(0, Phi_approx_y.d_);
+  EXPECT_DOUBLE_EQ(0, Phi_approx_y.d_);
 }
 
 TEST(AgradFwdPhi_approx, FvarFvarDouble) {
@@ -39,20 +39,20 @@ TEST(AgradFwdPhi_approx, FvarFvarDouble) {
 
   fvar<fvar<double> > a = Phi_approx(x);
 
-  EXPECT_FLOAT_EQ(Phi_approx(1.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(0.24152729, a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(Phi_approx(1.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0.24152729, a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 1.0;
   y.d_.val_ = 1.0;
 
   a = Phi_approx(y);
-  EXPECT_FLOAT_EQ(Phi_approx(1.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(0, a.val_.d_);
-  EXPECT_FLOAT_EQ(0.24152729, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(Phi_approx(1.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(0.24152729, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 }
 
 struct Phi_approx_fun {

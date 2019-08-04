@@ -7,23 +7,23 @@
 TEST(AgradRev, tan_var) {
   AVAR a = 0.68;
   AVAR f = tan(a);
-  EXPECT_FLOAT_EQ(0.80866137, f.val());
+  EXPECT_DOUBLE_EQ(0.80866137, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(1 + tan(0.68) * tan(0.68), g[0]);
+  EXPECT_DOUBLE_EQ(1 + tan(0.68) * tan(0.68), g[0]);
 }
 
 TEST(AgradRev, tan_neg_var) {
   AVAR a = -.68;
   AVAR f = tan(a);
-  EXPECT_FLOAT_EQ(-0.80866137, f.val());
+  EXPECT_DOUBLE_EQ(-0.80866137, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(1 + tan(-0.68) * tan(-0.68), g[0]);
+  EXPECT_DOUBLE_EQ(1 + tan(-0.68) * tan(-0.68), g[0]);
 }
 
 TEST(AgradRev, tan_boundry) {
@@ -37,12 +37,14 @@ TEST(AgradRev, tan_boundry) {
       << "tan(" << b << "): " << tan(b) << " mimics std::tan behavior";
 }
 
+namespace {
 struct tan_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return tan(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, tan_NaN) {
   tan_fun tan_;

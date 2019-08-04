@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_mix_mat_unit_tests PRIVATE
         rank_test.cpp
         sort_test.cpp
         expm1_test.cpp

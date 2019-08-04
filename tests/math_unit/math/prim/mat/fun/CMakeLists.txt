@@ -1,6 +1,6 @@
 file(COPY ar1.csv DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_mat_unit_tests PRIVATE
         log_determinant_ldlt_test.cpp
         matrix_exp_multiply_test.cpp
         get_base1_test.cpp
@@ -14,6 +14,7 @@ target_sources(stan_math_unit_tests PRIVATE
         mdivide_left_spd_test.cpp
         qr_thin_Q_test.cpp
         gp_dot_prod_cov_test.cpp
+        expect_matrix_eq.hpp
         ordered_transform_test.cpp
         containers_conversion_test.cpp
         csr_u_to_z_test.cpp
@@ -84,8 +85,6 @@ target_sources(stan_math_unit_tests PRIVATE
         multiply_lower_tri_self_transpose_test.cpp
         elt_multiply_test.cpp
         LDLT_factor_test.cpp
-        expect_matrix_eq.hpp
-        expect_matrix_eq.cpp
         promote_elements_test.cpp
         positive_ordered_transform_test.cpp
         minus_test.cpp

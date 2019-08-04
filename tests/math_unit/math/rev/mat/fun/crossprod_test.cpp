@@ -3,6 +3,7 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <math/rev/mat/util.hpp>
 
+namespace {
 void test_crossprod(const stan::math::matrix_v& L) {
   using stan::math::crossprod;
   using stan::math::matrix_v;
@@ -12,7 +13,8 @@ void test_crossprod(const stan::math::matrix_v& L) {
   EXPECT_EQ(L.cols(), LLT_stan.cols());
   for (int m = 0; m < L.rows(); ++m)
     for (int n = 0; n < L.cols(); ++n)
-      EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
+      EXPECT_DOUBLE_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
+}
 }
 
 TEST(AgradRevMatrix, crossprod_0) {
@@ -37,7 +39,7 @@ TEST(AgradRevMatrix, crossprod_0) {
   test_crossprod(K);
   //  test_tcrossprod_grad(K, K.rows(), K.cols());
 }
-TEST(AgradRevMatrix, check_varis_on_stack_1) {
+TEST(AgradRevMatrix_1, check_varis_on_stack_1) {
   using stan::math::matrix_v;
 
   matrix_v L(3, 3);

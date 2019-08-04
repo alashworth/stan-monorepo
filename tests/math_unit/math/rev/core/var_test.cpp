@@ -18,62 +18,62 @@ TEST_F(AgradRev, ctorOverloads) {
   using stan::math::vari;
 
   // make sure copy ctor is used rather than casting vari* to unsigned int
-  EXPECT_FLOAT_EQ(12.3, var(new vari(12.3)).val());
+  EXPECT_DOUBLE_EQ(12.3, var(new vari(12.3)).val());
 
   // double
-  EXPECT_FLOAT_EQ(3.7, var(3.7).val());
+  EXPECT_DOUBLE_EQ(3.7, var(3.7).val());
 
   // long double
-  EXPECT_FLOAT_EQ(3.7, var(static_cast<long double>(3.7)).val());
+  EXPECT_DOUBLE_EQ(3.7, var(static_cast<long double>(3.7)).val());
 
   // float
-  EXPECT_FLOAT_EQ(3.7, var(static_cast<float>(3.7)).val());
+  EXPECT_DOUBLE_EQ(3.7, var(static_cast<float>(3.7)).val());
 
   // bool
-  EXPECT_FLOAT_EQ(1, var(static_cast<bool>(true)).val());
+  EXPECT_DOUBLE_EQ(1, var(static_cast<bool>(true)).val());
 
   // char
-  EXPECT_FLOAT_EQ(3, var(static_cast<char>(3)).val());
+  EXPECT_DOUBLE_EQ(3, var(static_cast<char>(3)).val());
 
   // short
-  EXPECT_FLOAT_EQ(1, var(static_cast<int16_t>(1)).val());
+  EXPECT_DOUBLE_EQ(1, var(static_cast<int16_t>(1)).val());
 
   // int
-  EXPECT_FLOAT_EQ(37, var(static_cast<int>(37)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<int>(37)).val());
 
   // long
-  EXPECT_FLOAT_EQ(37, var(static_cast<int32_t>(37)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<int32_t>(37)).val());
 
   // unsigned char
-  EXPECT_FLOAT_EQ(37, var(static_cast<unsigned char>(37)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<unsigned char>(37)).val());
 
   // unsigned short
-  EXPECT_FLOAT_EQ(37, var(static_cast<uint16_t>(37)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<uint16_t>(37)).val());
 
   // unsigned int
-  EXPECT_FLOAT_EQ(37, var(static_cast<unsigned int>(37)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<unsigned int>(37)).val());
 
   // unsigned int (test conflict with null pointer)
-  EXPECT_FLOAT_EQ(0, var(static_cast<unsigned int>(0)).val());
+  EXPECT_DOUBLE_EQ(0, var(static_cast<unsigned int>(0)).val());
 
   // unsigned long
-  EXPECT_FLOAT_EQ(37, var(static_cast<uint32_t>(37)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<uint32_t>(37)).val());
 
   // unsigned long (test for conflict with pointer)
-  EXPECT_FLOAT_EQ(0, var(static_cast<uint32_t>(0)).val());
+  EXPECT_DOUBLE_EQ(0, var(static_cast<uint32_t>(0)).val());
 
   // size_t
-  EXPECT_FLOAT_EQ(37, var(static_cast<size_t>(37)).val());
-  EXPECT_FLOAT_EQ(0, var(static_cast<size_t>(0)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<size_t>(37)).val());
+  EXPECT_DOUBLE_EQ(0, var(static_cast<size_t>(0)).val());
 
   // ptrdiff_t
-  EXPECT_FLOAT_EQ(37, var(static_cast<ptrdiff_t>(37)).val());
-  EXPECT_FLOAT_EQ(0, var(static_cast<ptrdiff_t>(0)).val());
+  EXPECT_DOUBLE_EQ(37, var(static_cast<ptrdiff_t>(37)).val());
+  EXPECT_DOUBLE_EQ(0, var(static_cast<ptrdiff_t>(0)).val());
 
   // complex but with zero imaginary part
-  EXPECT_FLOAT_EQ(37, var(std::complex<double>(37, 0)).val());
-  EXPECT_FLOAT_EQ(37, var(std::complex<float>(37, 0)).val());
-  EXPECT_FLOAT_EQ(37, var(std::complex<long double>(37, 0)).val());
+  EXPECT_DOUBLE_EQ(37, var(std::complex<double>(37, 0)).val());
+  EXPECT_DOUBLE_EQ(37, var(std::complex<float>(37, 0)).val());
+  EXPECT_DOUBLE_EQ(37, var(std::complex<long double>(37, 0)).val());
 
   // complex but with non-zero imaginary part
   EXPECT_THROW(var(std::complex<double>(37, 10)), std::invalid_argument);
@@ -83,18 +83,18 @@ TEST_F(AgradRev, ctorOverloads) {
 
 TEST_F(AgradRev, a_eq_x) {
   AVAR a = 5.0;
-  EXPECT_FLOAT_EQ(5.0, a.val());
+  EXPECT_DOUBLE_EQ(5.0, a.val());
 }
 
 TEST_F(AgradRev, a_of_x) {
   AVAR a(6.0);
-  EXPECT_FLOAT_EQ(6.0, a.val());
+  EXPECT_DOUBLE_EQ(6.0, a.val());
 }
 
 TEST_F(AgradRev, a__a_eq_x) {
   AVAR a;
   a = 7.0;
-  EXPECT_FLOAT_EQ(7.0, a.val());
+  EXPECT_DOUBLE_EQ(7.0, a.val());
 }
 
 TEST_F(AgradRev, eq_a) {
@@ -103,7 +103,7 @@ TEST_F(AgradRev, eq_a) {
   AVEC x = createAVEC(a);
   VEC dx;
   f.grad(x, dx);
-  EXPECT_FLOAT_EQ(1.0, dx[0]);
+  EXPECT_DOUBLE_EQ(1.0, dx[0]);
 }
 
 TEST_F(AgradRev, a_ostream) {
@@ -121,11 +121,11 @@ TEST_F(AgradRev, a_ostream) {
 
 TEST_F(AgradRev, smart_ptrs) {
   AVAR a = 2.0;
-  EXPECT_FLOAT_EQ(2.0, (*a).val_);
-  EXPECT_FLOAT_EQ(2.0, a->val_);
+  EXPECT_DOUBLE_EQ(2.0, (*a).val_);
+  EXPECT_DOUBLE_EQ(2.0, a->val_);
 
-  EXPECT_FLOAT_EQ(2.0, (*a.vi_).val_);
-  EXPECT_FLOAT_EQ(2.0, a.vi_->val_);
+  EXPECT_DOUBLE_EQ(2.0, (*a.vi_).val_);
+  EXPECT_DOUBLE_EQ(2.0, a.vi_->val_);
 }
 
 TEST_F(AgradRev, stackAllocation) {
@@ -145,8 +145,8 @@ TEST_F(AgradRev, stackAllocation) {
   f.grad(x, g);
 
   EXPECT_EQ(2U, g.size());
-  EXPECT_FLOAT_EQ(2.0, g[0]);
-  EXPECT_FLOAT_EQ(1.0, g[1]);
+  EXPECT_DOUBLE_EQ(2.0, g[0]);
+  EXPECT_DOUBLE_EQ(1.0, g[1]);
 }
 
 TEST_F(AgradRev, print) {
@@ -202,7 +202,7 @@ struct gradable {
     f_.grad(x_, g);
     EXPECT_EQ(g_expected_.size(), static_cast<int>(g.size()));
     for (int i = 0; i < g_expected_.size(); ++i)
-      EXPECT_FLOAT_EQ(g_expected_(i), g[i]);
+      EXPECT_DOUBLE_EQ(g_expected_(i), g[i]);
   }
 };
 
@@ -338,11 +338,11 @@ TEST_F(AgradRev, grad) {
 
   EXPECT_NO_THROW(f.grad()) << "testing the grad function with no args";
 
-  EXPECT_FLOAT_EQ(5.0, a.val());
-  EXPECT_FLOAT_EQ(10.0, b.val());
-  EXPECT_FLOAT_EQ(55.0, f.val());
+  EXPECT_DOUBLE_EQ(5.0, a.val());
+  EXPECT_DOUBLE_EQ(10.0, b.val());
+  EXPECT_DOUBLE_EQ(55.0, f.val());
 
-  EXPECT_FLOAT_EQ(1.0, f.adj());
-  EXPECT_FLOAT_EQ(11.0, a.adj());
-  EXPECT_FLOAT_EQ(5.0, b.adj());
+  EXPECT_DOUBLE_EQ(1.0, f.adj());
+  EXPECT_DOUBLE_EQ(11.0, a.adj());
+  EXPECT_DOUBLE_EQ(5.0, b.adj());
 }

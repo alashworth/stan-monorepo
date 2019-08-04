@@ -38,7 +38,7 @@ TEST(AgradRevMatrix, LDLT_alloc_constructor) {
   LDLT_alloc<-1, -1> *alloc = new LDLT_alloc<-1, -1>(A);
 
   EXPECT_EQ(2U, alloc->N_);
-  EXPECT_FLOAT_EQ(1.0986122886681096, alloc->log_abs_det());
+  EXPECT_DOUBLE_EQ(1.0986122886681096, alloc->log_abs_det());
   EXPECT_EQ(Eigen::Success, alloc->ldlt_.info());
 
   Eigen::Matrix<double, -1, -1> expectedL(2, 2);
@@ -50,7 +50,7 @@ TEST(AgradRevMatrix, LDLT_alloc_constructor) {
   Eigen::Matrix<double, -1, -1> L = alloc->ldlt_.matrixL();
   for (int i = 0; i < 2; i++)
     for (int j = 0; j < 2; j++)
-      EXPECT_FLOAT_EQ(expectedL(i, j), L(i, j));
+      EXPECT_DOUBLE_EQ(expectedL(i, j), L(i, j));
 }
 
 TEST(AgradRevMatrix, LDLT_alloc_compute) {
@@ -66,7 +66,7 @@ TEST(AgradRevMatrix, LDLT_alloc_compute) {
   EXPECT_NO_THROW(alloc->compute(A));
   EXPECT_EQ(2U, alloc->N_);
   EXPECT_EQ(Eigen::Success, alloc->ldlt_.info());
-  EXPECT_FLOAT_EQ(alloc->log_abs_det(), 1.0986122886681096);
+  EXPECT_DOUBLE_EQ(alloc->log_abs_det(), 1.0986122886681096);
 
   Eigen::Matrix<double, -1, -1> expectedL(2, 2);
   expectedL(0, 0) = 1.0;
@@ -77,5 +77,5 @@ TEST(AgradRevMatrix, LDLT_alloc_compute) {
   Eigen::Matrix<double, -1, -1> L = alloc->ldlt_.matrixL();
   for (int i = 0; i < 2; i++)
     for (int j = 0; j < 2; j++)
-      EXPECT_FLOAT_EQ(expectedL(i, j), L(i, j));
+      EXPECT_DOUBLE_EQ(expectedL(i, j), L(i, j));
 }

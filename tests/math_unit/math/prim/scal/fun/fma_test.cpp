@@ -8,8 +8,8 @@
 // instead, the top-level ::fma should be used by including <cmath>
 
 TEST(MathFunctions, fma) {
-  EXPECT_FLOAT_EQ(5.0, fma(1.0, 2.0, 3.0));
-  EXPECT_FLOAT_EQ(10.0, fma(2.0, 3.0, 4.0));
+  EXPECT_DOUBLE_EQ(5.0, fma(1.0, 2.0, 3.0));
+  EXPECT_DOUBLE_EQ(10.0, fma(2.0, 3.0, 4.0));
 }
 
 TEST(MathFunctions, fma_nan) {

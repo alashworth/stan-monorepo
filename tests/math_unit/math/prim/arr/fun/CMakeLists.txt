@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_arr_unit_tests PRIVATE
         array_builder_test.cpp
         promote_scalar_type_test.cpp
         promote_scalar_test.cpp

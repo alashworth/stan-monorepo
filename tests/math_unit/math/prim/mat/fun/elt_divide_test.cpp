@@ -7,8 +7,8 @@ TEST(MathMatrix, eltDivideVec) {
   v1 << 1, 2;
   v2 << 10, 100;
   stan::math::vector_d v = stan::math::elt_divide(v1, v2);
-  EXPECT_FLOAT_EQ(0.1, v(0));
-  EXPECT_FLOAT_EQ(0.02, v(1));
+  EXPECT_DOUBLE_EQ(0.1, v(0));
+  EXPECT_DOUBLE_EQ(0.02, v(1));
 }
 TEST(MathMatrix, eltDivideVecException) {
   stan::math::vector_d v1(2);
@@ -21,15 +21,15 @@ TEST(MathMatrix, eltDivideVecByScalar) {
   stan::math::vector_d v1(2);
   v1 << 1, 2;
   stan::math::vector_d v = stan::math::elt_divide(v1, 10);
-  EXPECT_FLOAT_EQ(0.1, v(0));
-  EXPECT_FLOAT_EQ(0.2, v(1));
+  EXPECT_DOUBLE_EQ(0.1, v(0));
+  EXPECT_DOUBLE_EQ(0.2, v(1));
 }
 TEST(MathMatrix, eltDivideScalarByVec) {
   stan::math::vector_d v1(2);
   v1 << 1, 2;
   stan::math::vector_d v = stan::math::elt_divide(10, v1);
-  EXPECT_FLOAT_EQ(10, v(0));
-  EXPECT_FLOAT_EQ(5, v(1));
+  EXPECT_DOUBLE_EQ(10, v(0));
+  EXPECT_DOUBLE_EQ(5, v(1));
 }
 TEST(MathMatrix, eltDivideRowVec) {
   stan::math::row_vector_d v1(2);
@@ -37,8 +37,8 @@ TEST(MathMatrix, eltDivideRowVec) {
   v1 << 1, 2;
   v2 << 10, 100;
   stan::math::row_vector_d v = stan::math::elt_divide(v1, v2);
-  EXPECT_FLOAT_EQ(0.1, v(0));
-  EXPECT_FLOAT_EQ(0.02, v(1));
+  EXPECT_DOUBLE_EQ(0.1, v(0));
+  EXPECT_DOUBLE_EQ(0.02, v(1));
 }
 TEST(MathMatrix, eltDivideRowVecException) {
   stan::math::row_vector_d v1(2);
@@ -51,15 +51,15 @@ TEST(MathMatrix, eltDivideRowVecByScalar) {
   stan::math::row_vector_d v1(2);
   v1 << 1, 2;
   stan::math::row_vector_d v = stan::math::elt_divide(v1, 10);
-  EXPECT_FLOAT_EQ(0.1, v(0));
-  EXPECT_FLOAT_EQ(0.2, v(1));
+  EXPECT_DOUBLE_EQ(0.1, v(0));
+  EXPECT_DOUBLE_EQ(0.2, v(1));
 }
 TEST(MathMatrix, eltDivideScalarByRowVec) {
   stan::math::row_vector_d v1(2);
   v1 << 1, 2;
   stan::math::row_vector_d v = stan::math::elt_divide(10, v1);
-  EXPECT_FLOAT_EQ(10, v(0));
-  EXPECT_FLOAT_EQ(5, v(1));
+  EXPECT_DOUBLE_EQ(10, v(0));
+  EXPECT_DOUBLE_EQ(5, v(1));
 }
 TEST(MathMatrix, eltDivideMatrix) {
   stan::math::matrix_d m1(2, 3);
@@ -70,12 +70,12 @@ TEST(MathMatrix, eltDivideMatrix) {
 
   EXPECT_EQ(2, m.rows());
   EXPECT_EQ(3, m.cols());
-  EXPECT_FLOAT_EQ(0.1, m(0, 0));
-  EXPECT_FLOAT_EQ(0.02, m(0, 1));
-  EXPECT_FLOAT_EQ(0.003, m(0, 2));
-  EXPECT_FLOAT_EQ(0.0004, m(1, 0));
-  EXPECT_FLOAT_EQ(0.00005, m(1, 1));
-  EXPECT_FLOAT_EQ(0.000006, m(1, 2));
+  EXPECT_DOUBLE_EQ(0.1, m(0, 0));
+  EXPECT_DOUBLE_EQ(0.02, m(0, 1));
+  EXPECT_DOUBLE_EQ(0.003, m(0, 2));
+  EXPECT_DOUBLE_EQ(0.0004, m(1, 0));
+  EXPECT_DOUBLE_EQ(0.00005, m(1, 1));
+  EXPECT_DOUBLE_EQ(0.000006, m(1, 2));
 }
 TEST(MathMatrix, eltDivideMatrixException) {
   stan::math::matrix_d m1(2, 3);
@@ -94,12 +94,12 @@ TEST(MathMatrix, eltDivideMatrixByScalar) {
 
   EXPECT_EQ(2, m.rows());
   EXPECT_EQ(3, m.cols());
-  EXPECT_FLOAT_EQ(0.1, m(0, 0));
-  EXPECT_FLOAT_EQ(0.2, m(0, 1));
-  EXPECT_FLOAT_EQ(0.3, m(0, 2));
-  EXPECT_FLOAT_EQ(0.4, m(1, 0));
-  EXPECT_FLOAT_EQ(0.5, m(1, 1));
-  EXPECT_FLOAT_EQ(0.6, m(1, 2));
+  EXPECT_DOUBLE_EQ(0.1, m(0, 0));
+  EXPECT_DOUBLE_EQ(0.2, m(0, 1));
+  EXPECT_DOUBLE_EQ(0.3, m(0, 2));
+  EXPECT_DOUBLE_EQ(0.4, m(1, 0));
+  EXPECT_DOUBLE_EQ(0.5, m(1, 1));
+  EXPECT_DOUBLE_EQ(0.6, m(1, 2));
 }
 TEST(MathMatrix, eltDivideScalarByMatrix) {
   stan::math::matrix_d m1(2, 3);
@@ -108,10 +108,10 @@ TEST(MathMatrix, eltDivideScalarByMatrix) {
 
   EXPECT_EQ(2, m.rows());
   EXPECT_EQ(3, m.cols());
-  EXPECT_FLOAT_EQ(1, m(0, 0));
-  EXPECT_FLOAT_EQ(0.1, m(0, 1));
-  EXPECT_FLOAT_EQ(0.01, m(0, 2));
-  EXPECT_FLOAT_EQ(0.001, m(1, 0));
-  EXPECT_FLOAT_EQ(0.0001, m(1, 1));
-  EXPECT_FLOAT_EQ(0.00001, m(1, 2));
+  EXPECT_DOUBLE_EQ(1, m(0, 0));
+  EXPECT_DOUBLE_EQ(0.1, m(0, 1));
+  EXPECT_DOUBLE_EQ(0.01, m(0, 2));
+  EXPECT_DOUBLE_EQ(0.001, m(1, 0));
+  EXPECT_DOUBLE_EQ(0.0001, m(1, 1));
+  EXPECT_DOUBLE_EQ(0.00001, m(1, 2));
 }

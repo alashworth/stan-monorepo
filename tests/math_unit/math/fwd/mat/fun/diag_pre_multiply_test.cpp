@@ -34,18 +34,18 @@ TEST(AgradFwdMatrixDiagPreMultiply, vector_fd) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(W(i, j), output(i, j).val_);
+      EXPECT_DOUBLE_EQ(W(i, j), output(i, j).val_);
   }
 
-  EXPECT_FLOAT_EQ(4, output(0, 0).d_);
-  EXPECT_FLOAT_EQ(6, output(0, 1).d_);
-  EXPECT_FLOAT_EQ(8, output(0, 2).d_);
-  EXPECT_FLOAT_EQ(8, output(1, 0).d_);
-  EXPECT_FLOAT_EQ(10, output(1, 1).d_);
-  EXPECT_FLOAT_EQ(12, output(1, 2).d_);
-  EXPECT_FLOAT_EQ(14, output(2, 0).d_);
-  EXPECT_FLOAT_EQ(16, output(2, 1).d_);
-  EXPECT_FLOAT_EQ(18, output(2, 2).d_);
+  EXPECT_DOUBLE_EQ(4, output(0, 0).d_);
+  EXPECT_DOUBLE_EQ(6, output(0, 1).d_);
+  EXPECT_DOUBLE_EQ(8, output(0, 2).d_);
+  EXPECT_DOUBLE_EQ(8, output(1, 0).d_);
+  EXPECT_DOUBLE_EQ(10, output(1, 1).d_);
+  EXPECT_DOUBLE_EQ(12, output(1, 2).d_);
+  EXPECT_DOUBLE_EQ(14, output(2, 0).d_);
+  EXPECT_DOUBLE_EQ(16, output(2, 1).d_);
+  EXPECT_DOUBLE_EQ(18, output(2, 2).d_);
 }
 TEST(AgradFwdMatrixDiagPreMultiply, vector_fd_exception) {
   using stan::math::matrix_fd;
@@ -94,18 +94,18 @@ TEST(AgradFwdMatrixDiagPreMultiply, rowvector_fd) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(W(i, j), output(i, j).val_);
+      EXPECT_DOUBLE_EQ(W(i, j), output(i, j).val_);
   }
 
-  EXPECT_FLOAT_EQ(4, output(0, 0).d_);
-  EXPECT_FLOAT_EQ(6, output(0, 1).d_);
-  EXPECT_FLOAT_EQ(8, output(0, 2).d_);
-  EXPECT_FLOAT_EQ(8, output(1, 0).d_);
-  EXPECT_FLOAT_EQ(10, output(1, 1).d_);
-  EXPECT_FLOAT_EQ(12, output(1, 2).d_);
-  EXPECT_FLOAT_EQ(14, output(2, 0).d_);
-  EXPECT_FLOAT_EQ(16, output(2, 1).d_);
-  EXPECT_FLOAT_EQ(18, output(2, 2).d_);
+  EXPECT_DOUBLE_EQ(4, output(0, 0).d_);
+  EXPECT_DOUBLE_EQ(6, output(0, 1).d_);
+  EXPECT_DOUBLE_EQ(8, output(0, 2).d_);
+  EXPECT_DOUBLE_EQ(8, output(1, 0).d_);
+  EXPECT_DOUBLE_EQ(10, output(1, 1).d_);
+  EXPECT_DOUBLE_EQ(12, output(1, 2).d_);
+  EXPECT_DOUBLE_EQ(14, output(2, 0).d_);
+  EXPECT_DOUBLE_EQ(16, output(2, 1).d_);
+  EXPECT_DOUBLE_EQ(18, output(2, 2).d_);
 }
 TEST(AgradFwdMatrixDiagPreMultiply, rowvector_fd_exception) {
   using stan::math::matrix_fd;
@@ -163,18 +163,18 @@ TEST(AgradFwdMatrixDiagPreMultiply, vector_ffd) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(W(i, j), output(i, j).val_.val());
+      EXPECT_DOUBLE_EQ(W(i, j), output(i, j).val_.val());
   }
 
-  EXPECT_FLOAT_EQ(4, output(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(6, output(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(8, output(0, 2).d_.val());
-  EXPECT_FLOAT_EQ(8, output(1, 0).d_.val());
-  EXPECT_FLOAT_EQ(10, output(1, 1).d_.val());
-  EXPECT_FLOAT_EQ(12, output(1, 2).d_.val());
-  EXPECT_FLOAT_EQ(14, output(2, 0).d_.val());
-  EXPECT_FLOAT_EQ(16, output(2, 1).d_.val());
-  EXPECT_FLOAT_EQ(18, output(2, 2).d_.val());
+  EXPECT_DOUBLE_EQ(4, output(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(6, output(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(8, output(0, 2).d_.val());
+  EXPECT_DOUBLE_EQ(8, output(1, 0).d_.val());
+  EXPECT_DOUBLE_EQ(10, output(1, 1).d_.val());
+  EXPECT_DOUBLE_EQ(12, output(1, 2).d_.val());
+  EXPECT_DOUBLE_EQ(14, output(2, 0).d_.val());
+  EXPECT_DOUBLE_EQ(16, output(2, 1).d_.val());
+  EXPECT_DOUBLE_EQ(18, output(2, 2).d_.val());
 }
 TEST(AgradFwdMatrixDiagPreMultiply, vector_ffd_exception) {
   using stan::math::fvar;
@@ -233,18 +233,18 @@ TEST(AgradFwdMatrixDiagPreMultiply, rowvector_ffd) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(W(i, j), output(i, j).val_.val());
+      EXPECT_DOUBLE_EQ(W(i, j), output(i, j).val_.val());
   }
 
-  EXPECT_FLOAT_EQ(4, output(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(6, output(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(8, output(0, 2).d_.val());
-  EXPECT_FLOAT_EQ(8, output(1, 0).d_.val());
-  EXPECT_FLOAT_EQ(10, output(1, 1).d_.val());
-  EXPECT_FLOAT_EQ(12, output(1, 2).d_.val());
-  EXPECT_FLOAT_EQ(14, output(2, 0).d_.val());
-  EXPECT_FLOAT_EQ(16, output(2, 1).d_.val());
-  EXPECT_FLOAT_EQ(18, output(2, 2).d_.val());
+  EXPECT_DOUBLE_EQ(4, output(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(6, output(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(8, output(0, 2).d_.val());
+  EXPECT_DOUBLE_EQ(8, output(1, 0).d_.val());
+  EXPECT_DOUBLE_EQ(10, output(1, 1).d_.val());
+  EXPECT_DOUBLE_EQ(12, output(1, 2).d_.val());
+  EXPECT_DOUBLE_EQ(14, output(2, 0).d_.val());
+  EXPECT_DOUBLE_EQ(16, output(2, 1).d_.val());
+  EXPECT_DOUBLE_EQ(18, output(2, 2).d_.val());
 }
 TEST(AgradFwdMatrixDiagPreMultiply, rowvector_ffd_exception) {
   using stan::math::fvar;

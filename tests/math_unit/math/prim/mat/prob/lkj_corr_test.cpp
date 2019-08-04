@@ -11,10 +11,10 @@ TEST(ProbDistributionsLkjCorr, testIdentity_0) {
   Sigma.diagonal().setOnes();
   double eta = stan::math::uniform_rng(0, 2, rng);
   double f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
   eta = 1.0;
   f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
 }
 
 TEST(ProbDistributionsLkjCorr, testHalf_0) {
@@ -25,11 +25,11 @@ TEST(ProbDistributionsLkjCorr, testHalf_0) {
   Sigma.diagonal().setOnes();
   double eta = stan::math::uniform_rng(0, 2, rng);
   double f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f + (eta - 1.0) * log(0.3125),
-                  stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f + (eta - 1.0) * log(0.3125),
+                   stan::math::lkj_corr_log(Sigma, eta));
   eta = 1.0;
   f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_log(Sigma, eta));
 }
 
 TEST(ProbDistributionsLkjCorr, Sigma_0) {
@@ -108,10 +108,10 @@ TEST(ProbDistributionsLkjCorrCholesky, testIdentity) {
   Sigma.diagonal().setOnes();
   double eta = stan::math::uniform_rng(0, 2, rng);
   double f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_cholesky_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_cholesky_log(Sigma, eta));
   eta = 1.0;
   f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f, stan::math::lkj_corr_cholesky_log(Sigma, eta));
+  EXPECT_DOUBLE_EQ(f, stan::math::lkj_corr_cholesky_log(Sigma, eta));
 }
 
 TEST(ProbDistributionsLkjCorrCholesky, testHalf) {
@@ -123,9 +123,9 @@ TEST(ProbDistributionsLkjCorrCholesky, testHalf) {
   Eigen::MatrixXd L = Sigma.llt().matrixL();
   double eta = stan::math::uniform_rng(0, 2, rng);
   double f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(stan::math::lkj_corr_log(Sigma, eta) - 0.4904146,
-                  stan::math::lkj_corr_cholesky_log(L, eta));
+  EXPECT_DOUBLE_EQ(stan::math::lkj_corr_log(Sigma, eta) - 0.4904146,
+                   stan::math::lkj_corr_cholesky_log(L, eta));
   eta = 1.0;
   f = stan::math::do_lkj_constant(eta, K);
-  EXPECT_FLOAT_EQ(f - 0.4904146, stan::math::lkj_corr_cholesky_log(L, eta));
+  EXPECT_DOUBLE_EQ(f - 0.4904146, stan::math::lkj_corr_cholesky_log(L, eta));
 }

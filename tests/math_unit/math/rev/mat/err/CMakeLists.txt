@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_rev_mat_unit_tests PRIVATE
         check_consistent_size_test.cpp
         check_consistent_sizes_test.cpp
         check_greater_or_equal_test.cpp

@@ -1,12 +1,18 @@
 message(STATUS "Configuring Stan math unit tests...")
-add_executable(stan_math_unit_tests
-        math_include_test.cpp
-        util.hpp)
-target_include_directories(stan_math_unit_tests PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(stan_math_unit_tests PRIVATE
-        Stan::Math GTest::GTest GTest::Main)
+
+# convenience method since the base stan math configuration holds
+# the majority of all unit tests
+function(add_math_unit_test name)
+    add_executable(${name} ${ARGN})
+    set_target_properties(${name} PROPERTIES LINKER_LANGUAGE CXX)
+    target_link_libraries(${name} PRIVATE Stan::Math GTest::GTest GTest::Main)
+    target_include_directories(${name} PRIVATE
+            $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/tests/math_unit>
+            $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/tests/math_unit>)
+    gtest_discover_tests(${name})
+endfunction()
+
+add_math_unit_test(stan_math_misc_unit_tests math_include_test.cpp util.hpp)
 
 if (MPI_CXX_FOUND)
     add_executable(stan_math_mpi_unit_tests)
@@ -18,7 +24,7 @@ if (MPI_CXX_FOUND)
 endif()
 
 add_subdirectory(math)
-gtest_discover_tests(stan_math_unit_tests)
+
 message(STATUS "Configuring Stan math unit tests... [DONE]")
 
 #set(mpi_test_srcs

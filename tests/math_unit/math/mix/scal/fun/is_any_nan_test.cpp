@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 #include <limits>
 

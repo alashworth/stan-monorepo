@@ -65,8 +65,8 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_fv_1st_deriv) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(m2(i, j).val_.val(), m3(i, j).val_.val());
-      EXPECT_FLOAT_EQ(m2(i, j).d_.val(), m3(i, j).d_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).val_.val(), m3(i, j).val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).d_.val(), m3(i, j).d_.val());
     }
   }
 
@@ -90,7 +90,7 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_fv_1st_deriv) {
       m3(i, j).val_.grad(z1, h2);
       stan::math::recover_memory();
       for (int k = 0; k < 9; k++)
-        EXPECT_FLOAT_EQ(h1[k], h2[k]);
+        EXPECT_DOUBLE_EQ(h1[k], h2[k]);
     }
   }
 }
@@ -115,8 +115,8 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_fv_2nd_deriv) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(m2(i, j).val_.val(), m3(i, j).val_.val());
-      EXPECT_FLOAT_EQ(m2(i, j).d_.val(), m3(i, j).d_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).val_.val(), m3(i, j).val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).d_.val(), m3(i, j).d_.val());
     }
   }
 
@@ -140,7 +140,7 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_fv_2nd_deriv) {
       m3(i, j).d_.grad(z1, h2);
       stan::math::recover_memory();
       for (int k = 0; k < 9; k++)
-        EXPECT_FLOAT_EQ(h1[k], h2[k]);
+        EXPECT_DOUBLE_EQ(h1[k], h2[k]);
     }
   }
 }
@@ -165,8 +165,8 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_ffv_1st_deriv) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(m2(i, j).val_.val_.val(), m3(i, j).val_.val_.val());
-      EXPECT_FLOAT_EQ(m2(i, j).d_.val_.val(), m3(i, j).d_.val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).val_.val_.val(), m3(i, j).val_.val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).d_.val_.val(), m3(i, j).d_.val_.val());
     }
   }
 
@@ -190,7 +190,7 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_ffv_1st_deriv) {
       m3(i, j).val_.val_.grad(z1, h2);
       stan::math::recover_memory();
       for (int k = 0; k < 9; k++)
-        EXPECT_FLOAT_EQ(h1[k], h2[k]);
+        EXPECT_DOUBLE_EQ(h1[k], h2[k]);
     }
   }
 }
@@ -215,8 +215,8 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_ffv_2nd_deriv) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(m2(i, j).val_.val_.val(), m3(i, j).val_.val_.val());
-      EXPECT_FLOAT_EQ(m2(i, j).d_.val_.val(), m3(i, j).d_.val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).val_.val_.val(), m3(i, j).val_.val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).d_.val_.val(), m3(i, j).d_.val_.val());
     }
   }
 
@@ -240,7 +240,7 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_ffv_2nd_deriv) {
       m3(i, j).d_.val_.grad(z1, h2);
       stan::math::recover_memory();
       for (int k = 0; k < 9; k++)
-        EXPECT_FLOAT_EQ(h1[k], h2[k]);
+        EXPECT_DOUBLE_EQ(h1[k], h2[k]);
     }
   }
 }
@@ -274,8 +274,8 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_ffv_3rd_deriv) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(m2(i, j).val_.val_.val(), m3(i, j).val_.val_.val());
-      EXPECT_FLOAT_EQ(m2(i, j).d_.val_.val(), m3(i, j).d_.val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).val_.val_.val(), m3(i, j).val_.val_.val());
+      EXPECT_DOUBLE_EQ(m2(i, j).d_.val_.val(), m3(i, j).d_.val_.val());
     }
   }
 
@@ -299,7 +299,7 @@ TEST_F(AgradMixMatrixInverseSPD, matrix_ffv_3rd_deriv) {
       m3(i, j).d_.d_.grad(z1, h2);
       stan::math::recover_memory();
       for (int k = 0; k < 9; k++)
-        EXPECT_FLOAT_EQ(h1[k], h2[k]);
+        EXPECT_DOUBLE_EQ(h1[k], h2[k]);
     }
   }
 }

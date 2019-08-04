@@ -22,9 +22,9 @@ TEST(ProbDistributionsNormalIdGLM, glm_matches_normal_id_doubles) {
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta = x * beta + alphavec;
   double sigma = 10;
-  EXPECT_FLOAT_EQ((stan::math::normal_lpdf(y, theta, sigma)),
-                  (stan::math::normal_id_glm_lpdf(y, x, alpha, beta, sigma)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::normal_lpdf(y, theta, sigma)),
+                   (stan::math::normal_id_glm_lpdf(y, x, alpha, beta, sigma)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::normal_lpdf<true>(y, theta, sigma)),
       (stan::math::normal_id_glm_lpdf<true>(y, x, alpha, beta, sigma)));
 }
@@ -48,10 +48,10 @@ TEST(ProbDistributionsNormalIdGLM, glm_matches_normal_id_doubles_rand) {
     Matrix<double, Dynamic, 1> phi
         = Matrix<double, Dynamic, Dynamic>::Random(1, 1)
           + Matrix<double, 1, 1>::Ones();
-    EXPECT_FLOAT_EQ(
+    EXPECT_DOUBLE_EQ(
         (stan::math::normal_lpdf(y, theta, phi[0])),
         (stan::math::normal_id_glm_lpdf(y, x, alpha, beta, phi[0])));
-    EXPECT_FLOAT_EQ(
+    EXPECT_DOUBLE_EQ(
         (stan::math::normal_lpdf<true>(y, theta, phi[0])),
         (stan::math::normal_id_glm_lpdf<true>(y, x, alpha, beta, phi[0])));
   }
@@ -101,16 +101,16 @@ TEST(ProbDistributionsNormalIdGLM, glm_matches_normal_id_vars) {
   var sigma2 = 10;
   var lp2 = stan::math::normal_id_glm_lpdf(y2, x2, alpha2, beta2, sigma2);
   lp2.grad();
-  EXPECT_FLOAT_EQ(lp_val, lp2.val());
+  EXPECT_DOUBLE_EQ(lp_val, lp2.val());
   for (size_t i = 0; i < 2; i++) {
-    EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
+    EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
   }
-  EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
-  EXPECT_FLOAT_EQ(sigma_adj, sigma2.adj());
+  EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
+  EXPECT_DOUBLE_EQ(sigma_adj, sigma2.adj());
   for (size_t j = 0; j < 3; j++) {
-    EXPECT_FLOAT_EQ(y_adj[j], y2[j].adj());
+    EXPECT_DOUBLE_EQ(y_adj[j], y2[j].adj());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
+      EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
     }
   }
 }
@@ -162,16 +162,16 @@ TEST(ProbDistributionsNormalIdGLM, glm_matches_normal_id_vars_rand) {
     var phi2 = phireal;
     var lp2 = stan::math::normal_id_glm_lpdf(y2, x2, alpha2, beta2, phi2);
     lp2.grad();
-    EXPECT_FLOAT_EQ(lp_val, lp2.val());
+    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
     }
-    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
-    EXPECT_FLOAT_EQ(phi_adj, phi2.adj());
+    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
+    EXPECT_DOUBLE_EQ(phi_adj, phi2.adj());
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(y_adj[j], y2[j].adj());
+      EXPECT_DOUBLE_EQ(y_adj[j], y2[j].adj());
       for (size_t i = 0; i < 2; i++) {
-        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
   }
@@ -220,13 +220,13 @@ TEST(ProbDistributionsNormalIdGLM, glm_matches_normal_id_vars_rand_scal_beta) {
     var phi2 = phireal;
     var lp2 = stan::math::normal_id_glm_lpdf(y2, x2, alpha2, beta2, phi2);
     lp2.grad();
-    EXPECT_FLOAT_EQ(lp_val, lp2.val());
-    EXPECT_FLOAT_EQ(beta_adj, beta2.adj());
-    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
-    EXPECT_FLOAT_EQ(phi_adj, phi2.adj());
+    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+    EXPECT_DOUBLE_EQ(beta_adj, beta2.adj());
+    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
+    EXPECT_DOUBLE_EQ(phi_adj, phi2.adj());
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(y_adj[j], y2[j].adj());
-      EXPECT_FLOAT_EQ(x_adj(j, 0), x2(j, 0).adj());
+      EXPECT_DOUBLE_EQ(y_adj[j], y2[j].adj());
+      EXPECT_DOUBLE_EQ(x_adj(j, 0), x2(j, 0).adj());
     }
   }
 }
@@ -279,16 +279,16 @@ TEST(ProbDistributionsNormalIdGLM, glm_matches_normal_id_varying_intercept) {
     var phi2 = phireal;
     var lp2 = stan::math::normal_id_glm_lpdf(y2, x2, alpha2, beta2, phi2);
     lp2.grad();
-    EXPECT_FLOAT_EQ(lp_val, lp2.val());
-    EXPECT_FLOAT_EQ(phi_adj, phi2.adj());
+    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+    EXPECT_DOUBLE_EQ(phi_adj, phi2.adj());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
     }
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(alpha_adj[j], alpha2[j].adj());
-      EXPECT_FLOAT_EQ(y_adj[j], y2[j].adj());
+      EXPECT_DOUBLE_EQ(alpha_adj[j], alpha2[j].adj());
+      EXPECT_DOUBLE_EQ(y_adj[j], y2[j].adj());
       for (size_t i = 0; i < 2; i++) {
-        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
   }
@@ -346,16 +346,16 @@ TEST(ProbDistributionsNormalIdGLM,
     Matrix<var, Dynamic, 1> phi2 = phireal;
     var lp2 = stan::math::normal_id_glm_lpdf(y2, x2, alpha2, beta2, phi2);
     lp2.grad();
-    EXPECT_FLOAT_EQ(lp_val, lp2.val());
+    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
     }
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(alpha_adj[j], alpha2[j].adj());
-      EXPECT_FLOAT_EQ(y_adj[j], y2[j].adj());
-      EXPECT_FLOAT_EQ(phi_adj[j], phi2[j].adj());
+      EXPECT_DOUBLE_EQ(alpha_adj[j], alpha2[j].adj());
+      EXPECT_DOUBLE_EQ(y_adj[j], y2[j].adj());
+      EXPECT_DOUBLE_EQ(phi_adj[j], phi2[j].adj());
       for (size_t i = 0; i < 2; i++) {
-        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
   }
@@ -398,7 +398,7 @@ TEST(ProbDistributionsNormalIdGLM, glm_matches_normal_id_interface_types) {
   value2 += stan::math::normal_id_glm_lpdf(evv, mv, evv, evv, evv).val();
   value2 += stan::math::normal_id_glm_lpdf(rvv, mv, rvv, rvv, rvv).val();
 
-  EXPECT_FLOAT_EQ(value, value2);
+  EXPECT_DOUBLE_EQ(value, value2);
 }
 
 //  We check that the right errors are thrown.

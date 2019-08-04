@@ -21,18 +21,18 @@ TEST(AgradFwdMatrixSum, fd_vector) {
 
   fvar<double> output;
   output = sum(d);
-  EXPECT_FLOAT_EQ(21.0, output.val_);
-  EXPECT_FLOAT_EQ(0.0, output.d_);
+  EXPECT_DOUBLE_EQ(21.0, output.val_);
+  EXPECT_DOUBLE_EQ(0.0, output.d_);
 
   output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_);
-  EXPECT_FLOAT_EQ(6.0, output.d_);
+  EXPECT_DOUBLE_EQ(21.0, output.val_);
+  EXPECT_DOUBLE_EQ(6.0, output.d_);
 
   d.resize(0);
   v.resize(0);
-  EXPECT_FLOAT_EQ(0.0, sum(d));
-  EXPECT_FLOAT_EQ(0.0, sum(v).val_);
-  EXPECT_FLOAT_EQ(0.0, sum(v).d_);
+  EXPECT_DOUBLE_EQ(0.0, sum(d));
+  EXPECT_DOUBLE_EQ(0.0, sum(v).val_);
+  EXPECT_DOUBLE_EQ(0.0, sum(v).d_);
 }
 TEST(AgradFwdMatrixSum, fd_rowvector) {
   using stan::math::row_vector_d;
@@ -53,18 +53,18 @@ TEST(AgradFwdMatrixSum, fd_rowvector) {
 
   fvar<double> output;
   output = sum(d);
-  EXPECT_FLOAT_EQ(21.0, output.val_);
-  EXPECT_FLOAT_EQ(0.0, output.d_);
+  EXPECT_DOUBLE_EQ(21.0, output.val_);
+  EXPECT_DOUBLE_EQ(0.0, output.d_);
 
   output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_);
-  EXPECT_FLOAT_EQ(6.0, output.d_);
+  EXPECT_DOUBLE_EQ(21.0, output.val_);
+  EXPECT_DOUBLE_EQ(6.0, output.d_);
 
   d.resize(0);
   v.resize(0);
-  EXPECT_FLOAT_EQ(0.0, sum(d));
-  EXPECT_FLOAT_EQ(0.0, sum(v).val_);
-  EXPECT_FLOAT_EQ(0.0, sum(v).d_);
+  EXPECT_DOUBLE_EQ(0.0, sum(d));
+  EXPECT_DOUBLE_EQ(0.0, sum(v).val_);
+  EXPECT_DOUBLE_EQ(0.0, sum(v).d_);
 }
 TEST(AgradFwdMatrixSum, fd_matrix) {
   using stan::math::matrix_d;
@@ -85,18 +85,18 @@ TEST(AgradFwdMatrixSum, fd_matrix) {
 
   fvar<double> output;
   output = sum(d);
-  EXPECT_FLOAT_EQ(21.0, output.val_);
-  EXPECT_FLOAT_EQ(0.0, output.d_);
+  EXPECT_DOUBLE_EQ(21.0, output.val_);
+  EXPECT_DOUBLE_EQ(0.0, output.d_);
 
   output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_);
-  EXPECT_FLOAT_EQ(6.0, output.d_);
+  EXPECT_DOUBLE_EQ(21.0, output.val_);
+  EXPECT_DOUBLE_EQ(6.0, output.d_);
 
   d.resize(0, 0);
   v.resize(0, 0);
-  EXPECT_FLOAT_EQ(0.0, sum(d));
-  EXPECT_FLOAT_EQ(0.0, sum(v).val_);
-  EXPECT_FLOAT_EQ(0.0, sum(v).d_);
+  EXPECT_DOUBLE_EQ(0.0, sum(d));
+  EXPECT_DOUBLE_EQ(0.0, sum(v).val_);
+  EXPECT_DOUBLE_EQ(0.0, sum(v).d_);
 }
 TEST(AgradFwdMatrixSum, ffd_vector_1) {
   using stan::math::sum;
@@ -117,18 +117,18 @@ TEST(AgradFwdMatrixSum, ffd_vector_1) {
 
   fvar<fvar<double> > output;
   output = sum(d);
-  EXPECT_FLOAT_EQ(21.0, output.val_.val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(21.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val());
 
   output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_.val());
-  EXPECT_FLOAT_EQ(6.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(21.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(6.0, output.d_.val());
 
   d.resize(0);
   v.resize(0);
-  EXPECT_FLOAT_EQ(0.0, sum(d));
-  EXPECT_FLOAT_EQ(0.0, sum(v).val_.val());
-  EXPECT_FLOAT_EQ(0.0, sum(v).d_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(d));
+  EXPECT_DOUBLE_EQ(0.0, sum(v).val_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(v).d_.val());
 }
 TEST(AgradFwdMatrixSum, ffd_rowvector) {
   using stan::math::row_vector_d;
@@ -149,18 +149,18 @@ TEST(AgradFwdMatrixSum, ffd_rowvector) {
 
   fvar<fvar<double> > output;
   output = sum(d);
-  EXPECT_FLOAT_EQ(21.0, output.val_.val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(21.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val());
 
   output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_.val());
-  EXPECT_FLOAT_EQ(6.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(21.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(6.0, output.d_.val());
 
   d.resize(0);
   v.resize(0);
-  EXPECT_FLOAT_EQ(0.0, sum(d));
-  EXPECT_FLOAT_EQ(0.0, sum(v).val_.val());
-  EXPECT_FLOAT_EQ(0.0, sum(v).d_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(d));
+  EXPECT_DOUBLE_EQ(0.0, sum(v).val_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(v).d_.val());
 }
 TEST(AgradFwdMatrixSum, ffd_matrix) {
   using stan::math::matrix_d;
@@ -181,16 +181,16 @@ TEST(AgradFwdMatrixSum, ffd_matrix) {
 
   fvar<fvar<double> > output;
   output = sum(d);
-  EXPECT_FLOAT_EQ(21.0, output.val_.val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(21.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val());
 
   output = sum(v);
-  EXPECT_FLOAT_EQ(21.0, output.val_.val());
-  EXPECT_FLOAT_EQ(6.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(21.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(6.0, output.d_.val());
 
   d.resize(0, 0);
   v.resize(0, 0);
-  EXPECT_FLOAT_EQ(0.0, sum(d));
-  EXPECT_FLOAT_EQ(0.0, sum(v).val_.val());
-  EXPECT_FLOAT_EQ(0.0, sum(v).d_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(d));
+  EXPECT_DOUBLE_EQ(0.0, sum(v).val_.val());
+  EXPECT_DOUBLE_EQ(0.0, sum(v).d_.val());
 }

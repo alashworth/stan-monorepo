@@ -6,9 +6,9 @@ TEST(ProbNormal, ccdf_log_matches_lccdf) {
   double mu = 1.1;
   double sigma = 2.3;
 
-  EXPECT_FLOAT_EQ((stan::math::normal_lccdf(y, mu, sigma)),
-                  (stan::math::normal_ccdf_log(y, mu, sigma)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::normal_lccdf(y, mu, sigma)),
+                   (stan::math::normal_ccdf_log(y, mu, sigma)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::normal_lccdf<double, double, double>(y, mu, sigma)),
       (stan::math::normal_ccdf_log<double, double, double>(y, mu, sigma)));
 }

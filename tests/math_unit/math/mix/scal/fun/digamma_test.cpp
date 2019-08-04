@@ -1,7 +1,7 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/digamma.hpp>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdDigamma, FvarVar_1stDeriv) {
@@ -13,13 +13,13 @@ TEST(AgradFwdDigamma, FvarVar_1stDeriv) {
   fvar<var> x(0.5, 1.3);
   fvar<var> a = digamma(x);
 
-  EXPECT_FLOAT_EQ(digamma(0.5), a.val_.val());
-  EXPECT_FLOAT_EQ(1.3 * 4.9348022005446793094, a.d_.val());
+  EXPECT_DOUBLE_EQ(digamma(0.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(1.3 * 4.9348022005446793094, a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(4.9348022005446793094, g[0]);
+  EXPECT_DOUBLE_EQ(4.9348022005446793094, g[0]);
 }
 
 TEST(AgradFwdDigamma, FvarVar_2ndDeriv) {
@@ -34,7 +34,7 @@ TEST(AgradFwdDigamma, FvarVar_2ndDeriv) {
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(1.3 * -16.8288, g[0]);
+  EXPECT_DOUBLE_EQ(1.3 * -16.8288, g[0]);
 }
 
 TEST(AgradFwdDigamma, FvarFvarVar_1stDeriv) {
@@ -48,30 +48,30 @@ TEST(AgradFwdDigamma, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = digamma(x);
 
-  EXPECT_FLOAT_EQ(digamma(0.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(4.9348022005446793094, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(digamma(0.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(4.9348022005446793094, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(4.9348022005446793094, g[0]);
+  EXPECT_DOUBLE_EQ(4.9348022005446793094, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 1.0;
 
   fvar<fvar<var> > b = digamma(y);
-  EXPECT_FLOAT_EQ(digamma(0.5), b.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
-  EXPECT_FLOAT_EQ(4.9348022005446793094, b.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
+  EXPECT_DOUBLE_EQ(digamma(0.5), b.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
+  EXPECT_DOUBLE_EQ(4.9348022005446793094, b.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(4.9348022005446793094, r[0]);
+  EXPECT_DOUBLE_EQ(4.9348022005446793094, r[0]);
 }
 
 TEST(AgradFwdDigamma, FvarFvarVar_2ndDeriv) {
@@ -88,7 +88,7 @@ TEST(AgradFwdDigamma, FvarFvarVar_2ndDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-16.8288, g[0]);
+  EXPECT_DOUBLE_EQ(-16.8288, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
@@ -99,7 +99,7 @@ TEST(AgradFwdDigamma, FvarFvarVar_2ndDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(-16.8288, r[0]);
+  EXPECT_DOUBLE_EQ(-16.8288, r[0]);
 }
 TEST(AgradFwdDigamma, FvarFvarVar_3rdDeriv) {
   using boost::math::digamma;
@@ -116,7 +116,7 @@ TEST(AgradFwdDigamma, FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(97.4090910340024372364403326887, g[0]);
+  EXPECT_DOUBLE_EQ(97.4090910340024372364403326887, g[0]);
 }
 
 struct digamma_fun {

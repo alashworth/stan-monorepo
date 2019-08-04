@@ -14,5 +14,5 @@ TEST(MathMatrix, trace_quad_form_mat) {
 
   // double-double
   res = trace_quad_form(ad, bd);
-  EXPECT_FLOAT_EQ(26758, res);
+  EXPECT_DOUBLE_EQ(26758, res);
 }

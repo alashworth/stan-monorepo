@@ -11,7 +11,7 @@ void test_log1m_exp(double val) {
   AVAR a(val);
   AVEC x = createAVEC(a);
   AVAR f = log1m_exp(a);
-  EXPECT_FLOAT_EQ(log1m_exp(val), f.val());
+  EXPECT_DOUBLE_EQ(log1m_exp(val), f.val());
   VEC g;
   f.grad(x, g);
   double f_val = f.val();
@@ -24,10 +24,10 @@ void test_log1m_exp(double val) {
 
   EXPECT_EQ(1U, g.size());
   EXPECT_EQ(1U, g2.size());
-  EXPECT_FLOAT_EQ(g2[0], g[0]);
+  EXPECT_DOUBLE_EQ(g2[0], g[0]);
   // analytic deriv
-  EXPECT_FLOAT_EQ(g2[0], -1 / ::expm1(-val));
-  EXPECT_FLOAT_EQ(f2.val(), f_val);
+  EXPECT_DOUBLE_EQ(g2[0], -1 / ::expm1(-val));
+  EXPECT_DOUBLE_EQ(f2.val(), f_val);
 }
 
 TEST(AgradRev, log1m_exp) {
@@ -45,12 +45,14 @@ TEST(AgradRev, log1m_exp_exception) {
   EXPECT_NO_THROW(log1m_exp(AVAR(3)));
 }
 
+namespace {
 struct log1m_exp_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return log1m_exp(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, log1m_exp_NaN) {
   log1m_exp_fun log1m_exp_;

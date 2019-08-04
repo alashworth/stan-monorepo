@@ -24,10 +24,10 @@ TEST(SparseStuff, csr_to_dense_matrix_two_route) {
   stan::math::vector_d result_dense = A * b;
   stan::math::vector_d result_straight_dense = m * b;
 
-  EXPECT_FLOAT_EQ(result_dense(0), result_sparse(0));
-  EXPECT_FLOAT_EQ(result_dense(1), result_sparse(1));
-  EXPECT_FLOAT_EQ(result_dense(0), result_straight_dense(0));
-  EXPECT_FLOAT_EQ(result_dense(1), result_straight_dense(1));
+  EXPECT_DOUBLE_EQ(result_dense(0), result_sparse(0));
+  EXPECT_DOUBLE_EQ(result_dense(1), result_sparse(1));
+  EXPECT_DOUBLE_EQ(result_dense(0), result_straight_dense(0));
+  EXPECT_DOUBLE_EQ(result_dense(1), result_straight_dense(1));
 }
 
 // Test that sparse and dense multiplication results is the same after
@@ -52,10 +52,10 @@ TEST(SparseStuff, csr_to_dense_matrix_two_route_sparse) {
   stan::math::vector_d result_dense = A * b;
   stan::math::vector_d result_straight_dense = m * b;
 
-  EXPECT_FLOAT_EQ(result_dense(0), result_sparse(0));
-  EXPECT_FLOAT_EQ(result_dense(1), result_sparse(1));
-  EXPECT_FLOAT_EQ(result_dense(0), result_straight_dense(0));
-  EXPECT_FLOAT_EQ(result_dense(1), result_straight_dense(1));
+  EXPECT_DOUBLE_EQ(result_dense(0), result_sparse(0));
+  EXPECT_DOUBLE_EQ(result_dense(1), result_sparse(1));
+  EXPECT_DOUBLE_EQ(result_dense(0), result_straight_dense(0));
+  EXPECT_DOUBLE_EQ(result_dense(1), result_straight_dense(1));
 }
 
 // Test that m=0 throws (CSR).

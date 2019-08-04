@@ -7,41 +7,42 @@ TEST(AgradRev, fmod_var_var) {
   AVAR a = 2.7;
   AVAR b = 1.3;
   AVAR f = fmod(a, b);
-  EXPECT_FLOAT_EQ(std::fmod(2.7, 1.3), f.val());
+  EXPECT_DOUBLE_EQ(std::fmod(2.7, 1.3), f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(1.0, g[0]);
+  EXPECT_DOUBLE_EQ(1.0, g[0]);
   // (int)(2.7/1.3) = 2
-  EXPECT_FLOAT_EQ(-2.0, g[1]);
+  EXPECT_DOUBLE_EQ(-2.0, g[1]);
 }
 
 TEST(AgradRev, fmod_var_double) {
   AVAR a = 2.7;
   double b = 1.3;
   AVAR f = fmod(a, b);
-  EXPECT_FLOAT_EQ(fmod(2.7, 1.3), f.val());
+  EXPECT_DOUBLE_EQ(fmod(2.7, 1.3), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(1.0, g[0]);
+  EXPECT_DOUBLE_EQ(1.0, g[0]);
 }
 
 TEST(AgradRev, fmod_double_var) {
   double a = 2.7;
   AVAR b = 1.3;
   AVAR f = fmod(a, b);
-  EXPECT_FLOAT_EQ(fmod(2.7, 1.3), f.val());
+  EXPECT_DOUBLE_EQ(fmod(2.7, 1.3), f.val());
 
   AVEC x = createAVEC(b);
   VEC g;
   f.grad(x, g);
   // (int)(2.7/1.3) = 2
-  EXPECT_FLOAT_EQ(-2.0, g[0]);
+  EXPECT_DOUBLE_EQ(-2.0, g[0]);
 }
 
+namespace {
 struct fmod_fun {
   template <typename T0, typename T1>
   inline typename stan::return_type<T0, T1>::type operator()(
@@ -49,6 +50,7 @@ struct fmod_fun {
     return fmod(arg1, arg2);
   }
 };
+}  // namespace
 
 TEST(AgradRev, fmod_nan) {
   fmod_fun fmod_;

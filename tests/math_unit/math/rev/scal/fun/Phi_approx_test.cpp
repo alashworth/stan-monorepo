@@ -38,16 +38,18 @@ TEST(AgradRev, Phi_approx) {
     EXPECT_EQ(1U, g.size());
     EXPECT_EQ(1U, g2.size());
 
-    EXPECT_FLOAT_EQ(g2[0], g[0]);
+    EXPECT_DOUBLE_EQ(g2[0], g[0]);
   }
 }
 
+namespace {
 struct Phi_approx_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return Phi_approx(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, Phi_approx_NaN) {
   Phi_approx_fun Phi_approx_;

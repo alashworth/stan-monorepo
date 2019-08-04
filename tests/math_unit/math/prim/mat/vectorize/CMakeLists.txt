@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_mat_unit_tests PRIVATE
         expect_prim_std_vector_value.hpp
         expect_int_scalar_error.hpp
         vector_builder.hpp

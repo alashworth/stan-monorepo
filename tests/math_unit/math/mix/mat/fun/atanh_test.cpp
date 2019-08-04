@@ -7,6 +7,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized atanh (defined in the
  * testing framework).
@@ -89,6 +90,7 @@ struct atanh_test {
     return test::math::vector_builder<int>().add(-10).add(20).build();
   }
 };
+}  // namespace
 
 INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, atanh_test);
 INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, atanh_test);

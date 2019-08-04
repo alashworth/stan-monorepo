@@ -7,23 +7,23 @@
 TEST(AgradRev, cos_var) {
   AVAR a = 0.49;
   AVAR f = cos(a);
-  EXPECT_FLOAT_EQ(.8823329, f.val());
+  EXPECT_DOUBLE_EQ(.8823329, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(-sin(0.49), g[0]);
+  EXPECT_DOUBLE_EQ(-sin(0.49), g[0]);
 }
 
 TEST(AgradRev, cos_neg_var) {
   AVAR a = -0.49;
   AVAR f = cos(a);
-  EXPECT_FLOAT_EQ((.8823329), f.val());
+  EXPECT_DOUBLE_EQ((.8823329), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(-sin(-0.49), g[0]);
+  EXPECT_DOUBLE_EQ(-sin(-0.49), g[0]);
 }
 
 TEST(AgradRev, cos_boundry) {
@@ -35,12 +35,14 @@ TEST(AgradRev, cos_boundry) {
   EXPECT_TRUE(std::isnan(cos(b)));
 }
 
+namespace {
 struct cos_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return cos(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, cos_NaN) {
   cos_fun cos_;

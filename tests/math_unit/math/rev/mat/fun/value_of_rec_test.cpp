@@ -32,11 +32,11 @@ TEST(AgradMatrix, value_of_rec_1) {
   Eigen::MatrixXd d_v_b = value_of_rec(v_b);
 
   for (size_type i = 0; i < 5; ++i) {
-    EXPECT_FLOAT_EQ(b(i), d_v_b(i));
+    EXPECT_DOUBLE_EQ(b(i), d_v_b(i));
   }
 
   for (size_type i = 0; i < 2; ++i)
     for (size_type j = 0; j < 5; ++j) {
-      EXPECT_FLOAT_EQ(a(i, j), d_v_a(i, j));
+      EXPECT_DOUBLE_EQ(a(i, j), d_v_a(i, j));
     }
 }

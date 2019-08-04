@@ -6,6 +6,8 @@
 #include <sstream>
 #include <vector>
 
+namespace {
+
 std::ostringstream msgs;
 
 struct f1 {
@@ -233,7 +235,7 @@ void test_integration(const F &f, double a, double b,
               tolerance);
   }
 }
-
+}  // namespace
 TEST(StanMath_integrate_1d, TestThrows) {
   // Left limit of integration must be less than or equal to right limit
   EXPECT_THROW(stan::math::integrate_1d(f2{}, 1.0, 0.0, std::vector<double>(),

@@ -10,6 +10,7 @@ using Eigen::Matrix;
 
 typedef Eigen::Matrix<double, Eigen::Dynamic, 1> vector_d;
 
+namespace {
 vector_d get_simplex(double lambda, const vector_d& c) {
   using stan::math::inv_logit;
   int K = c.size() + 1;
@@ -21,6 +22,8 @@ vector_d get_simplex(double lambda, const vector_d& c) {
   theta(K - 1) = inv_logit(lambda - c(K - 2));
   return theta;
 }
+void expect_nan(double x) { EXPECT_TRUE(std::isnan(x)); }
+}  // namespace
 
 TEST(ProbDistributions, ordered_logistic_vals) {
   using Eigen::Dynamic;
@@ -47,12 +50,12 @@ TEST(ProbDistributions, ordered_logistic_vals) {
     sum += theta(k);
     log_sum += log(theta(k));
   }
-  EXPECT_FLOAT_EQ(1.0, sum);
+  EXPECT_DOUBLE_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_FLOAT_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[k], c));
+    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[k], c));
 
-  EXPECT_FLOAT_EQ(log_sum, ordered_logistic_log(y, lambda, c));
+  EXPECT_DOUBLE_EQ(log_sum, ordered_logistic_log(y, lambda, c));
 
   EXPECT_THROW(ordered_logistic_log(0, lambda[0], c), std::domain_error);
   EXPECT_THROW(ordered_logistic_log(6, lambda[0], c), std::domain_error);
@@ -86,12 +89,12 @@ TEST(ProbDistributions, ordered_logistic_vals_2) {
     sum += theta(k);
     log_sum += log(theta(k));
   }
-  EXPECT_FLOAT_EQ(1.0, sum);
+  EXPECT_DOUBLE_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_FLOAT_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[0], c));
+    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[0], c));
 
-  EXPECT_FLOAT_EQ(log_sum, ordered_logistic_log(y, lambda, c));
+  EXPECT_DOUBLE_EQ(log_sum, ordered_logistic_log(y, lambda, c));
 
   EXPECT_THROW(ordered_logistic_log(0, lambda[0], c), std::domain_error);
   EXPECT_THROW(ordered_logistic_log(4, lambda[0], c), std::domain_error);
@@ -176,8 +179,6 @@ TEST(ProbDistributions, ordered_logistic) {
   EXPECT_THROW(ordered_logistic_log(y, lambda, c_small_vec),
                std::invalid_argument);
 }
-
-void expect_nan(double x) { EXPECT_TRUE(std::isnan(x)); }
 
 TEST(ProbDistributionOrderedLogistic, error_check) {
   boost::random::mt19937 rng;

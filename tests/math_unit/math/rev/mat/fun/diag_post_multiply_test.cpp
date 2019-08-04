@@ -105,7 +105,7 @@ TEST(MathMatrix, diagPostMultiplyGrad_vv) {
 
   EXPECT_EQ(g1.size(), g2.size());
   for (size_t i = 0; i < g1.size(); ++i)
-    EXPECT_FLOAT_EQ(g1[i], g2[i]);
+    EXPECT_DOUBLE_EQ(g1[i], g2[i]);
 }
 
 TEST(MathMatrix, diagPostMultiplyGrad_vd) {
@@ -145,7 +145,7 @@ TEST(MathMatrix, diagPostMultiplyGrad_vd) {
 
   EXPECT_EQ(g1.size(), g2.size());
   for (size_t i = 0; i < g1.size(); ++i)
-    EXPECT_FLOAT_EQ(g1[i], g2[i]);
+    EXPECT_DOUBLE_EQ(g1[i], g2[i]);
 }
 
 TEST(MathMatrix, diagPostMultiplyGrad_dv) {
@@ -185,7 +185,7 @@ TEST(MathMatrix, diagPostMultiplyGrad_dv) {
 
   EXPECT_EQ(g1.size(), g2.size());
   for (size_t i = 0; i < g1.size(); ++i)
-    EXPECT_FLOAT_EQ(g1[i], g2[i]);
+    EXPECT_DOUBLE_EQ(g1[i], g2[i]);
 }
 
 TEST(MathMatrix, diagPostMultiplyException_1) {

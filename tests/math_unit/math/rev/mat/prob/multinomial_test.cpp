@@ -1,7 +1,7 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
 #include <math/rev/mat/prob/expect_eq_diffs.hpp>
-#include <math/rev/mat/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <string>
 #include <vector>
 
@@ -31,7 +31,7 @@ TEST(AgradDistributionsMultinomial, Propto) {
   expect_propto(ns, theta1, ns, theta2, "var: theta");
 }
 
-TEST(AgradDistributionsMultinomial, check_varis_on_stack) {
+TEST(AgradDistributionsMultinomial, check_varis_on_stack_303) {
   std::vector<int> ns;
   ns.push_back(1);
   ns.push_back(2);

@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_mix_mat_unit_tests PRIVATE
         expect_mix_scalar_value.hpp
         mix_scalar_unary_test.hpp
         expect_mix_std_vector_value.hpp

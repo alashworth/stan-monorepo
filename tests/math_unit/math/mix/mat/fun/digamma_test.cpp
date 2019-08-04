@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized digamma (defined in the
  * testing framework).
@@ -91,8 +92,9 @@ struct digamma_test {
     return test::math::vector_builder<int>().add(-1).add(-12).add(-25).build();
   }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, digamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, digamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, digamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, digamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(digamma, prim_scalar_unary_test, digamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(digamma, rev_scalar_unary_test, digamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(digamma, fwd_scalar_unary_test, digamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(digamma, mix_scalar_unary_test, digamma_test);

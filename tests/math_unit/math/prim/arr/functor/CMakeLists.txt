@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_arr_unit_tests PRIVATE
         lorenz.hpp
         harmonic_oscillator.hpp
         integrate_ode_rk45_test.cpp

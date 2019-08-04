@@ -35,7 +35,7 @@ TEST(MathMatrix, chol2inv) {
   matrix_d Y_inv2 = chol2inv(L);
   for (int j = 0; j < Y.cols(); j++)
     for (int i = 0; i < Y.rows(); i++)
-      EXPECT_FLOAT_EQ(Y_inv(i, j), Y_inv2(i, j));
+      EXPECT_DOUBLE_EQ(Y_inv(i, j), Y_inv2(i, j));
 }
 
 TEST(MathMatrix, chol2inv01) {
@@ -50,5 +50,5 @@ TEST(MathMatrix, chol2inv01) {
   matrix_d L(1, 1);
   L(0, 0) = 3.0;
   matrix_d inv2 = chol2inv(L);
-  EXPECT_FLOAT_EQ(1 / 9.0, inv2(0, 0));
+  EXPECT_DOUBLE_EQ(1 / 9.0, inv2(0, 0));
 }

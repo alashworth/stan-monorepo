@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_rev_arr_unit_tests PRIVATE
         log_sum_exp_test.cpp
         sum_test.cpp
         util.hpp

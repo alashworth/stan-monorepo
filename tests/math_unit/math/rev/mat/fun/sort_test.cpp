@@ -2,9 +2,10 @@
 #include <gtest/gtest.h>
 #include <math/rev/mat/fun/util.hpp>
 #include <math/prim/mat/fun/sort_test_util.hpp>
-#include <math/rev/mat/util.hpp>
+#include <math/rev/arr/util.hpp>
 #include <vector>
 
+namespace {
 void test_sort_asc(VEC val) {
   using stan::math::sort_asc;
   using stan::math::sort_asc;
@@ -104,6 +105,7 @@ void test_sort_desc(Eigen::Matrix<T, R, C> val) {
       else
         EXPECT_FALSE(x_sorted.data()[i] == x.data()[j]);
 }
+}  // namespace
 
 TEST(AgradRev, sort) {
   VEC a;
@@ -207,6 +209,8 @@ TEST(AgradRevMatrix, check_varis_on_stack_48) {
   x[0] = 0;
   x[1] = 2;
   x[2] = 100;
-  test::check_varis_on_stack(stan::math::sort_asc(x));
-  test::check_varis_on_stack(stan::math::sort_desc(x));
+  auto a = stan::math::sort_asc(x);
+  auto b = stan::math::sort_desc(x);
+  test::check_varis_on_stack(a);
+  test::check_varis_on_stack(b);
 }

@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized round (defined in the
  * testing framework).
@@ -92,8 +93,9 @@ struct round_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, round_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, round_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, round_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, round_test);
+INSTANTIATE_TYPED_TEST_CASE_P(round, prim_scalar_unary_test, round_test);
+INSTANTIATE_TYPED_TEST_CASE_P(round, rev_scalar_unary_test, round_test);
+INSTANTIATE_TYPED_TEST_CASE_P(round, fwd_scalar_unary_test, round_test);
+INSTANTIATE_TYPED_TEST_CASE_P(round, mix_scalar_unary_test, round_test);

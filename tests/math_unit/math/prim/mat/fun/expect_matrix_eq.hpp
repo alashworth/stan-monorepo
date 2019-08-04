@@ -2,10 +2,16 @@
 #define TEST_MATH_MATRIX_EXPECT_MATRIX_EQ_HPP
 
 #include <gtest/gtest.h>
-#include <Eigen/dense>
+#include <Eigen/Dense>
 
-void expect_matrix_eq(
+static inline void expect_matrix_eq(
     const Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>& a,
-    const Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>& b);
+    const Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>& b) {
+  EXPECT_EQ(a.rows(), b.rows());
+  EXPECT_EQ(a.cols(), b.cols());
+  for (int i = 0; i < a.rows(); ++i)
+    for (int j = 0; j < a.cols(); ++j)
+      EXPECT_DOUBLE_EQ(a(i, j), b(i, j));
+}
 
 #endif

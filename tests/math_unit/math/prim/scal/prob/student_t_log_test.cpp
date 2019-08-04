@@ -7,24 +7,24 @@ TEST(ProbStudentT, log_matches_lpdf) {
   double mu = 2;
   double sigma = 2.3;
 
-  EXPECT_FLOAT_EQ((stan::math::student_t_lpdf(y, nu, mu, sigma)),
-                  (stan::math::student_t_log(y, nu, mu, sigma)));
-  EXPECT_FLOAT_EQ((stan::math::student_t_lpdf<true>(y, nu, mu, sigma)),
-                  (stan::math::student_t_log<true>(y, nu, mu, sigma)));
-  EXPECT_FLOAT_EQ((stan::math::student_t_lpdf<false>(y, nu, mu, sigma)),
-                  (stan::math::student_t_log<false>(y, nu, mu, sigma)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::student_t_lpdf(y, nu, mu, sigma)),
+                   (stan::math::student_t_log(y, nu, mu, sigma)));
+  EXPECT_DOUBLE_EQ((stan::math::student_t_lpdf<true>(y, nu, mu, sigma)),
+                   (stan::math::student_t_log<true>(y, nu, mu, sigma)));
+  EXPECT_DOUBLE_EQ((stan::math::student_t_lpdf<false>(y, nu, mu, sigma)),
+                   (stan::math::student_t_log<false>(y, nu, mu, sigma)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::student_t_lpdf<true, double, double, double, double>(
           y, nu, mu, sigma)),
       (stan::math::student_t_log<true, double, double, double, double>(
           y, nu, mu, sigma)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ(
       (stan::math::student_t_lpdf<false, double, double, double, double>(
           y, nu, mu, sigma)),
       (stan::math::student_t_log<false, double, double, double, double>(
           y, nu, mu, sigma)));
-  EXPECT_FLOAT_EQ((stan::math::student_t_lpdf<double, double, double, double>(
-                      y, nu, mu, sigma)),
+  EXPECT_DOUBLE_EQ((stan::math::student_t_lpdf<double, double, double, double>(
+                       y, nu, mu, sigma)),
                   (stan::math::student_t_log<double, double, double, double>(
                       y, nu, mu, sigma)));
 }

@@ -28,7 +28,7 @@ TEST(MathMatrixTail, TailVector4) {
   Eigen::VectorXd v12 = tail(v, 2);
   EXPECT_EQ(2, v12.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1], v12[n]);
+    EXPECT_DOUBLE_EQ(v[n + 1], v12[n]);
 }
 
 TEST(MathMatrixTail, TailRowVector1) {
@@ -56,7 +56,7 @@ TEST(MathMatrixTail, TailRowVector4) {
   Eigen::RowVectorXd v12 = tail(v, 2);
   EXPECT_EQ(2, v12.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1], v12[n]);
+    EXPECT_DOUBLE_EQ(v[n + 1], v12[n]);
 }
 
 TEST(MathMatrixTail, TailStdVector1) {
@@ -92,5 +92,5 @@ TEST(MathMatrixTail, TailStdVector4) {
   std::vector<int> v12 = tail(v, 2);
   EXPECT_EQ(2U, v12.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1], v12[n]);
+    EXPECT_DOUBLE_EQ(v[n + 1], v12[n]);
 }

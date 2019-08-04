@@ -5,12 +5,12 @@
 
 TEST(MathFunctions, trunc) {
   using stan::math::trunc;
-  EXPECT_FLOAT_EQ(-27, trunc(-27.8239));
-  EXPECT_FLOAT_EQ(-1, trunc(-1.5));
-  EXPECT_FLOAT_EQ(0, trunc(0));
-  EXPECT_FLOAT_EQ(0, trunc(0.0));
-  EXPECT_FLOAT_EQ(0, trunc(0.5));
-  EXPECT_FLOAT_EQ(27, trunc(27.3239));
+  EXPECT_DOUBLE_EQ(-27, trunc(-27.8239));
+  EXPECT_DOUBLE_EQ(-1, trunc(-1.5));
+  EXPECT_DOUBLE_EQ(0, trunc(0));
+  EXPECT_DOUBLE_EQ(0, trunc(0.0));
+  EXPECT_DOUBLE_EQ(0, trunc(0.5));
+  EXPECT_DOUBLE_EQ(27, trunc(27.3239));
 }
 
 TEST(MathFunctions, truncNaN) {

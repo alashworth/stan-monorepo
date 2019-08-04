@@ -7,9 +7,9 @@
 
 TEST(MathFunctions, acosh) {
   using stan::math::acosh;
-  EXPECT_FLOAT_EQ(0, acosh(1));
-  EXPECT_FLOAT_EQ(0.96242365, acosh(1.5));
-  EXPECT_FLOAT_EQ(3.0797991, acosh(10.9));
+  EXPECT_DOUBLE_EQ(0, acosh(1));
+  EXPECT_DOUBLE_EQ(0.96242365, acosh(1.5));
+  EXPECT_DOUBLE_EQ(3.0797991, acosh(10.9));
 }
 
 TEST(MathFunctions, acosh_exception_0) {

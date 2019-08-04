@@ -25,19 +25,19 @@ TEST(AgradRevMatrix, trace_quad_form_mat) {
 
   // double-double
   res = trace_quad_form(ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val());
+  EXPECT_DOUBLE_EQ(26758, res.val());
 
   // var-double
   res = trace_quad_form(av, bd);
-  EXPECT_FLOAT_EQ(26758, res.val());
+  EXPECT_DOUBLE_EQ(26758, res.val());
 
   // double-var
   res = trace_quad_form(ad, bv);
-  EXPECT_FLOAT_EQ(26758, res.val());
+  EXPECT_DOUBLE_EQ(26758, res.val());
 
   // var-var
   res = trace_quad_form(av, bv);
-  EXPECT_FLOAT_EQ(26758, res.val());
+  EXPECT_DOUBLE_EQ(26758, res.val());
 }
 
 TEST(AgradRevMatrix, trace_quad_form_mat_grad_vd) {
@@ -73,7 +73,7 @@ TEST(AgradRevMatrix, trace_quad_form_mat_grad_vd) {
   pos = 0;
   for (i = 0; i < 4; i++)
     for (j = 0; j < 4; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqda(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqda(i, j));
 }
 
 TEST(AgradRevMatrix, trace_quad_form_mat_grad_dv) {
@@ -108,7 +108,7 @@ TEST(AgradRevMatrix, trace_quad_form_mat_grad_dv) {
   pos = 0;
   for (i = 0; i < 4; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdb(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdb(i, j));
 }
 
 TEST(AgradRevMatrix, trace_quad_form_mat_grad_vv) {
@@ -150,10 +150,10 @@ TEST(AgradRevMatrix, trace_quad_form_mat_grad_vv) {
   pos = 0;
   for (i = 0; i < 4; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdb(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdb(i, j));
   for (i = 0; i < 4; i++)
     for (j = 0; j < 4; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqda(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqda(i, j));
 }
 
 TEST(AgradRevMatrix, check_varis_on_stack_58) {

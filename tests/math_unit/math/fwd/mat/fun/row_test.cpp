@@ -16,9 +16,9 @@ TEST(AgradFwdMatrixRow, fd_v) {
   y(1, 2).d_ = 1.0;
   row_vector_fd z = row(y, 1);
   EXPECT_EQ(3, z.size());
-  EXPECT_FLOAT_EQ(1.0, z[0].val_);
-  EXPECT_FLOAT_EQ(2.0, z[1].val_);
-  EXPECT_FLOAT_EQ(3.0, z[2].val_);
+  EXPECT_DOUBLE_EQ(1.0, z[0].val_);
+  EXPECT_DOUBLE_EQ(2.0, z[1].val_);
+  EXPECT_DOUBLE_EQ(3.0, z[2].val_);
 
   row_vector_fd w = row(y, 2);
   EXPECT_EQ(3, w.size());
@@ -71,9 +71,9 @@ TEST(AgradFwdMatrixRow, ffd_v) {
   y(1, 2).d_ = 1.0;
   row_vector_ffd z = row(y, 1);
   EXPECT_EQ(3, z.size());
-  EXPECT_FLOAT_EQ(1.0, z[0].val_.val());
-  EXPECT_FLOAT_EQ(2.0, z[1].val_.val());
-  EXPECT_FLOAT_EQ(3.0, z[2].val_.val());
+  EXPECT_DOUBLE_EQ(1.0, z[0].val_.val());
+  EXPECT_DOUBLE_EQ(2.0, z[1].val_.val());
+  EXPECT_DOUBLE_EQ(3.0, z[2].val_.val());
 
   row_vector_ffd w = row(y, 2);
   EXPECT_EQ(3, w.size());

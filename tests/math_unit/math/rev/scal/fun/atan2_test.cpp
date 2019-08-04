@@ -8,13 +8,13 @@ TEST(AgradRev, atan2_var_var) {
   AVAR a = 1.2;
   AVAR b = 3.9;
   AVAR f = atan2(a, b);
-  EXPECT_FLOAT_EQ(atan2(1.2, 3.9), f.val());
+  EXPECT_DOUBLE_EQ(atan2(1.2, 3.9), f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(3.9 / (1.2 * 1.2 + 3.9 * 3.9), g[0]);
-  EXPECT_FLOAT_EQ(-1.2 / (1.2 * 1.2 + 3.9 * 3.9), g[1]);
+  EXPECT_DOUBLE_EQ(3.9 / (1.2 * 1.2 + 3.9 * 3.9), g[0]);
+  EXPECT_DOUBLE_EQ(-1.2 / (1.2 * 1.2 + 3.9 * 3.9), g[1]);
 }
 
 TEST(AgradRev, atan2_dvd) {
@@ -30,20 +30,20 @@ TEST(AgradRev, atan2_dvd) {
   VEC g1;
   f1.grad(x1, g1);
 
-  EXPECT_FLOAT_EQ(3.14 * g[0], g1[0]);
+  EXPECT_DOUBLE_EQ(3.14 * g[0], g1[0]);
 }
 TEST(AgradRev, atan2_var_var__integration) {
   double c = 5.0;
   AVAR a = 1.2;
   AVAR b = 3.9;
   AVAR f = atan2(a, b) * c;
-  EXPECT_FLOAT_EQ(atan2(1.2, 3.9) * c, f.val());
+  EXPECT_DOUBLE_EQ(atan2(1.2, 3.9) * c, f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(3.9 / (1.2 * 1.2 + 3.9 * 3.9) * c, g[0]);
-  EXPECT_FLOAT_EQ(-1.2 / (1.2 * 1.2 + 3.9 * 3.9) * c, g[1]);
+  EXPECT_DOUBLE_EQ(3.9 / (1.2 * 1.2 + 3.9 * 3.9) * c, g[0]);
+  EXPECT_DOUBLE_EQ(-1.2 / (1.2 * 1.2 + 3.9 * 3.9) * c, g[1]);
 }
 
 TEST(AgradRev, atan2_var_double) {
@@ -51,26 +51,27 @@ TEST(AgradRev, atan2_var_double) {
 
   double b = 3.9;
   AVAR f = atan2(a, b);
-  EXPECT_FLOAT_EQ(atan2(1.2, 3.9), f.val());
+  EXPECT_DOUBLE_EQ(atan2(1.2, 3.9), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(3.9 / (1.2 * 1.2 + 3.9 * 3.9), g[0]);
+  EXPECT_DOUBLE_EQ(3.9 / (1.2 * 1.2 + 3.9 * 3.9), g[0]);
 }
 
 TEST(AgradRev, atan2_double_var) {
   double a = 1.2;
   AVAR b = 3.9;
   AVAR f = atan2(a, b);
-  EXPECT_FLOAT_EQ(atan2(1.2, 3.9), f.val());
+  EXPECT_DOUBLE_EQ(atan2(1.2, 3.9), f.val());
 
   AVEC x = createAVEC(b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(-1.2 / (1.2 * 1.2 + 3.9 * 3.9), g[0]);
+  EXPECT_DOUBLE_EQ(-1.2 / (1.2 * 1.2 + 3.9 * 3.9), g[0]);
 }
 
+namespace {
 struct atan2_fun {
   template <typename T0, typename T1>
   inline typename stan::return_type<T0, T1>::type operator()(
@@ -78,13 +79,14 @@ struct atan2_fun {
     return atan2(arg1, arg2);
   }
 };
+}  // namespace
 
 TEST(AgradRev, atan2_nan) {
   atan2_fun atan2_;
   test_nan(atan2_, 3.0, 5.0, false, true);
 }
 
-TEST(AgradRev, check_varis_on_stack) {
+TEST(AgradRev, check_varis_on_stack_202) {
   AVAR a = 1.2;
   AVAR b = 3.9;
   test::check_varis_on_stack(stan::math::atan2(a, b));

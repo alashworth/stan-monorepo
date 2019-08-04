@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized log (defined in the
  * testing framework).
@@ -92,8 +93,9 @@ struct log_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, log_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, log_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, log_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, log_test);
+INSTANTIATE_TYPED_TEST_CASE_P(log, prim_scalar_unary_test, log_test);
+INSTANTIATE_TYPED_TEST_CASE_P(log, rev_scalar_unary_test, log_test);
+INSTANTIATE_TYPED_TEST_CASE_P(log, fwd_scalar_unary_test, log_test);
+INSTANTIATE_TYPED_TEST_CASE_P(log, mix_scalar_unary_test, log_test);

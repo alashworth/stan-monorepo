@@ -17,8 +17,8 @@ TEST(AgradFwdMatrixLogSumExp, vector_fd) {
 
   fvar<double> a = log_sum_exp(b);
 
-  EXPECT_FLOAT_EQ(4.4401898, a.val_);
-  EXPECT_FLOAT_EQ(1, a.d_);
+  EXPECT_DOUBLE_EQ(4.4401898, a.val_);
+  EXPECT_DOUBLE_EQ(1, a.d_);
 }
 TEST(AgradFwdMatrixLogSumExp, row_vector_fd) {
   using stan::math::row_vector_fd;
@@ -32,8 +32,8 @@ TEST(AgradFwdMatrixLogSumExp, row_vector_fd) {
 
   fvar<double> a = log_sum_exp(b);
 
-  EXPECT_FLOAT_EQ(4.4401898, a.val_);
-  EXPECT_FLOAT_EQ(1, a.d_);
+  EXPECT_DOUBLE_EQ(4.4401898, a.val_);
+  EXPECT_DOUBLE_EQ(1, a.d_);
 }
 
 TEST(AgradFwdMatrixLogSumExp, matrix_fd) {
@@ -48,8 +48,8 @@ TEST(AgradFwdMatrixLogSumExp, matrix_fd) {
 
   fvar<double> a = log_sum_exp(b);
 
-  EXPECT_FLOAT_EQ(4.4401898, a.val_);
-  EXPECT_FLOAT_EQ(1, a.d_);
+  EXPECT_DOUBLE_EQ(4.4401898, a.val_);
+  EXPECT_DOUBLE_EQ(1, a.d_);
 }
 
 TEST(AgradFwdMatrixLogSumExp, vector_ffd) {
@@ -64,8 +64,8 @@ TEST(AgradFwdMatrixLogSumExp, vector_ffd) {
 
   fvar<fvar<double> > a = log_sum_exp(b);
 
-  EXPECT_FLOAT_EQ(4.4401898, a.val_.val_);
-  EXPECT_FLOAT_EQ(1, a.d_.val_);
+  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val_);
+  EXPECT_DOUBLE_EQ(1, a.d_.val_);
 }
 TEST(AgradFwdMatrixLogSumExp, row_vector_ffd) {
   using stan::math::row_vector_ffd;
@@ -79,8 +79,8 @@ TEST(AgradFwdMatrixLogSumExp, row_vector_ffd) {
 
   fvar<fvar<double> > a = log_sum_exp(b);
 
-  EXPECT_FLOAT_EQ(4.4401898, a.val_.val_);
-  EXPECT_FLOAT_EQ(1, a.d_.val_);
+  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val_);
+  EXPECT_DOUBLE_EQ(1, a.d_.val_);
 }
 
 TEST(AgradFwdMatrixLogSumExp, matrix_ffd) {
@@ -95,6 +95,6 @@ TEST(AgradFwdMatrixLogSumExp, matrix_ffd) {
 
   fvar<fvar<double> > a = log_sum_exp(b);
 
-  EXPECT_FLOAT_EQ(4.4401898, a.val_.val_);
-  EXPECT_FLOAT_EQ(1, a.d_.val_);
+  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val_);
+  EXPECT_DOUBLE_EQ(1, a.d_.val_);
 }

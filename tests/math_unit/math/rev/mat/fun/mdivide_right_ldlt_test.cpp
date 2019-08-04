@@ -36,7 +36,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_vv) {
     x_val = value_of(x);
     ASSERT_EQ(expected.size(), x_val.size());
     for (int n = 0; n < expected.size(); n++) {
-      EXPECT_FLOAT_EQ(expected(n), x_val(n))
+      EXPECT_DOUBLE_EQ(expected(n), x_val(n))
           << "value of mdivide_right_ldlt does not match"
           << " for element " << n;
     }
@@ -58,7 +58,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_vv) {
     x_basic_val = value_of(x_basic);
     ASSERT_EQ(expected.size(), x_basic_val.size());
     for (int n = 0; n < expected.size(); n++) {
-      EXPECT_FLOAT_EQ(expected(n), x_basic_val(n))
+      EXPECT_DOUBLE_EQ(expected(n), x_basic_val(n))
           << "value of basic math does not match"
           << " for element " << n;
     }
@@ -75,7 +75,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_vv) {
     // test all gradients
     ASSERT_EQ(grad_basic.size(), grad.size());
     for (size_t n = 0; n < grad_basic.size(); n++)
-      EXPECT_FLOAT_EQ(grad_basic[n], grad[n])
+      EXPECT_DOUBLE_EQ(grad_basic[n], grad[n])
           << "for element " << i << ", gradient " << n
           << " does not match the basic auto-diff implementation";
   }
@@ -114,7 +114,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_vd) {
     x_val = value_of(x);
     ASSERT_EQ(expected.size(), x_val.size());
     for (int n = 0; n < expected.size(); n++) {
-      EXPECT_FLOAT_EQ(expected(n), x_val(n))
+      EXPECT_DOUBLE_EQ(expected(n), x_val(n))
           << "value of mdivide_right_ldlt does not match"
           << " for element " << n;
     }
@@ -133,7 +133,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_vd) {
     x_basic_val = value_of(x_basic);
     ASSERT_EQ(expected.size(), x_basic_val.size());
     for (int n = 0; n < expected.size(); n++) {
-      EXPECT_FLOAT_EQ(expected(n), x_basic_val(n))
+      EXPECT_DOUBLE_EQ(expected(n), x_basic_val(n))
           << "value of basic math does not match"
           << " for element " << n;
     }
@@ -147,7 +147,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_vd) {
     // test all gradients
     ASSERT_EQ(grad_basic.size(), grad.size());
     for (size_t n = 0; n < grad_basic.size(); n++)
-      EXPECT_FLOAT_EQ(grad_basic[n], grad[n])
+      EXPECT_DOUBLE_EQ(grad_basic[n], grad[n])
           << "for element " << i << ", gradient " << n
           << " does not match the basic auto-diff implementation";
   }
@@ -186,7 +186,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_dv) {
     x_val = value_of(x);
     ASSERT_EQ(expected.size(), x_val.size());
     for (int n = 0; n < expected.size(); n++) {
-      EXPECT_FLOAT_EQ(expected(n), x_val(n))
+      EXPECT_DOUBLE_EQ(expected(n), x_val(n))
           << "value of mdivide_right_ldlt does not match"
           << " for element " << n;
     }
@@ -205,7 +205,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_dv) {
     x_basic_val = value_of(x_basic);
     ASSERT_EQ(expected.size(), x_basic_val.size());
     for (int n = 0; n < expected.size(); n++) {
-      EXPECT_FLOAT_EQ(expected(n), x_basic_val(n))
+      EXPECT_DOUBLE_EQ(expected(n), x_basic_val(n))
           << "value of basic math does not match"
           << " for element " << n;
     }
@@ -219,7 +219,7 @@ TEST(AgradRevMatrix, mdivide_right_ldlt_dv) {
     // test all gradients
     ASSERT_EQ(grad_basic.size(), grad.size());
     for (size_t n = 0; n < grad_basic.size(); n++)
-      EXPECT_FLOAT_EQ(grad_basic[n], grad[n])
+      EXPECT_DOUBLE_EQ(grad_basic[n], grad[n])
           << "for element " << i << ", gradient " << n
           << " does not match the basic auto-diff implementation";
   }

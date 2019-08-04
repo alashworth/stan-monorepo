@@ -18,8 +18,8 @@ TEST(AgradMixMatrixSoftmax, fv_1stDeriv) {
 
   Matrix<fvar<var>, Dynamic, 1> theta = softmax(x);
   EXPECT_EQ(1, theta.size());
-  EXPECT_FLOAT_EQ(1.0, theta[0].val_.val());
-  EXPECT_FLOAT_EQ(0.0, theta[0].d_.val());
+  EXPECT_DOUBLE_EQ(1.0, theta[0].val_.val());
+  EXPECT_DOUBLE_EQ(0.0, theta[0].d_.val());
 
   Matrix<fvar<var>, Dynamic, 1> x2(2);
   x2 << -1.0, 1.0;
@@ -28,10 +28,10 @@ TEST(AgradMixMatrixSoftmax, fv_1stDeriv) {
 
   Matrix<fvar<var>, Dynamic, 1> theta2 = softmax(x2);
   EXPECT_EQ(2, theta2.size());
-  EXPECT_FLOAT_EQ(exp(-1) / (exp(-1) + exp(1)), theta2[0].val_.val());
-  EXPECT_FLOAT_EQ(exp(1) / (exp(-1) + exp(1)), theta2[1].val_.val());
-  EXPECT_FLOAT_EQ(0.10499358, theta2[0].d_.val());
-  EXPECT_FLOAT_EQ(-0.10499358, theta2[1].d_.val());
+  EXPECT_DOUBLE_EQ(exp(-1) / (exp(-1) + exp(1)), theta2[0].val_.val());
+  EXPECT_DOUBLE_EQ(exp(1) / (exp(-1) + exp(1)), theta2[1].val_.val());
+  EXPECT_DOUBLE_EQ(0.10499358, theta2[0].d_.val());
+  EXPECT_DOUBLE_EQ(-0.10499358, theta2[1].d_.val());
 
   Matrix<fvar<var>, Dynamic, 1> x3(3);
   x3 << -1.0, 1.0, 10.0;
@@ -41,22 +41,22 @@ TEST(AgradMixMatrixSoftmax, fv_1stDeriv) {
 
   Matrix<fvar<var>, Dynamic, 1> theta3 = softmax(x3);
   EXPECT_EQ(3, theta3.size());
-  EXPECT_FLOAT_EQ(exp(-1) / (exp(-1) + exp(1) + exp(10.0)),
-                  theta3[0].val_.val());
-  EXPECT_FLOAT_EQ(exp(1) / (exp(-1) + exp(1) + exp(10.0)),
-                  theta3[1].val_.val());
-  EXPECT_FLOAT_EQ(exp(10) / (exp(-1) + exp(1) + exp(10.0)),
-                  theta3[2].val_.val());
-  EXPECT_FLOAT_EQ(1.6699081e-05, theta3[0].d_.val());
-  EXPECT_FLOAT_EQ(-2.0605762e-09, theta3[1].d_.val());
-  EXPECT_FLOAT_EQ(-1.6697022e-05, theta3[2].d_.val());
+  EXPECT_DOUBLE_EQ(exp(-1) / (exp(-1) + exp(1) + exp(10.0)),
+                   theta3[0].val_.val());
+  EXPECT_DOUBLE_EQ(exp(1) / (exp(-1) + exp(1) + exp(10.0)),
+                   theta3[1].val_.val());
+  EXPECT_DOUBLE_EQ(exp(10) / (exp(-1) + exp(1) + exp(10.0)),
+                   theta3[2].val_.val());
+  EXPECT_DOUBLE_EQ(1.6699081e-05, theta3[0].d_.val());
+  EXPECT_DOUBLE_EQ(-2.0605762e-09, theta3[1].d_.val());
+  EXPECT_DOUBLE_EQ(-1.6697022e-05, theta3[2].d_.val());
 
   AVEC q = createAVEC(x3(0).val(), x3(1).val(), x3(2).val());
   VEC h;
   theta3[0].val_.grad(q, h);
-  EXPECT_FLOAT_EQ(1.6699081e-05, h[0]);
-  EXPECT_FLOAT_EQ(-2.0605762e-09, h[1]);
-  EXPECT_FLOAT_EQ(-1.6697022e-05, h[2]);
+  EXPECT_DOUBLE_EQ(1.6699081e-05, h[0]);
+  EXPECT_DOUBLE_EQ(-2.0605762e-09, h[1]);
+  EXPECT_DOUBLE_EQ(-1.6697022e-05, h[2]);
 }
 TEST(AgradMixMatrixSoftmax, fv_2ndDeriv) {
   using Eigen::Dynamic;
@@ -77,9 +77,9 @@ TEST(AgradMixMatrixSoftmax, fv_2ndDeriv) {
   AVEC q = createAVEC(x3(0).val(), x3(1).val(), x3(2).val());
   VEC h;
   theta3[0].d_.grad(q, h);
-  EXPECT_FLOAT_EQ(1.6698525e-05, h[0]);
-  EXPECT_FLOAT_EQ(-2.0605073e-09, h[1]);
-  EXPECT_FLOAT_EQ(-1.6696464e-05, h[2]);
+  EXPECT_DOUBLE_EQ(1.6698525e-05, h[0]);
+  EXPECT_DOUBLE_EQ(-2.0605073e-09, h[1]);
+  EXPECT_DOUBLE_EQ(-1.6696464e-05, h[2]);
 }
 TEST(AgradMixMatrixSoftmax, ffv_1stDeriv) {
   using Eigen::Dynamic;
@@ -97,8 +97,8 @@ TEST(AgradMixMatrixSoftmax, ffv_1stDeriv) {
 
   Matrix<fvar<fvar<var> >, Dynamic, 1> theta = softmax(x);
   EXPECT_EQ(1, theta.size());
-  EXPECT_FLOAT_EQ(1.0, theta[0].val_.val().val());
-  EXPECT_FLOAT_EQ(0.0, theta[0].d_.val().val());
+  EXPECT_DOUBLE_EQ(1.0, theta[0].val_.val().val());
+  EXPECT_DOUBLE_EQ(0.0, theta[0].d_.val().val());
 
   Matrix<fvar<fvar<var> >, Dynamic, 1> x2(2);
   x2 << -1.0, 1.0;
@@ -107,10 +107,10 @@ TEST(AgradMixMatrixSoftmax, ffv_1stDeriv) {
 
   Matrix<fvar<fvar<var> >, Dynamic, 1> theta2 = softmax(x2);
   EXPECT_EQ(2, theta2.size());
-  EXPECT_FLOAT_EQ(exp(-1) / (exp(-1) + exp(1)), theta2[0].val_.val().val());
-  EXPECT_FLOAT_EQ(exp(1) / (exp(-1) + exp(1)), theta2[1].val_.val().val());
-  EXPECT_FLOAT_EQ(0.10499358, theta2[0].d_.val().val());
-  EXPECT_FLOAT_EQ(-0.10499358, theta2[1].d_.val().val());
+  EXPECT_DOUBLE_EQ(exp(-1) / (exp(-1) + exp(1)), theta2[0].val_.val().val());
+  EXPECT_DOUBLE_EQ(exp(1) / (exp(-1) + exp(1)), theta2[1].val_.val().val());
+  EXPECT_DOUBLE_EQ(0.10499358, theta2[0].d_.val().val());
+  EXPECT_DOUBLE_EQ(-0.10499358, theta2[1].d_.val().val());
 
   Matrix<fvar<fvar<var> >, Dynamic, 1> x3(3);
   x3 << -1.0, 1.0, 10.0;
@@ -120,22 +120,22 @@ TEST(AgradMixMatrixSoftmax, ffv_1stDeriv) {
 
   Matrix<fvar<fvar<var> >, Dynamic, 1> theta3 = softmax(x3);
   EXPECT_EQ(3, theta3.size());
-  EXPECT_FLOAT_EQ(exp(-1) / (exp(-1) + exp(1) + exp(10.0)),
-                  theta3[0].val_.val().val());
-  EXPECT_FLOAT_EQ(exp(1) / (exp(-1) + exp(1) + exp(10.0)),
-                  theta3[1].val_.val().val());
-  EXPECT_FLOAT_EQ(exp(10) / (exp(-1) + exp(1) + exp(10.0)),
-                  theta3[2].val_.val().val());
-  EXPECT_FLOAT_EQ(1.6699081e-05, theta3[0].d_.val().val());
-  EXPECT_FLOAT_EQ(-2.0605762e-09, theta3[1].d_.val().val());
-  EXPECT_FLOAT_EQ(-1.6697022e-05, theta3[2].d_.val().val());
+  EXPECT_DOUBLE_EQ(exp(-1) / (exp(-1) + exp(1) + exp(10.0)),
+                   theta3[0].val_.val().val());
+  EXPECT_DOUBLE_EQ(exp(1) / (exp(-1) + exp(1) + exp(10.0)),
+                   theta3[1].val_.val().val());
+  EXPECT_DOUBLE_EQ(exp(10) / (exp(-1) + exp(1) + exp(10.0)),
+                   theta3[2].val_.val().val());
+  EXPECT_DOUBLE_EQ(1.6699081e-05, theta3[0].d_.val().val());
+  EXPECT_DOUBLE_EQ(-2.0605762e-09, theta3[1].d_.val().val());
+  EXPECT_DOUBLE_EQ(-1.6697022e-05, theta3[2].d_.val().val());
 
   AVEC q = createAVEC(x3(0).val().val(), x3(1).val().val(), x3(2).val().val());
   VEC h;
   theta3[0].val_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(1.6699081e-05, h[0]);
-  EXPECT_FLOAT_EQ(-2.0605762e-09, h[1]);
-  EXPECT_FLOAT_EQ(-1.6697022e-05, h[2]);
+  EXPECT_DOUBLE_EQ(1.6699081e-05, h[0]);
+  EXPECT_DOUBLE_EQ(-2.0605762e-09, h[1]);
+  EXPECT_DOUBLE_EQ(-1.6697022e-05, h[2]);
 }
 TEST(AgradMixMatrixSoftmax, ffv_2ndDeriv_1) {
   using Eigen::Dynamic;
@@ -156,9 +156,9 @@ TEST(AgradMixMatrixSoftmax, ffv_2ndDeriv_1) {
   AVEC q = createAVEC(x3(0).val().val(), x3(1).val().val(), x3(2).val().val());
   VEC h;
   theta3[0].val().d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 
 TEST(AgradMixMatrixSoftmax, ffv_2ndDeriv_2) {
@@ -180,9 +180,9 @@ TEST(AgradMixMatrixSoftmax, ffv_2ndDeriv_2) {
   AVEC q = createAVEC(x3(0).val().val(), x3(1).val().val(), x3(2).val().val());
   VEC h;
   theta3[0].d_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(1.6698525e-05, h[0]);
-  EXPECT_FLOAT_EQ(-2.0605073e-09, h[1]);
-  EXPECT_FLOAT_EQ(-1.6696464e-05, h[2]);
+  EXPECT_DOUBLE_EQ(1.6698525e-05, h[0]);
+  EXPECT_DOUBLE_EQ(-2.0605073e-09, h[1]);
+  EXPECT_DOUBLE_EQ(-1.6696464e-05, h[2]);
 }
 
 TEST(AgradMixMatrixSoftmax, ffv_3rdDeriv) {
@@ -207,7 +207,7 @@ TEST(AgradMixMatrixSoftmax, ffv_3rdDeriv) {
   AVEC q = createAVEC(x3(0).val().val(), x3(1).val().val(), x3(2).val().val());
   VEC h;
   theta3[0].d_.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(1.669741e-05, h[0]);
-  EXPECT_FLOAT_EQ(-2.0603697e-09, h[1]);
-  EXPECT_FLOAT_EQ(-1.6695349e-05, h[2]);
+  EXPECT_DOUBLE_EQ(1.669741e-05, h[0]);
+  EXPECT_DOUBLE_EQ(-2.0603697e-09, h[1]);
+  EXPECT_DOUBLE_EQ(-1.6695349e-05, h[2]);
 }

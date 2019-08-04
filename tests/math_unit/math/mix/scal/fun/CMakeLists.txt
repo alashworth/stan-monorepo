@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_mix_scal_unit_tests PRIVATE
         sinh_test.cpp
         trigamma_test.cpp
         log2_test.cpp

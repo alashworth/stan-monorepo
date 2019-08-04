@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing mock function foo (defined in the
  * testing framework).  See README.txt for more instructions.
@@ -106,8 +107,9 @@ struct foo_test {
         .build();
   }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, foo_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, foo_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, foo_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, foo_test);
+INSTANTIATE_TYPED_TEST_CASE_P(foo, prim_scalar_unary_test, foo_test);
+INSTANTIATE_TYPED_TEST_CASE_P(foo, rev_scalar_unary_test, foo_test);
+INSTANTIATE_TYPED_TEST_CASE_P(foo, fwd_scalar_unary_test, foo_test);
+INSTANTIATE_TYPED_TEST_CASE_P(foo, mix_scalar_unary_test, foo_test);

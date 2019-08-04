@@ -3,6 +3,7 @@
 #include <vector>
 #include <random>
 
+namespace {
 using stan::math::fvar;
 using stan::math::var;
 
@@ -167,7 +168,7 @@ double get_value(const ffv& z1) { return z1.val().val().val(); }
  */
 template <typename T1, typename T2>
 void check_eq(const T1& z1, const T2& z2) {
-  EXPECT_FLOAT_EQ(get_value(z1), get_value(z2));
+  EXPECT_DOUBLE_EQ(get_value(z1), get_value(z2));
 }
 
 /**
@@ -291,6 +292,7 @@ void check() {
     checkvv<T1, T2, T3>();
   }
 }
+}  // namespace
 
 TEST(MathFunctions, append_array_prim) {
   check<int, int, int>();

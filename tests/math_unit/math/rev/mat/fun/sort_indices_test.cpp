@@ -3,6 +3,7 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <vector>
 
+namespace {
 void test_sort_indices_asc(VEC val) {
   using stan::math::sort_indices_asc;
 
@@ -96,6 +97,7 @@ void test_sort_indices_desc(Eigen::Matrix<T, R, C> val) {
       else
         EXPECT_FALSE(x_sorted.data()[i] == x.data()[j]);
 }
+}  // namespace
 
 TEST(AgradRev, sort_indices) {
   VEC a;

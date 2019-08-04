@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized asin (defined in the
  * testing framework).
@@ -94,8 +95,9 @@ struct asin_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, asin_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, asin_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, asin_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, asin_test);
+INSTANTIATE_TYPED_TEST_CASE_P(asin, prim_scalar_unary_test, asin_test);
+INSTANTIATE_TYPED_TEST_CASE_P(asin, rev_scalar_unary_test, asin_test);
+INSTANTIATE_TYPED_TEST_CASE_P(asin, fwd_scalar_unary_test, asin_test);
+INSTANTIATE_TYPED_TEST_CASE_P(asin, mix_scalar_unary_test, asin_test);

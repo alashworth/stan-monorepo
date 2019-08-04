@@ -11,16 +11,16 @@ TEST(AgradFwdAtan2, Fvar) {
   double w = 2.1;
 
   fvar<double> a = atan2(x, y);
-  EXPECT_FLOAT_EQ(atan2(0.5, 2.3), a.val_);
-  EXPECT_FLOAT_EQ((1.0 * 2.3 - 0.5 * 2.0) / (0.5 * 0.5 + 2.3 * 2.3), a.d_);
+  EXPECT_DOUBLE_EQ(atan2(0.5, 2.3), a.val_);
+  EXPECT_DOUBLE_EQ((1.0 * 2.3 - 0.5 * 2.0) / (0.5 * 0.5 + 2.3 * 2.3), a.d_);
 
   fvar<double> b = atan2(w, x);
-  EXPECT_FLOAT_EQ(atan2(2.1, 0.5), b.val_);
-  EXPECT_FLOAT_EQ((-2.1 * 1.0) / (2.1 * 2.1 + 0.5 * 0.5), b.d_);
+  EXPECT_DOUBLE_EQ(atan2(2.1, 0.5), b.val_);
+  EXPECT_DOUBLE_EQ((-2.1 * 1.0) / (2.1 * 2.1 + 0.5 * 0.5), b.d_);
 
   fvar<double> c = atan2(x, w);
-  EXPECT_FLOAT_EQ(atan2(0.5, 2.1), c.val_);
-  EXPECT_FLOAT_EQ((1.0 * 2.1) / (0.5 * 0.5 + 2.1 * 2.1), c.d_);
+  EXPECT_DOUBLE_EQ(atan2(0.5, 2.1), c.val_);
+  EXPECT_DOUBLE_EQ((1.0 * 2.1) / (0.5 * 0.5 + 2.1 * 2.1), c.d_);
 }
 
 TEST(AgradFwdAtan2, FvarFvarDouble) {
@@ -39,25 +39,25 @@ TEST(AgradFwdAtan2, FvarFvarDouble) {
 
   fvar<fvar<double> > a = atan2(x, y);
 
-  EXPECT_FLOAT_EQ(atan(1.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.val_.d_);
-  EXPECT_FLOAT_EQ(-1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.d_.val_);
-  EXPECT_FLOAT_EQ((1.5 * 1.5 - 1.5 * 1.5)
-                      / ((1.5 * 1.5 + 1.5 * 1.5) * (1.5 * 1.5 + 1.5 * 1.5)),
+  EXPECT_DOUBLE_EQ(atan(1.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.val_.d_);
+  EXPECT_DOUBLE_EQ(-1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.d_.val_);
+  EXPECT_DOUBLE_EQ((1.5 * 1.5 - 1.5 * 1.5)
+                       / ((1.5 * 1.5 + 1.5 * 1.5) * (1.5 * 1.5 + 1.5 * 1.5)),
                   a.d_.d_);
 
   a = atan2(x, z);
-  EXPECT_FLOAT_EQ(atan(1.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.val_.d_);
-  EXPECT_FLOAT_EQ(0.0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0.0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(atan(1.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.val_.d_);
+  EXPECT_DOUBLE_EQ(0.0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0.0, a.d_.d_);
 
   a = atan2(z, y);
 
-  EXPECT_FLOAT_EQ(atan(1.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(0.0, a.val_.d_);
-  EXPECT_FLOAT_EQ(-1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.d_.val_);
-  EXPECT_FLOAT_EQ(0.0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(atan(1.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(-1.5 / (1.5 * 1.5 + 1.5 * 1.5), a.d_.val_);
+  EXPECT_DOUBLE_EQ(0.0, a.d_.d_);
 }
 
 struct atan2_fun {

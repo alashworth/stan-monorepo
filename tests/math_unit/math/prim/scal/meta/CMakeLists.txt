@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_scal_unit_tests PRIVATE
         VectorBuilderHelper_test.cpp
         return_type_test.cpp
         partials_type_test.cpp

@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_scal_unit_tests PRIVATE
         abs_test.cpp
         acosh_test.cpp
         as_bool_test.cpp

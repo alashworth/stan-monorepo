@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized sinh (defined in the
  * testing framework).
@@ -92,8 +93,9 @@ struct sinh_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, sinh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, sinh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, sinh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, sinh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(sinh, prim_scalar_unary_test, sinh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(sinh, rev_scalar_unary_test, sinh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(sinh, fwd_scalar_unary_test, sinh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(sinh, mix_scalar_unary_test, sinh_test);

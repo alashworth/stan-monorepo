@@ -6,7 +6,7 @@
 
 TEST(MathFunctions, sumZeroSize) {
   std::vector<double> x;
-  EXPECT_FLOAT_EQ(0.0, stan::math::sum(x));
+  EXPECT_DOUBLE_EQ(0.0, stan::math::sum(x));
 }
 
 TEST(MathFunctions, sum) {
@@ -16,7 +16,7 @@ TEST(MathFunctions, sum) {
   x[1] = 2.0;
   x[2] = 3.0;
 
-  EXPECT_FLOAT_EQ(6.0, stan::math::sum(x));
+  EXPECT_DOUBLE_EQ(6.0, stan::math::sum(x));
 }
 
 TEST(MathMatrix, sum_vector_int) {

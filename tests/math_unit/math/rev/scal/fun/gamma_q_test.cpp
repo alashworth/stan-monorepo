@@ -8,13 +8,13 @@ TEST(AgradRev, gamma_q_var_var) {
   AVAR a = 0.5;
   AVAR b = 1.0;
   AVAR f = gamma_q(a, b);
-  EXPECT_FLOAT_EQ(boost::math::gamma_q(0.5, 1.0), f.val());
+  EXPECT_DOUBLE_EQ(boost::math::gamma_q(0.5, 1.0), f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(0.38983709, g[0]);
-  EXPECT_FLOAT_EQ(-boost::math::gamma_p_derivative(0.5, 1.0), g[1]);
+  EXPECT_DOUBLE_EQ(0.38983709, g[0]);
+  EXPECT_DOUBLE_EQ(-boost::math::gamma_p_derivative(0.5, 1.0), g[1]);
 
   a = -0.5;
   EXPECT_THROW(gamma_q(a, b), std::domain_error);
@@ -30,7 +30,7 @@ TEST(AgradRevGammaQ, infLoopInVersion2_0_1_var_var) {
   AVAR f = gamma_q(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
 }
 TEST(AgradRevGammaQ, infLoopInVersion2_0_1_var_double) {
   AVAR a = 8.01006;
@@ -40,18 +40,18 @@ TEST(AgradRevGammaQ, infLoopInVersion2_0_1_var_double) {
   AVAR f = gamma_q(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
 }
 TEST(AgradRev, gamma_q_double_var) {
   double a = 0.5;
   AVAR b = 1.0;
   AVAR f = gamma_q(a, b);
-  EXPECT_FLOAT_EQ(boost::math::gamma_q(0.5, 1.0), f.val());
+  EXPECT_DOUBLE_EQ(boost::math::gamma_q(0.5, 1.0), f.val());
 
   AVEC x = createAVEC(b);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(-boost::math::gamma_p_derivative(0.5, 1.0), g[0]);
+  EXPECT_DOUBLE_EQ(-boost::math::gamma_p_derivative(0.5, 1.0), g[0]);
 
   a = -0.5;
   EXPECT_THROW(gamma_q(a, b), std::domain_error);
@@ -63,12 +63,12 @@ TEST(AgradRev, gamma_q_var_double) {
   AVAR a = 0.5;
   double b = 1.0;
   AVAR f = gamma_q(a, b);
-  EXPECT_FLOAT_EQ(boost::math::gamma_q(0.5, 1.0), f.val());
+  EXPECT_DOUBLE_EQ(boost::math::gamma_q(0.5, 1.0), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(0.38983709, g[0]);
+  EXPECT_DOUBLE_EQ(0.38983709, g[0]);
 
   a = -0.5;
   EXPECT_THROW(gamma_q(a, b), std::domain_error);
@@ -77,6 +77,7 @@ TEST(AgradRev, gamma_q_var_double) {
   EXPECT_THROW(gamma_q(a, b), std::domain_error);
 }
 
+namespace {
 struct gamma_q_fun {
   template <typename T0, typename T1>
   inline typename stan::return_type<T0, T1>::type operator()(
@@ -84,6 +85,7 @@ struct gamma_q_fun {
     return gamma_q(arg1, arg2);
   }
 };
+}  // namespace
 
 TEST(AgradRev, gamma_q_nan) {
   gamma_q_fun gamma_q_;

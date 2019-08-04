@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized inv_Phi (defined in the
  * testing framework).
@@ -107,8 +108,8 @@ struct inv_Phi_test {
         .build();
   }
 };
-
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, inv_Phi_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, inv_Phi_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, inv_Phi_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, inv_Phi_test);
+}  // namespace
+INSTANTIATE_TYPED_TEST_CASE_P(inv_Phi, prim_scalar_unary_test, inv_Phi_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_Phi, rev_scalar_unary_test, inv_Phi_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_Phi, fwd_scalar_unary_test, inv_Phi_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_Phi, mix_scalar_unary_test, inv_Phi_test);

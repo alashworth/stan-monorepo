@@ -7,24 +7,26 @@
 TEST(AgradRev, exp2) {
   AVAR a = 1.3;
   AVAR f = stan::math::exp2(a);
-  EXPECT_FLOAT_EQ(std::pow(2.0, 1.3), f.val());
+  EXPECT_DOUBLE_EQ(std::pow(2.0, 1.3), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_FLOAT_EQ(std::pow(2.0, 1.3) * std::log(2.0), grad_f[0]);
+  EXPECT_DOUBLE_EQ(std::pow(2.0, 1.3) * std::log(2.0), grad_f[0]);
 
   a = std::numeric_limits<AVAR>::infinity();
-  EXPECT_FLOAT_EQ(std::numeric_limits<double>::infinity(),
-                  stan::math::exp2(a).val());
+  EXPECT_DOUBLE_EQ(std::numeric_limits<double>::infinity(),
+                   stan::math::exp2(a).val());
 }
 
+namespace {
 struct exp2_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return exp2(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, exp2_NaN) {
   exp2_fun exp2_;

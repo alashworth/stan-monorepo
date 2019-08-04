@@ -1,6 +1,5 @@
 #include <stan/math/rev/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/mat/fun/util.hpp>
 #include <math/rev/scal/fun/nan_util.hpp>
 #include <limits>
 

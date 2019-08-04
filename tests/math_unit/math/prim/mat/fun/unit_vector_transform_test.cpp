@@ -32,7 +32,7 @@ TEST(prob_transform, unit_vector_rt) {
   EXPECT_EQ(x.size(), y.size());
   EXPECT_EQ(x.size(), xrt.size());
   for (int i = 0; i < x.size(); ++i) {
-    EXPECT_FLOAT_EQ(y[i], xrt[i]) << "error in component " << i;
+    EXPECT_DOUBLE_EQ(y[i], xrt[i]) << "error in component " << i;
   }
 }
 TEST(prob_transform, unit_vector_match) {
@@ -46,7 +46,7 @@ TEST(prob_transform, unit_vector_match) {
   EXPECT_EQ(3, y.size());
   EXPECT_EQ(3, y2.size());
   for (int i = 0; i < x.size(); ++i)
-    EXPECT_FLOAT_EQ(y[i], y2[i]) << "error in component " << i;
+    EXPECT_DOUBLE_EQ(y[i], y2[i]) << "error in component " << i;
 }
 TEST(prob_transform, unit_vector_f_exception) {
   Matrix<double, Dynamic, 1> y(2);

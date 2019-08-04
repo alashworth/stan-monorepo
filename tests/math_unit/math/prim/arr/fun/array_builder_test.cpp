@@ -10,9 +10,9 @@ TEST(MathArray, arrayBuilder) {
 
   vector<double> v3 = array_builder<double>().add(1).add(3).add(2).array();
   EXPECT_EQ(3U, v3.size());
-  EXPECT_FLOAT_EQ(1.0, v3[0]);
-  EXPECT_FLOAT_EQ(3.0, v3[1]);
-  EXPECT_FLOAT_EQ(2.0, v3[2]);
+  EXPECT_DOUBLE_EQ(1.0, v3[0]);
+  EXPECT_DOUBLE_EQ(3.0, v3[1]);
+  EXPECT_DOUBLE_EQ(2.0, v3[2]);
 
   vector<vector<int> > v3v2
       = array_builder<vector<int> >()

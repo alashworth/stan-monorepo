@@ -15,8 +15,8 @@ TEST(AgradFwdMatrixLogDeterminant, fd) {
 
   fvar<double> det;
   det = log_determinant(v);
-  EXPECT_FLOAT_EQ(std::log(2.0), det.val_);
-  EXPECT_FLOAT_EQ(1.5, det.d_);
+  EXPECT_DOUBLE_EQ(std::log(2.0), det.val_);
+  EXPECT_DOUBLE_EQ(1.5, det.d_);
 }
 
 TEST(AgradFwdMatrixLogDeterminant, fd_exception) {
@@ -45,8 +45,8 @@ TEST(AgradFwdMatrixLogDeterminant, ffd) {
 
   fvar<fvar<double> > det;
   det = log_determinant(v);
-  EXPECT_FLOAT_EQ(std::log(2.0), det.val_.val());
-  EXPECT_FLOAT_EQ(1.5, det.d_.val());
+  EXPECT_DOUBLE_EQ(std::log(2.0), det.val_.val());
+  EXPECT_DOUBLE_EQ(1.5, det.d_.val());
 }
 
 TEST(AgradFwdMatrixLogDeterminant, ffd_exception) {

@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include <math/rev/mat/prob/expect_eq_diffs.hpp>
 #include <math/rev/mat/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <string>
 
 template <typename T_y, typename T_dof, typename T_scale>
@@ -68,7 +69,7 @@ TEST_F(AgradDistributionsInvWishart, ProptoSigma) {
   expect_propto(Y1, nu1, to_var(S1), Y1, nu1, to_var(S2), "var: sigma");
 }
 
-TEST(InvWishart, check_varis_on_stack) {
+TEST(InvWishart, check_varis_on_stack_308) {
   Eigen::MatrixXd W(2, 2);
   W << 2.011108, -11.20661, -11.206611, 112.94139;
 

@@ -24,24 +24,24 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_fd_matrix_fd) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Ad, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1.0, I(0, 0).val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_);
-  EXPECT_FLOAT_EQ(0.0, I(1, 0).val_);
-  EXPECT_FLOAT_EQ(1.0, I(1, 1).val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 0).d_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).d_);
-  EXPECT_FLOAT_EQ(0.0, I(1, 0).d_);
-  EXPECT_FLOAT_EQ(0.0, I(1, 1).d_);
+  EXPECT_DOUBLE_EQ(1.0, I(0, 0).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1, 0).val_);
+  EXPECT_DOUBLE_EQ(1.0, I(1, 1).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 0).d_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).d_);
+  EXPECT_DOUBLE_EQ(0.0, I(1, 0).d_);
+  EXPECT_DOUBLE_EQ(0.0, I(1, 1).d_);
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0, 0).val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_);
-  EXPECT_FLOAT_EQ(2.8, I(1, 0).val_);
-  EXPECT_FLOAT_EQ(-0.2, I(1, 1).val_);
-  EXPECT_FLOAT_EQ(0.8, I(0, 0).d_);
-  EXPECT_FLOAT_EQ(-0.2, I(0, 1).d_);
-  EXPECT_FLOAT_EQ(-0.48, I(1, 0).d_);
-  EXPECT_FLOAT_EQ(0.12, I(1, 1).d_);
+  EXPECT_DOUBLE_EQ(1, I(0, 0).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_);
+  EXPECT_DOUBLE_EQ(2.8, I(1, 0).val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1, 1).val_);
+  EXPECT_DOUBLE_EQ(0.8, I(0, 0).d_);
+  EXPECT_DOUBLE_EQ(-0.2, I(0, 1).d_);
+  EXPECT_DOUBLE_EQ(-0.48, I(1, 0).d_);
+  EXPECT_DOUBLE_EQ(0.12, I(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_fd_matrix_d) {
@@ -61,14 +61,14 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_fd_matrix_d) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0, 0).val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_);
-  EXPECT_FLOAT_EQ(2.8, I(1, 0).val_);
-  EXPECT_FLOAT_EQ(-0.2, I(1, 1).val_);
-  EXPECT_FLOAT_EQ(-0.8, I(0, 0).d_);
-  EXPECT_FLOAT_EQ(0.2, I(0, 1).d_);
-  EXPECT_FLOAT_EQ(-2.08, I(1, 0).d_);
-  EXPECT_FLOAT_EQ(0.52, I(1, 1).d_);
+  EXPECT_DOUBLE_EQ(1, I(0, 0).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_);
+  EXPECT_DOUBLE_EQ(2.8, I(1, 0).val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1, 1).val_);
+  EXPECT_DOUBLE_EQ(-0.8, I(0, 0).d_);
+  EXPECT_DOUBLE_EQ(0.2, I(0, 1).d_);
+  EXPECT_DOUBLE_EQ(-2.08, I(1, 0).d_);
+  EXPECT_DOUBLE_EQ(0.52, I(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_matrix_fd) {
@@ -87,14 +87,14 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_matrix_fd) {
   ldlt_Ad.compute(Ad);
   ASSERT_TRUE(ldlt_Ad.success());
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0, 0).val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_);
-  EXPECT_FLOAT_EQ(2.8, I(1, 0).val_);
-  EXPECT_FLOAT_EQ(-0.2, I(1, 1).val_);
-  EXPECT_FLOAT_EQ(1.6, I(0, 0).d_);
-  EXPECT_FLOAT_EQ(-0.4, I(0, 1).d_);
-  EXPECT_FLOAT_EQ(1.6, I(1, 0).d_);
-  EXPECT_FLOAT_EQ(-0.4, I(1, 1).d_);
+  EXPECT_DOUBLE_EQ(1, I(0, 0).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_);
+  EXPECT_DOUBLE_EQ(2.8, I(1, 0).val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1, 1).val_);
+  EXPECT_DOUBLE_EQ(1.6, I(0, 0).d_);
+  EXPECT_DOUBLE_EQ(-0.4, I(0, 1).d_);
+  EXPECT_DOUBLE_EQ(1.6, I(1, 0).d_);
+  EXPECT_DOUBLE_EQ(-0.4, I(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_fd_row_vector_fd) {
@@ -116,10 +116,10 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_fd_row_vector_fd) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0).val_);
-  EXPECT_FLOAT_EQ(0.0, I(1).val_);
-  EXPECT_FLOAT_EQ(0.8, I(0).d_);
-  EXPECT_FLOAT_EQ(-0.2, I(1).d_);
+  EXPECT_DOUBLE_EQ(1, I(0).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1).val_);
+  EXPECT_DOUBLE_EQ(0.8, I(0).d_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_fd_row_vector_d) {
@@ -139,10 +139,10 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_fd_row_vector_d) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0).val_);
-  EXPECT_FLOAT_EQ(0, I(1).val_);
-  EXPECT_FLOAT_EQ(-0.8, I(0).d_);
-  EXPECT_FLOAT_EQ(0.2, I(1).d_);
+  EXPECT_DOUBLE_EQ(1, I(0).val_);
+  EXPECT_DOUBLE_EQ(0, I(1).val_);
+  EXPECT_DOUBLE_EQ(-0.8, I(0).d_);
+  EXPECT_DOUBLE_EQ(0.2, I(1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_row_vector_fd) {
@@ -160,10 +160,10 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_row_vector_fd) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0).val_);
-  EXPECT_FLOAT_EQ(0.0, I(1).val_);
-  EXPECT_FLOAT_EQ(1.6, I(0).d_);
-  EXPECT_FLOAT_EQ(-0.4, I(1).d_);
+  EXPECT_DOUBLE_EQ(1, I(0).val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1).val_);
+  EXPECT_DOUBLE_EQ(1.6, I(0).d_);
+  EXPECT_DOUBLE_EQ(-0.4, I(1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, fd_exceptions) {
@@ -248,24 +248,24 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_ffd_matrix_ffd) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Ad, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1.0, I(0, 0).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(1, 0).val_.val_);
-  EXPECT_FLOAT_EQ(1.0, I(1, 1).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 0).d_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).d_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(1, 0).d_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(1, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(1.0, I(0, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(1.0, I(1, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1, 1).d_.val_);
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0, 0).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_.val_);
-  EXPECT_FLOAT_EQ(2.8, I(1, 0).val_.val_);
-  EXPECT_FLOAT_EQ(-0.2, I(1, 1).val_.val_);
-  EXPECT_FLOAT_EQ(0.8, I(0, 0).d_.val_);
-  EXPECT_FLOAT_EQ(-0.2, I(0, 1).d_.val_);
-  EXPECT_FLOAT_EQ(-0.48, I(1, 0).d_.val_);
-  EXPECT_FLOAT_EQ(0.12, I(1, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(1, I(0, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(2.8, I(1, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(0.8, I(0, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(0, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.48, I(1, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(0.12, I(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_ffd_matrix_d) {
@@ -285,14 +285,14 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_ffd_matrix_d) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0, 0).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_.val_);
-  EXPECT_FLOAT_EQ(2.8, I(1, 0).val_.val_);
-  EXPECT_FLOAT_EQ(-0.2, I(1, 1).val_.val_);
-  EXPECT_FLOAT_EQ(-0.8, I(0, 0).d_.val_);
-  EXPECT_FLOAT_EQ(0.2, I(0, 1).d_.val_);
-  EXPECT_FLOAT_EQ(-2.08, I(1, 0).d_.val_);
-  EXPECT_FLOAT_EQ(0.52, I(1, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(1, I(0, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(2.8, I(1, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(-0.8, I(0, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(0.2, I(0, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(-2.08, I(1, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(0.52, I(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_matrix_ffd) {
@@ -311,14 +311,14 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_matrix_ffd) {
   ldlt_Ad.compute(Ad);
   ASSERT_TRUE(ldlt_Ad.success());
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0, 0).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(0, 1).val_.val_);
-  EXPECT_FLOAT_EQ(2.8, I(1, 0).val_.val_);
-  EXPECT_FLOAT_EQ(-0.2, I(1, 1).val_.val_);
-  EXPECT_FLOAT_EQ(1.6, I(0, 0).d_.val_);
-  EXPECT_FLOAT_EQ(-0.4, I(0, 1).d_.val_);
-  EXPECT_FLOAT_EQ(1.6, I(1, 0).d_.val_);
-  EXPECT_FLOAT_EQ(-0.4, I(1, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(1, I(0, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(0, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(2.8, I(1, 0).val_.val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1, 1).val_.val_);
+  EXPECT_DOUBLE_EQ(1.6, I(0, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.4, I(0, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(1.6, I(1, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.4, I(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_ffd_row_vector_ffd) {
@@ -340,10 +340,10 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_ffd_row_vector_ffd) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(1).val_.val_);
-  EXPECT_FLOAT_EQ(0.8, I(0).d_.val_);
-  EXPECT_FLOAT_EQ(-0.2, I(1).d_.val_);
+  EXPECT_DOUBLE_EQ(1, I(0).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1).val_.val_);
+  EXPECT_DOUBLE_EQ(0.8, I(0).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.2, I(1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_ffd_row_vector_d) {
@@ -363,10 +363,10 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_ffd_row_vector_d) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0).val_.val_);
-  EXPECT_FLOAT_EQ(0, I(1).val_.val_);
-  EXPECT_FLOAT_EQ(-0.8, I(0).d_.val_);
-  EXPECT_FLOAT_EQ(0.2, I(1).d_.val_);
+  EXPECT_DOUBLE_EQ(1, I(0).val_.val_);
+  EXPECT_DOUBLE_EQ(0, I(1).val_.val_);
+  EXPECT_DOUBLE_EQ(-0.8, I(0).d_.val_);
+  EXPECT_DOUBLE_EQ(0.2, I(1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_row_vector_ffd) {
@@ -384,10 +384,10 @@ TEST(AgradFwdMatrixMdivideRightLDLT, matrix_d_row_vector_ffd) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = mdivide_right_ldlt(Av, ldlt_Ad);
-  EXPECT_FLOAT_EQ(1, I(0).val_.val_);
-  EXPECT_FLOAT_EQ(0.0, I(1).val_.val_);
-  EXPECT_FLOAT_EQ(1.6, I(0).d_.val_);
-  EXPECT_FLOAT_EQ(-0.4, I(1).d_.val_);
+  EXPECT_DOUBLE_EQ(1, I(0).val_.val_);
+  EXPECT_DOUBLE_EQ(0.0, I(1).val_.val_);
+  EXPECT_DOUBLE_EQ(1.6, I(0).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.4, I(1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightLDLT, ffd_exceptions) {

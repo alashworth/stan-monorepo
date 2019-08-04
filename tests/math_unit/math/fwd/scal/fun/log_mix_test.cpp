@@ -18,8 +18,8 @@ void test_log_mix_fff(double theta, double lambda1, double lambda2,
   fvar<double> f = log_mix(theta_f, lambda1_f, lambda2_f);
   fvar<double> f2
       = log(theta_f * exp(lambda1_f) + (1 - theta_f) * exp(lambda2_f));
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
 
   fvar<double> theta_f_invalid(-1.0, theta_d);
   EXPECT_THROW(log_mix(theta_f_invalid, lambda1_f, lambda2_f),
@@ -41,9 +41,9 @@ void test_log_mix_f_explicit(double theta, double lambda1, double x) {
   double num_deriv
       = exp(sin(x_f.val_)) * (1 - theta) * cos(x_f.val_)
         / (exp(sin(x_f.val_)) * (1 - theta) + exp(lambda1) * theta);
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
-  EXPECT_FLOAT_EQ(f.d_, num_deriv);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.d_, num_deriv);
 }
 
 void test_log_mix_ff_ex_lam_2(double theta, double lambda1, double lambda2,
@@ -59,8 +59,8 @@ void test_log_mix_ff_ex_lam_2(double theta, double lambda1, double lambda2,
   fvar<double> f2
       = log(theta_f * exp(lambda1_f) + (1 - theta_f) * exp(lambda2));
 
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
 
   fvar<double> theta_f_invalid(-1.0, theta_d);
   EXPECT_THROW(log_mix(theta_f_invalid, lambda1_f, lambda2), std::domain_error);
@@ -77,8 +77,8 @@ void test_log_mix_ff_ex_lam_1(double theta, double lambda1, double lambda2,
   fvar<double> f = log_mix(theta_f, lambda1, lambda2_f);
   fvar<double> f2
       = log(theta_f * exp(lambda1) + (1 - theta_f) * exp(lambda2_f));
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
 
   fvar<double> theta_f_invalid(-1.0, theta_d);
   EXPECT_THROW(log_mix(theta_f_invalid, lambda1, lambda2_f), std::domain_error);
@@ -94,8 +94,8 @@ void test_log_mix_ff_ex_theta(double theta, double lambda1, double lambda2,
 
   fvar<double> f = log_mix(theta, lambda1_f, lambda2_f);
   fvar<double> f2 = log(theta * exp(lambda1_f) + (1 - theta) * exp(lambda2_f));
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
 
   EXPECT_THROW(log_mix(-1.0, lambda1_f, lambda2_f), std::domain_error);
 }
@@ -109,8 +109,8 @@ void test_log_mix_f_theta(double theta, double lambda1, double lambda2,
 
   fvar<double> f = log_mix(theta_f, lambda1, lambda2);
   fvar<double> f2 = log(theta_f * exp(lambda1) + (1 - theta_f) * exp(lambda2));
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
 
   fvar<double> theta_f_invalid(-1.0, theta_d);
   EXPECT_THROW(log_mix(theta_f_invalid, lambda1, lambda2), std::domain_error);
@@ -125,8 +125,8 @@ void test_log_mix_f_lam_1(double theta, double lambda1, double lambda2,
 
   fvar<double> f = log_mix(theta, lambda1_f, lambda2);
   fvar<double> f2 = log(theta * exp(lambda1_f) + (1 - theta) * exp(lambda2));
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
 
   EXPECT_THROW(log_mix(-1.0, lambda1_f, lambda2), std::domain_error);
 }
@@ -140,8 +140,8 @@ void test_log_mix_f_lam_2(double theta, double lambda1, double lambda2,
 
   fvar<double> f = log_mix(theta, lambda1, lambda2_f);
   fvar<double> f2 = log(theta * exp(lambda1) + (1 - theta) * exp(lambda2_f));
-  EXPECT_FLOAT_EQ(f.val_, f2.val_);
-  EXPECT_FLOAT_EQ(f.d_, f2.d_);
+  EXPECT_DOUBLE_EQ(f.val_, f2.val_);
+  EXPECT_DOUBLE_EQ(f.d_, f2.d_);
 
   EXPECT_THROW(log_mix(-1.0, lambda1, lambda2_f), std::domain_error);
 }

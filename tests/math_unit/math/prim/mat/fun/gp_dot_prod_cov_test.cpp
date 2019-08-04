@@ -45,7 +45,7 @@ TEST(MathPrimMat, vec_double_gp_dot_prod_cov0) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(sigma_sq + x[i] * x[j], cov(i, j))
+      EXPECT_DOUBLE_EQ(sigma_sq + x[i] * x[j], cov(i, j))
           << "index: (" << i << ", " << j << ")";
 }
 
@@ -62,8 +62,8 @@ TEST(MathPrimMat, vec_x_gp_dot_prod_cov0) {
   EXPECT_NO_THROW(cov = stan::math::gp_dot_prod_cov(x, sigma));
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(sigma * sigma + stan::math::dot_product(x[i], x[j]),
-                      cov(i, j))
+      EXPECT_DOUBLE_EQ(sigma * sigma + stan::math::dot_product(x[i], x[j]),
+                       cov(i, j))
           << "index: (" << i << ", " << j << ")";
     }
   }
@@ -241,8 +241,8 @@ TEST(MathPrimMat, vec_vec_x1_x2_gp_dot_prod_cov0) {
   EXPECT_EQ(4, cov.cols());
   for (int i = 0; i < 3; ++i) {
     for (int j = 0; j < 4; ++j) {
-      EXPECT_FLOAT_EQ(sigma * sigma + stan::math::dot_product(x1[i], x2[j]),
-                      cov(i, j))
+      EXPECT_DOUBLE_EQ(sigma * sigma + stan::math::dot_product(x1[i], x2[j]),
+                       cov(i, j))
           << "index: (" << i << ", " << j << ")";
     }
   }

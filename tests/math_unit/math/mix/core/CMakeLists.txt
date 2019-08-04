@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+add_math_unit_test(stan_math_mix_core_unit_tests
         operator_addition_test.cpp
         operator_divide_equal_test.cpp
         operator_division_test.cpp
@@ -20,5 +20,4 @@ target_sources(stan_math_unit_tests PRIVATE
         operator_unary_minus_test.cpp
         operator_unary_not_test.cpp
         operator_unary_plus_test.cpp
-        std_numeric_limits_test.cpp
-        )
+        std_numeric_limits_test.cpp)

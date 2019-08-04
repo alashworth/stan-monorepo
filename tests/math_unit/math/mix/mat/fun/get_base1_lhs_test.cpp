@@ -12,18 +12,18 @@ TEST(AgradMixMatrixGetBase1LHS, failing_pre_20_fv) {
   Matrix<fvar<var>, Dynamic, 1> y(3);
   y << 1, 2, 3;
   fvar<var> z = get_base1_lhs(y, 1, "y", 1);
-  EXPECT_FLOAT_EQ(1, z.val_.val());
+  EXPECT_DOUBLE_EQ(1, z.val_.val());
 }
 TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_vec1_fv) {
   using stan::math::get_base1_lhs;
   std::vector<fvar<var> > x(2);
   x[0] = 10.0;
   x[1] = 20.0;
-  EXPECT_FLOAT_EQ(10.0, get_base1_lhs(x, 1, "x[1]", 0).val_.val());
-  EXPECT_FLOAT_EQ(20.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val());
+  EXPECT_DOUBLE_EQ(10.0, get_base1_lhs(x, 1, "x[1]", 0).val_.val());
+  EXPECT_DOUBLE_EQ(20.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val());
 
   get_base1_lhs(x, 2, "x[2]", 0) = 5.0;
-  EXPECT_FLOAT_EQ(5.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val());
+  EXPECT_DOUBLE_EQ(5.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val());
 
   EXPECT_THROW(get_base1_lhs(x, 0, "x[0]", 0), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, 3, "x[3]", 0), std::out_of_range);
@@ -45,12 +45,12 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_vec2_fv) {
       fvar<var> expected = x[m - 1][n - 1];
       fvar<var> found
           = get_base1_lhs(get_base1_lhs(x, m, "x[m]", 1), n, "x[m][n]", 2);
-      EXPECT_FLOAT_EQ(expected.val_.val(), found.val_.val());
+      EXPECT_DOUBLE_EQ(expected.val_.val(), found.val_.val());
     }
   }
 
   get_base1_lhs(get_base1_lhs(x, 1, "", -1), 2, "", -1) = 112.5;
-  EXPECT_FLOAT_EQ(112.5, x[0][1].val_.val());
+  EXPECT_DOUBLE_EQ(112.5, x[0][1].val_.val());
 
   EXPECT_THROW(get_base1_lhs(x, 0, "", -1), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, M + 1, "", -1), std::out_of_range);
@@ -68,15 +68,15 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_matrix_fv) {
       x(i, j) = i * j;
   for (size_t i = 0; i < 4; ++i) {
     for (size_t j = 0; j < 3; ++j) {
-      EXPECT_FLOAT_EQ(x(i, j).val_.val(),
-                      get_base1_lhs(x, i + 1, j + 1, "x", 1).val_.val());
-      EXPECT_FLOAT_EQ(x(i, j).val_.val(),
-                      get_base1_lhs(x, i + 1, "x", 1)(0, j).val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val(),
+                       get_base1_lhs(x, i + 1, j + 1, "x", 1).val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val(),
+                       get_base1_lhs(x, i + 1, "x", 1)(0, j).val_.val());
       Matrix<fvar<var>, 1, Dynamic> xi
           = get_base1_lhs<fvar<var> >(x, i + 1, "x", 1);
-      EXPECT_FLOAT_EQ(x(i, j).val_.val(), xi[j].val_.val());
-      EXPECT_FLOAT_EQ(x(i, j).val_.val(),
-                      get_base1_lhs(xi, j + 1, "xi", 2).val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val(), xi[j].val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val(),
+                       get_base1_lhs(xi, j + 1, "xi", 2).val_.val());
       // this is no good because can't get ref to inside val
       // could remedy by adding const versions, but don't need for Stan GM
       // fvar<var>  xij = get_base1_lhs<fvar<var> >
@@ -99,8 +99,8 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_vector_fv) {
   x << 1, 2, 3;
 
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(x(i).val_.val(),
-                    get_base1_lhs(x, i + 1, "x", 1).val_.val());
+    EXPECT_DOUBLE_EQ(x(i).val_.val(),
+                     get_base1_lhs(x, i + 1, "x", 1).val_.val());
   EXPECT_THROW(get_base1_lhs(x, 0, "x", 1), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, 100, "x", 1), std::out_of_range);
 }
@@ -112,8 +112,8 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_row_vector_fv) {
   x << 1, 2, 3;
 
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(x(i).val_.val(),
-                    get_base1_lhs(x, i + 1, "x", 1).val_.val());
+    EXPECT_DOUBLE_EQ(x(i).val_.val(),
+                     get_base1_lhs(x, i + 1, "x", 1).val_.val());
   EXPECT_THROW(get_base1_lhs(x, 0, "x", 1), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, 100, "x", 1), std::out_of_range);
 }
@@ -155,7 +155,7 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_8_fv) {
             for (size_t i6 = 0; i6 < x8[0][0][0][0][0].size(); ++i6)
               for (size_t i7 = 0; i7 < x8[0][0][0][0][0][0].size(); ++i7)
                 for (size_t i8 = 0; i8 < x8[0][0][0][0][0][0][0].size(); ++i8)
-                  EXPECT_FLOAT_EQ(
+                  EXPECT_DOUBLE_EQ(
                       x8[i1][i2][i3][i4][i5][i6][i7][i8].val_.val(),
                       get_base1_lhs(x8, i1 + 1, i2 + 1, i3 + 1, i4 + 1, i5 + 1,
                                     i6 + 1, i7 + 1, i8 + 1, "x8", 1)
@@ -168,18 +168,18 @@ TEST(AgradMixMatrixGetBase1LHS, failing_pre_20_ffv) {
   Matrix<fvar<fvar<var> >, Dynamic, 1> y(3);
   y << 1, 2, 3;
   fvar<fvar<var> > z = get_base1_lhs(y, 1, "y", 1);
-  EXPECT_FLOAT_EQ(1, z.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, z.val_.val_.val());
 }
 TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_vec1_ffv) {
   using stan::math::get_base1_lhs;
   std::vector<fvar<fvar<var> > > x(2);
   x[0] = 10.0;
   x[1] = 20.0;
-  EXPECT_FLOAT_EQ(10.0, get_base1_lhs(x, 1, "x[1]", 0).val_.val_.val());
-  EXPECT_FLOAT_EQ(20.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(10.0, get_base1_lhs(x, 1, "x[1]", 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(20.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val_.val());
 
   get_base1_lhs(x, 2, "x[2]", 0) = 5.0;
-  EXPECT_FLOAT_EQ(5.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(5.0, get_base1_lhs(x, 2, "x[1]", 0).val_.val_.val());
 
   EXPECT_THROW(get_base1_lhs(x, 0, "x[0]", 0), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, 3, "x[3]", 0), std::out_of_range);
@@ -201,12 +201,12 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_vec2_ffv) {
       fvar<fvar<var> > expected = x[m - 1][n - 1];
       fvar<fvar<var> > found
           = get_base1_lhs(get_base1_lhs(x, m, "x[m]", 1), n, "x[m][n]", 2);
-      EXPECT_FLOAT_EQ(expected.val_.val_.val(), found.val_.val_.val());
+      EXPECT_DOUBLE_EQ(expected.val_.val_.val(), found.val_.val_.val());
     }
   }
 
   get_base1_lhs(get_base1_lhs(x, 1, "", -1), 2, "", -1) = 112.5;
-  EXPECT_FLOAT_EQ(112.5, x[0][1].val_.val_.val());
+  EXPECT_DOUBLE_EQ(112.5, x[0][1].val_.val_.val());
 
   EXPECT_THROW(get_base1_lhs(x, 0, "", -1), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, M + 1, "", -1), std::out_of_range);
@@ -224,15 +224,15 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_matrix_ffv) {
       x(i, j) = i * j;
   for (size_t i = 0; i < 4; ++i) {
     for (size_t j = 0; j < 3; ++j) {
-      EXPECT_FLOAT_EQ(x(i, j).val_.val_.val(),
-                      get_base1_lhs(x, i + 1, j + 1, "x", 1).val_.val_.val());
-      EXPECT_FLOAT_EQ(x(i, j).val_.val_.val(),
-                      get_base1_lhs(x, i + 1, "x", 1)(0, j).val_.val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val_.val(),
+                       get_base1_lhs(x, i + 1, j + 1, "x", 1).val_.val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val_.val(),
+                       get_base1_lhs(x, i + 1, "x", 1)(0, j).val_.val_.val());
       Matrix<fvar<fvar<var> >, 1, Dynamic> xi
           = get_base1_lhs<fvar<fvar<var> > >(x, i + 1, "x", 1);
-      EXPECT_FLOAT_EQ(x(i, j).val_.val_.val(), xi[j].val_.val_.val());
-      EXPECT_FLOAT_EQ(x(i, j).val_.val_.val(),
-                      get_base1_lhs(xi, j + 1, "xi", 2).val_.val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val_.val(), xi[j].val_.val_.val());
+      EXPECT_DOUBLE_EQ(x(i, j).val_.val_.val(),
+                       get_base1_lhs(xi, j + 1, "xi", 2).val_.val_.val());
       // this is no good because can't get ref to inside val
       // could remedy by adding const versions, but don't need for Stan GM
       // fvar<fvar<var> >  xij = get_base1_lhs<fvar< fvar<var> > >
@@ -256,8 +256,8 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_vector_ffv) {
   x << 1, 2, 3;
 
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(x(i).val_.val_.val(),
-                    get_base1_lhs(x, i + 1, "x", 1).val_.val_.val());
+    EXPECT_DOUBLE_EQ(x(i).val_.val_.val(),
+                     get_base1_lhs(x, i + 1, "x", 1).val_.val_.val());
   EXPECT_THROW(get_base1_lhs(x, 0, "x", 1), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, 100, "x", 1), std::out_of_range);
 }
@@ -269,8 +269,8 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_row_vector_ffv) {
   x << 1, 2, 3;
 
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(x(i).val_.val_.val(),
-                    get_base1_lhs(x, i + 1, "x", 1).val_.val_.val());
+    EXPECT_DOUBLE_EQ(x(i).val_.val_.val(),
+                     get_base1_lhs(x, i + 1, "x", 1).val_.val_.val());
   EXPECT_THROW(get_base1_lhs(x, 0, "x", 1), std::out_of_range);
   EXPECT_THROW(get_base1_lhs(x, 100, "x", 1), std::out_of_range);
 }
@@ -314,7 +314,7 @@ TEST(AgradMixMatrixGetBase1LHS, get_base1_lhs_8_ffv) {
             for (size_t i6 = 0; i6 < x8[0][0][0][0][0].size(); ++i6)
               for (size_t i7 = 0; i7 < x8[0][0][0][0][0][0].size(); ++i7)
                 for (size_t i8 = 0; i8 < x8[0][0][0][0][0][0][0].size(); ++i8)
-                  EXPECT_FLOAT_EQ(
+                  EXPECT_DOUBLE_EQ(
                       x8[i1][i2][i3][i4][i5][i6][i7][i8].val_.val_.val(),
                       get_base1_lhs(x8, i1 + 1, i2 + 1, i3 + 1, i4 + 1, i5 + 1,
                                     i6 + 1, i7 + 1, i8 + 1, "x8", 1)

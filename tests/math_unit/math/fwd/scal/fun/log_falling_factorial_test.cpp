@@ -10,13 +10,13 @@ TEST(AgradFwdLogFallingFactorial, Fvar) {
 
   fvar<double> a(4.0, 1.0);
   fvar<double> x = log_falling_factorial(a, 2);
-  EXPECT_FLOAT_EQ(std::log(12.0), x.val_);
-  EXPECT_FLOAT_EQ((boost::math::digamma(5) - boost::math::digamma(3)), x.d_);
+  EXPECT_DOUBLE_EQ(std::log(12.0), x.val_);
+  EXPECT_DOUBLE_EQ((boost::math::digamma(5) - boost::math::digamma(3)), x.d_);
 
   // finite diff
   double eps = 1e-6;
-  EXPECT_FLOAT_EQ((stan::math::log_falling_factorial(4.0 + eps, 2.0)
-                   - stan::math::log_falling_factorial(4.0 - eps, 2.0))
+  EXPECT_DOUBLE_EQ((stan::math::log_falling_factorial(4.0 + eps, 2.0)
+                    - stan::math::log_falling_factorial(4.0 - eps, 2.0))
                       / (2 * eps),
                   x.d_);
 
@@ -26,16 +26,16 @@ TEST(AgradFwdLogFallingFactorial, Fvar) {
   EXPECT_THROW(log_falling_factorial(c, c), std::domain_error);
 
   x = log_falling_factorial(a, a);
-  EXPECT_FLOAT_EQ(std::log(24.0), x.val_);
-  EXPECT_FLOAT_EQ(boost::math::digamma(5), x.d_);
+  EXPECT_DOUBLE_EQ(std::log(24.0), x.val_);
+  EXPECT_DOUBLE_EQ(boost::math::digamma(5), x.d_);
 
   x = log_falling_factorial(5, a);
-  EXPECT_FLOAT_EQ(std::log(120.0), x.val_);
-  EXPECT_FLOAT_EQ(digamma(2.0), x.d_);
+  EXPECT_DOUBLE_EQ(std::log(120.0), x.val_);
+  EXPECT_DOUBLE_EQ(digamma(2.0), x.d_);
 
   // finite diff
-  EXPECT_FLOAT_EQ((stan::math::log_falling_factorial(5.0, 4.0 + eps)
-                   - stan::math::log_falling_factorial(5.0, 4.0 - eps))
+  EXPECT_DOUBLE_EQ((stan::math::log_falling_factorial(5.0, 4.0 + eps)
+                    - stan::math::log_falling_factorial(5.0, 4.0 - eps))
                       / (2 * eps),
                   x.d_);
 }
@@ -54,10 +54,10 @@ TEST(AgradFwdLogFallingFactorial, FvarFvarDouble) {
 
   fvar<fvar<double> > a = log_falling_factorial(x, y);
 
-  EXPECT_FLOAT_EQ(3.1780539, a.val_.val_);
-  EXPECT_FLOAT_EQ(1.0833334, a.val_.d_);
-  EXPECT_FLOAT_EQ(0.42278433, a.d_.val_);
-  EXPECT_FLOAT_EQ(0.64493406, a.d_.d_);
+  EXPECT_DOUBLE_EQ(3.1780539, a.val_.val_);
+  EXPECT_DOUBLE_EQ(1.0833334, a.val_.d_);
+  EXPECT_DOUBLE_EQ(0.42278433, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0.64493406, a.d_.d_);
 }
 
 struct log_falling_factorial_fun {

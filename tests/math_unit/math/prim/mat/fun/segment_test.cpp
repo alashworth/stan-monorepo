@@ -28,7 +28,7 @@ TEST(MathMatrixSegment, SegmentVector4) {
   Eigen::VectorXd v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1], v23[n]);
+    EXPECT_DOUBLE_EQ(v[n + 1], v23[n]);
 }
 
 TEST(MathMatrixSegment, SegmentRowVector1) {
@@ -57,7 +57,7 @@ TEST(MathMatrixSegment, SegmentRowVector4) {
   Eigen::RowVectorXd v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1], v23[n]);
+    EXPECT_DOUBLE_EQ(v[n + 1], v23[n]);
 }
 
 TEST(MathMatrixSegment, SegmentStdVector1) {
@@ -93,5 +93,5 @@ TEST(MathMatrixSegment, SegmentStdVector4) {
   std::vector<int> v23 = segment(v, 2, 2);
   EXPECT_EQ(2U, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_FLOAT_EQ(v[n + 1], v23[n]);
+    EXPECT_DOUBLE_EQ(v[n + 1], v23[n]);
 }

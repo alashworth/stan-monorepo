@@ -1,7 +1,7 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
 #include <boost/math/special_functions/digamma.hpp>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdBinomialCoefficientLog, FvarVar_Double_1stDeriv) {
@@ -14,13 +14,13 @@ TEST(AgradFwdBinomialCoefficientLog, FvarVar_Double_1stDeriv) {
   double z(1002);
   fvar<var> a = binomial_coefficient_log(x, z);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.69289774, g[0]);
+  EXPECT_DOUBLE_EQ(0.69289774, g[0]);
 }
 TEST(AgradFwdBinomialCoefficientLog, Double_FvarVar_1stDeriv) {
   using boost::math::digamma;
@@ -32,7 +32,7 @@ TEST(AgradFwdBinomialCoefficientLog, Double_FvarVar_1stDeriv) {
   fvar<var> z(1002.0, 2.0);
   fvar<var> a = binomial_coefficient_log(x, z);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
   EXPECT_NEAR(0, a.d_.val(), 1e-8);
 
   AVEC y = createAVEC(z.val_);
@@ -50,13 +50,13 @@ TEST(AgradFwdBinomialCoefficientLog, FvarVar_Double_2ndDeriv) {
   double z(1002);
   fvar<var> a = binomial_coefficient_log(x, z);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(-0.00049862865, g[0]);
+  EXPECT_DOUBLE_EQ(-0.00049862865, g[0]);
 }
 TEST(AgradFwdBinomialCoefficientLog, Double_FvarVar_2ndDeriv) {
   using boost::math::digamma;
@@ -68,13 +68,13 @@ TEST(AgradFwdBinomialCoefficientLog, Double_FvarVar_2ndDeriv) {
   fvar<var> z(1002.0, 2.0);
   fvar<var> a = binomial_coefficient_log(x, z);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
   EXPECT_NEAR(0, a.d_.val(), 1e-8);
 
   AVEC y = createAVEC(z.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(-0.00399002460681026, g[0]);
+  EXPECT_DOUBLE_EQ(-0.00399002460681026, g[0]);
 }
 
 TEST(AgradFwdBinomialCoefficientLog, FvarVar_FvarVar_1stDeriv) {
@@ -87,13 +87,13 @@ TEST(AgradFwdBinomialCoefficientLog, FvarVar_FvarVar_1stDeriv) {
   fvar<var> z(1002.0, 2.0);
   fvar<var> a = binomial_coefficient_log(x, z);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.d_.val());
 
   AVEC y = createAVEC(x.val_, z.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.69289774, g[0]);
+  EXPECT_DOUBLE_EQ(0.69289774, g[0]);
   EXPECT_NEAR(0, g[1], 1e-8);
 }
 TEST(AgradFwdBinomialCoefficientLog, FvarVar_FvarVar_2ndDeriv) {
@@ -106,14 +106,14 @@ TEST(AgradFwdBinomialCoefficientLog, FvarVar_FvarVar_2ndDeriv) {
   fvar<var> z(1002.0, 2.0);
   fvar<var> a = binomial_coefficient_log(x, z);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.d_.val());
 
   AVEC y = createAVEC(x.val_, z.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.0014963837, g[0]);
-  EXPECT_FLOAT_EQ(-0.0029925184551076781, g[1]);
+  EXPECT_DOUBLE_EQ(0.0014963837, g[0]);
+  EXPECT_DOUBLE_EQ(-0.0029925184551076781, g[1]);
 }
 
 TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_FvarFvarVar_1stDeriv) {
@@ -132,15 +132,15 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0.0009975062, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0.0009975062, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.69289774, g[0]);
+  EXPECT_DOUBLE_EQ(0.69289774, g[0]);
   EXPECT_NEAR(0, g[1], 1e-8);
 }
 TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_Double_1stDeriv) {
@@ -157,15 +157,15 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_Double_1stDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.69289774, g[0]);
+  EXPECT_DOUBLE_EQ(0.69289774, g[0]);
 }
 TEST(AgradFwdBinomialCoefficientLog, Double_FvarFvarVar_1stDeriv) {
   using stan::math::binomial_coefficient_log;
@@ -181,10 +181,10 @@ TEST(AgradFwdBinomialCoefficientLog, Double_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
@@ -208,16 +208,16 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0.0009975062, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0.0009975062, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-0.00049862865, g[0]);
-  EXPECT_FLOAT_EQ(0.00099750615170258105, g[1]);
+  EXPECT_DOUBLE_EQ(-0.00049862865, g[0]);
+  EXPECT_DOUBLE_EQ(0.00099750615170258105, g[1]);
 }
 TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
   using stan::math::binomial_coefficient_log;
@@ -235,16 +235,16 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0.0009975062, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0.0009975062, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.d_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0009975062, g[0]);
-  EXPECT_FLOAT_EQ(-0.0019950123034051291, g[1]);
+  EXPECT_DOUBLE_EQ(0.0009975062, g[0]);
+  EXPECT_DOUBLE_EQ(-0.0019950123034051291, g[1]);
 }
 TEST(AgradFwdBinomialCoefficientLog, Double_FvarFvarVar_2ndDeriv) {
   using stan::math::binomial_coefficient_log;
@@ -260,10 +260,10 @@ TEST(AgradFwdBinomialCoefficientLog, Double_FvarFvarVar_2ndDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
@@ -284,15 +284,15 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_Double_2ndDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-0.00049862863648177515, g[0]);
+  EXPECT_DOUBLE_EQ(-0.00049862863648177515, g[0]);
 }
 TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   using stan::math::binomial_coefficient_log;
@@ -310,16 +310,16 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_FvarFvarVar_3rdDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_.val());
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(0.0009975062, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(0.0009975062, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(-9.9501847e-07, g[0]);
-  EXPECT_FLOAT_EQ(9.9501847e-07, g[1]);
+  EXPECT_DOUBLE_EQ(-9.9501847e-07, g[0]);
+  EXPECT_DOUBLE_EQ(9.9501847e-07, g[1]);
 }
 TEST(AgradFwdBinomialCoefficientLog, Double_FvarFvarVar_3rdDeriv) {
   using stan::math::binomial_coefficient_log;
@@ -336,10 +336,10 @@ TEST(AgradFwdBinomialCoefficientLog, Double_FvarFvarVar_3rdDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
   EXPECT_NEAR(0, a.val_.d_.val(), 1e-8);
   EXPECT_NEAR(0, a.d_.val_.val(), 1e-8);
-  EXPECT_FLOAT_EQ(-0.0019950124, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(-0.0019950124, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
@@ -361,15 +361,15 @@ TEST(AgradFwdBinomialCoefficientLog, FvarFvarVar_Double_3rdDeriv) {
 
   fvar<fvar<var> > a = binomial_coefficient_log(x, y);
 
-  EXPECT_FLOAT_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0.69289774, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0.69289774181268948, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.00049862865, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(binomial_coefficient_log(2004.0, 1002.0), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.69289774, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0.69289774181268948, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.00049862865, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(7.4613968e-07, g[0]);
+  EXPECT_DOUBLE_EQ(7.4613968e-07, g[0]);
 }
 
 struct binomial_coefficient_log_fun {

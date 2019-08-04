@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 #include <limits>
 
@@ -12,13 +12,13 @@ TEST(AgradFwdFmax, FvarVar_FvarVar_1stDeriv) {
   fvar<var> z(1.5, 1.0);
   fvar<var> a = fmax(x, z);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val());
-  EXPECT_FLOAT_EQ(1.3, a.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(1.3, a.d_.val());
 
   AVEC y = createAVEC(x.val_, z.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(1, g[0]);
+  EXPECT_DOUBLE_EQ(1, g[0]);
   std::isnan(g[1]);
 }
 TEST(AgradFwdFmax, FvarVar_double_1stDeriv) {
@@ -29,13 +29,13 @@ TEST(AgradFwdFmax, FvarVar_double_1stDeriv) {
   double z(1.5);
   fvar<var> a = fmax(x, z);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val());
-  EXPECT_FLOAT_EQ(1.3, a.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(1.3, a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(1, g[0]);
+  EXPECT_DOUBLE_EQ(1, g[0]);
 }
 TEST(AgradFwdFmax, Double_FvarVar_1stDeriv) {
   using stan::math::fvar;
@@ -45,8 +45,8 @@ TEST(AgradFwdFmax, Double_FvarVar_1stDeriv) {
   fvar<var> z(1.5, 1.0);
   fvar<var> a = fmax(x, z);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val());
 
   AVEC y = createAVEC(z.val_);
   VEC g;
@@ -61,13 +61,13 @@ TEST(AgradFwdFmax, FvarVar_FvarVar_2ndDeriv) {
   fvar<var> z(1.5, 1.0);
   fvar<var> a = fmax(x, z);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val());
-  EXPECT_FLOAT_EQ(1.3, a.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(1.3, a.d_.val());
 
   AVEC y = createAVEC(x.val_, z.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
   std::isnan(g[1]);
 }
 TEST(AgradFwdFmax, FvarVar_double_2ndDeriv) {
@@ -78,13 +78,13 @@ TEST(AgradFwdFmax, FvarVar_double_2ndDeriv) {
   double z(1.5);
   fvar<var> a = fmax(x, z);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val());
-  EXPECT_FLOAT_EQ(1.3, a.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(1.3, a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_DOUBLE_EQ(0, g[0]);
 }
 TEST(AgradFwdFmax, Double_FvarVar_2ndDeriv) {
   using stan::math::fvar;
@@ -94,8 +94,8 @@ TEST(AgradFwdFmax, Double_FvarVar_2ndDeriv) {
   fvar<var> z(1.5, 1.0);
   fvar<var> a = fmax(x, z);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val());
 
   AVEC y = createAVEC(z.val_);
   VEC g;
@@ -117,16 +117,16 @@ TEST(AgradFwdFmax, FvarFvarVar_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = fmax(x, y);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(1, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC q = createAVEC(x.val_.val_, y.val_.val_);
   VEC r;
   a.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(1.0, r[0]);
-  EXPECT_FLOAT_EQ(0.0, r[1]);
+  EXPECT_DOUBLE_EQ(1.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[1]);
 }
 TEST(AgradFwdFmax, FvarFvarVar_Double_1stDeriv) {
   using stan::math::fvar;
@@ -140,15 +140,15 @@ TEST(AgradFwdFmax, FvarFvarVar_Double_1stDeriv) {
 
   fvar<fvar<var> > a = fmax(x, y);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(1, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC q = createAVEC(x.val_.val_);
   VEC r;
   a.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(1.0, r[0]);
+  EXPECT_DOUBLE_EQ(1.0, r[0]);
 }
 TEST(AgradFwdFmax, Double_FvarFvarVar_1stDeriv) {
   using stan::math::fvar;
@@ -162,15 +162,15 @@ TEST(AgradFwdFmax, Double_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = fmax(x, y);
 
-  EXPECT_FLOAT_EQ(fmax(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fmax(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   a.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
 }
 TEST(AgradFwdFmax, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
   using stan::math::fvar;
@@ -189,8 +189,8 @@ TEST(AgradFwdFmax, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
   AVEC q = createAVEC(x.val_.val_, y.val_.val_);
   VEC r;
   a.val_.d_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
-  EXPECT_FLOAT_EQ(0.0, r[1]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[1]);
 }
 TEST(AgradFwdFmax, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
   using stan::math::fvar;
@@ -209,8 +209,8 @@ TEST(AgradFwdFmax, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
   AVEC q = createAVEC(x.val_.val_, y.val_.val_);
   VEC r;
   a.d_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
-  EXPECT_FLOAT_EQ(0.0, r[1]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[1]);
 }
 TEST(AgradFwdFmax, FvarFvarVar_Double_2ndDeriv) {
   using stan::math::fvar;
@@ -227,7 +227,7 @@ TEST(AgradFwdFmax, FvarFvarVar_Double_2ndDeriv) {
   AVEC q = createAVEC(x.val_.val_);
   VEC r;
   a.val_.d_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
 }
 
 TEST(AgradFwdFmax, Double_FvarFvarVar_2ndDeriv) {
@@ -245,7 +245,7 @@ TEST(AgradFwdFmax, Double_FvarFvarVar_2ndDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   a.d_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
 }
 TEST(AgradFwdFmax, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   using stan::math::fvar;
@@ -264,8 +264,8 @@ TEST(AgradFwdFmax, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   AVEC q = createAVEC(x.val_.val_, y.val_.val_);
   VEC r;
   a.d_.d_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
-  EXPECT_FLOAT_EQ(0.0, r[1]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[1]);
 }
 TEST(AgradFwdFmax, FvarFvarVar_Double_3rdDeriv) {
   using stan::math::fvar;
@@ -283,7 +283,7 @@ TEST(AgradFwdFmax, FvarFvarVar_Double_3rdDeriv) {
   AVEC q = createAVEC(x.val_.val_);
   VEC r;
   a.d_.d_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
 }
 
 TEST(AgradFwdFmax, Double_FvarFvarVar_3rdDeriv) {
@@ -302,7 +302,7 @@ TEST(AgradFwdFmax, Double_FvarFvarVar_3rdDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   a.d_.d_.grad(q, r);
-  EXPECT_FLOAT_EQ(0.0, r[0]);
+  EXPECT_DOUBLE_EQ(0.0, r[0]);
 }
 
 struct fmax_fun {

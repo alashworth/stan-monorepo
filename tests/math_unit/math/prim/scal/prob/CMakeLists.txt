@@ -1,12 +1,143 @@
-file(GLOB_RECURSE source_files *.cpp)
+target_sources(stan_math_prim_scal_unit_tests PRIVATE
+        bernoulli_ccdf_log_test.cpp
+        bernoulli_cdf_log_test.cpp
+        bernoulli_log_test.cpp
+        bernoulli_logit_log_test.cpp
+        bernoulli_logit_test.cpp
+        bernoulli_test.cpp
+        beta_binomial_ccdf_log_test.cpp
+        beta_binomial_cdf_log_test.cpp
+        beta_binomial_log_test.cpp
+        beta_binomial_test.cpp
+        beta_ccdf_log_test.cpp
+        beta_cdf_log_test.cpp
+        beta_log_test.cpp
+        beta_proportion_ccdf_log_test.cpp
+        beta_proportion_cdf_log_test.cpp
+        beta_proportion_log_test.cpp
+        beta_proportion_test.cpp
+        beta_test.cpp
+        binomial_ccdf_log_test.cpp
+        binomial_cdf_log_test.cpp
+        binomial_log_test.cpp
+        binomial_logit_log_test.cpp
+        binomial_test.cpp
+        cauchy_ccdf_log_test.cpp
+        cauchy_cdf_log_test.cpp
+        cauchy_log_test.cpp
+        cauchy_test.cpp
+        chi_square_ccdf_log_test.cpp
+        chi_square_cdf_log_test.cpp
+        chi_square_log_test.cpp
+        chi_square_test.cpp
+        double_exponential_ccdf_log_test.cpp
+        double_exponential_cdf_log_test.cpp
+        double_exponential_log_test.cpp
+        double_exponential_test.cpp
+        exp_mod_normal_ccdf_log_test.cpp
+        exp_mod_normal_cdf_log_test.cpp
+        exp_mod_normal_log_test.cpp
+        exp_mod_normal_test.cpp
+        exponential_ccdf_log_test.cpp
+        exponential_cdf_log_test.cpp
+        exponential_log_test.cpp
+        exponential_test.cpp
+        frechet_ccdf_log_test.cpp
+        frechet_cdf_log_test.cpp
+        frechet_log_test.cpp
+        frechet_test.cpp
+        gamma_ccdf_log_test.cpp
+        gamma_cdf_log_test.cpp
+        gamma_log_test.cpp
+        gamma_test.cpp
+        gumbel_ccdf_log_test.cpp
+        gumbel_cdf_log_test.cpp
+        gumbel_log_test.cpp
+        gumbel_test.cpp
+        hypergeometric_log_test.cpp
+        hypergeometric_test.cpp
+        inv_chi_square_ccdf_log_test.cpp
+        inv_chi_square_cdf_log_test.cpp
+        inv_chi_square_log_test.cpp
+        inv_chi_square_test.cpp
+        inv_gamma_ccdf_log_test.cpp
+        inv_gamma_cdf_log_test.cpp
+        inv_gamma_log_test.cpp
+        inv_gamma_test.cpp
+        logistic_ccdf_log_test.cpp
+        logistic_cdf_log_test.cpp
+        logistic_log_test.cpp
+        logistic_test.cpp
+        lognormal_ccdf_log_test.cpp
+        lognormal_cdf_log_test.cpp
+        lognormal_log_test.cpp
+        lognormal_test.cpp
+        neg_binomial_2_ccdf_log_test.cpp
+        neg_binomial_2_cdf_log_test.cpp
+        neg_binomial_2_log_log_test.cpp
+        neg_binomial_2_log_test.cpp
+        neg_binomial_2_test.cpp
+        neg_binomial_ccdf_log_test.cpp
+        neg_binomial_cdf_log_test.cpp
+        neg_binomial_log_test.cpp
+        neg_binomial_test.cpp
+        normal_ccdf_log_test.cpp
+        normal_cdf_log_test.cpp
+        normal_log_test.cpp
+        normal_test.cpp
+        pareto_ccdf_log_test.cpp
+        pareto_cdf_log_test.cpp
+        pareto_log_test.cpp
+        pareto_test.cpp
+        pareto_type_2_ccdf_log_test.cpp
+        pareto_type_2_cdf_log_test.cpp
+        pareto_type_2_log_test.cpp
+        pareto_type_2_test.cpp
+        poisson_ccdf_log_test.cpp
+        poisson_cdf_log_test.cpp
+        poisson_log_log_test.cpp
+        poisson_log_test.cpp
+        poisson_test.cpp
+        rayleigh_ccdf_log_test.cpp
+        rayleigh_cdf_log_test.cpp
+        rayleigh_log_test.cpp
+        rayleigh_test.cpp
+        scaled_inv_chi_square_ccdf_log_test.cpp
+        scaled_inv_chi_square_cdf_log_test.cpp
+        scaled_inv_chi_square_log_test.cpp
+        scaled_inv_chi_square_test.cpp
+        skew_normal_ccdf_log_test.cpp
+        skew_normal_cdf_log_test.cpp
+        skew_normal_log_test.cpp
+        skew_normal_test.cpp
+        std_normal_log_test.cpp
+        student_t_ccdf_log_test.cpp
+        student_t_cdf_log_test.cpp
+        student_t_log_test.cpp
+        student_t_test.cpp
+        uniform_ccdf_log_test.cpp
+        uniform_cdf_log_test.cpp
+        uniform_log_test.cpp
+        uniform_test.cpp
+        util.hpp
+        util.cpp
+        von_mises_log_test.cpp
+        von_mises_test.cpp
+        weibull_ccdf_log_test.cpp
+        weibull_cdf_log_test.cpp
+        weibull_log_test.cpp
+        weibull_test.cpp
+        wiener_log_test.cpp
+        wiener_test.cpp
+        )
 
-link_libraries(Stan::Math GTest::GTest GTest::Main)
-include_directories(${PROJECT_SOURCE_DIR}/tests/math_unit)
+add_library(stan_math_prim_scal_utils
+        util.hpp
+        util.cpp)
 
-set(src_prefix "stan_prim_scal")
+target_link_libraries(stan_math_prim_scal_utils
+        PRIVATE Boost::headers GTest::GTest)
 
-foreach (source IN LISTS source_files)
-    get_filename_component(name ${source} NAME_WLE)
-    add_executable(${src_prefix}_${name} ${source})
-    gtest_discover_tests(${src_prefix}_${name})
-endforeach ()
+target_link_libraries(stan_math_prim_scal_unit_tests
+        PRIVATE stan_math_prim_scal_utils)
+

@@ -17,9 +17,9 @@ TEST(MathMatrix, value_of_rec_3) {
   Eigen::VectorXd d_b = value_of_rec(b);
 
   for (int i = 0; i < 5; ++i)
-    EXPECT_FLOAT_EQ(b(i), d_b(i));
+    EXPECT_DOUBLE_EQ(b(i), d_b(i));
 
   for (int i = 0; i < 2; ++i)
     for (int j = 0; j < 5; ++j)
-      EXPECT_FLOAT_EQ(a(i, j), d_a(i, j));
+      EXPECT_DOUBLE_EQ(a(i, j), d_a(i, j));
 }

@@ -42,7 +42,7 @@ TEST(AgradRevMatrix, inverse_grad) {
       int idx = 0;
       for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 2; ++j) {
-          EXPECT_FLOAT_EQ(-ad_inv(k, i).val() * ad_inv(j, l).val(), g[idx]);
+          EXPECT_DOUBLE_EQ(-ad_inv(k, i).val() * ad_inv(j, l).val(), g[idx]);
           ++idx;
         }
       }
@@ -68,7 +68,7 @@ TEST(AgradRevMatrix, inverse_inverse_sum) {
   VEC g = cgradvec(a_inv_inv_sum, x);
 
   for (size_t k = 0; k < x.size(); ++k)
-    EXPECT_FLOAT_EQ(1.0, g[k]);
+    EXPECT_DOUBLE_EQ(1.0, g[k]);
 }
 
 TEST(AgradRevMatrix, check_varis_on_stack_17) {

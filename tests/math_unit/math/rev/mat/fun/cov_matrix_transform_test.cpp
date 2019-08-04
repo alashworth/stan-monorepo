@@ -38,10 +38,10 @@ TEST(prob_transform, cov_matrix_jacobian) {
       J(m, n) = j[m][n];
 
   double log_abs_jacobian_det = log(fabs(determinant(J)));
-  EXPECT_FLOAT_EQ(log_abs_jacobian_det, lp.val());
+  EXPECT_DOUBLE_EQ(log_abs_jacobian_det, lp.val());
 }
 
-TEST(prob_transform, check_varis_on_stack) {
+TEST(prob_transform, check_varis_on_stack_107) {
   using stan::math::var;
   int K = 4;
   unsigned int K_choose_2 = 6;

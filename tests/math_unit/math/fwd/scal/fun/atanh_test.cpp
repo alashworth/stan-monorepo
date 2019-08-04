@@ -10,14 +10,14 @@ TEST(AgradFwdAtanh, Fvar) {
   fvar<double> x(0.5, 1.0);
 
   fvar<double> a = atanh(x);
-  EXPECT_FLOAT_EQ(atanh(0.5), a.val_);
-  EXPECT_FLOAT_EQ(1 / (1 - 0.5 * 0.5), a.d_);
+  EXPECT_DOUBLE_EQ(atanh(0.5), a.val_);
+  EXPECT_DOUBLE_EQ(1 / (1 - 0.5 * 0.5), a.d_);
 
   fvar<double> y(-0.9, 1.0);
 
   fvar<double> b = atanh(y);
-  EXPECT_FLOAT_EQ(atanh(-0.9), b.val_);
-  EXPECT_FLOAT_EQ(1 / (1 - 0.9 * 0.9), b.d_);
+  EXPECT_DOUBLE_EQ(atanh(-0.9), b.val_);
+  EXPECT_DOUBLE_EQ(1 / (1 - 0.9 * 0.9), b.d_);
 }
 
 TEST(AgradFwdAtanh, FvarFvarDouble) {
@@ -29,10 +29,10 @@ TEST(AgradFwdAtanh, FvarFvarDouble) {
   x.val_.d_ = 1.0;
   fvar<fvar<double> > a = atanh(x);
 
-  EXPECT_FLOAT_EQ(atanh(0.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(1.0 / (1.0 - 0.5 * 0.5), a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(atanh(0.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(1.0 / (1.0 - 0.5 * 0.5), a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 0.5;
@@ -40,10 +40,10 @@ TEST(AgradFwdAtanh, FvarFvarDouble) {
 
   a = atanh(y);
 
-  EXPECT_FLOAT_EQ(atanh(0.5), a.val_.val_);
-  EXPECT_FLOAT_EQ(0, a.val_.d_);
-  EXPECT_FLOAT_EQ(1.0 / (1.0 - 0.5 * 0.5), a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(atanh(0.5), a.val_.val_);
+  EXPECT_DOUBLE_EQ(0, a.val_.d_);
+  EXPECT_DOUBLE_EQ(1.0 / (1.0 - 0.5 * 0.5), a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 }
 
 struct atanh_fun {

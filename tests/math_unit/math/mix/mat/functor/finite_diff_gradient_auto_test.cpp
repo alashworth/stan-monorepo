@@ -13,7 +13,7 @@ void expect_match_autodiff(const F& f, Eigen::VectorXd x) {
   Eigen::VectorXd grad_fx;
   stan::math::gradient(f, x, fx, grad_fx);
 
-  EXPECT_FLOAT_EQ(fx, fx_fd);
+  EXPECT_DOUBLE_EQ(fx, fx_fd);
   EXPECT_EQ(grad_fx.size(), grad_fx_fd.size());
   for (size_t i = 0; i < grad_fx.size(); ++i)
     expect_near_relative(grad_fx(i), grad_fx_fd(i));

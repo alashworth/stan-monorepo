@@ -12,6 +12,7 @@ using std::vector;
 using stan::math::to_var;
 using stan::math::var;
 
+namespace {
 struct multi_normal_cholesky_fun {
   const int K_;
 
@@ -42,35 +43,6 @@ struct multi_normal_cholesky_fun {
     // all 0 by design for double inputs
   }
 };
-
-TEST(MultiNormalCholesky, TestGradFunctional) {
-  std::vector<double> x(3 + 3 + 3 * 2);
-  // y
-  x[0] = 1.0;
-  x[1] = 2.0;
-  x[2] = -3.0;
-  // mu
-  x[3] = 0.0;
-  x[4] = -2.0;
-  x[5] = -3.0;
-  // L
-  x[6] = 1;
-  x[7] = -1;
-  x[8] = 2;
-  x[9] = -3;
-  x[10] = 7;
-  x[11] = 8;
-
-  test_grad(multi_normal_cholesky_fun(3), x);
-
-  std::vector<double> u(3);
-  u[0] = 1.9;
-  u[1] = -2.7;
-  u[2] = 0.48;
-
-  test_grad(multi_normal_cholesky_fun(1), u);
-}
-
 template <int is_row_vec_y, int is_row_vec_mu>
 struct vectorized_multi_normal_cholesky_fun {
   // size of each vector and order of square matrix sigma
@@ -131,7 +103,6 @@ struct vectorized_multi_normal_cholesky_fun {
     }
   }
 };
-
 template <int is_row_vec_y, int is_row_vec_mu>
 void test_all() {
   {
@@ -273,8 +244,37 @@ void test_all() {
         get_vvar(y_), get_vvar(mu_), get_vvar(sigma_));
   }
 }
+}  // namespace
 
-TEST(MultiNormal, TestGradFunctionalVectorized) {
+TEST(MultiNormalCholesky, TestGradFunctional) {
+  std::vector<double> x(3 + 3 + 3 * 2);
+  // y
+  x[0] = 1.0;
+  x[1] = 2.0;
+  x[2] = -3.0;
+  // mu
+  x[3] = 0.0;
+  x[4] = -2.0;
+  x[5] = -3.0;
+  // L
+  x[6] = 1;
+  x[7] = -1;
+  x[8] = 2;
+  x[9] = -3;
+  x[10] = 7;
+  x[11] = 8;
+
+  test_grad(multi_normal_cholesky_fun(3), x);
+
+  std::vector<double> u(3);
+  u[0] = 1.9;
+  u[1] = -2.7;
+  u[2] = 0.48;
+
+  test_grad(multi_normal_cholesky_fun(1), u);
+}
+
+TEST(MultiNormal, TestGradFunctionalVectorized_1) {
   test_all<1, 1>();
   test_all<1, -1>();
   test_all<-1, 1>();

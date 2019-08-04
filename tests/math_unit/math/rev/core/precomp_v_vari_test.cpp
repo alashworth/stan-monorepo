@@ -14,12 +14,12 @@ TEST(StanAgradRevInternal, precomp_v_vari) {
 
   EXPECT_NO_THROW(y = stan::math::var(
                       new stan::math::precomp_v_vari(value, x1.vi_, gradient)));
-  EXPECT_FLOAT_EQ(value, y.val());
+  EXPECT_DOUBLE_EQ(value, y.val());
 
   VEC g;
   EXPECT_NO_THROW(y.grad(wrapper, g));
   ASSERT_EQ(1U, g.size());
-  EXPECT_FLOAT_EQ(gradient, g[0]);
+  EXPECT_DOUBLE_EQ(gradient, g[0]);
 
   stan::math::recover_memory();
 }

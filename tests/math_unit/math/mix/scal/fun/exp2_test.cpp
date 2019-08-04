@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 
 class AgradFwdExp2 : public testing::Test {
@@ -16,13 +16,13 @@ TEST_F(AgradFwdExp2, FvarVar_1stDeriv) {
   fvar<var> x(0.5, 1.3);
   fvar<var> a = exp2(x);
 
-  EXPECT_FLOAT_EQ(exp2(0.5), a.val_.val());
-  EXPECT_FLOAT_EQ(1.3 * exp2(0.5) * log(2), a.d_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(1.3 * exp2(0.5) * log(2), a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2), g[0]);
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2), g[0]);
 }
 
 TEST_F(AgradFwdExp2, FvarVar_2ndDeriv) {
@@ -37,7 +37,7 @@ TEST_F(AgradFwdExp2, FvarVar_2ndDeriv) {
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(1.3 * exp2(0.5) * log(2) * log(2), g[0]);
+  EXPECT_DOUBLE_EQ(1.3 * exp2(0.5) * log(2) * log(2), g[0]);
 }
 
 TEST_F(AgradFwdExp2, FvarFvarVar_1stDeriv) {
@@ -52,31 +52,31 @@ TEST_F(AgradFwdExp2, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = exp2(x);
 
-  EXPECT_FLOAT_EQ(exp2(0.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2), a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2), a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
   stan::math::recover_memory();
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2), g[0]);
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2), g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 1.0;
 
   fvar<fvar<var> > b = exp2(y);
-  EXPECT_FLOAT_EQ(exp2(0.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2), a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2), a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2), r[0]);
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2), r[0]);
 }
 
 TEST_F(AgradFwdExp2, FvarFvarVar_2ndDeriv) {
@@ -91,32 +91,32 @@ TEST_F(AgradFwdExp2, FvarFvarVar_2ndDeriv) {
 
   fvar<fvar<var> > a = exp2(x);
 
-  EXPECT_FLOAT_EQ(exp2(0.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2), a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2), a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
   stan::math::recover_memory();
 
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2) * log(2), g[0]);
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2) * log(2), g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 1.0;
 
   fvar<fvar<var> > b = exp2(y);
-  EXPECT_FLOAT_EQ(exp2(0.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2), a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2), a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(exp2(0.5) * log(2) * log(2), r[0]);
+  EXPECT_DOUBLE_EQ(exp2(0.5) * log(2) * log(2), r[0]);
 }
 TEST_F(AgradFwdExp2, FvarFvarVar_3rdDeriv) {
   using stan::math::fvar;
@@ -133,7 +133,7 @@ TEST_F(AgradFwdExp2, FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(log(2) * log(2) * log(2) * exp2(0.5), g[0]);
+  EXPECT_DOUBLE_EQ(log(2) * log(2) * log(2) * exp2(0.5), g[0]);
 }
 
 struct exp2_fun {

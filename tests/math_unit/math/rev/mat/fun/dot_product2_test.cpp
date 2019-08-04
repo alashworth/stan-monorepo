@@ -4,6 +4,103 @@
 #include <math/rev/mat/fun/jacobian.hpp>
 #include <vector>
 
+namespace {
+
+void test_mult_LLT(const stan::math::matrix_v& L) {
+  using stan::math::matrix_v;
+  matrix_v Lp = L;
+  for (int m = 0; m < L.rows(); ++m)
+    for (int n = (m + 1); n < L.cols(); ++n)
+      Lp(m, n) = 0;
+  matrix_v LLT_eigen = Lp * Lp.transpose();
+  matrix_v LLT_stan = multiply_lower_tri_self_transpose(L);
+  EXPECT_EQ(L.rows(), LLT_stan.rows());
+  EXPECT_EQ(L.rows(), LLT_stan.cols());
+  for (int m = 0; m < L.rows(); ++m)
+    for (int n = 0; n < L.rows(); ++n)
+      EXPECT_DOUBLE_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
+}
+
+void test_tcrossprod(const stan::math::matrix_v& L) {
+  using stan::math::matrix_v;
+  using stan::math::tcrossprod;
+  matrix_v LLT_eigen = L * L.transpose();
+  matrix_v LLT_stan = tcrossprod(L);
+  EXPECT_EQ(LLT_eigen.rows(), LLT_stan.rows());
+  EXPECT_EQ(LLT_eigen.rows(), LLT_stan.cols());
+  for (int m = 0; m < LLT_eigen.rows(); ++m)
+    for (int n = 0; n < LLT_eigen.cols(); ++n)
+      EXPECT_DOUBLE_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
+}
+
+void test_crossprod(const stan::math::matrix_v& L) {
+  using stan::math::crossprod;
+  using stan::math::matrix_v;
+  matrix_v LLT_eigen = L.transpose() * L;
+  matrix_v LLT_stan = crossprod(L);
+  EXPECT_EQ(L.rows(), LLT_stan.rows());
+  EXPECT_EQ(L.cols(), LLT_stan.cols());
+  for (int m = 0; m < L.rows(); ++m)
+    for (int n = 0; n < L.cols(); ++n)
+      EXPECT_DOUBLE_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
+}
+
+template <typename T>
+void test_cumulative_sum() {
+  using stan::math::cumulative_sum;
+
+  T c(1);
+  c[0] = 1.7;
+  T d = cumulative_sum(c);
+  EXPECT_EQ(c.size(), d.size());
+  EXPECT_DOUBLE_EQ(c[0].val(), d[0].val());
+  VEC grad = cgrad(d[0], c[0]);
+  EXPECT_EQ(1U, grad.size());
+  EXPECT_DOUBLE_EQ(1.0, grad[0]);
+
+  T e(2);
+  e[0] = 5.9;
+  e[1] = -1.2;
+  T f = cumulative_sum(e);
+  EXPECT_EQ(e.size(), f.size());
+  EXPECT_DOUBLE_EQ(e[0].val(), f[0].val());
+  EXPECT_DOUBLE_EQ((e[0] + e[1]).val(), f[1].val());
+  grad = cgrad(f[0], e[0], e[1]);
+  EXPECT_EQ(2U, grad.size());
+  EXPECT_DOUBLE_EQ(1.0, grad[0]);
+  EXPECT_DOUBLE_EQ(0.0, grad[1]);
+
+  T g(3);
+  g[0] = 5.9;
+  g[1] = -1.2;
+  g[2] = 192.13456;
+  T h = cumulative_sum(g);
+  EXPECT_EQ(g.size(), h.size());
+  EXPECT_DOUBLE_EQ(g[0].val(), h[0].val());
+  EXPECT_DOUBLE_EQ((g[0] + g[1]).val(), h[1].val());
+  EXPECT_DOUBLE_EQ((g[0] + g[1] + g[2]).val(), h[2].val());
+
+  grad = cgrad(h[2], g[0], g[1], g[2]);
+  EXPECT_EQ(3U, grad.size());
+  EXPECT_DOUBLE_EQ(1.0, grad[0]);
+  EXPECT_DOUBLE_EQ(1.0, grad[1]);
+  EXPECT_DOUBLE_EQ(1.0, grad[2]);
+}
+
+template <int R, int C>
+void assert_val_grad(Eigen::Matrix<stan::math::var, R, C>& v) {
+  v << -1.0, 0.0, 3.0;
+  AVEC x = createAVEC(v(0), v(1), v(2));
+  AVAR f = dot_self(v);
+  VEC g;
+  f.grad(x, g);
+
+  EXPECT_DOUBLE_EQ(-2.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_DOUBLE_EQ(6.0, g[2]);
+}
+}  // namespace
+
 TEST(AgradRevMatrix, dot_product_vv_0) {
   AVEC a, b;
   AVAR c;
@@ -120,20 +217,6 @@ TEST(AgradRevMatrix, dot_product_vd_vec_0) {
   EXPECT_EQ(grad[1], 2);
   EXPECT_EQ(grad[2], 3);
 }
-
-template <int R, int C>
-void assert_val_grad(Eigen::Matrix<stan::math::var, R, C>& v) {
-  v << -1.0, 0.0, 3.0;
-  AVEC x = createAVEC(v(0), v(1), v(2));
-  AVAR f = dot_self(v);
-  VEC g;
-  f.grad(x, g);
-
-  EXPECT_FLOAT_EQ(-2.0, g[0]);
-  EXPECT_FLOAT_EQ(0.0, g[1]);
-  EXPECT_FLOAT_EQ(6.0, g[2]);
-}
-
 TEST(AgradRevMatrix, dot_self_vec_0) {
   using stan::math::dot_self;
 
@@ -159,7 +242,6 @@ TEST(AgradRevMatrix, dot_self_vec_0) {
   Eigen::Matrix<AVAR, Eigen::Dynamic, Eigen::Dynamic> vvvv(1, 3);
   assert_val_grad(vvvv);
 }
-
 TEST(AgradRevMatrix, columns_dot_self_0) {
   using stan::math::columns_dot_self;
 
@@ -184,7 +266,6 @@ TEST(AgradRevMatrix, columns_dot_self_0) {
   Eigen::Matrix<AVAR, Eigen::Dynamic, Eigen::Dynamic> vvvv(1, 3);
   assert_val_grad(vvvv);
 }
-
 TEST(AgradRevMatrix, softmax_0) {
   using Eigen::Dynamic;
   using Eigen::Matrix;
@@ -198,22 +279,22 @@ TEST(AgradRevMatrix, softmax_0) {
 
   Matrix<AVAR, Dynamic, 1> theta = softmax(x);
   EXPECT_EQ(1, theta.size());
-  EXPECT_FLOAT_EQ(1.0, theta[0].val());
+  EXPECT_DOUBLE_EQ(1.0, theta[0].val());
 
   Matrix<AVAR, Dynamic, 1> x2(2);
   x2 << -1.0, 1.0;
   Matrix<AVAR, Dynamic, 1> theta2 = softmax(x2);
   EXPECT_EQ(2, theta2.size());
-  EXPECT_FLOAT_EQ(exp(-1) / (exp(-1) + exp(1)), theta2[0].val());
-  EXPECT_FLOAT_EQ(exp(1) / (exp(-1) + exp(1)), theta2[1].val());
+  EXPECT_DOUBLE_EQ(exp(-1) / (exp(-1) + exp(1)), theta2[0].val());
+  EXPECT_DOUBLE_EQ(exp(1) / (exp(-1) + exp(1)), theta2[1].val());
 
   Matrix<AVAR, Dynamic, 1> x3(3);
   x3 << -1.0, 1.0, 10.0;
   Matrix<AVAR, Dynamic, 1> theta3 = softmax(x3);
   EXPECT_EQ(3, theta3.size());
-  EXPECT_FLOAT_EQ(exp(-1) / (exp(-1) + exp(1) + exp(10.0)), theta3[0].val());
-  EXPECT_FLOAT_EQ(exp(1) / (exp(-1) + exp(1) + exp(10.0)), theta3[1].val());
-  EXPECT_FLOAT_EQ(exp(10) / (exp(-1) + exp(1) + exp(10.0)), theta3[2].val());
+  EXPECT_DOUBLE_EQ(exp(-1) / (exp(-1) + exp(1) + exp(10.0)), theta3[0].val());
+  EXPECT_DOUBLE_EQ(exp(1) / (exp(-1) + exp(1) + exp(10.0)), theta3[1].val());
+  EXPECT_DOUBLE_EQ(exp(10) / (exp(-1) + exp(1) + exp(10.0)), theta3[2].val());
 }
 TEST(AgradRevMatrix, meanStdVector_0) {
   // should use arg-dep lookup
@@ -221,15 +302,15 @@ TEST(AgradRevMatrix, meanStdVector_0) {
   AVEC x(0);
   EXPECT_THROW(mean(x), std::invalid_argument);
   x.push_back(1.0);
-  EXPECT_FLOAT_EQ(1.0, mean(x).val());
+  EXPECT_DOUBLE_EQ(1.0, mean(x).val());
   x.push_back(2.0);
-  EXPECT_FLOAT_EQ(1.5, mean(x).val());
+  EXPECT_DOUBLE_EQ(1.5, mean(x).val());
 
   AVEC y = createAVEC(1.0, 2.0);
   AVAR f = mean(y);
   VEC grad = cgrad(f, y[0], y[1]);
-  EXPECT_FLOAT_EQ(0.5, grad[0]);
-  EXPECT_FLOAT_EQ(0.5, grad[1]);
+  EXPECT_DOUBLE_EQ(0.5, grad[0]);
+  EXPECT_DOUBLE_EQ(0.5, grad[1]);
   EXPECT_EQ(2U, grad.size());
 }
 TEST(AgradRevMatrix, varianceStdVector_0) {
@@ -256,7 +337,7 @@ TEST(AgradRevMatrix, varianceStdVector_0) {
   EXPECT_EQ(3U, grad1.size());
   EXPECT_EQ(3U, grad2.size());
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(grad2[i], grad1[i]);
+    EXPECT_DOUBLE_EQ(grad2[i], grad1[i]);
 }
 TEST(AgradRevMatrix, sdStdVector_0) {
   // should use arg-dep lookup (and for sqrt)
@@ -282,9 +363,8 @@ TEST(AgradRevMatrix, sdStdVector_0) {
   EXPECT_EQ(3U, grad1.size());
   EXPECT_EQ(3U, grad2.size());
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(grad2[i], grad1[i]);
+    EXPECT_DOUBLE_EQ(grad2[i], grad1[i]);
 }
-
 TEST(AgradRevMatrix, initializeVariable_0) {
   using stan::math::initialize_variable;
   using std::vector;
@@ -294,36 +374,36 @@ TEST(AgradRevMatrix, initializeVariable_0) {
 
   AVAR a;
   initialize_variable(a, AVAR(1.0));
-  EXPECT_FLOAT_EQ(1.0, a.val());
+  EXPECT_DOUBLE_EQ(1.0, a.val());
 
   AVEC b(3);
   initialize_variable(b, AVAR(2.0));
   EXPECT_EQ(3U, b.size());
-  EXPECT_FLOAT_EQ(2.0, b[0].val());
-  EXPECT_FLOAT_EQ(2.0, b[1].val());
-  EXPECT_FLOAT_EQ(2.0, b[2].val());
+  EXPECT_DOUBLE_EQ(2.0, b[0].val());
+  EXPECT_DOUBLE_EQ(2.0, b[1].val());
+  EXPECT_DOUBLE_EQ(2.0, b[2].val());
 
   vector<AVEC> c(4, AVEC(3));
   initialize_variable(c, AVAR(3.0));
   for (size_t m = 0; m < c.size(); ++m)
     for (size_t n = 0; n < c[0].size(); ++n)
-      EXPECT_FLOAT_EQ(3.0, c[m][n].val());
+      EXPECT_DOUBLE_EQ(3.0, c[m][n].val());
 
   Matrix<AVAR, Dynamic, Dynamic> aa(5, 7);
   initialize_variable(aa, AVAR(4.0));
   for (int m = 0; m < aa.rows(); ++m)
     for (int n = 0; n < aa.cols(); ++n)
-      EXPECT_FLOAT_EQ(4.0, aa(m, n).val());
+      EXPECT_DOUBLE_EQ(4.0, aa(m, n).val());
 
   Matrix<AVAR, Dynamic, 1> bb(5);
   initialize_variable(bb, AVAR(5.0));
   for (int m = 0; m < bb.size(); ++m)
-    EXPECT_FLOAT_EQ(5.0, bb(m).val());
+    EXPECT_DOUBLE_EQ(5.0, bb(m).val());
 
   Matrix<AVAR, 1, Dynamic> cc(12);
   initialize_variable(cc, AVAR(7.0));
   for (int m = 0; m < cc.size(); ++m)
-    EXPECT_FLOAT_EQ(7.0, cc(m).val());
+    EXPECT_DOUBLE_EQ(7.0, cc(m).val());
 
   Matrix<AVAR, Dynamic, Dynamic> init_val(3, 4);
   vector<Matrix<AVAR, Dynamic, Dynamic> > dd(5, init_val);
@@ -331,9 +411,8 @@ TEST(AgradRevMatrix, initializeVariable_0) {
   for (size_t i = 0; i < dd.size(); ++i)
     for (int m = 0; m < dd[0].rows(); ++m)
       for (int n = 0; n < dd[0].cols(); ++n)
-        EXPECT_FLOAT_EQ(11.0, dd[i](m, n).val());
+        EXPECT_DOUBLE_EQ(11.0, dd[i](m, n).val());
 }
-
 TEST(AgradRevMatrix, UserCase1_0) {
   using stan::math::assign;
   using stan::math::dot_product;
@@ -378,7 +457,6 @@ TEST(AgradRevMatrix, UserCase1_0) {
 
   EXPECT_NE(lp__.val(), 0);
 }
-
 TEST(AgradRevMatrix, prod_0) {
   using stan::math::prod;
   using stan::math::vector_d;
@@ -386,15 +464,15 @@ TEST(AgradRevMatrix, prod_0) {
 
   vector_d vd;
   vector_v vv;
-  EXPECT_FLOAT_EQ(1.0, prod(vd));
-  EXPECT_FLOAT_EQ(1.0, prod(vv).val());
+  EXPECT_DOUBLE_EQ(1.0, prod(vd));
+  EXPECT_DOUBLE_EQ(1.0, prod(vv).val());
 
   vd = vector_d(1);
   vv = vector_v(1);
   vd << 2.0;
   vv << 2.0;
-  EXPECT_FLOAT_EQ(2.0, prod(vd));
-  EXPECT_FLOAT_EQ(2.0, prod(vv).val());
+  EXPECT_DOUBLE_EQ(2.0, prod(vd));
+  EXPECT_DOUBLE_EQ(2.0, prod(vv).val());
 
   vd = vector_d(2);
   vd << 2.0, 3.0;
@@ -404,12 +482,12 @@ TEST(AgradRevMatrix, prod_0) {
   x[0] = vv[0];
   x[1] = vv[1];
   AVAR f = prod(vv);
-  EXPECT_FLOAT_EQ(6.0, prod(vd));
-  EXPECT_FLOAT_EQ(6.0, f.val());
+  EXPECT_DOUBLE_EQ(6.0, prod(vd));
+  EXPECT_DOUBLE_EQ(6.0, f.val());
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(3.0, g[0]);
-  EXPECT_FLOAT_EQ(2.0, g[1]);
+  EXPECT_DOUBLE_EQ(3.0, g[0]);
+  EXPECT_DOUBLE_EQ(2.0, g[1]);
 }
 TEST(AgradRevMatrix, diagMatrix_1) {
   using stan::math::diag_matrix;
@@ -429,22 +507,6 @@ TEST(AgradRevMatrix, diagMatrix_1) {
   EXPECT_EQ(4, m(1, 1).val());
   EXPECT_EQ(9, m(2, 2).val());
 }
-
-void test_mult_LLT(const stan::math::matrix_v& L) {
-  using stan::math::matrix_v;
-  matrix_v Lp = L;
-  for (int m = 0; m < L.rows(); ++m)
-    for (int n = (m + 1); n < L.cols(); ++n)
-      Lp(m, n) = 0;
-  matrix_v LLT_eigen = Lp * Lp.transpose();
-  matrix_v LLT_stan = multiply_lower_tri_self_transpose(L);
-  EXPECT_EQ(L.rows(), LLT_stan.rows());
-  EXPECT_EQ(L.rows(), LLT_stan.cols());
-  for (int m = 0; m < L.rows(); ++m)
-    for (int n = 0; n < L.rows(); ++n)
-      EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
-}
-
 TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad1_0) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
@@ -458,14 +520,13 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad1_0) {
   AVEC y(1);
   y[0] = LLt(0, 0);
 
-  EXPECT_FLOAT_EQ(9.0, LLt(0, 0).val());
+  EXPECT_DOUBLE_EQ(9.0, LLt(0, 0).val());
 
   std::vector<VEC> J;
   stan::math::jacobian(y, x, J);
 
-  EXPECT_FLOAT_EQ(6.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(6.0, J[0][0]);
 }
-
 TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2_0) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
@@ -484,10 +545,10 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2_0) {
   y[2] = LLt(1, 0);
   y[3] = LLt(1, 1);
 
-  EXPECT_FLOAT_EQ(1.0, LLt(0, 0).val());
-  EXPECT_FLOAT_EQ(2.0, LLt(0, 1).val());
-  EXPECT_FLOAT_EQ(2.0, LLt(1, 0).val());
-  EXPECT_FLOAT_EQ(13.0, LLt(1, 1).val());
+  EXPECT_DOUBLE_EQ(1.0, LLt(0, 0).val());
+  EXPECT_DOUBLE_EQ(2.0, LLt(0, 1).val());
+  EXPECT_DOUBLE_EQ(2.0, LLt(1, 0).val());
+  EXPECT_DOUBLE_EQ(13.0, LLt(1, 1).val());
 
   std::vector<VEC> J;
   stan::math::jacobian(y, x, J);
@@ -499,23 +560,22 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad2_0) {
   //     2 1 0
   //     2 1 0
   //     0 4 6
-  EXPECT_FLOAT_EQ(2.0, J[0][0]);
-  EXPECT_FLOAT_EQ(0.0, J[0][1]);
-  EXPECT_FLOAT_EQ(0.0, J[0][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][2]);
 
-  EXPECT_FLOAT_EQ(2.0, J[1][0]);
-  EXPECT_FLOAT_EQ(1.0, J[1][1]);
-  EXPECT_FLOAT_EQ(0.0, J[1][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[1][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[1][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][2]);
 
-  EXPECT_FLOAT_EQ(2.0, J[2][0]);
-  EXPECT_FLOAT_EQ(1.0, J[2][1]);
-  EXPECT_FLOAT_EQ(0.0, J[2][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[2][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[2][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][2]);
 
-  EXPECT_FLOAT_EQ(0.0, J[3][0]);
-  EXPECT_FLOAT_EQ(4.0, J[3][1]);
-  EXPECT_FLOAT_EQ(6.0, J[3][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[3][1]);
+  EXPECT_DOUBLE_EQ(6.0, J[3][2]);
 }
-
 TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad3_0) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
@@ -559,70 +619,69 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTransposeGrad3_0) {
   //     0 4 5 2 3 0
   //     0 0 0 8 10 12
 
-  EXPECT_FLOAT_EQ(2.0, J[0][0]);
-  EXPECT_FLOAT_EQ(0.0, J[0][1]);
-  EXPECT_FLOAT_EQ(0.0, J[0][2]);
-  EXPECT_FLOAT_EQ(0.0, J[0][3]);
-  EXPECT_FLOAT_EQ(0.0, J[0][4]);
-  EXPECT_FLOAT_EQ(0.0, J[0][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][5]);
 
-  EXPECT_FLOAT_EQ(2.0, J[1][0]);
-  EXPECT_FLOAT_EQ(1.0, J[1][1]);
-  EXPECT_FLOAT_EQ(0.0, J[1][2]);
-  EXPECT_FLOAT_EQ(0.0, J[1][3]);
-  EXPECT_FLOAT_EQ(0.0, J[1][4]);
-  EXPECT_FLOAT_EQ(0.0, J[1][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[1][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[1][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][5]);
 
-  EXPECT_FLOAT_EQ(4.0, J[2][0]);
-  EXPECT_FLOAT_EQ(0.0, J[2][1]);
-  EXPECT_FLOAT_EQ(0.0, J[2][2]);
-  EXPECT_FLOAT_EQ(1.0, J[2][3]);
-  EXPECT_FLOAT_EQ(0.0, J[2][4]);
-  EXPECT_FLOAT_EQ(0.0, J[2][5]);
+  EXPECT_DOUBLE_EQ(4.0, J[2][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][2]);
+  EXPECT_DOUBLE_EQ(1.0, J[2][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][5]);
 
-  EXPECT_FLOAT_EQ(2.0, J[3][0]);
-  EXPECT_FLOAT_EQ(1.0, J[3][1]);
-  EXPECT_FLOAT_EQ(0.0, J[3][2]);
-  EXPECT_FLOAT_EQ(0.0, J[3][3]);
-  EXPECT_FLOAT_EQ(0.0, J[3][4]);
-  EXPECT_FLOAT_EQ(0.0, J[3][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[3][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[3][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[4][0]);
-  EXPECT_FLOAT_EQ(4.0, J[4][1]);
-  EXPECT_FLOAT_EQ(6.0, J[4][2]);
-  EXPECT_FLOAT_EQ(0.0, J[4][3]);
-  EXPECT_FLOAT_EQ(0.0, J[4][4]);
-  EXPECT_FLOAT_EQ(0.0, J[4][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[4][1]);
+  EXPECT_DOUBLE_EQ(6.0, J[4][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[5][0]);
-  EXPECT_FLOAT_EQ(4.0, J[5][1]);
-  EXPECT_FLOAT_EQ(5.0, J[5][2]);
-  EXPECT_FLOAT_EQ(2.0, J[5][3]);
-  EXPECT_FLOAT_EQ(3.0, J[5][4]);
-  EXPECT_FLOAT_EQ(0.0, J[5][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[5][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[5][1]);
+  EXPECT_DOUBLE_EQ(5.0, J[5][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[5][3]);
+  EXPECT_DOUBLE_EQ(3.0, J[5][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[5][5]);
 
-  EXPECT_FLOAT_EQ(4.0, J[6][0]);
-  EXPECT_FLOAT_EQ(0.0, J[6][1]);
-  EXPECT_FLOAT_EQ(0.0, J[6][2]);
-  EXPECT_FLOAT_EQ(1.0, J[6][3]);
-  EXPECT_FLOAT_EQ(0.0, J[6][4]);
-  EXPECT_FLOAT_EQ(0.0, J[6][5]);
+  EXPECT_DOUBLE_EQ(4.0, J[6][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][2]);
+  EXPECT_DOUBLE_EQ(1.0, J[6][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[7][0]);
-  EXPECT_FLOAT_EQ(4.0, J[7][1]);
-  EXPECT_FLOAT_EQ(5.0, J[7][2]);
-  EXPECT_FLOAT_EQ(2.0, J[7][3]);
-  EXPECT_FLOAT_EQ(3.0, J[7][4]);
-  EXPECT_FLOAT_EQ(0.0, J[7][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[7][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[7][1]);
+  EXPECT_DOUBLE_EQ(5.0, J[7][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[7][3]);
+  EXPECT_DOUBLE_EQ(3.0, J[7][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[7][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[8][0]);
-  EXPECT_FLOAT_EQ(0.0, J[8][1]);
-  EXPECT_FLOAT_EQ(0.0, J[8][2]);
-  EXPECT_FLOAT_EQ(8.0, J[8][3]);
-  EXPECT_FLOAT_EQ(10.0, J[8][4]);
-  EXPECT_FLOAT_EQ(12.0, J[8][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][2]);
+  EXPECT_DOUBLE_EQ(8.0, J[8][3]);
+  EXPECT_DOUBLE_EQ(10.0, J[8][4]);
+  EXPECT_DOUBLE_EQ(12.0, J[8][5]);
 }
-
 TEST(AgradRevMatrix, multiplyLowerTriSelfTranspose_0) {
   using stan::math::matrix_v;
   using stan::math::multiply_lower_tri_self_transpose;
@@ -655,18 +714,6 @@ TEST(AgradRevMatrix, multiplyLowerTriSelfTranspose_0) {
 
   // matrix_v K(0, 0);
   // test_mult_LLT(K);
-}
-
-void test_tcrossprod(const stan::math::matrix_v& L) {
-  using stan::math::matrix_v;
-  using stan::math::tcrossprod;
-  matrix_v LLT_eigen = L * L.transpose();
-  matrix_v LLT_stan = tcrossprod(L);
-  EXPECT_EQ(LLT_eigen.rows(), LLT_stan.rows());
-  EXPECT_EQ(LLT_eigen.rows(), LLT_stan.cols());
-  for (int m = 0; m < LLT_eigen.rows(); ++m)
-    for (int n = 0; n < LLT_eigen.cols(); ++n)
-      EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
 }
 TEST(AgradRevMatrix, tcrossprod_0) {
   using stan::math::matrix_v;
@@ -715,14 +762,13 @@ TEST(AgradRevMatrix, tcrossprodGrad1_0) {
   AVEC y(1);
   y[0] = LLt(0, 0);
 
-  EXPECT_FLOAT_EQ(9.0, LLt(0, 0).val());
+  EXPECT_DOUBLE_EQ(9.0, LLt(0, 0).val());
 
   std::vector<VEC> J;
   stan::math::jacobian(y, x, J);
 
-  EXPECT_FLOAT_EQ(6.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(6.0, J[0][0]);
 }
-
 TEST(AgradRevMatrix, tcrossprodGrad2_0) {
   using stan::math::matrix_v;
   using stan::math::tcrossprod;
@@ -741,10 +787,10 @@ TEST(AgradRevMatrix, tcrossprodGrad2_0) {
   y[2] = LLt(1, 0);
   y[3] = LLt(1, 1);
 
-  EXPECT_FLOAT_EQ(1.0, LLt(0, 0).val());
-  EXPECT_FLOAT_EQ(2.0, LLt(0, 1).val());
-  EXPECT_FLOAT_EQ(2.0, LLt(1, 0).val());
-  EXPECT_FLOAT_EQ(13.0, LLt(1, 1).val());
+  EXPECT_DOUBLE_EQ(1.0, LLt(0, 0).val());
+  EXPECT_DOUBLE_EQ(2.0, LLt(0, 1).val());
+  EXPECT_DOUBLE_EQ(2.0, LLt(1, 0).val());
+  EXPECT_DOUBLE_EQ(13.0, LLt(1, 1).val());
 
   std::vector<VEC> J;
   stan::math::jacobian(y, x, J);
@@ -756,23 +802,22 @@ TEST(AgradRevMatrix, tcrossprodGrad2_0) {
   //     2 1 0
   //     2 1 0
   //     0 4 6
-  EXPECT_FLOAT_EQ(2.0, J[0][0]);
-  EXPECT_FLOAT_EQ(0.0, J[0][1]);
-  EXPECT_FLOAT_EQ(0.0, J[0][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][2]);
 
-  EXPECT_FLOAT_EQ(2.0, J[1][0]);
-  EXPECT_FLOAT_EQ(1.0, J[1][1]);
-  EXPECT_FLOAT_EQ(0.0, J[1][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[1][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[1][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][2]);
 
-  EXPECT_FLOAT_EQ(2.0, J[2][0]);
-  EXPECT_FLOAT_EQ(1.0, J[2][1]);
-  EXPECT_FLOAT_EQ(0.0, J[2][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[2][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[2][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][2]);
 
-  EXPECT_FLOAT_EQ(0.0, J[3][0]);
-  EXPECT_FLOAT_EQ(4.0, J[3][1]);
-  EXPECT_FLOAT_EQ(6.0, J[3][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[3][1]);
+  EXPECT_DOUBLE_EQ(6.0, J[3][2]);
 }
-
 TEST(AgradRevMatrix, tcrossprodGrad3_0) {
   using stan::math::matrix_v;
   using stan::math::tcrossprod;
@@ -816,81 +861,69 @@ TEST(AgradRevMatrix, tcrossprodGrad3_0) {
   //     0 4 5 2 3 0
   //     0 0 0 8 10 12
 
-  EXPECT_FLOAT_EQ(2.0, J[0][0]);
-  EXPECT_FLOAT_EQ(0.0, J[0][1]);
-  EXPECT_FLOAT_EQ(0.0, J[0][2]);
-  EXPECT_FLOAT_EQ(0.0, J[0][3]);
-  EXPECT_FLOAT_EQ(0.0, J[0][4]);
-  EXPECT_FLOAT_EQ(0.0, J[0][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[0][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[0][5]);
 
-  EXPECT_FLOAT_EQ(2.0, J[1][0]);
-  EXPECT_FLOAT_EQ(1.0, J[1][1]);
-  EXPECT_FLOAT_EQ(0.0, J[1][2]);
-  EXPECT_FLOAT_EQ(0.0, J[1][3]);
-  EXPECT_FLOAT_EQ(0.0, J[1][4]);
-  EXPECT_FLOAT_EQ(0.0, J[1][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[1][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[1][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[1][5]);
 
-  EXPECT_FLOAT_EQ(4.0, J[2][0]);
-  EXPECT_FLOAT_EQ(0.0, J[2][1]);
-  EXPECT_FLOAT_EQ(0.0, J[2][2]);
-  EXPECT_FLOAT_EQ(1.0, J[2][3]);
-  EXPECT_FLOAT_EQ(0.0, J[2][4]);
-  EXPECT_FLOAT_EQ(0.0, J[2][5]);
+  EXPECT_DOUBLE_EQ(4.0, J[2][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][2]);
+  EXPECT_DOUBLE_EQ(1.0, J[2][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[2][5]);
 
-  EXPECT_FLOAT_EQ(2.0, J[3][0]);
-  EXPECT_FLOAT_EQ(1.0, J[3][1]);
-  EXPECT_FLOAT_EQ(0.0, J[3][2]);
-  EXPECT_FLOAT_EQ(0.0, J[3][3]);
-  EXPECT_FLOAT_EQ(0.0, J[3][4]);
-  EXPECT_FLOAT_EQ(0.0, J[3][5]);
+  EXPECT_DOUBLE_EQ(2.0, J[3][0]);
+  EXPECT_DOUBLE_EQ(1.0, J[3][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[3][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[4][0]);
-  EXPECT_FLOAT_EQ(4.0, J[4][1]);
-  EXPECT_FLOAT_EQ(6.0, J[4][2]);
-  EXPECT_FLOAT_EQ(0.0, J[4][3]);
-  EXPECT_FLOAT_EQ(0.0, J[4][4]);
-  EXPECT_FLOAT_EQ(0.0, J[4][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[4][1]);
+  EXPECT_DOUBLE_EQ(6.0, J[4][2]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[4][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[5][0]);
-  EXPECT_FLOAT_EQ(4.0, J[5][1]);
-  EXPECT_FLOAT_EQ(5.0, J[5][2]);
-  EXPECT_FLOAT_EQ(2.0, J[5][3]);
-  EXPECT_FLOAT_EQ(3.0, J[5][4]);
-  EXPECT_FLOAT_EQ(0.0, J[5][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[5][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[5][1]);
+  EXPECT_DOUBLE_EQ(5.0, J[5][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[5][3]);
+  EXPECT_DOUBLE_EQ(3.0, J[5][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[5][5]);
 
-  EXPECT_FLOAT_EQ(4.0, J[6][0]);
-  EXPECT_FLOAT_EQ(0.0, J[6][1]);
-  EXPECT_FLOAT_EQ(0.0, J[6][2]);
-  EXPECT_FLOAT_EQ(1.0, J[6][3]);
-  EXPECT_FLOAT_EQ(0.0, J[6][4]);
-  EXPECT_FLOAT_EQ(0.0, J[6][5]);
+  EXPECT_DOUBLE_EQ(4.0, J[6][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][2]);
+  EXPECT_DOUBLE_EQ(1.0, J[6][3]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[6][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[7][0]);
-  EXPECT_FLOAT_EQ(4.0, J[7][1]);
-  EXPECT_FLOAT_EQ(5.0, J[7][2]);
-  EXPECT_FLOAT_EQ(2.0, J[7][3]);
-  EXPECT_FLOAT_EQ(3.0, J[7][4]);
-  EXPECT_FLOAT_EQ(0.0, J[7][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[7][0]);
+  EXPECT_DOUBLE_EQ(4.0, J[7][1]);
+  EXPECT_DOUBLE_EQ(5.0, J[7][2]);
+  EXPECT_DOUBLE_EQ(2.0, J[7][3]);
+  EXPECT_DOUBLE_EQ(3.0, J[7][4]);
+  EXPECT_DOUBLE_EQ(0.0, J[7][5]);
 
-  EXPECT_FLOAT_EQ(0.0, J[8][0]);
-  EXPECT_FLOAT_EQ(0.0, J[8][1]);
-  EXPECT_FLOAT_EQ(0.0, J[8][2]);
-  EXPECT_FLOAT_EQ(8.0, J[8][3]);
-  EXPECT_FLOAT_EQ(10.0, J[8][4]);
-  EXPECT_FLOAT_EQ(12.0, J[8][5]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][0]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][1]);
+  EXPECT_DOUBLE_EQ(0.0, J[8][2]);
+  EXPECT_DOUBLE_EQ(8.0, J[8][3]);
+  EXPECT_DOUBLE_EQ(10.0, J[8][4]);
+  EXPECT_DOUBLE_EQ(12.0, J[8][5]);
 }
-void test_crossprod(const stan::math::matrix_v& L) {
-  using stan::math::crossprod;
-  using stan::math::matrix_v;
-  matrix_v LLT_eigen = L.transpose() * L;
-  matrix_v LLT_stan = crossprod(L);
-  EXPECT_EQ(L.rows(), LLT_stan.rows());
-  EXPECT_EQ(L.cols(), LLT_stan.cols());
-  for (int m = 0; m < L.rows(); ++m)
-    for (int n = 0; n < L.cols(); ++n)
-      EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
-}
-
 TEST(AgradRevMatrix, crossprod_1) {
   using stan::math::matrix_v;
 
@@ -913,65 +946,22 @@ TEST(AgradRevMatrix, crossprod_1) {
   test_crossprod(K);
   //  test_tcrossprod_grad(K, K.rows(), K.cols());
 }
-
-template <typename T>
-void test_cumulative_sum() {
-  using stan::math::cumulative_sum;
-
-  T c(1);
-  c[0] = 1.7;
-  T d = cumulative_sum(c);
-  EXPECT_EQ(c.size(), d.size());
-  EXPECT_FLOAT_EQ(c[0].val(), d[0].val());
-  VEC grad = cgrad(d[0], c[0]);
-  EXPECT_EQ(1U, grad.size());
-  EXPECT_FLOAT_EQ(1.0, grad[0]);
-
-  T e(2);
-  e[0] = 5.9;
-  e[1] = -1.2;
-  T f = cumulative_sum(e);
-  EXPECT_EQ(e.size(), f.size());
-  EXPECT_FLOAT_EQ(e[0].val(), f[0].val());
-  EXPECT_FLOAT_EQ((e[0] + e[1]).val(), f[1].val());
-  grad = cgrad(f[0], e[0], e[1]);
-  EXPECT_EQ(2U, grad.size());
-  EXPECT_FLOAT_EQ(1.0, grad[0]);
-  EXPECT_FLOAT_EQ(0.0, grad[1]);
-
-  T g(3);
-  g[0] = 5.9;
-  g[1] = -1.2;
-  g[2] = 192.13456;
-  T h = cumulative_sum(g);
-  EXPECT_EQ(g.size(), h.size());
-  EXPECT_FLOAT_EQ(g[0].val(), h[0].val());
-  EXPECT_FLOAT_EQ((g[0] + g[1]).val(), h[1].val());
-  EXPECT_FLOAT_EQ((g[0] + g[1] + g[2]).val(), h[2].val());
-
-  grad = cgrad(h[2], g[0], g[1], g[2]);
-  EXPECT_EQ(3U, grad.size());
-  EXPECT_FLOAT_EQ(1.0, grad[0]);
-  EXPECT_FLOAT_EQ(1.0, grad[1]);
-  EXPECT_FLOAT_EQ(1.0, grad[2]);
-}
 TEST(AgradRevMatrix, cumulative_sum_1) {
   using stan::math::cumulative_sum;
   using stan::math::var;
 
-  EXPECT_FLOAT_EQ(0, cumulative_sum(std::vector<var>(0)).size());
+  EXPECT_DOUBLE_EQ(0, cumulative_sum(std::vector<var>(0)).size());
 
   Eigen::Matrix<var, Eigen::Dynamic, 1> a;
-  EXPECT_FLOAT_EQ(0, cumulative_sum(a).size());
+  EXPECT_DOUBLE_EQ(0, cumulative_sum(a).size());
 
   Eigen::Matrix<var, 1, Eigen::Dynamic> b;
-  EXPECT_FLOAT_EQ(0, cumulative_sum(b).size());
+  EXPECT_DOUBLE_EQ(0, cumulative_sum(b).size());
 
   test_cumulative_sum<std::vector<var> >();
   test_cumulative_sum<Eigen::Matrix<var, Eigen::Dynamic, 1> >();
   test_cumulative_sum<Eigen::Matrix<var, 1, Eigen::Dynamic> >();
 }
-
 TEST(AgradRevMatrix, promoteElts) {
   using stan::math::promote_common;
   using stan::math::promote_elements;
@@ -991,9 +981,9 @@ TEST(AgradRevMatrix, promoteElts) {
   double a = promote_common<double, double>(3.0);
   var b = promote_common<double, var>(4.0);
   var c = promote_common<double, var>(var(5.0));
-  EXPECT_FLOAT_EQ(3.0, a);
-  EXPECT_FLOAT_EQ(4.0, b.val());
-  EXPECT_FLOAT_EQ(5.0, c.val());
+  EXPECT_DOUBLE_EQ(3.0, a);
+  EXPECT_DOUBLE_EQ(4.0, b.val());
+  EXPECT_DOUBLE_EQ(5.0, c.val());
 
   vector<double> x(5);
   for (int i = 0; i < 5; ++i)
@@ -1001,16 +991,16 @@ TEST(AgradRevMatrix, promoteElts) {
   vector<double> y = promote_common<vector<double>, vector<double> >(x);
   EXPECT_EQ(5U, y.size());
   for (int i = 0; i < 5; ++i)
-    EXPECT_FLOAT_EQ(x[i], y[i]);
+    EXPECT_DOUBLE_EQ(x[i], y[i]);
   std::vector<var> z
       = promote_common<std::vector<double>, std::vector<var> >(x);
   EXPECT_EQ(5U, z.size());
   for (int i = 0; i < 5; ++i)
-    EXPECT_FLOAT_EQ(x[i], z[i].val());
+    EXPECT_DOUBLE_EQ(x[i], z[i].val());
   vector<var> w = promote_common<vector<var>, vector<var> >(z);
   EXPECT_EQ(5U, w.size());
   for (int i = 0; i < 5; ++i)
-    EXPECT_FLOAT_EQ(x[i], w[i].val());
+    EXPECT_DOUBLE_EQ(x[i], w[i].val());
 
   vector_d U(3);
   for (int i = 0; i < 3; ++i)
@@ -1018,15 +1008,15 @@ TEST(AgradRevMatrix, promoteElts) {
   vector_d V = promote_common<vector_d, vector_d>(U);
   EXPECT_EQ(3, V.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(U(i), V(i));
+    EXPECT_DOUBLE_EQ(U(i), V(i));
   vector_v W = promote_common<vector_d, vector_v>(U);
   EXPECT_EQ(3, W.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(U(i), W(i).val());
+    EXPECT_DOUBLE_EQ(U(i), W(i).val());
   vector_v X = promote_common<vector_v, vector_v>(W);
   EXPECT_EQ(3, X.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(U(i), X(i).val());
+    EXPECT_DOUBLE_EQ(U(i), X(i).val());
 
   row_vector_d G(3);
   for (int i = 0; i < 3; ++i)
@@ -1034,15 +1024,15 @@ TEST(AgradRevMatrix, promoteElts) {
   row_vector_d H = promote_common<row_vector_d, row_vector_d>(G);
   EXPECT_EQ(3, H.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(G(i), H(i));
+    EXPECT_DOUBLE_EQ(G(i), H(i));
   row_vector_v I = promote_common<row_vector_d, row_vector_v>(G);
   EXPECT_EQ(3, W.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(G(i), I(i).val());
+    EXPECT_DOUBLE_EQ(G(i), I(i).val());
   row_vector_v J = promote_common<row_vector_v, row_vector_v>(I);
   EXPECT_EQ(3, J.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(H(i), J(i).val());
+    EXPECT_DOUBLE_EQ(H(i), J(i).val());
 
   matrix_d A(3, 4);
   for (int i = 0; i < 3; ++i)
@@ -1053,17 +1043,17 @@ TEST(AgradRevMatrix, promoteElts) {
   EXPECT_EQ(4, B.cols());
   for (int i = 0; i < 3; ++i)
     for (int j = 0; j < 4; ++j)
-      EXPECT_FLOAT_EQ(A(i, j), B(i, j));
+      EXPECT_DOUBLE_EQ(A(i, j), B(i, j));
   matrix_v C = promote_common<matrix_d, matrix_v>(A);
   EXPECT_EQ(3, C.rows());
   EXPECT_EQ(4, C.cols());
   for (int i = 0; i < 3; ++i)
     for (int j = 0; j < 4; ++j)
-      EXPECT_FLOAT_EQ(A(i, j), C(i, j).val());
+      EXPECT_DOUBLE_EQ(A(i, j), C(i, j).val());
   matrix_v D = promote_common<matrix_v, matrix_v>(C);
   EXPECT_EQ(3, D.rows());
   EXPECT_EQ(4, D.cols());
   for (int i = 0; i < 3; ++i)
     for (int j = 0; j < 4; ++j)
-      EXPECT_FLOAT_EQ(A(i, j), D(i, j).val());
+      EXPECT_DOUBLE_EQ(A(i, j), D(i, j).val());
 }

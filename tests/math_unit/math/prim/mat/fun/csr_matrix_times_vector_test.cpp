@@ -18,8 +18,8 @@ TEST(SparseStuff, csr_matrix_times_vector_dense_multiply) {
 
   stan::math::vector_d result
       = stan::math::csr_matrix_times_vector(2, 3, X_w, X_v, X_u, b);
-  EXPECT_FLOAT_EQ(440.0, result(0));
-  EXPECT_FLOAT_EQ(1034.0, result(1));
+  EXPECT_DOUBLE_EQ(440.0, result(0));
+  EXPECT_DOUBLE_EQ(1034.0, result(1));
 }
 
 // Test that sparse multiplication is correct when columns are all zero.
@@ -38,8 +38,8 @@ TEST(SparseStuff, csr_matrix_times_vector_empty_row_multiply) {
 
   stan::math::vector_d result
       = stan::math::csr_matrix_times_vector(2, 3, X_w, X_v, X_u, b);
-  EXPECT_FLOAT_EQ(176.0, result(0));
-  EXPECT_FLOAT_EQ(506.0, result(1));
+  EXPECT_DOUBLE_EQ(176.0, result(0));
+  EXPECT_DOUBLE_EQ(506.0, result(1));
 }
 
 // Test that sparse multiplication is correct when columns are all zero.
@@ -59,8 +59,8 @@ TEST(SparseStuff, csr_matrix_times_vector_empty_column_multiply) {
   stan::math::vector_d result
       = stan::math::csr_matrix_times_vector(2, 3, X_w, X_v, X_u, b);
 
-  EXPECT_FLOAT_EQ(308.0, result(0));
-  EXPECT_FLOAT_EQ(704.0, result(1));
+  EXPECT_DOUBLE_EQ(308.0, result(0));
+  EXPECT_DOUBLE_EQ(704.0, result(1));
 }
 
 // Test that m=0 throws (CSR).

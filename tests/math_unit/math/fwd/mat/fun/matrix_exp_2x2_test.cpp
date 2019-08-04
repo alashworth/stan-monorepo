@@ -12,15 +12,15 @@ TEST(MathMatrix, matrix_exp_2x2_1_0) {
     input << a, 0, 0, 4;
     output = stan::math::matrix_exp_2x2(input);
 
-    EXPECT_FLOAT_EQ(exp(3), output(0, 0).val_);
-    EXPECT_FLOAT_EQ(0, output(1, 0).val_);
-    EXPECT_FLOAT_EQ(0, output(0, 1).val_);
-    EXPECT_FLOAT_EQ(exp(4), output(1, 1).val_);
+    EXPECT_DOUBLE_EQ(exp(3), output(0, 0).val_);
+    EXPECT_DOUBLE_EQ(0, output(1, 0).val_);
+    EXPECT_DOUBLE_EQ(0, output(0, 1).val_);
+    EXPECT_DOUBLE_EQ(exp(4), output(1, 1).val_);
 
-    EXPECT_FLOAT_EQ(a.d_ * exp(a.val_), output(0, 0).d_);
-    EXPECT_FLOAT_EQ(0, output(1, 0).d_);
-    EXPECT_FLOAT_EQ(0, output(0, 1).d_);
-    EXPECT_FLOAT_EQ(0, output(1, 1).d_);
+    EXPECT_DOUBLE_EQ(a.d_ * exp(a.val_), output(0, 0).d_);
+    EXPECT_DOUBLE_EQ(0, output(1, 0).d_);
+    EXPECT_DOUBLE_EQ(0, output(0, 1).d_);
+    EXPECT_DOUBLE_EQ(0, output(1, 1).d_);
   }
 
   {  // fixed mat
@@ -28,15 +28,15 @@ TEST(MathMatrix, matrix_exp_2x2_1_0) {
     input << a, 0, 0, 4;
     output = stan::math::matrix_exp_2x2(input);
 
-    EXPECT_FLOAT_EQ(exp(3), output(0, 0).val_);
-    EXPECT_FLOAT_EQ(0, output(1, 0).val_);
-    EXPECT_FLOAT_EQ(0, output(0, 1).val_);
-    EXPECT_FLOAT_EQ(exp(4), output(1, 1).val_);
+    EXPECT_DOUBLE_EQ(exp(3), output(0, 0).val_);
+    EXPECT_DOUBLE_EQ(0, output(1, 0).val_);
+    EXPECT_DOUBLE_EQ(0, output(0, 1).val_);
+    EXPECT_DOUBLE_EQ(exp(4), output(1, 1).val_);
 
-    EXPECT_FLOAT_EQ(a.d_ * exp(a.val_), output(0, 0).d_);
-    EXPECT_FLOAT_EQ(0, output(1, 0).d_);
-    EXPECT_FLOAT_EQ(0, output(0, 1).d_);
-    EXPECT_FLOAT_EQ(0, output(1, 1).d_);
+    EXPECT_DOUBLE_EQ(a.d_ * exp(a.val_), output(0, 0).d_);
+    EXPECT_DOUBLE_EQ(0, output(1, 0).d_);
+    EXPECT_DOUBLE_EQ(0, output(0, 1).d_);
+    EXPECT_DOUBLE_EQ(0, output(1, 1).d_);
   }
 }
 
@@ -55,18 +55,18 @@ TEST(MathMatrix, matrix_exp_2x2_2_0) {
     stan::math::matrix_fd output;
     output = stan::math::matrix_exp_2x2(input);
 
-    EXPECT_FLOAT_EQ(-0.735759, output(0, 0).val_);
-    EXPECT_FLOAT_EQ(0.551819, output(0, 1).val_);
-    EXPECT_FLOAT_EQ(-1.471518, output(1, 0).val_);
-    EXPECT_FLOAT_EQ(1.103638, output(1, 1).val_);
+    EXPECT_DOUBLE_EQ(-0.735759, output(0, 0).val_);
+    EXPECT_DOUBLE_EQ(0.551819, output(0, 1).val_);
+    EXPECT_DOUBLE_EQ(-1.471518, output(1, 0).val_);
+    EXPECT_DOUBLE_EQ(1.103638, output(1, 1).val_);
 
     // note: in this particular example, derivatives
     // is the same as the value, due to the way the
     // input matrix was constructed.
-    EXPECT_FLOAT_EQ(-0.735759, output(0, 0).d_);
-    EXPECT_FLOAT_EQ(0.551819, output(0, 1).d_);
-    EXPECT_FLOAT_EQ(-1.471518, output(1, 0).d_);
-    EXPECT_FLOAT_EQ(1.103638, output(1, 1).d_);
+    EXPECT_DOUBLE_EQ(-0.735759, output(0, 0).d_);
+    EXPECT_DOUBLE_EQ(0.551819, output(0, 1).d_);
+    EXPECT_DOUBLE_EQ(-1.471518, output(1, 0).d_);
+    EXPECT_DOUBLE_EQ(1.103638, output(1, 1).d_);
   }
 
   {  // fixed mat
@@ -76,17 +76,17 @@ TEST(MathMatrix, matrix_exp_2x2_2_0) {
     stan::math::matrix_fd output;
     output = stan::math::matrix_exp_2x2(input);
 
-    EXPECT_FLOAT_EQ(-0.735759, output(0, 0).val_);
-    EXPECT_FLOAT_EQ(0.551819, output(0, 1).val_);
-    EXPECT_FLOAT_EQ(-1.471518, output(1, 0).val_);
-    EXPECT_FLOAT_EQ(1.103638, output(1, 1).val_);
+    EXPECT_DOUBLE_EQ(-0.735759, output(0, 0).val_);
+    EXPECT_DOUBLE_EQ(0.551819, output(0, 1).val_);
+    EXPECT_DOUBLE_EQ(-1.471518, output(1, 0).val_);
+    EXPECT_DOUBLE_EQ(1.103638, output(1, 1).val_);
 
     // note: in this particular example, derivatives
     // is the same as the value, due to the way the
     // input matrix was constructed.
-    EXPECT_FLOAT_EQ(-0.735759, output(0, 0).d_);
-    EXPECT_FLOAT_EQ(0.551819, output(0, 1).d_);
-    EXPECT_FLOAT_EQ(-1.471518, output(1, 0).d_);
-    EXPECT_FLOAT_EQ(1.103638, output(1, 1).d_);
+    EXPECT_DOUBLE_EQ(-0.735759, output(0, 0).d_);
+    EXPECT_DOUBLE_EQ(0.551819, output(0, 1).d_);
+    EXPECT_DOUBLE_EQ(-1.471518, output(1, 0).d_);
+    EXPECT_DOUBLE_EQ(1.103638, output(1, 1).d_);
   }
 }

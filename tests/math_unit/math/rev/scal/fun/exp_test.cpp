@@ -7,19 +7,21 @@ TEST(AgradRev, exp_a) {
   AVAR a(6.0);
   // mix exp() functs w/o namespace
   AVAR f = exp(a);
-  EXPECT_FLOAT_EQ(exp(6.0), f.val());
+  EXPECT_DOUBLE_EQ(exp(6.0), f.val());
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(exp(6.0), g[0]);
+  EXPECT_DOUBLE_EQ(exp(6.0), g[0]);
 }
 
+namespace {
 struct exp_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return exp(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, exp_NaN) {
   exp_fun exp_;

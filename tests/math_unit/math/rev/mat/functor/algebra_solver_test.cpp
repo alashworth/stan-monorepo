@@ -128,9 +128,9 @@ TEST(MathMatrix, non_linear_eq) {
     Eigen::Matrix<var, Eigen::Dynamic, 1> theta
         = non_linear_eq_test(non_linear_eq_functor(), y);
 
-    EXPECT_FLOAT_EQ(-y(0).val(), theta(0).val());
-    EXPECT_FLOAT_EQ(-y(1).val(), theta(1).val());
-    EXPECT_FLOAT_EQ(y(2).val(), theta(2).val());
+    EXPECT_DOUBLE_EQ(-y(0).val(), theta(0).val());
+    EXPECT_DOUBLE_EQ(-y(1).val(), theta(1).val());
+    EXPECT_DOUBLE_EQ(y(2).val(), theta(2).val());
 
     Eigen::MatrixXd J(n_x, n_y);
     J << -1, 0, 0, 0, -1, 0, 0, 0, 1;
@@ -153,9 +153,9 @@ TEST(MathMatrix, nonLinearEq_dbl) {
   Eigen::VectorXd theta;
   theta = non_linear_eq_test(non_linear_eq_functor(), y);
 
-  EXPECT_FLOAT_EQ(-y(0), theta(0));
-  EXPECT_FLOAT_EQ(-y(1), theta(1));
-  EXPECT_FLOAT_EQ(y(2), theta(2));
+  EXPECT_DOUBLE_EQ(-y(0), theta(0));
+  EXPECT_DOUBLE_EQ(-y(1), theta(1));
+  EXPECT_DOUBLE_EQ(y(2), theta(2));
 }
 
 TEST(MathMatrix, error_conditions) {
@@ -243,8 +243,8 @@ TEST(MathMatrix, degenerate) {
     Eigen::VectorXd x(2);
     x << 1, 1;  // Initial Guess
     Eigen::Matrix<var, Eigen::Dynamic, 1> theta = degenerate_test(y, x);
-    EXPECT_FLOAT_EQ(5, theta(0).val());
-    EXPECT_FLOAT_EQ(5, theta(0).val());
+    EXPECT_DOUBLE_EQ(5, theta(0).val());
+    EXPECT_DOUBLE_EQ(5, theta(0).val());
 
     Eigen::MatrixXd J(n_x, n_y);
     J << 1, 0, 1, 0;
@@ -277,21 +277,21 @@ TEST(MathMatrix, degenerate_dbl) {
   // solution x = {5, 5}
   x << 1, 1;  // Initial Guess
   theta = degenerate_test(y, x);
-  EXPECT_FLOAT_EQ(5, theta(0));
-  EXPECT_FLOAT_EQ(5, theta(1));
+  EXPECT_DOUBLE_EQ(5, theta(0));
+  EXPECT_DOUBLE_EQ(5, theta(1));
 
   // See if the initial guess determines neighborhood of the
   // solution, when solutions have different scales.
   y << 5, 100;
   x << 1, 1;  // initial guess
   theta = degenerate_test(y, x);
-  EXPECT_FLOAT_EQ(5, theta(0));
-  EXPECT_FLOAT_EQ(5, theta(1));
+  EXPECT_DOUBLE_EQ(5, theta(0));
+  EXPECT_DOUBLE_EQ(5, theta(1));
 
   x << 120, 120;  // Initial guess
   theta = degenerate_test(y, x);
-  EXPECT_FLOAT_EQ(100, theta(0));
-  EXPECT_FLOAT_EQ(100, theta(1));
+  EXPECT_DOUBLE_EQ(100, theta(0));
+  EXPECT_DOUBLE_EQ(100, theta(1));
 }
 
 // unit test to demo issue #696

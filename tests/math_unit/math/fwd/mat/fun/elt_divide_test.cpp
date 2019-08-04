@@ -14,10 +14,10 @@ TEST(AgradFwdMatrixEltDivide, fd_vec_vv) {
   y(1).d_ = 1.0;
 
   vector_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(1).val_);
-  EXPECT_FLOAT_EQ(0.079999998, z(0).d_);
-  EXPECT_FLOAT_EQ(0.0094999997, z(1).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_);
+  EXPECT_DOUBLE_EQ(0.079999998, z(0).d_);
+  EXPECT_DOUBLE_EQ(0.0094999997, z(1).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_vec_vd) {
@@ -33,10 +33,10 @@ TEST(AgradFwdMatrixEltDivide, fd_vec_vd) {
   y << 10, 100;
 
   vector_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(1).val_);
-  EXPECT_FLOAT_EQ(0.1, z(0).d_);
-  EXPECT_FLOAT_EQ(0.0099999998, z(1).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_);
+  EXPECT_DOUBLE_EQ(0.1, z(0).d_);
+  EXPECT_DOUBLE_EQ(0.0099999998, z(1).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_vec_dv) {
@@ -52,10 +52,10 @@ TEST(AgradFwdMatrixEltDivide, fd_vec_dv) {
   y(1).d_ = 1.0;
 
   vector_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(1).val_);
-  EXPECT_FLOAT_EQ(-0.02, z(0).d_);
-  EXPECT_FLOAT_EQ(-0.00050000002, z(1).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_);
+  EXPECT_DOUBLE_EQ(-0.02, z(0).d_);
+  EXPECT_DOUBLE_EQ(-0.00050000002, z(1).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_rowvec_vv) {
@@ -71,10 +71,10 @@ TEST(AgradFwdMatrixEltDivide, fd_rowvec_vv) {
   y(1).d_ = 1.0;
 
   row_vector_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(1).val_);
-  EXPECT_FLOAT_EQ(0.079999998, z(0).d_);
-  EXPECT_FLOAT_EQ(0.0094999997, z(1).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_);
+  EXPECT_DOUBLE_EQ(0.079999998, z(0).d_);
+  EXPECT_DOUBLE_EQ(0.0094999997, z(1).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_rowvec_vd) {
@@ -90,10 +90,10 @@ TEST(AgradFwdMatrixEltDivide, fd_rowvec_vd) {
   y << 10, 100;
 
   row_vector_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(1).val_);
-  EXPECT_FLOAT_EQ(0.1, z(0).d_);
-  EXPECT_FLOAT_EQ(0.0099999998, z(1).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_);
+  EXPECT_DOUBLE_EQ(0.1, z(0).d_);
+  EXPECT_DOUBLE_EQ(0.0099999998, z(1).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_rowvec_dv) {
@@ -109,10 +109,10 @@ TEST(AgradFwdMatrixEltDivide, fd_rowvec_dv) {
   y(1).d_ = 1.0;
 
   row_vector_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(1).val_);
-  EXPECT_FLOAT_EQ(-0.02, z(0).d_);
-  EXPECT_FLOAT_EQ(-0.00050000002, z(1).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_);
+  EXPECT_DOUBLE_EQ(-0.02, z(0).d_);
+  EXPECT_DOUBLE_EQ(-0.00050000002, z(1).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_mat_vv) {
@@ -136,12 +136,12 @@ TEST(AgradFwdMatrixEltDivide, fd_mat_vv) {
   y(1, 2).d_ = 1.0;
 
   matrix_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0, 0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(0, 1).val_);
-  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val_);
-  EXPECT_FLOAT_EQ(0.079999998, z(0, 0).d_);
-  EXPECT_FLOAT_EQ(0.0094999997, z(0, 1).d_);
-  EXPECT_FLOAT_EQ(9.9988802e-07, z(1, 2).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val_);
+  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val_);
+  EXPECT_DOUBLE_EQ(0.079999998, z(0, 0).d_);
+  EXPECT_DOUBLE_EQ(0.0094999997, z(0, 1).d_);
+  EXPECT_DOUBLE_EQ(9.9988802e-07, z(1, 2).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_mat_vd) {
@@ -161,12 +161,12 @@ TEST(AgradFwdMatrixEltDivide, fd_mat_vd) {
   y << 10, 100, 1000, 10000, 100000, 1000000;
 
   matrix_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0, 0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(0, 1).val_);
-  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val_);
-  EXPECT_FLOAT_EQ(0.1, z(0, 0).d_);
-  EXPECT_FLOAT_EQ(0.0099999998, z(0, 1).d_);
-  EXPECT_FLOAT_EQ(1e-06, z(1, 2).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val_);
+  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val_);
+  EXPECT_DOUBLE_EQ(0.1, z(0, 0).d_);
+  EXPECT_DOUBLE_EQ(0.0099999998, z(0, 1).d_);
+  EXPECT_DOUBLE_EQ(1e-06, z(1, 2).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, fd_mat_dv) {
@@ -186,12 +186,12 @@ TEST(AgradFwdMatrixEltDivide, fd_mat_dv) {
   y(1, 2).d_ = 1.0;
 
   matrix_fd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0, 0).val_);
-  EXPECT_FLOAT_EQ(0.05, z(0, 1).val_);
-  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val_);
-  EXPECT_FLOAT_EQ(-0.02, z(0, 0).d_);
-  EXPECT_FLOAT_EQ(-0.00050000002, z(0, 1).d_);
-  EXPECT_FLOAT_EQ(-1.12e-10, z(1, 2).d_);
+  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val_);
+  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val_);
+  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val_);
+  EXPECT_DOUBLE_EQ(-0.02, z(0, 0).d_);
+  EXPECT_DOUBLE_EQ(-0.00050000002, z(0, 1).d_);
+  EXPECT_DOUBLE_EQ(-1.12e-10, z(1, 2).d_);
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_vec_vv) {
@@ -215,10 +215,10 @@ TEST(AgradFwdMatrixEltDivide, ffd_vec_vv) {
   y << c, d;
 
   vector_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(1).val_.val());
-  EXPECT_FLOAT_EQ(0.079999998, z(0).d_.val());
-  EXPECT_FLOAT_EQ(0.0094999997, z(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_.val());
+  EXPECT_DOUBLE_EQ(0.079999998, z(0).d_.val());
+  EXPECT_DOUBLE_EQ(0.0094999997, z(1).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_vec_vd) {
@@ -239,10 +239,10 @@ TEST(AgradFwdMatrixEltDivide, ffd_vec_vd) {
   y << 10, 100;
 
   vector_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(1).val_.val());
-  EXPECT_FLOAT_EQ(0.1, z(0).d_.val());
-  EXPECT_FLOAT_EQ(0.0099999998, z(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_.val());
+  EXPECT_DOUBLE_EQ(0.1, z(0).d_.val());
+  EXPECT_DOUBLE_EQ(0.0099999998, z(1).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_vec_dv) {
@@ -263,10 +263,10 @@ TEST(AgradFwdMatrixEltDivide, ffd_vec_dv) {
   y << c, d;
 
   vector_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(1).val_.val());
-  EXPECT_FLOAT_EQ(-0.02, z(0).d_.val());
-  EXPECT_FLOAT_EQ(-0.00050000002, z(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_.val());
+  EXPECT_DOUBLE_EQ(-0.02, z(0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.00050000002, z(1).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_rowvec_vv) {
@@ -289,10 +289,10 @@ TEST(AgradFwdMatrixEltDivide, ffd_rowvec_vv) {
   y << c, d;
 
   row_vector_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(1).val_.val());
-  EXPECT_FLOAT_EQ(0.079999998, z(0).d_.val());
-  EXPECT_FLOAT_EQ(0.0094999997, z(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_.val());
+  EXPECT_DOUBLE_EQ(0.079999998, z(0).d_.val());
+  EXPECT_DOUBLE_EQ(0.0094999997, z(1).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_rowvec_vd) {
@@ -314,10 +314,10 @@ TEST(AgradFwdMatrixEltDivide, ffd_rowvec_vd) {
   y << 10, 100;
 
   row_vector_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(1).val_.val());
-  EXPECT_FLOAT_EQ(0.1, z(0).d_.val());
-  EXPECT_FLOAT_EQ(0.0099999998, z(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_.val());
+  EXPECT_DOUBLE_EQ(0.1, z(0).d_.val());
+  EXPECT_DOUBLE_EQ(0.0099999998, z(1).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_rowvec_dv) {
@@ -337,10 +337,10 @@ TEST(AgradFwdMatrixEltDivide, ffd_rowvec_dv) {
   row_vector_ffd y(2);
   y << c, d;
   row_vector_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(1).val_.val());
-  EXPECT_FLOAT_EQ(-0.02, z(0).d_.val());
-  EXPECT_FLOAT_EQ(-0.00050000002, z(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(1).val_.val());
+  EXPECT_DOUBLE_EQ(-0.02, z(0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.00050000002, z(1).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_mat_vv) {
@@ -379,12 +379,12 @@ TEST(AgradFwdMatrixEltDivide, ffd_mat_vv) {
   y << g, h, i, j, k, l;
 
   matrix_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0, 0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(0, 1).val_.val());
-  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val_.val());
-  EXPECT_FLOAT_EQ(0.079999998, z(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(0.0094999997, z(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(9.9988802e-07, z(1, 2).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val_.val());
+  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val_.val());
+  EXPECT_DOUBLE_EQ(0.079999998, z(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(0.0094999997, z(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(9.9988802e-07, z(1, 2).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_mat_vd) {
@@ -413,12 +413,12 @@ TEST(AgradFwdMatrixEltDivide, ffd_mat_vd) {
   y << 10, 100, 1000, 10000, 100000, 1000000;
 
   matrix_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0, 0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(0, 1).val_.val());
-  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val_.val());
-  EXPECT_FLOAT_EQ(0.1, z(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(0.0099999998, z(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(1e-06, z(1, 2).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val_.val());
+  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val_.val());
+  EXPECT_DOUBLE_EQ(0.1, z(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(0.0099999998, z(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(1e-06, z(1, 2).d_.val());
 }
 
 TEST(AgradFwdMatrixEltDivide, ffd_mat_dv) {
@@ -447,10 +447,10 @@ TEST(AgradFwdMatrixEltDivide, ffd_mat_dv) {
   y << g, h, i, j, k, l;
 
   matrix_ffd z = elt_divide(x, y);
-  EXPECT_FLOAT_EQ(0.2, z(0, 0).val_.val());
-  EXPECT_FLOAT_EQ(0.05, z(0, 1).val_.val());
-  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val_.val());
-  EXPECT_FLOAT_EQ(-0.02, z(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(-0.00050000002, z(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(-1.12e-10, z(1, 2).d_.val());
+  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val_.val());
+  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val_.val());
+  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val_.val());
+  EXPECT_DOUBLE_EQ(-0.02, z(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.00050000002, z(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(-1.12e-10, z(1, 2).d_.val());
 }

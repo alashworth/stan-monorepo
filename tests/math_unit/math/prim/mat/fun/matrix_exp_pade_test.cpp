@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <algorithm>
 #include <random>
-#include "expect_matrix_eq.hpp"
+#include <math/prim/mat/fun/expect_matrix_eq.hpp>
 
 TEST(MathMatrix, matrix_exp_pade_1x1_1) {
   Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> m1(1, 1), m2(1, 1);

@@ -6,9 +6,9 @@ TEST(ProbUniform, ccdf_log_matches_lccdf) {
   double alpha = 0.4;
   double beta = 2.3;
 
-  EXPECT_FLOAT_EQ((stan::math::uniform_lccdf(y, alpha, beta)),
-                  (stan::math::uniform_ccdf_log(y, alpha, beta)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::uniform_lccdf(y, alpha, beta)),
+                   (stan::math::uniform_ccdf_log(y, alpha, beta)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::uniform_lccdf<double, double, double>(y, alpha, beta)),
       (stan::math::uniform_ccdf_log<double, double, double>(y, alpha, beta)));
 }

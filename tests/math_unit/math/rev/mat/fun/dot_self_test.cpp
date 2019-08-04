@@ -3,6 +3,7 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <math/rev/mat/util.hpp>
 
+namespace {
 template <int R, int C>
 void assert_val_grad(Eigen::Matrix<stan::math::var, R, C>& v) {
   v << -1.0, 0.0, 3.0;
@@ -11,9 +12,10 @@ void assert_val_grad(Eigen::Matrix<stan::math::var, R, C>& v) {
   VEC g;
   f.grad(x, g);
 
-  EXPECT_FLOAT_EQ(-2.0, g[0]);
-  EXPECT_FLOAT_EQ(0.0, g[1]);
-  EXPECT_FLOAT_EQ(6.0, g[2]);
+  EXPECT_DOUBLE_EQ(-2.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_DOUBLE_EQ(6.0, g[2]);
+}
 }
 
 TEST(AgradRevMatrix, dot_self_vec_1) {

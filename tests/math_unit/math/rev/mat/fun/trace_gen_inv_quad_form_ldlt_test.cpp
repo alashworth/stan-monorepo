@@ -35,35 +35,35 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt) {
 
   // double-double-double
   res = trace_gen_inv_quad_form_ldlt(cd, ldlt_ad, bd);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 
   // double-var-double
   res = trace_gen_inv_quad_form_ldlt(cd, ldlt_av, bd);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 
   // double-double-var
   res = trace_gen_inv_quad_form_ldlt(cd, ldlt_ad, bv);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 
   // double-var-var
   res = trace_gen_inv_quad_form_ldlt(cd, ldlt_av, bv);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 
   // var-double-double
   res = trace_gen_inv_quad_form_ldlt(cv, ldlt_ad, bd);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 
   // var-var-double
   res = trace_gen_inv_quad_form_ldlt(cv, ldlt_av, bd);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 
   // var-double-var
   res = trace_gen_inv_quad_form_ldlt(cv, ldlt_ad, bv);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 
   // var-var-var
   res = trace_gen_inv_quad_form_ldlt(cv, ldlt_av, bv);
-  EXPECT_FLOAT_EQ(1439.1061766207, res.val());
+  EXPECT_DOUBLE_EQ(1439.1061766207, res.val());
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_dvv) {
@@ -111,10 +111,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_dvv) {
   pos = 0;
   for (i = 0; i < 4; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdb(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdb(i, j));
   for (i = 0; i < 4; i++)
     for (j = 0; j < 4; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqda(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqda(i, j));
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vdv) {
@@ -161,10 +161,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vdv) {
   pos = 0;
   for (i = 0; i < 2; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdc(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdc(i, j));
   for (i = 0; i < 4; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdb(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdb(i, j));
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vvd) {
@@ -212,10 +212,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vvd) {
   pos = 0;
   for (i = 0; i < 2; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdc(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdc(i, j));
   for (i = 0; i < 4; i++)
     for (j = 0; j < 4; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqda(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqda(i, j));
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vdd) {
@@ -256,7 +256,7 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vdd) {
   pos = 0;
   for (i = 0; i < 2; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdc(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdc(i, j));
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_dvd) {
@@ -298,7 +298,7 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_dvd) {
   pos = 0;
   for (i = 0; i < 4; i++)
     for (j = 0; j < 4; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqda(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqda(i, j));
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_ddv) {
@@ -339,7 +339,7 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_ddv) {
   pos = 0;
   for (i = 0; i < 4; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdb(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdb(i, j));
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vvv) {
@@ -393,13 +393,13 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vvv) {
   pos = 0;
   for (i = 0; i < 2; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdc(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdc(i, j));
   for (i = 0; i < 4; i++)
     for (j = 0; j < 2; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqdb(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqdb(i, j));
   for (i = 0; i < 4; i++)
     for (j = 0; j < 4; j++, pos++)
-      EXPECT_FLOAT_EQ(grad[pos], dqda(i, j));
+      EXPECT_DOUBLE_EQ(grad[pos], dqda(i, j));
 }
 
 TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_dvv_basic) {
@@ -461,10 +461,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_dvv_basic) {
   result_basic_val = result_basic.val();
 
   // check values;
-  EXPECT_FLOAT_EQ(result_basic_val, result_val);
+  EXPECT_DOUBLE_EQ(result_basic_val, result_val);
   ASSERT_EQ(grad_basic.size(), grad.size());
   for (size_t n = 0; n < grad_basic.size(); n++) {
-    EXPECT_FLOAT_EQ(grad_basic[n], grad[n]);
+    EXPECT_DOUBLE_EQ(grad_basic[n], grad[n]);
   }
 }
 
@@ -530,10 +530,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vdv_basic) {
   result_basic_val = result_basic.val();
 
   // check values;
-  EXPECT_FLOAT_EQ(result_basic_val, result_val);
+  EXPECT_DOUBLE_EQ(result_basic_val, result_val);
   ASSERT_EQ(grad_basic.size(), grad.size());
   for (size_t n = 0; n < grad_basic.size(); n++) {
-    EXPECT_FLOAT_EQ(grad_basic[n], grad[n]);
+    EXPECT_DOUBLE_EQ(grad_basic[n], grad[n]);
   }
 }
 
@@ -600,10 +600,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vvd_basic) {
   result_basic_val = result_basic.val();
 
   // check values;
-  EXPECT_FLOAT_EQ(result_basic_val, result_val);
+  EXPECT_DOUBLE_EQ(result_basic_val, result_val);
   ASSERT_EQ(grad_basic.size(), grad.size());
   for (size_t n = 0; n < grad_basic.size(); n++) {
-    EXPECT_FLOAT_EQ(grad_basic[n], grad[n]);
+    EXPECT_DOUBLE_EQ(grad_basic[n], grad[n]);
   }
 }
 
@@ -661,10 +661,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vdd_basic) {
   result_basic_val = result_basic.val();
 
   // check values;
-  EXPECT_FLOAT_EQ(result_basic_val, result_val);
+  EXPECT_DOUBLE_EQ(result_basic_val, result_val);
   ASSERT_EQ(grad_basic.size(), grad.size());
   for (size_t n = 0; n < grad_basic.size(); n++) {
-    EXPECT_FLOAT_EQ(grad_basic[n], grad[n]);
+    EXPECT_DOUBLE_EQ(grad_basic[n], grad[n]);
   }
 }
 
@@ -725,10 +725,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_dvd_basic) {
   result_basic_val = result_basic.val();
 
   // check values;
-  EXPECT_FLOAT_EQ(result_basic_val, result_val);
+  EXPECT_DOUBLE_EQ(result_basic_val, result_val);
   ASSERT_EQ(grad_basic.size(), grad.size());
   for (size_t n = 0; n < grad_basic.size(); n++) {
-    EXPECT_FLOAT_EQ(grad_basic[n], grad[n]);
+    EXPECT_DOUBLE_EQ(grad_basic[n], grad[n]);
   }
 }
 
@@ -787,10 +787,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_ddv_basic) {
   result_basic_val = result_basic.val();
 
   // check values;
-  EXPECT_FLOAT_EQ(result_basic_val, result_val);
+  EXPECT_DOUBLE_EQ(result_basic_val, result_val);
   ASSERT_EQ(grad_basic.size(), grad.size());
   for (size_t n = 0; n < grad_basic.size(); n++) {
-    EXPECT_FLOAT_EQ(grad_basic[n], grad[n]);
+    EXPECT_DOUBLE_EQ(grad_basic[n], grad[n]);
   }
 }
 
@@ -862,10 +862,10 @@ TEST(AgradRevMatrix, trace_gen_inv_quad_form_ldlt_grad_vvv_basic) {
   result_basic_val = result_basic.val();
 
   // check values;
-  EXPECT_FLOAT_EQ(result_basic_val, result_val);
+  EXPECT_DOUBLE_EQ(result_basic_val, result_val);
   ASSERT_EQ(grad_basic.size(), grad.size());
   for (size_t n = 0; n < grad_basic.size(); n++) {
-    EXPECT_FLOAT_EQ(grad_basic[n], grad[n]);
+    EXPECT_DOUBLE_EQ(grad_basic[n], grad[n]);
   }
 }
 

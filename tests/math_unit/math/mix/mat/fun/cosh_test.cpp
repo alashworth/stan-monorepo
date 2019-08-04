@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized cosh (defined in the
  * testing framework).
@@ -92,8 +93,9 @@ struct cosh_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, cosh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, cosh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, cosh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, cosh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(cosh, prim_scalar_unary_test, cosh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(cosh, rev_scalar_unary_test, cosh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(cosh, fwd_scalar_unary_test, cosh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(cosh, mix_scalar_unary_test, cosh_test);

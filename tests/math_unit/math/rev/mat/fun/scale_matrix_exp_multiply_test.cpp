@@ -1,13 +1,11 @@
 #include <stan/math/rev/mat.hpp>
 #include <gtest/gtest.h>
-// #include <stan/math/prim/scal/err/check_not_nan.hpp>
-#include <math/rev/mat/fun/util.hpp>
-#include <math/rev/mat/util.hpp>
 #include <stan/math/rev/mat/fun/scale_matrix_exp_multiply.hpp>
 #include <stan/math/rev/mat/fun/to_var.hpp>
 #include <vector>
 
-inline void test_scale_matrix_exp_multiply_dv(int N, int M) {
+namespace {
+void test_scale_matrix_exp_multiply_dv(int N, int M) {
   using stan::math::value_of;
   using stan::math::var;
 
@@ -29,7 +27,7 @@ inline void test_scale_matrix_exp_multiply_dv(int N, int M) {
       = stan::math::scale_matrix_exp_multiply(t, A, Bv);
   EXPECT_EQ(res_dv.size(), expAB.size());
   for (int l = 0; l < res_dv.size(); ++l) {
-    EXPECT_FLOAT_EQ(res_dv(l).val(), expAB(l).val());
+    EXPECT_DOUBLE_EQ(res_dv(l).val(), expAB(l).val());
   }
 
   // compare adjoints
@@ -41,7 +39,7 @@ inline void test_scale_matrix_exp_multiply_dv(int N, int M) {
       stan::math::set_zero_all_adjoints();
       expAB(k, l).grad(Bvec, g0);
       for (size_t j = 0; j < g.size(); ++j) {
-        EXPECT_FLOAT_EQ(g[j], g0[j]);
+        EXPECT_DOUBLE_EQ(g[j], g0[j]);
       }
     }
   }
@@ -54,18 +52,10 @@ inline void test_scale_matrix_exp_multiply_dv(int N, int M) {
   stan::math::set_zero_all_adjoints();
   f0.grad(Bvec, g0);
   for (size_t j = 0; j < g.size(); ++j) {
-    EXPECT_FLOAT_EQ(g[j], g0[j]);
+    EXPECT_DOUBLE_EQ(g[j], g0[j]);
   }
 }
-
-TEST(MathMatrix, scale_matrix_exp_multiply_dv) {
-  test_scale_matrix_exp_multiply_dv(1, 1);
-  test_scale_matrix_exp_multiply_dv(1, 5);
-  test_scale_matrix_exp_multiply_dv(5, 1);
-  test_scale_matrix_exp_multiply_dv(5, 5);
-}
-
-inline void test_scale_matrix_exp_multiply_vd(int N, int M) {
+void test_scale_matrix_exp_multiply_vd(int N, int M) {
   using stan::math::value_of;
   using stan::math::var;
 
@@ -87,7 +77,7 @@ inline void test_scale_matrix_exp_multiply_vd(int N, int M) {
       = stan::math::scale_matrix_exp_multiply(t, Av, B);
   EXPECT_EQ(res_vd.size(), expAB.size());
   for (int l = 0; l < res_vd.size(); ++l) {
-    EXPECT_FLOAT_EQ(res_vd(l).val(), expAB(l).val());
+    EXPECT_DOUBLE_EQ(res_vd(l).val(), expAB(l).val());
   }
 
   // compare adjoints
@@ -99,7 +89,7 @@ inline void test_scale_matrix_exp_multiply_vd(int N, int M) {
       stan::math::set_zero_all_adjoints();
       expAB(k, l).grad(Avec, g0);
       for (size_t j = 0; j < g.size(); ++j) {
-        EXPECT_FLOAT_EQ(g[j], g0[j]);
+        EXPECT_DOUBLE_EQ(g[j], g0[j]);
       }
     }
   }
@@ -112,18 +102,10 @@ inline void test_scale_matrix_exp_multiply_vd(int N, int M) {
   stan::math::set_zero_all_adjoints();
   f0.grad(Avec, g0);
   for (size_t j = 0; j < g.size(); ++j) {
-    EXPECT_FLOAT_EQ(g[j], g0[j]);
+    EXPECT_DOUBLE_EQ(g[j], g0[j]);
   }
 }
-
-TEST(MathMatrix, scale_matrix_exp_multiply_vd) {
-  test_scale_matrix_exp_multiply_vd(1, 1);
-  test_scale_matrix_exp_multiply_vd(1, 5);
-  test_scale_matrix_exp_multiply_vd(5, 1);
-  test_scale_matrix_exp_multiply_vd(5, 5);
-}
-
-inline void test_scale_matrix_exp_multiply_vv(int N, int M) {
+void test_scale_matrix_exp_multiply_vv(int N, int M) {
   using stan::math::value_of;
   using stan::math::var;
 
@@ -144,7 +126,7 @@ inline void test_scale_matrix_exp_multiply_vv(int N, int M) {
       = stan::math::scale_matrix_exp_multiply(t, Av, Bv);
   EXPECT_EQ(res_vv.size(), expAB.size());
   for (int l = 0; l < res_vv.size(); ++l) {
-    EXPECT_FLOAT_EQ(res_vv(l).val(), expAB(l).val());
+    EXPECT_DOUBLE_EQ(res_vv(l).val(), expAB(l).val());
   }
 
   // compare adjoints
@@ -157,7 +139,7 @@ inline void test_scale_matrix_exp_multiply_vv(int N, int M) {
       stan::math::set_zero_all_adjoints();
       expAB(k, l).grad(Avec, g0);
       for (size_t j = 0; j < g.size(); ++j) {
-        EXPECT_FLOAT_EQ(g[j], g0[j]);
+        EXPECT_DOUBLE_EQ(g[j], g0[j]);
       }
     }
   }
@@ -170,10 +152,23 @@ inline void test_scale_matrix_exp_multiply_vv(int N, int M) {
   stan::math::set_zero_all_adjoints();
   f0.grad(Avec, g0);
   for (size_t j = 0; j < g.size(); ++j) {
-    EXPECT_FLOAT_EQ(g[j], g0[j]);
+    EXPECT_DOUBLE_EQ(g[j], g0[j]);
   }
 }
+}  // namespace
 
+TEST(MathMatrix, scale_matrix_exp_multiply_dv) {
+  test_scale_matrix_exp_multiply_dv(1, 1);
+  test_scale_matrix_exp_multiply_dv(1, 5);
+  test_scale_matrix_exp_multiply_dv(5, 1);
+  test_scale_matrix_exp_multiply_dv(5, 5);
+}
+TEST(MathMatrix, scale_matrix_exp_multiply_vd) {
+  test_scale_matrix_exp_multiply_vd(1, 1);
+  test_scale_matrix_exp_multiply_vd(1, 5);
+  test_scale_matrix_exp_multiply_vd(5, 1);
+  test_scale_matrix_exp_multiply_vd(5, 5);
+}
 TEST(MathMatrix, scale_matrix_exp_multiply_vv) {
   test_scale_matrix_exp_multiply_vv(1, 1);
   test_scale_matrix_exp_multiply_vv(1, 5);
@@ -181,7 +176,6 @@ TEST(MathMatrix, scale_matrix_exp_multiply_vv) {
   test_scale_matrix_exp_multiply_vv(5, 5);
   test_scale_matrix_exp_multiply_vv(8, 2);
 }
-
 TEST(MathMatrix, scale_matrix_exp_multiply_exception_1) {
   using stan::math::var;
   const double t = 1.0;

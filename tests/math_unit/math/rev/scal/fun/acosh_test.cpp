@@ -10,12 +10,12 @@ TEST(AgradRev, acosh_val) {
   using std::sqrt;
   AVAR a = 1.3;
   AVAR f = acosh(a);
-  EXPECT_FLOAT_EQ(acosh(1.3), f.val());
+  EXPECT_DOUBLE_EQ(acosh(1.3), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(1 / sqrt(1.3 * 1.3 - 1.0), g[0]);
+  EXPECT_DOUBLE_EQ(1 / sqrt(1.3 * 1.3 - 1.0), g[0]);
 }
 
 TEST(AgradRev, acosh_1) {
@@ -23,12 +23,12 @@ TEST(AgradRev, acosh_1) {
   using std::sqrt;
   AVAR a = 1.0;
   AVAR f = acosh(a);
-  EXPECT_FLOAT_EQ(0.0, f.val());
+  EXPECT_DOUBLE_EQ(0.0, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(1 / sqrt(-1 * -1 - 1), g[0]);
+  EXPECT_DOUBLE_EQ(1 / sqrt(-1 * -1 - 1), g[0]);
 }
 
 TEST(MathFunctions, acosh_exception_1) {
@@ -44,6 +44,7 @@ TEST(AgradRevAcosh, overflows) {
             stan::math::acosh(b).val());
 }
 
+namespace {
 struct acosh_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
@@ -51,6 +52,7 @@ struct acosh_fun {
     return acosh(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, acosh_NaN) {
   acosh_fun acosh_;

@@ -8,8 +8,8 @@ TEST(AgradFwdTrigamma, Fvar) {
 
   fvar<double> x(0.5, 1.0);
   fvar<double> a = trigamma(x);
-  EXPECT_FLOAT_EQ(4.9348022005446793094, a.val_);
-  EXPECT_FLOAT_EQ(-16.8288, a.d_);
+  EXPECT_DOUBLE_EQ(4.9348022005446793094, a.val_);
+  EXPECT_DOUBLE_EQ(-16.8288, a.d_);
 }
 
 struct trigamma_fun {

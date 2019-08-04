@@ -48,8 +48,8 @@ TEST(AgradAutoDiff, derivative) {
   double fx;
   double d;
   stan::math::derivative(f, x, fx, d);
-  EXPECT_FLOAT_EQ(fx, 5 * 7 * 7 * 7);
-  EXPECT_FLOAT_EQ(d, 5 * 3 * 7 * 7);
+  EXPECT_DOUBLE_EQ(fx, 5 * 7 * 7 * 7);
+  EXPECT_DOUBLE_EQ(d, 5 * 3 * 7 * 7);
 }
 
 TEST(AgradAutoDiff, partialDerivative) {
@@ -60,14 +60,14 @@ TEST(AgradAutoDiff, partialDerivative) {
   double fx;
   double d;
   stan::math::partial_derivative(f, x, 0, fx, d);
-  EXPECT_FLOAT_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
-  EXPECT_FLOAT_EQ(2 * 5 * 7, d);
+  EXPECT_DOUBLE_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
+  EXPECT_DOUBLE_EQ(2 * 5 * 7, d);
 
   double fx2;
   double d2;
   stan::math::partial_derivative(f, x, 1, fx2, d2);
-  EXPECT_FLOAT_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
-  EXPECT_FLOAT_EQ(5 * 5 + 3 * 2 * 7, d2);
+  EXPECT_DOUBLE_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
+  EXPECT_DOUBLE_EQ(5 * 5 + 3 * 2 * 7, d2);
 }
 
 TEST(AgradAutoDiff, gradientDotVector) {
@@ -86,7 +86,7 @@ TEST(AgradAutoDiff, gradientDotVector) {
   stan::math::gradient(f, x, fx_expected, grad_fx);
   double grad_fx_dot_v_expected = grad_fx.dot(v);
 
-  EXPECT_FLOAT_EQ(grad_fx_dot_v_expected, grad_fx_dot_v);
+  EXPECT_DOUBLE_EQ(grad_fx_dot_v_expected, grad_fx_dot_v);
 }
 TEST(AgradAutoDiff, hessianTimesVector) {
   using stan::math::hessian_times_vector;
@@ -103,11 +103,11 @@ TEST(AgradAutoDiff, hessianTimesVector) {
   double fx;
   stan::math::hessian_times_vector(f, x, v, fx, Hv);
 
-  EXPECT_FLOAT_EQ(2 * 2 * -3 + 3.0 * -3 * -3, fx);
+  EXPECT_DOUBLE_EQ(2 * 2 * -3 + 3.0 * -3 * -3, fx);
 
   EXPECT_EQ(2, Hv.size());
-  EXPECT_FLOAT_EQ(2 * x(1) * v(0) + 2 * x(0) * v(1), Hv(0));
-  EXPECT_FLOAT_EQ(2 * x(0) * v(0) + 6 * v(1), Hv(1));
+  EXPECT_DOUBLE_EQ(2 * x(1) * v(0) + 2 * x(0) * v(1), Hv(0));
+  EXPECT_DOUBLE_EQ(2 * x(0) * v(0) + 6 * v(1), Hv(1));
 }
 
 TEST(AgradAutoDiff, jacobian) {
@@ -122,26 +122,26 @@ TEST(AgradAutoDiff, jacobian) {
   jacobian(f, x, fx, J);
 
   EXPECT_EQ(2, fx.size());
-  EXPECT_FLOAT_EQ(2 * 2, fx(0));
-  EXPECT_FLOAT_EQ(3 * 2 * -3, fx(1));
+  EXPECT_DOUBLE_EQ(2 * 2, fx(0));
+  EXPECT_DOUBLE_EQ(3 * 2 * -3, fx(1));
 
-  EXPECT_FLOAT_EQ(2, J(0, 0));
-  EXPECT_FLOAT_EQ(-9, J(1, 0));
-  EXPECT_FLOAT_EQ(0, J(0, 1));
-  EXPECT_FLOAT_EQ(6, J(1, 1));
+  EXPECT_DOUBLE_EQ(2, J(0, 0));
+  EXPECT_DOUBLE_EQ(-9, J(1, 0));
+  EXPECT_DOUBLE_EQ(0, J(0, 1));
+  EXPECT_DOUBLE_EQ(6, J(1, 1));
 
   Matrix<double, Dynamic, 1> fx_rev;
   Matrix<double, Dynamic, Dynamic> J_rev;
   jacobian<double>(f, x, fx_rev, J_rev);
 
   EXPECT_EQ(2, fx_rev.size());
-  EXPECT_FLOAT_EQ(2 * 2, fx_rev(0));
-  EXPECT_FLOAT_EQ(3 * 2 * -3, fx_rev(1));
+  EXPECT_DOUBLE_EQ(2 * 2, fx_rev(0));
+  EXPECT_DOUBLE_EQ(3 * 2 * -3, fx_rev(1));
 
-  EXPECT_FLOAT_EQ(2, J_rev(0, 0));
-  EXPECT_FLOAT_EQ(-9, J_rev(1, 0));
-  EXPECT_FLOAT_EQ(0, J_rev(0, 1));
-  EXPECT_FLOAT_EQ(6, J_rev(1, 1));
+  EXPECT_DOUBLE_EQ(2, J_rev(0, 0));
+  EXPECT_DOUBLE_EQ(-9, J_rev(1, 0));
+  EXPECT_DOUBLE_EQ(0, J_rev(0, 1));
+  EXPECT_DOUBLE_EQ(6, J_rev(1, 1));
 }
 
 TEST(AgradAutoDiff, hessian) {
@@ -154,36 +154,36 @@ TEST(AgradAutoDiff, hessian) {
   stan::math::hessian(f, x, fx, grad, H);
 
   // x^2 * y + 3 * y^2
-  EXPECT_FLOAT_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
+  EXPECT_DOUBLE_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
 
-  EXPECT_FLOAT_EQ(2, grad.size());
-  EXPECT_FLOAT_EQ(2 * x(0) * x(1), grad(0));
-  EXPECT_FLOAT_EQ(x(0) * x(0) + 3 * 2 * x(1), grad(1));
+  EXPECT_DOUBLE_EQ(2, grad.size());
+  EXPECT_DOUBLE_EQ(2 * x(0) * x(1), grad(0));
+  EXPECT_DOUBLE_EQ(x(0) * x(0) + 3 * 2 * x(1), grad(1));
 
   EXPECT_EQ(2, H.rows());
   EXPECT_EQ(2, H.cols());
-  EXPECT_FLOAT_EQ(2 * 7, H(0, 0));
-  EXPECT_FLOAT_EQ(2 * 5, H(0, 1));
-  EXPECT_FLOAT_EQ(2 * 5, H(1, 0));
-  EXPECT_FLOAT_EQ(2 * 3, H(1, 1));
+  EXPECT_DOUBLE_EQ(2 * 7, H(0, 0));
+  EXPECT_DOUBLE_EQ(2 * 5, H(0, 1));
+  EXPECT_DOUBLE_EQ(2 * 5, H(1, 0));
+  EXPECT_DOUBLE_EQ(2 * 3, H(1, 1));
 
   double fx2;
   Matrix<double, Dynamic, 1> grad2;
   Matrix<double, Dynamic, Dynamic> H2;
   stan::math::hessian<double>(f, x, fx2, grad2, H2);
 
-  EXPECT_FLOAT_EQ(5 * 5 * 7 + 3 * 7 * 7, fx2);
+  EXPECT_DOUBLE_EQ(5 * 5 * 7 + 3 * 7 * 7, fx2);
 
-  EXPECT_FLOAT_EQ(2, grad2.size());
-  EXPECT_FLOAT_EQ(2 * x(0) * x(1), grad2(0));
-  EXPECT_FLOAT_EQ(x(0) * x(0) + 3 * 2 * x(1), grad2(1));
+  EXPECT_DOUBLE_EQ(2, grad2.size());
+  EXPECT_DOUBLE_EQ(2 * x(0) * x(1), grad2(0));
+  EXPECT_DOUBLE_EQ(x(0) * x(0) + 3 * 2 * x(1), grad2(1));
 
   EXPECT_EQ(2, H2.rows());
   EXPECT_EQ(2, H2.cols());
-  EXPECT_FLOAT_EQ(2 * 7, H2(0, 0));
-  EXPECT_FLOAT_EQ(2 * 5, H2(0, 1));
-  EXPECT_FLOAT_EQ(2 * 5, H2(1, 0));
-  EXPECT_FLOAT_EQ(2 * 3, H2(1, 1));
+  EXPECT_DOUBLE_EQ(2 * 7, H2(0, 0));
+  EXPECT_DOUBLE_EQ(2 * 5, H2(0, 1));
+  EXPECT_DOUBLE_EQ(2 * 5, H2(1, 0));
+  EXPECT_DOUBLE_EQ(2 * 3, H2(1, 1));
 }
 
 TEST(AgradAutoDiff, GradientTraceMatrixTimesHessian) {
@@ -196,8 +196,8 @@ TEST(AgradAutoDiff, GradientTraceMatrixTimesHessian) {
   stan::math::grad_tr_mat_times_hessian(f, x, M, grad_tr_MH);
 
   EXPECT_EQ(2, grad_tr_MH.size());
-  EXPECT_FLOAT_EQ(60, grad_tr_MH(0));
-  EXPECT_FLOAT_EQ(22, grad_tr_MH(1));
+  EXPECT_DOUBLE_EQ(60, grad_tr_MH(0));
+  EXPECT_DOUBLE_EQ(22, grad_tr_MH(1));
 }
 
 TEST(AgradAutoDiff, GradientHessian) {
@@ -258,23 +258,23 @@ TEST(AgradAutoDiff, GradientHessian) {
   norm_grad_hess_analytic = norm_grad_hess(normal_eval_vec);
   poly_grad_hess_analytic = third_order_mixed_grad_hess(poly_eval_vec);
 
-  EXPECT_FLOAT_EQ(normal_eval_analytic, normal_eval_agrad);
-  EXPECT_FLOAT_EQ(poly_eval_analytic, poly_eval_agrad);
+  EXPECT_DOUBLE_EQ(normal_eval_analytic, normal_eval_agrad);
+  EXPECT_DOUBLE_EQ(poly_eval_analytic, poly_eval_agrad);
 
   for (size_t i = 0; i < 3; ++i)
     for (int j = 0; j < 3; ++j)
       for (int k = 0; k < 3; ++k) {
         if (i == 0) {
-          EXPECT_FLOAT_EQ(norm_hess_agrad_hessian(j, k),
-                          norm_hess_analytic(j, k));
-          EXPECT_FLOAT_EQ(poly_hess_agrad_hessian(j, k),
-                          poly_hess_analytic(j, k));
-          EXPECT_FLOAT_EQ(norm_hess_analytic(j, k), norm_hess_agrad(j, k));
-          EXPECT_FLOAT_EQ(poly_hess_analytic(j, k), poly_hess_agrad(j, k));
+          EXPECT_DOUBLE_EQ(norm_hess_agrad_hessian(j, k),
+                           norm_hess_analytic(j, k));
+          EXPECT_DOUBLE_EQ(poly_hess_agrad_hessian(j, k),
+                           poly_hess_analytic(j, k));
+          EXPECT_DOUBLE_EQ(norm_hess_analytic(j, k), norm_hess_agrad(j, k));
+          EXPECT_DOUBLE_EQ(poly_hess_analytic(j, k), poly_hess_agrad(j, k));
         }
-        EXPECT_FLOAT_EQ(norm_grad_hess_analytic[i](j, k),
-                        norm_grad_hess_agrad[i](j, k));
-        EXPECT_FLOAT_EQ(poly_grad_hess_analytic[i](j, k),
-                        poly_grad_hess_agrad[i](j, k));
+        EXPECT_DOUBLE_EQ(norm_grad_hess_analytic[i](j, k),
+                         norm_grad_hess_agrad[i](j, k));
+        EXPECT_DOUBLE_EQ(poly_grad_hess_analytic[i](j, k),
+                         poly_grad_hess_agrad[i](j, k));
       }
 }

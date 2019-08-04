@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_rev_scal_unit_tests PRIVATE
         is_var_test.cpp
         is_var_or_arithmetic_test.cpp
         ad_promotable_test.cpp

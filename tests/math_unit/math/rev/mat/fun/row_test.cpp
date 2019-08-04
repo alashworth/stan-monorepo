@@ -12,9 +12,9 @@ TEST(AgradRevMatrix, row_v) {
   y << 1, 2, 3, 4, 5, 6;
   vector_v z = row(y, 1);
   EXPECT_EQ(3, z.size());
-  EXPECT_FLOAT_EQ(1.0, z[0].val());
-  EXPECT_FLOAT_EQ(2.0, z[1].val());
-  EXPECT_FLOAT_EQ(3.0, z[2].val());
+  EXPECT_DOUBLE_EQ(1.0, z[0].val());
+  EXPECT_DOUBLE_EQ(2.0, z[1].val());
+  EXPECT_DOUBLE_EQ(3.0, z[2].val());
 
   vector_v w = row(y, 2);
   EXPECT_EQ(3, w.size());

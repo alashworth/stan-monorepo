@@ -12,23 +12,23 @@ TEST(AgradFwdHypot, Fvar) {
   fvar<double> y(2.3, 2.0);
 
   fvar<double> a = hypot(x, y);
-  EXPECT_FLOAT_EQ(hypot(0.5, 2.3), a.val_);
-  EXPECT_FLOAT_EQ((0.5 * 1.0 + 2.3 * 2.0) / hypot(0.5, 2.3), a.d_);
+  EXPECT_DOUBLE_EQ(hypot(0.5, 2.3), a.val_);
+  EXPECT_DOUBLE_EQ((0.5 * 1.0 + 2.3 * 2.0) / hypot(0.5, 2.3), a.d_);
 
   fvar<double> z(0.0, 1.0);
   fvar<double> w(-2.3, 2.0);
   fvar<double> b = hypot(x, z);
 
-  EXPECT_FLOAT_EQ(0.5, b.val_);
-  EXPECT_FLOAT_EQ(1.0, b.d_);
+  EXPECT_DOUBLE_EQ(0.5, b.val_);
+  EXPECT_DOUBLE_EQ(1.0, b.d_);
 
   fvar<double> c = hypot(x, w);
   isnan(c.val_);
   isnan(c.d_);
 
   fvar<double> d = hypot(z, x);
-  EXPECT_FLOAT_EQ(0.5, d.val_);
-  EXPECT_FLOAT_EQ(1.0, d.d_);
+  EXPECT_DOUBLE_EQ(0.5, d.val_);
+  EXPECT_DOUBLE_EQ(1.0, d.d_);
 }
 
 TEST(AgradFwdHypot, FvarFvarDouble) {
@@ -45,10 +45,10 @@ TEST(AgradFwdHypot, FvarFvarDouble) {
 
   fvar<fvar<double> > a = hypot(x, y);
 
-  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val_);
-  EXPECT_FLOAT_EQ(3.0 / hypot(3.0, 6.0), a.val_.d_);
-  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_);
-  EXPECT_FLOAT_EQ(-0.059628479, a.d_.d_);
+  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val_);
+  EXPECT_DOUBLE_EQ(3.0 / hypot(3.0, 6.0), a.val_.d_);
+  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_);
+  EXPECT_DOUBLE_EQ(-0.059628479, a.d_.d_);
 }
 
 struct hypot_fun {

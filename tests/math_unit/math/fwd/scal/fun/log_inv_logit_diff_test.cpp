@@ -10,12 +10,12 @@ TEST(AgradFwdLogInvLogitDiff, Fvar) {
   fvar<double> z(0.0, 3.0);
 
   fvar<double> a = log_inv_logit_diff(x, y);
-  EXPECT_FLOAT_EQ(-1.039821131, a.val_);
-  EXPECT_FLOAT_EQ(0.1085992474, a.d_);
+  EXPECT_DOUBLE_EQ(-1.039821131, a.val_);
+  EXPECT_DOUBLE_EQ(0.1085992474, a.d_);
 
   fvar<double> b = log_inv_logit_diff(x, z);
-  EXPECT_FLOAT_EQ(-2.09997629431, b.val_);
-  EXPECT_FLOAT_EQ(-4.20544749628, b.d_);
+  EXPECT_DOUBLE_EQ(-2.09997629431, b.val_);
+  EXPECT_DOUBLE_EQ(-4.20544749628, b.d_);
 }
 TEST(AgradFwdLogInvLogit, FvarFvarDouble_0) {
   using stan::math::fvar;
@@ -31,8 +31,8 @@ TEST(AgradFwdLogInvLogit, FvarFvarDouble_0) {
 
   fvar<fvar<double> > a = log_inv_logit_diff(x, y);
 
-  EXPECT_FLOAT_EQ(-1.3596328289, a.val_.val_);
-  EXPECT_FLOAT_EQ(-0.678654037927, a.val_.d_);
-  EXPECT_FLOAT_EQ(0, a.d_.val_);
-  EXPECT_FLOAT_EQ(0, a.d_.d_);
+  EXPECT_DOUBLE_EQ(-1.3596328289, a.val_.val_);
+  EXPECT_DOUBLE_EQ(-0.678654037927, a.val_.d_);
+  EXPECT_DOUBLE_EQ(0, a.d_.val_);
+  EXPECT_DOUBLE_EQ(0, a.d_.d_);
 }

@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized tgamma (defined in the
  * testing framework).
@@ -106,8 +107,9 @@ struct tgamma_test {
         .build();
   }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, tgamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, tgamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, tgamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, tgamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tgamma, prim_scalar_unary_test, tgamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tgamma, rev_scalar_unary_test, tgamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tgamma, fwd_scalar_unary_test, tgamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tgamma, mix_scalar_unary_test, tgamma_test);

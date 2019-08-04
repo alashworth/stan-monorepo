@@ -14,10 +14,10 @@ TEST(AgradFwdMatrixSingularValues, mat_fd) {
   using stan::math::singular_values;
 
   res = singular_values(m0);
-  EXPECT_FLOAT_EQ(5.4649858, res(0).val_);
-  EXPECT_FLOAT_EQ(0.3659662, res(1).val_);
-  EXPECT_FLOAT_EQ(1.8380736, res(0).d_);
-  EXPECT_FLOAT_EQ(-0.12308775, res(1).d_);
+  EXPECT_DOUBLE_EQ(5.4649858, res(0).val_);
+  EXPECT_DOUBLE_EQ(0.3659662, res(1).val_);
+  EXPECT_DOUBLE_EQ(1.8380736, res(0).d_);
+  EXPECT_DOUBLE_EQ(-0.12308775, res(1).d_);
 }
 
 TEST(AgradFwdMatrixSingularValues, mat_ffd) {
@@ -33,8 +33,8 @@ TEST(AgradFwdMatrixSingularValues, mat_ffd) {
   using stan::math::singular_values;
 
   res = singular_values(m0);
-  EXPECT_FLOAT_EQ(5.4649858, res(0).val_.val_);
-  EXPECT_FLOAT_EQ(0.3659662, res(1).val_.val_);
-  EXPECT_FLOAT_EQ(1.8380736, res(0).d_.val_);
-  EXPECT_FLOAT_EQ(-0.12308775, res(1).d_.val_);
+  EXPECT_DOUBLE_EQ(5.4649858, res(0).val_.val_);
+  EXPECT_DOUBLE_EQ(0.3659662, res(1).val_.val_);
+  EXPECT_DOUBLE_EQ(1.8380736, res(0).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.12308775, res(1).d_.val_);
 }

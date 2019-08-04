@@ -11,29 +11,29 @@ using Eigen::Matrix;
 TEST(ProbDistributionsCategorical, Categorical) {
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta << 0.3, 0.5, 0.2;
-  EXPECT_FLOAT_EQ(-1.203973, stan::math::categorical_log(1, theta));
-  EXPECT_FLOAT_EQ(-0.6931472, stan::math::categorical_log(2, theta));
+  EXPECT_DOUBLE_EQ(-1.203973, stan::math::categorical_log(1, theta));
+  EXPECT_DOUBLE_EQ(-0.6931472, stan::math::categorical_log(2, theta));
 }
 TEST(ProbDistributionsCategorical, Propto) {
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta << 0.3, 0.5, 0.2;
-  EXPECT_FLOAT_EQ(0.0, stan::math::categorical_log<true>(1, theta));
-  EXPECT_FLOAT_EQ(0.0, stan::math::categorical_log<true>(2, theta));
+  EXPECT_DOUBLE_EQ(0.0, stan::math::categorical_log<true>(1, theta));
+  EXPECT_DOUBLE_EQ(0.0, stan::math::categorical_log<true>(2, theta));
 }
 
 TEST(ProbDistributionsCategorical, VectorInt) {
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta << 0.3, 0.5, 0.2;
   std::vector<int> xs0;
-  EXPECT_FLOAT_EQ(0.0, stan::math::categorical_log(xs0, theta));
+  EXPECT_DOUBLE_EQ(0.0, stan::math::categorical_log(xs0, theta));
 
   std::vector<int> xs(3);
   xs[0] = 1;
   xs[1] = 3;
   xs[2] = 1;
 
-  EXPECT_FLOAT_EQ(log(0.3) + log(0.2) + log(0.3),
-                  stan::math::categorical_log(xs, theta));
+  EXPECT_DOUBLE_EQ(log(0.3) + log(0.2) + log(0.3),
+                   stan::math::categorical_log(xs, theta));
 }
 
 using stan::math::categorical_log;

@@ -21,19 +21,19 @@ TEST(AgradMixMatrixMean, fv_vector_1stDeriv) {
 
   fvar<var> output;
   output = mean(d1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val());
 
   output = mean(v1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(1.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(1.0, output.d_.val());
 
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output.val_.grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[1]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[2]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[2]);
 }
 TEST(AgradMixMatrixMean, fv_vector_2ndDeriv) {
   using stan::math::fvar;
@@ -53,19 +53,19 @@ TEST(AgradMixMatrixMean, fv_vector_2ndDeriv) {
 
   fvar<var> output;
   output = mean(d1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val());
 
   output = mean(v1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(1.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(1.0, output.d_.val());
 
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, fv_vector_exception) {
   using stan::math::mean;
@@ -95,19 +95,19 @@ TEST(AgradMixMatrixMean, fv_rowvector_1stDeriv) {
 
   fvar<var> output;
   output = mean(d1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val());
 
   output = mean(v1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(1.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(1.0, output.d_.val());
 
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output.val_.grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[1]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[2]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[2]);
 }
 TEST(AgradMixMatrixMean, fv_rowvector_2ndDeriv) {
   using stan::math::fvar;
@@ -131,9 +131,9 @@ TEST(AgradMixMatrixMean, fv_rowvector_2ndDeriv) {
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, fv_rowvector_exception) {
   using stan::math::mean;
@@ -163,19 +163,19 @@ TEST(AgradMixMatrixMean, fv_matrix_1stDeriv) {
 
   fvar<var> output;
   output = mean(d1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val());
 
   output = mean(v1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val());
-  EXPECT_FLOAT_EQ(1.0, output.d_.val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val());
+  EXPECT_DOUBLE_EQ(1.0, output.d_.val());
 
   AVEC q = createAVEC(v1(0, 0).val(), v1(0, 1).val(), v1(0, 2).val());
   VEC h;
   output.val_.grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[1]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[2]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[2]);
 }
 TEST(AgradMixMatrixMean, fv_matrix_2ndDeriv) {
   using stan::math::fvar;
@@ -199,9 +199,9 @@ TEST(AgradMixMatrixMean, fv_matrix_2ndDeriv) {
   AVEC q = createAVEC(v1(0, 0).val(), v1(0, 1).val(), v1(0, 2).val());
   VEC h;
   output.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, fv_matrix_exception) {
   using stan::math::matrix_d;
@@ -221,9 +221,9 @@ TEST(AgradMixMatrixMean, fv_StdVector_1stDeriv) {
   std::vector<fvar<var> > x(0);
   EXPECT_THROW(mean(x), std::invalid_argument);
   x.push_back(1.0);
-  EXPECT_FLOAT_EQ(1.0, mean(x).val_.val());
+  EXPECT_DOUBLE_EQ(1.0, mean(x).val_.val());
   x.push_back(2.0);
-  EXPECT_FLOAT_EQ(1.5, mean(x).val_.val());
+  EXPECT_DOUBLE_EQ(1.5, mean(x).val_.val());
 
   std::vector<fvar<var> > y;
   fvar<var> a = 1.0;
@@ -234,14 +234,14 @@ TEST(AgradMixMatrixMean, fv_StdVector_1stDeriv) {
   y.push_back(b);
   fvar<var> f = mean(y);
 
-  EXPECT_FLOAT_EQ(1.5, f.val_.val());
-  EXPECT_FLOAT_EQ(1.0, f.d_.val());
+  EXPECT_DOUBLE_EQ(1.5, f.val_.val());
+  EXPECT_DOUBLE_EQ(1.0, f.d_.val());
 
   AVEC q = createAVEC(a.val(), b.val());
   VEC h;
   f.val_.grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 2.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 2.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 2.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 2.0, h[1]);
 }
 TEST(AgradMixMatrixMean, fv_StdVector_2ndDeriv) {
   using stan::math::fvar;
@@ -260,8 +260,8 @@ TEST(AgradMixMatrixMean, fv_StdVector_2ndDeriv) {
   AVEC q = createAVEC(a.val(), b.val());
   VEC h;
   f.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
 }
 TEST(AgradMixMatrixMean, ffv_vector_1stDeriv) {
   using stan::math::fvar;
@@ -281,19 +281,19 @@ TEST(AgradMixMatrixMean, ffv_vector_1stDeriv) {
 
   fvar<fvar<var> > output;
   output = mean(d1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val().val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val().val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val().val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val().val());
 
   output = mean(v1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val().val());
-  EXPECT_FLOAT_EQ(1.0, output.d_.val().val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val().val());
+  EXPECT_DOUBLE_EQ(1.0, output.d_.val().val());
 
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.val_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[1]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[2]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_vector_2ndDeriv_1) {
   using stan::math::fvar;
@@ -317,9 +317,9 @@ TEST(AgradMixMatrixMean, ffv_vector_2ndDeriv_1) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.val().d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_vector_2ndDeriv_2) {
   using stan::math::fvar;
@@ -343,9 +343,9 @@ TEST(AgradMixMatrixMean, ffv_vector_2ndDeriv_2) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.d_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_vector_3rdDeriv) {
   using stan::math::fvar;
@@ -372,9 +372,9 @@ TEST(AgradMixMatrixMean, ffv_vector_3rdDeriv) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.d_.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_vector_exception) {
   using stan::math::mean;
@@ -404,19 +404,19 @@ TEST(AgradMixMatrixMean, ffv_rowvector_1stDeriv) {
 
   fvar<fvar<var> > output;
   output = mean(d1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val().val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val().val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val().val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val().val());
 
   output = mean(v1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val().val());
-  EXPECT_FLOAT_EQ(1.0, output.d_.val().val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val().val());
+  EXPECT_DOUBLE_EQ(1.0, output.d_.val().val());
 
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.val_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[1]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[2]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_rowvector_2ndDeriv_1) {
   using stan::math::fvar;
@@ -440,9 +440,9 @@ TEST(AgradMixMatrixMean, ffv_rowvector_2ndDeriv_1) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.val().d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_rowvector_2ndDeriv_2) {
   using stan::math::fvar;
@@ -466,9 +466,9 @@ TEST(AgradMixMatrixMean, ffv_rowvector_2ndDeriv_2) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.d_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_rowvector_3rdDeriv) {
   using stan::math::fvar;
@@ -495,9 +495,9 @@ TEST(AgradMixMatrixMean, ffv_rowvector_3rdDeriv) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output.d_.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_rowvector_exception) {
   using stan::math::mean;
@@ -527,20 +527,20 @@ TEST(AgradMixMatrixMean, ffv_matrix_1stDeriv) {
 
   fvar<fvar<var> > output;
   output = mean(d1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val().val());
-  EXPECT_FLOAT_EQ(0.0, output.d_.val().val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val().val());
+  EXPECT_DOUBLE_EQ(0.0, output.d_.val().val());
 
   output = mean(v1);
-  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val_.val().val());
-  EXPECT_FLOAT_EQ(1.0, output.d_.val().val());
+  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val_.val().val());
+  EXPECT_DOUBLE_EQ(1.0, output.d_.val().val());
 
   AVEC q = createAVEC(v1(0, 0).val().val(), v1(0, 1).val().val(),
                       v1(0, 2).val().val());
   VEC h;
   output.val_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[1]);
-  EXPECT_FLOAT_EQ(1.0 / 3.0, h[2]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 3.0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_matrix_2ndDeriv_1) {
   using stan::math::fvar;
@@ -565,9 +565,9 @@ TEST(AgradMixMatrixMean, ffv_matrix_2ndDeriv_1) {
                       v1(0, 2).val().val());
   VEC h;
   output.val().d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_matrix_2ndDeriv_2) {
   using stan::math::fvar;
@@ -592,9 +592,9 @@ TEST(AgradMixMatrixMean, ffv_matrix_2ndDeriv_2) {
                       v1(0, 2).val().val());
   VEC h;
   output.d_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_matrix_3rdDeriv) {
   using stan::math::fvar;
@@ -622,9 +622,9 @@ TEST(AgradMixMatrixMean, ffv_matrix_3rdDeriv) {
                       v1(0, 2).val().val());
   VEC h;
   output.d_.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
-  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixMean, ffv_matrix_exception) {
   using stan::math::matrix_d;
@@ -644,9 +644,9 @@ TEST(AgradMixMatrixMean, ffv_StdVector_1stDeriv) {
   std::vector<fvar<fvar<var> > > x(0);
   EXPECT_THROW(mean(x), std::invalid_argument);
   x.push_back(1.0);
-  EXPECT_FLOAT_EQ(1.0, mean(x).val_.val().val());
+  EXPECT_DOUBLE_EQ(1.0, mean(x).val_.val().val());
   x.push_back(2.0);
-  EXPECT_FLOAT_EQ(1.5, mean(x).val_.val().val());
+  EXPECT_DOUBLE_EQ(1.5, mean(x).val_.val().val());
 
   std::vector<fvar<fvar<var> > > y;
   fvar<fvar<var> > a = 1.0;
@@ -657,14 +657,14 @@ TEST(AgradMixMatrixMean, ffv_StdVector_1stDeriv) {
   y.push_back(b);
   fvar<fvar<var> > f = mean(y);
 
-  EXPECT_FLOAT_EQ(1.5, f.val_.val().val());
-  EXPECT_FLOAT_EQ(1.0, f.d_.val().val());
+  EXPECT_DOUBLE_EQ(1.5, f.val_.val().val());
+  EXPECT_DOUBLE_EQ(1.0, f.d_.val().val());
 
   AVEC q = createAVEC(a.val().val(), b.val().val());
   VEC h;
   f.val_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(1.0 / 2.0, h[0]);
-  EXPECT_FLOAT_EQ(1.0 / 2.0, h[1]);
+  EXPECT_DOUBLE_EQ(1.0 / 2.0, h[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 2.0, h[1]);
 }
 TEST(AgradMixMatrixMean, ffv_StdVector_2ndDeriv_1) {
   using stan::math::fvar;
@@ -683,8 +683,8 @@ TEST(AgradMixMatrixMean, ffv_StdVector_2ndDeriv_1) {
   AVEC q = createAVEC(a.val().val(), b.val().val());
   VEC h;
   f.val().d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
 }
 
 TEST(AgradMixMatrixMean, ffv_StdVector_2ndDeriv_2) {
@@ -704,8 +704,8 @@ TEST(AgradMixMatrixMean, ffv_StdVector_2ndDeriv_2) {
   AVEC q = createAVEC(a.val().val(), b.val().val());
   VEC h;
   f.d_.val().grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
 }
 TEST(AgradMixMatrixMean, ffv_StdVector_3rdDeriv) {
   using stan::math::fvar;
@@ -727,6 +727,6 @@ TEST(AgradMixMatrixMean, ffv_StdVector_3rdDeriv) {
   AVEC q = createAVEC(a.val().val(), b.val().val());
   VEC h;
   f.d_.d_.grad(q, h);
-  EXPECT_FLOAT_EQ(0, h[0]);
-  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_DOUBLE_EQ(0, h[0]);
+  EXPECT_DOUBLE_EQ(0, h[1]);
 }

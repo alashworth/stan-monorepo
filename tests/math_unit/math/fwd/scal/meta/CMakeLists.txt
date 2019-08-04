@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_fwd_scal_unit_tests PRIVATE
         contains_fvar_test.cpp
         include_summand_test.cpp
         ad_promotable_test.cpp

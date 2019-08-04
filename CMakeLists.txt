@@ -1,10 +1,12 @@
 # Preamble
-cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.15.1 FATAL_ERROR)
 
-# Do not move this: it has to go before the project declaration.
+# CMake policies
+cmake_policy(SET CMP0056 NEW)  # check_cxx_compiler_flag respects linker flags
+cmake_policy(SET CMP0090 NEW)  # export(PKG) does not populate system package registry
+
 find_program(CCACHE_PROGRAM ccache)
 if (CCACHE_PROGRAM)
-	# Note: This does nothing unless you are using Make or Ninja.
 	set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
 endif ()
 
@@ -14,9 +16,13 @@ project(Stan
 		HOMEPAGE_URL "https://github.com/stan-dev/stan")
 enable_testing()
 
-# Project setup
+if (NOT CMAKE_GENERATOR MATCHES "Makefiles|Ninja" OR NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+	message(WARNING "Your build system is unsupported. Consider installing GCC and Make.")
+endif ()
+
+# Project setup & global configuration
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
@@ -30,13 +36,14 @@ if(NOT MINGW)	# MINGW: Always PIC, doesn't expose option to enable it.
 	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 endif()
 
-# Global compiler specific flags and options
+# More global compiler specific flags and options
 include(CheckCXXCompilerFlag)
 
 # Unfortunately RTools35 doesn't support this flag, which increases
 # the maximum number of obj sections on Windows. Clang does the right thing
 # and transparently enables this if it runs out of space. If VS is ever supported
-# the same thing is achieved by passing /BIGOBJ
+# the same thing is achieved by passing /BIGOBJ.
+# This flag will allow you to compile with debug symbols "most" of the time.
 if (MINGW AND CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	check_cxx_compiler_flag("-Wa,-mbig-obj" STAN_FLAGS_BIGOBJ)
 	if (STAN_FLAGS_BIGOBJ)
@@ -44,14 +51,11 @@ if (MINGW AND CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	endif ()
 endif ()
 
-# FIXME: Both Clang and GCC silently swallow this flag and do nothing in MYS2,
-# even if the LLD system package is installed and GCC 9 is present, which is when
-# LLD gained decent Windows COFF file support. Need to figure out why.
-# LLD links much faster than LD, so use it if found.
+# Prefer LLD since it's the fastest linker.
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
 	check_cxx_compiler_flag("-fuse-ld=lld" STAN_FLAGS_LLD)
 	if (STAN_FLAGS_LLD)
-		add_compile_options("-fuse-ld=lld")
+		list(APPEND CMAKE_EXE_LINKER_FLAGS "-fuse-ld=lld")
 	endif ()
 endif()
 
@@ -65,9 +69,9 @@ if(EXISTS ${PROJECT_BINARY_DIR}/conan_paths.cmake)
 endif()
 
 # Set a default build type if none was specified
-# Release is the safest since certain Stan libraries won't link successfully
-# if debug symbols are enabled due to number of templates.
-set(default_build_type "Release")
+# MinSizeRel is the safest since certain Stan libraries won't link successfully
+# if debug symbols are enabled due to the number of templates.
+set(default_build_type "MinSizeRel")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
 	set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
@@ -141,6 +145,7 @@ set_package_properties(Threads PROPERTIES
 feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
 		FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
+# are these still necessary?
 target_compile_definitions(Boost::headers INTERFACE
 		BOOST_RESULT_OF_USE_TR1
 		BOOST_NO_DECLTYPE
@@ -161,6 +166,39 @@ if(STAN_BUILD_TESTS)
 	if (NOT TARGET GTest::GTest)
 		message(FATAL_ERROR "GTest is a required dependency if you want to run tests.")
 	endif ()
+
+	# Diagnostic compile warnings and static analysis
+	#	find_program(CLANG_TIDY_PROGRAM NAMES "clang-tidy")
+	#	if(CLANG_TIDY_PROGRAM)
+	#		set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_PROGRAM};-checks=*")
+	#	endif()
+	#
+	#	find_program(CPPLINT_PROGRAM NAMES "cpplint")
+	#	if(CPPLINT_PROGRAM)
+	#		set(CMAKE_CXX_CPPLINT "${CPPLINT_PROGRAM}")
+	#	endif()
+	#
+	#	find_program(IWYU_PROGRAM NAMES include-what-you-use iwyu
+	#			HINTS D:/apps/include-what-you-use/build/bin)
+	#	if(IWYU_PROGRAM)
+	#		set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE "${IWYU_PROGRAM};-Xiwyu;any;-Xiwyu;iwyu;-Xiwyu;args")
+	#	endif()
+	#
+	#	find_program(CPPCHECK_PROGRAM NAMES "cppcheck")
+	#	if(CPPCHECK_PROGRAM)
+	#		set(CMAKE_CXX_CPPCHECK "${CPPCHECK_PROGRAM};--std=c++11")
+	#	endif()
+
+	# FIXME: Figure out why the check doesn't return false correctly.
+	#	check_cxx_compiler_flag("-Wl,--no-as-needed" STAN_FLAGS_LWYU)
+	#	if (STAN_FLAGS_LWYU)
+	#		set(CMAKE_LINK_WHAT_YOU_USE TRUE)
+	#	endif()
+
+	# FIXME: There ought to be lots more use of boost::numeric_cast in the code.
+	#	add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wcast-qual)
+	#	add_compile_options(-Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes)
+
 	include(GoogleTest)
 	add_subdirectory(tests/math_unit)
 	#	add_subdirectory(tests/math_prob)

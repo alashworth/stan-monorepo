@@ -8,19 +8,19 @@ TEST(MathMatrix, failing_pre_20_1) {
   using stan::math::get_base1;
   Matrix<double, Dynamic, 1> y(3);
   y << 1, 2, 3;
-  EXPECT_FLOAT_EQ(1, get_base1(y, 1, "y", 1));
+  EXPECT_DOUBLE_EQ(1, get_base1(y, 1, "y", 1));
 }
 TEST(MathMatrix, get_base1_vec1) {
   using stan::math::get_base1;
   std::vector<double> x(2);
   x[0] = 10.0;
   x[1] = 20.0;
-  EXPECT_FLOAT_EQ(10.0, get_base1(x, 1, "x[1]", 0));
-  EXPECT_FLOAT_EQ(20.0, get_base1(x, 2, "x[1]", 0));
+  EXPECT_DOUBLE_EQ(10.0, get_base1(x, 1, "x[1]", 0));
+  EXPECT_DOUBLE_EQ(20.0, get_base1(x, 2, "x[1]", 0));
 
   // no assign in get_base1
   // get_base1(x, 2, "x[2]", 0) = 5.0;
-  // EXPECT_FLOAT_EQ(5.0, get_base1(x, 2, "x[1]", 0));
+  // EXPECT_DOUBLE_EQ(5.0, get_base1(x, 2, "x[1]", 0));
 
   EXPECT_THROW(get_base1(x, 0, "x[0]", 0), std::out_of_range);
   EXPECT_THROW(get_base1(x, 3, "x[3]", 0), std::out_of_range);
@@ -41,13 +41,13 @@ TEST(MathMatrix, get_base1_vec2) {
     for (size_t n = 1; n <= N; ++n) {
       double expected = x[m - 1][n - 1];
       double found = get_base1(get_base1(x, m, "x[m]", 1), n, "x[m][n]", 2);
-      EXPECT_FLOAT_EQ(expected, found);
+      EXPECT_DOUBLE_EQ(expected, found);
     }
   }
 
   // no LHS usage in get_base1
   // get_base1(get_base1(x, 1, "", -1), 2, "", -1) = 112.5;
-  // EXPECT_FLOAT_EQ(112.5, x[0][1]);
+  // EXPECT_DOUBLE_EQ(112.5, x[0][1]);
 
   EXPECT_THROW(get_base1(x, 0, "", -1), std::out_of_range);
   EXPECT_THROW(get_base1(x, M + 1, "", -1), std::out_of_range);
@@ -65,11 +65,11 @@ TEST(MathMatrix, get_base1_matrix) {
       x(i, j) = i * j;
   for (size_t i = 0; i < 4; ++i) {
     for (size_t j = 0; j < 3; ++j) {
-      EXPECT_FLOAT_EQ(x(i, j), get_base1(x, i + 1, j + 1, "x", 1));
-      EXPECT_FLOAT_EQ(x(i, j), get_base1(x, i + 1, "x", 1)(0, j));
+      EXPECT_DOUBLE_EQ(x(i, j), get_base1(x, i + 1, j + 1, "x", 1));
+      EXPECT_DOUBLE_EQ(x(i, j), get_base1(x, i + 1, "x", 1)(0, j));
       Matrix<double, 1, Dynamic> xi = get_base1<double>(x, i + 1, "x", 1);
-      EXPECT_FLOAT_EQ(x(i, j), xi[j]);
-      EXPECT_FLOAT_EQ(x(i, j), get_base1(xi, j + 1, "xi", 2));
+      EXPECT_DOUBLE_EQ(x(i, j), xi[j]);
+      EXPECT_DOUBLE_EQ(x(i, j), get_base1(xi, j + 1, "xi", 2));
     }
   }
   EXPECT_THROW(get_base1(x, 10, "x", 1), std::out_of_range);
@@ -87,7 +87,7 @@ TEST(MathMatrix, get_base1_vector) {
   x << 1, 2, 3;
 
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(x(i), get_base1(x, i + 1, "x", 1));
+    EXPECT_DOUBLE_EQ(x(i), get_base1(x, i + 1, "x", 1));
   EXPECT_THROW(get_base1(x, 0, "x", 1), std::out_of_range);
   EXPECT_THROW(get_base1(x, 100, "x", 1), std::out_of_range);
 }
@@ -99,7 +99,7 @@ TEST(MathMatrix, get_base1_row_vector) {
   x << 1, 2, 3;
 
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(x(i), get_base1(x, i + 1, "x", 1));
+    EXPECT_DOUBLE_EQ(x(i), get_base1(x, i + 1, "x", 1));
   EXPECT_THROW(get_base1(x, 0, "x", 1), std::out_of_range);
   EXPECT_THROW(get_base1(x, 100, "x", 1), std::out_of_range);
 }
@@ -140,7 +140,7 @@ TEST(MathMatrix, get_base1_8) {
             for (size_t i6 = 0; i6 < x8[0][0][0][0][0].size(); ++i6)
               for (size_t i7 = 0; i7 < x8[0][0][0][0][0][0].size(); ++i7)
                 for (size_t i8 = 0; i8 < x8[0][0][0][0][0][0][0].size(); ++i8)
-                  EXPECT_FLOAT_EQ(
+                  EXPECT_DOUBLE_EQ(
                       x8[i1][i2][i3][i4][i5][i6][i7][i8],
                       get_base1(x8, i1 + 1, i2 + 1, i3 + 1, i4 + 1, i5 + 1,
                                 i6 + 1, i7 + 1, i8 + 1, "x8", 1));

@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 
 TEST(ProbInternalMath, inc_beta_fd) {
   using stan::math::fvar;
@@ -11,7 +11,7 @@ TEST(ProbInternalMath, inc_beta_fd) {
   b.d_ = 1.0;
   g.d_ = 1.0;
 
-  EXPECT_FLOAT_EQ(0.4, stan::math::inc_beta(a, b, g).val_);
+  EXPECT_DOUBLE_EQ(0.4, stan::math::inc_beta(a, b, g).val_);
   EXPECT_NEAR(-0.36651629442883944183907601651838247842001142107486495485
                   + 0.306495375042422864944011633197968575202046200428315551199
                   + std::pow(1 - 0.4, 1.0 - 1.0) * std::pow(0.4, 1.0 - 1.0)
@@ -28,7 +28,7 @@ TEST(ProbInternalMath, inc_beta_fv) {
   b.d_ = 1.0;
   g.d_ = 1.0;
 
-  EXPECT_FLOAT_EQ(0.4, stan::math::inc_beta(a, b, g).val_.val());
+  EXPECT_DOUBLE_EQ(0.4, stan::math::inc_beta(a, b, g).val_.val());
   EXPECT_NEAR(-0.36651629442883944183907601651838247842001142107486495485
                   + 0.306495375042422864944011633197968575202046200428315551199
                   + std::pow(1 - 0.4, 1.0 - 1.0) * std::pow(0.4, 1.0 - 1.0)
@@ -50,7 +50,7 @@ TEST(ProbInternalMath, inc_beta_fv_2ndderiv1) {
   AVEC y1 = createAVEC(g_fv.val_);
   VEC grad1;
   z1.d_.grad(y1, grad1);
-  EXPECT_FLOAT_EQ(0, grad1[0]);
+  EXPECT_DOUBLE_EQ(0, grad1[0]);
 }
 TEST(ProbInternalMath, inc_beta_fv_2ndderiv2) {
   using stan::math::fvar;
@@ -67,7 +67,7 @@ TEST(ProbInternalMath, inc_beta_fv_2ndderiv2) {
   AVEC y1 = createAVEC(a_fv.val_);
   VEC grad1;
   z1.d_.grad(y1, grad1);
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ(
       0.335835482127389894002849583279024143359450978384231290056028, grad1[0]);
 }
 TEST(ProbInternalMath, inc_beta_fv_2ndderiv3) {
@@ -98,7 +98,7 @@ TEST(ProbInternalMath, inc_beta_ffd) {
   b.d_ = 1.0;
   g.d_ = 1.0;
 
-  EXPECT_FLOAT_EQ(0.4, stan::math::inc_beta(a, b, g).val_.val_);
+  EXPECT_DOUBLE_EQ(0.4, stan::math::inc_beta(a, b, g).val_.val_);
   EXPECT_NEAR(-0.36651629442883944183907601651838247842001142107486495485
                   + 0.306495375042422864944011633197968575202046200428315551199
                   + std::pow(1 - 0.4, 1.0 - 1.0) * std::pow(0.4, 1.0 - 1.0)
@@ -116,7 +116,7 @@ TEST(ProbInternalMath, inc_beta_fvv) {
   b.d_ = 1.0;
   g.d_ = 1.0;
 
-  EXPECT_FLOAT_EQ(0.4, stan::math::inc_beta(a, b, g).val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.4, stan::math::inc_beta(a, b, g).val_.val_.val());
   EXPECT_NEAR(-0.36651629442883944183907601651838247842001142107486495485
                   + 0.306495375042422864944011633197968575202046200428315551199
                   + std::pow(1 - 0.4, 1.0 - 1.0) * std::pow(0.4, 1.0 - 1.0)
@@ -139,7 +139,7 @@ TEST(ProbInternalMath, inc_beta_ffv_2ndderiv1) {
   AVEC y1 = createAVEC(g_ffv.val_.val_);
   VEC grad1;
   z1.d_.val_.grad(y1, grad1);
-  EXPECT_FLOAT_EQ(0, grad1[0]);
+  EXPECT_DOUBLE_EQ(0, grad1[0]);
 }
 TEST(ProbInternalMath, inc_beta_ffv_2ndderiv2) {
   using stan::math::fvar;
@@ -156,7 +156,7 @@ TEST(ProbInternalMath, inc_beta_ffv_2ndderiv2) {
   AVEC y1 = createAVEC(a_ffv.val_.val_);
   VEC grad1;
   z1.d_.val_.grad(y1, grad1);
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ(
       0.335835482127389894002849583279024143359450978384231290056028, grad1[0]);
 }
 TEST(ProbInternalMath, inc_beta_ffv_2ndderiv3) {
@@ -230,5 +230,5 @@ TEST(ProbInternalMath, inc_beta_ffv_3rddderiv3) {
   AVEC y1 = createAVEC(g_ffv.val_.val_);
   VEC grad1;
   z1.d_.d_.grad(y1, grad1);
-  EXPECT_FLOAT_EQ(0, grad1[0]);
+  EXPECT_DOUBLE_EQ(0, grad1[0]);
 }

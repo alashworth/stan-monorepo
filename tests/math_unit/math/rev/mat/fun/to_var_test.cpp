@@ -7,10 +7,10 @@ TEST(AgradRevMatrix, to_var_scalar) {
   double d = 5.0;
   AVAR v = 5.0;
   stan::math::var var_x = stan::math::to_var(d);
-  EXPECT_FLOAT_EQ(5.0, var_x.val());
+  EXPECT_DOUBLE_EQ(5.0, var_x.val());
 
   var_x = stan::math::to_var(v);
-  EXPECT_FLOAT_EQ(5.0, var_x.val());
+  EXPECT_DOUBLE_EQ(5.0, var_x.val());
 }
 TEST(AgradRevMatrix, to_var_matrix) {
   using stan::math::matrix_d;
@@ -23,7 +23,7 @@ TEST(AgradRevMatrix, to_var_matrix) {
   EXPECT_EQ(3, m_v.cols());
   for (int ii = 0; ii < 2; ii++)
     for (int jj = 0; jj < 3; jj++)
-      EXPECT_FLOAT_EQ(ii * 3 + jj, m_v(ii, jj).val());
+      EXPECT_DOUBLE_EQ(ii * 3 + jj, m_v(ii, jj).val());
 }
 TEST(AgradRevMatrix, to_var_vector) {
   using stan::math::vector_d;
@@ -36,18 +36,18 @@ TEST(AgradRevMatrix, to_var_vector) {
   v << 1, 2, 3, 4, 5;
 
   vector_v out = stan::math::to_var(d);
-  EXPECT_FLOAT_EQ(1, out(0).val());
-  EXPECT_FLOAT_EQ(2, out(1).val());
-  EXPECT_FLOAT_EQ(3, out(2).val());
-  EXPECT_FLOAT_EQ(4, out(3).val());
-  EXPECT_FLOAT_EQ(5, out(4).val());
+  EXPECT_DOUBLE_EQ(1, out(0).val());
+  EXPECT_DOUBLE_EQ(2, out(1).val());
+  EXPECT_DOUBLE_EQ(3, out(2).val());
+  EXPECT_DOUBLE_EQ(4, out(3).val());
+  EXPECT_DOUBLE_EQ(5, out(4).val());
 
   out = stan::math::to_var(v);
-  EXPECT_FLOAT_EQ(1, out(0).val());
-  EXPECT_FLOAT_EQ(2, out(1).val());
-  EXPECT_FLOAT_EQ(3, out(2).val());
-  EXPECT_FLOAT_EQ(4, out(3).val());
-  EXPECT_FLOAT_EQ(5, out(4).val());
+  EXPECT_DOUBLE_EQ(1, out(0).val());
+  EXPECT_DOUBLE_EQ(2, out(1).val());
+  EXPECT_DOUBLE_EQ(3, out(2).val());
+  EXPECT_DOUBLE_EQ(4, out(3).val());
+  EXPECT_DOUBLE_EQ(5, out(4).val());
 }
 TEST(AgradRevMatrix, to_var_rowvector) {
   using stan::math::row_vector_d;
@@ -60,19 +60,19 @@ TEST(AgradRevMatrix, to_var_rowvector) {
   v << 1, 2, 3, 4, 5;
 
   row_vector_v output = stan::math::to_var(d);
-  EXPECT_FLOAT_EQ(1, output(0).val());
-  EXPECT_FLOAT_EQ(2, output(1).val());
-  EXPECT_FLOAT_EQ(3, output(2).val());
-  EXPECT_FLOAT_EQ(4, output(3).val());
-  EXPECT_FLOAT_EQ(5, output(4).val());
+  EXPECT_DOUBLE_EQ(1, output(0).val());
+  EXPECT_DOUBLE_EQ(2, output(1).val());
+  EXPECT_DOUBLE_EQ(3, output(2).val());
+  EXPECT_DOUBLE_EQ(4, output(3).val());
+  EXPECT_DOUBLE_EQ(5, output(4).val());
 
   output.resize(0);
   output = stan::math::to_var(v);
-  EXPECT_FLOAT_EQ(1, output(0).val());
-  EXPECT_FLOAT_EQ(2, output(1).val());
-  EXPECT_FLOAT_EQ(3, output(2).val());
-  EXPECT_FLOAT_EQ(4, output(3).val());
-  EXPECT_FLOAT_EQ(5, output(4).val());
+  EXPECT_DOUBLE_EQ(1, output(0).val());
+  EXPECT_DOUBLE_EQ(2, output(1).val());
+  EXPECT_DOUBLE_EQ(3, output(2).val());
+  EXPECT_DOUBLE_EQ(4, output(3).val());
+  EXPECT_DOUBLE_EQ(5, output(4).val());
 }
 
 TEST(AgradRevMatrix, check_varis_on_stack_54) {

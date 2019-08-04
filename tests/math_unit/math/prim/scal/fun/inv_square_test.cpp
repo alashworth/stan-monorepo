@@ -5,13 +5,13 @@
 
 TEST(MathFunctions, inv_square) {
   double y = 2.0;
-  EXPECT_FLOAT_EQ(1 / (y * y), stan::math::inv_square(y));
+  EXPECT_DOUBLE_EQ(1 / (y * y), stan::math::inv_square(y));
 
   y = 0.0;
-  EXPECT_FLOAT_EQ(stan::math::positive_infinity(), stan::math::inv_square(y));
+  EXPECT_DOUBLE_EQ(stan::math::positive_infinity(), stan::math::inv_square(y));
 
   y = -32.7;
-  EXPECT_FLOAT_EQ(1 / (y * y), stan::math::inv_square(y));
+  EXPECT_DOUBLE_EQ(1 / (y * y), stan::math::inv_square(y));
 }
 
 TEST(MathFunctions, inv_square_nan) {

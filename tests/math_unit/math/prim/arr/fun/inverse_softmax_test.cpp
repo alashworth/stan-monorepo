@@ -19,8 +19,8 @@ TEST(MathFunctions, inverse_softmax) {
   simplex[1] = 0.8;
 
   stan::math::inverse_softmax(simplex, y);
-  EXPECT_FLOAT_EQ(log(0.2), y[0]);
-  EXPECT_FLOAT_EQ(log(0.8), y[1]);
+  EXPECT_DOUBLE_EQ(log(0.2), y[0]);
+  EXPECT_DOUBLE_EQ(log(0.8), y[1]);
 }
 
 TEST(MathFunctions, inverse_softmax_nan) {

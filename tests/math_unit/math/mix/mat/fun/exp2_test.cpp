@@ -7,6 +7,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized exp2 (defined in the
  * testing framework).
@@ -99,8 +100,9 @@ struct exp2_test {
     return test::math::vector_builder<int>().build();
   }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, exp2_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, exp2_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, exp2_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, exp2_test);
+INSTANTIATE_TYPED_TEST_CASE_P(exp2, prim_scalar_unary_test, exp2_test);
+INSTANTIATE_TYPED_TEST_CASE_P(exp2, rev_scalar_unary_test, exp2_test);
+INSTANTIATE_TYPED_TEST_CASE_P(exp2, fwd_scalar_unary_test, exp2_test);
+INSTANTIATE_TYPED_TEST_CASE_P(exp2, mix_scalar_unary_test, exp2_test);

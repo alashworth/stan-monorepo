@@ -39,9 +39,9 @@ TEST(ProbDistributionsMultiGP, fvar_var) {
     lp_ref += stan::math::multi_normal_log(cy, mu, cSigma);
   }
 
-  EXPECT_FLOAT_EQ(lp_ref.val_.val(),
-                  stan::math::multi_gp_log(y, Sigma, w).val_.val());
-  EXPECT_FLOAT_EQ(-74.572952, stan::math::multi_gp_log(y, Sigma, w).d_.val());
+  EXPECT_DOUBLE_EQ(lp_ref.val_.val(),
+                   stan::math::multi_gp_log(y, Sigma, w).val_.val());
+  EXPECT_DOUBLE_EQ(-74.572952, stan::math::multi_gp_log(y, Sigma, w).d_.val());
 }
 
 TEST(ProbDistributionsMultiGP, fvar_fvar_var) {
@@ -79,8 +79,8 @@ TEST(ProbDistributionsMultiGP, fvar_fvar_var) {
     lp_ref += stan::math::multi_normal_log(cy, mu, cSigma);
   }
 
-  EXPECT_FLOAT_EQ(lp_ref.val_.val_.val(),
-                  stan::math::multi_gp_log(y, Sigma, w).val_.val_.val());
-  EXPECT_FLOAT_EQ(-74.572952,
-                  stan::math::multi_gp_log(y, Sigma, w).d_.val_.val());
+  EXPECT_DOUBLE_EQ(lp_ref.val_.val_.val(),
+                   stan::math::multi_gp_log(y, Sigma, w).val_.val_.val());
+  EXPECT_DOUBLE_EQ(-74.572952,
+                   stan::math::multi_gp_log(y, Sigma, w).d_.val_.val());
 }

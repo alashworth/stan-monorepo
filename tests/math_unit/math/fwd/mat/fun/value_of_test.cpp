@@ -35,13 +35,13 @@ TEST(AgradFwdMatrix, value_of) {
   Eigen::Matrix<fvar<double>, -1, -1> d_ffd_b = value_of(ffd_b);
 
   for (int i = 0; i < 5; ++i) {
-    EXPECT_FLOAT_EQ(b(i), d_fd_b(i));
-    EXPECT_FLOAT_EQ(b(i), d_ffd_b(i).val_);
+    EXPECT_DOUBLE_EQ(b(i), d_fd_b(i));
+    EXPECT_DOUBLE_EQ(b(i), d_ffd_b(i).val_);
   }
 
   for (int i = 0; i < 2; ++i)
     for (int j = 0; j < 5; ++j) {
-      EXPECT_FLOAT_EQ(a(i, j), d_fd_a(i, j));
-      EXPECT_FLOAT_EQ(a(i, j), d_ffd_a(i, j).val_);
+      EXPECT_DOUBLE_EQ(a(i, j), d_fd_a(i, j));
+      EXPECT_DOUBLE_EQ(a(i, j), d_ffd_a(i, j).val_);
     }
 }

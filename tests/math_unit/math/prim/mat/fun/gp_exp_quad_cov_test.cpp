@@ -56,7 +56,7 @@ TEST(MathPrimMat, ard_eigen_mat_double_gp_exp_quad_cov1) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma * exp(-.5 * stan::math::squared_distance(x[i], x[j])),
           cov(i, j))
           << "index: (" << i << ", " << j << ")";
@@ -79,8 +79,8 @@ TEST(MathPrimMat, vec_double_gp_exp_quad_cov1) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(sigma * sigma * exp(pow(x[i] - x[j], 2) / (-2.0 * l * l)),
-                      cov(i, j))
+      EXPECT_DOUBLE_EQ(
+          sigma * sigma * exp(pow(x[i] - x[j], 2) / (-2.0 * l * l)), cov(i, j))
           << "index: (" << i << ", " << j << ")";
 }
 
@@ -100,7 +100,7 @@ TEST(MathPrimMat, vec_eigen_gp_exp_quad_cov1) {
   EXPECT_NO_THROW(stan::math::gp_exp_quad_cov(x, sigma, l));
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma * exp(squared_distance(x[i], x[j]) / (-2.0 * l * l)),
           cov(i, j))
           << "index: (" << i << ", " << j << ")";
@@ -122,7 +122,7 @@ TEST(MathPrimMat, rvec_eigen_gp_exp_quad_cov1) {
   EXPECT_NO_THROW(stan::math::gp_exp_quad_cov(x, sigma, l));
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma * exp(squared_distance(x[i], x[j]) / (-2.0 * l * l)),
           cov(i, j))
           << "index: (" << i << ", " << j << ")";
@@ -149,7 +149,7 @@ TEST(MathPrimMat, vec_double_gp_exp_quad_cov2) {
   EXPECT_EQ(4, cov.cols());
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 4; j++)
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma * exp(pow(x1[i] - x2[j], 2) / (-2.0 * l * l)),
           cov(i, j))
           << "index: (" << i << ", " << j << ")";
@@ -179,7 +179,7 @@ TEST(MathPrimMat, vec_eigen_vec_gp_exp_quad_cov2) {
   EXPECT_EQ(4, cov.cols());
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 4; j++)
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma * exp(squared_distance(x1[i], x2[j]) / (-2.0 * l * l)),
           cov(i, j))
           << "index: (" << i << ", " << j << ")";
@@ -190,11 +190,11 @@ TEST(MathPrimMat, vec_eigen_vec_gp_exp_quad_cov2) {
   EXPECT_EQ(3, cov2.cols());
   for (int i = 0; i < 4; i++)
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma * exp(squared_distance(x2[i], x1[j]) / (-2.0 * l * l)),
           cov2(i, j))
           << "index: (" << i << ", " << j << ")";
-      EXPECT_FLOAT_EQ(cov2(i, j), cov(j, i));
+      EXPECT_DOUBLE_EQ(cov2(i, j), cov(j, i));
     }
 }
 
@@ -629,7 +629,7 @@ TEST(MathPrimMat, vec_length_scale_eigen_gp_exp_quad_cov1) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * exp(-.5 * stan::math::squared_distance(x_new[i], x_new[j])),
           cov(i, j))
@@ -678,7 +678,7 @@ TEST(MathPrimMat, vec_length_scale_vec_eigen_vec_gp_exp_quad_cov2) {
   EXPECT_EQ(3, cov.cols());
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * exp(-.5 * stan::math::squared_distance(x1_new[i], x2_new[j])),
           cov(i, j))
@@ -691,7 +691,7 @@ TEST(MathPrimMat, vec_length_scale_vec_eigen_vec_gp_exp_quad_cov2) {
   EXPECT_EQ(3, cov2.cols());
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_FLOAT_EQ(
+      EXPECT_DOUBLE_EQ(
           sigma * sigma
               * exp(-.5 * stan::math::squared_distance(x2_new[i], x1_new[j])),
           cov2(i, j))
@@ -881,12 +881,12 @@ TEST(MathPrimMat, numerical_accuracy_ard) {
   cov = stan::math::gp_exp_quad_cov(x, sigma, l);
   cov2 = stan::math::gp_exp_quad_cov(x, x, sigma, l);
 
-  EXPECT_FLOAT_EQ(1.0, cov(0, 0));
-  EXPECT_FLOAT_EQ(1.0, cov2(0, 0));
-  EXPECT_FLOAT_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov(1, 0));
-  EXPECT_FLOAT_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov2(1, 0));
-  EXPECT_FLOAT_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov(0, 1));
-  EXPECT_FLOAT_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov2(0, 1));
-  EXPECT_FLOAT_EQ(1.0, cov(1, 1));
-  EXPECT_FLOAT_EQ(1.0, cov2(1, 1));
+  EXPECT_DOUBLE_EQ(1.0, cov(0, 0));
+  EXPECT_DOUBLE_EQ(1.0, cov2(0, 0));
+  EXPECT_DOUBLE_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov(1, 0));
+  EXPECT_DOUBLE_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov2(1, 0));
+  EXPECT_DOUBLE_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov(0, 1));
+  EXPECT_DOUBLE_EQ(exp(-(1 + 9.0 / 4.0) / 2), cov2(0, 1));
+  EXPECT_DOUBLE_EQ(1.0, cov(1, 1));
+  EXPECT_DOUBLE_EQ(1.0, cov2(1, 1));
 }

@@ -50,7 +50,7 @@ TEST(AgradRevMatrix, var_var_mdivide_left_tri_low) {
   EXPECT_EQ(2, A2_under_B2.rows());
   EXPECT_EQ(2, A2_under_B2.cols());
   for (int i = 0; i < A2_under_B2.size(); ++i)
-    EXPECT_FLOAT_EQ(A2_under_B2(i).val(), A_under_B(i).val());
+    EXPECT_DOUBLE_EQ(A2_under_B2(i).val(), A_under_B(i).val());
 }
 
 TEST(AgradRevMatrix, var_double_mdivide_left_tri_low) {
@@ -97,7 +97,7 @@ TEST(AgradRevMatrix, var_double_mdivide_left_tri_low) {
   EXPECT_EQ(2, A2_under_B2.rows());
   EXPECT_EQ(2, A2_under_B2.cols());
   for (int i = 0; i < A2_under_B2.size(); ++i)
-    EXPECT_FLOAT_EQ(A2_under_B2(i).val(), A_under_B(i).val());
+    EXPECT_DOUBLE_EQ(A2_under_B2(i).val(), A_under_B(i).val());
 }
 
 TEST(AgradRevMatrix, double_var_mdivide_left_tri_low) {
@@ -144,5 +144,5 @@ TEST(AgradRevMatrix, double_var_mdivide_left_tri_low) {
   EXPECT_EQ(2, A2_under_B2.rows());
   EXPECT_EQ(2, A2_under_B2.cols());
   for (int i = 0; i < A2_under_B2.size(); ++i)
-    EXPECT_FLOAT_EQ(A2_under_B2(i).val(), A_under_B(i).val());
+    EXPECT_DOUBLE_EQ(A2_under_B2(i).val(), A_under_B(i).val());
 }

@@ -10,6 +10,25 @@
 
 std::ostringstream msgs;
 
+namespace {
+/*
+ * Return the adjoint if the argument is a var
+ *
+ * @param v variable
+ * @return adjoint of var
+ */
+double get_adjoint_if_var(stan::math::var v) { return v.adj(); }
+
+/*
+ * If the argument is not a var, return a NaN
+ *
+ * @param v variable
+ * @return NaN
+ */
+double get_adjoint_if_var(double v) {
+  return std::numeric_limits<double>::quiet_NaN();
+}
+
 struct f1 {
   template <typename T1, typename T2, typename T3>
   inline typename stan::return_type<T1, T2, T3>::type operator()(
@@ -136,24 +155,6 @@ struct f13 {
 };
 
 /*
- * Return the adjoint if the argument is a var
- *
- * @param v variable
- * @return adjoint of var
- */
-double get_adjoint_if_var(stan::math::var v) { return v.adj(); }
-
-/*
- * If the argument is not a var, return a NaN
- *
- * @param v variable
- * @return NaN
- */
-double get_adjoint_if_var(double v) {
-  return std::numeric_limits<double>::quiet_NaN();
-}
-
-/*
  * test_derivatives is a helper function to make it easy to test the
  * integrate_1d function.
  *
@@ -234,7 +235,7 @@ void test_derivatives(const F &f, double a, double b,
     }
   }
 }
-
+}  // namespace
 TEST(StanMath_integrate_1d, test_integer_arguments_1) {
   stan::math::var v;
   std::vector<stan::math::var> theta = {0.5};
@@ -434,13 +435,13 @@ TEST(StanMath_integrate_1d, TestBeta) {
     return exp(stan::math::beta_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, 0.0, 1.0, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(alpha, beta);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestCauchy) {
@@ -458,13 +459,13 @@ TEST(StanMath_integrate_1d, TestCauchy) {
     return exp(stan::math::cauchy_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestChiSquare) {
@@ -481,12 +482,12 @@ TEST(StanMath_integrate_1d, TestChiSquare) {
     return exp(stan::math::chi_square_lpdf(x, theta[0]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(nu);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
 }
 
 TEST(StanMath_integrate_1d, TestDoubleExponential) {
@@ -506,13 +507,13 @@ TEST(StanMath_integrate_1d, TestDoubleExponential) {
   // requires two subintervals to achieve numerical accuracy
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8)
           + integrate_1d(pdf, b, -a, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestExponential) {
@@ -529,12 +530,12 @@ TEST(StanMath_integrate_1d, TestExponential) {
     return exp(stan::math::exponential_lpdf(x, theta[0]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(beta);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
 }
 
 TEST(StanMath_integrate_1d, TestFrechet) {
@@ -552,13 +553,13 @@ TEST(StanMath_integrate_1d, TestFrechet) {
     return exp(stan::math::frechet_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(alpha, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestGamma) {
@@ -576,13 +577,13 @@ TEST(StanMath_integrate_1d, TestGamma) {
     return exp(stan::math::gamma_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(alpha, beta);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestGumbel) {
@@ -600,13 +601,13 @@ TEST(StanMath_integrate_1d, TestGumbel) {
     return exp(stan::math::gumbel_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, beta);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestInvChiSquared) {
@@ -623,12 +624,12 @@ TEST(StanMath_integrate_1d, TestInvChiSquared) {
     return exp(stan::math::inv_chi_square_lpdf(x, theta[0]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(nu);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
 }
 
 TEST(StanMath_integrate_1d, TestLogistic) {
@@ -646,13 +647,13 @@ TEST(StanMath_integrate_1d, TestLogistic) {
     return exp(stan::math::logistic_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestLogNormal) {
@@ -670,13 +671,13 @@ TEST(StanMath_integrate_1d, TestLogNormal) {
     return exp(stan::math::lognormal_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestNormal) {
@@ -694,13 +695,13 @@ TEST(StanMath_integrate_1d, TestNormal) {
     return exp(stan::math::normal_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestPareto) {
@@ -718,13 +719,13 @@ TEST(StanMath_integrate_1d, TestPareto) {
     return exp(stan::math::pareto_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(m, alpha);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestPareto2) {
@@ -743,14 +744,14 @@ TEST(StanMath_integrate_1d, TestPareto2) {
     return exp(stan::math::pareto_type_2_lpdf(x, theta[0], theta[1], theta[2]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, lambda, alpha);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
-  EXPECT_FLOAT_EQ(1, 1 + g[2]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[2]);
 }
 
 TEST(StanMath_integrate_1d, TestRayleigh) {
@@ -767,12 +768,12 @@ TEST(StanMath_integrate_1d, TestRayleigh) {
     return exp(stan::math::rayleigh_lpdf(x, theta[0]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
 }
 
 TEST(StanMath_integrate_1d, TestScaledInvChiSquare) {
@@ -790,13 +791,13 @@ TEST(StanMath_integrate_1d, TestScaledInvChiSquare) {
     return exp(stan::math::scaled_inv_chi_square_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(nu, s);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestStudentT) {
@@ -815,14 +816,14 @@ TEST(StanMath_integrate_1d, TestStudentT) {
     return exp(stan::math::student_t_lpdf(x, theta[0], theta[1], theta[2]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(nu, mu, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
-  EXPECT_FLOAT_EQ(1, 1 + g[2]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[2]);
 }
 
 TEST(StanMath_integrate_1d, TestUniform) {
@@ -838,13 +839,13 @@ TEST(StanMath_integrate_1d, TestUniform) {
     return exp(stan::math::uniform_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestVonMises) {
@@ -862,13 +863,13 @@ TEST(StanMath_integrate_1d, TestVonMises) {
     return exp(stan::math::von_mises_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(mu, kappa);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }
 
 TEST(StanMath_integrate_1d, TestWeibull) {
@@ -886,11 +887,11 @@ TEST(StanMath_integrate_1d, TestWeibull) {
     return exp(stan::math::weibull_lpdf(x, theta[0], theta[1]));
   };
   var I = integrate_1d(pdf, a, b, theta, {}, {}, msgs, 1e-8);
-  EXPECT_FLOAT_EQ(1, I.val());
+  EXPECT_DOUBLE_EQ(1, I.val());
 
   AVEC x = createAVEC(alpha, sigma);
   VEC g;
   I.grad(x, g);
-  EXPECT_FLOAT_EQ(1, 1 + g[0]);
-  EXPECT_FLOAT_EQ(1, 1 + g[1]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[0]);
+  EXPECT_DOUBLE_EQ(1, 1 + g[1]);
 }

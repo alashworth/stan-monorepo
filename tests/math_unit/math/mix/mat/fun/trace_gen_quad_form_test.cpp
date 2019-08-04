@@ -51,8 +51,8 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_fv_1st_deriv) {
 
   // fvar<var> - fvar<var> - fvar<var>
   res = trace_gen_quad_form(cd, ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val_.val());
-  EXPECT_FLOAT_EQ(49736, res.d_.val());
+  EXPECT_DOUBLE_EQ(26758, res.val_.val());
+  EXPECT_DOUBLE_EQ(49736, res.d_.val());
 
   std::vector<var> z;
   z.push_back(ad(0, 0).val_);
@@ -86,34 +86,34 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_fv_1st_deriv) {
 
   VEC h;
   res.val_.grad(z, h);
-  EXPECT_FLOAT_EQ(10100, h[0]);
-  EXPECT_FLOAT_EQ(10, h[1]);
-  EXPECT_FLOAT_EQ(-330, h[2]);
-  EXPECT_FLOAT_EQ(520, h[3]);
-  EXPECT_FLOAT_EQ(10, h[4]);
-  EXPECT_FLOAT_EQ(1, h[5]);
-  EXPECT_FLOAT_EQ(-3, h[6]);
-  EXPECT_FLOAT_EQ(2, h[7]);
-  EXPECT_FLOAT_EQ(-330, h[8]);
-  EXPECT_FLOAT_EQ(-3, h[9]);
-  EXPECT_FLOAT_EQ(18, h[10]);
-  EXPECT_FLOAT_EQ(-21, h[11]);
-  EXPECT_FLOAT_EQ(520, h[12]);
-  EXPECT_FLOAT_EQ(2, h[13]);
-  EXPECT_FLOAT_EQ(-21, h[14]);
-  EXPECT_FLOAT_EQ(29, h[15]);
-  EXPECT_FLOAT_EQ(432, h[16]);
-  EXPECT_FLOAT_EQ(42, h[17]);
-  EXPECT_FLOAT_EQ(908, h[18]);
-  EXPECT_FLOAT_EQ(106, h[19]);
-  EXPECT_FLOAT_EQ(1068, h[20]);
-  EXPECT_FLOAT_EQ(76, h[21]);
-  EXPECT_FLOAT_EQ(2414, h[22]);
-  EXPECT_FLOAT_EQ(576, h[23]);
-  EXPECT_FLOAT_EQ(26033, h[24]);
-  EXPECT_FLOAT_EQ(3396, h[25]);
-  EXPECT_FLOAT_EQ(3456, h[26]);
-  EXPECT_FLOAT_EQ(725, h[27]);
+  EXPECT_DOUBLE_EQ(10100, h[0]);
+  EXPECT_DOUBLE_EQ(10, h[1]);
+  EXPECT_DOUBLE_EQ(-330, h[2]);
+  EXPECT_DOUBLE_EQ(520, h[3]);
+  EXPECT_DOUBLE_EQ(10, h[4]);
+  EXPECT_DOUBLE_EQ(1, h[5]);
+  EXPECT_DOUBLE_EQ(-3, h[6]);
+  EXPECT_DOUBLE_EQ(2, h[7]);
+  EXPECT_DOUBLE_EQ(-330, h[8]);
+  EXPECT_DOUBLE_EQ(-3, h[9]);
+  EXPECT_DOUBLE_EQ(18, h[10]);
+  EXPECT_DOUBLE_EQ(-21, h[11]);
+  EXPECT_DOUBLE_EQ(520, h[12]);
+  EXPECT_DOUBLE_EQ(2, h[13]);
+  EXPECT_DOUBLE_EQ(-21, h[14]);
+  EXPECT_DOUBLE_EQ(29, h[15]);
+  EXPECT_DOUBLE_EQ(432, h[16]);
+  EXPECT_DOUBLE_EQ(42, h[17]);
+  EXPECT_DOUBLE_EQ(908, h[18]);
+  EXPECT_DOUBLE_EQ(106, h[19]);
+  EXPECT_DOUBLE_EQ(1068, h[20]);
+  EXPECT_DOUBLE_EQ(76, h[21]);
+  EXPECT_DOUBLE_EQ(2414, h[22]);
+  EXPECT_DOUBLE_EQ(576, h[23]);
+  EXPECT_DOUBLE_EQ(26033, h[24]);
+  EXPECT_DOUBLE_EQ(3396, h[25]);
+  EXPECT_DOUBLE_EQ(3456, h[26]);
+  EXPECT_DOUBLE_EQ(725, h[27]);
 }
 
 TEST(AgradMixMatrixTraceGenQuadForm, mat_fv_2nd_deriv) {
@@ -161,8 +161,8 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_fv_2nd_deriv) {
 
   // fvar<var> - fvar<var> - fvar<var>
   res = trace_gen_quad_form(cd, ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val_.val());
-  EXPECT_FLOAT_EQ(49736, res.d_.val());
+  EXPECT_DOUBLE_EQ(26758, res.val_.val());
+  EXPECT_DOUBLE_EQ(49736, res.d_.val());
 
   std::vector<var> z;
   z.push_back(ad(0, 0).val_);
@@ -196,34 +196,34 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_fv_2nd_deriv) {
 
   VEC h;
   res.d_.grad(z, h);
-  EXPECT_FLOAT_EQ(12320, h[0]);
-  EXPECT_FLOAT_EQ(221, h[1]);
-  EXPECT_FLOAT_EQ(-556, h[2]);
-  EXPECT_FLOAT_EQ(887, h[3]);
-  EXPECT_FLOAT_EQ(221, h[4]);
-  EXPECT_FLOAT_EQ(3, h[5]);
-  EXPECT_FLOAT_EQ(-11, h[6]);
-  EXPECT_FLOAT_EQ(15, h[7]);
-  EXPECT_FLOAT_EQ(-556, h[8]);
-  EXPECT_FLOAT_EQ(-11, h[9]);
-  EXPECT_FLOAT_EQ(24, h[10]);
-  EXPECT_FLOAT_EQ(-41, h[11]);
-  EXPECT_FLOAT_EQ(887, h[12]);
-  EXPECT_FLOAT_EQ(15, h[13]);
-  EXPECT_FLOAT_EQ(-41, h[14]);
-  EXPECT_FLOAT_EQ(63, h[15]);
-  EXPECT_FLOAT_EQ(715, h[16]);
-  EXPECT_FLOAT_EQ(531, h[17]);
-  EXPECT_FLOAT_EQ(1255, h[18]);
-  EXPECT_FLOAT_EQ(1071, h[19]);
-  EXPECT_FLOAT_EQ(1379, h[20]);
-  EXPECT_FLOAT_EQ(1195, h[21]);
-  EXPECT_FLOAT_EQ(3437, h[22]);
-  EXPECT_FLOAT_EQ(3253, h[23]);
-  EXPECT_FLOAT_EQ(15226, h[24]);
-  EXPECT_FLOAT_EQ(4233, h[25]);
-  EXPECT_FLOAT_EQ(3429, h[26]);
-  EXPECT_FLOAT_EQ(900, h[27]);
+  EXPECT_DOUBLE_EQ(12320, h[0]);
+  EXPECT_DOUBLE_EQ(221, h[1]);
+  EXPECT_DOUBLE_EQ(-556, h[2]);
+  EXPECT_DOUBLE_EQ(887, h[3]);
+  EXPECT_DOUBLE_EQ(221, h[4]);
+  EXPECT_DOUBLE_EQ(3, h[5]);
+  EXPECT_DOUBLE_EQ(-11, h[6]);
+  EXPECT_DOUBLE_EQ(15, h[7]);
+  EXPECT_DOUBLE_EQ(-556, h[8]);
+  EXPECT_DOUBLE_EQ(-11, h[9]);
+  EXPECT_DOUBLE_EQ(24, h[10]);
+  EXPECT_DOUBLE_EQ(-41, h[11]);
+  EXPECT_DOUBLE_EQ(887, h[12]);
+  EXPECT_DOUBLE_EQ(15, h[13]);
+  EXPECT_DOUBLE_EQ(-41, h[14]);
+  EXPECT_DOUBLE_EQ(63, h[15]);
+  EXPECT_DOUBLE_EQ(715, h[16]);
+  EXPECT_DOUBLE_EQ(531, h[17]);
+  EXPECT_DOUBLE_EQ(1255, h[18]);
+  EXPECT_DOUBLE_EQ(1071, h[19]);
+  EXPECT_DOUBLE_EQ(1379, h[20]);
+  EXPECT_DOUBLE_EQ(1195, h[21]);
+  EXPECT_DOUBLE_EQ(3437, h[22]);
+  EXPECT_DOUBLE_EQ(3253, h[23]);
+  EXPECT_DOUBLE_EQ(15226, h[24]);
+  EXPECT_DOUBLE_EQ(4233, h[25]);
+  EXPECT_DOUBLE_EQ(3429, h[26]);
+  EXPECT_DOUBLE_EQ(900, h[27]);
 }
 
 TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_1st_deriv) {
@@ -271,8 +271,8 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_1st_deriv) {
 
   // fvar<fvar<var> > - fvar<fvar<var> > - fvar<fvar<var> >
   res = trace_gen_quad_form(cd, ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val_.val_.val());
-  EXPECT_FLOAT_EQ(49736, res.d_.val_.val());
+  EXPECT_DOUBLE_EQ(26758, res.val_.val_.val());
+  EXPECT_DOUBLE_EQ(49736, res.d_.val_.val());
 
   std::vector<var> z;
   z.push_back(ad(0, 0).val_.val_);
@@ -306,34 +306,34 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_1st_deriv) {
 
   VEC h;
   res.val_.val_.grad(z, h);
-  EXPECT_FLOAT_EQ(10100, h[0]);
-  EXPECT_FLOAT_EQ(10, h[1]);
-  EXPECT_FLOAT_EQ(-330, h[2]);
-  EXPECT_FLOAT_EQ(520, h[3]);
-  EXPECT_FLOAT_EQ(10, h[4]);
-  EXPECT_FLOAT_EQ(1, h[5]);
-  EXPECT_FLOAT_EQ(-3, h[6]);
-  EXPECT_FLOAT_EQ(2, h[7]);
-  EXPECT_FLOAT_EQ(-330, h[8]);
-  EXPECT_FLOAT_EQ(-3, h[9]);
-  EXPECT_FLOAT_EQ(18, h[10]);
-  EXPECT_FLOAT_EQ(-21, h[11]);
-  EXPECT_FLOAT_EQ(520, h[12]);
-  EXPECT_FLOAT_EQ(2, h[13]);
-  EXPECT_FLOAT_EQ(-21, h[14]);
-  EXPECT_FLOAT_EQ(29, h[15]);
-  EXPECT_FLOAT_EQ(432, h[16]);
-  EXPECT_FLOAT_EQ(42, h[17]);
-  EXPECT_FLOAT_EQ(908, h[18]);
-  EXPECT_FLOAT_EQ(106, h[19]);
-  EXPECT_FLOAT_EQ(1068, h[20]);
-  EXPECT_FLOAT_EQ(76, h[21]);
-  EXPECT_FLOAT_EQ(2414, h[22]);
-  EXPECT_FLOAT_EQ(576, h[23]);
-  EXPECT_FLOAT_EQ(26033, h[24]);
-  EXPECT_FLOAT_EQ(3396, h[25]);
-  EXPECT_FLOAT_EQ(3456, h[26]);
-  EXPECT_FLOAT_EQ(725, h[27]);
+  EXPECT_DOUBLE_EQ(10100, h[0]);
+  EXPECT_DOUBLE_EQ(10, h[1]);
+  EXPECT_DOUBLE_EQ(-330, h[2]);
+  EXPECT_DOUBLE_EQ(520, h[3]);
+  EXPECT_DOUBLE_EQ(10, h[4]);
+  EXPECT_DOUBLE_EQ(1, h[5]);
+  EXPECT_DOUBLE_EQ(-3, h[6]);
+  EXPECT_DOUBLE_EQ(2, h[7]);
+  EXPECT_DOUBLE_EQ(-330, h[8]);
+  EXPECT_DOUBLE_EQ(-3, h[9]);
+  EXPECT_DOUBLE_EQ(18, h[10]);
+  EXPECT_DOUBLE_EQ(-21, h[11]);
+  EXPECT_DOUBLE_EQ(520, h[12]);
+  EXPECT_DOUBLE_EQ(2, h[13]);
+  EXPECT_DOUBLE_EQ(-21, h[14]);
+  EXPECT_DOUBLE_EQ(29, h[15]);
+  EXPECT_DOUBLE_EQ(432, h[16]);
+  EXPECT_DOUBLE_EQ(42, h[17]);
+  EXPECT_DOUBLE_EQ(908, h[18]);
+  EXPECT_DOUBLE_EQ(106, h[19]);
+  EXPECT_DOUBLE_EQ(1068, h[20]);
+  EXPECT_DOUBLE_EQ(76, h[21]);
+  EXPECT_DOUBLE_EQ(2414, h[22]);
+  EXPECT_DOUBLE_EQ(576, h[23]);
+  EXPECT_DOUBLE_EQ(26033, h[24]);
+  EXPECT_DOUBLE_EQ(3396, h[25]);
+  EXPECT_DOUBLE_EQ(3456, h[26]);
+  EXPECT_DOUBLE_EQ(725, h[27]);
 }
 
 TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_2nd_deriv) {
@@ -381,8 +381,8 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_2nd_deriv) {
 
   // fvar<fvar<var> > - fvar<fvar<var> > - fvar<fvar<var> >
   res = trace_gen_quad_form(cd, ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val_.val_.val());
-  EXPECT_FLOAT_EQ(49736, res.d_.val_.val());
+  EXPECT_DOUBLE_EQ(26758, res.val_.val_.val());
+  EXPECT_DOUBLE_EQ(49736, res.d_.val_.val());
 
   std::vector<var> z;
   z.push_back(ad(0, 0).val_.val_);
@@ -416,34 +416,34 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_2nd_deriv) {
 
   VEC h;
   res.d_.val_.grad(z, h);
-  EXPECT_FLOAT_EQ(12320, h[0]);
-  EXPECT_FLOAT_EQ(221, h[1]);
-  EXPECT_FLOAT_EQ(-556, h[2]);
-  EXPECT_FLOAT_EQ(887, h[3]);
-  EXPECT_FLOAT_EQ(221, h[4]);
-  EXPECT_FLOAT_EQ(3, h[5]);
-  EXPECT_FLOAT_EQ(-11, h[6]);
-  EXPECT_FLOAT_EQ(15, h[7]);
-  EXPECT_FLOAT_EQ(-556, h[8]);
-  EXPECT_FLOAT_EQ(-11, h[9]);
-  EXPECT_FLOAT_EQ(24, h[10]);
-  EXPECT_FLOAT_EQ(-41, h[11]);
-  EXPECT_FLOAT_EQ(887, h[12]);
-  EXPECT_FLOAT_EQ(15, h[13]);
-  EXPECT_FLOAT_EQ(-41, h[14]);
-  EXPECT_FLOAT_EQ(63, h[15]);
-  EXPECT_FLOAT_EQ(715, h[16]);
-  EXPECT_FLOAT_EQ(531, h[17]);
-  EXPECT_FLOAT_EQ(1255, h[18]);
-  EXPECT_FLOAT_EQ(1071, h[19]);
-  EXPECT_FLOAT_EQ(1379, h[20]);
-  EXPECT_FLOAT_EQ(1195, h[21]);
-  EXPECT_FLOAT_EQ(3437, h[22]);
-  EXPECT_FLOAT_EQ(3253, h[23]);
-  EXPECT_FLOAT_EQ(15226, h[24]);
-  EXPECT_FLOAT_EQ(4233, h[25]);
-  EXPECT_FLOAT_EQ(3429, h[26]);
-  EXPECT_FLOAT_EQ(900, h[27]);
+  EXPECT_DOUBLE_EQ(12320, h[0]);
+  EXPECT_DOUBLE_EQ(221, h[1]);
+  EXPECT_DOUBLE_EQ(-556, h[2]);
+  EXPECT_DOUBLE_EQ(887, h[3]);
+  EXPECT_DOUBLE_EQ(221, h[4]);
+  EXPECT_DOUBLE_EQ(3, h[5]);
+  EXPECT_DOUBLE_EQ(-11, h[6]);
+  EXPECT_DOUBLE_EQ(15, h[7]);
+  EXPECT_DOUBLE_EQ(-556, h[8]);
+  EXPECT_DOUBLE_EQ(-11, h[9]);
+  EXPECT_DOUBLE_EQ(24, h[10]);
+  EXPECT_DOUBLE_EQ(-41, h[11]);
+  EXPECT_DOUBLE_EQ(887, h[12]);
+  EXPECT_DOUBLE_EQ(15, h[13]);
+  EXPECT_DOUBLE_EQ(-41, h[14]);
+  EXPECT_DOUBLE_EQ(63, h[15]);
+  EXPECT_DOUBLE_EQ(715, h[16]);
+  EXPECT_DOUBLE_EQ(531, h[17]);
+  EXPECT_DOUBLE_EQ(1255, h[18]);
+  EXPECT_DOUBLE_EQ(1071, h[19]);
+  EXPECT_DOUBLE_EQ(1379, h[20]);
+  EXPECT_DOUBLE_EQ(1195, h[21]);
+  EXPECT_DOUBLE_EQ(3437, h[22]);
+  EXPECT_DOUBLE_EQ(3253, h[23]);
+  EXPECT_DOUBLE_EQ(15226, h[24]);
+  EXPECT_DOUBLE_EQ(4233, h[25]);
+  EXPECT_DOUBLE_EQ(3429, h[26]);
+  EXPECT_DOUBLE_EQ(900, h[27]);
 }
 
 TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_3rd_deriv) {
@@ -519,8 +519,8 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_3rd_deriv) {
 
   // fvar<fvar<var> > - fvar<fvar<var> > - fvar<fvar<var> >
   res = trace_gen_quad_form(cd, ad, bd);
-  EXPECT_FLOAT_EQ(26758, res.val_.val_.val());
-  EXPECT_FLOAT_EQ(49736, res.d_.val_.val());
+  EXPECT_DOUBLE_EQ(26758, res.val_.val_.val());
+  EXPECT_DOUBLE_EQ(49736, res.d_.val_.val());
 
   std::vector<var> z;
   z.push_back(ad(0, 0).val_.val_);
@@ -554,32 +554,32 @@ TEST(AgradMixMatrixTraceGenQuadForm, mat_ffv_3rd_deriv) {
 
   VEC h;
   res.d_.d_.grad(z, h);
-  EXPECT_FLOAT_EQ(884, h[0]);
-  EXPECT_FLOAT_EQ(448, h[1]);
-  EXPECT_FLOAT_EQ(420, h[2]);
-  EXPECT_FLOAT_EQ(472, h[3]);
-  EXPECT_FLOAT_EQ(448, h[4]);
-  EXPECT_FLOAT_EQ(12, h[5]);
-  EXPECT_FLOAT_EQ(-16, h[6]);
-  EXPECT_FLOAT_EQ(36, h[7]);
-  EXPECT_FLOAT_EQ(420, h[8]);
-  EXPECT_FLOAT_EQ(-16, h[9]);
-  EXPECT_FLOAT_EQ(-44, h[10]);
-  EXPECT_FLOAT_EQ(8, h[11]);
-  EXPECT_FLOAT_EQ(472, h[12]);
-  EXPECT_FLOAT_EQ(36, h[13]);
-  EXPECT_FLOAT_EQ(8, h[14]);
-  EXPECT_FLOAT_EQ(60, h[15]);
-  EXPECT_FLOAT_EQ(612, h[16]);
-  EXPECT_FLOAT_EQ(612, h[17]);
-  EXPECT_FLOAT_EQ(612, h[18]);
-  EXPECT_FLOAT_EQ(612, h[19]);
-  EXPECT_FLOAT_EQ(588, h[20]);
-  EXPECT_FLOAT_EQ(588, h[21]);
-  EXPECT_FLOAT_EQ(1436, h[22]);
-  EXPECT_FLOAT_EQ(1436, h[23]);
-  EXPECT_FLOAT_EQ(1980, h[24]);
-  EXPECT_FLOAT_EQ(1244, h[25]);
-  EXPECT_FLOAT_EQ(1244, h[26]);
-  EXPECT_FLOAT_EQ(508, h[27]);
+  EXPECT_DOUBLE_EQ(884, h[0]);
+  EXPECT_DOUBLE_EQ(448, h[1]);
+  EXPECT_DOUBLE_EQ(420, h[2]);
+  EXPECT_DOUBLE_EQ(472, h[3]);
+  EXPECT_DOUBLE_EQ(448, h[4]);
+  EXPECT_DOUBLE_EQ(12, h[5]);
+  EXPECT_DOUBLE_EQ(-16, h[6]);
+  EXPECT_DOUBLE_EQ(36, h[7]);
+  EXPECT_DOUBLE_EQ(420, h[8]);
+  EXPECT_DOUBLE_EQ(-16, h[9]);
+  EXPECT_DOUBLE_EQ(-44, h[10]);
+  EXPECT_DOUBLE_EQ(8, h[11]);
+  EXPECT_DOUBLE_EQ(472, h[12]);
+  EXPECT_DOUBLE_EQ(36, h[13]);
+  EXPECT_DOUBLE_EQ(8, h[14]);
+  EXPECT_DOUBLE_EQ(60, h[15]);
+  EXPECT_DOUBLE_EQ(612, h[16]);
+  EXPECT_DOUBLE_EQ(612, h[17]);
+  EXPECT_DOUBLE_EQ(612, h[18]);
+  EXPECT_DOUBLE_EQ(612, h[19]);
+  EXPECT_DOUBLE_EQ(588, h[20]);
+  EXPECT_DOUBLE_EQ(588, h[21]);
+  EXPECT_DOUBLE_EQ(1436, h[22]);
+  EXPECT_DOUBLE_EQ(1436, h[23]);
+  EXPECT_DOUBLE_EQ(1980, h[24]);
+  EXPECT_DOUBLE_EQ(1244, h[25]);
+  EXPECT_DOUBLE_EQ(1244, h[26]);
+  EXPECT_DOUBLE_EQ(508, h[27]);
 }

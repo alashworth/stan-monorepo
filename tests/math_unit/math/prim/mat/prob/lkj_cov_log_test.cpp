@@ -12,16 +12,16 @@ TEST(ProbLkjCov, log_matches_lpmf) {
   sigma << 1, 0.2, 4, 0.5;
   double eta = 1.2;
 
-  EXPECT_FLOAT_EQ((stan::math::lkj_cov_lpdf(y, mu, sigma, eta)),
-                  (stan::math::lkj_cov_log(y, mu, sigma, eta)));
-  EXPECT_FLOAT_EQ((stan::math::lkj_cov_lpdf<true>(y, mu, sigma, eta)),
-                  (stan::math::lkj_cov_log<true>(y, mu, sigma, eta)));
-  EXPECT_FLOAT_EQ((stan::math::lkj_cov_lpdf<false>(y, mu, sigma, eta)),
-                  (stan::math::lkj_cov_log<false>(y, mu, sigma, eta)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::lkj_cov_lpdf(y, mu, sigma, eta)),
+                   (stan::math::lkj_cov_log(y, mu, sigma, eta)));
+  EXPECT_DOUBLE_EQ((stan::math::lkj_cov_lpdf<true>(y, mu, sigma, eta)),
+                   (stan::math::lkj_cov_log<true>(y, mu, sigma, eta)));
+  EXPECT_DOUBLE_EQ((stan::math::lkj_cov_lpdf<false>(y, mu, sigma, eta)),
+                   (stan::math::lkj_cov_log<false>(y, mu, sigma, eta)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::lkj_cov_lpdf<true, double, double>(y, mu, sigma, eta)),
       (stan::math::lkj_cov_log<true, double, double>(y, mu, sigma, eta)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ(
       (stan::math::lkj_cov_lpdf<false, double, double>(y, mu, sigma, eta)),
       (stan::math::lkj_cov_log<false, double, double>(y, mu, sigma, eta)));
 }

@@ -18,8 +18,8 @@ TEST(MathMatrix, value_of_rec_2) {
   vector<double> d_b = value_of_rec(b);
 
   for (int i = 0; i < 5; ++i)
-    EXPECT_FLOAT_EQ(b[i], d_b[i]);
+    EXPECT_DOUBLE_EQ(b[i], d_b[i]);
 
   for (int i = 0; i < 10; ++i)
-    EXPECT_FLOAT_EQ(a[i], d_a[i]);
+    EXPECT_DOUBLE_EQ(a[i], d_a[i]);
 }

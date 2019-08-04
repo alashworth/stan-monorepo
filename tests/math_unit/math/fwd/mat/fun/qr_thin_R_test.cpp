@@ -26,14 +26,14 @@ TEST(AgradFwdMatrixQrR, fd_1) {
 
   for (int i = 0; i < res2.rows(); i++)
     for (int j = 0; j < res2.cols(); j++)
-      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_);
+      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_);
 
-  EXPECT_FLOAT_EQ(1.5212777, res(0, 0).d_);
-  EXPECT_FLOAT_EQ(1.6371845, res(0, 1).d_);
-  EXPECT_FLOAT_EQ(0, res(1, 0).d_);
-  EXPECT_FLOAT_EQ(-0.21293451, res(1, 1).d_);
-  // EXPECT_FLOAT_EQ(0, res(2, 0).d_);
-  // EXPECT_FLOAT_EQ(0, res(2, 1).d_);
+  EXPECT_DOUBLE_EQ(1.5212777, res(0, 0).d_);
+  EXPECT_DOUBLE_EQ(1.6371845, res(0, 1).d_);
+  EXPECT_DOUBLE_EQ(0, res(1, 0).d_);
+  EXPECT_DOUBLE_EQ(-0.21293451, res(1, 1).d_);
+  // EXPECT_DOUBLE_EQ(0, res(2, 0).d_);
+  // EXPECT_DOUBLE_EQ(0, res(2, 1).d_);
 }
 
 TEST(AgradFwdMatrixQrR, ffd_1) {
@@ -61,12 +61,12 @@ TEST(AgradFwdMatrixQrR, ffd_1) {
 
   for (int i = 0; i < res2.rows(); i++)
     for (int j = 0; j < res2.cols(); j++)
-      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_.val_);
+      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_.val_);
 
-  EXPECT_FLOAT_EQ(1.5212777, res(0, 0).d_.val_);
-  EXPECT_FLOAT_EQ(1.6371845, res(0, 1).d_.val_);
-  EXPECT_FLOAT_EQ(0, res(1, 0).d_.val_);
-  EXPECT_FLOAT_EQ(-0.21293451, res(1, 1).d_.val_);
-  // EXPECT_FLOAT_EQ(0, res(2, 0).d_.val_);
-  // EXPECT_FLOAT_EQ(0, res(2, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(1.5212777, res(0, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(1.6371845, res(0, 1).d_.val_);
+  EXPECT_DOUBLE_EQ(0, res(1, 0).d_.val_);
+  EXPECT_DOUBLE_EQ(-0.21293451, res(1, 1).d_.val_);
+  // EXPECT_DOUBLE_EQ(0, res(2, 0).d_.val_);
+  // EXPECT_DOUBLE_EQ(0, res(2, 1).d_.val_);
 }

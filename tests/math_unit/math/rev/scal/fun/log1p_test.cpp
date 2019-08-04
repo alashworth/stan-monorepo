@@ -8,12 +8,12 @@
 TEST(AgradRev, log1p) {
   AVAR a = 0.1;
   AVAR f = stan::math::log1p(a);
-  EXPECT_FLOAT_EQ(log(1 + 0.1), f.val());
+  EXPECT_DOUBLE_EQ(log(1 + 0.1), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_FLOAT_EQ(1.0 / (1.0 + 0.1), grad_f[0]);
+  EXPECT_DOUBLE_EQ(1.0 / (1.0 + 0.1), grad_f[0]);
 }
 
 TEST(AgradRevLog1p, excepts) {
@@ -29,12 +29,14 @@ TEST(AgradRevLog1p, overflows) {
             stan::math::log1p(b).val());
 }
 
+namespace {
 struct log1p_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return log1p(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, log1p_NaN) {
   log1p_fun log1p_;

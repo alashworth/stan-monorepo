@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdFdim, FvarVar_FvarVar_1stDeriv) {
@@ -14,7 +14,7 @@ TEST(AgradFwdFdim, FvarVar_FvarVar_1stDeriv) {
   fvar<var> z(1.5, 1.0);
   fvar<var> a = fdim(x, z);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val());
   isnan(a.d_.val());
 
   AVEC y = createAVEC(x.val_, z.val_);
@@ -35,7 +35,7 @@ TEST(AgradFwdFdim, FvarVar_double_1stDeriv) {
   double z(1.5);
   fvar<var> a = fdim(x, z);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val());
   isnan(a.d_.val());
 
   AVEC y = createAVEC(x.val_);
@@ -55,7 +55,7 @@ TEST(AgradFwdFdim, Double_FvarVar_1stDeriv) {
   fvar<var> z(1.5, 1.0);
   fvar<var> a = fdim(x, z);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val());
   isnan(a.d_.val());
 
   AVEC y = createAVEC(z.val_);
@@ -131,16 +131,16 @@ TEST(AgradFwdFdim, FvarFvarVar_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = fdim(x, y);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(1, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(-1, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(-1, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(1.0, g[0]);
-  EXPECT_FLOAT_EQ(-1.0, g[1]);
+  EXPECT_DOUBLE_EQ(1.0, g[0]);
+  EXPECT_DOUBLE_EQ(-1.0, g[1]);
 }
 
 TEST(AgradFwdFdim, FvarFvarVar_double_1stDeriv) {
@@ -157,15 +157,15 @@ TEST(AgradFwdFdim, FvarFvarVar_double_1stDeriv) {
 
   fvar<fvar<var> > a = fdim(x, y);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(1, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(1.0, g[0]);
+  EXPECT_DOUBLE_EQ(1.0, g[0]);
 }
 
 TEST(AgradFwdFdim, Double_FvarFvarVar_1stDeriv) {
@@ -182,15 +182,15 @@ TEST(AgradFwdFdim, Double_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = fdim(x, y);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(-1, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(-1, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(-1.0, g[0]);
+  EXPECT_DOUBLE_EQ(-1.0, g[0]);
 }
 
 TEST(AgradFwdFdim, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
@@ -209,15 +209,15 @@ TEST(AgradFwdFdim, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
 
   fvar<fvar<var> > a = fdim(x, y);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(1, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(-1, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(-1, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[0]);
 }
 
 TEST(AgradFwdFdim, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
@@ -236,15 +236,15 @@ TEST(AgradFwdFdim, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
 
   fvar<fvar<var> > a = fdim(x, y);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(1, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(-1, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(-1, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[0]);
 }
 TEST(AgradFwdFdim, FvarFvarVar_double_2ndDeriv) {
   using stan::math::fdim;
@@ -260,15 +260,15 @@ TEST(AgradFwdFdim, FvarFvarVar_double_2ndDeriv) {
 
   fvar<fvar<var> > a = fdim(x, y);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(1, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[0]);
 }
 
 TEST(AgradFwdFdim, Double_FvarFvarVar_2ndDeriv) {
@@ -285,15 +285,15 @@ TEST(AgradFwdFdim, Double_FvarFvarVar_2ndDeriv) {
 
   fvar<fvar<var> > a = fdim(x, y);
 
-  EXPECT_FLOAT_EQ(fdim(2.5, 1.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
-  EXPECT_FLOAT_EQ(-1, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(fdim(2.5, 1.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(-1, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[0]);
 }
 
 TEST(AgradFwdFdim, FvarFvarVar_FvarFvarVar_3rdDeriv) {
@@ -315,7 +315,7 @@ TEST(AgradFwdFdim, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[0]);
 }
 TEST(AgradFwdFdim, FvarFvarVar_double_3rdDeriv) {
   using stan::math::fdim;
@@ -335,7 +335,7 @@ TEST(AgradFwdFdim, FvarFvarVar_double_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[0]);
 }
 
 TEST(AgradFwdFdim, Double_FvarFvarVar_3rdDeriv) {
@@ -356,7 +356,7 @@ TEST(AgradFwdFdim, Double_FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[0]);
 }
 
 struct fdim_fun {

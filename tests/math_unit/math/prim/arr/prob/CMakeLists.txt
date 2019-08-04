@@ -1,1 +1,1 @@
-target_sources(stan_math_unit_tests PRIVATE wiener_test.cpp)
+target_sources(stan_math_prim_arr_unit_tests PRIVATE wiener_test.cpp)

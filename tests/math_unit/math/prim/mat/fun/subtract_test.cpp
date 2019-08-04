@@ -53,16 +53,16 @@ TEST(MathMatrix, subtract_c_m) {
   stan::math::matrix_d result;
 
   result = stan::math::subtract(2.0, v);
-  EXPECT_FLOAT_EQ(1.0, result(0, 0));
-  EXPECT_FLOAT_EQ(0.0, result(0, 1));
-  EXPECT_FLOAT_EQ(-1.0, result(1, 0));
-  EXPECT_FLOAT_EQ(-2.0, result(1, 1));
+  EXPECT_DOUBLE_EQ(1.0, result(0, 0));
+  EXPECT_DOUBLE_EQ(0.0, result(0, 1));
+  EXPECT_DOUBLE_EQ(-1.0, result(1, 0));
+  EXPECT_DOUBLE_EQ(-2.0, result(1, 1));
 
   result = stan::math::subtract(v, 2.0);
-  EXPECT_FLOAT_EQ(-1.0, result(0, 0));
-  EXPECT_FLOAT_EQ(0.0, result(0, 1));
-  EXPECT_FLOAT_EQ(1.0, result(1, 0));
-  EXPECT_FLOAT_EQ(2.0, result(1, 1));
+  EXPECT_DOUBLE_EQ(-1.0, result(0, 0));
+  EXPECT_DOUBLE_EQ(0.0, result(0, 1));
+  EXPECT_DOUBLE_EQ(1.0, result(1, 0));
+  EXPECT_DOUBLE_EQ(2.0, result(1, 1));
 }
 
 TEST(MathMatrix, subtract_c_rv) {
@@ -71,14 +71,14 @@ TEST(MathMatrix, subtract_c_rv) {
   stan::math::row_vector_d result;
 
   result = stan::math::subtract(2.0, v);
-  EXPECT_FLOAT_EQ(1.0, result(0));
-  EXPECT_FLOAT_EQ(0.0, result(1));
-  EXPECT_FLOAT_EQ(-1.0, result(2));
+  EXPECT_DOUBLE_EQ(1.0, result(0));
+  EXPECT_DOUBLE_EQ(0.0, result(1));
+  EXPECT_DOUBLE_EQ(-1.0, result(2));
 
   result = stan::math::subtract(v, 2.0);
-  EXPECT_FLOAT_EQ(-1.0, result(0));
-  EXPECT_FLOAT_EQ(0.0, result(1));
-  EXPECT_FLOAT_EQ(1.0, result(2));
+  EXPECT_DOUBLE_EQ(-1.0, result(0));
+  EXPECT_DOUBLE_EQ(0.0, result(1));
+  EXPECT_DOUBLE_EQ(1.0, result(2));
 }
 
 TEST(MathMatrix, subtract_c_v) {
@@ -87,14 +87,14 @@ TEST(MathMatrix, subtract_c_v) {
   stan::math::vector_d result;
 
   result = stan::math::subtract(2.0, v);
-  EXPECT_FLOAT_EQ(1.0, result(0));
-  EXPECT_FLOAT_EQ(0.0, result(1));
-  EXPECT_FLOAT_EQ(-1.0, result(2));
+  EXPECT_DOUBLE_EQ(1.0, result(0));
+  EXPECT_DOUBLE_EQ(0.0, result(1));
+  EXPECT_DOUBLE_EQ(-1.0, result(2));
 
   result = stan::math::subtract(v, 2.0);
-  EXPECT_FLOAT_EQ(-1.0, result(0));
-  EXPECT_FLOAT_EQ(0.0, result(1));
-  EXPECT_FLOAT_EQ(1.0, result(2));
+  EXPECT_DOUBLE_EQ(-1.0, result(0));
+  EXPECT_DOUBLE_EQ(0.0, result(1));
+  EXPECT_DOUBLE_EQ(1.0, result(2));
 }
 
 TEST(MathMatrix, subtract_exception) {

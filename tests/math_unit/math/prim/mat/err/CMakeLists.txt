@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_mat_unit_tests PRIVATE
         check_cholesky_factor_corr_test.cpp
         check_cholesky_factor_test.cpp
         check_column_index_test.cpp

@@ -25,14 +25,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_fv1) {
   Ad(1, 1).d_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val());
-  EXPECT_FLOAT_EQ(1, I(0, 1).val_.val());
-  EXPECT_FLOAT_EQ(5.0 / 4.0, I(1, 0).val_.val());
-  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val());
-  EXPECT_FLOAT_EQ(-11.0 / 36.0, I(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(-0.58333331, I(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(-0.22916667, I(1, 0).d_.val());
-  EXPECT_FLOAT_EQ(-0.4375, I(1, 1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val());
+  EXPECT_DOUBLE_EQ(1, I(0, 1).val_.val());
+  EXPECT_DOUBLE_EQ(5.0 / 4.0, I(1, 0).val_.val());
+  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val());
+  EXPECT_DOUBLE_EQ(-11.0 / 36.0, I(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.58333331, I(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(-0.22916667, I(1, 0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.4375, I(1, 1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_);
@@ -46,14 +46,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_fv1) {
   std::vector<double> grads;
 
   I(0, 0).val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.41666666, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
-  EXPECT_FLOAT_EQ(0.33333334, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(0, grads[6]);
-  EXPECT_FLOAT_EQ(0, grads[7]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.41666666, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(0, grads[6]);
+  EXPECT_DOUBLE_EQ(0, grads[7]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_fv2) {
   using stan::math::matrix_fv;
@@ -88,14 +88,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_fv2) {
   std::vector<double> grads;
 
   I(0, 0).d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.17592593, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.27083334, grads[2]);
-  EXPECT_FLOAT_EQ(0.10416666, grads[3]);
-  EXPECT_FLOAT_EQ(-0.11111111, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(-0.083333336, grads[6]);
-  EXPECT_FLOAT_EQ(0, grads[7]);
+  EXPECT_DOUBLE_EQ(0.17592593, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.27083334, grads[2]);
+  EXPECT_DOUBLE_EQ(0.10416666, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.11111111, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.083333336, grads[6]);
+  EXPECT_DOUBLE_EQ(0, grads[7]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_fv1) {
   using stan::math::matrix_fv;
@@ -116,10 +116,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_fv1) {
   Ad(1).d_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val());
-  EXPECT_FLOAT_EQ(-0.1388889, I(0).d_.val());
-  EXPECT_FLOAT_EQ(-0.10416666, I(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val());
+  EXPECT_DOUBLE_EQ(-0.1388889, I(0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.10416666, I(1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_);
@@ -131,12 +131,12 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_fv1) {
   std::vector<double> grads;
 
   I(0).val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.25, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
-  EXPECT_FLOAT_EQ(0.33333334, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.25, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_fv2) {
   using stan::math::matrix_fv;
@@ -168,12 +168,12 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_fv2) {
   std::vector<double> grads;
 
   I(0).d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.12037037, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.1736111, grads[2]);
-  EXPECT_FLOAT_EQ(0.0625, grads[3]);
-  EXPECT_FLOAT_EQ(-0.11111111, grads[4]);
-  EXPECT_FLOAT_EQ(-0.083333336, grads[5]);
+  EXPECT_DOUBLE_EQ(0.12037037, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.1736111, grads[2]);
+  EXPECT_DOUBLE_EQ(0.0625, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.11111111, grads[4]);
+  EXPECT_DOUBLE_EQ(-0.083333336, grads[5]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_d1) {
   using stan::math::matrix_d;
@@ -192,14 +192,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_d1) {
   Ad << 2.0, 3.0, 5.0, 7.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val());
-  EXPECT_FLOAT_EQ(1, I(0, 1).val_.val());
-  EXPECT_FLOAT_EQ(5.0 / 4.0, I(1, 0).val_.val());
-  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val());
-  EXPECT_FLOAT_EQ(-0.6388889, I(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(-0.91666669, I(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(-0.47916666, I(1, 0).d_.val());
-  EXPECT_FLOAT_EQ(-0.6875, I(1, 1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val());
+  EXPECT_DOUBLE_EQ(1, I(0, 1).val_.val());
+  EXPECT_DOUBLE_EQ(5.0 / 4.0, I(1, 0).val_.val());
+  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val());
+  EXPECT_DOUBLE_EQ(-0.6388889, I(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.91666669, I(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(-0.47916666, I(1, 0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.6875, I(1, 1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_);
@@ -209,10 +209,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_d1) {
   std::vector<double> grads;
 
   I(0, 0).val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.41666666, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.41666666, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_d2) {
   using stan::math::matrix_d;
@@ -231,14 +231,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_d2) {
   Ad << 2.0, 3.0, 5.0, 7.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val());
-  EXPECT_FLOAT_EQ(1, I(0, 1).val_.val());
-  EXPECT_FLOAT_EQ(5.0 / 4.0, I(1, 0).val_.val());
-  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val());
-  EXPECT_FLOAT_EQ(-0.6388889, I(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(-0.91666669, I(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(-0.47916666, I(1, 0).d_.val());
-  EXPECT_FLOAT_EQ(-0.6875, I(1, 1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val());
+  EXPECT_DOUBLE_EQ(1, I(0, 1).val_.val());
+  EXPECT_DOUBLE_EQ(5.0 / 4.0, I(1, 0).val_.val());
+  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val());
+  EXPECT_DOUBLE_EQ(-0.6388889, I(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.91666669, I(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(-0.47916666, I(1, 0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.6875, I(1, 1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_);
@@ -248,10 +248,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_matrix_d2) {
   std::vector<double> grads;
 
   I(0, 0).d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.28703704, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.35416666, grads[2]);
-  EXPECT_FLOAT_EQ(0.10416666, grads[3]);
+  EXPECT_DOUBLE_EQ(0.28703704, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.35416666, grads[2]);
+  EXPECT_DOUBLE_EQ(0.10416666, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_d1) {
   using stan::math::matrix_fv;
@@ -271,10 +271,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_d1) {
   Ad << 2.0, 3.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val());
-  EXPECT_FLOAT_EQ(-0.47222221, I(0).d_.val());
-  EXPECT_FLOAT_EQ(-0.35416666, I(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val());
+  EXPECT_DOUBLE_EQ(-0.47222221, I(0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.35416666, I(1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_);
@@ -284,10 +284,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_d1) {
   std::vector<double> grads;
 
   I(0).val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.25, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.25, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_d2) {
   using stan::math::matrix_fv;
@@ -307,10 +307,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_d2) {
   Ad << 2.0, 3.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val());
-  EXPECT_FLOAT_EQ(-0.47222221, I(0).d_.val());
-  EXPECT_FLOAT_EQ(-0.35416666, I(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val());
+  EXPECT_DOUBLE_EQ(-0.47222221, I(0).d_.val());
+  EXPECT_DOUBLE_EQ(-0.35416666, I(1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_);
@@ -320,10 +320,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_fv_vector_d2) {
   std::vector<double> grads;
 
   I(0).d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.23148148, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.25694445, grads[2]);
-  EXPECT_FLOAT_EQ(0.0625, grads[3]);
+  EXPECT_DOUBLE_EQ(0.23148148, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.25694445, grads[2]);
+  EXPECT_DOUBLE_EQ(0.0625, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_fv1) {
   using stan::math::matrix_d;
@@ -342,14 +342,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_fv1) {
   Ad(1, 1).d_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val());
-  EXPECT_FLOAT_EQ(1, I(0, 1).val_.val());
-  EXPECT_FLOAT_EQ(5.0 / 4.0, I(1, 0).val_.val());
-  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val());
-  EXPECT_FLOAT_EQ(0.33333334, I(0, 0).d_.val());
-  EXPECT_FLOAT_EQ(0.33333334, I(0, 1).d_.val());
-  EXPECT_FLOAT_EQ(0.25, I(1, 0).d_.val());
-  EXPECT_FLOAT_EQ(0.25, I(1, 1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val());
+  EXPECT_DOUBLE_EQ(1, I(0, 1).val_.val());
+  EXPECT_DOUBLE_EQ(5.0 / 4.0, I(1, 0).val_.val());
+  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val());
+  EXPECT_DOUBLE_EQ(0.33333334, I(0, 0).d_.val());
+  EXPECT_DOUBLE_EQ(0.33333334, I(0, 1).d_.val());
+  EXPECT_DOUBLE_EQ(0.25, I(1, 0).d_.val());
+  EXPECT_DOUBLE_EQ(0.25, I(1, 1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Ad(0, 0).val_);
@@ -359,10 +359,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_fv1) {
   std::vector<double> grads;
 
   I(0, 0).val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.33333334, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_fv2) {
   using stan::math::matrix_d;
@@ -390,10 +390,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_fv2) {
   std::vector<double> grads;
 
   I(0, 0).d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_fv1) {
   using stan::math::matrix_d;
@@ -410,10 +410,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_fv1) {
   Ad(1).d_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val());
-  EXPECT_FLOAT_EQ(0.33333334, I(0).d_.val());
-  EXPECT_FLOAT_EQ(0.25, I(1).d_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val());
+  EXPECT_DOUBLE_EQ(0.33333334, I(0).d_.val());
+  EXPECT_DOUBLE_EQ(0.25, I(1).d_.val());
 
   std::vector<var> vars;
   vars.push_back(Ad(0).val_);
@@ -421,8 +421,8 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_fv1) {
   std::vector<double> grads;
 
   I(0).val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.33333334, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_fv2) {
@@ -447,8 +447,8 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_fv2) {
   std::vector<double> grads;
 
   I(0).d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 
 TEST(AgradMixMatrixMdivideLeftSPD, fv_exceptions) {
@@ -525,14 +525,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv1) {
   Ad(1, 1).d_.val_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val_.val());
-  EXPECT_FLOAT_EQ(1, I(0, 1).val_.val_.val());
-  EXPECT_FLOAT_EQ(5.0 / 4.0, I(1, 0).val_.val_.val());
-  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val_.val());
-  EXPECT_FLOAT_EQ(-11.0 / 36.0, I(0, 0).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.58333331, I(0, 1).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.22916667, I(1, 0).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.4375, I(1, 1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, I(0, 1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(5.0 / 4.0, I(1, 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(-11.0 / 36.0, I(0, 0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.58333331, I(0, 1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.22916667, I(1, 0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.4375, I(1, 1).d_.val_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_.val_);
@@ -546,14 +546,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv1) {
   std::vector<double> grads;
 
   I(0, 0).val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.41666666, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
-  EXPECT_FLOAT_EQ(0.33333334, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(0, grads[6]);
-  EXPECT_FLOAT_EQ(0, grads[7]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.41666666, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(0, grads[6]);
+  EXPECT_DOUBLE_EQ(0, grads[7]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv2) {
   using stan::math::matrix_ffv;
@@ -588,14 +588,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv2) {
   std::vector<double> grads;
 
   I(0, 0).d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.17592593, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.27083334, grads[2]);
-  EXPECT_FLOAT_EQ(0.10416666, grads[3]);
-  EXPECT_FLOAT_EQ(-0.11111111, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(-0.083333336, grads[6]);
-  EXPECT_FLOAT_EQ(0, grads[7]);
+  EXPECT_DOUBLE_EQ(0.17592593, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.27083334, grads[2]);
+  EXPECT_DOUBLE_EQ(0.10416666, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.11111111, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.083333336, grads[6]);
+  EXPECT_DOUBLE_EQ(0, grads[7]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv3) {
   using stan::math::matrix_ffv;
@@ -638,14 +638,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv3) {
   std::vector<double> grads;
 
   I(0, 0).val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.17592593, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.27083334, grads[2]);
-  EXPECT_FLOAT_EQ(0.10416666, grads[3]);
-  EXPECT_FLOAT_EQ(-0.11111111, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(-0.083333336, grads[6]);
-  EXPECT_FLOAT_EQ(0, grads[7]);
+  EXPECT_DOUBLE_EQ(0.17592593, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.27083334, grads[2]);
+  EXPECT_DOUBLE_EQ(0.10416666, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.11111111, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.083333336, grads[6]);
+  EXPECT_DOUBLE_EQ(0, grads[7]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv4) {
   using stan::math::matrix_ffv;
@@ -688,14 +688,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_ffv4) {
   std::vector<double> grads;
 
   I(0, 0).d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.27314815, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.41782406, grads[2]);
-  EXPECT_FLOAT_EQ(-0.15972222, grads[3]);
-  EXPECT_FLOAT_EQ(0.12962963, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(0.097222224, grads[6]);
-  EXPECT_FLOAT_EQ(0, grads[7]);
+  EXPECT_DOUBLE_EQ(-0.27314815, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.41782406, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.15972222, grads[3]);
+  EXPECT_DOUBLE_EQ(0.12962963, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(0.097222224, grads[6]);
+  EXPECT_DOUBLE_EQ(0, grads[7]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv1) {
   using stan::math::matrix_ffv;
@@ -716,10 +716,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv1) {
   Ad(1).d_.val_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val_.val());
-  EXPECT_FLOAT_EQ(-0.1388889, I(0).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.10416666, I(1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.1388889, I(0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.10416666, I(1).d_.val_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_.val_);
@@ -731,12 +731,12 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv1) {
   std::vector<double> grads;
 
   I(0).val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.25, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
-  EXPECT_FLOAT_EQ(0.33333334, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.25, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv2) {
   using stan::math::matrix_ffv;
@@ -768,12 +768,12 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv2) {
   std::vector<double> grads;
 
   I(0).d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.12037037, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.1736111, grads[2]);
-  EXPECT_FLOAT_EQ(0.0625, grads[3]);
-  EXPECT_FLOAT_EQ(-0.11111111, grads[4]);
-  EXPECT_FLOAT_EQ(-0.083333336, grads[5]);
+  EXPECT_DOUBLE_EQ(0.12037037, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.1736111, grads[2]);
+  EXPECT_DOUBLE_EQ(0.0625, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.11111111, grads[4]);
+  EXPECT_DOUBLE_EQ(-0.083333336, grads[5]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv3) {
   using stan::math::matrix_ffv;
@@ -811,12 +811,12 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv3) {
   std::vector<double> grads;
 
   I(0).val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.12037037, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.1736111, grads[2]);
-  EXPECT_FLOAT_EQ(0.0625, grads[3]);
-  EXPECT_FLOAT_EQ(-0.11111111, grads[4]);
-  EXPECT_FLOAT_EQ(-0.083333336, grads[5]);
+  EXPECT_DOUBLE_EQ(0.12037037, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.1736111, grads[2]);
+  EXPECT_DOUBLE_EQ(0.0625, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.11111111, grads[4]);
+  EXPECT_DOUBLE_EQ(-0.083333336, grads[5]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv4) {
   using stan::math::matrix_ffv;
@@ -854,12 +854,12 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_ffv4) {
   std::vector<double> grads;
 
   I(0).d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.1712963, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.2488426, grads[2]);
-  EXPECT_FLOAT_EQ(-0.090277776, grads[3]);
-  EXPECT_FLOAT_EQ(0.12962963, grads[4]);
-  EXPECT_FLOAT_EQ(0.097222224, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.1712963, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.2488426, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.090277776, grads[3]);
+  EXPECT_DOUBLE_EQ(0.12962963, grads[4]);
+  EXPECT_DOUBLE_EQ(0.097222224, grads[5]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d1) {
   using stan::math::matrix_d;
@@ -878,14 +878,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d1) {
   Ad << 2.0, 3.0, 5.0, 7.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val_.val());
-  EXPECT_FLOAT_EQ(1, I(0, 1).val_.val_.val());
-  EXPECT_FLOAT_EQ(5.0 / 4.0, I(1, 0).val_.val_.val());
-  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val_.val());
-  EXPECT_FLOAT_EQ(-0.6388889, I(0, 0).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.91666669, I(0, 1).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.47916666, I(1, 0).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.6875, I(1, 1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, I(0, 1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(5.0 / 4.0, I(1, 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.6388889, I(0, 0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.91666669, I(0, 1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.47916666, I(1, 0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.6875, I(1, 1).d_.val_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_.val_);
@@ -895,10 +895,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d1) {
   std::vector<double> grads;
 
   I(0, 0).val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.41666666, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.41666666, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d2) {
   using stan::math::matrix_d;
@@ -926,10 +926,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d2) {
   std::vector<double> grads;
 
   I(0, 0).d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.28703704, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.35416666, grads[2]);
-  EXPECT_FLOAT_EQ(0.10416666, grads[3]);
+  EXPECT_DOUBLE_EQ(0.28703704, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.35416666, grads[2]);
+  EXPECT_DOUBLE_EQ(0.10416666, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d3) {
   using stan::math::matrix_d;
@@ -961,10 +961,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d3) {
   std::vector<double> grads;
 
   I(0, 0).val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.28703704, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.35416666, grads[2]);
-  EXPECT_FLOAT_EQ(0.10416666, grads[3]);
+  EXPECT_DOUBLE_EQ(0.28703704, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.35416666, grads[2]);
+  EXPECT_DOUBLE_EQ(0.10416666, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d4) {
   using stan::math::matrix_d;
@@ -996,10 +996,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_matrix_d4) {
   std::vector<double> grads;
 
   I(0, 0).d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.47685185, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.6261574, grads[2]);
-  EXPECT_FLOAT_EQ(-0.2013889, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.47685185, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.6261574, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.2013889, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d1) {
   using stan::math::matrix_ffv;
@@ -1019,10 +1019,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d1) {
   Ad << 2.0, 3.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val_.val());
-  EXPECT_FLOAT_EQ(-0.47222221, I(0).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.35416666, I(1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.47222221, I(0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.35416666, I(1).d_.val_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_.val_);
@@ -1032,10 +1032,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d1) {
   std::vector<double> grads;
 
   I(0).val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.22222222, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.25, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.22222222, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.25, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d2) {
   using stan::math::matrix_ffv;
@@ -1055,10 +1055,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d2) {
   Ad << 2.0, 3.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val_.val());
-  EXPECT_FLOAT_EQ(-0.47222221, I(0).d_.val_.val());
-  EXPECT_FLOAT_EQ(-0.35416666, I(1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.47222221, I(0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(-0.35416666, I(1).d_.val_.val());
 
   std::vector<var> vars;
   vars.push_back(Av(0, 0).val_.val_);
@@ -1068,10 +1068,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d2) {
   std::vector<double> grads;
 
   I(0).d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.23148148, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.25694445, grads[2]);
-  EXPECT_FLOAT_EQ(0.0625, grads[3]);
+  EXPECT_DOUBLE_EQ(0.23148148, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.25694445, grads[2]);
+  EXPECT_DOUBLE_EQ(0.0625, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d3) {
   using stan::math::matrix_ffv;
@@ -1104,10 +1104,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d3) {
   std::vector<double> grads;
 
   I(0).val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.23148148, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.25694445, grads[2]);
-  EXPECT_FLOAT_EQ(0.0625, grads[3]);
+  EXPECT_DOUBLE_EQ(0.23148148, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.25694445, grads[2]);
+  EXPECT_DOUBLE_EQ(0.0625, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d4) {
   using stan::math::matrix_ffv;
@@ -1140,10 +1140,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_ffv_vector_d4) {
   std::vector<double> grads;
 
   I(0).d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.375, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.45717594, grads[2]);
-  EXPECT_FLOAT_EQ(-0.13194445, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.375, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.45717594, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.13194445, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv1) {
   using stan::math::matrix_d;
@@ -1162,14 +1162,14 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv1) {
   Ad(1, 1).d_.val_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val_.val());
-  EXPECT_FLOAT_EQ(1, I(0, 1).val_.val_.val());
-  EXPECT_FLOAT_EQ(5.0 / 4.0, I(1, 0).val_.val_.val());
-  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val_.val());
-  EXPECT_FLOAT_EQ(0.33333334, I(0, 0).d_.val_.val());
-  EXPECT_FLOAT_EQ(0.33333334, I(0, 1).d_.val_.val());
-  EXPECT_FLOAT_EQ(0.25, I(1, 0).d_.val_.val());
-  EXPECT_FLOAT_EQ(0.25, I(1, 1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(1, I(0, 1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(5.0 / 4.0, I(1, 0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.33333334, I(0, 0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.33333334, I(0, 1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.25, I(1, 0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.25, I(1, 1).d_.val_.val());
 
   std::vector<var> vars;
   vars.push_back(Ad(0, 0).val_.val_);
@@ -1179,10 +1179,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv1) {
   std::vector<double> grads;
 
   I(0, 0).val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.33333334, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv2) {
   using stan::math::matrix_d;
@@ -1210,10 +1210,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv2) {
   std::vector<double> grads;
 
   I(0, 0).d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv3) {
   using stan::math::matrix_d;
@@ -1245,10 +1245,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv3) {
   std::vector<double> grads;
 
   I(0, 0).val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv4) {
   using stan::math::matrix_d;
@@ -1280,10 +1280,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_matrix_ffv4) {
   std::vector<double> grads;
 
   I(0, 0).d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv1) {
   using stan::math::matrix_d;
@@ -1300,10 +1300,10 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv1) {
   Ad(1).d_.val_ = 1.0;
 
   I = mdivide_left_spd(Av, Ad);
-  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val_.val());
-  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val_.val());
-  EXPECT_FLOAT_EQ(0.33333334, I(0).d_.val_.val());
-  EXPECT_FLOAT_EQ(0.25, I(1).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val_.val());
+  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val_.val());
+  EXPECT_DOUBLE_EQ(0.33333334, I(0).d_.val_.val());
+  EXPECT_DOUBLE_EQ(0.25, I(1).d_.val_.val());
 
   std::vector<var> vars;
   vars.push_back(Ad(0).val_.val_);
@@ -1311,8 +1311,8 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv1) {
   std::vector<double> grads;
 
   I(0).val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.33333334, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.33333334, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv2) {
@@ -1337,8 +1337,8 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv2) {
   std::vector<double> grads;
 
   I(0).d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv3) {
   using stan::math::matrix_d;
@@ -1364,8 +1364,8 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv3) {
   std::vector<double> grads;
 
   I(0).val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv4) {
   using stan::math::matrix_d;
@@ -1391,8 +1391,8 @@ TEST(AgradMixMatrixMdivideLeftSPD, matrix_d_vector_ffv4) {
   std::vector<double> grads;
 
   I(0).d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 TEST(AgradMixMatrixMdivideLeftSPD, ffv_exceptions) {
   using stan::math::matrix_d;

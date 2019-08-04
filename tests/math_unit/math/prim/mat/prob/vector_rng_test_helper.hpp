@@ -49,14 +49,7 @@ void assign_parameter_values(T_param& params,
  * @param params Values to copy into params
  */
 void assign_parameter_values(std::vector<double>& params,
-                             const std::vector<double>& values) {
-  if (values.size() == 0)
-    return;
-
-  for (size_t i = 0; i < params.size(); i++) {
-    params[i] = values[i % values.size()];
-  }
-}
+                             const std::vector<double>& values);
 
 /*
  * Fill the vector params with values from the values argument.
@@ -68,14 +61,7 @@ void assign_parameter_values(std::vector<double>& params,
  * @param params Values to copy into params
  */
 void assign_parameter_values(std::vector<int>& params,
-                             const std::vector<int>& values) {
-  if (values.size() == 0)
-    return;
-
-  for (size_t i = 0; i < params.size(); i++) {
-    params[i] = values[i % values.size()];
-  }
-}
+                             const std::vector<int>& values);
 
 /*
  * Assign param the first value of values
@@ -83,12 +69,7 @@ void assign_parameter_values(std::vector<int>& params,
  * @param param Output parameter to write value to
  * @param params Vector with value to copy into param
  */
-void assign_parameter_values(double& param, const std::vector<double>& values) {
-  if (values.size() == 0)
-    return;
-
-  param = values[0];
-}
+void assign_parameter_values(double& param, const std::vector<double>& values);
 
 /*
  * Assign param the first value of values
@@ -96,12 +77,7 @@ void assign_parameter_values(double& param, const std::vector<double>& values) {
  * @param param Output parameter to write value to
  * @param params Vector with value to copy into param
  */
-void assign_parameter_values(int& param, const std::vector<int>& values) {
-  if (values.size() == 0)
-    return;
-
-  param = values[0];
-}
+void assign_parameter_values(int& param, const std::vector<int>& values);
 
 /*
  * Resize v to be length N
@@ -119,13 +95,13 @@ void resize_if_vector(T& v, int N) {
  * For doubles, resize_if_vector does nothing
  */
 template <>
-void resize_if_vector(double& v, int N) {}
+inline void resize_if_vector(double& v, int N) {}
 
 /*
  * For ints, resize_if_vector does nothing
  */
 template <>
-void resize_if_vector(int& v, int N) {}
+inline void resize_if_vector(int& v, int N) {}
 
 /*
  * check_dist_throws feeds rig.generate_samples various

@@ -33,8 +33,8 @@ TEST(ProbDistributionsMatrixNormal, fvar_double) {
     }
 
   fvar<double> lp_ref = stan::math::matrix_normal_prec_log(y, mu, D, Sigma);
-  EXPECT_FLOAT_EQ(-2132.07482, lp_ref.val_);
-  EXPECT_FLOAT_EQ(-2075.1274, lp_ref.d_);
+  EXPECT_DOUBLE_EQ(-2132.07482, lp_ref.val_);
+  EXPECT_DOUBLE_EQ(-2075.1274, lp_ref.d_);
 }
 
 TEST(ProbDistributionsMatrixNormal, fvar_fvar_double) {
@@ -67,6 +67,6 @@ TEST(ProbDistributionsMatrixNormal, fvar_fvar_double) {
 
   fvar<fvar<double> > lp_ref
       = stan::math::matrix_normal_prec_log(y, mu, D, Sigma);
-  EXPECT_FLOAT_EQ(-2132.07482, lp_ref.val_.val_);
-  EXPECT_FLOAT_EQ(-2075.1274, lp_ref.d_.val_);
+  EXPECT_DOUBLE_EQ(-2132.07482, lp_ref.val_.val_);
+  EXPECT_DOUBLE_EQ(-2075.1274, lp_ref.d_.val_);
 }

@@ -32,7 +32,7 @@ TEST(AgradMixMatrixHead, HeadVector4_fv) {
   stan::math::vector_fv v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val(), v01[n].val_.val());
+    EXPECT_DOUBLE_EQ(v[n].val_.val(), v01[n].val_.val());
   }
 }
 
@@ -62,7 +62,7 @@ TEST(AgradMixMatrixHead, HeadRowVector4_fv) {
   stan::math::row_vector_fv v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val(), v01[n].val_.val());
+    EXPECT_DOUBLE_EQ(v[n].val_.val(), v01[n].val_.val());
   }
 }
 
@@ -99,7 +99,7 @@ TEST(AgradMixMatrixHead, HeadStdVector4_fv) {
   std::vector<fvar<var> > v01 = head(v, 2);
   EXPECT_EQ(2U, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val(), v01[n].val_.val());
+    EXPECT_DOUBLE_EQ(v[n].val_.val(), v01[n].val_.val());
   }
 }
 TEST(AgradMixMatrixHead, HeadVector1_ffv) {
@@ -128,7 +128,7 @@ TEST(AgradMixMatrixHead, HeadVector4_ffv) {
   stan::math::vector_ffv v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val_.val(), v01[n].val_.val_.val());
+    EXPECT_DOUBLE_EQ(v[n].val_.val_.val(), v01[n].val_.val_.val());
   }
 }
 
@@ -158,7 +158,7 @@ TEST(AgradMixMatrixHead, HeadRowVector4_ffv) {
   stan::math::row_vector_ffv v01 = head(v, 2);
   EXPECT_EQ(2, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val_.val(), v01[n].val_.val_.val());
+    EXPECT_DOUBLE_EQ(v[n].val_.val_.val(), v01[n].val_.val_.val());
   }
 }
 
@@ -195,6 +195,6 @@ TEST(AgradMixMatrixHead, HeadStdVector4_ffv) {
   std::vector<fvar<fvar<var> > > v01 = head(v, 2);
   EXPECT_EQ(2U, v01.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_FLOAT_EQ(v[n].val_.val_.val(), v01[n].val_.val_.val());
+    EXPECT_DOUBLE_EQ(v[n].val_.val_.val(), v01[n].val_.val_.val());
   }
 }

@@ -5,20 +5,20 @@
 
 TEST(MathFunctions, inv_Phi_1) {
   using stan::math::Phi;
-  using stan::math::inv_Phi;
-  EXPECT_FLOAT_EQ(0.0, inv_Phi(0.5));
+  using stan::math::Phi;
+  EXPECT_DOUBLE_EQ(0.0, inv_Phi(0.5));
   double p = 0.123456789;
-  EXPECT_FLOAT_EQ(p, Phi(inv_Phi(p)));
+  EXPECT_DOUBLE_EQ(p, Phi(inv_Phi(p)));
   p = 8e-311;
-  EXPECT_FLOAT_EQ(p, Phi(inv_Phi(p)));
+  EXPECT_DOUBLE_EQ(p, Phi(inv_Phi(p)));
   p = 0.99;
-  EXPECT_FLOAT_EQ(p, Phi(inv_Phi(p)));
+  EXPECT_DOUBLE_EQ(p, Phi(inv_Phi(p)));
 
   // breakpoints
   p = 0.02425;
-  EXPECT_FLOAT_EQ(p, Phi(inv_Phi(p)));
+  EXPECT_DOUBLE_EQ(p, Phi(inv_Phi(p)));
   p = 0.97575;
-  EXPECT_FLOAT_EQ(p, Phi(inv_Phi(p)));
+  EXPECT_DOUBLE_EQ(p, Phi(inv_Phi(p)));
 }
 TEST(MathFunctions, inv_Phi_inf_1) {
   using stan::math::inv_Phi;

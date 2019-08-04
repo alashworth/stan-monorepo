@@ -12,7 +12,7 @@ void expect_matrix_eq(
   EXPECT_EQ(a.cols(), b.cols());
   for (int i = 0; i < a.rows(); ++i)
     for (int j = 0; j < a.cols(); ++j)
-      EXPECT_FLOAT_EQ(value_of(a(i, j)), value_of(b(i, j)));
+      EXPECT_DOUBLE_EQ(value_of(a(i, j)), value_of(b(i, j)));
 }
 
 #endif

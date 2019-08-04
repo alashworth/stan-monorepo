@@ -73,7 +73,7 @@ TEST_F(Math, paper_example_3) {
   stan::math::var mu = 0.5, sigma = 1.2;
 
   stan::math::var lp = normal_log(y, mu, sigma);
-  EXPECT_FLOAT_EQ(-1.323482, lp.val());
+  EXPECT_DOUBLE_EQ(-1.323482, lp.val());
 }
 
 // paper_example_4: remove 'paper::' when including in the paper

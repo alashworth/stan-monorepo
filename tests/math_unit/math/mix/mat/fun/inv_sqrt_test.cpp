@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized inv_sqrt (defined in the
  * testing framework).
@@ -92,8 +93,9 @@ struct inv_sqrt_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, inv_sqrt_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, inv_sqrt_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, inv_sqrt_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, inv_sqrt_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_sqrt, prim_scalar_unary_test, inv_sqrt_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_sqrt, rev_scalar_unary_test, inv_sqrt_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_sqrt, fwd_scalar_unary_test, inv_sqrt_test);
+INSTANTIATE_TYPED_TEST_CASE_P(inv_sqrt, mix_scalar_unary_test, inv_sqrt_test);

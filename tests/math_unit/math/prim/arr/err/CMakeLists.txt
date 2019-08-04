@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_prim_arr_unit_tests PRIVATE
         check_finite_test.cpp
         check_matching_sizes_test.cpp
         check_nonnegative_test.cpp

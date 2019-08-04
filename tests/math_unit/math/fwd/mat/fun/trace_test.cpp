@@ -14,8 +14,8 @@ TEST(AgradFwdMatrixTrace, fd) {
   a(1, 1).d_ = 1.0;
 
   fvar<double> s = trace(a);
-  EXPECT_FLOAT_EQ(9.0, s.val_);
-  EXPECT_FLOAT_EQ(2.0, s.d_);
+  EXPECT_DOUBLE_EQ(9.0, s.val_);
+  EXPECT_DOUBLE_EQ(2.0, s.d_);
 }
 TEST(AgradFwdMatrixTrace, ffd) {
   using stan::math::fvar;
@@ -30,6 +30,6 @@ TEST(AgradFwdMatrixTrace, ffd) {
   a(1, 1).d_ = 1.0;
 
   fvar<fvar<double> > s = trace(a);
-  EXPECT_FLOAT_EQ(9.0, s.val_.val());
-  EXPECT_FLOAT_EQ(2.0, s.d_.val());
+  EXPECT_DOUBLE_EQ(9.0, s.val_.val());
+  EXPECT_DOUBLE_EQ(2.0, s.d_.val());
 }

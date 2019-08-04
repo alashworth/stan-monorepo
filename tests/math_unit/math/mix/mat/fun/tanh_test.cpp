@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized tanh (defined in the
  * testing framework).
@@ -92,8 +93,9 @@ struct tanh_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, tanh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, tanh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, tanh_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, tanh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tanh, prim_scalar_unary_test, tanh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tanh, rev_scalar_unary_test, tanh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tanh, fwd_scalar_unary_test, tanh_test);
+INSTANTIATE_TYPED_TEST_CASE_P(tanh, mix_scalar_unary_test, tanh_test);

@@ -24,7 +24,7 @@ inline void test_matrix_exp_multiply() {
   Eigen::Matrix<double, N, M> res = matrix_exp_multiply(A, B);
   EXPECT_EQ(res.size(), expAB.size());
   for (int l = 0; l < res.size(); ++l) {
-    EXPECT_FLOAT_EQ(res(l), expAB(l));
+    EXPECT_DOUBLE_EQ(res(l), expAB(l));
   }
 }
 

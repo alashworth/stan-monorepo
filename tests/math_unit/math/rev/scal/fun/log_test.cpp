@@ -7,12 +7,12 @@
 TEST(AgradRev, log_a) {
   AVAR a(5.0);
   AVAR f = log(a);
-  EXPECT_FLOAT_EQ(log(5.0), f.val());
+  EXPECT_DOUBLE_EQ(log(5.0), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(1.0 / 5.0, g[0]);
+  EXPECT_DOUBLE_EQ(1.0 / 5.0, g[0]);
 }
 
 TEST(AgradRev, log_inf) {
@@ -30,13 +30,14 @@ TEST(AgradRev, log_neg) {
   EXPECT_TRUE(std::isnan(log(a)));
 }
 
+namespace {
 struct log_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return log(arg1);
   }
 };
-
+}  // namespace
 TEST(AgradRev, log_NaN) {
   log_fun log_;
   test_nan(log_, false, true);

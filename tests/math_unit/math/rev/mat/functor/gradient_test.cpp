@@ -25,10 +25,10 @@ TEST(AgradAutoDiff, gradient_1) {
   double fx;
   Matrix<double, Dynamic, 1> grad_fx;
   stan::math::gradient(f, x, fx, grad_fx);
-  EXPECT_FLOAT_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
+  EXPECT_DOUBLE_EQ(5 * 5 * 7 + 3 * 7 * 7, fx);
   EXPECT_EQ(2, grad_fx.size());
-  EXPECT_FLOAT_EQ(2 * x(0) * x(1), grad_fx(0));
-  EXPECT_FLOAT_EQ(x(0) * x(0) + 3 * 2 * x(1), grad_fx(1));
+  EXPECT_DOUBLE_EQ(2 * x(0) * x(1), grad_fx(0));
+  EXPECT_DOUBLE_EQ(x(0) * x(0) + 3 * 2 * x(1), grad_fx(1));
 }
 
 // test threaded AD if enabled
@@ -39,11 +39,11 @@ TEST(AgradAutoDiff, gradient_threaded) {
   double fx_ref;
   Matrix<double, Dynamic, 1> grad_fx_ref;
   stan::math::gradient(f, x_ref, fx_ref, grad_fx_ref);
-  EXPECT_FLOAT_EQ(x_ref(0) * x_ref(0) * x_ref(1) + 3 * x_ref(1) * x_ref(1),
-                  fx_ref);
+  EXPECT_DOUBLE_EQ(x_ref(0) * x_ref(0) * x_ref(1) + 3 * x_ref(1) * x_ref(1),
+                   fx_ref);
   EXPECT_EQ(2, grad_fx_ref.size());
-  EXPECT_FLOAT_EQ(2 * x_ref(0) * x_ref(1), grad_fx_ref(0));
-  EXPECT_FLOAT_EQ(x_ref(0) * x_ref(0) + 3 * 2 * x_ref(1), grad_fx_ref(1));
+  EXPECT_DOUBLE_EQ(2 * x_ref(0) * x_ref(1), grad_fx_ref(0));
+  EXPECT_DOUBLE_EQ(x_ref(0) * x_ref(0) + 3 * 2 * x_ref(1), grad_fx_ref(1));
 
   auto thread_job = [&](double x1, double x2) {
     stan::math::ChainableStack thread_instance;
@@ -93,10 +93,10 @@ TEST(AgradAutoDiff, gradient_threaded) {
     double fx_job = ad_result(0);
     VectorXd grad_fx_job = ad_result.tail(ad_result.size() - 1);
 
-    EXPECT_FLOAT_EQ(fx_ref, fx_job);
+    EXPECT_DOUBLE_EQ(fx_ref, fx_job);
     EXPECT_EQ(grad_fx_ref.size(), grad_fx_job.size());
-    EXPECT_FLOAT_EQ(grad_fx_ref(0), grad_fx_job(0));
-    EXPECT_FLOAT_EQ(grad_fx_ref(1), grad_fx_job(1));
+    EXPECT_DOUBLE_EQ(grad_fx_ref(0), grad_fx_job(0));
+    EXPECT_DOUBLE_EQ(grad_fx_ref(1), grad_fx_job(1));
   }
 
   for (std::size_t i = 0; i < 100; i++) {
@@ -106,13 +106,13 @@ TEST(AgradAutoDiff, gradient_threaded) {
     x_local << 1.0 * i, 2.0 * i;
     VectorXd grad_fx_job = ad_result.tail(ad_result.size() - 1);
 
-    EXPECT_FLOAT_EQ(
+    EXPECT_DOUBLE_EQ(
         x_local(0) * x_local(0) * x_local(1) + 3 * x_local(1) * x_local(1),
         fx_job);
     EXPECT_EQ(2, grad_fx_job.size());
-    EXPECT_FLOAT_EQ(2 * x_local(0) * x_local(1), grad_fx_job(0));
-    EXPECT_FLOAT_EQ(x_local(0) * x_local(0) + 3 * 2 * x_local(1),
-                    grad_fx_job(1));
+    EXPECT_DOUBLE_EQ(2 * x_local(0) * x_local(1), grad_fx_job(0));
+    EXPECT_DOUBLE_EQ(x_local(0) * x_local(0) + 3 * 2 * x_local(1),
+                     grad_fx_job(1));
   }
 }
 

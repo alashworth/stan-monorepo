@@ -35,8 +35,8 @@ void fv_fv_test(T_a a, T_b b) {
 
   fvar<var> out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_.val(), -4.218931574);
-  EXPECT_FLOAT_EQ(out.d_.val(), 3.150968236);
+  EXPECT_DOUBLE_EQ(out.val_.val(), -4.218931574);
+  EXPECT_DOUBLE_EQ(out.d_.val(), 3.150968236);
   out.d_.grad();
 
   vector_d prob_deriv(4);
@@ -45,8 +45,8 @@ void fv_fv_test(T_a a, T_b b) {
   dens_deriv << 0.97277697193, 0.00577712302, 0.00010253311, 0.02134337194;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.adj(), prob_deriv[i]);
-    EXPECT_FLOAT_EQ(b[i].d_.adj(), dens_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(b[i].d_.adj(), dens_deriv[i]);
   }
 }
 
@@ -96,8 +96,8 @@ void fv_fv_vec_test(T_a a, T_b b1) {
 
   fvar<var> out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(out.val_.val(), -16.36331174);
-  EXPECT_FLOAT_EQ(out.d_.val(), 13.73648479);
+  EXPECT_DOUBLE_EQ(out.val_.val(), -16.36331174);
+  EXPECT_DOUBLE_EQ(out.d_.val(), 13.73648479);
   out.d_.grad();
 
   vector_d prob_deriv(4);
@@ -110,10 +110,10 @@ void fv_fv_vec_test(T_a a, T_b b1) {
   dens3_deriv << 0.01274798056, 0.97080327205, 0.00007041482, 0.01637833257;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.adj(), prob_deriv[i]);
-    EXPECT_FLOAT_EQ(c[0][i].d_.adj(), dens1_deriv[i]);
-    EXPECT_FLOAT_EQ(c[1][i].d_.adj(), dens2_deriv[i]);
-    EXPECT_FLOAT_EQ(c[2][i].d_.adj(), dens3_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[0][i].d_.adj(), dens1_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[1][i].d_.adj(), dens2_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[2][i].d_.adj(), dens3_deriv[i]);
   }
 }
 
@@ -168,15 +168,15 @@ void fv_d_test(T_a a, T_b b) {
 
   fvar<var> out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_.val(), -4.2189315474);
-  EXPECT_FLOAT_EQ(out.d_.val(), 2.150968235971);
+  EXPECT_DOUBLE_EQ(out.val_.val(), -4.2189315474);
+  EXPECT_DOUBLE_EQ(out.d_.val(), 2.150968235971);
   out.d_.grad();
 
   vector_d prob_deriv(4);
   prob_deriv << 1.892562202198, 0.020341982471, 0.000915474153, 0.237148577149;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.adj(), prob_deriv[i]);
   }
 }
 
@@ -214,15 +214,15 @@ void fv_d_vec_test(T_a a, T_b b1) {
 
   fvar<var> out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(out.val_.val(), -16.36331174);
-  EXPECT_FLOAT_EQ(out.d_.val(), 10.73648479);
+  EXPECT_DOUBLE_EQ(out.val_.val(), -16.36331174);
+  EXPECT_DOUBLE_EQ(out.d_.val(), 10.73648479);
   out.d_.grad();
 
   vector_d prob_deriv(4);
   prob_deriv << 1.930840738468, 6.257235890773, 0.051642416014, 2.496765742829;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.adj(), prob_deriv[i]);
   }
 }
 
@@ -277,15 +277,15 @@ void d_fv_test(T_a a, T_b b) {
 
   fvar<var> out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_.val(), -4.218931574);
-  EXPECT_FLOAT_EQ(out.d_.val(), 1.0);
+  EXPECT_DOUBLE_EQ(out.val_.val(), -4.218931574);
+  EXPECT_DOUBLE_EQ(out.d_.val(), 1.0);
   out.d_.grad();
 
   vector_d dens_deriv(4);
   dens_deriv << 0.97277697193, 0.00577712302, 0.00010253311, 0.02134337194;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(b[i].d_.adj(), dens_deriv[i]);
+    EXPECT_DOUBLE_EQ(b[i].d_.adj(), dens_deriv[i]);
   }
 }
 
@@ -331,8 +331,8 @@ void d_fv_vec_test(T_a a, T_b b1) {
 
   fvar<var> out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(out.val_.val(), -16.36331174);
-  EXPECT_FLOAT_EQ(out.d_.val(), 3.0);
+  EXPECT_DOUBLE_EQ(out.val_.val(), -16.36331174);
+  EXPECT_DOUBLE_EQ(out.d_.val(), 3.0);
   out.d_.grad();
 
   vector_d dens1_deriv(4);
@@ -343,9 +343,9 @@ void d_fv_vec_test(T_a a, T_b b1) {
   dens3_deriv << 0.01274798056, 0.97080327205, 0.00007041482, 0.01637833257;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(c[0][i].d_.adj(), dens1_deriv[i]);
-    EXPECT_FLOAT_EQ(c[1][i].d_.adj(), dens2_deriv[i]);
-    EXPECT_FLOAT_EQ(c[2][i].d_.adj(), dens3_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[0][i].d_.adj(), dens1_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[1][i].d_.adj(), dens2_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[2][i].d_.adj(), dens3_deriv[i]);
   }
 }
 
@@ -412,8 +412,8 @@ void ffv_ffv_test(T_a a, T_b b) {
 
   fvar<fvar<var> > out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_.val_.val(), -4.218931574);
-  EXPECT_FLOAT_EQ(out.d_.val_.val(), 3.150968236);
+  EXPECT_DOUBLE_EQ(out.val_.val_.val(), -4.218931574);
+  EXPECT_DOUBLE_EQ(out.d_.val_.val(), 3.150968236);
   out.d_.val_.grad();
 
   vector_d prob_deriv(4);
@@ -422,8 +422,8 @@ void ffv_ffv_test(T_a a, T_b b) {
   dens_deriv << 0.97277697193, 0.00577712302, 0.00010253311, 0.02134337194;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
-    EXPECT_FLOAT_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
   }
 }
 
@@ -490,8 +490,8 @@ void ffv_ffv_vec_test(T_a a, T_b b1) {
 
   fvar<fvar<var> > out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(out.val_.val_.val(), -16.36331174);
-  EXPECT_FLOAT_EQ(out.d_.val_.val(), 13.73648479);
+  EXPECT_DOUBLE_EQ(out.val_.val_.val(), -16.36331174);
+  EXPECT_DOUBLE_EQ(out.d_.val_.val(), 13.73648479);
   out.d_.val_.grad();
 
   vector_d prob_deriv(4);
@@ -504,10 +504,10 @@ void ffv_ffv_vec_test(T_a a, T_b b1) {
   dens3_deriv << 0.01274798056, 0.97080327205, 0.00007041482, 0.01637833257;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
-    EXPECT_FLOAT_EQ(c[0][i].d_.val_.adj(), dens1_deriv[i]);
-    EXPECT_FLOAT_EQ(c[1][i].d_.val_.adj(), dens2_deriv[i]);
-    EXPECT_FLOAT_EQ(c[2][i].d_.val_.adj(), dens3_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[0][i].d_.val_.adj(), dens1_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[1][i].d_.val_.adj(), dens2_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[2][i].d_.val_.adj(), dens3_deriv[i]);
   }
 }
 
@@ -558,15 +558,15 @@ void ffv_d_test(T_a a, T_b b) {
 
   fvar<fvar<var> > out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_.val_.val(), -4.218931574);
-  EXPECT_FLOAT_EQ(out.d_.val_.val(), 2.150968236);
+  EXPECT_DOUBLE_EQ(out.val_.val_.val(), -4.218931574);
+  EXPECT_DOUBLE_EQ(out.d_.val_.val(), 2.150968236);
   out.d_.val_.grad();
 
   vector_d prob_deriv(4);
   prob_deriv << 1.892562202198, 0.020341982471, 0.000915474153, 0.237148577149;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
   }
 }
 
@@ -606,15 +606,15 @@ void ffv_d_vec_test(T_a a, T_b b1) {
 
   fvar<fvar<var> > out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(out.val_.val_.val(), -16.36331174);
-  EXPECT_FLOAT_EQ(out.d_.val_.val(), 10.73648479);
+  EXPECT_DOUBLE_EQ(out.val_.val_.val(), -16.36331174);
+  EXPECT_DOUBLE_EQ(out.d_.val_.val(), 10.73648479);
   out.d_.val_.grad();
 
   vector_d prob_deriv(4);
   prob_deriv << 1.930840738468, 6.257235890773, 0.051642416014, 2.496765742829;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
+    EXPECT_DOUBLE_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
   }
 }
 
@@ -673,15 +673,15 @@ void d_ffv_test(T_a a, T_b b) {
 
   fvar<fvar<var> > out = log_mix(a, b);
 
-  EXPECT_FLOAT_EQ(out.val_.val_.val(), -4.218931574);
-  EXPECT_FLOAT_EQ(out.d_.val_.val(), 1.0);
+  EXPECT_DOUBLE_EQ(out.val_.val_.val(), -4.218931574);
+  EXPECT_DOUBLE_EQ(out.d_.val_.val(), 1.0);
   out.d_.val_.grad();
 
   vector_d dens_deriv(4);
   dens_deriv << 0.97277697193, 0.00577712302, 0.00010253311, 0.02134337194;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
+    EXPECT_DOUBLE_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
   }
 }
 
@@ -740,8 +740,8 @@ void d_ffv_vec_test(T_a a, T_b b1) {
 
   fvar<fvar<var> > out = log_mix(a, c);
 
-  EXPECT_FLOAT_EQ(out.val_.val_.val(), -16.36331174);
-  EXPECT_FLOAT_EQ(out.d_.val_.val(), 3.0);
+  EXPECT_DOUBLE_EQ(out.val_.val_.val(), -16.36331174);
+  EXPECT_DOUBLE_EQ(out.d_.val_.val(), 3.0);
   out.d_.val_.grad();
 
   vector_d dens1_deriv(4);
@@ -752,9 +752,9 @@ void d_ffv_vec_test(T_a a, T_b b1) {
   dens3_deriv << 0.01274798056, 0.97080327205, 0.00007041482, 0.01637833257;
 
   for (int i = 0; i < 4; ++i) {
-    EXPECT_FLOAT_EQ(c[0][i].d_.val_.adj(), dens1_deriv[i]);
-    EXPECT_FLOAT_EQ(c[1][i].d_.val_.adj(), dens2_deriv[i]);
-    EXPECT_FLOAT_EQ(c[2][i].d_.val_.adj(), dens3_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[0][i].d_.val_.adj(), dens1_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[1][i].d_.val_.adj(), dens2_deriv[i]);
+    EXPECT_DOUBLE_EQ(c[2][i].d_.val_.adj(), dens3_deriv[i]);
   }
 }
 
@@ -813,8 +813,8 @@ TEST(AgradMixMatrixLogMix, fv_fv_old) {
 
     fvar<var> out = log_mix(a, b);
 
-    EXPECT_FLOAT_EQ(out.val_.val(), -1.85911088);
-    EXPECT_FLOAT_EQ(out.d_.val(), 4.66673118);
+    EXPECT_DOUBLE_EQ(out.val_.val(), -1.85911088);
+    EXPECT_DOUBLE_EQ(out.d_.val(), 4.66673118);
     out.d_.grad();
 
     vector_d prob_deriv(4);
@@ -823,8 +823,8 @@ TEST(AgradMixMatrixLogMix, fv_fv_old) {
     dens_deriv << 0.3541590748, 0.6080099319, 0.0319534791, 0.0058775140;
 
     for (int i = 0; i < 4; ++i) {
-      EXPECT_FLOAT_EQ(a[i].d_.adj(), prob_deriv[i]);
-      EXPECT_FLOAT_EQ(b[i].d_.adj(), dens_deriv[i]);
+      EXPECT_DOUBLE_EQ(a[i].d_.adj(), prob_deriv[i]);
+      EXPECT_DOUBLE_EQ(b[i].d_.adj(), dens_deriv[i]);
     }
   };
 
@@ -866,15 +866,15 @@ TEST(AgradMixMatrixLogMix, fv_d_old) {
 
     fvar<var> out = log_mix(a, b);
 
-    EXPECT_FLOAT_EQ(out.val_.val(), -1.85911088);
-    EXPECT_FLOAT_EQ(out.d_.val(), 3.66673118);
+    EXPECT_DOUBLE_EQ(out.val_.val(), -1.85911088);
+    EXPECT_DOUBLE_EQ(out.d_.val(), 3.66673118);
     out.d_.grad();
 
     vector_d prob_deriv(4);
     prob_deriv << 2.3610604993, 0.8685856170, 0.3195347914, 0.1175502804;
 
     for (int i = 0; i < 4; ++i) {
-      EXPECT_FLOAT_EQ(a[i].d_.adj(), prob_deriv[i]);
+      EXPECT_DOUBLE_EQ(a[i].d_.adj(), prob_deriv[i]);
     }
   };
 
@@ -916,15 +916,15 @@ TEST(AgradMixMatrixLogMix, d_fv_old) {
 
     fvar<var> out = log_mix(a, b);
 
-    EXPECT_FLOAT_EQ(out.val_.val(), -1.85911088);
-    EXPECT_FLOAT_EQ(out.d_.val(), 1.0);
+    EXPECT_DOUBLE_EQ(out.val_.val(), -1.85911088);
+    EXPECT_DOUBLE_EQ(out.d_.val(), 1.0);
     out.d_.grad();
 
     vector_d dens_deriv(4);
     dens_deriv << 0.3541590748, 0.6080099319, 0.0319534791, 0.0058775140;
 
     for (int i = 0; i < 4; ++i) {
-      EXPECT_FLOAT_EQ(b[i].d_.adj(), dens_deriv[i]);
+      EXPECT_DOUBLE_EQ(b[i].d_.adj(), dens_deriv[i]);
     }
   };
 
@@ -978,8 +978,8 @@ TEST(AgradMixMatrixLogMix, ffv_ffv_old) {
 
     fvar<fvar<var> > out = log_mix(a, b);
 
-    EXPECT_FLOAT_EQ(out.val_.val_.val(), -1.85911088);
-    EXPECT_FLOAT_EQ(out.d_.val_.val(), 4.66673118);
+    EXPECT_DOUBLE_EQ(out.val_.val_.val(), -1.85911088);
+    EXPECT_DOUBLE_EQ(out.d_.val_.val(), 4.66673118);
     out.d_.val_.grad();
 
     stan::math::vector_d prob_deriv(4);
@@ -988,8 +988,8 @@ TEST(AgradMixMatrixLogMix, ffv_ffv_old) {
     dens_deriv << 0.3541590748, 0.6080099319, 0.0319534791, 0.0058775140;
 
     for (int i = 0; i < 4; ++i) {
-      EXPECT_FLOAT_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
-      EXPECT_FLOAT_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
+      EXPECT_DOUBLE_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
+      EXPECT_DOUBLE_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
     }
   };
 
@@ -1035,15 +1035,15 @@ TEST(AgradMixMatrixLogMix, ffv_d_old) {
 
     fvar<fvar<var> > out = log_mix(a, b);
 
-    EXPECT_FLOAT_EQ(out.val_.val_.val(), -1.85911088);
-    EXPECT_FLOAT_EQ(out.d_.val_.val(), 3.66673118);
+    EXPECT_DOUBLE_EQ(out.val_.val_.val(), -1.85911088);
+    EXPECT_DOUBLE_EQ(out.d_.val_.val(), 3.66673118);
     out.d_.val_.grad();
 
     stan::math::vector_d prob_deriv(4);
     prob_deriv << 2.3610604993, 0.8685856170, 0.3195347914, 0.1175502804;
 
     for (int i = 0; i < 4; ++i) {
-      EXPECT_FLOAT_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
+      EXPECT_DOUBLE_EQ(a[i].d_.val_.adj(), prob_deriv[i]);
     }
   };
 
@@ -1089,15 +1089,15 @@ TEST(AgradMixMatrixLogMix, d_ffv_old) {
 
     fvar<fvar<var> > out = log_mix(a, b);
 
-    EXPECT_FLOAT_EQ(out.val_.val_.val(), -1.85911088);
-    EXPECT_FLOAT_EQ(out.d_.val_.val(), 1.0);
+    EXPECT_DOUBLE_EQ(out.val_.val_.val(), -1.85911088);
+    EXPECT_DOUBLE_EQ(out.d_.val_.val(), 1.0);
     out.d_.val_.grad();
 
     stan::math::vector_d dens_deriv(4);
     dens_deriv << 0.3541590748, 0.6080099319, 0.0319534791, 0.0058775140;
 
     for (int i = 0; i < 4; ++i) {
-      EXPECT_FLOAT_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
+      EXPECT_DOUBLE_EQ(b[i].d_.val_.adj(), dens_deriv[i]);
     }
   };
 

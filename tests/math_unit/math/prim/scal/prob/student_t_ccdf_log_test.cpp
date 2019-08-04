@@ -7,9 +7,9 @@ TEST(ProbStudentT, ccdf_log_matches_lccdf) {
   double mu = 2;
   double sigma = 2.3;
 
-  EXPECT_FLOAT_EQ((stan::math::student_t_lccdf(y, nu, mu, sigma)),
-                  (stan::math::student_t_ccdf_log(y, nu, mu, sigma)));
-  EXPECT_FLOAT_EQ(
+  EXPECT_DOUBLE_EQ((stan::math::student_t_lccdf(y, nu, mu, sigma)),
+                   (stan::math::student_t_ccdf_log(y, nu, mu, sigma)));
+  EXPECT_DOUBLE_EQ(
       (stan::math::student_t_lccdf<double, double, double, double>(y, nu, mu,
                                                                    sigma)),
       (stan::math::student_t_ccdf_log<double, double, double, double>(y, nu, mu,

@@ -13,13 +13,13 @@ TEST(AgradRevMatrix, mv_trace) {
   AVEC x = createAVEC(a(0, 0), a(0, 1), a(1, 0), a(1, 1));
 
   AVAR s = trace(a);
-  EXPECT_FLOAT_EQ(9.0, s.val());
+  EXPECT_DOUBLE_EQ(9.0, s.val());
 
   VEC g = cgradvec(s, x);
-  EXPECT_FLOAT_EQ(1.0, g[0]);
-  EXPECT_FLOAT_EQ(0.0, g[1]);
-  EXPECT_FLOAT_EQ(0.0, g[2]);
-  EXPECT_FLOAT_EQ(1.0, g[3]);
+  EXPECT_DOUBLE_EQ(1.0, g[0]);
+  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_DOUBLE_EQ(0.0, g[2]);
+  EXPECT_DOUBLE_EQ(1.0, g[3]);
 }
 
 TEST(AgradRevMatrix, check_varis_on_stack_59) {

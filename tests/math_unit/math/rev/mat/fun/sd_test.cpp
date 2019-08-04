@@ -27,7 +27,7 @@ TEST(AgradRevMatrix, sd_eq) {
     EXPECT_EQ(size, grad.size());
     double analytic = std::sqrt(size) / size;
     for (size_t j = 0; j < size; ++j)
-      EXPECT_FLOAT_EQ(analytic, grad[j]);
+      EXPECT_DOUBLE_EQ(analytic, grad[j]);
   }
 }
 
@@ -38,7 +38,7 @@ TEST(AgradRevMatrix, sd_vector) {
 
   vector_d v(1);
   v << 1.0;
-  EXPECT_FLOAT_EQ(0.0, sd(v));
+  EXPECT_DOUBLE_EQ(0.0, sd(v));
 
   vector_d d1(6);
   vector_v v1(6);
@@ -46,14 +46,14 @@ TEST(AgradRevMatrix, sd_vector) {
   d1 << 1, 2, 3, 4, 5, 6;
   v1 << 1, 2, 3, 4, 5, 6;
 
-  EXPECT_FLOAT_EQ(std::sqrt(17.5 / 5.0), sd(d1));
+  EXPECT_DOUBLE_EQ(std::sqrt(17.5 / 5.0), sd(d1));
 
-  EXPECT_FLOAT_EQ(std::sqrt(17.5 / 5.0), sd(v1).val());
+  EXPECT_DOUBLE_EQ(std::sqrt(17.5 / 5.0), sd(v1).val());
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_FLOAT_EQ(0.0, sd(d1));
-  EXPECT_FLOAT_EQ(0.0, sd(v1).val());
+  EXPECT_DOUBLE_EQ(0.0, sd(d1));
+  EXPECT_DOUBLE_EQ(0.0, sd(v1).val());
 }
 TEST(AgradRevMatrix, sd_vector_exception) {
   using stan::math::sd;
@@ -72,7 +72,7 @@ TEST(AgradRevMatrix, sd_rowvector) {
 
   row_vector_d v(1);
   v << 1.0;
-  EXPECT_FLOAT_EQ(0.0, sd(v));
+  EXPECT_DOUBLE_EQ(0.0, sd(v));
 
   row_vector_d d1(6);
   row_vector_v v1(6);
@@ -80,14 +80,14 @@ TEST(AgradRevMatrix, sd_rowvector) {
   d1 << 1, 2, 3, 4, 5, 6;
   v1 << 1, 2, 3, 4, 5, 6;
 
-  EXPECT_FLOAT_EQ(std::sqrt(17.5 / 5.0), sd(d1));
+  EXPECT_DOUBLE_EQ(std::sqrt(17.5 / 5.0), sd(d1));
 
-  EXPECT_FLOAT_EQ(std::sqrt(17.5 / 5.0), sd(v1).val());
+  EXPECT_DOUBLE_EQ(std::sqrt(17.5 / 5.0), sd(v1).val());
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_FLOAT_EQ(0.0, sd(d1));
-  EXPECT_FLOAT_EQ(0.0, sd(v1).val());
+  EXPECT_DOUBLE_EQ(0.0, sd(d1));
+  EXPECT_DOUBLE_EQ(0.0, sd(v1).val());
 }
 TEST(AgradRevMatrix, sd_rowvector_exception) {
   using stan::math::row_vector_d;
@@ -107,7 +107,7 @@ TEST(AgradRevMatrix, sd_matrix) {
 
   matrix_d v(1, 1);
   v << 1.0;
-  EXPECT_FLOAT_EQ(0.0, sd(v));
+  EXPECT_DOUBLE_EQ(0.0, sd(v));
 
   matrix_d d1(2, 3);
   matrix_v v1(2, 3);
@@ -115,13 +115,13 @@ TEST(AgradRevMatrix, sd_matrix) {
   d1 << 1, 2, 3, 4, 5, 6;
   v1 << 1, 2, 3, 4, 5, 6;
 
-  EXPECT_FLOAT_EQ(std::sqrt(17.5 / 5.0), sd(d1));
-  EXPECT_FLOAT_EQ(std::sqrt(17.5 / 5.0), sd(v1).val());
+  EXPECT_DOUBLE_EQ(std::sqrt(17.5 / 5.0), sd(d1));
+  EXPECT_DOUBLE_EQ(std::sqrt(17.5 / 5.0), sd(v1).val());
 
   d1.resize(1, 1);
   v1.resize(1, 1);
-  EXPECT_FLOAT_EQ(0.0, sd(d1));
-  EXPECT_FLOAT_EQ(0.0, sd(v1).val());
+  EXPECT_DOUBLE_EQ(0.0, sd(d1));
+  EXPECT_DOUBLE_EQ(0.0, sd(v1).val());
 }
 TEST(AgradRevMatrix, sd_matrix_exception) {
   using stan::math::matrix_d;
@@ -168,7 +168,7 @@ TEST(AgradRevMatrix, sdStdVector_1) {
   EXPECT_EQ(3U, grad1.size());
   EXPECT_EQ(3U, grad2.size());
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_FLOAT_EQ(grad2[i], grad1[i]);
+    EXPECT_DOUBLE_EQ(grad2[i], grad1[i]);
 }
 // used to validate analytic gradient definition at limit sd(x) -> 0
 
@@ -183,7 +183,7 @@ TEST(AgradRevSd, finiteDiffsMatchAnalytic) {
     y[1] += epsilon;
     double sd_y_plus_epsilon = sd(y);
     double finite_diff = (sd_y_plus_epsilon - sd_y) / epsilon;
-    EXPECT_FLOAT_EQ(analytic, finite_diff);
+    EXPECT_DOUBLE_EQ(analytic, finite_diff);
   }
 }
 TEST(AgradRevMatrix, check_varis_on_stack_45) {

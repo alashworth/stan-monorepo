@@ -15,7 +15,7 @@ TEST(prob_transform, lkj_cov_matrix_rt_1) {
   Matrix<double, Dynamic, 1> xrt = stan::math::cov_matrix_free_lkj(y);
   EXPECT_EQ(x.size(), xrt.size());
   for (int i = 0; i < x.size(); ++i) {
-    EXPECT_FLOAT_EQ(x[i], xrt[i]);
+    EXPECT_DOUBLE_EQ(x[i], xrt[i]);
   }
 }
 TEST(prob_transform, lkj_cov_matrix_free_exception_1) {

@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_rev_arr_unit_tests PRIVATE
         coupled_mm.hpp
         coupled_ode_observer_test.cpp
         coupled_ode_system_test.cpp

@@ -7,7 +7,7 @@ void test_log_diff_exp(double a, double b) {
   using stan::math::log_diff_exp;
   using std::exp;
   using std::log;
-  EXPECT_FLOAT_EQ(log(exp(a) - exp(b)), log_diff_exp(a, b));
+  EXPECT_DOUBLE_EQ(log(exp(a) - exp(b)), log_diff_exp(a, b));
 }
 
 TEST(MathFunctions, log_diff_exp) {
@@ -27,8 +27,8 @@ TEST(MathFunctions, log_diff_exp) {
   EXPECT_NO_THROW(log_diff_exp(-10.21, -10.21));
 
   // exp(10000.0) overflows
-  EXPECT_FLOAT_EQ(10000.0, log_diff_exp(10000.0, 0.0));
-  EXPECT_FLOAT_EQ(0.0, log_diff_exp(0.0, -10000.0));
+  EXPECT_DOUBLE_EQ(10000.0, log_diff_exp(10000.0, 0.0));
+  EXPECT_DOUBLE_EQ(0.0, log_diff_exp(0.0, -10000.0));
 }
 
 TEST(MathFunctions, log_diff_exp_nan) {

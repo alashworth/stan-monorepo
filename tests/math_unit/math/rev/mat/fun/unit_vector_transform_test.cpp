@@ -43,13 +43,13 @@ TEST(probTransform, unit_vector_jacobian) {
 
   double det_J = J.determinant();
 
-  EXPECT_FLOAT_EQ(1.0 / det_J, lp.val()) << "J = " << std::endl
-                                         << J << std::endl
+  EXPECT_DOUBLE_EQ(1.0 / det_J, lp.val()) << "J = " << std::endl
+                                          << J << std::endl
                                          << "det_J = " << det_J << std::endl
                                          << "x = " << x.transpose();
 }
 
-TEST(probTransform, check_varis_on_stack) {
+TEST(probTransform, check_varis_on_stack_108) {
   using stan::math::var;
   Matrix<var, Dynamic, 1> y(3);
   y << 2, 3, -1;

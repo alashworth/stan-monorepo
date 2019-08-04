@@ -1,6 +1,6 @@
 #include <stan/math/mix/scal.hpp>
 #include <gtest/gtest.h>
-#include <math/rev/scal/fun/util.hpp>
+#include <math/rev/scal/util.hpp>
 #include <math/mix/scal/fun/nan_util.hpp>
 
 TEST(AgradFwdAsin, FvarVar_1stDeriv) {
@@ -11,13 +11,13 @@ TEST(AgradFwdAsin, FvarVar_1stDeriv) {
   fvar<var> x(0.5, 0.3);
   fvar<var> a = asin(x);
 
-  EXPECT_FLOAT_EQ(asin(0.5), a.val_.val());
-  EXPECT_FLOAT_EQ(0.3 / sqrt(1.0 - 0.5 * 0.5), a.d_.val());
+  EXPECT_DOUBLE_EQ(asin(0.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(0.3 / sqrt(1.0 - 0.5 * 0.5), a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_FLOAT_EQ(1.0 / sqrt(1.0 - 0.5 * 0.5), g[0]);
+  EXPECT_DOUBLE_EQ(1.0 / sqrt(1.0 - 0.5 * 0.5), g[0]);
 }
 
 TEST(AgradFwdAsin, FvarVar_2ndDeriv) {
@@ -28,13 +28,13 @@ TEST(AgradFwdAsin, FvarVar_2ndDeriv) {
   fvar<var> x(0.5, 0.3);
   fvar<var> a = asin(x);
 
-  EXPECT_FLOAT_EQ(asin(0.5), a.val_.val());
-  EXPECT_FLOAT_EQ(0.3 / sqrt(1.0 - 0.5 * 0.5), a.d_.val());
+  EXPECT_DOUBLE_EQ(asin(0.5), a.val_.val());
+  EXPECT_DOUBLE_EQ(0.3 / sqrt(1.0 - 0.5 * 0.5), a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_FLOAT_EQ(0.3 * 0.76980033, g[0]);
+  EXPECT_DOUBLE_EQ(0.3 * 0.76980033, g[0]);
 }
 
 TEST(AgradFwdAsin, FvarFvarVar_1stDeriv) {
@@ -48,30 +48,30 @@ TEST(AgradFwdAsin, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = asin(x);
 
-  EXPECT_FLOAT_EQ(asin(0.5), a.val_.val_.val());
-  EXPECT_FLOAT_EQ(2.0 / sqrt(1.0 - 0.5 * 0.5), a.val_.d_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
+  EXPECT_DOUBLE_EQ(asin(0.5), a.val_.val_.val());
+  EXPECT_DOUBLE_EQ(2.0 / sqrt(1.0 - 0.5 * 0.5), a.val_.d_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_FLOAT_EQ(1.0 / sqrt(1.0 - 0.5 * 0.5), g[0]);
+  EXPECT_DOUBLE_EQ(1.0 / sqrt(1.0 - 0.5 * 0.5), g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 2.0;
 
   fvar<fvar<var> > b = asin(y);
-  EXPECT_FLOAT_EQ(asin(0.5), b.val_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
-  EXPECT_FLOAT_EQ(2.0 / sqrt(1.0 - 0.5 * 0.5), b.d_.val_.val());
-  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
+  EXPECT_DOUBLE_EQ(asin(0.5), b.val_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
+  EXPECT_DOUBLE_EQ(2.0 / sqrt(1.0 - 0.5 * 0.5), b.d_.val_.val());
+  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(1.0 / sqrt(1.0 - 0.5 * 0.5), r[0]);
+  EXPECT_DOUBLE_EQ(1.0 / sqrt(1.0 - 0.5 * 0.5), r[0]);
 }
 
 TEST(AgradFwdAsin, FvarFvarVar_2ndDeriv) {
@@ -88,7 +88,7 @@ TEST(AgradFwdAsin, FvarFvarVar_2ndDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(2.0 * 0.76980033, g[0]);
+  EXPECT_DOUBLE_EQ(2.0 * 0.76980033, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
@@ -99,7 +99,7 @@ TEST(AgradFwdAsin, FvarFvarVar_2ndDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_FLOAT_EQ(2.0 * 0.76980033, r[0]);
+  EXPECT_DOUBLE_EQ(2.0 * 0.76980033, r[0]);
 }
 TEST(AgradFwdAsin, FvarFvarVar_3rdDeriv) {
   using stan::math::fvar;
@@ -116,7 +116,7 @@ TEST(AgradFwdAsin, FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_FLOAT_EQ(3.07920143567800, g[0]);
+  EXPECT_DOUBLE_EQ(3.07920143567800, g[0]);
 }
 struct asin_fun {
   template <typename T0>

@@ -7,6 +7,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized trigamma (defined in the
  * testing framework).
@@ -95,8 +96,9 @@ struct trigamma_test {
     return test::math::vector_builder<int>().build();
   }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, trigamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, trigamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, trigamma_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, trigamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(trigamma, prim_scalar_unary_test, trigamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(trigamma, rev_scalar_unary_test, trigamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(trigamma, fwd_scalar_unary_test, trigamma_test);
+INSTANTIATE_TYPED_TEST_CASE_P(trigamma, mix_scalar_unary_test, trigamma_test);

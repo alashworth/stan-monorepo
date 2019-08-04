@@ -4,6 +4,7 @@
 #include <math/rev/mat/util.hpp>
 #include <vector>
 
+namespace {
 std::vector<double> finite_differences(const size_t row, const size_t col,
                                        const stan::math::matrix_d A,
                                        const bool calc_A_partials,
@@ -50,6 +51,7 @@ std::vector<double> finite_differences(const size_t row, const size_t col,
   }
   return finite_diff;
 }
+}  // namespace
 
 TEST(AgradRevMatrix, mdivide_left_ldlt_val) {
   using stan::math::matrix_d;

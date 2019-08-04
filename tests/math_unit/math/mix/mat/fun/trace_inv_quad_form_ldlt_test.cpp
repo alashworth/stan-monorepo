@@ -26,12 +26,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_fv_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Ad);
-  EXPECT_FLOAT_EQ(9.0, I.val_.val());
-  EXPECT_FLOAT_EQ(2.0, I.d_.val());
+  EXPECT_DOUBLE_EQ(9.0, I.val_.val());
+  EXPECT_DOUBLE_EQ(2.0, I.d_.val());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(10.6, I.val_.val());
-  EXPECT_FLOAT_EQ(5.04, I.d_.val());
+  EXPECT_DOUBLE_EQ(10.6, I.val_.val());
+  EXPECT_DOUBLE_EQ(5.04, I.d_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -45,14 +45,14 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_fv_1) {
   vars.push_back(Av(1, 1).val_);
 
   I.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.04, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.32, grads[2]);
-  EXPECT_FLOAT_EQ(-1.64, grads[3]);
-  EXPECT_FLOAT_EQ(-0.4, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(1.6, grads[6]);
-  EXPECT_FLOAT_EQ(2, grads[7]);
+  EXPECT_DOUBLE_EQ(-0.04, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.32, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.64, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(1.6, grads[6]);
+  EXPECT_DOUBLE_EQ(2, grads[7]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_fv_2) {
@@ -89,14 +89,14 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_fv_2) {
   vars.push_back(Av(1, 1).val_);
 
   I.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.448, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-3.504, grads[2]);
-  EXPECT_FLOAT_EQ(0.848, grads[3]);
-  EXPECT_FLOAT_EQ(2.24, grads[4]);
-  EXPECT_FLOAT_EQ(1.6, grads[5]);
-  EXPECT_FLOAT_EQ(-0.56, grads[6]);
-  EXPECT_FLOAT_EQ(-0.4, grads[7]);
+  EXPECT_DOUBLE_EQ(0.448, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-3.504, grads[2]);
+  EXPECT_DOUBLE_EQ(0.848, grads[3]);
+  EXPECT_DOUBLE_EQ(2.24, grads[4]);
+  EXPECT_DOUBLE_EQ(1.6, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.56, grads[6]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[7]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_d_1) {
@@ -116,8 +116,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_d_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(10.6, I.val_.val());
-  EXPECT_FLOAT_EQ(-1.36, I.d_.val());
+  EXPECT_DOUBLE_EQ(10.6, I.val_.val());
+  EXPECT_DOUBLE_EQ(-1.36, I.d_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -127,10 +127,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_d_1) {
   vars.push_back(Ad(1, 1).val_);
 
   I.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.04, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.32, grads[2]);
-  EXPECT_FLOAT_EQ(-1.64, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.04, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.32, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.64, grads[3]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_d_2) {
   stan::math::LDLT_factor<fvar<var>, -1, -1> ldlt_Ad;
@@ -158,10 +158,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_matrix_d_2) {
   vars.push_back(Ad(1, 1).val_);
 
   I.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.192, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(2.416, grads[2]);
-  EXPECT_FLOAT_EQ(-0.592, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.192, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(2.416, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.592, grads[3]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_fv_1) {
@@ -180,8 +180,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_fv_1) {
   ldlt_Ad.compute(Ad);
   ASSERT_TRUE(ldlt_Ad.success());
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(10.6, I.val_.val());
-  EXPECT_FLOAT_EQ(6.4, I.d_.val());
+  EXPECT_DOUBLE_EQ(10.6, I.val_.val());
+  EXPECT_DOUBLE_EQ(6.4, I.d_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -191,10 +191,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_fv_1) {
   vars.push_back(Av(1, 1).val_);
 
   I.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.4, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(1.6, grads[2]);
-  EXPECT_FLOAT_EQ(2, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(1.6, grads[2]);
+  EXPECT_DOUBLE_EQ(2, grads[3]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_fv_2) {
@@ -222,10 +222,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_fv_2) {
   vars.push_back(Av(1, 1).val_);
 
   I.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(3.2, grads[0]);
-  EXPECT_FLOAT_EQ(3.2, grads[1]);
-  EXPECT_FLOAT_EQ(-0.8, grads[2]);
-  EXPECT_FLOAT_EQ(-0.8, grads[3]);
+  EXPECT_DOUBLE_EQ(3.2, grads[0]);
+  EXPECT_DOUBLE_EQ(3.2, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[3]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_fv_1) {
@@ -247,8 +247,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_fv_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(2, I.val_.val());
-  EXPECT_FLOAT_EQ(3, I.d_.val());
+  EXPECT_DOUBLE_EQ(2, I.val_.val());
+  EXPECT_DOUBLE_EQ(3, I.d_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -260,12 +260,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_fv_1) {
   vars.push_back(Av(1).val_);
 
   I.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(-1, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
-  EXPECT_FLOAT_EQ(2, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(2, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_fv_2) {
   stan::math::LDLT_factor<fvar<var>, -1, -1> ldlt_Ad;
@@ -297,12 +297,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_fv_2) {
   vars.push_back(Av(1).val_);
 
   I.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1.6, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.4, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.6, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.4, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
-  EXPECT_FLOAT_EQ(1.6, grads[4]);
-  EXPECT_FLOAT_EQ(-0.4, grads[5]);
+  EXPECT_DOUBLE_EQ(1.6, grads[4]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[5]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_d_1) {
@@ -322,8 +322,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_d_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(2, I.val_.val());
-  EXPECT_FLOAT_EQ(-1, I.d_.val());
+  EXPECT_DOUBLE_EQ(2, I.val_.val());
+  EXPECT_DOUBLE_EQ(-1, I.d_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -333,9 +333,9 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_d_1) {
   vars.push_back(Ad(1, 1).val_);
 
   I.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(-1, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
 }
 
@@ -365,9 +365,9 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_fv_vector_d_2) {
   vars.push_back(Ad(1, 1).val_);
 
   I.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(1.6, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.4, grads[2]);
+  EXPECT_DOUBLE_EQ(1.6, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
 }
 
@@ -386,8 +386,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_fv_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(2, I.val_.val());
-  EXPECT_FLOAT_EQ(4, I.d_.val());
+  EXPECT_DOUBLE_EQ(2, I.val_.val());
+  EXPECT_DOUBLE_EQ(4, I.d_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -395,8 +395,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_fv_1) {
   vars.push_back(Av(1).val_);
 
   I.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(2, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(2, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_fv_2) {
   stan::math::LDLT_factor<double, -1, -1> ldlt_Ad;
@@ -420,8 +420,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_fv_2) {
   vars.push_back(Av(1).val_);
 
   I.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(3.2, grads[0]);
-  EXPECT_FLOAT_EQ(-0.8, grads[1]);
+  EXPECT_DOUBLE_EQ(3.2, grads[0]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[1]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, fv_exceptions) {
@@ -507,12 +507,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Ad);
-  EXPECT_FLOAT_EQ(9.0, I.val_.val_.val());
-  EXPECT_FLOAT_EQ(2.0, I.d_.val_.val());
+  EXPECT_DOUBLE_EQ(9.0, I.val_.val_.val());
+  EXPECT_DOUBLE_EQ(2.0, I.d_.val_.val());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(10.6, I.val_.val_.val());
-  EXPECT_FLOAT_EQ(5.04, I.d_.val_.val());
+  EXPECT_DOUBLE_EQ(10.6, I.val_.val_.val());
+  EXPECT_DOUBLE_EQ(5.04, I.d_.val_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -526,14 +526,14 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_1) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.04, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.32, grads[2]);
-  EXPECT_FLOAT_EQ(-1.64, grads[3]);
-  EXPECT_FLOAT_EQ(-0.4, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
-  EXPECT_FLOAT_EQ(1.6, grads[6]);
-  EXPECT_FLOAT_EQ(2, grads[7]);
+  EXPECT_DOUBLE_EQ(-0.04, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.32, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.64, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(1.6, grads[6]);
+  EXPECT_DOUBLE_EQ(2, grads[7]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_2) {
@@ -570,14 +570,14 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_2) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.448, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-3.504, grads[2]);
-  EXPECT_FLOAT_EQ(0.848, grads[3]);
-  EXPECT_FLOAT_EQ(2.24, grads[4]);
-  EXPECT_FLOAT_EQ(1.6, grads[5]);
-  EXPECT_FLOAT_EQ(-0.56, grads[6]);
-  EXPECT_FLOAT_EQ(-0.4, grads[7]);
+  EXPECT_DOUBLE_EQ(0.448, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-3.504, grads[2]);
+  EXPECT_DOUBLE_EQ(0.848, grads[3]);
+  EXPECT_DOUBLE_EQ(2.24, grads[4]);
+  EXPECT_DOUBLE_EQ(1.6, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.56, grads[6]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[7]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_3) {
@@ -622,14 +622,14 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_3) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.448, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-3.504, grads[2]);
-  EXPECT_FLOAT_EQ(0.848, grads[3]);
-  EXPECT_FLOAT_EQ(2.24, grads[4]);
-  EXPECT_FLOAT_EQ(1.6, grads[5]);
-  EXPECT_FLOAT_EQ(-0.56, grads[6]);
-  EXPECT_FLOAT_EQ(-0.4, grads[7]);
+  EXPECT_DOUBLE_EQ(0.448, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-3.504, grads[2]);
+  EXPECT_DOUBLE_EQ(0.848, grads[3]);
+  EXPECT_DOUBLE_EQ(2.24, grads[4]);
+  EXPECT_DOUBLE_EQ(1.6, grads[5]);
+  EXPECT_DOUBLE_EQ(-0.56, grads[6]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[7]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_4) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -673,14 +673,14 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_ffv_4) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-4.3263998, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(6.0991998, grads[2]);
-  EXPECT_FLOAT_EQ(-1.2544, grads[3]);
-  EXPECT_FLOAT_EQ(-2.688, grads[4]);
-  EXPECT_FLOAT_EQ(-1.92, grads[5]);
-  EXPECT_FLOAT_EQ(0.672, grads[6]);
-  EXPECT_FLOAT_EQ(0.48, grads[7]);
+  EXPECT_DOUBLE_EQ(-4.3263998, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(6.0991998, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.2544, grads[3]);
+  EXPECT_DOUBLE_EQ(-2.688, grads[4]);
+  EXPECT_DOUBLE_EQ(-1.92, grads[5]);
+  EXPECT_DOUBLE_EQ(0.672, grads[6]);
+  EXPECT_DOUBLE_EQ(0.48, grads[7]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_1) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -699,8 +699,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(10.6, I.val_.val_.val());
-  EXPECT_FLOAT_EQ(-1.36, I.d_.val_.val());
+  EXPECT_DOUBLE_EQ(10.6, I.val_.val_.val());
+  EXPECT_DOUBLE_EQ(-1.36, I.d_.val_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -710,10 +710,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_1) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.04, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.32, grads[2]);
-  EXPECT_FLOAT_EQ(-1.64, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.04, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.32, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.64, grads[3]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_2) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -741,10 +741,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_2) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.192, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(2.416, grads[2]);
-  EXPECT_FLOAT_EQ(-0.592, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.192, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(2.416, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.592, grads[3]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_3) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -776,10 +776,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_3) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.192, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(2.416, grads[2]);
-  EXPECT_FLOAT_EQ(-0.592, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.192, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(2.416, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.592, grads[3]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_4) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -811,10 +811,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_matrix_d_4) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1.5104, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-2.0288, grads[2]);
-  EXPECT_FLOAT_EQ(0.6016, grads[3]);
+  EXPECT_DOUBLE_EQ(-1.5104, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-2.0288, grads[2]);
+  EXPECT_DOUBLE_EQ(0.6016, grads[3]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_1) {
@@ -833,8 +833,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_1) {
   ldlt_Ad.compute(Ad);
   ASSERT_TRUE(ldlt_Ad.success());
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(10.6, I.val_.val_.val());
-  EXPECT_FLOAT_EQ(6.4, I.d_.val_.val());
+  EXPECT_DOUBLE_EQ(10.6, I.val_.val_.val());
+  EXPECT_DOUBLE_EQ(6.4, I.d_.val_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -844,10 +844,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_1) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-0.4, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(1.6, grads[2]);
-  EXPECT_FLOAT_EQ(2, grads[3]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(1.6, grads[2]);
+  EXPECT_DOUBLE_EQ(2, grads[3]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_2) {
@@ -875,10 +875,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_2) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(3.2, grads[0]);
-  EXPECT_FLOAT_EQ(3.2, grads[1]);
-  EXPECT_FLOAT_EQ(-0.8, grads[2]);
-  EXPECT_FLOAT_EQ(-0.8, grads[3]);
+  EXPECT_DOUBLE_EQ(3.2, grads[0]);
+  EXPECT_DOUBLE_EQ(3.2, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[3]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_3) {
   stan::math::LDLT_factor<double, -1, -1> ldlt_Ad;
@@ -909,10 +909,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_3) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(3.2, grads[0]);
-  EXPECT_FLOAT_EQ(3.2, grads[1]);
-  EXPECT_FLOAT_EQ(-0.8, grads[2]);
-  EXPECT_FLOAT_EQ(-0.8, grads[3]);
+  EXPECT_DOUBLE_EQ(3.2, grads[0]);
+  EXPECT_DOUBLE_EQ(3.2, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[3]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_4) {
   stan::math::LDLT_factor<double, -1, -1> ldlt_Ad;
@@ -943,10 +943,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_matrix_ffv_4) {
   vars.push_back(Av(1, 1).val_.val_);
 
   I.d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
-  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(0, grads[3]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_1) {
@@ -968,8 +968,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(2, I.val_.val_.val());
-  EXPECT_FLOAT_EQ(3, I.d_.val_.val());
+  EXPECT_DOUBLE_EQ(2, I.val_.val_.val());
+  EXPECT_DOUBLE_EQ(3, I.d_.val_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -981,12 +981,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_1) {
   vars.push_back(Av(1).val_.val_);
 
   I.val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(-1, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
-  EXPECT_FLOAT_EQ(2, grads[4]);
-  EXPECT_FLOAT_EQ(0, grads[5]);
+  EXPECT_DOUBLE_EQ(2, grads[4]);
+  EXPECT_DOUBLE_EQ(0, grads[5]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_2) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -1018,12 +1018,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_2) {
   vars.push_back(Av(1).val_.val_);
 
   I.d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1.6, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.4, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.6, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.4, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
-  EXPECT_FLOAT_EQ(1.6, grads[4]);
-  EXPECT_FLOAT_EQ(-0.4, grads[5]);
+  EXPECT_DOUBLE_EQ(1.6, grads[4]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[5]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_3) {
@@ -1062,12 +1062,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_3) {
   vars.push_back(Av(1).val_.val_);
 
   I.val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1.6, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.4, grads[2]);
+  EXPECT_DOUBLE_EQ(-1.6, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.4, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
-  EXPECT_FLOAT_EQ(1.6, grads[4]);
-  EXPECT_FLOAT_EQ(-0.4, grads[5]);
+  EXPECT_DOUBLE_EQ(1.6, grads[4]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[5]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_4) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -1105,12 +1105,12 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_ffv_4) {
   vars.push_back(Av(1).val_.val_);
 
   I.d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0.64, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0.16, grads[2]);
-  EXPECT_FLOAT_EQ(-0.08, grads[3]);
-  EXPECT_FLOAT_EQ(-1.92, grads[4]);
-  EXPECT_FLOAT_EQ(0.48, grads[5]);
+  EXPECT_DOUBLE_EQ(0.64, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0.16, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.08, grads[3]);
+  EXPECT_DOUBLE_EQ(-1.92, grads[4]);
+  EXPECT_DOUBLE_EQ(0.48, grads[5]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_d_1) {
   stan::math::LDLT_factor<fvar<fvar<var> >, -1, -1> ldlt_Ad;
@@ -1129,8 +1129,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_d_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(2, I.val_.val_.val());
-  EXPECT_FLOAT_EQ(-1, I.d_.val_.val());
+  EXPECT_DOUBLE_EQ(2, I.val_.val_.val());
+  EXPECT_DOUBLE_EQ(-1, I.d_.val_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -1140,9 +1140,9 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_d_1) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-1, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_DOUBLE_EQ(-1, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
 }
 
@@ -1172,9 +1172,9 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_d_2) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(1.6, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.4, grads[2]);
+  EXPECT_DOUBLE_EQ(1.6, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
 }
 
@@ -1208,9 +1208,9 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_d_3) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(1.6, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(-0.4, grads[2]);
+  EXPECT_DOUBLE_EQ(1.6, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(-0.4, grads[2]);
   EXPECT_NEAR(0, grads[3], 1E-12);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_d_4) {
@@ -1243,10 +1243,10 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_ffv_vector_d_4) {
   vars.push_back(Ad(1, 1).val_.val_);
 
   I.d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(-3.2, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
-  EXPECT_FLOAT_EQ(1.12, grads[2]);
-  EXPECT_FLOAT_EQ(-0.08, grads[3]);
+  EXPECT_DOUBLE_EQ(-3.2, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(1.12, grads[2]);
+  EXPECT_DOUBLE_EQ(-0.08, grads[3]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_1) {
   stan::math::LDLT_factor<double, -1, -1> ldlt_Ad;
@@ -1263,8 +1263,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_1) {
   ASSERT_TRUE(ldlt_Ad.success());
 
   I = trace_inv_quad_form_ldlt(ldlt_Ad, Av);
-  EXPECT_FLOAT_EQ(2, I.val_.val_.val());
-  EXPECT_FLOAT_EQ(4, I.d_.val_.val());
+  EXPECT_DOUBLE_EQ(2, I.val_.val_.val());
+  EXPECT_DOUBLE_EQ(4, I.d_.val_.val());
 
   std::vector<double> grads;
   std::vector<var> vars;
@@ -1272,8 +1272,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_1) {
   vars.push_back(Av(1).val_.val_);
 
   I.val_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(2, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(2, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_2) {
   stan::math::LDLT_factor<double, -1, -1> ldlt_Ad;
@@ -1297,8 +1297,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_2) {
   vars.push_back(Av(1).val_.val_);
 
   I.d_.val_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(3.2, grads[0]);
-  EXPECT_FLOAT_EQ(-0.8, grads[1]);
+  EXPECT_DOUBLE_EQ(3.2, grads[0]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[1]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_3) {
   stan::math::LDLT_factor<double, -1, -1> ldlt_Ad;
@@ -1324,8 +1324,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_3) {
   vars.push_back(Av(1).val_.val_);
 
   I.val_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(3.2, grads[0]);
-  EXPECT_FLOAT_EQ(-0.8, grads[1]);
+  EXPECT_DOUBLE_EQ(3.2, grads[0]);
+  EXPECT_DOUBLE_EQ(-0.8, grads[1]);
 }
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_4) {
   stan::math::LDLT_factor<double, -1, -1> ldlt_Ad;
@@ -1351,8 +1351,8 @@ TEST(AgradMixMatrixTraceInvQuadFormLDLT, matrix_d_vector_ffv_4) {
   vars.push_back(Av(1).val_.val_);
 
   I.d_.d_.grad(vars, grads);
-  EXPECT_FLOAT_EQ(0, grads[0]);
-  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_DOUBLE_EQ(0, grads[0]);
+  EXPECT_DOUBLE_EQ(0, grads[1]);
 }
 
 TEST(AgradMixMatrixTraceInvQuadFormLDLT, ffv_exceptions) {

@@ -53,8 +53,8 @@ TEST(AgradFwdMatrixSubCol, SubCol6_matrix_fd) {
   stan::math::row_vector_fd v = sub_col(m, 1, 2, 2);
   EXPECT_EQ(2, v.size());
   for (int i = 0; i < 2; ++i) {
-    EXPECT_FLOAT_EQ(m(0 + i, 1).val_, v(i).val_);
-    EXPECT_FLOAT_EQ(m(0 + i, 1).d_, v(i).d_);
+    EXPECT_DOUBLE_EQ(m(0 + i, 1).val_, v(i).val_);
+    EXPECT_DOUBLE_EQ(m(0 + i, 1).d_, v(i).d_);
   }
 }
 TEST(AgradFwdMatrixSubCol, SubCol1_matrix_ffd) {
@@ -108,7 +108,7 @@ TEST(AgradFwdMatrixSubCol, SubCol6_matrix_ffd) {
   stan::math::row_vector_ffd v = sub_col(m, 1, 2, 2);
   EXPECT_EQ(2, v.size());
   for (int i = 0; i < 2; ++i) {
-    EXPECT_FLOAT_EQ(m(0 + i, 1).val_.val_, v(i).val_.val_);
-    EXPECT_FLOAT_EQ(m(0 + i, 1).d_.val_, v(i).d_.val_);
+    EXPECT_DOUBLE_EQ(m(0 + i, 1).val_.val_, v(i).val_.val_);
+    EXPECT_DOUBLE_EQ(m(0 + i, 1).d_.val_, v(i).d_.val_);
   }
 }

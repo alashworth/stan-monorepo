@@ -48,8 +48,8 @@ TEST(AgradRevMatrix, inverse_spd_grad) {
       int idx = 0;
       for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 2; ++j) {
-          EXPECT_FLOAT_EQ(-0.5 * ad_inv(k, i).val() * ad_inv(j, l).val()
-                              - 0.5 * ad_inv(l, i).val() * ad_inv(j, k).val(),
+          EXPECT_DOUBLE_EQ(-0.5 * ad_inv(k, i).val() * ad_inv(j, l).val()
+                               - 0.5 * ad_inv(l, i).val() * ad_inv(j, k).val(),
                           g[idx]);
           ++idx;
         }
@@ -80,7 +80,7 @@ TEST(AgradRevMatrix, inverse_spd_inverse_spd_sum) {
   size_t k = 0;
   for (int i = 0; i < 4; ++i) {
     for (int j = 0; j < 4; ++j) {
-      EXPECT_FLOAT_EQ(1.0, g[k]);
+      EXPECT_DOUBLE_EQ(1.0, g[k]);
       k++;
     }
   }

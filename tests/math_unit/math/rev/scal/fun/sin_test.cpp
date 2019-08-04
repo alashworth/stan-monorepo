@@ -7,23 +7,23 @@
 TEST(AgradRev, sin_var) {
   AVAR a = 0.49;
   AVAR f = sin(a);
-  EXPECT_FLOAT_EQ((.470625888), f.val());
+  EXPECT_DOUBLE_EQ((.470625888), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(cos(0.49), g[0]);
+  EXPECT_DOUBLE_EQ(cos(0.49), g[0]);
 }
 
 TEST(AgradRev, sin_neg_var) {
   AVAR a = -0.49;
   AVAR f = sin(a);
-  EXPECT_FLOAT_EQ((-.470625888), f.val());
+  EXPECT_DOUBLE_EQ((-.470625888), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_FLOAT_EQ(cos(-0.49), g[0]);
+  EXPECT_DOUBLE_EQ(cos(-0.49), g[0]);
 }
 
 TEST(AgradRev, sin_boundry) {
@@ -35,12 +35,14 @@ TEST(AgradRev, sin_boundry) {
   EXPECT_TRUE(std::isnan(sin(b)));
 }
 
+namespace {
 struct sin_fun {
   template <typename T0>
   inline T0 operator()(const T0& arg1) const {
     return sin(arg1);
   }
 };
+}  // namespace
 
 TEST(AgradRev, sin_NaN) {
   sin_fun sin_;

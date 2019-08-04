@@ -19,10 +19,10 @@ TEST(MetaTraits, VectorBuilder_true_false_2) {
   double a_double(1);
 
   VectorBuilder<true, double, double> dvv1(length(a_double));
-  EXPECT_FLOAT_EQ(0.0, dvv1[0]);
-  EXPECT_FLOAT_EQ(0.0, dvv1[1]);
-  EXPECT_FLOAT_EQ(0.0, dvv1[100]);
+  EXPECT_DOUBLE_EQ(0.0, dvv1[0]);
+  EXPECT_DOUBLE_EQ(0.0, dvv1[1]);
+  EXPECT_DOUBLE_EQ(0.0, dvv1[100]);
   double data1 = 0;
   EXPECT_NO_THROW(data1 = dvv1.data());
-  EXPECT_FLOAT_EQ(0.0, data1);
+  EXPECT_DOUBLE_EQ(0.0, data1);
 }

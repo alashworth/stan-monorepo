@@ -8,6 +8,7 @@
 #include <math/prim/mat/vectorize/vector_builder.hpp>
 #include <vector>
 
+namespace {
 /**
  * This is the structure for testing vectorized fabs (defined in the
  * testing framework).
@@ -92,8 +93,9 @@ struct fabs_test {
    */
   static std::vector<int> int_invalid_inputs() { return std::vector<int>(); }
 };
+}  // namespace
 
-INSTANTIATE_TYPED_TEST_CASE_P(, prim_scalar_unary_test, fabs_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, rev_scalar_unary_test, fabs_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, fwd_scalar_unary_test, fabs_test);
-INSTANTIATE_TYPED_TEST_CASE_P(, mix_scalar_unary_test, fabs_test);
+INSTANTIATE_TYPED_TEST_CASE_P(fabs, prim_scalar_unary_test, fabs_test);
+INSTANTIATE_TYPED_TEST_CASE_P(fabs, rev_scalar_unary_test, fabs_test);
+INSTANTIATE_TYPED_TEST_CASE_P(fabs, fwd_scalar_unary_test, fabs_test);
+INSTANTIATE_TYPED_TEST_CASE_P(fabs, mix_scalar_unary_test, fabs_test);

@@ -1,4 +1,4 @@
-target_sources(stan_math_unit_tests PRIVATE
+target_sources(stan_math_rev_arr_unit_tests PRIVATE
         check_positive_test.cpp
         check_greater_test.cpp
         check_less_test.cpp
