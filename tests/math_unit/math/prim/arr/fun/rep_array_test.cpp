@@ -7,7 +7,7 @@ TEST(MathMatrix, rep_array) {
   std::vector<double> x = rep_array(2.0, 3);
   EXPECT_EQ(3U, x.size());
   for (size_t i = 0; i < x.size(); ++i)
-    EXPECT_DOUBLE_EQ(2.0, x[i]);
+    EXPECT_FLOAT_EQ(2.0, x[i]);
 
   EXPECT_THROW(rep_array(2.0, -2), std::domain_error);
 }
@@ -19,7 +19,7 @@ TEST(MathMatrix, rep_array2D) {
   for (size_t i = 0; i < x.size(); ++i) {
     EXPECT_EQ(4U, x[i].size());
     for (size_t j = 0; j < x[i].size(); ++j)
-      EXPECT_DOUBLE_EQ(2.0, x[i][j]);
+      EXPECT_FLOAT_EQ(2.0, x[i][j]);
   }
   EXPECT_THROW(rep_array(2.0, -2, 3), std::domain_error);
   EXPECT_THROW(rep_array(2.0, 2, -3), std::domain_error);

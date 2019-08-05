@@ -205,11 +205,11 @@ TEST(StanAgradRevOde_integrate_ode_rk45, time_steps_as_param_AD) {
         res[i][j].grad(ts, g);
         for (auto k = 0; k < nt; ++k) {
           if (k != i) {
-            EXPECT_DOUBLE_EQ(g[k], 0.0);
+            EXPECT_FLOAT_EQ(g[k], 0.0);
           } else {
             std::vector<double> y0(res_d.begin(), res_d.begin() + ns);
-            EXPECT_DOUBLE_EQ(g[k],
-                             ode(ts[i].val(), y0, theta, x, x_int, msgs)[j]);
+            EXPECT_FLOAT_EQ(g[k],
+                            ode(ts[i].val(), y0, theta, x, x_int, msgs)[j]);
           }
         }
         stan::math::set_zero_all_adjoints();
@@ -256,7 +256,7 @@ TEST(StanAgradRevOde_integrate_ode_rk45, t0_as_param_AD) {
       std::vector<double> res_d = value_of(res[i]);
       for (auto j = 0; j < ns; ++j) {
         res[i][j].grad();
-        EXPECT_DOUBLE_EQ(t0v.adj(), 0.0);
+        EXPECT_FLOAT_EQ(t0v.adj(), 0.0);
         stan::math::set_zero_all_adjoints();
       }
     }

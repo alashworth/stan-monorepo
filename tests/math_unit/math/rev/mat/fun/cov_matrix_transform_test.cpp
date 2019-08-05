@@ -38,7 +38,7 @@ TEST(prob_transform, cov_matrix_jacobian) {
       J(m, n) = j[m][n];
 
   double log_abs_jacobian_det = log(fabs(determinant(J)));
-  EXPECT_DOUBLE_EQ(log_abs_jacobian_det, lp.val());
+  EXPECT_FLOAT_EQ(log_abs_jacobian_det, lp.val());
 }
 
 TEST(prob_transform, check_varis_on_stack_107) {

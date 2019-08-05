@@ -16,25 +16,25 @@ TEST(AgradRev, ibeta_vvv) {
   AVAR b = 0.3;
   AVAR c = 0.5;
   AVAR f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.3121373, f.val());
+  EXPECT_FLOAT_EQ(0.3121373, f.val());
 
   AVEC x = createAVEC(a, b, c);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.436993, grad_f[0]);
-  EXPECT_DOUBLE_EQ(0.7779751, grad_f[1]);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a.val(), b.val(), c.val()), grad_f[2]);
+  EXPECT_FLOAT_EQ(-0.436993, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.7779751, grad_f[1]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a.val(), b.val(), c.val()), grad_f[2]);
 
   a = 3;
   b = 2;
   c = 0.2;
   f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.0272, f.val());
+  EXPECT_FLOAT_EQ(0.0272, f.val());
   x = createAVEC(a, b, c);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.03737671, grad_f[0]);
-  EXPECT_DOUBLE_EQ(0.02507405, grad_f[1]);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a.val(), b.val(), c.val()), grad_f[2]);
+  EXPECT_FLOAT_EQ(-0.03737671, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.02507405, grad_f[1]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a.val(), b.val(), c.val()), grad_f[2]);
 }
 TEST(AgradRev, ibeta_vvd) {
   using stan::math::ibeta;
@@ -47,23 +47,23 @@ TEST(AgradRev, ibeta_vvd) {
   AVAR b = 0.3;
   double c = 0.5;
   AVAR f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.3121373, f.val());
+  EXPECT_FLOAT_EQ(0.3121373, f.val());
 
   AVEC x = createAVEC(a, b);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.436993, grad_f[0]);
-  EXPECT_DOUBLE_EQ(0.7779751, grad_f[1]);
+  EXPECT_FLOAT_EQ(-0.436993, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.7779751, grad_f[1]);
 
   a = 3;
   b = 2;
   c = 0.2;
   f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.0272, f.val());
+  EXPECT_FLOAT_EQ(0.0272, f.val());
   x = createAVEC(a, b);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.03737671, grad_f[0]);
-  EXPECT_DOUBLE_EQ(0.02507405, grad_f[1]);
+  EXPECT_FLOAT_EQ(-0.03737671, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.02507405, grad_f[1]);
 }
 TEST(AgradRev, ibeta_vdv) {
   using stan::math::ibeta;
@@ -76,23 +76,23 @@ TEST(AgradRev, ibeta_vdv) {
   double b = 0.3;
   AVAR c = 0.5;
   AVAR f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.3121373, f.val());
+  EXPECT_FLOAT_EQ(0.3121373, f.val());
 
   AVEC x = createAVEC(a, c);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.436993, grad_f[0]);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a.val(), b, c.val()), grad_f[1]);
+  EXPECT_FLOAT_EQ(-0.436993, grad_f[0]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a.val(), b, c.val()), grad_f[1]);
 
   a = 3;
   b = 2;
   c = 0.2;
   f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.0272, f.val());
+  EXPECT_FLOAT_EQ(0.0272, f.val());
   x = createAVEC(a, c);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.03737671, grad_f[0]);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a.val(), b, c.val()), grad_f[1]);
+  EXPECT_FLOAT_EQ(-0.03737671, grad_f[0]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a.val(), b, c.val()), grad_f[1]);
 }
 TEST(AgradRev, ibeta_vdd) {
   using stan::math::ibeta;
@@ -105,21 +105,21 @@ TEST(AgradRev, ibeta_vdd) {
   double b = 0.3;
   double c = 0.5;
   AVAR f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.3121373, f.val());
+  EXPECT_FLOAT_EQ(0.3121373, f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.436993, grad_f[0]);
+  EXPECT_FLOAT_EQ(-0.436993, grad_f[0]);
 
   a = 3;
   b = 2;
   c = 0.2;
   f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.0272, f.val());
+  EXPECT_FLOAT_EQ(0.0272, f.val());
   x = createAVEC(a);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-0.03737671, grad_f[0]);
+  EXPECT_FLOAT_EQ(-0.03737671, grad_f[0]);
 }
 TEST(AgradRev, ibeta_dvv) {
   using stan::math::ibeta;
@@ -132,23 +132,23 @@ TEST(AgradRev, ibeta_dvv) {
   AVAR b = 0.3;
   AVAR c = 0.5;
   AVAR f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.3121373, f.val());
+  EXPECT_FLOAT_EQ(0.3121373, f.val());
 
   AVEC x = createAVEC(b, c);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.7779751, grad_f[0]);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a, b.val(), c.val()), grad_f[1]);
+  EXPECT_FLOAT_EQ(0.7779751, grad_f[0]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a, b.val(), c.val()), grad_f[1]);
 
   a = 3;
   b = 2;
   c = 0.2;
   f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.0272, f.val());
+  EXPECT_FLOAT_EQ(0.0272, f.val());
   x = createAVEC(b, c);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.02507405, grad_f[0]);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a, b.val(), c.val()), grad_f[1]);
+  EXPECT_FLOAT_EQ(0.02507405, grad_f[0]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a, b.val(), c.val()), grad_f[1]);
 }
 TEST(AgradRev, ibeta_dvd) {
   using stan::math::ibeta;
@@ -161,21 +161,21 @@ TEST(AgradRev, ibeta_dvd) {
   AVAR b = 0.3;
   double c = 0.5;
   AVAR f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.3121373, f.val());
+  EXPECT_FLOAT_EQ(0.3121373, f.val());
 
   AVEC x = createAVEC(b);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.7779751, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.7779751, grad_f[0]);
 
   a = 3;
   b = 2;
   c = 0.2;
   f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.0272, f.val());
+  EXPECT_FLOAT_EQ(0.0272, f.val());
   x = createAVEC(b);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.02507405, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.02507405, grad_f[0]);
 }
 TEST(AgradRev, ibeta_ddv) {
   using stan::math::ibeta;
@@ -188,21 +188,21 @@ TEST(AgradRev, ibeta_ddv) {
   double b = 0.3;
   AVAR c = 0.5;
   AVAR f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.3121373, f.val());
+  EXPECT_FLOAT_EQ(0.3121373, f.val());
 
   AVEC x = createAVEC(c);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a, b, c.val()), grad_f[0]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a, b, c.val()), grad_f[0]);
 
   a = 3;
   b = 2;
   c = 0.2;
   f = ibeta(a, b, c);
-  EXPECT_DOUBLE_EQ(0.0272, f.val());
+  EXPECT_FLOAT_EQ(0.0272, f.val());
   x = createAVEC(c);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(ibeta_derivative(a, b, c.val()), grad_f[0]);
+  EXPECT_FLOAT_EQ(ibeta_derivative(a, b, c.val()), grad_f[0]);
 }
 
 namespace {

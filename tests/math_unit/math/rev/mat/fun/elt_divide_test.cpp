@@ -13,14 +13,14 @@ TEST(AgradRevMatrix, elt_divide_vec_vv) {
   y << 10, 100;
   AVEC x_ind = createAVEC(x(0), x(1), y(0), y(1));
   vector_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(1).val());
+  EXPECT_FLOAT_EQ(0.2, z(0).val());
+  EXPECT_FLOAT_EQ(0.05, z(1).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(1.0 / 10.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
-  EXPECT_DOUBLE_EQ(2.0 / (-10.0 * 10.0), g[2]);
-  EXPECT_DOUBLE_EQ(0.0, g[3]);
+  EXPECT_FLOAT_EQ(1.0 / 10.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(2.0 / (-10.0 * 10.0), g[2]);
+  EXPECT_FLOAT_EQ(0.0, g[3]);
 }
 TEST(AgradRevMatrix, elt_divide_vec_vd) {
   using stan::math::elt_divide;
@@ -33,12 +33,12 @@ TEST(AgradRevMatrix, elt_divide_vec_vd) {
   y << 10, 100;
   AVEC x_ind = createAVEC(x(0), x(1));
   vector_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(1).val());
+  EXPECT_FLOAT_EQ(0.2, z(0).val());
+  EXPECT_FLOAT_EQ(0.05, z(1).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(1.0 / 10.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(1.0 / 10.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
 }
 TEST(AgradRevMatrix, elt_divide_vec_dv) {
   using stan::math::elt_divide;
@@ -51,12 +51,12 @@ TEST(AgradRevMatrix, elt_divide_vec_dv) {
   y << 10, 100;
   AVEC x_ind = createAVEC(y(0), y(1));
   vector_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(1).val());
+  EXPECT_FLOAT_EQ(0.2, z(0).val());
+  EXPECT_FLOAT_EQ(0.05, z(1).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(2.0 / (-10.0 * 10.0), g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(2.0 / (-10.0 * 10.0), g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
 }
 
 TEST(AgradRevMatrix, elt_divide_rowvec_vv) {
@@ -69,14 +69,14 @@ TEST(AgradRevMatrix, elt_divide_rowvec_vv) {
   y << 10, 100;
   AVEC x_ind = createAVEC(x(0), x(1), y(0), y(1));
   row_vector_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(1).val());
+  EXPECT_FLOAT_EQ(0.2, z(0).val());
+  EXPECT_FLOAT_EQ(0.05, z(1).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(1.0 / 10.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
-  EXPECT_DOUBLE_EQ(2.0 / (-10.0 * 10.0), g[2]);
-  EXPECT_DOUBLE_EQ(0.0, g[3]);
+  EXPECT_FLOAT_EQ(1.0 / 10.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(2.0 / (-10.0 * 10.0), g[2]);
+  EXPECT_FLOAT_EQ(0.0, g[3]);
 }
 TEST(AgradRevMatrix, elt_divide_rowvec_vd) {
   using stan::math::elt_divide;
@@ -89,12 +89,12 @@ TEST(AgradRevMatrix, elt_divide_rowvec_vd) {
   y << 10, 100;
   AVEC x_ind = createAVEC(x(0), x(1));
   row_vector_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(1).val());
+  EXPECT_FLOAT_EQ(0.2, z(0).val());
+  EXPECT_FLOAT_EQ(0.05, z(1).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(1.0 / 10.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(1.0 / 10.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
 }
 TEST(AgradRevMatrix, elt_divide_rowvec_dv) {
   using stan::math::elt_divide;
@@ -107,12 +107,12 @@ TEST(AgradRevMatrix, elt_divide_rowvec_dv) {
   y << 10, 100;
   AVEC x_ind = createAVEC(y(0), y(1));
   row_vector_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(1).val());
+  EXPECT_FLOAT_EQ(0.2, z(0).val());
+  EXPECT_FLOAT_EQ(0.05, z(1).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(2.0 / (-10.0 * 10.0), g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(2.0 / (-10.0 * 10.0), g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
 }
 
 TEST(AgradRevMatrix, elt_divide_mat_vv) {
@@ -125,15 +125,15 @@ TEST(AgradRevMatrix, elt_divide_mat_vv) {
   y << 10, 100, 1000, 10000, 100000, 1000000;
   AVEC x_ind = createAVEC(x(0, 0), x(0, 1), y(0, 0), y(0, 1));
   matrix_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val());
-  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val());
+  EXPECT_FLOAT_EQ(0.2, z(0, 0).val());
+  EXPECT_FLOAT_EQ(0.05, z(0, 1).val());
+  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(1.0 / 10.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
-  EXPECT_DOUBLE_EQ(2.0 / (-10.0 * 10.0), g[2]);
-  EXPECT_DOUBLE_EQ(0.0, g[3]);
+  EXPECT_FLOAT_EQ(1.0 / 10.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(2.0 / (-10.0 * 10.0), g[2]);
+  EXPECT_FLOAT_EQ(0.0, g[3]);
 }
 TEST(AgradRevMatrix, elt_divide_mat_vd) {
   using stan::math::elt_divide;
@@ -146,13 +146,13 @@ TEST(AgradRevMatrix, elt_divide_mat_vd) {
   y << 10, 100, 1000, 10000, 100000, 1000000;
   AVEC x_ind = createAVEC(x(0, 0), x(0, 1));
   matrix_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val());
-  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val());
+  EXPECT_FLOAT_EQ(0.2, z(0, 0).val());
+  EXPECT_FLOAT_EQ(0.05, z(0, 1).val());
+  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(1.0 / 10.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(1.0 / 10.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
 }
 TEST(AgradRevMatrix, elt_divide_mat_dv) {
   using stan::math::elt_divide;
@@ -165,13 +165,13 @@ TEST(AgradRevMatrix, elt_divide_mat_dv) {
   y << 10, 100, 1000, 10000, 100000, 1000000;
   AVEC x_ind = createAVEC(y(0, 0), y(0, 1));
   matrix_v z = elt_divide(x, y);
-  EXPECT_DOUBLE_EQ(0.2, z(0, 0).val());
-  EXPECT_DOUBLE_EQ(0.05, z(0, 1).val());
-  EXPECT_DOUBLE_EQ(112.0 / 1000000.0, z(1, 2).val());
+  EXPECT_FLOAT_EQ(0.2, z(0, 0).val());
+  EXPECT_FLOAT_EQ(0.05, z(0, 1).val());
+  EXPECT_FLOAT_EQ(112.0 / 1000000.0, z(1, 2).val());
 
   VEC g = cgradvec(z(0), x_ind);
-  EXPECT_DOUBLE_EQ(2.0 / (-10.0 * 10.0), g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(2.0 / (-10.0 * 10.0), g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
 }
 TEST(AgradRevMatrix, elt_divide_mat_scal_dv) {
   using stan::math::elt_divide;
@@ -186,7 +186,7 @@ TEST(AgradRevMatrix, elt_divide_mat_scal_dv) {
 
   matrix_v z = elt_divide(x, y);
   z.sum().grad();
-  EXPECT_DOUBLE_EQ(x.sum() * (-1.0 / 100), y.adj());
+  EXPECT_FLOAT_EQ(x.sum() * (-1.0 / 100), y.adj());
 }
 TEST(AgradRevMatrix, elt_divide_vec_scal_dv) {
   using stan::math::elt_divide;
@@ -201,7 +201,7 @@ TEST(AgradRevMatrix, elt_divide_vec_scal_dv) {
 
   vector_v z = elt_divide(x, y);
   z.sum().grad();
-  EXPECT_DOUBLE_EQ(x.sum() * (-1.0 / 100), y.adj());
+  EXPECT_FLOAT_EQ(x.sum() * (-1.0 / 100), y.adj());
 }
 TEST(AgradRevMatrix, elt_divide_row_vec_scal_dv) {
   using stan::math::elt_divide;
@@ -216,7 +216,7 @@ TEST(AgradRevMatrix, elt_divide_row_vec_scal_dv) {
 
   row_vector_v z = elt_divide(x, y);
   z.sum().grad();
-  EXPECT_DOUBLE_EQ(x.sum() * (-1.0 / 100), y.adj());
+  EXPECT_FLOAT_EQ(x.sum() * (-1.0 / 100), y.adj());
 }
 TEST(AgradRevMatrix, check_varis_on_stack_11) {
   using stan::math::elt_divide;

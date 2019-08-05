@@ -23,10 +23,10 @@ TEST(ProbDistributionsNegBinomial2LogGLM,
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta = x * beta + alphavec;
   double phi = 2;
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       (stan::math::neg_binomial_2_log_lpmf(y, theta, phi)),
       (stan::math::neg_binomial_2_log_glm_lpmf(y, x, alpha, beta, phi)));
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       (stan::math::neg_binomial_2_log_lpmf<true>(y, theta, phi)),
       (stan::math::neg_binomial_2_log_glm_lpmf<true>(y, x, alpha, beta, phi)));
 }
@@ -49,11 +49,11 @@ TEST(ProbDistributionsNegBinomial2LogGLM,
     Matrix<double, Dynamic, 1> theta(3, 1);
     theta = x * beta + alphavec;
     double phi = Matrix<double, Dynamic, 1>::Random(1, 1)[0] + 1;
-    EXPECT_DOUBLE_EQ(
+    EXPECT_FLOAT_EQ(
         (stan::math::neg_binomial_2_log_lpmf(y, theta, phi)),
         (stan::math::neg_binomial_2_log_glm_lpmf(y, x, alpha, beta, phi)));
-    EXPECT_DOUBLE_EQ((stan::math::neg_binomial_2_log_lpmf<true>(y, theta, phi)),
-                     (stan::math::neg_binomial_2_log_glm_lpmf<true>(y, x, alpha,
+    EXPECT_FLOAT_EQ((stan::math::neg_binomial_2_log_lpmf<true>(y, theta, phi)),
+                    (stan::math::neg_binomial_2_log_glm_lpmf<true>(y, x, alpha,
                                                                    beta, phi)));
   }
 }
@@ -99,15 +99,15 @@ TEST(ProbDistributionsNegBinomial2LogGLM, glm_matches_neg_binomial_2_log_vars) {
   var lp2
       = stan::math::neg_binomial_2_log_glm_lpmf(y2, x2, alpha2, beta2, phi2);
   lp2.grad();
-  EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+  EXPECT_FLOAT_EQ(lp_val, lp2.val());
   for (size_t i = 0; i < 2; i++) {
-    EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
+    EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
   }
-  EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
-  EXPECT_DOUBLE_EQ(phi_adj, phi2.adj());
+  EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
+  EXPECT_FLOAT_EQ(phi_adj, phi2.adj());
   for (size_t j = 0; j < 3; j++) {
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
+      EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
     }
   }
 }
@@ -157,15 +157,15 @@ TEST(ProbDistributionsNegBinomial2LogGLM,
     var lp2
         = stan::math::neg_binomial_2_log_glm_lpmf(y, x2, alpha2, beta2, phi2);
     lp2.grad();
-    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+    EXPECT_FLOAT_EQ(lp_val, lp2.val());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
     }
-    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
-    EXPECT_DOUBLE_EQ(phi_adj, phi2.adj());
+    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
+    EXPECT_FLOAT_EQ(phi_adj, phi2.adj());
     for (size_t j = 0; j < 3; j++) {
       for (size_t i = 0; i < 2; i++) {
-        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
   }
@@ -213,12 +213,12 @@ TEST(ProbDistributionsNegBinomial2LogGLM,
     var lp2
         = stan::math::neg_binomial_2_log_glm_lpmf(y, x2, alpha2, beta2, phi2);
     lp2.grad();
-    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
-    EXPECT_DOUBLE_EQ(beta_adj, beta2.adj());
-    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
-    EXPECT_DOUBLE_EQ(phi_adj, phi2.adj());
+    EXPECT_FLOAT_EQ(lp_val, lp2.val());
+    EXPECT_FLOAT_EQ(beta_adj, beta2.adj());
+    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
+    EXPECT_FLOAT_EQ(phi_adj, phi2.adj());
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(x_adj(j, 0), x2(j, 0).adj());
+      EXPECT_FLOAT_EQ(x_adj(j, 0), x2(j, 0).adj());
     }
   }
 }
@@ -274,15 +274,15 @@ TEST(ProbDistributionsNegBinomial2LogGLM,
     var lp2
         = stan::math::neg_binomial_2_log_glm_lpmf(y, x2, alpha2, beta2, phi2);
     lp2.grad();
-    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+    EXPECT_FLOAT_EQ(lp_val, lp2.val());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
     }
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(phi_adj[j], phi2[j].adj());
-      EXPECT_DOUBLE_EQ(alpha_adj[j], alpha2[j].adj());
+      EXPECT_FLOAT_EQ(phi_adj[j], phi2[j].adj());
+      EXPECT_FLOAT_EQ(alpha_adj[j], alpha2[j].adj());
       for (size_t i = 0; i < 2; i++) {
-        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
   }
@@ -330,7 +330,7 @@ TEST(ProbDistributionsNegBinomial2LogGLM,
   value2
       += stan::math::neg_binomial_2_log_glm_lpmf(vi, mv, rvv, rvv, rvv).val();
 
-  EXPECT_DOUBLE_EQ(value, value2);
+  EXPECT_FLOAT_EQ(value, value2);
 }
 
 //  We check that the right errors are thrown.

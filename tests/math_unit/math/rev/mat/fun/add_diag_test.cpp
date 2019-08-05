@@ -15,10 +15,10 @@ TEST(AgradRevMatrix, var_mat_double_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1.0 + jitter, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1.0 + jitter, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -35,11 +35,11 @@ TEST(AgradRevMatrix, double_mat_var_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1.0 + stan::math::value_of(jitter),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1.0 + stan::math::value_of(jitter),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1.0, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1.0, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -56,11 +56,11 @@ TEST(AgradRevMatrix, var_mat_var_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1.0 + stan::math::value_of(jitter),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1.0 + stan::math::value_of(jitter),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1.0, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1.0, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -78,11 +78,11 @@ TEST(AgradRevMatrix, double_mat_var_vec_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1 + stan::math::value_of(to_add[i]),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1 + stan::math::value_of(to_add[i]),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -100,11 +100,11 @@ TEST(AgradRevMatrix, double_mat_var_rvec_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1 + stan::math::value_of(to_add[i]),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1 + stan::math::value_of(to_add[i]),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -122,11 +122,11 @@ TEST(AgradRevMatrix, var_mat_double_rvec_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1 + stan::math::value_of(to_add[i]),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1 + stan::math::value_of(to_add[i]),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -144,11 +144,11 @@ TEST(AgradRevMatrix, var_mat_double_vec_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1 + stan::math::value_of(to_add[i]),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1 + stan::math::value_of(to_add[i]),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -166,11 +166,11 @@ TEST(AgradRevMatrix, var_mat_var_rvec_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1 + stan::math::value_of(to_add[i]),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1 + stan::math::value_of(to_add[i]),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }
@@ -188,11 +188,11 @@ TEST(AgradRevMatrix, var_mat_var_vec_add_diag) {
   for (int i = 0; i < 2; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (i == j)
-        EXPECT_DOUBLE_EQ(1 + stan::math::value_of(to_add[i]),
-                         stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1 + stan::math::value_of(to_add[i]),
+                        stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
       else
-        EXPECT_DOUBLE_EQ(1, stan::math::value_of(out_mat(i, j)))
+        EXPECT_FLOAT_EQ(1, stan::math::value_of(out_mat(i, j)))
             << "index: ( " << i << ", " << i << ")";
     }
   }

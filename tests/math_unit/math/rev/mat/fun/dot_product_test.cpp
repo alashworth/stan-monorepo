@@ -15,9 +15,9 @@ TEST(AgradRevMatrix, dot_product_vector_vector) {
   vd_2 << 4, -2, -1;
   vv_2 << 4, -2, -1;
 
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(vv_1, vd_2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(vd_1, vv_2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(vv_1, vv_2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(vv_1, vd_2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(vd_1, vv_2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(vv_1, vv_2).val());
 }
 TEST(AgradRevMatrix, dot_product_vector_vector_exception) {
   using stan::math::vector_d;
@@ -48,9 +48,9 @@ TEST(AgradRevMatrix, dot_product_rowvector_vector) {
   d2 << 4, -2, -1;
   v2 << 4, -2, -1;
 
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(v1, d2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(d1, v2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(v1, v2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(v1, d2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(d1, v2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(v1, v2).val());
 }
 TEST(AgradRevMatrix, dot_product_rowvector_vector_exception) {
   using stan::math::row_vector_d;
@@ -83,9 +83,9 @@ TEST(AgradRevMatrix, dot_product_vector_rowvector) {
   d2 << 4, -2, -1;
   v2 << 4, -2, -1;
 
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(v1, d2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(d1, v2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(v1, v2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(v1, d2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(d1, v2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(v1, v2).val());
 }
 TEST(AgradRevMatrix, dot_product_vector_rowvector_exception) {
   using stan::math::row_vector_d;
@@ -114,9 +114,9 @@ TEST(AgradRevMatrix, dot_product_rowvector_rowvector) {
   d2 << 4, -2, -1;
   v2 << 4, -2, -1;
 
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(v1, d2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(d1, v2).val());
-  EXPECT_DOUBLE_EQ(3, stan::math::dot_product(v1, v2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(v1, d2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(d1, v2).val());
+  EXPECT_FLOAT_EQ(3, stan::math::dot_product(v1, v2).val());
 }
 TEST(AgradRevMatrix, dot_product_rowvector_rowvector_exception) {
   using stan::math::row_vector_d;

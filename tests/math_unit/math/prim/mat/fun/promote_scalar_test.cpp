@@ -13,12 +13,12 @@ TEST(MathMatrixPromoteScalar, MatrixMismatch) {
 
   Matrix<double, Dynamic, Dynamic> y = promote_scalar<double>(x);
   EXPECT_EQ(6, y.size());
-  EXPECT_DOUBLE_EQ(1.0, y(0, 0));
-  EXPECT_DOUBLE_EQ(2.0, y(0, 1));
-  EXPECT_DOUBLE_EQ(3.0, y(0, 2));
-  EXPECT_DOUBLE_EQ(4.0, y(1, 0));
-  EXPECT_DOUBLE_EQ(5.0, y(1, 1));
-  EXPECT_DOUBLE_EQ(6.0, y(1, 2));
+  EXPECT_FLOAT_EQ(1.0, y(0, 0));
+  EXPECT_FLOAT_EQ(2.0, y(0, 1));
+  EXPECT_FLOAT_EQ(3.0, y(0, 2));
+  EXPECT_FLOAT_EQ(4.0, y(1, 0));
+  EXPECT_FLOAT_EQ(5.0, y(1, 1));
+  EXPECT_FLOAT_EQ(6.0, y(1, 2));
 }
 TEST(MathMatrixPromoteScalar, MatrixMatch) {
   using Eigen::Dynamic;
@@ -30,12 +30,12 @@ TEST(MathMatrixPromoteScalar, MatrixMatch) {
 
   Matrix<double, Dynamic, Dynamic> y = promote_scalar<double>(x);
   EXPECT_EQ(6, y.size());
-  EXPECT_DOUBLE_EQ(1.1, y(0, 0));
-  EXPECT_DOUBLE_EQ(2.2, y(0, 1));
-  EXPECT_DOUBLE_EQ(3.3, y(0, 2));
-  EXPECT_DOUBLE_EQ(4.4, y(1, 0));
-  EXPECT_DOUBLE_EQ(5.5, y(1, 1));
-  EXPECT_DOUBLE_EQ(6.6, y(1, 2));
+  EXPECT_FLOAT_EQ(1.1, y(0, 0));
+  EXPECT_FLOAT_EQ(2.2, y(0, 1));
+  EXPECT_FLOAT_EQ(3.3, y(0, 2));
+  EXPECT_FLOAT_EQ(4.4, y(1, 0));
+  EXPECT_FLOAT_EQ(5.5, y(1, 1));
+  EXPECT_FLOAT_EQ(6.6, y(1, 2));
 }
 TEST(MathMatrixPromoteScalar, VectorMatrixMismatch) {
   using Eigen::Dynamic;
@@ -54,18 +54,18 @@ TEST(MathMatrixPromoteScalar, VectorMatrixMismatch) {
   vector<Matrix<double, Dynamic, Dynamic> > y = promote_scalar<double>(x);
   EXPECT_EQ(2, y.size());
 
-  EXPECT_DOUBLE_EQ(1.0, y[0](0, 0));
-  EXPECT_DOUBLE_EQ(2.0, y[0](0, 1));
-  EXPECT_DOUBLE_EQ(3.0, y[0](0, 2));
-  EXPECT_DOUBLE_EQ(4.0, y[0](1, 0));
-  EXPECT_DOUBLE_EQ(5.0, y[0](1, 1));
-  EXPECT_DOUBLE_EQ(6.0, y[0](1, 2));
-  EXPECT_DOUBLE_EQ(10.0, y[1](0, 0));
-  EXPECT_DOUBLE_EQ(20.0, y[1](0, 1));
-  EXPECT_DOUBLE_EQ(30.0, y[1](0, 2));
-  EXPECT_DOUBLE_EQ(40.0, y[1](1, 0));
-  EXPECT_DOUBLE_EQ(50.0, y[1](1, 1));
-  EXPECT_DOUBLE_EQ(60.0, y[1](1, 2));
+  EXPECT_FLOAT_EQ(1.0, y[0](0, 0));
+  EXPECT_FLOAT_EQ(2.0, y[0](0, 1));
+  EXPECT_FLOAT_EQ(3.0, y[0](0, 2));
+  EXPECT_FLOAT_EQ(4.0, y[0](1, 0));
+  EXPECT_FLOAT_EQ(5.0, y[0](1, 1));
+  EXPECT_FLOAT_EQ(6.0, y[0](1, 2));
+  EXPECT_FLOAT_EQ(10.0, y[1](0, 0));
+  EXPECT_FLOAT_EQ(20.0, y[1](0, 1));
+  EXPECT_FLOAT_EQ(30.0, y[1](0, 2));
+  EXPECT_FLOAT_EQ(40.0, y[1](1, 0));
+  EXPECT_FLOAT_EQ(50.0, y[1](1, 1));
+  EXPECT_FLOAT_EQ(60.0, y[1](1, 2));
 }
 
 TEST(MathMatrixPromoteScalar, ColVectorMismatch) {
@@ -78,9 +78,9 @@ TEST(MathMatrixPromoteScalar, ColVectorMismatch) {
 
   Matrix<double, Dynamic, Dynamic> y = promote_scalar<double>(x);
   EXPECT_EQ(3, y.size());
-  EXPECT_DOUBLE_EQ(1.0, y(0));
-  EXPECT_DOUBLE_EQ(2.0, y(1));
-  EXPECT_DOUBLE_EQ(3.0, y(2));
+  EXPECT_FLOAT_EQ(1.0, y(0));
+  EXPECT_FLOAT_EQ(2.0, y(1));
+  EXPECT_FLOAT_EQ(3.0, y(2));
 }
 TEST(MathMatrixPromoteScalar, ColVectorMatch) {
   using Eigen::Dynamic;
@@ -92,9 +92,9 @@ TEST(MathMatrixPromoteScalar, ColVectorMatch) {
 
   Matrix<double, Dynamic, 1> y = promote_scalar<double>(x);
   EXPECT_EQ(3, y.size());
-  EXPECT_DOUBLE_EQ(1.1, y(0));
-  EXPECT_DOUBLE_EQ(2.2, y(1));
-  EXPECT_DOUBLE_EQ(3.3, y(2));
+  EXPECT_FLOAT_EQ(1.1, y(0));
+  EXPECT_FLOAT_EQ(2.2, y(1));
+  EXPECT_FLOAT_EQ(3.3, y(2));
 }
 TEST(MathMatrixPromoteScalar, VectorColVectorMismatch) {
   using Eigen::Dynamic;
@@ -113,12 +113,12 @@ TEST(MathMatrixPromoteScalar, VectorColVectorMismatch) {
   vector<Matrix<double, Dynamic, 1> > y = promote_scalar<double>(x);
   EXPECT_EQ(2, y.size());
 
-  EXPECT_DOUBLE_EQ(1.0, y[0](0));
-  EXPECT_DOUBLE_EQ(2.0, y[0](1));
-  EXPECT_DOUBLE_EQ(3.0, y[0](2));
-  EXPECT_DOUBLE_EQ(10, y[1](0));
-  EXPECT_DOUBLE_EQ(20, y[1](1));
-  EXPECT_DOUBLE_EQ(30, y[1](2));
+  EXPECT_FLOAT_EQ(1.0, y[0](0));
+  EXPECT_FLOAT_EQ(2.0, y[0](1));
+  EXPECT_FLOAT_EQ(3.0, y[0](2));
+  EXPECT_FLOAT_EQ(10, y[1](0));
+  EXPECT_FLOAT_EQ(20, y[1](1));
+  EXPECT_FLOAT_EQ(30, y[1](2));
 }
 
 TEST(MathMatrixPromoteScalar, RowVectorMismatch) {
@@ -131,9 +131,9 @@ TEST(MathMatrixPromoteScalar, RowVectorMismatch) {
 
   Matrix<double, Dynamic, Dynamic> y = promote_scalar<double>(x);
   EXPECT_EQ(3, y.size());
-  EXPECT_DOUBLE_EQ(1.0, y(0));
-  EXPECT_DOUBLE_EQ(2.0, y(1));
-  EXPECT_DOUBLE_EQ(3.0, y(2));
+  EXPECT_FLOAT_EQ(1.0, y(0));
+  EXPECT_FLOAT_EQ(2.0, y(1));
+  EXPECT_FLOAT_EQ(3.0, y(2));
 }
 TEST(MathMatrixPromoteScalar, RowVectorMatch) {
   using Eigen::Dynamic;
@@ -145,9 +145,9 @@ TEST(MathMatrixPromoteScalar, RowVectorMatch) {
 
   Matrix<double, 1, Dynamic> y = promote_scalar<double>(x);
   EXPECT_EQ(3, y.size());
-  EXPECT_DOUBLE_EQ(1.1, y(0));
-  EXPECT_DOUBLE_EQ(2.2, y(1));
-  EXPECT_DOUBLE_EQ(3.3, y(2));
+  EXPECT_FLOAT_EQ(1.1, y(0));
+  EXPECT_FLOAT_EQ(2.2, y(1));
+  EXPECT_FLOAT_EQ(3.3, y(2));
 }
 TEST(MathMatrixPromoteScalar, VectorRowVectorMismatch) {
   using Eigen::Dynamic;
@@ -166,10 +166,10 @@ TEST(MathMatrixPromoteScalar, VectorRowVectorMismatch) {
   vector<Matrix<double, 1, Dynamic> > y = promote_scalar<double>(x);
   EXPECT_EQ(2, y.size());
 
-  EXPECT_DOUBLE_EQ(1.0, y[0](0));
-  EXPECT_DOUBLE_EQ(2.0, y[0](1));
-  EXPECT_DOUBLE_EQ(3.0, y[0](2));
-  EXPECT_DOUBLE_EQ(10, y[1](0));
-  EXPECT_DOUBLE_EQ(20, y[1](1));
-  EXPECT_DOUBLE_EQ(30, y[1](2));
+  EXPECT_FLOAT_EQ(1.0, y[0](0));
+  EXPECT_FLOAT_EQ(2.0, y[0](1));
+  EXPECT_FLOAT_EQ(3.0, y[0](2));
+  EXPECT_FLOAT_EQ(10, y[1](0));
+  EXPECT_FLOAT_EQ(20, y[1](1));
+  EXPECT_FLOAT_EQ(30, y[1](2));
 }

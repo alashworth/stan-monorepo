@@ -42,14 +42,14 @@ TEST(AgradFwdMatrixQuadForm, quad_form_mat_fd) {
 
   // fvar<double> - fvar<double>
   matrix_fd resd = quad_form(ad, bd);
-  EXPECT_DOUBLE_EQ(26033, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3456, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(3396, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(725, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(15226, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(3429, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(4233, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(900, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(26033, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3456, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(3396, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(725, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(15226, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(3429, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(4233, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(900, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_mat_fd) {
@@ -90,14 +90,14 @@ TEST(AgradFwdMatrixQuadForm, quad_form_sym_mat_fd) {
 
   // fvar<double> - fvar<double>
   matrix_fd resd = quad_form_sym(ad, bd);
-  EXPECT_DOUBLE_EQ(25433, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3396, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(3396, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(725, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(14320, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(3333, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(3333, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(810, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(25433, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3396, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(3396, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(725, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(14320, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(3333, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(3333, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(810, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_mat_dfd) {
@@ -169,8 +169,8 @@ TEST(AgradFwdMatrixQuadForm, quad_form_vec_fd) {
 
   // fvar<double> - fvar<double>
   res = quad_form(ad, bd);
-  EXPECT_DOUBLE_EQ(26033, res.val_);
-  EXPECT_DOUBLE_EQ(15226, res.d_);
+  EXPECT_FLOAT_EQ(26033, res.val_);
+  EXPECT_FLOAT_EQ(15226, res.d_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_vec_fd) {
@@ -209,8 +209,8 @@ TEST(AgradFwdMatrixQuadForm, quad_form_sym_vec_fd) {
 
   // fvar<double> - fvar<double>
   res = quad_form_sym(ad, bd);
-  EXPECT_DOUBLE_EQ(25433, res.val_);
-  EXPECT_DOUBLE_EQ(14320, res.d_);
+  EXPECT_FLOAT_EQ(25433, res.val_);
+  EXPECT_FLOAT_EQ(14320, res.d_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_vec_dfd) {
@@ -390,14 +390,14 @@ TEST(AgradFwdMatrixQuadForm, quad_form_mat_ffd) {
 
   // fvar<fvar<double> > - fvar<fvar<double> >
   matrix_ffd resd = quad_form(ad, bd);
-  EXPECT_DOUBLE_EQ(26033, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3456, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(3396, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(725, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(15226, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(3429, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(4233, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(900, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(26033, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3456, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(3396, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(725, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(15226, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(3429, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(4233, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(900, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_mat_ffd) {
@@ -438,14 +438,14 @@ TEST(AgradFwdMatrixQuadForm, quad_form_sym_mat_ffd) {
 
   // fvar<fvar<double> > - fvar<fvar<double> >
   matrix_ffd resd = quad_form_sym(ad, bd);
-  EXPECT_DOUBLE_EQ(25433, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3396, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(3396, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(725, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(14320, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(3333, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(3333, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(810, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(25433, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3396, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(3396, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(725, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(14320, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(3333, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(3333, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(810, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_mat_dffd) {
@@ -516,8 +516,8 @@ TEST(AgradFwdMatrixQuadForm, quad_form_vec_ffd) {
 
   // fvar<fvar<double> > - fvar<fvar<double> >
   res = quad_form(ad, bd);
-  EXPECT_DOUBLE_EQ(26033, res.val_.val_);
-  EXPECT_DOUBLE_EQ(15226, res.d_.val_);
+  EXPECT_FLOAT_EQ(26033, res.val_.val_);
+  EXPECT_FLOAT_EQ(15226, res.d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_vec_dffd) {
@@ -590,8 +590,8 @@ TEST(AgradFwdMatrixQuadForm, quad_form_sym_vec_ffd) {
 
   // fvar<fvar<double> > - fvar<fvar<double> >
   res = quad_form_sym(ad, bd);
-  EXPECT_DOUBLE_EQ(25433, res.val_.val_);
-  EXPECT_DOUBLE_EQ(14320, res.d_.val_);
+  EXPECT_FLOAT_EQ(25433, res.val_.val_);
+  EXPECT_FLOAT_EQ(14320, res.d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadForm, quad_form_sym_symmetry_ffd) {

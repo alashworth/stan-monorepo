@@ -32,10 +32,10 @@ TEST(AgradFwdMatrixEigenvaluesSym, matrix_fd) {
 
   stan::math::vector_fd res0 = stan::math::eigenvalues_sym(m1);
 
-  EXPECT_DOUBLE_EQ(-1, res0(0).val_);
-  EXPECT_DOUBLE_EQ(3, res0(1).val_);
-  EXPECT_DOUBLE_EQ(0, res0(0).d_);
-  EXPECT_DOUBLE_EQ(2, res0(1).d_);
+  EXPECT_FLOAT_EQ(-1, res0(0).val_);
+  EXPECT_FLOAT_EQ(3, res0(1).val_);
+  EXPECT_FLOAT_EQ(0, res0(0).d_);
+  EXPECT_FLOAT_EQ(2, res0(1).d_);
 }
 TEST(AgradFwdMatrixEigenvaluesSym, matrix_ffd) {
   stan::math::matrix_ffd m0;
@@ -48,8 +48,8 @@ TEST(AgradFwdMatrixEigenvaluesSym, matrix_ffd) {
 
   stan::math::vector_ffd res0 = stan::math::eigenvalues_sym(m1);
 
-  EXPECT_DOUBLE_EQ(-1, res0(0).val_.val_);
-  EXPECT_DOUBLE_EQ(3, res0(1).val_.val_);
-  EXPECT_DOUBLE_EQ(0, res0(0).d_.val_);
-  EXPECT_DOUBLE_EQ(2, res0(1).d_.val_);
+  EXPECT_FLOAT_EQ(-1, res0(0).val_.val_);
+  EXPECT_FLOAT_EQ(3, res0(1).val_.val_);
+  EXPECT_FLOAT_EQ(0, res0(0).d_.val_);
+  EXPECT_FLOAT_EQ(2, res0(1).d_.val_);
 }

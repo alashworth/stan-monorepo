@@ -10,8 +10,8 @@ TEST(MathFunctionsPromoteScalar, VectorMismatch) {
   x.push_back(2);
   std::vector<double> y = promote_scalar<double>(x);
   EXPECT_EQ(2U, y.size());
-  EXPECT_DOUBLE_EQ(1.0, y[0]);
-  EXPECT_DOUBLE_EQ(2.0, y[1]);
+  EXPECT_FLOAT_EQ(1.0, y[0]);
+  EXPECT_FLOAT_EQ(2.0, y[1]);
 }
 TEST(MathFunctionsPromoteScalar, VectorMatch) {
   using stan::math::promote_scalar;
@@ -37,12 +37,12 @@ TEST(MathFunctionsPromoteScalar, Vector2Mismatch) {
   vector<vector<double> > y = promote_scalar<double>(x);
   EXPECT_EQ(2U, y.size());
   EXPECT_EQ(3, y[0].size());
-  EXPECT_DOUBLE_EQ(1.0, y[0][0]);
-  EXPECT_DOUBLE_EQ(2.0, y[0][1]);
-  EXPECT_DOUBLE_EQ(3.0, y[0][2]);
-  EXPECT_DOUBLE_EQ(4.0, y[1][0]);
-  EXPECT_DOUBLE_EQ(5.0, y[1][1]);
-  EXPECT_DOUBLE_EQ(6.0, y[1][2]);
+  EXPECT_FLOAT_EQ(1.0, y[0][0]);
+  EXPECT_FLOAT_EQ(2.0, y[0][1]);
+  EXPECT_FLOAT_EQ(3.0, y[0][2]);
+  EXPECT_FLOAT_EQ(4.0, y[1][0]);
+  EXPECT_FLOAT_EQ(5.0, y[1][1]);
+  EXPECT_FLOAT_EQ(6.0, y[1][2]);
 }
 TEST(MathFunctionsPromoteScalar, Vector2Match) {
   using stan::math::promote_scalar;
@@ -58,10 +58,10 @@ TEST(MathFunctionsPromoteScalar, Vector2Match) {
   vector<vector<double> > y = promote_scalar<double>(x);
   EXPECT_EQ(2U, y.size());
   EXPECT_EQ(3, y[0].size());
-  EXPECT_DOUBLE_EQ(1.1, y[0][0]);
-  EXPECT_DOUBLE_EQ(2.2, y[0][1]);
-  EXPECT_DOUBLE_EQ(3.3, y[0][2]);
-  EXPECT_DOUBLE_EQ(4.4, y[1][0]);
-  EXPECT_DOUBLE_EQ(5.5, y[1][1]);
-  EXPECT_DOUBLE_EQ(6.6, y[1][2]);
+  EXPECT_FLOAT_EQ(1.1, y[0][0]);
+  EXPECT_FLOAT_EQ(2.2, y[0][1]);
+  EXPECT_FLOAT_EQ(3.3, y[0][2]);
+  EXPECT_FLOAT_EQ(4.4, y[1][0]);
+  EXPECT_FLOAT_EQ(5.5, y[1][1]);
+  EXPECT_FLOAT_EQ(6.6, y[1][2]);
 }

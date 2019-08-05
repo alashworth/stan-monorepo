@@ -21,12 +21,12 @@ TEST(AgradFwdMatrixSquaredDistance, vector_fd_vector_fd) {
 
   stan::math::fvar<double> a = stan::math::squared_distance(v1, v2);
 
-  EXPECT_DOUBLE_EQ(50, a.val_);
-  EXPECT_DOUBLE_EQ(12, a.d_);
+  EXPECT_FLOAT_EQ(50, a.val_);
+  EXPECT_FLOAT_EQ(12, a.d_);
 
   v1.resize(0);
   v2.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(v1, v2).val_);
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(v1, v2).val_);
 
   v1.resize(1);
   v2.resize(2);
@@ -52,12 +52,12 @@ TEST(AgradFwdMatrixSquaredDistance, rowvector_fd_vector_fd) {
 
   stan::math::fvar<double> a = stan::math::squared_distance(rv, v);
 
-  EXPECT_DOUBLE_EQ(50, a.val_);
-  EXPECT_DOUBLE_EQ(12, a.d_);
+  EXPECT_FLOAT_EQ(50, a.val_);
+  EXPECT_FLOAT_EQ(12, a.d_);
 
   rv.resize(0);
   v.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(rv, v).val_);
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(rv, v).val_);
 
   rv.resize(1);
   v.resize(2);
@@ -83,12 +83,12 @@ TEST(AgradFwdMatrixSquaredDistance, vector_fd_rowvector_fd) {
 
   stan::math::fvar<double> a = stan::math::squared_distance(v, rv);
 
-  EXPECT_DOUBLE_EQ(50, a.val_);
-  EXPECT_DOUBLE_EQ(12, a.d_);
+  EXPECT_FLOAT_EQ(50, a.val_);
+  EXPECT_FLOAT_EQ(12, a.d_);
 
   v.resize(0);
   rv.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(v, rv).val_);
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(v, rv).val_);
 
   v.resize(1);
   rv.resize(2);
@@ -139,12 +139,12 @@ TEST(AgradFwdMatrixSquaredDistance, vector_ffd_vector_ffd) {
 
   stan::math::fvar<fvar<double> > a = stan::math::squared_distance(v1, v2);
 
-  EXPECT_DOUBLE_EQ(50, a.val_.val_);
-  EXPECT_DOUBLE_EQ(12, a.d_.val_);
+  EXPECT_FLOAT_EQ(50, a.val_.val_);
+  EXPECT_FLOAT_EQ(12, a.d_.val_);
 
   v1.resize(0);
   v2.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(v1, v2).val_.val_);
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(v1, v2).val_.val_);
 
   v1.resize(1);
   v2.resize(2);
@@ -170,12 +170,12 @@ TEST(AgradFwdMatrixSquaredDistance, rowvector_ffd_vector_ffd) {
 
   stan::math::fvar<fvar<double> > a = stan::math::squared_distance(rv, v);
 
-  EXPECT_DOUBLE_EQ(50, a.val_.val_);
-  EXPECT_DOUBLE_EQ(12, a.d_.val_);
+  EXPECT_FLOAT_EQ(50, a.val_.val_);
+  EXPECT_FLOAT_EQ(12, a.d_.val_);
 
   rv.resize(0);
   v.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(rv, v).val_.val_);
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(rv, v).val_.val_);
 
   rv.resize(1);
   v.resize(2);
@@ -201,12 +201,12 @@ TEST(AgradFwdMatrixSquaredDistance, vector_ffd_rowvector_ffd) {
 
   stan::math::fvar<fvar<double> > a = stan::math::squared_distance(v, rv);
 
-  EXPECT_DOUBLE_EQ(50, a.val_.val_);
-  EXPECT_DOUBLE_EQ(12, a.d_.val_);
+  EXPECT_FLOAT_EQ(50, a.val_.val_);
+  EXPECT_FLOAT_EQ(12, a.d_.val_);
 
   v.resize(0);
   rv.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(v, rv).val_.val_);
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(v, rv).val_.val_);
 
   v.resize(1);
   rv.resize(2);

@@ -16,10 +16,10 @@ TEST(AgradRevMatrix, mean_vector) {
 
   AVAR output;
   output = mean(d1);
-  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val());
+  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val());
 
   output = mean(v1);
-  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val());
+  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val());
 }
 TEST(AgradRevMatrix, mean_vector_exception) {
   using stan::math::mean;
@@ -44,10 +44,10 @@ TEST(AgradRevMatrix, mean_rowvector) {
 
   AVAR output;
   output = mean(d1);
-  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val());
+  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val());
 
   output = mean(v1);
-  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val());
+  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val());
 }
 TEST(AgradRevMatrix, mean_rowvector_exception) {
   using stan::math::mean;
@@ -72,10 +72,10 @@ TEST(AgradRevMatrix, mean_matrix) {
 
   AVAR output;
   output = mean(d1);
-  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val());
+  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val());
 
   output = mean(v1);
-  EXPECT_DOUBLE_EQ(97.0 / 3.0, output.val());
+  EXPECT_FLOAT_EQ(97.0 / 3.0, output.val());
 }
 TEST(AgradRevMatrix, mean_matrix_exception) {
   using stan::math::matrix_d;
@@ -93,15 +93,15 @@ TEST(AgradRevMatrix, meanStdVector_1) {
   AVEC x(0);
   EXPECT_THROW(mean(x), std::invalid_argument);
   x.push_back(1.0);
-  EXPECT_DOUBLE_EQ(1.0, mean(x).val());
+  EXPECT_FLOAT_EQ(1.0, mean(x).val());
   x.push_back(2.0);
-  EXPECT_DOUBLE_EQ(1.5, mean(x).val());
+  EXPECT_FLOAT_EQ(1.5, mean(x).val());
 
   AVEC y = createAVEC(1.0, 2.0);
   AVAR f = mean(y);
   VEC grad = cgrad(f, y[0], y[1]);
-  EXPECT_DOUBLE_EQ(0.5, grad[0]);
-  EXPECT_DOUBLE_EQ(0.5, grad[1]);
+  EXPECT_FLOAT_EQ(0.5, grad[0]);
+  EXPECT_FLOAT_EQ(0.5, grad[1]);
   EXPECT_EQ(2U, grad.size());
 }
 TEST(AgradRevMatrix, check_varis_on_stack_30) {

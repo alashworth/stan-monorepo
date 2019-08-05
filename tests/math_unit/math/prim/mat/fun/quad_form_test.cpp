@@ -14,10 +14,10 @@ TEST(MathMatrix, quad_form_mat) {
 
   // double-double
   matrix_d resd = quad_form(ad, bd);
-  EXPECT_DOUBLE_EQ(26033, resd(0, 0));
-  EXPECT_DOUBLE_EQ(3456, resd(0, 1));
-  EXPECT_DOUBLE_EQ(3396, resd(1, 0));
-  EXPECT_DOUBLE_EQ(725, resd(1, 1));
+  EXPECT_FLOAT_EQ(26033, resd(0, 0));
+  EXPECT_FLOAT_EQ(3456, resd(0, 1));
+  EXPECT_FLOAT_EQ(3396, resd(1, 0));
+  EXPECT_FLOAT_EQ(725, resd(1, 1));
 }
 
 TEST(MathMatrix, quad_form_sym_mat) {
@@ -33,10 +33,10 @@ TEST(MathMatrix, quad_form_sym_mat) {
 
   // double-double
   matrix_d resd = quad_form_sym(ad, bd);
-  EXPECT_DOUBLE_EQ(25433, resd(0, 0));
-  EXPECT_DOUBLE_EQ(3396, resd(0, 1));
-  EXPECT_DOUBLE_EQ(3396, resd(1, 0));
-  EXPECT_DOUBLE_EQ(725, resd(1, 1));
+  EXPECT_FLOAT_EQ(25433, resd(0, 0));
+  EXPECT_FLOAT_EQ(3396, resd(0, 1));
+  EXPECT_FLOAT_EQ(3396, resd(1, 0));
+  EXPECT_FLOAT_EQ(725, resd(1, 1));
 }
 
 TEST(MathMatrix, quad_form_vec) {
@@ -54,7 +54,7 @@ TEST(MathMatrix, quad_form_vec) {
 
   // double-double
   res = quad_form(ad, bd);
-  EXPECT_DOUBLE_EQ(26033, res);
+  EXPECT_FLOAT_EQ(26033, res);
 }
 
 TEST(MathMatrix, quad_form_sym_vec) {
@@ -72,7 +72,7 @@ TEST(MathMatrix, quad_form_sym_vec) {
 
   // double-double
   res = quad_form_sym(ad, bd);
-  EXPECT_DOUBLE_EQ(25433, res);
+  EXPECT_FLOAT_EQ(25433, res);
 }
 
 TEST(MathMatrix, quad_form_sym_symmetry) {

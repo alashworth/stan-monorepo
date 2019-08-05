@@ -16,7 +16,7 @@ TEST(prob_transform, corr_matrix_j) {
   Matrix<double, Dynamic, 1> xrt = stan::math::corr_matrix_free(y);
   EXPECT_EQ(x.size(), xrt.size());
   for (int i = 0; i < x.size(); ++i) {
-    EXPECT_DOUBLE_EQ(x[i], xrt[i]);
+    EXPECT_FLOAT_EQ(x[i], xrt[i]);
   }
 }
 TEST(prob_transform, corr_matrix_j2x2) {
@@ -31,7 +31,7 @@ TEST(prob_transform, corr_matrix_j2x2) {
   Matrix<double, Dynamic, 1> xrt = stan::math::corr_matrix_free(y);
   EXPECT_EQ(x.size(), xrt.size());
   for (int i = 0; i < x.size(); ++i) {
-    EXPECT_DOUBLE_EQ(x[i], xrt[i]);
+    EXPECT_FLOAT_EQ(x[i], xrt[i]);
   }
 }
 
@@ -59,7 +59,7 @@ TEST(prob_transform, corr_matrix_rt) {
   Matrix<double, Dynamic, 1> xrt = stan::math::corr_matrix_free(y);
   EXPECT_EQ(x.size(), xrt.size());
   for (int i = 0; i < x.size(); ++i) {
-    EXPECT_DOUBLE_EQ(x[i], xrt[i]);
+    EXPECT_FLOAT_EQ(x[i], xrt[i]);
   }
 }
 TEST(prob_transform, corr_matrix_free_exception) {

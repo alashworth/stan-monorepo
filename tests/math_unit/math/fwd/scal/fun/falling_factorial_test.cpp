@@ -9,14 +9,14 @@ TEST(AgradFwdFallingFactorial, Fvar) {
 
   fvar<double> a(4.0, 1.0);
   fvar<double> x = falling_factorial(a, 2);
-  EXPECT_DOUBLE_EQ(12.0, x.val_);
-  EXPECT_DOUBLE_EQ((stan::math::digamma(5) - stan::math::digamma(3)) * 12.0,
-                   x.d_);
+  EXPECT_FLOAT_EQ(12.0, x.val_);
+  EXPECT_FLOAT_EQ((stan::math::digamma(5) - stan::math::digamma(3)) * 12.0,
+                  x.d_);
 
   // finite diff
   double eps = 1e-6;
-  EXPECT_DOUBLE_EQ((stan::math::falling_factorial(4.0 + eps, 2)
-                    - stan::math::falling_factorial(4.0 - eps, 2))
+  EXPECT_FLOAT_EQ((stan::math::falling_factorial(4.0 + eps, 2)
+                   - stan::math::falling_factorial(4.0 - eps, 2))
                       / (2 * eps),
                   x.d_);
 
@@ -35,8 +35,8 @@ TEST(AgradFwdFallingFactorial, FvarFvarDouble) {
 
   fvar<fvar<double> > a = falling_factorial(x, 4);
 
-  EXPECT_DOUBLE_EQ(falling_factorial(4, 4), a.val_.val_);
-  EXPECT_DOUBLE_EQ(50, a.val_.d_);
+  EXPECT_FLOAT_EQ(falling_factorial(4, 4), a.val_.val_);
+  EXPECT_FLOAT_EQ(50, a.val_.d_);
 }
 struct falling_factorial_fun {
   template <typename T>

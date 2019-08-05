@@ -48,18 +48,18 @@ TEST(MathMatrix, matrix_exp_2x2_0) {
   matrix_fd output;
   output = matrix_exp(input);
 
-  EXPECT_DOUBLE_EQ(-0.735759, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.551819, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(-1.471518, output(1, 0).val_);
-  EXPECT_DOUBLE_EQ(1.103638, output(1, 1).val_);
+  EXPECT_FLOAT_EQ(-0.735759, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.551819, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(-1.471518, output(1, 0).val_);
+  EXPECT_FLOAT_EQ(1.103638, output(1, 1).val_);
 
   // note: in this particular example, derivatives
   // is the same as the value, due to the way the
   // input matrix was constructed.
-  EXPECT_DOUBLE_EQ(-0.735759, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(0.551819, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-1.471518, output(1, 0).d_);
-  EXPECT_DOUBLE_EQ(1.103638, output(1, 1).d_);
+  EXPECT_FLOAT_EQ(-0.735759, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(0.551819, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(-1.471518, output(1, 0).d_);
+  EXPECT_FLOAT_EQ(1.103638, output(1, 1).d_);
 }
 
 TEST(MathMatrix, matrix_exp_2x2_2_1) {
@@ -83,10 +83,10 @@ TEST(MathMatrix, matrix_exp_2x2_2_1) {
   matrix_fd output;
   output = matrix_exp(input);
 
-  EXPECT_DOUBLE_EQ(0.2746483852, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.2893267425, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(-0.4170720513, output(1, 0).val_);
-  EXPECT_DOUBLE_EQ(0.7937977746, output(1, 1).val_);
+  EXPECT_FLOAT_EQ(0.2746483852, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.2893267425, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(-0.4170720513, output(1, 0).val_);
+  EXPECT_FLOAT_EQ(0.7937977746, output(1, 1).val_);
 }
 
 TEST(MathMatrix, matrix_exp_3x3_0) {
@@ -109,28 +109,28 @@ TEST(MathMatrix, matrix_exp_3x3_0) {
   matrix_fd output;
   output = matrix_exp(input);
 
-  EXPECT_DOUBLE_EQ(245.95891, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(-182.43047, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(-49.11821, output(0, 2).val_);
-  EXPECT_DOUBLE_EQ(93.41549, output(1, 0).val_);
-  EXPECT_DOUBLE_EQ(-67.3433, output(1, 1).val_);
-  EXPECT_DOUBLE_EQ(-18.68310, output(1, 2).val_);
-  EXPECT_DOUBLE_EQ(842.54120, output(2, 0).val_);
-  EXPECT_DOUBLE_EQ(-631.90590, output(2, 1).val_);
-  EXPECT_DOUBLE_EQ(-168.14036, output(2, 2).val_);
+  EXPECT_FLOAT_EQ(245.95891, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(-182.43047, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(-49.11821, output(0, 2).val_);
+  EXPECT_FLOAT_EQ(93.41549, output(1, 0).val_);
+  EXPECT_FLOAT_EQ(-67.3433, output(1, 1).val_);
+  EXPECT_FLOAT_EQ(-18.68310, output(1, 2).val_);
+  EXPECT_FLOAT_EQ(842.54120, output(2, 0).val_);
+  EXPECT_FLOAT_EQ(-631.90590, output(2, 1).val_);
+  EXPECT_FLOAT_EQ(-168.14036, output(2, 2).val_);
 
   // Note: because of way of matrix was constructed,
   // derivative should be the same as value (same case
   // as in the previous test).
-  EXPECT_DOUBLE_EQ(245.95891, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(-182.43047, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-49.11821, output(0, 2).d_);
-  EXPECT_DOUBLE_EQ(93.41549, output(1, 0).d_);
-  EXPECT_DOUBLE_EQ(-67.3433, output(1, 1).d_);
-  EXPECT_DOUBLE_EQ(-18.68310, output(1, 2).d_);
-  EXPECT_DOUBLE_EQ(842.54120, output(2, 0).d_);
-  EXPECT_DOUBLE_EQ(-631.90590, output(2, 1).d_);
-  EXPECT_DOUBLE_EQ(-168.14036, output(2, 2).d_);
+  EXPECT_FLOAT_EQ(245.95891, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(-182.43047, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(-49.11821, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(93.41549, output(1, 0).d_);
+  EXPECT_FLOAT_EQ(-67.3433, output(1, 1).d_);
+  EXPECT_FLOAT_EQ(-18.68310, output(1, 2).d_);
+  EXPECT_FLOAT_EQ(842.54120, output(2, 0).d_);
+  EXPECT_FLOAT_EQ(-631.90590, output(2, 1).d_);
+  EXPECT_FLOAT_EQ(-168.14036, output(2, 2).d_);
 }
 
 TEST(MathMatrix, matrix_exp_100x100_1) {

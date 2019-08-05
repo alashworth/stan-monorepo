@@ -6,9 +6,9 @@ TEST(ProbGamma, cdf_log_matches_lcdf) {
   double alpha = 1.1;
   double beta = 2.3;
 
-  EXPECT_DOUBLE_EQ((stan::math::gamma_lcdf(y, alpha, beta)),
-                   (stan::math::gamma_cdf_log(y, alpha, beta)));
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ((stan::math::gamma_lcdf(y, alpha, beta)),
+                  (stan::math::gamma_cdf_log(y, alpha, beta)));
+  EXPECT_FLOAT_EQ(
       (stan::math::gamma_lcdf<double, double, double>(y, alpha, beta)),
       (stan::math::gamma_cdf_log<double, double, double>(y, alpha, beta)));
 }

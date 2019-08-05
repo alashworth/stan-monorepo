@@ -24,10 +24,10 @@ TEST(MathMatrix, value_of_0) {
   vector<double> d_b = value_of(b_fd);
 
   for (int i = 0; i < 5; ++i)
-    EXPECT_DOUBLE_EQ(b_fd[i].val_, d_b[i]);
+    EXPECT_FLOAT_EQ(b_fd[i].val_, d_b[i]);
 
   for (int i = 0; i < 10; ++i)
-    EXPECT_DOUBLE_EQ(a_fd[i].val_, d_a[i]);
+    EXPECT_FLOAT_EQ(a_fd[i].val_, d_a[i]);
 
   vector<fvar<double> > a_zeros(10);
   vector<fvar<fvar<double> > > a_ffd;
@@ -41,8 +41,8 @@ TEST(MathMatrix, value_of_0) {
   vector<fvar<double> > d_b_fd = value_of(b_ffd);
 
   for (int i = 0; i < 5; ++i)
-    EXPECT_DOUBLE_EQ(b_ffd[i].val_.val_, d_b_fd[i].val_);
+    EXPECT_FLOAT_EQ(b_ffd[i].val_.val_, d_b_fd[i].val_);
 
   for (int i = 0; i < 10; ++i)
-    EXPECT_DOUBLE_EQ(a_ffd[i].val_.val_, d_a_fd[i].val_);
+    EXPECT_FLOAT_EQ(a_ffd[i].val_.val_, d_a_fd[i].val_);
 }

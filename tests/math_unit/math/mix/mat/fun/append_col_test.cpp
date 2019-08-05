@@ -42,10 +42,10 @@ TEST(AgradMixMatrixAppendCol, fv) {
 
   std::vector<double> grads;
   ab_append_col(0, 0).val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixRowVectorAppendCol, fv) {
@@ -85,10 +85,10 @@ TEST(AgradMixRowVectorAppendCol, fv) {
 
   std::vector<double> grads;
   ab_append_col(0).val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixMatrixAppendCol, fv2) {
@@ -130,10 +130,10 @@ TEST(AgradMixMatrixAppendCol, fv2) {
 
   std::vector<double> grads;
   ab_append_col(0, 0).d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixRowVectorAppendCol, fv2) {
@@ -173,10 +173,10 @@ TEST(AgradMixRowVectorAppendCol, fv2) {
 
   std::vector<double> grads;
   ab_append_col(0).d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixMatrixAppendCol, ffv1) {
@@ -218,10 +218,10 @@ TEST(AgradMixMatrixAppendCol, ffv1) {
 
   std::vector<double> grads;
   ab_append_col(0, 0).val_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixRowVectorAppendCol, ffv1) {
@@ -261,10 +261,10 @@ TEST(AgradMixRowVectorAppendCol, ffv1) {
 
   std::vector<double> grads;
   ab_append_col(0).val_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixMatrixAppendCol, ffv2) {
@@ -310,10 +310,10 @@ TEST(AgradMixMatrixAppendCol, ffv2) {
 
   std::vector<double> grads;
   ab_append_col(0, 0).val_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixRowVectorAppendCol, ffv2) {
@@ -357,10 +357,10 @@ TEST(AgradMixRowVectorAppendCol, ffv2) {
 
   std::vector<double> grads;
   ab_append_col(0).val_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixMatrixAppendCol, ffv3) {
@@ -406,10 +406,10 @@ TEST(AgradMixMatrixAppendCol, ffv3) {
 
   std::vector<double> grads;
   ab_append_col(0, 0).d_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixRowVectorAppendCol, ffv3) {
@@ -453,10 +453,10 @@ TEST(AgradMixRowVectorAppendCol, ffv3) {
 
   std::vector<double> grads;
   ab_append_col(0).d_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixMatrixAppendCol, ffv4) {
@@ -502,10 +502,10 @@ TEST(AgradMixMatrixAppendCol, ffv4) {
 
   std::vector<double> grads;
   ab_append_col(0, 0).d_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }
 
 TEST(AgradMixRowVectorAppendCol, ffv4) {
@@ -549,8 +549,8 @@ TEST(AgradMixRowVectorAppendCol, ffv4) {
 
   std::vector<double> grads;
   ab_append_col(0).d_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
 }

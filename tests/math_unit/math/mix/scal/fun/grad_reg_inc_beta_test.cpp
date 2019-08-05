@@ -24,8 +24,8 @@ TEST(ProbInternalMath, grad_reg_inc_beta_fv) {
 
   stan::math::grad_reg_inc_beta(g_a, g_b, a, b, g, dig_a, dig_b, dig_sum,
                                 beta_ab);
-  EXPECT_DOUBLE_EQ(-0.36651629442883944183907601651838247842001142107486495485,
-                   g_a.val_.val());
+  EXPECT_FLOAT_EQ(-0.36651629442883944183907601651838247842001142107486495485,
+                  g_a.val_.val());
   EXPECT_NEAR(0.306495375042422864944011633197968575202046200428315551199,
               g_b.val_.val(), 1e-6);
 }
@@ -55,8 +55,8 @@ TEST(ProbInternalMath, grad_reg_inc_beta_fv_1stDeriv1) {
   AVEC y1 = createAVEC(a.val_);
   VEC grad1;
   g_a.val_.grad(y1, grad1);
-  EXPECT_DOUBLE_EQ(0.33583548212738989400284958327902414335945097838423129,
-                   grad1[0]);
+  EXPECT_FLOAT_EQ(0.33583548212738989400284958327902414335945097838423129,
+                  grad1[0]);
 }
 TEST(ProbInternalMath, grad_reg_inc_beta_fv_1stDeriv2) {
   using stan::math::digamma;
@@ -112,8 +112,8 @@ TEST(ProbInternalMath, grad_reg_inc_beta_fv_2ndDeriv1) {
   AVEC y1 = createAVEC(a.val_);
   VEC grad1;
   g_a.d_.grad(y1, grad1);
-  EXPECT_DOUBLE_EQ(-0.30772293970781581317390510390046098438962772318921,
-                   grad1[0]);
+  EXPECT_FLOAT_EQ(-0.30772293970781581317390510390046098438962772318921,
+                  grad1[0]);
 }
 TEST(ProbInternalMath, grad_reg_inc_beta_fv_2ndDeriv2) {
   using stan::math::digamma;

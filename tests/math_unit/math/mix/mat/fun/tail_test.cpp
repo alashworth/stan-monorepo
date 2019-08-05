@@ -32,7 +32,7 @@ TEST(AgradMixMatrixTail, TailVector4_fv) {
   stan::math::vector_fv v12 = tail(v, 2);
   EXPECT_EQ(2, v12.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val(), v12[n].val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val(), v12[n].val_.val());
   }
 }
 
@@ -62,7 +62,7 @@ TEST(AgradMixMatrixTail, tailRowVector4_fv) {
   stan::math::row_vector_fv v12 = tail(v, 2);
   EXPECT_EQ(2, v12.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val(), v12[n].val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val(), v12[n].val_.val());
   }
 }
 
@@ -99,7 +99,7 @@ TEST(AgradMixMatrixTail, tailStdVector4_fv) {
   std::vector<fvar<var> > v12 = tail(v, 2);
   EXPECT_EQ(2U, v12.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val(), v12[n].val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val(), v12[n].val_.val());
   }
 }
 TEST(AgradMixMatrixTail, TailVector1_ffv) {
@@ -128,7 +128,7 @@ TEST(AgradMixMatrixTail, TailVector4_ffv) {
   stan::math::vector_ffv v12 = tail(v, 2);
   EXPECT_EQ(2, v12.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_.val(), v12[n].val_.val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val_.val(), v12[n].val_.val_.val());
   }
 }
 
@@ -158,7 +158,7 @@ TEST(AgradMixMatrixTail, tailRowVector4_ffv) {
   stan::math::row_vector_ffv v12 = tail(v, 2);
   EXPECT_EQ(2, v12.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_.val(), v12[n].val_.val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val_.val(), v12[n].val_.val_.val());
   }
 }
 
@@ -195,6 +195,6 @@ TEST(AgradMixMatrixTail, tailStdVector4_ffv) {
   std::vector<fvar<fvar<var> > > v12 = tail(v, 2);
   EXPECT_EQ(2U, v12.size());
   for (int n = 0; n < 2; ++n) {
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_.val(), v12[n].val_.val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val_.val(), v12[n].val_.val_.val());
   }
 }

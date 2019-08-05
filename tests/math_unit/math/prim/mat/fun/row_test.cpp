@@ -9,7 +9,7 @@ TEST(MathMatrix, row) {
   EXPECT_EQ(4, c.size());
   EXPECT_EQ(4, c2.size());
   for (size_t i = 0; i < 4; ++i)
-    EXPECT_DOUBLE_EQ(c[i], c2[i]);
+    EXPECT_FLOAT_EQ(c[i], c2[i]);
 }
 
 TEST(MathMatrix, row_exception) {

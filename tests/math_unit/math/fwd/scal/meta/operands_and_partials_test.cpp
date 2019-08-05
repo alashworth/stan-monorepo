@@ -19,6 +19,6 @@ TEST(AgradPartialsVari, OperandsAndPartialsFvar) {
   o.edge3_.partials_[0] += 23.0;
 
   fvar<double> y = o.build(-1.0);
-  EXPECT_DOUBLE_EQ(107, y.d_);
-  EXPECT_DOUBLE_EQ(-1, y.val_);
+  EXPECT_FLOAT_EQ(107, y.d_);
+  EXPECT_FLOAT_EQ(-1, y.val_);
 }

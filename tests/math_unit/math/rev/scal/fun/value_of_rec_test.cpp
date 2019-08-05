@@ -7,5 +7,5 @@ TEST(AgradRev, value_of_rec_1) {
 
   var v_a(5.0);
 
-  EXPECT_DOUBLE_EQ(5.0, value_of_rec(v_a));
+  EXPECT_FLOAT_EQ(5.0, value_of_rec(v_a));
 }

@@ -11,11 +11,11 @@ TEST(MathMatrix, squared_distance_vector_vector) {
   v1 << 1, 3, -5;
   v2 << 4, -2, -1;
 
-  EXPECT_DOUBLE_EQ(50, stan::math::squared_distance(v1, v2));
+  EXPECT_FLOAT_EQ(50, stan::math::squared_distance(v1, v2));
 
   v1.resize(0);
   v2.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(v1, v2));
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(v1, v2));
 
   v1.resize(1);
   v2.resize(2);
@@ -32,11 +32,11 @@ TEST(MathMatrix, squared_distance_rowvector_vector) {
   v.resize(3);
   rv << 1, 3, -5;
   v << 4, -2, -1;
-  EXPECT_DOUBLE_EQ(50, stan::math::squared_distance(rv, v));
+  EXPECT_FLOAT_EQ(50, stan::math::squared_distance(rv, v));
 
   rv.resize(0);
   v.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(rv, v));
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(rv, v));
 
   rv.resize(1);
   v.resize(2);
@@ -53,11 +53,11 @@ TEST(MathMatrix, squared_distance_vector_rowvector) {
   rv.resize(3);
   v << 1, 3, -5;
   rv << 4, -2, -1;
-  EXPECT_DOUBLE_EQ(50, stan::math::squared_distance(v, rv));
+  EXPECT_FLOAT_EQ(50, stan::math::squared_distance(v, rv));
 
   v.resize(0);
   rv.resize(0);
-  EXPECT_DOUBLE_EQ(0, stan::math::squared_distance(v, rv));
+  EXPECT_FLOAT_EQ(0, stan::math::squared_distance(v, rv));
 
   v.resize(1);
   rv.resize(2);

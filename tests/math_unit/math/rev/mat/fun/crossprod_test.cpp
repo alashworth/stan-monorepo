@@ -13,7 +13,7 @@ void test_crossprod(const stan::math::matrix_v& L) {
   EXPECT_EQ(L.cols(), LLT_stan.cols());
   for (int m = 0; m < L.rows(); ++m)
     for (int n = 0; n < L.cols(); ++n)
-      EXPECT_DOUBLE_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
+      EXPECT_FLOAT_EQ(LLT_eigen(m, n).val(), LLT_stan(m, n).val());
 }
 }
 

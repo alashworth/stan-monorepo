@@ -11,8 +11,8 @@ TEST(AgradFwdTgamma, Fvar) {
 
   fvar<double> x(0.5, 1.0);
   fvar<double> a = tgamma(x);
-  EXPECT_DOUBLE_EQ(tgamma(0.5), a.val_);
-  EXPECT_DOUBLE_EQ(tgamma(0.5) * digamma(0.5), a.d_);
+  EXPECT_FLOAT_EQ(tgamma(0.5), a.val_);
+  EXPECT_FLOAT_EQ(tgamma(0.5) * digamma(0.5), a.d_);
 }
 
 struct tgamma_fun {

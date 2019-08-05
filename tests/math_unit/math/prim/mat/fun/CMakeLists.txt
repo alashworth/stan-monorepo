@@ -1,5 +1,3 @@
-file(COPY ar1.csv DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
 target_sources(stan_math_prim_mat_unit_tests PRIVATE
         log_determinant_ldlt_test.cpp
         matrix_exp_multiply_test.cpp

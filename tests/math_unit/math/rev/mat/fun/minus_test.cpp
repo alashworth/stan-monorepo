@@ -8,8 +8,8 @@ TEST(AgradRevMatrix, minus_scalar) {
   double x = 10;
   AVAR v = 11;
 
-  EXPECT_DOUBLE_EQ(-10, minus(x));
-  EXPECT_DOUBLE_EQ(-11, minus(v).val());
+  EXPECT_FLOAT_EQ(-10, minus(x));
+  EXPECT_FLOAT_EQ(-11, minus(v).val());
 }
 TEST(AgradRevMatrix, minus_vector) {
   using stan::math::minus;
@@ -24,15 +24,15 @@ TEST(AgradRevMatrix, minus_vector) {
 
   vector_d output_d;
   output_d = minus(d);
-  EXPECT_DOUBLE_EQ(100, output_d[0]);
-  EXPECT_DOUBLE_EQ(0, output_d[1]);
-  EXPECT_DOUBLE_EQ(-1, output_d[2]);
+  EXPECT_FLOAT_EQ(100, output_d[0]);
+  EXPECT_FLOAT_EQ(0, output_d[1]);
+  EXPECT_FLOAT_EQ(-1, output_d[2]);
 
   vector_v output;
   output = minus(v);
-  EXPECT_DOUBLE_EQ(100, output[0].val());
-  EXPECT_DOUBLE_EQ(0, output[1].val());
-  EXPECT_DOUBLE_EQ(-1, output[2].val());
+  EXPECT_FLOAT_EQ(100, output[0].val());
+  EXPECT_FLOAT_EQ(0, output[1].val());
+  EXPECT_FLOAT_EQ(-1, output[2].val());
 }
 TEST(AgradRevMatrix, minus_rowvector) {
   using stan::math::minus;
@@ -47,15 +47,15 @@ TEST(AgradRevMatrix, minus_rowvector) {
 
   row_vector_d output_d;
   output_d = minus(d);
-  EXPECT_DOUBLE_EQ(100, output_d[0]);
-  EXPECT_DOUBLE_EQ(0, output_d[1]);
-  EXPECT_DOUBLE_EQ(-1, output_d[2]);
+  EXPECT_FLOAT_EQ(100, output_d[0]);
+  EXPECT_FLOAT_EQ(0, output_d[1]);
+  EXPECT_FLOAT_EQ(-1, output_d[2]);
 
   row_vector_v output;
   output = minus(v);
-  EXPECT_DOUBLE_EQ(100, output[0].val());
-  EXPECT_DOUBLE_EQ(0, output[1].val());
-  EXPECT_DOUBLE_EQ(-1, output[2].val());
+  EXPECT_FLOAT_EQ(100, output[0].val());
+  EXPECT_FLOAT_EQ(0, output[1].val());
+  EXPECT_FLOAT_EQ(-1, output[2].val());
 }
 TEST(AgradRevMatrix, minus_matrix) {
   using stan::math::matrix_d;
@@ -69,20 +69,20 @@ TEST(AgradRevMatrix, minus_matrix) {
   v << -100, 0, 1, 20, -40, 2;
 
   matrix_d output_d = minus(d);
-  EXPECT_DOUBLE_EQ(100, output_d(0, 0));
-  EXPECT_DOUBLE_EQ(0, output_d(0, 1));
-  EXPECT_DOUBLE_EQ(-1, output_d(0, 2));
-  EXPECT_DOUBLE_EQ(-20, output_d(1, 0));
-  EXPECT_DOUBLE_EQ(40, output_d(1, 1));
-  EXPECT_DOUBLE_EQ(-2, output_d(1, 2));
+  EXPECT_FLOAT_EQ(100, output_d(0, 0));
+  EXPECT_FLOAT_EQ(0, output_d(0, 1));
+  EXPECT_FLOAT_EQ(-1, output_d(0, 2));
+  EXPECT_FLOAT_EQ(-20, output_d(1, 0));
+  EXPECT_FLOAT_EQ(40, output_d(1, 1));
+  EXPECT_FLOAT_EQ(-2, output_d(1, 2));
 
   matrix_v output = minus(v);
-  EXPECT_DOUBLE_EQ(100, output(0, 0).val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).val());
-  EXPECT_DOUBLE_EQ(-20, output(1, 0).val());
-  EXPECT_DOUBLE_EQ(40, output(1, 1).val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 2).val());
+  EXPECT_FLOAT_EQ(100, output(0, 0).val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).val());
+  EXPECT_FLOAT_EQ(-20, output(1, 0).val());
+  EXPECT_FLOAT_EQ(40, output(1, 1).val());
+  EXPECT_FLOAT_EQ(-2, output(1, 2).val());
 }
 TEST(AgradRevMatrix, check_varis_on_stack_31) {
   stan::math::var x = 10;

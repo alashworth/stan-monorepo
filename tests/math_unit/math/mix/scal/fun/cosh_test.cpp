@@ -12,13 +12,13 @@ TEST(AgradFwdCosh, FvarVar_1stDeriv) {
   fvar<var> x(1.5, 1.3);
   fvar<var> a = cosh(x);
 
-  EXPECT_DOUBLE_EQ(cosh(1.5), a.val_.val());
-  EXPECT_DOUBLE_EQ(1.3 * sinh(1.5), a.d_.val());
+  EXPECT_FLOAT_EQ(cosh(1.5), a.val_.val());
+  EXPECT_FLOAT_EQ(1.3 * sinh(1.5), a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(sinh(1.5), g[0]);
+  EXPECT_FLOAT_EQ(sinh(1.5), g[0]);
 }
 
 TEST(AgradFwdCosh, FvarVar_2ndDeriv) {
@@ -30,13 +30,13 @@ TEST(AgradFwdCosh, FvarVar_2ndDeriv) {
   fvar<var> x(1.5, 1.3);
   fvar<var> a = cosh(x);
 
-  EXPECT_DOUBLE_EQ(cosh(1.5), a.val_.val());
-  EXPECT_DOUBLE_EQ(1.3 * sinh(1.5), a.d_.val());
+  EXPECT_FLOAT_EQ(cosh(1.5), a.val_.val());
+  EXPECT_FLOAT_EQ(1.3 * sinh(1.5), a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_DOUBLE_EQ(1.3 * cosh(1.5), g[0]);
+  EXPECT_FLOAT_EQ(1.3 * cosh(1.5), g[0]);
 }
 
 TEST(AgradFwdCosh, FvarFvarVar_1stDeriv) {
@@ -51,30 +51,30 @@ TEST(AgradFwdCosh, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = cosh(x);
 
-  EXPECT_DOUBLE_EQ(cosh(1.5), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(2.0 * sinh(1.5), a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(cosh(1.5), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(2.0 * sinh(1.5), a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(sinh(1.5), g[0]);
+  EXPECT_FLOAT_EQ(sinh(1.5), g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   fvar<fvar<var> > b = cosh(y);
-  EXPECT_DOUBLE_EQ(cosh(1.5), b.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
-  EXPECT_DOUBLE_EQ(2.0 * sinh(1.5), b.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
+  EXPECT_FLOAT_EQ(cosh(1.5), b.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
+  EXPECT_FLOAT_EQ(2.0 * sinh(1.5), b.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_DOUBLE_EQ(sinh(1.5), r[0]);
+  EXPECT_FLOAT_EQ(sinh(1.5), r[0]);
 }
 
 TEST(AgradFwdCosh, FvarFvarVar_2ndDeriv) {
@@ -89,30 +89,30 @@ TEST(AgradFwdCosh, FvarFvarVar_2ndDeriv) {
 
   fvar<fvar<var> > a = cosh(x);
 
-  EXPECT_DOUBLE_EQ(cosh(1.5), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(2.0 * sinh(1.5), a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(cosh(1.5), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(2.0 * sinh(1.5), a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_DOUBLE_EQ(2.0 * cosh(1.5), g[0]);
+  EXPECT_FLOAT_EQ(2.0 * cosh(1.5), g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   fvar<fvar<var> > b = cosh(y);
-  EXPECT_DOUBLE_EQ(cosh(1.5), b.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
-  EXPECT_DOUBLE_EQ(2.0 * sinh(1.5), b.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
+  EXPECT_FLOAT_EQ(cosh(1.5), b.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
+  EXPECT_FLOAT_EQ(2.0 * sinh(1.5), b.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_DOUBLE_EQ(2.0 * cosh(1.5), r[0]);
+  EXPECT_FLOAT_EQ(2.0 * cosh(1.5), r[0]);
 }
 TEST(AgradFwdCosh, FvarFvarVar_3rdDeriv) {
   using stan::math::fvar;
@@ -130,7 +130,7 @@ TEST(AgradFwdCosh, FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_DOUBLE_EQ(2.1292794550948174968343874946776, g[0]);
+  EXPECT_FLOAT_EQ(2.1292794550948174968343874946776, g[0]);
 }
 
 struct cosh_fun {

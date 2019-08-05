@@ -14,14 +14,14 @@ TEST(AgradFwdHypot, FvarVar_FvarVar_1stDeriv) {
   fvar<var> z(6.0, 1.0);
   fvar<var> a = hypot(x, z);
 
-  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val());
-  EXPECT_DOUBLE_EQ((1.3 * 3.0 + 6.0 * 1.0) / hypot(3.0, 6.0), a.d_.val());
+  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val());
+  EXPECT_FLOAT_EQ((1.3 * 3.0 + 6.0 * 1.0) / hypot(3.0, 6.0), a.d_.val());
 
   AVEC y = createAVEC(x.val_, z.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(3.0 / hypot(3.0, 6.0), g[0]);
-  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), g[1]);
+  EXPECT_FLOAT_EQ(3.0 / hypot(3.0, 6.0), g[0]);
+  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), g[1]);
 }
 TEST(AgradFwdHypot, FvarVar_Double_1stDeriv) {
   using boost::math::hypot;
@@ -32,13 +32,13 @@ TEST(AgradFwdHypot, FvarVar_Double_1stDeriv) {
   double z(6.0);
   fvar<var> a = hypot(x, z);
 
-  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val());
-  EXPECT_DOUBLE_EQ((1.3 * 3.0) / hypot(3.0, 6.0), a.d_.val());
+  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val());
+  EXPECT_FLOAT_EQ((1.3 * 3.0) / hypot(3.0, 6.0), a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(3.0 / hypot(3.0, 6.0), g[0]);
+  EXPECT_FLOAT_EQ(3.0 / hypot(3.0, 6.0), g[0]);
 }
 TEST(AgradFwdHypot, Double_FvarVar_1stDeriv) {
   using boost::math::hypot;
@@ -49,13 +49,13 @@ TEST(AgradFwdHypot, Double_FvarVar_1stDeriv) {
   fvar<var> z(6.0, 1.0);
   fvar<var> a = hypot(x, z);
 
-  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val());
-  EXPECT_DOUBLE_EQ((6.0 * 1.0) / hypot(3.0, 6.0), a.d_.val());
+  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val());
+  EXPECT_FLOAT_EQ((6.0 * 1.0) / hypot(3.0, 6.0), a.d_.val());
 
   AVEC y = createAVEC(z.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), g[0]);
+  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), g[0]);
 }
 TEST(AgradFwdHypot, FvarVar_FvarVar_2ndDeriv) {
   using boost::math::hypot;
@@ -69,9 +69,9 @@ TEST(AgradFwdHypot, FvarVar_FvarVar_2ndDeriv) {
   AVEC y = createAVEC(x.val_, z.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       (1.3 * 6.0 * 6.0 - 6.0 * 3.0) / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       (1.0 * 3.0 * 3.0 - 1.3 * 6.0 * 3.0) / hypot(3.0, 6.0) / (9.0 + 36.0),
       g[1]);
 }
@@ -87,7 +87,7 @@ TEST(AgradFwdHypot, FvarVar_Double_2ndDeriv) {
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_DOUBLE_EQ(1.3 * 6.0 * 6.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
+  EXPECT_FLOAT_EQ(1.3 * 6.0 * 6.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
 }
 TEST(AgradFwdHypot, Double_FvarVar_2ndDeriv) {
   using boost::math::hypot;
@@ -101,7 +101,7 @@ TEST(AgradFwdHypot, Double_FvarVar_2ndDeriv) {
   AVEC y = createAVEC(z.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_DOUBLE_EQ(1.0 * 3.0 * 3.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
+  EXPECT_FLOAT_EQ(1.0 * 3.0 * 3.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
 }
 
 TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_1stDeriv) {
@@ -118,16 +118,16 @@ TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = hypot(x, y);
 
-  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(3.0 / hypot(3.0, 6.0), a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(-0.059628479, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(3.0 / hypot(3.0, 6.0), a.val_.d_.val());
+  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_.val());
+  EXPECT_FLOAT_EQ(-0.059628479, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(3.0 / hypot(3.0, 6.0), g[0]);
-  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), g[1]);
+  EXPECT_FLOAT_EQ(3.0 / hypot(3.0, 6.0), g[0]);
+  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), g[1]);
 }
 TEST(AgradFwdHypot, FvarFvarVar_Double_1stDeriv) {
   using boost::math::hypot;
@@ -141,15 +141,15 @@ TEST(AgradFwdHypot, FvarFvarVar_Double_1stDeriv) {
 
   fvar<fvar<var> > a = hypot(x, y);
 
-  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(3.0 / hypot(3.0, 6.0), a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(3.0 / hypot(3.0, 6.0), a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(3.0 / hypot(3.0, 6.0), g[0]);
+  EXPECT_FLOAT_EQ(3.0 / hypot(3.0, 6.0), g[0]);
 }
 
 TEST(AgradFwdHypot, Double_FvarFvarVar_1stDeriv) {
@@ -164,15 +164,15 @@ TEST(AgradFwdHypot, Double_FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = hypot(x, y);
 
-  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
+  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), g[0]);
+  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), g[0]);
 }
 TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
   using boost::math::hypot;
@@ -192,8 +192,8 @@ TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_2ndDeriv_x) {
   VEC g;
   a.val_.d_.grad(p, g);
 
-  EXPECT_DOUBLE_EQ(36.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
-  EXPECT_DOUBLE_EQ(-2.0 / 15.0 / std::sqrt(5.0), g[1]);
+  EXPECT_FLOAT_EQ(36.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
+  EXPECT_FLOAT_EQ(-2.0 / 15.0 / std::sqrt(5.0), g[1]);
 }
 TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
   using boost::math::hypot;
@@ -212,8 +212,8 @@ TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_2ndDeriv_y) {
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.d_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(-2.0 / 15.0 / std::sqrt(5.0), g[0]);
-  EXPECT_DOUBLE_EQ((3.0 * 3.0) / hypot(3.0, 6.0) / (9.0 + 36.0), g[1]);
+  EXPECT_FLOAT_EQ(-2.0 / 15.0 / std::sqrt(5.0), g[0]);
+  EXPECT_FLOAT_EQ((3.0 * 3.0) / hypot(3.0, 6.0) / (9.0 + 36.0), g[1]);
 }
 TEST(AgradFwdHypot, FvarFvarVar_Double_2ndDeriv) {
   using boost::math::hypot;
@@ -231,7 +231,7 @@ TEST(AgradFwdHypot, FvarFvarVar_Double_2ndDeriv) {
   VEC g;
   a.val_.d_.grad(p, g);
 
-  EXPECT_DOUBLE_EQ(6.0 * 6.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
+  EXPECT_FLOAT_EQ(6.0 * 6.0 / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
 }
 
 TEST(AgradFwdHypot, Double_FvarFvarVar_2ndDeriv) {
@@ -246,15 +246,15 @@ TEST(AgradFwdHypot, Double_FvarFvarVar_2ndDeriv) {
 
   fvar<fvar<var> > a = hypot(x, y);
 
-  EXPECT_DOUBLE_EQ(hypot(3.0, 6.0), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(hypot(3.0, 6.0), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
+  EXPECT_FLOAT_EQ(6.0 / hypot(3.0, 6.0), a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ((3.0 * 3.0) / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
+  EXPECT_FLOAT_EQ((3.0 * 3.0) / hypot(3.0, 6.0) / (9.0 + 36.0), g[0]);
 }
 TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   using boost::math::hypot;
@@ -273,8 +273,8 @@ TEST(AgradFwdHypot, FvarFvarVar_FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_DOUBLE_EQ(-0.0079504643, g[0]);
-  EXPECT_DOUBLE_EQ(0.013913312, g[1]);
+  EXPECT_FLOAT_EQ(-0.0079504643, g[0]);
+  EXPECT_FLOAT_EQ(0.013913312, g[1]);
 }
 TEST(AgradFwdHypot, FvarFvarVar_Double_3rdDeriv) {
   using boost::math::hypot;
@@ -293,7 +293,7 @@ TEST(AgradFwdHypot, FvarFvarVar_Double_3rdDeriv) {
   VEC g;
   a.d_.d_.grad(p, g);
 
-  EXPECT_DOUBLE_EQ(-0.02385139175999775676169785246647, g[0]);
+  EXPECT_FLOAT_EQ(-0.02385139175999775676169785246647, g[0]);
 }
 
 TEST(AgradFwdHypot, Double_FvarFvarVar_3rdDeriv) {
@@ -312,7 +312,7 @@ TEST(AgradFwdHypot, Double_FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(y.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_DOUBLE_EQ(-0.0119256958799988783808489262332, g[0]);
+  EXPECT_FLOAT_EQ(-0.0119256958799988783808489262332, g[0]);
 }
 
 struct hypot_fun {

@@ -37,10 +37,10 @@ void test_log_sum_exp_matrix(const Matrix<double, R, C>& m) {
   vector<double> g(m.size());
   f.grad(x, g);
 
-  EXPECT_DOUBLE_EQ(val_expected, val);
+  EXPECT_FLOAT_EQ(val_expected, val);
   EXPECT_EQ(g_expected.size(), g.size());
   for (size_t i = 0; i < g.size(); ++i)
-    EXPECT_DOUBLE_EQ(g_expected[i], g[i]);
+    EXPECT_FLOAT_EQ(g_expected[i], g[i]);
 }
 }
 

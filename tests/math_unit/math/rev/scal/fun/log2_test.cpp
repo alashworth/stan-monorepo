@@ -7,16 +7,16 @@
 TEST(AgradRev, log2) {
   AVAR a = 3.0;
   AVAR f = stan::math::log2(a);
-  EXPECT_DOUBLE_EQ(std::log(3.0) / std::log(2.0), f.val());
+  EXPECT_FLOAT_EQ(std::log(3.0) / std::log(2.0), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(1.0 / 3.0 / std::log(2.0), grad_f[0]);
+  EXPECT_FLOAT_EQ(1.0 / 3.0 / std::log(2.0), grad_f[0]);
 
   a = std::numeric_limits<AVAR>::infinity();
-  EXPECT_DOUBLE_EQ(std::numeric_limits<double>::infinity(),
-                   stan::math::log2(a).val());
+  EXPECT_FLOAT_EQ(std::numeric_limits<double>::infinity(),
+                  stan::math::log2(a).val());
 }
 
 namespace {

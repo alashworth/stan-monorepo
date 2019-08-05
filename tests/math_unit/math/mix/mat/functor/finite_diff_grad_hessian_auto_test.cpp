@@ -19,7 +19,7 @@ void test_grad_hessian_finite_diff(const std::string& msg, const F& f,
   std::vector<Eigen::MatrixXd> grad_hess_fx_ad;
   stan::math::grad_hessian(f, x, fx_ad, hess_fx_ad, grad_hess_fx_ad);
 
-  EXPECT_DOUBLE_EQ(fx_ad, fx) << msg;
+  EXPECT_FLOAT_EQ(fx_ad, fx) << msg;
 
   EXPECT_EQ(hess_fx_ad.rows(), hess_fx.rows()) << msg;
   EXPECT_EQ(hess_fx_ad.cols(), hess_fx.cols()) << msg;

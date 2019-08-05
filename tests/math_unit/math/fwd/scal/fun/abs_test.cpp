@@ -15,28 +15,28 @@ TEST(AgradFwdAbs, Fvar) {
   y.d_ = 2.0;
 
   fvar<double> a = abs(x);
-  EXPECT_DOUBLE_EQ(abs(2), a.val_);
-  EXPECT_DOUBLE_EQ(1.0, a.d_);
+  EXPECT_FLOAT_EQ(abs(2), a.val_);
+  EXPECT_FLOAT_EQ(1.0, a.d_);
 
   fvar<double> b = abs(-x);
-  EXPECT_DOUBLE_EQ(abs(-2), b.val_);
-  EXPECT_DOUBLE_EQ(1.0, b.d_);
+  EXPECT_FLOAT_EQ(abs(-2), b.val_);
+  EXPECT_FLOAT_EQ(1.0, b.d_);
 
   fvar<double> c = abs(y);
-  EXPECT_DOUBLE_EQ(abs(-3), c.val_);
-  EXPECT_DOUBLE_EQ(-2.0, c.d_);
+  EXPECT_FLOAT_EQ(abs(-3), c.val_);
+  EXPECT_FLOAT_EQ(-2.0, c.d_);
 
   fvar<double> d = abs(2 * x);
-  EXPECT_DOUBLE_EQ(abs(2 * 2), d.val_);
-  EXPECT_DOUBLE_EQ(2 * 1.0, d.d_);
+  EXPECT_FLOAT_EQ(abs(2 * 2), d.val_);
+  EXPECT_FLOAT_EQ(2 * 1.0, d.d_);
 
   fvar<double> e = abs(y + 4);
-  EXPECT_DOUBLE_EQ(abs(-3 + 4), e.val_);
-  EXPECT_DOUBLE_EQ(2.0, e.d_);
+  EXPECT_FLOAT_EQ(abs(-3 + 4), e.val_);
+  EXPECT_FLOAT_EQ(2.0, e.d_);
 
   fvar<double> f = abs(x - 2);
-  EXPECT_DOUBLE_EQ(abs(2 - 2), f.val_);
-  EXPECT_DOUBLE_EQ(0, f.d_);
+  EXPECT_FLOAT_EQ(abs(2 - 2), f.val_);
+  EXPECT_FLOAT_EQ(0, f.d_);
 
   fvar<double> z = std::numeric_limits<double>::quiet_NaN();
   fvar<double> g = abs(z);
@@ -45,8 +45,8 @@ TEST(AgradFwdAbs, Fvar) {
 
   fvar<double> w = 0;
   fvar<double> h = abs(w);
-  EXPECT_DOUBLE_EQ(0.0, h.val_);
-  EXPECT_DOUBLE_EQ(0.0, h.d_);
+  EXPECT_FLOAT_EQ(0.0, h.val_);
+  EXPECT_FLOAT_EQ(0.0, h.d_);
 }
 
 TEST(AgradFwdAbs, FvarFvarDouble) {
@@ -59,10 +59,10 @@ TEST(AgradFwdAbs, FvarFvarDouble) {
 
   fvar<fvar<double> > a = abs(x);
 
-  EXPECT_DOUBLE_EQ(4.0, a.val_.val_);
-  EXPECT_DOUBLE_EQ(1.0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(0.0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0.0, a.d_.d_);
+  EXPECT_FLOAT_EQ(4.0, a.val_.val_);
+  EXPECT_FLOAT_EQ(1.0, a.val_.d_);
+  EXPECT_FLOAT_EQ(0.0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0.0, a.d_.d_);
 }
 
 struct abs_fun {

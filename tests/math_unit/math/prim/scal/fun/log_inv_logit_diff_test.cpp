@@ -6,8 +6,8 @@
 TEST(MathFunctions, log_inv_logit_diff) {
   using stan::math::log_inv_logit_diff;
 
-  EXPECT_DOUBLE_EQ(-3.019359355, log_inv_logit_diff(2.15, 1.71));
-  EXPECT_DOUBLE_EQ(-7.703540544, log_inv_logit_diff(-7.62, -10.15));
+  EXPECT_FLOAT_EQ(-3.019359355, log_inv_logit_diff(2.15, 1.71));
+  EXPECT_FLOAT_EQ(-7.703540544, log_inv_logit_diff(-7.62, -10.15));
 }
 
 TEST(MathFunctions, log_inv_logit_diff_nan) {

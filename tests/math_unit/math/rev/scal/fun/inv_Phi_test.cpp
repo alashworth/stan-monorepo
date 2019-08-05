@@ -9,19 +9,19 @@ TEST(MathFunctions, inv_Phi_2) {
   using stan::math::Phi;
   using stan::math::inv_Phi;
   using stan::math::var;
-  EXPECT_DOUBLE_EQ(0.0, inv_Phi(0.5));
+  EXPECT_FLOAT_EQ(0.0, inv_Phi(0.5));
   var p = 0.123456789;
-  EXPECT_DOUBLE_EQ(p.val(), Phi(inv_Phi(p)).val());
+  EXPECT_FLOAT_EQ(p.val(), Phi(inv_Phi(p)).val());
   p = 8e-311;
-  EXPECT_DOUBLE_EQ(p.val(), Phi(inv_Phi(p)).val());
+  EXPECT_FLOAT_EQ(p.val(), Phi(inv_Phi(p)).val());
   p = 0.99;
-  EXPECT_DOUBLE_EQ(p.val(), Phi(inv_Phi(p)).val());
+  EXPECT_FLOAT_EQ(p.val(), Phi(inv_Phi(p)).val());
 
   // breakpoints
   p = 0.02425;
-  EXPECT_DOUBLE_EQ(p.val(), Phi(inv_Phi(p)).val());
+  EXPECT_FLOAT_EQ(p.val(), Phi(inv_Phi(p)).val());
   p = 0.97575;
-  EXPECT_DOUBLE_EQ(p.val(), Phi(inv_Phi(p)).val());
+  EXPECT_FLOAT_EQ(p.val(), Phi(inv_Phi(p)).val());
 }
 TEST(MathFunctions, inv_Phi_inf_2) {
   using stan::math::inv_Phi;
@@ -57,8 +57,8 @@ TEST(AgradRev, inv_Phi) {
     y = stan::math::Phi(stan::math::inv_Phi(p));
     x = createAVEC(p);
     y.grad(x, dp);
-    EXPECT_DOUBLE_EQ(p_values[i], y.val());
-    EXPECT_DOUBLE_EQ(1.0, dp[0]) << "p = " << p;
+    EXPECT_FLOAT_EQ(p_values[i], y.val());
+    EXPECT_FLOAT_EQ(1.0, dp[0]) << "p = " << p;
   }
 }
 

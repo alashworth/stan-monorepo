@@ -12,17 +12,17 @@ TEST(AgradFwdPow, Fvar) {
   double y = 5.0;
 
   fvar<double> a = pow(x, y);
-  EXPECT_DOUBLE_EQ(pow(0.5, 5.0), a.val_);
-  EXPECT_DOUBLE_EQ(5.0 * pow(0.5, 5.0 - 1.0), a.d_);
+  EXPECT_FLOAT_EQ(pow(0.5, 5.0), a.val_);
+  EXPECT_FLOAT_EQ(5.0 * pow(0.5, 5.0 - 1.0), a.d_);
 
   fvar<double> b = pow(y, x);
-  EXPECT_DOUBLE_EQ(pow(5.0, 0.5), b.val_);
-  EXPECT_DOUBLE_EQ(log(5.0) * pow(5.0, 0.5), b.d_);
+  EXPECT_FLOAT_EQ(pow(5.0, 0.5), b.val_);
+  EXPECT_FLOAT_EQ(log(5.0) * pow(5.0, 0.5), b.d_);
 
   fvar<double> z(1.2, 2.0);
   fvar<double> c = pow(x, z);
-  EXPECT_DOUBLE_EQ(pow(0.5, 1.2), c.val_);
-  EXPECT_DOUBLE_EQ((2.0 * log(0.5) + 1.2 * 1.0 / 0.5) * pow(0.5, 1.2), c.d_);
+  EXPECT_FLOAT_EQ(pow(0.5, 1.2), c.val_);
+  EXPECT_FLOAT_EQ((2.0 * log(0.5) + 1.2 * 1.0 / 0.5) * pow(0.5, 1.2), c.d_);
 
   fvar<double> w(-0.4, 1.0);
   fvar<double> d = pow(w, x);
@@ -45,10 +45,10 @@ TEST(AgradFwdPow, FvarFvarDouble) {
 
   fvar<fvar<double> > a = pow(x, y);
 
-  EXPECT_DOUBLE_EQ(pow(0.5, 0.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0.5 * pow(0.5, -0.5), a.val_.d_);
-  EXPECT_DOUBLE_EQ(log(0.5) * pow(0.5, 0.5), a.d_.val_);
-  EXPECT_DOUBLE_EQ(pow(0.5, -0.5) * (0.5 * log(0.5) + 1.0), a.d_.d_);
+  EXPECT_FLOAT_EQ(pow(0.5, 0.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0.5 * pow(0.5, -0.5), a.val_.d_);
+  EXPECT_FLOAT_EQ(log(0.5) * pow(0.5, 0.5), a.d_.val_);
+  EXPECT_FLOAT_EQ(pow(0.5, -0.5) * (0.5 * log(0.5) + 1.0), a.d_.d_);
 }
 
 struct pow_fun {

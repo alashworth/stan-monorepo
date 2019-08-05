@@ -26,59 +26,59 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_vector_scalar_1stDeriv) {
 
   vector_fv output;
   output = multiply(d1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val());
 
   output = multiply(v2, d1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val());
 
   output = multiply(v1, d2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val());
 
   output = multiply(d2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val());
 
   output = multiply(v1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val());
 
   output = multiply(v2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val());
 
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output(0).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_vector_scalar_2ndDeriv) {
   using stan::math::vector_d;
@@ -101,9 +101,9 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_vector_scalar_2ndDeriv) {
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output(0).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 
 TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_scalar_1stDeriv) {
@@ -126,59 +126,59 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_scalar_1stDeriv) {
 
   row_vector_fv output;
   output = multiply(d1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val());
 
   output = multiply(v1, d2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val());
 
   output = multiply(v1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val());
 
   output = multiply(v2, d1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val());
 
   output = multiply(d2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val());
 
   output = multiply(v2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val());
 
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output(0).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_scalar_2ndDeriv) {
   using stan::math::row_vector_d;
@@ -201,9 +201,9 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_scalar_2ndDeriv) {
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   output(0).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_scalar_1stDeriv) {
   using stan::math::matrix_d;
@@ -226,73 +226,73 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_scalar_1stDeriv) {
 
   matrix_fv output;
   output = multiply(d1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(100, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(4, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(100, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-3, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(4, output(1, 1).d_.val());
 
   output = multiply(v1, d2);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1, 1).d_.val());
 
   output = multiply(v1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(98, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(2, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(98, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(2, output(1, 1).d_.val());
 
   output = multiply(v2, d1);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(100, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(4, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(100, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-3, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(4, output(1, 1).d_.val());
 
   output = multiply(d2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1, 1).d_.val());
 
   output = multiply(v2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(98, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(2, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(98, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(2, output(1, 1).d_.val());
 
   AVEC q = createAVEC(v1(0, 0).val(), v1(0, 1).val(), v1(1, 0).val(),
                       v1(1, 1).val());
   VEC h;
   output(0, 0).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_scalar_2ndDeriv) {
   using stan::math::matrix_d;
@@ -316,10 +316,10 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_scalar_2ndDeriv) {
                       v1(1, 1).val());
   VEC h;
   output(0, 0).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_vector_1stDeriv) {
   using stan::math::row_vector_d;
@@ -343,19 +343,19 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_vector_1stDeriv) {
   v2(1).d_ = 1.0;
   v2(2).d_ = 1.0;
 
-  EXPECT_DOUBLE_EQ(3, multiply(v1, v2).val_.val());
-  EXPECT_DOUBLE_EQ(3, multiply(v1, d2).val_.val());
-  EXPECT_DOUBLE_EQ(3, multiply(d1, v2).val_.val());
-  EXPECT_DOUBLE_EQ(0, multiply(v1, v2).d_.val());
-  EXPECT_DOUBLE_EQ(1, multiply(v1, d2).d_.val());
-  EXPECT_DOUBLE_EQ(-1, multiply(d1, v2).d_.val());
+  EXPECT_FLOAT_EQ(3, multiply(v1, v2).val_.val());
+  EXPECT_FLOAT_EQ(3, multiply(v1, d2).val_.val());
+  EXPECT_FLOAT_EQ(3, multiply(d1, v2).val_.val());
+  EXPECT_FLOAT_EQ(0, multiply(v1, v2).d_.val());
+  EXPECT_FLOAT_EQ(1, multiply(v1, d2).d_.val());
+  EXPECT_FLOAT_EQ(-1, multiply(d1, v2).d_.val());
 
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   multiply(v1, d2).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(4, h[0]);
-  EXPECT_DOUBLE_EQ(-2, h[1]);
-  EXPECT_DOUBLE_EQ(-1, h[2]);
+  EXPECT_FLOAT_EQ(4, h[0]);
+  EXPECT_FLOAT_EQ(-2, h[1]);
+  EXPECT_FLOAT_EQ(-1, h[2]);
 
   d1.resize(1);
   v1.resize(1);
@@ -388,9 +388,9 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_vector_2ndDeriv) {
   AVEC q = createAVEC(v1(0).val(), v1(1).val(), v1(2).val());
   VEC h;
   multiply(v1, d2).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_vector_rowvector_1stDeriv) {
   using stan::math::matrix_fv;
@@ -418,75 +418,75 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_vector_rowvector_1stDeriv) {
   matrix_fv output = multiply(v1, v2);
   EXPECT_EQ(3, output.rows());
   EXPECT_EQ(3, output.cols());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(12, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 2).val_.val());
-  EXPECT_DOUBLE_EQ(-20, output(2, 0).val_.val());
-  EXPECT_DOUBLE_EQ(10, output(2, 1).val_.val());
-  EXPECT_DOUBLE_EQ(5, output(2, 2).val_.val());
-  EXPECT_DOUBLE_EQ(5, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(7, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(2, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-7, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-6, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(12, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-6, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-3, output(1, 2).val_.val());
+  EXPECT_FLOAT_EQ(-20, output(2, 0).val_.val());
+  EXPECT_FLOAT_EQ(10, output(2, 1).val_.val());
+  EXPECT_FLOAT_EQ(5, output(2, 2).val_.val());
+  EXPECT_FLOAT_EQ(5, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(0, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(7, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(1, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(2, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(-7, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(-6, output(2, 2).d_.val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(3, output.rows());
   EXPECT_EQ(3, output.cols());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(12, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 2).val_.val());
-  EXPECT_DOUBLE_EQ(-20, output(2, 0).val_.val());
-  EXPECT_DOUBLE_EQ(10, output(2, 1).val_.val());
-  EXPECT_DOUBLE_EQ(5, output(2, 2).val_.val());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(4, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(4, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(12, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-6, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-3, output(1, 2).val_.val());
+  EXPECT_FLOAT_EQ(-20, output(2, 0).val_.val());
+  EXPECT_FLOAT_EQ(10, output(2, 1).val_.val());
+  EXPECT_FLOAT_EQ(5, output(2, 2).val_.val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(2, 2).d_.val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(3, output.rows());
   EXPECT_EQ(3, output.cols());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(12, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 2).val_.val());
-  EXPECT_DOUBLE_EQ(-20, output(2, 0).val_.val());
-  EXPECT_DOUBLE_EQ(10, output(2, 1).val_.val());
-  EXPECT_DOUBLE_EQ(5, output(2, 2).val_.val());
-  EXPECT_DOUBLE_EQ(1, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(1, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(3, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(3, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(3, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-5, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(12, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(-6, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-3, output(1, 2).val_.val());
+  EXPECT_FLOAT_EQ(-20, output(2, 0).val_.val());
+  EXPECT_FLOAT_EQ(10, output(2, 1).val_.val());
+  EXPECT_FLOAT_EQ(5, output(2, 2).val_.val());
+  EXPECT_FLOAT_EQ(1, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(1, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(1, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(3, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(3, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(3, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(-5, output(2, 2).d_.val());
 
   AVEC q = createAVEC(v2(0).val(), v2(1).val(), v2(2).val());
   VEC h;
   output(0, 0).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_vector_rowvector_2ndDeriv) {
   using stan::math::matrix_fv;
@@ -517,9 +517,9 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_vector_rowvector_2ndDeriv) {
   AVEC q = createAVEC(v2(0).val(), v2(1).val(), v2(2).val());
   VEC h;
   output(0, 0).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_vector_1stDeriv) {
   using stan::math::matrix_d;
@@ -547,40 +547,40 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_vector_1stDeriv) {
 
   vector_fv output = multiply(v1, v2);
   EXPECT_EQ(3, output.size());
-  EXPECT_DOUBLE_EQ(10, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(26, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(6, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(1, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(2).d_.val());
+  EXPECT_FLOAT_EQ(10, output(0).val_.val());
+  EXPECT_FLOAT_EQ(26, output(1).val_.val());
+  EXPECT_FLOAT_EQ(0, output(2).val_.val());
+  EXPECT_FLOAT_EQ(6, output(0).d_.val());
+  EXPECT_FLOAT_EQ(1, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(2).d_.val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(3, output.size());
-  EXPECT_DOUBLE_EQ(10, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(26, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(2, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(2, output(2).d_.val());
+  EXPECT_FLOAT_EQ(10, output(0).val_.val());
+  EXPECT_FLOAT_EQ(26, output(1).val_.val());
+  EXPECT_FLOAT_EQ(0, output(2).val_.val());
+  EXPECT_FLOAT_EQ(2, output(0).d_.val());
+  EXPECT_FLOAT_EQ(2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(2, output(2).d_.val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(3, output.size());
-  EXPECT_DOUBLE_EQ(10, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(26, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(4, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val());
+  EXPECT_FLOAT_EQ(10, output(0).val_.val());
+  EXPECT_FLOAT_EQ(26, output(1).val_.val());
+  EXPECT_FLOAT_EQ(0, output(2).val_.val());
+  EXPECT_FLOAT_EQ(4, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val());
 
   output = multiply(v1, d2);
   AVEC q = createAVEC(v1(0, 0).val(), v1(0, 1).val(), v1(1, 0).val(),
                       v1(1, 1).val());
   VEC h;
   output(0, 0).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(4, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(4, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_vector_2ndDeriv) {
   using stan::math::matrix_d;
@@ -613,10 +613,10 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_vector_2ndDeriv) {
                       v1(1, 1).val());
   VEC h;
   output(0, 0).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_vector_exception) {
   using stan::math::matrix_d;
@@ -660,33 +660,33 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_matrix_1stDeriv) {
 
   vector_fv output = multiply(v1, v2);
   EXPECT_EQ(2, output.size());
-  EXPECT_DOUBLE_EQ(-24, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(9, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(-3, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(9, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-24, output(0).val_.val());
+  EXPECT_FLOAT_EQ(9, output(1).val_.val());
+  EXPECT_FLOAT_EQ(-3, output(0).d_.val());
+  EXPECT_FLOAT_EQ(9, output(1).d_.val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(2, output.size());
-  EXPECT_DOUBLE_EQ(-24, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(9, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(-6, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(6, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-24, output(0).val_.val());
+  EXPECT_FLOAT_EQ(9, output(1).val_.val());
+  EXPECT_FLOAT_EQ(-6, output(0).d_.val());
+  EXPECT_FLOAT_EQ(6, output(1).d_.val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(2, output.size());
-  EXPECT_DOUBLE_EQ(-24, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(9, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(3, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(3, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-24, output(0).val_.val());
+  EXPECT_FLOAT_EQ(9, output(1).val_.val());
+  EXPECT_FLOAT_EQ(3, output(0).d_.val());
+  EXPECT_FLOAT_EQ(3, output(1).d_.val());
 
   AVEC q = createAVEC(v2(0, 0).val(), v2(0, 1).val(), v2(1, 0).val(),
                       v2(1, 1).val());
   VEC h;
   output(0, 0).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(4, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(4, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_matrix_2ndDeriv) {
   using stan::math::matrix_d;
@@ -721,10 +721,10 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_matrix_2ndDeriv) {
                       v2(1, 1).val());
   VEC h;
   output(0, 0).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_rowvector_matrix_exception) {
   using stan::math::matrix_d;
@@ -769,43 +769,43 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_matrix_1stDeriv) {
   matrix_fv output = multiply(v1, v2);
   EXPECT_EQ(2, output.rows());
   EXPECT_EQ(2, output.cols());
-  EXPECT_DOUBLE_EQ(-117, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(120, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(157, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(135, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(30, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(42, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(10, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-117, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(120, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(157, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(135, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(30, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(42, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(10, output(1, 1).d_.val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(2, output.rows());
   EXPECT_EQ(2, output.cols());
-  EXPECT_DOUBLE_EQ(-117, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(120, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(157, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(135, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-6, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(6, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-117, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(120, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(157, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(135, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-6, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(6, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-6, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 1).d_.val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(2, output.rows());
   EXPECT_EQ(2, output.cols());
-  EXPECT_DOUBLE_EQ(-117, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(120, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(157, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(135, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-117, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(120, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(157, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(135, output(1, 1).val_.val());
 
   AVEC q = createAVEC(v2(0, 0).val(), v2(0, 1).val(), v2(1, 0).val(),
                       v2(1, 1).val());
   VEC h;
   output(0, 0).val_.grad(q, h);
-  EXPECT_DOUBLE_EQ(9, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(24, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(9, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(24, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_matrix_2ndDeriv) {
   using stan::math::matrix_d;
@@ -839,10 +839,10 @@ TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_matrix_2ndDeriv) {
                       v2(1, 1).val());
   VEC h;
   output(0, 0).d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, fv_matrix_matrix_exception) {
   using stan::math::matrix_d;
@@ -877,59 +877,59 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_scalar_1stDeriv) {
 
   vector_ffv output;
   output = multiply(d1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val().val());
 
   output = multiply(v2, d1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val().val());
 
   output = multiply(v1, d2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val().val());
 
   output = multiply(d2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val().val());
 
   output = multiply(v1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val().val());
 
   output = multiply(v2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val().val());
 
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_scalar_2ndDeriv_1) {
   using stan::math::vector_d;
@@ -952,9 +952,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_scalar_2ndDeriv_1) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_scalar_2ndDeriv_2) {
   using stan::math::vector_d;
@@ -977,9 +977,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_scalar_2ndDeriv_2) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_scalar_3rdDeriv) {
   using stan::math::vector_d;
@@ -1006,9 +1006,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_scalar_3rdDeriv) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).d_.d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_1stDeriv) {
@@ -1031,59 +1031,59 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_1stDeriv) {
 
   row_vector_ffv output;
   output = multiply(d1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val().val());
 
   output = multiply(v1, d2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val().val());
 
   output = multiply(v1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val().val());
 
   output = multiply(v2, d1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(100, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(100, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val().val());
 
   output = multiply(d2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(2).d_.val().val());
 
   output = multiply(v2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(98, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(98, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(2).d_.val().val());
 
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_2ndDeriv_1) {
   using stan::math::row_vector_d;
@@ -1106,9 +1106,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_2ndDeriv_1) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_2ndDeriv_2) {
   using stan::math::row_vector_d;
@@ -1131,9 +1131,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_2ndDeriv_2) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_3rdDeriv) {
   using stan::math::row_vector_d;
@@ -1160,9 +1160,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_scalar_3rdDeriv) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   output(0).d_.d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_1stDeriv) {
   using stan::math::matrix_d;
@@ -1185,73 +1185,73 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_1stDeriv) {
 
   matrix_ffv output;
   output = multiply(d1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(100, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(4, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(100, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(4, output(1, 1).d_.val().val());
 
   output = multiply(v1, d2);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1, 1).d_.val().val());
 
   output = multiply(v1, v2);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(98, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(2, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(98, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(2, output(1, 1).d_.val().val());
 
   output = multiply(v2, d1);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(100, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(4, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(100, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(4, output(1, 1).d_.val().val());
 
   output = multiply(d2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1, 1).d_.val().val());
 
   output = multiply(v2, v1);
-  EXPECT_DOUBLE_EQ(-200, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-8, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(98, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(2, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-200, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-8, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(98, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(2, output(1, 1).d_.val().val());
 
   AVEC q = createAVEC(v1(0, 0).val().val(), v1(0, 1).val().val(),
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_2ndDeriv_1) {
   using stan::math::matrix_d;
@@ -1275,10 +1275,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_2ndDeriv_1) {
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_2ndDeriv_2) {
   using stan::math::matrix_d;
@@ -1302,10 +1302,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_2ndDeriv_2) {
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_3rdDeriv) {
   using stan::math::matrix_d;
@@ -1334,10 +1334,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_scalar_3rdDeriv) {
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_vector_1stDeriv) {
   using stan::math::row_vector_d;
@@ -1361,19 +1361,19 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_vector_1stDeriv) {
   v2(1).d_ = 1.0;
   v2(2).d_ = 1.0;
 
-  EXPECT_DOUBLE_EQ(3, multiply(v1, v2).val_.val().val());
-  EXPECT_DOUBLE_EQ(3, multiply(v1, d2).val_.val().val());
-  EXPECT_DOUBLE_EQ(3, multiply(d1, v2).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, multiply(v1, v2).d_.val().val());
-  EXPECT_DOUBLE_EQ(1, multiply(v1, d2).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, multiply(d1, v2).d_.val().val());
+  EXPECT_FLOAT_EQ(3, multiply(v1, v2).val_.val().val());
+  EXPECT_FLOAT_EQ(3, multiply(v1, d2).val_.val().val());
+  EXPECT_FLOAT_EQ(3, multiply(d1, v2).val_.val().val());
+  EXPECT_FLOAT_EQ(0, multiply(v1, v2).d_.val().val());
+  EXPECT_FLOAT_EQ(1, multiply(v1, d2).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, multiply(d1, v2).d_.val().val());
 
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   multiply(v1, d2).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(4, h[0]);
-  EXPECT_DOUBLE_EQ(-2, h[1]);
-  EXPECT_DOUBLE_EQ(-1, h[2]);
+  EXPECT_FLOAT_EQ(4, h[0]);
+  EXPECT_FLOAT_EQ(-2, h[1]);
+  EXPECT_FLOAT_EQ(-1, h[2]);
 
   d1.resize(1);
   v1.resize(1);
@@ -1406,9 +1406,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_vector_2ndDeriv_1) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   multiply(v1, d2).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_vector_2ndDeriv_2) {
   using stan::math::row_vector_d;
@@ -1435,9 +1435,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_vector_2ndDeriv_2) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   multiply(v1, d2).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_vector_3rdDeriv) {
   using stan::math::row_vector_d;
@@ -1470,9 +1470,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_vector_3rdDeriv) {
   AVEC q = createAVEC(v1(0).val().val(), v1(1).val().val(), v1(2).val().val());
   VEC h;
   multiply(v1, d2).d_.d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_1stDeriv) {
   using stan::math::matrix_ffv;
@@ -1500,75 +1500,75 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_1stDeriv) {
   matrix_ffv output = multiply(v1, v2);
   EXPECT_EQ(3, output.rows());
   EXPECT_EQ(3, output.cols());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(12, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(-20, output(2, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(10, output(2, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(5, output(2, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(5, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(0, 2).d_.val().val());
-  EXPECT_DOUBLE_EQ(7, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1, output(1, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(2, output(1, 2).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(2, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-7, output(2, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-6, output(2, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(12, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-6, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(1, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(-20, output(2, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(10, output(2, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(5, output(2, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(5, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(0, output(0, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(7, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(1, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(2, output(1, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(2, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-7, output(2, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-6, output(2, 2).d_.val().val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(3, output.rows());
   EXPECT_EQ(3, output.cols());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(12, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(-20, output(2, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(10, output(2, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(5, output(2, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).d_.val().val());
-  EXPECT_DOUBLE_EQ(4, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(1, 2).d_.val().val());
-  EXPECT_DOUBLE_EQ(4, output(2, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(2, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(2, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(12, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-6, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(1, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(-20, output(2, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(10, output(2, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(5, output(2, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(4, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(1, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(4, output(2, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(2, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(2, 2).d_.val().val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(3, output.rows());
   EXPECT_EQ(3, output.cols());
-  EXPECT_DOUBLE_EQ(4, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(0, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(12, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(1, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(-20, output(2, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(10, output(2, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(5, output(2, 2).val_.val().val());
-  EXPECT_DOUBLE_EQ(1, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(1, output(0, 2).d_.val().val());
-  EXPECT_DOUBLE_EQ(3, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(3, output(1, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(3, output(1, 2).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(2, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(2, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-5, output(2, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(0, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(12, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(-6, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(1, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(-20, output(2, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(10, output(2, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(5, output(2, 2).val_.val().val());
+  EXPECT_FLOAT_EQ(1, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(1, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(1, output(0, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(3, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(3, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(3, output(1, 2).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(2, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(2, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-5, output(2, 2).d_.val().val());
 
   AVEC q = createAVEC(v2(0).val().val(), v2(1).val().val(), v2(2).val().val());
   VEC h;
   output(0, 0).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(1, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(1, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_2ndDeriv_1) {
   using stan::math::matrix_ffv;
@@ -1599,9 +1599,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_2ndDeriv_1) {
   AVEC q = createAVEC(v2(0).val().val(), v2(1).val().val(), v2(2).val().val());
   VEC h;
   output(0, 0).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_2ndDeriv_2) {
   using stan::math::matrix_ffv;
@@ -1632,9 +1632,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_2ndDeriv_2) {
   AVEC q = createAVEC(v2(0).val().val(), v2(1).val().val(), v2(2).val().val());
   VEC h;
   output(0, 0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_3rdDeriv) {
   using stan::math::matrix_ffv;
@@ -1671,9 +1671,9 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_vector_rowvector_3rdDeriv) {
   AVEC q = createAVEC(v2(0).val().val(), v2(1).val().val(), v2(2).val().val());
   VEC h;
   output(0, 0).d_.d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_1stDeriv) {
   using stan::math::matrix_d;
@@ -1701,40 +1701,40 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_1stDeriv) {
 
   vector_ffv output = multiply(v1, v2);
   EXPECT_EQ(3, output.size());
-  EXPECT_DOUBLE_EQ(10, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(26, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(10, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(26, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(6, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(1, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(2).d_.val().val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(3, output.size());
-  EXPECT_DOUBLE_EQ(10, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(26, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(2, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(2, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(2, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(10, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(26, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(2, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(2, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(2, output(2).d_.val().val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(3, output.size());
-  EXPECT_DOUBLE_EQ(10, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(26, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(0, output(2).val_.val().val());
-  EXPECT_DOUBLE_EQ(4, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(-1, output(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(2).d_.val().val());
+  EXPECT_FLOAT_EQ(10, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(26, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(0, output(2).val_.val().val());
+  EXPECT_FLOAT_EQ(4, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(-1, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(2).d_.val().val());
 
   output = multiply(v1, d2);
   AVEC q = createAVEC(v1(0, 0).val().val(), v1(0, 1).val().val(),
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(4, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(4, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_2ndDeriv_1) {
   using stan::math::matrix_d;
@@ -1767,10 +1767,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_2ndDeriv_1) {
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_2ndDeriv_2) {
   using stan::math::matrix_d;
@@ -1803,10 +1803,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_2ndDeriv_2) {
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_3rdDeriv) {
   using stan::math::matrix_d;
@@ -1847,10 +1847,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_3rdDeriv) {
                       v1(1, 0).val().val(), v1(1, 1).val().val());
   VEC h;
   output(0, 0).d_.d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_vector_exception) {
   using stan::math::matrix_d;
@@ -1894,33 +1894,33 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_1stDeriv) {
 
   vector_ffv output = multiply(v1, v2);
   EXPECT_EQ(2, output.size());
-  EXPECT_DOUBLE_EQ(-24, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(9, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-3, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(9, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-24, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(9, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(-3, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(9, output(1).d_.val().val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(2, output.size());
-  EXPECT_DOUBLE_EQ(-24, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(9, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-6, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-24, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(9, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(-6, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1).d_.val().val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(2, output.size());
-  EXPECT_DOUBLE_EQ(-24, output(0).val_.val().val());
-  EXPECT_DOUBLE_EQ(9, output(1).val_.val().val());
-  EXPECT_DOUBLE_EQ(3, output(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(3, output(1).d_.val().val());
+  EXPECT_FLOAT_EQ(-24, output(0).val_.val().val());
+  EXPECT_FLOAT_EQ(9, output(1).val_.val().val());
+  EXPECT_FLOAT_EQ(3, output(0).d_.val().val());
+  EXPECT_FLOAT_EQ(3, output(1).d_.val().val());
 
   AVEC q = createAVEC(v2(0, 0).val().val(), v2(0, 1).val().val(),
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(-2, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(4, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(-2, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(4, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_2ndDeriv_1) {
   using stan::math::matrix_d;
@@ -1955,10 +1955,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_2ndDeriv_1) {
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_2ndDeriv_2) {
   using stan::math::matrix_d;
@@ -1993,10 +1993,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_2ndDeriv_2) {
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_3rdDeriv) {
   using stan::math::matrix_d;
@@ -2040,10 +2040,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_3rdDeriv) {
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).d_.d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_rowvector_matrix_exception) {
   using stan::math::matrix_d;
@@ -2088,43 +2088,43 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_1stDeriv) {
   matrix_ffv output = multiply(v1, v2);
   EXPECT_EQ(2, output.rows());
   EXPECT_EQ(2, output.cols());
-  EXPECT_DOUBLE_EQ(-117, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(120, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(157, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(135, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(30, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(42, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-2, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(10, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-117, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(120, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(157, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(135, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(30, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(42, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-2, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(10, output(1, 1).d_.val().val());
 
   output = multiply(v1, d2);
   EXPECT_EQ(2, output.rows());
   EXPECT_EQ(2, output.cols());
-  EXPECT_DOUBLE_EQ(-117, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(120, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(157, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(135, output(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-6, output(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(-6, output(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(6, output(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-117, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(120, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(157, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(135, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-6, output(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(6, output(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-6, output(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(6, output(1, 1).d_.val().val());
 
   output = multiply(d1, v2);
   EXPECT_EQ(2, output.rows());
   EXPECT_EQ(2, output.cols());
-  EXPECT_DOUBLE_EQ(-117, output(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(120, output(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(157, output(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(135, output(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-117, output(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(120, output(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(157, output(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(135, output(1, 1).val_.val().val());
 
   AVEC q = createAVEC(v2(0, 0).val().val(), v2(0, 1).val().val(),
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).val_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(9, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(24, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(9, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(24, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_2ndDeriv_1) {
   using stan::math::matrix_d;
@@ -2158,10 +2158,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_2ndDeriv_1) {
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).val().d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_2ndDeriv_2) {
   using stan::math::matrix_d;
@@ -2195,10 +2195,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_2ndDeriv_2) {
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).d_.val().grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_3rdDeriv) {
   using stan::math::matrix_d;
@@ -2244,10 +2244,10 @@ TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_3rdDeriv) {
                       v2(1, 0).val().val(), v2(1, 1).val().val());
   VEC h;
   output(0, 0).d_.d_.grad(q, h);
-  EXPECT_DOUBLE_EQ(0, h[0]);
-  EXPECT_DOUBLE_EQ(0, h[1]);
-  EXPECT_DOUBLE_EQ(0, h[2]);
-  EXPECT_DOUBLE_EQ(0, h[3]);
+  EXPECT_FLOAT_EQ(0, h[0]);
+  EXPECT_FLOAT_EQ(0, h[1]);
+  EXPECT_FLOAT_EQ(0, h[2]);
+  EXPECT_FLOAT_EQ(0, h[3]);
 }
 TEST(AgradMixMatrixOperatorMultiplication, ffv_matrix_matrix_exception) {
   using stan::math::matrix_d;

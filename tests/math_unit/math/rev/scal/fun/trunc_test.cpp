@@ -7,23 +7,23 @@
 TEST(AgradRev, trunc) {
   AVAR a = 1.2;
   AVAR f = stan::math::trunc(a);
-  EXPECT_DOUBLE_EQ(1.0, f.val());
+  EXPECT_FLOAT_EQ(1.0, f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.0, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.0, grad_f[0]);
 }
 
 TEST(AgradRev, trunc_2) {
   AVAR a = -1.2;
   AVAR f = stan::math::trunc(a);
-  EXPECT_DOUBLE_EQ(-1.0, f.val());
+  EXPECT_FLOAT_EQ(-1.0, f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.0, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.0, grad_f[0]);
 }
 
 namespace {

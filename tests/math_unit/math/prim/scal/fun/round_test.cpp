@@ -5,12 +5,12 @@
 
 TEST(MathFunctions, round) {
   using stan::math::round;
-  EXPECT_DOUBLE_EQ(-27, round(-27.3239));
-  EXPECT_DOUBLE_EQ(-1, round(-0.5));
-  EXPECT_DOUBLE_EQ(0, round(0));
-  EXPECT_DOUBLE_EQ(0, round(0.0));
-  EXPECT_DOUBLE_EQ(1, round(0.5));
-  EXPECT_DOUBLE_EQ(27, round(27.3239));
+  EXPECT_FLOAT_EQ(-27, round(-27.3239));
+  EXPECT_FLOAT_EQ(-1, round(-0.5));
+  EXPECT_FLOAT_EQ(0, round(0));
+  EXPECT_FLOAT_EQ(0, round(0.0));
+  EXPECT_FLOAT_EQ(1, round(0.5));
+  EXPECT_FLOAT_EQ(27, round(27.3239));
 }
 
 TEST(MathFunctions, roundNaN) {

@@ -7,23 +7,23 @@
 TEST(AgradRev, sin_var) {
   AVAR a = 0.49;
   AVAR f = sin(a);
-  EXPECT_DOUBLE_EQ((.470625888), f.val());
+  EXPECT_FLOAT_EQ((.470625888), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(cos(0.49), g[0]);
+  EXPECT_FLOAT_EQ(cos(0.49), g[0]);
 }
 
 TEST(AgradRev, sin_neg_var) {
   AVAR a = -0.49;
   AVAR f = sin(a);
-  EXPECT_DOUBLE_EQ((-.470625888), f.val());
+  EXPECT_FLOAT_EQ((-.470625888), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(cos(-0.49), g[0]);
+  EXPECT_FLOAT_EQ(cos(-0.49), g[0]);
 }
 
 TEST(AgradRev, sin_boundry) {

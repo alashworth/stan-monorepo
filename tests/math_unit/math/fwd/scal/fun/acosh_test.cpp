@@ -13,8 +13,8 @@ TEST(AgradFwdAcosh, Fvar) {
   fvar<double> x(1.5, 1.0);
 
   fvar<double> a = acosh(x);
-  EXPECT_DOUBLE_EQ(acosh(1.5), a.val_);
-  EXPECT_DOUBLE_EQ(1 / sqrt(-1 + (1.5) * (1.5)), a.d_);
+  EXPECT_FLOAT_EQ(acosh(1.5), a.val_);
+  EXPECT_FLOAT_EQ(1 / sqrt(-1 + (1.5) * (1.5)), a.d_);
 }
 
 TEST(AgradFwdAcosh, excepts) {
@@ -41,20 +41,20 @@ TEST(AgradFwdAcosh, FvarFvarDouble) {
 
   fvar<fvar<double> > a = acosh(x);
 
-  EXPECT_DOUBLE_EQ(acosh(1.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(2 / sqrt(-1 + 1.5 * 1.5), a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(acosh(1.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(2 / sqrt(-1 + 1.5 * 1.5), a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   a = acosh(y);
-  EXPECT_DOUBLE_EQ(acosh(1.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(2 / sqrt(-1 + 1.5 * 1.5), a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(acosh(1.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(2 / sqrt(-1 + 1.5 * 1.5), a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 }
 
 struct acosh_fun {

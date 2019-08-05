@@ -8,30 +8,30 @@
 TEST(AgradRev, cosh_var) {
   AVAR a = 0.68;
   AVAR f = cosh(a);
-  EXPECT_DOUBLE_EQ(1.2402474, f.val());
+  EXPECT_FLOAT_EQ(1.2402474, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(sinh(0.68), g[0]);
+  EXPECT_FLOAT_EQ(sinh(0.68), g[0]);
 }
 
 TEST(AgradRev, cosh_neg_var) {
   AVAR a = -.68;
   AVAR f = cosh(a);
-  EXPECT_DOUBLE_EQ(1.2402474, f.val());
+  EXPECT_FLOAT_EQ(1.2402474, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(sinh(-.68), g[0]);
+  EXPECT_FLOAT_EQ(sinh(-.68), g[0]);
 }
 
 TEST(AgradRev, cosh_inf) {
   double inf = std::numeric_limits<double>::infinity();
   AVAR a = inf;
   AVAR f = cosh(a);
-  EXPECT_DOUBLE_EQ(inf, f.val());
+  EXPECT_FLOAT_EQ(inf, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
@@ -43,7 +43,7 @@ TEST(AgradRev, cosh_neg_inf) {
   double inf = std::numeric_limits<double>::infinity();
   AVAR a = -inf;
   AVAR f = cosh(a);
-  EXPECT_DOUBLE_EQ(inf, f.val());
+  EXPECT_FLOAT_EQ(inf, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;

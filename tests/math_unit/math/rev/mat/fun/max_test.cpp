@@ -18,10 +18,10 @@ TEST(AgradRevMatrix, max_vector) {
 
   AVAR output;
   output = max(d1);
-  EXPECT_DOUBLE_EQ(100, output.val());
+  EXPECT_FLOAT_EQ(100, output.val());
 
   output = max(v1);
-  EXPECT_DOUBLE_EQ(100, output.val());
+  EXPECT_FLOAT_EQ(100, output.val());
 }
 TEST(AgradRevMatrix, max_vector_exception) {
   using stan::math::max;
@@ -43,10 +43,10 @@ TEST(AgradRevMatrix, max_rowvector) {
 
   AVAR output;
   output = max(d1);
-  EXPECT_DOUBLE_EQ(100, output.val());
+  EXPECT_FLOAT_EQ(100, output.val());
 
   output = max(v1);
-  EXPECT_DOUBLE_EQ(100, output.val());
+  EXPECT_FLOAT_EQ(100, output.val());
 }
 TEST(AgradRevMatrix, max_rowvector_exception) {
   using stan::math::max;
@@ -68,10 +68,10 @@ TEST(AgradRevMatrix, max_matrix) {
 
   AVAR output;
   output = max(d1);
-  EXPECT_DOUBLE_EQ(100, output.val());
+  EXPECT_FLOAT_EQ(100, output.val());
 
   output = max(v1);
-  EXPECT_DOUBLE_EQ(100, output.val());
+  EXPECT_FLOAT_EQ(100, output.val());
 }
 TEST(AgradRevMatrix, max_matrix_exception) {
   using stan::math::matrix_v;

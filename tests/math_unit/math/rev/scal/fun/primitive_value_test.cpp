@@ -6,9 +6,9 @@ TEST(AgradRev, primitiveValue) {
   using stan::math::var;
 
   var a = 5.0;
-  EXPECT_DOUBLE_EQ(5.0, primitive_value(a));
+  EXPECT_FLOAT_EQ(5.0, primitive_value(a));
 
   // make sure all work together
-  EXPECT_DOUBLE_EQ(5.0, primitive_value(5.0));
+  EXPECT_FLOAT_EQ(5.0, primitive_value(5.0));
   EXPECT_EQ(5, primitive_value(5));
 }

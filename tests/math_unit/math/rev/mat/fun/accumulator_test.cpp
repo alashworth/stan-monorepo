@@ -7,7 +7,7 @@
 namespace {
 // test sum of first n numbers for sum of a
 void test_sum(stan::math::accumulator<stan::math::var>& a, int n) {
-  EXPECT_DOUBLE_EQ((n * (n + 1)) / 2, a.sum().val());
+  EXPECT_FLOAT_EQ((n * (n + 1)) / 2, a.sum().val());
 }
 }  // namespace
 

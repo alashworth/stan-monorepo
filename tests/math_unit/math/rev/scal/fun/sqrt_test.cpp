@@ -7,11 +7,11 @@
 TEST(AgradRev, sqrt_a) {
   AVAR a(5.0);
   AVAR f = sqrt(a);
-  EXPECT_DOUBLE_EQ(sqrt(5.0), f.val());
+  EXPECT_FLOAT_EQ(sqrt(5.0), f.val());
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ((1.0 / 2.0) * pow(5.0, -0.5), g[0]);
+  EXPECT_FLOAT_EQ((1.0 / 2.0) * pow(5.0, -0.5), g[0]);
 }
 
 TEST(AgradRev, sqrt_neg) {
@@ -26,24 +26,24 @@ TEST(AgradRev, sqrt_inf) {
   double inf = std::numeric_limits<double>::infinity();
   AVAR a = inf;
   AVAR f = sqrt(a);
-  EXPECT_DOUBLE_EQ(inf, f.val());
+  EXPECT_FLOAT_EQ(inf, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(0.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[0]);
 }
 
 TEST(AgradRev, sqrt_zero) {
   double inf = std::numeric_limits<double>::infinity();
   AVAR a(0.0);
   AVAR f = sqrt(a);
-  EXPECT_DOUBLE_EQ(0.0, f.val());
+  EXPECT_FLOAT_EQ(0.0, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(inf, g[0]);
+  EXPECT_FLOAT_EQ(inf, g[0]);
 }
 
 namespace {

@@ -27,7 +27,7 @@ TEST(ProbDistributionsMultiGP, MultiGP) {
     lp_ref += stan::math::multi_normal_log(cy, mu, cSigma);
   }
 
-  EXPECT_DOUBLE_EQ(lp_ref, stan::math::multi_gp_log(y, Sigma, w));
+  EXPECT_FLOAT_EQ(lp_ref, stan::math::multi_gp_log(y, Sigma, w));
 }
 
 TEST(ProbDistributionsMultiGP, ErrorSigma) {

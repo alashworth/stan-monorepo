@@ -12,8 +12,8 @@ TEST(AgradFwdLgamma, Fvar) {
   fvar<double> x(0.5, 1.0);
 
   fvar<double> a = lgamma(x);
-  EXPECT_DOUBLE_EQ(lgamma(0.5), a.val_);
-  EXPECT_DOUBLE_EQ(digamma(0.5), a.d_);
+  EXPECT_FLOAT_EQ(lgamma(0.5), a.val_);
+  EXPECT_FLOAT_EQ(digamma(0.5), a.d_);
 }
 
 TEST(AgradFwdLgamma, FvarFvarDouble) {
@@ -27,20 +27,20 @@ TEST(AgradFwdLgamma, FvarFvarDouble) {
 
   fvar<fvar<double> > a = lgamma(x);
 
-  EXPECT_DOUBLE_EQ(lgamma(0.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(digamma(0.5), a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(lgamma(0.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(digamma(0.5), a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 1.0;
 
   a = lgamma(y);
-  EXPECT_DOUBLE_EQ(lgamma(0.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(digamma(0.5), a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(lgamma(0.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(digamma(0.5), a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 }
 
 struct lgamma_fun {

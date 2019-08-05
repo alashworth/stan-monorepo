@@ -28,11 +28,11 @@ TEST_F(StanMathOde, initial_state_dd) {
 
   std::vector<double> state = coupled_system_dd.initial_state();
   for (int n = 0; n < N; n++)
-    EXPECT_DOUBLE_EQ(y0_d[n], state[n])
+    EXPECT_FLOAT_EQ(y0_d[n], state[n])
         << "we don't need derivatives of y0; "
         << "initial state gets the initial values";
   for (size_t n = N; n < state.size(); n++)
-    EXPECT_DOUBLE_EQ(0.0, state[n]);
+    EXPECT_FLOAT_EQ(0.0, state[n]);
 }
 
 TEST_F(StanMathOde, size) {

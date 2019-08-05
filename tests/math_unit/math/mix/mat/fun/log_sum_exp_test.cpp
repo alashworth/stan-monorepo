@@ -20,8 +20,8 @@ TEST(AgradMixMatrixLogSumExp, vector_fv_1st_deriv) {
 
   fvar<var> a = log_sum_exp(b);
 
-  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val());
-  EXPECT_DOUBLE_EQ(1, a.d_.val());
+  EXPECT_FLOAT_EQ(4.4401898, a.val_.val());
+  EXPECT_FLOAT_EQ(1, a.d_.val());
 
   std::vector<var> z;
   z.push_back(b(0).val_);
@@ -31,10 +31,10 @@ TEST(AgradMixMatrixLogSumExp, vector_fv_1st_deriv) {
 
   VEC h;
   a.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.032058604, h[0]);
-  EXPECT_DOUBLE_EQ(0.087144315, h[1]);
-  EXPECT_DOUBLE_EQ(0.23688282, h[2]);
-  EXPECT_DOUBLE_EQ(0.64391428, h[3]);
+  EXPECT_FLOAT_EQ(0.032058604, h[0]);
+  EXPECT_FLOAT_EQ(0.087144315, h[1]);
+  EXPECT_FLOAT_EQ(0.23688282, h[2]);
+  EXPECT_FLOAT_EQ(0.64391428, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, row_vector_fv_1st_deriv) {
@@ -49,8 +49,8 @@ TEST(AgradMixMatrixLogSumExp, row_vector_fv_1st_deriv) {
 
   fvar<var> a = log_sum_exp(b);
 
-  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val());
-  EXPECT_DOUBLE_EQ(1, a.d_.val());
+  EXPECT_FLOAT_EQ(4.4401898, a.val_.val());
+  EXPECT_FLOAT_EQ(1, a.d_.val());
 
   std::vector<var> z;
   z.push_back(b(0).val_);
@@ -60,10 +60,10 @@ TEST(AgradMixMatrixLogSumExp, row_vector_fv_1st_deriv) {
 
   VEC h;
   a.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.032058604, h[0]);
-  EXPECT_DOUBLE_EQ(0.087144315, h[1]);
-  EXPECT_DOUBLE_EQ(0.23688282, h[2]);
-  EXPECT_DOUBLE_EQ(0.64391428, h[3]);
+  EXPECT_FLOAT_EQ(0.032058604, h[0]);
+  EXPECT_FLOAT_EQ(0.087144315, h[1]);
+  EXPECT_FLOAT_EQ(0.23688282, h[2]);
+  EXPECT_FLOAT_EQ(0.64391428, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, matrix_fv_1st_deriv) {
@@ -78,8 +78,8 @@ TEST(AgradMixMatrixLogSumExp, matrix_fv_1st_deriv) {
 
   fvar<var> a = log_sum_exp(b);
 
-  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val());
-  EXPECT_DOUBLE_EQ(1, a.d_.val());
+  EXPECT_FLOAT_EQ(4.4401898, a.val_.val());
+  EXPECT_FLOAT_EQ(1, a.d_.val());
 
   std::vector<var> z;
   z.push_back(b(0, 0).val_);
@@ -89,10 +89,10 @@ TEST(AgradMixMatrixLogSumExp, matrix_fv_1st_deriv) {
 
   VEC h;
   a.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.032058604, h[0]);
-  EXPECT_DOUBLE_EQ(0.087144315, h[1]);
-  EXPECT_DOUBLE_EQ(0.23688282, h[2]);
-  EXPECT_DOUBLE_EQ(0.64391428, h[3]);
+  EXPECT_FLOAT_EQ(0.032058604, h[0]);
+  EXPECT_FLOAT_EQ(0.087144315, h[1]);
+  EXPECT_FLOAT_EQ(0.23688282, h[2]);
+  EXPECT_FLOAT_EQ(0.64391428, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, vector_fv_2nd_deriv) {
@@ -107,8 +107,8 @@ TEST(AgradMixMatrixLogSumExp, vector_fv_2nd_deriv) {
 
   fvar<var> a = log_sum_exp(b);
 
-  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val());
-  EXPECT_DOUBLE_EQ(1.0320586, a.d_.val());
+  EXPECT_FLOAT_EQ(4.4401898, a.val_.val());
+  EXPECT_FLOAT_EQ(1.0320586, a.d_.val());
 
   std::vector<var> z;
   z.push_back(b(0).val_);
@@ -118,10 +118,10 @@ TEST(AgradMixMatrixLogSumExp, vector_fv_2nd_deriv) {
 
   VEC h;
   a.d_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.031030849, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0027937251, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0075941323, h[2]);
-  EXPECT_DOUBLE_EQ(-0.020642992, h[3]);
+  EXPECT_FLOAT_EQ(0.031030849, h[0]);
+  EXPECT_FLOAT_EQ(-0.0027937251, h[1]);
+  EXPECT_FLOAT_EQ(-0.0075941323, h[2]);
+  EXPECT_FLOAT_EQ(-0.020642992, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, row_vector_fv_2nd_deriv) {
@@ -144,10 +144,10 @@ TEST(AgradMixMatrixLogSumExp, row_vector_fv_2nd_deriv) {
 
   VEC h;
   a.d_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.031030849, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0027937251, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0075941323, h[2]);
-  EXPECT_DOUBLE_EQ(-0.020642992, h[3]);
+  EXPECT_FLOAT_EQ(0.031030849, h[0]);
+  EXPECT_FLOAT_EQ(-0.0027937251, h[1]);
+  EXPECT_FLOAT_EQ(-0.0075941323, h[2]);
+  EXPECT_FLOAT_EQ(-0.020642992, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, matrix_fv_2nd_deriv) {
@@ -170,10 +170,10 @@ TEST(AgradMixMatrixLogSumExp, matrix_fv_2nd_deriv) {
 
   VEC h;
   a.d_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.031030849, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0027937251, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0075941323, h[2]);
-  EXPECT_DOUBLE_EQ(-0.020642992, h[3]);
+  EXPECT_FLOAT_EQ(0.031030849, h[0]);
+  EXPECT_FLOAT_EQ(-0.0027937251, h[1]);
+  EXPECT_FLOAT_EQ(-0.0075941323, h[2]);
+  EXPECT_FLOAT_EQ(-0.020642992, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, vector_ffv_1st_deriv) {
@@ -188,8 +188,8 @@ TEST(AgradMixMatrixLogSumExp, vector_ffv_1st_deriv) {
 
   fvar<fvar<var> > a = log_sum_exp(b);
 
-  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(1, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(4.4401898, a.val_.val_.val());
+  EXPECT_FLOAT_EQ(1, a.d_.val_.val());
 
   std::vector<var> z;
   z.push_back(b(0).val_.val_);
@@ -199,10 +199,10 @@ TEST(AgradMixMatrixLogSumExp, vector_ffv_1st_deriv) {
 
   VEC h;
   a.val_.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.032058604, h[0]);
-  EXPECT_DOUBLE_EQ(0.087144315, h[1]);
-  EXPECT_DOUBLE_EQ(0.23688282, h[2]);
-  EXPECT_DOUBLE_EQ(0.64391428, h[3]);
+  EXPECT_FLOAT_EQ(0.032058604, h[0]);
+  EXPECT_FLOAT_EQ(0.087144315, h[1]);
+  EXPECT_FLOAT_EQ(0.23688282, h[2]);
+  EXPECT_FLOAT_EQ(0.64391428, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, row_vector_ffv_1st_deriv) {
@@ -217,8 +217,8 @@ TEST(AgradMixMatrixLogSumExp, row_vector_ffv_1st_deriv) {
 
   fvar<fvar<var> > a = log_sum_exp(b);
 
-  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(1, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(4.4401898, a.val_.val_.val());
+  EXPECT_FLOAT_EQ(1, a.d_.val_.val());
 
   std::vector<var> z;
   z.push_back(b(0).val_.val_);
@@ -228,10 +228,10 @@ TEST(AgradMixMatrixLogSumExp, row_vector_ffv_1st_deriv) {
 
   VEC h;
   a.val_.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.032058604, h[0]);
-  EXPECT_DOUBLE_EQ(0.087144315, h[1]);
-  EXPECT_DOUBLE_EQ(0.23688282, h[2]);
-  EXPECT_DOUBLE_EQ(0.64391428, h[3]);
+  EXPECT_FLOAT_EQ(0.032058604, h[0]);
+  EXPECT_FLOAT_EQ(0.087144315, h[1]);
+  EXPECT_FLOAT_EQ(0.23688282, h[2]);
+  EXPECT_FLOAT_EQ(0.64391428, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, matrix_ffv_1st_deriv) {
@@ -246,8 +246,8 @@ TEST(AgradMixMatrixLogSumExp, matrix_ffv_1st_deriv) {
 
   fvar<fvar<var> > a = log_sum_exp(b);
 
-  EXPECT_DOUBLE_EQ(4.4401898, a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(1, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(4.4401898, a.val_.val_.val());
+  EXPECT_FLOAT_EQ(1, a.d_.val_.val());
 
   std::vector<var> z;
   z.push_back(b(0, 0).val_.val_);
@@ -257,10 +257,10 @@ TEST(AgradMixMatrixLogSumExp, matrix_ffv_1st_deriv) {
 
   VEC h;
   a.val_.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.032058604, h[0]);
-  EXPECT_DOUBLE_EQ(0.087144315, h[1]);
-  EXPECT_DOUBLE_EQ(0.23688282, h[2]);
-  EXPECT_DOUBLE_EQ(0.64391428, h[3]);
+  EXPECT_FLOAT_EQ(0.032058604, h[0]);
+  EXPECT_FLOAT_EQ(0.087144315, h[1]);
+  EXPECT_FLOAT_EQ(0.23688282, h[2]);
+  EXPECT_FLOAT_EQ(0.64391428, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, vector_ffv_2nd_deriv) {
@@ -283,10 +283,10 @@ TEST(AgradMixMatrixLogSumExp, vector_ffv_2nd_deriv) {
 
   VEC h;
   a.d_.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.031030849, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0027937251, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0075941323, h[2]);
-  EXPECT_DOUBLE_EQ(-0.020642992, h[3]);
+  EXPECT_FLOAT_EQ(0.031030849, h[0]);
+  EXPECT_FLOAT_EQ(-0.0027937251, h[1]);
+  EXPECT_FLOAT_EQ(-0.0075941323, h[2]);
+  EXPECT_FLOAT_EQ(-0.020642992, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, row_vector_ffv_2nd_deriv) {
@@ -309,10 +309,10 @@ TEST(AgradMixMatrixLogSumExp, row_vector_ffv_2nd_deriv) {
 
   VEC h;
   a.d_.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.031030849, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0027937251, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0075941323, h[2]);
-  EXPECT_DOUBLE_EQ(-0.020642992, h[3]);
+  EXPECT_FLOAT_EQ(0.031030849, h[0]);
+  EXPECT_FLOAT_EQ(-0.0027937251, h[1]);
+  EXPECT_FLOAT_EQ(-0.0075941323, h[2]);
+  EXPECT_FLOAT_EQ(-0.020642992, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, matrix_ffv_2nd_deriv) {
@@ -335,10 +335,10 @@ TEST(AgradMixMatrixLogSumExp, matrix_ffv_2nd_deriv) {
 
   VEC h;
   a.d_.val_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.031030849, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0027937251, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0075941323, h[2]);
-  EXPECT_DOUBLE_EQ(-0.020642992, h[3]);
+  EXPECT_FLOAT_EQ(0.031030849, h[0]);
+  EXPECT_FLOAT_EQ(-0.0027937251, h[1]);
+  EXPECT_FLOAT_EQ(-0.0075941323, h[2]);
+  EXPECT_FLOAT_EQ(-0.020642992, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, vector_ffv_3rd_deriv) {
@@ -365,10 +365,10 @@ TEST(AgradMixMatrixLogSumExp, vector_ffv_3rd_deriv) {
 
   VEC h;
   a.d_.d_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.029041238, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0026145992, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0071072178, h[2]);
-  EXPECT_DOUBLE_EQ(-0.019319421, h[3]);
+  EXPECT_FLOAT_EQ(0.029041238, h[0]);
+  EXPECT_FLOAT_EQ(-0.0026145992, h[1]);
+  EXPECT_FLOAT_EQ(-0.0071072178, h[2]);
+  EXPECT_FLOAT_EQ(-0.019319421, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, row_vector_ffv_3rd_deriv) {
@@ -395,10 +395,10 @@ TEST(AgradMixMatrixLogSumExp, row_vector_ffv_3rd_deriv) {
 
   VEC h;
   a.d_.d_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.029041238, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0026145992, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0071072178, h[2]);
-  EXPECT_DOUBLE_EQ(-0.019319421, h[3]);
+  EXPECT_FLOAT_EQ(0.029041238, h[0]);
+  EXPECT_FLOAT_EQ(-0.0026145992, h[1]);
+  EXPECT_FLOAT_EQ(-0.0071072178, h[2]);
+  EXPECT_FLOAT_EQ(-0.019319421, h[3]);
 }
 
 TEST(AgradMixMatrixLogSumExp, matrix_ffv_3rd_deriv) {
@@ -425,8 +425,8 @@ TEST(AgradMixMatrixLogSumExp, matrix_ffv_3rd_deriv) {
 
   VEC h;
   a.d_.d_.grad(z, h);
-  EXPECT_DOUBLE_EQ(0.029041238, h[0]);
-  EXPECT_DOUBLE_EQ(-0.0026145992, h[1]);
-  EXPECT_DOUBLE_EQ(-0.0071072178, h[2]);
-  EXPECT_DOUBLE_EQ(-0.019319421, h[3]);
+  EXPECT_FLOAT_EQ(0.029041238, h[0]);
+  EXPECT_FLOAT_EQ(-0.0026145992, h[1]);
+  EXPECT_FLOAT_EQ(-0.0071072178, h[2]);
+  EXPECT_FLOAT_EQ(-0.019319421, h[3]);
 }

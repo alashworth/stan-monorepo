@@ -6,12 +6,12 @@
 TEST(AgradRev, cbrt) {
   AVAR a = 27.0;
   AVAR f = cbrt(a);
-  EXPECT_DOUBLE_EQ(3.0, f.val());
+  EXPECT_FLOAT_EQ(3.0, f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(1.0 / 3.0 / std::pow(27.0, 2.0 / 3.0), grad_f[0]);
+  EXPECT_FLOAT_EQ(1.0 / 3.0 / std::pow(27.0, 2.0 / 3.0), grad_f[0]);
 }
 
 namespace {

@@ -86,15 +86,15 @@ TEST(MathMatrixAssign, test_double) {
   int b = 5;
   double c = 5.0;
   assign(a, b);
-  EXPECT_DOUBLE_EQ(5.0, a);
-  EXPECT_DOUBLE_EQ(5.0, b);
+  EXPECT_FLOAT_EQ(5.0, a);
+  EXPECT_FLOAT_EQ(5.0, b);
 
   assign(a, c);
-  EXPECT_DOUBLE_EQ(5.0, a);
-  EXPECT_DOUBLE_EQ(5.0, b);
+  EXPECT_FLOAT_EQ(5.0, a);
+  EXPECT_FLOAT_EQ(5.0, b);
 
   assign(a, 5.2);
-  EXPECT_DOUBLE_EQ(5.2, a);
+  EXPECT_FLOAT_EQ(5.2, a);
 }
 TEST(MathMatrixAssign, vectorDouble) {
   using stan::math::assign;
@@ -110,7 +110,7 @@ TEST(MathMatrixAssign, vectorDouble) {
   EXPECT_EQ(3U, x.size());
   EXPECT_EQ(3U, y.size());
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(y[i], x[i]);
+    EXPECT_FLOAT_EQ(y[i], x[i]);
 
   vector<double> z(2);
   EXPECT_THROW(assign(x, z), std::invalid_argument);
@@ -124,7 +124,7 @@ TEST(MathMatrixAssign, vectorDouble) {
   EXPECT_EQ(3U, x.size());
   EXPECT_EQ(3U, ns.size());
   for (size_t i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(ns[i], x[i]);
+    EXPECT_FLOAT_EQ(ns[i], x[i]);
 }
 
 TEST(MathMatrixAssign, eigenRowVectorDoubleToDouble) {
@@ -142,7 +142,7 @@ TEST(MathMatrixAssign, eigenRowVectorDoubleToDouble) {
   EXPECT_EQ(3, x.size());
   EXPECT_EQ(3, y.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(y[i], x[i]);
+    EXPECT_FLOAT_EQ(y[i], x[i]);
 }
 TEST(MathMatrixAssign, eigenRowVectorIntToDouble) {
   using Eigen::Dynamic;
@@ -163,7 +163,7 @@ TEST(MathMatrixAssign, eigenRowVectorIntToDouble) {
   EXPECT_EQ(3, x.size());
   EXPECT_EQ(3, ns.size());
   for (int i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(ns[i], x[i]);
+    EXPECT_FLOAT_EQ(ns[i], x[i]);
 }
 TEST(MathMatrixAssign, eigenRowVectorShapeMismatch) {
   using Eigen::Dynamic;
@@ -207,7 +207,7 @@ TEST(MathMatrixAssign, eigenMatrixDoubleToDouble) {
   EXPECT_EQ(2, x.cols());
   EXPECT_EQ(2, y.cols());
   for (size_t i = 0; i < 6; ++i)
-    EXPECT_DOUBLE_EQ(y(i), x(i));
+    EXPECT_FLOAT_EQ(y(i), x(i));
 }
 TEST(MathMatrixAssign, eigenMatrixIntToDouble) {
   using Eigen::Dynamic;
@@ -226,7 +226,7 @@ TEST(MathMatrixAssign, eigenMatrixIntToDouble) {
   EXPECT_EQ(2, x.cols());
   EXPECT_EQ(2, y.cols());
   for (size_t i = 0; i < 6; ++i)
-    EXPECT_DOUBLE_EQ(y(i), x(i));
+    EXPECT_FLOAT_EQ(y(i), x(i));
 }
 TEST(MathMatrixAssign, eigenMatrixShapeMismatch) {
   using Eigen::Dynamic;
@@ -265,9 +265,9 @@ TEST(MathMatrix, block) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0));
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1));
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2));
+  EXPECT_FLOAT_EQ(10.0, m(0, 0));
+  EXPECT_FLOAT_EQ(100.0, m(0, 1));
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2));
 }
 
 TEST(MathMatrix, block2) {
@@ -284,10 +284,10 @@ TEST(MathMatrix, block2) {
 
   for (int i = 0; i < 2; ++i)
     for (int j = 0; j < 2; ++j)
-      EXPECT_DOUBLE_EQ(a(i, j), b(i, j));
+      EXPECT_FLOAT_EQ(a(i, j), b(i, j));
 
-  EXPECT_DOUBLE_EQ(a(0, 2), 3.0);
-  EXPECT_DOUBLE_EQ(a(1, 2), 6.0);
+  EXPECT_FLOAT_EQ(a(0, 2), 3.0);
+  EXPECT_FLOAT_EQ(a(1, 2), 6.0);
 }
 
 TEST(MathMatrix, vectorVector) {
@@ -305,7 +305,7 @@ TEST(MathMatrix, vectorVector) {
   for (size_t i = 0; i < 3U; ++i) {
     EXPECT_EQ(2U, y[i].size());
     for (size_t j = 0; j < 2U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i][j], y[i][j]);
+      EXPECT_FLOAT_EQ(x[i][j], y[i][j]);
     }
   }
 }
@@ -330,7 +330,7 @@ TEST(MathMatrix, vectorVectorVector) {
     for (size_t i = 0; i < 3U; ++i) {
       EXPECT_EQ(2U, y[k][i].size());
       for (size_t j = 0; j < 2U; ++j) {
-        EXPECT_DOUBLE_EQ(x[k][i][j], y[k][i][j]);
+        EXPECT_FLOAT_EQ(x[k][i][j], y[k][i][j]);
       }
     }
   }
@@ -354,7 +354,7 @@ TEST(MathMatrix, vectorEigenVector) {
   for (size_t i = 0; i < 2U; ++i) {
     EXPECT_EQ(3U, y[i].size());
     for (size_t j = 0; j < 3U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i](j), y[i](j));
+      EXPECT_FLOAT_EQ(x[i](j), y[i](j));
     }
   }
 }
@@ -372,7 +372,7 @@ TEST(MathMatrix, getAssignRow) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0));
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1));
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2));
+  EXPECT_FLOAT_EQ(10.0, m(0, 0));
+  EXPECT_FLOAT_EQ(100.0, m(0, 1));
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2));
 }

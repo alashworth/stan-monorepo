@@ -9,7 +9,3 @@ target_sources(stan_math_prim_arr_unit_tests PRIVATE
         coupled_ode.hpp
         integrate_1d_test.cpp
         coupled_ode_system_test.cpp)
-
-if (TARGET stan_math_mpi_unit_tests)
-    target_sources(stan_math_mpi_unit_tests PRIVATE mpi_cluster_test.cpp)
-endif ()

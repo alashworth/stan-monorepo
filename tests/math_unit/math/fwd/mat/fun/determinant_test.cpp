@@ -15,8 +15,8 @@ TEST(AgradFwdMatrixDeterminant, matrix_fd) {
 
   fvar<double> a_det = stan::math::determinant(a);
 
-  EXPECT_DOUBLE_EQ(-1, a_det.val_);
-  EXPECT_DOUBLE_EQ(1, a_det.d_);
+  EXPECT_FLOAT_EQ(-1, a_det.val_);
+  EXPECT_FLOAT_EQ(1, a_det.d_);
 
   EXPECT_THROW(determinant(matrix_fd(2, 3)), std::invalid_argument);
 }
@@ -40,8 +40,8 @@ TEST(AgradFwdMatrixDeterminant, matrix_ffd) {
 
   fvar<fvar<double> > a_det = stan::math::determinant(g);
 
-  EXPECT_DOUBLE_EQ(-1, a_det.val_.val());
-  EXPECT_DOUBLE_EQ(1, a_det.d_.val());
+  EXPECT_FLOAT_EQ(-1, a_det.val_.val());
+  EXPECT_FLOAT_EQ(1, a_det.d_.val());
 
   EXPECT_THROW(determinant(matrix_ffd(2, 3)), std::invalid_argument);
 }

@@ -8,7 +8,7 @@ TEST(AgradRev, inv_cloglog) {
   using std::exp;
   AVAR a = 2.7;
   AVAR f = inv_cloglog(a);
-  EXPECT_DOUBLE_EQ(1 - std::exp(-std::exp(2.7)), f.val());
+  EXPECT_FLOAT_EQ(1 - std::exp(-std::exp(2.7)), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
@@ -21,7 +21,7 @@ TEST(AgradRev, inv_cloglog) {
   f2.grad(x2, grad_f2);
 
   EXPECT_EQ(1U, grad_f.size());
-  EXPECT_DOUBLE_EQ(grad_f2[0], grad_f[0]);
+  EXPECT_FLOAT_EQ(grad_f2[0], grad_f[0]);
 }
 
 namespace {

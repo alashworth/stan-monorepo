@@ -29,7 +29,7 @@ TEST(MemoryStackAlloc, allocArrayBigger) {
       x[i].r[k] = k * i;
   for (size_t i = 0; i < N; ++i)
     for (size_t k = 0; k < K; ++k)
-      EXPECT_DOUBLE_EQ(k * i, x[i].r[k]);
+      EXPECT_EQ(k * i, std::lround(x[i].r[k]));
 }
 TEST(stack_alloc, bytes_allocated) {
   stan::math::stack_alloc allocator;
@@ -78,12 +78,12 @@ TEST(stack_alloc, alloc) {
     cs.push_back(baz);
     allocator.alloc(13);
 
-    EXPECT_DOUBLE_EQ(9.0, *foo);
+    EXPECT_FLOAT_EQ(9.0, *foo);
     EXPECT_EQ(17, *bar);
     EXPECT_EQ(3, *baz);
   }
   for (int i = 0; i < 10000; ++i) {
-    EXPECT_DOUBLE_EQ(9.0, *ds[i]);
+    EXPECT_FLOAT_EQ(9.0, *ds[i]);
     EXPECT_EQ(17, *is[i]);
     EXPECT_EQ(3, *cs[i]);
   }

@@ -9,7 +9,7 @@ void test_tcrossprod(const stan::math::matrix_d& x) {
   EXPECT_EQ(y.cols(), xxt.cols());
   for (int m = 0; m < y.rows(); ++m)
     for (int n = 0; n < y.cols(); ++n)
-      EXPECT_DOUBLE_EQ(xxt(m, n), y(m, n));
+      EXPECT_FLOAT_EQ(xxt(m, n), y(m, n));
 }
 TEST(MathMatrix, tcrossprod) {
   stan::math::matrix_d x;

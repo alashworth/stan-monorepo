@@ -10,5 +10,5 @@ TEST(AgradPartialsVari, OperandsAndPartials) {
   // TODO(Sean): Learn why it's size 6
   EXPECT_GT(sizeof(&o2), sizeof(o2));
 
-  EXPECT_DOUBLE_EQ(27.1, o1.build(27.1));
+  EXPECT_FLOAT_EQ(27.1, o1.build(27.1));
 }

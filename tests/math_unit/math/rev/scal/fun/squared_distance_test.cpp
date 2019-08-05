@@ -18,10 +18,10 @@ TEST(MathRev, squared_distance) {
   f = stan::math::squared_distance(v1, v2);
   f.grad(vars, grad_f);
 
-  EXPECT_DOUBLE_EQ(9, f.val());
+  EXPECT_FLOAT_EQ(9, f.val());
   ASSERT_EQ(2, grad_f.size());
-  EXPECT_DOUBLE_EQ(-6, grad_f[0]);
-  EXPECT_DOUBLE_EQ(6, grad_f[1]);
+  EXPECT_FLOAT_EQ(-6, grad_f[0]);
+  EXPECT_FLOAT_EQ(6, grad_f[1]);
   stan::math::recover_memory();
   vars.clear();
 
@@ -30,9 +30,9 @@ TEST(MathRev, squared_distance) {
   f = stan::math::squared_distance(v1, x2);
   f.grad(vars, grad_f);
 
-  EXPECT_DOUBLE_EQ(9, f.val());
+  EXPECT_FLOAT_EQ(9, f.val());
   ASSERT_EQ(1, grad_f.size());
-  EXPECT_DOUBLE_EQ(-6, grad_f[0]);
+  EXPECT_FLOAT_EQ(-6, grad_f[0]);
   stan::math::recover_memory();
   vars.clear();
 
@@ -41,9 +41,9 @@ TEST(MathRev, squared_distance) {
   f = stan::math::squared_distance(x1, v2);
   f.grad(vars, grad_f);
 
-  EXPECT_DOUBLE_EQ(9, f.val());
+  EXPECT_FLOAT_EQ(9, f.val());
   ASSERT_EQ(1, grad_f.size());
-  EXPECT_DOUBLE_EQ(6, grad_f[0]);
+  EXPECT_FLOAT_EQ(6, grad_f[0]);
   stan::math::recover_memory();
   vars.clear();
 }

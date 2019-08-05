@@ -12,13 +12,13 @@ TEST(AgradFwdInvCLogLog, FvarVar_1stDeriv) {
   fvar<var> x(0.5, 1.3);
   fvar<var> a = inv_cloglog(x);
 
-  EXPECT_DOUBLE_EQ(inv_cloglog(0.5), a.val_.val());
-  EXPECT_DOUBLE_EQ(1.3 * exp(0.5 - exp(0.5)), a.d_.val());
+  EXPECT_FLOAT_EQ(inv_cloglog(0.5), a.val_.val());
+  EXPECT_FLOAT_EQ(1.3 * exp(0.5 - exp(0.5)), a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)), g[0]);
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)), g[0]);
 }
 TEST(AgradFwdInvCLogLog, FvarVar_2ndDeriv) {
   using stan::math::fvar;
@@ -32,7 +32,7 @@ TEST(AgradFwdInvCLogLog, FvarVar_2ndDeriv) {
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_DOUBLE_EQ(-exp(0.5 - exp(0.5)) * (exp(0.5) - 1.0) * 1.3, g[0]);
+  EXPECT_FLOAT_EQ(-exp(0.5 - exp(0.5)) * (exp(0.5) - 1.0) * 1.3, g[0]);
 }
 
 TEST(AgradFwdInvCLogLog, FvarFvarVar_1stDeriv) {
@@ -47,30 +47,30 @@ TEST(AgradFwdInvCLogLog, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = inv_cloglog(x);
 
-  EXPECT_DOUBLE_EQ(inv_cloglog(0.5), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)), a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(inv_cloglog(0.5), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)), a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)), g[0]);
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)), g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 1.0;
 
   fvar<fvar<var> > b = inv_cloglog(y);
-  EXPECT_DOUBLE_EQ(inv_cloglog(0.5), b.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)), b.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
+  EXPECT_FLOAT_EQ(inv_cloglog(0.5), b.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)), b.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)), r[0]);
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)), r[0]);
 }
 TEST(AgradFwdInvCLogLog, FvarFvarVar_2ndDeriv) {
   using stan::math::fvar;
@@ -84,30 +84,30 @@ TEST(AgradFwdInvCLogLog, FvarFvarVar_2ndDeriv) {
 
   fvar<fvar<var> > a = inv_cloglog(x);
 
-  EXPECT_DOUBLE_EQ(inv_cloglog(0.5), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)), a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(inv_cloglog(0.5), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)), a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)) * (1.0 - exp(0.5)), g[0]);
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)) * (1.0 - exp(0.5)), g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 1.0;
 
   fvar<fvar<var> > b = inv_cloglog(y);
-  EXPECT_DOUBLE_EQ(inv_cloglog(0.5), b.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.val_.d_.val());
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)), b.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, b.d_.d_.val());
+  EXPECT_FLOAT_EQ(inv_cloglog(0.5), b.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.val_.d_.val());
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)), b.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, b.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_DOUBLE_EQ(exp(0.5 - exp(0.5)) * (1.0 - exp(0.5)), r[0]);
+  EXPECT_FLOAT_EQ(exp(0.5 - exp(0.5)) * (1.0 - exp(0.5)), r[0]);
 }
 TEST(AgradFwdInvCLogLog, FvarFvarVar_3rdDeriv) {
   using stan::math::fvar;
@@ -125,7 +125,7 @@ TEST(AgradFwdInvCLogLog, FvarFvarVar_3rdDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.d_.d_.grad(p, g);
-  EXPECT_DOUBLE_EQ(-0.38929006295064455041710794866, g[0]);
+  EXPECT_FLOAT_EQ(-0.38929006295064455041710794866, g[0]);
 }
 
 struct inv_cloglog_fun {

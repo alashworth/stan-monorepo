@@ -21,11 +21,11 @@ TEST(ProbTransform, CholeskyCorrelation4) {
 
   EXPECT_EQ(y.size(), yrt.size());
   for (int i = 0; i < yrt.size(); ++i)
-    EXPECT_DOUBLE_EQ(y(i), yrt(i));
+    EXPECT_FLOAT_EQ(y(i), yrt(i));
 
   for (int m = 0; m < 4; ++m)
     for (int n = 0; n < 4; ++n)
-      EXPECT_DOUBLE_EQ(L(m, n), x(m, n));
+      EXPECT_FLOAT_EQ(L(m, n), x(m, n));
 }
 
 void test_cholesky_correlation_values(
@@ -48,11 +48,11 @@ void test_cholesky_correlation_values(
 
   EXPECT_EQ(y.size(), yrt.size());
   for (int i = 0; i < yrt.size(); ++i)
-    EXPECT_DOUBLE_EQ(y(i), yrt(i));
+    EXPECT_FLOAT_EQ(y(i), yrt(i));
 
   for (int m = 0; m < K; ++m)
     for (int n = 0; n < K; ++n)
-      EXPECT_DOUBLE_EQ(L(m, n), x(m, n));
+      EXPECT_FLOAT_EQ(L(m, n), x(m, n));
 
   // test transform roundtrip with Jacobian (Jacobian itself tested above)
   double lp;
@@ -63,11 +63,11 @@ void test_cholesky_correlation_values(
 
   EXPECT_EQ(y.size(), yrt2.size());
   for (int i = 0; i < yrt2.size(); ++i)
-    EXPECT_DOUBLE_EQ(y(i), yrt2(i));
+    EXPECT_FLOAT_EQ(y(i), yrt2(i));
 
   for (int m = 0; m < K; ++m)
     for (int n = 0; n < K; ++n)
-      EXPECT_DOUBLE_EQ(L(m, n), x2(m, n));
+      EXPECT_FLOAT_EQ(L(m, n), x2(m, n));
 }
 
 TEST(ProbTransform, CholeskyCorrelationRoundTrips) {

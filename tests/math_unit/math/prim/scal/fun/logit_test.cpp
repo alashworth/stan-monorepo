@@ -5,8 +5,8 @@
 
 TEST(MathFunctions, logit) {
   using stan::math::logit;
-  EXPECT_DOUBLE_EQ(0.0, logit(0.5));
-  EXPECT_DOUBLE_EQ(5.0, logit(1.0 / (1.0 + exp(-5.0))));
+  EXPECT_FLOAT_EQ(0.0, logit(0.5));
+  EXPECT_FLOAT_EQ(5.0, logit(1.0 / (1.0 + exp(-5.0))));
 }
 
 TEST(MathFunctions, logit_nan) {

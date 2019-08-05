@@ -7,12 +7,12 @@
 TEST(AgradRev, expm1) {
   AVAR a = 1.3;
   AVAR f = expm1(a);
-  EXPECT_DOUBLE_EQ(stan::math::expm1(1.3), f.val());
+  EXPECT_FLOAT_EQ(stan::math::expm1(1.3), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(std::exp(1.3), grad_f[0]);
+  EXPECT_FLOAT_EQ(std::exp(1.3), grad_f[0]);
 }
 
 namespace {

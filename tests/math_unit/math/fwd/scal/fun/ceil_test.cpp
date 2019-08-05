@@ -10,16 +10,16 @@ TEST(AgradFwdCeil, Fvar) {
   fvar<double> y(2.0, 2.0);
 
   fvar<double> a = ceil(x);
-  EXPECT_DOUBLE_EQ(ceil(0.5), a.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_);
+  EXPECT_FLOAT_EQ(ceil(0.5), a.val_);
+  EXPECT_FLOAT_EQ(0, a.d_);
 
   fvar<double> b = ceil(y);
-  EXPECT_DOUBLE_EQ(ceil(2.0), b.val_);
-  EXPECT_DOUBLE_EQ(0.0, b.d_);
+  EXPECT_FLOAT_EQ(ceil(2.0), b.val_);
+  EXPECT_FLOAT_EQ(0.0, b.d_);
 
   fvar<double> c = ceil(2 * x);
-  EXPECT_DOUBLE_EQ(ceil(2 * 0.5), c.val_);
-  EXPECT_DOUBLE_EQ(0.0, c.d_);
+  EXPECT_FLOAT_EQ(ceil(2 * 0.5), c.val_);
+  EXPECT_FLOAT_EQ(0.0, c.d_);
 }
 
 TEST(AgradFwdCeil, FvarFvarDouble) {
@@ -32,20 +32,20 @@ TEST(AgradFwdCeil, FvarFvarDouble) {
 
   fvar<fvar<double> > a = ceil(x);
 
-  EXPECT_DOUBLE_EQ(ceil(1.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(ceil(1.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   a = ceil(y);
-  EXPECT_DOUBLE_EQ(ceil(1.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(ceil(1.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 }
 
 struct ceil_fun {

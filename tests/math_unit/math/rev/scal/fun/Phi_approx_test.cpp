@@ -38,7 +38,7 @@ TEST(AgradRev, Phi_approx) {
     EXPECT_EQ(1U, g.size());
     EXPECT_EQ(1U, g2.size());
 
-    EXPECT_DOUBLE_EQ(g2[0], g[0]);
+    EXPECT_FLOAT_EQ(g2[0], g[0]);
   }
 }
 

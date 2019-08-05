@@ -73,7 +73,7 @@ TEST_F(MpiJob, hard_work_dd) {
   EXPECT_EQ(result_mpi.rows(), result_concurrent.rows());
 
   for (int i = 0; i < result_mpi.rows(); ++i) {
-    EXPECT_DOUBLE_EQ(result_mpi(i), result_concurrent(i));
+    EXPECT_FLOAT_EQ(result_mpi(i), result_concurrent(i));
   }
 }
 
@@ -88,7 +88,7 @@ TEST_F(MpiJobSmallWorld, hard_work_dd) {
   EXPECT_EQ(result_mpi.rows(), result_concurrent.rows());
 
   for (int i = 0; i < result_mpi.rows(); ++i) {
-    EXPECT_DOUBLE_EQ(result_mpi(i), result_concurrent(i));
+    EXPECT_FLOAT_EQ(result_mpi(i), result_concurrent(i));
   }
 }
 

@@ -19,12 +19,12 @@ TEST(AgradFwdMatrixColumnsDotProduct, vector_vector_fd) {
   vv_2(1).d_ = 1.0;
   vv_2(2).d_ = 1.0;
 
-  EXPECT_DOUBLE_EQ(3, columns_dot_product(vv_1, vd_2)(0).val_);
-  EXPECT_DOUBLE_EQ(3, columns_dot_product(vd_1, vv_2)(0).val_);
-  EXPECT_DOUBLE_EQ(3, columns_dot_product(vv_1, vv_2)(0).val_);
-  EXPECT_DOUBLE_EQ(1, columns_dot_product(vv_1, vd_2)(0).d_);
-  EXPECT_DOUBLE_EQ(-1, columns_dot_product(vd_1, vv_2)(0).d_);
-  EXPECT_DOUBLE_EQ(0, columns_dot_product(vv_1, vv_2)(0).d_);
+  EXPECT_FLOAT_EQ(3, columns_dot_product(vv_1, vd_2)(0).val_);
+  EXPECT_FLOAT_EQ(3, columns_dot_product(vd_1, vv_2)(0).val_);
+  EXPECT_FLOAT_EQ(3, columns_dot_product(vv_1, vv_2)(0).val_);
+  EXPECT_FLOAT_EQ(1, columns_dot_product(vv_1, vd_2)(0).d_);
+  EXPECT_FLOAT_EQ(-1, columns_dot_product(vd_1, vv_2)(0).d_);
+  EXPECT_FLOAT_EQ(0, columns_dot_product(vv_1, vv_2)(0).d_);
 }
 
 TEST(AgradFwdMatrixColumnsDotProduct, vector_vector_fd_exception) {
@@ -94,12 +94,12 @@ TEST(AgradFwdMatrixColumnsDotProduct, rowvector_rowvector_fd) {
   row_vector_fd output;
   output = columns_dot_product(v1, d2);
 
-  EXPECT_DOUBLE_EQ(4, output(0).val_);
-  EXPECT_DOUBLE_EQ(-6, output(1).val_);
-  EXPECT_DOUBLE_EQ(5, output(2).val_);
-  EXPECT_DOUBLE_EQ(4, output(0).d_);
-  EXPECT_DOUBLE_EQ(-2, output(1).d_);
-  EXPECT_DOUBLE_EQ(-1, output(2).d_);
+  EXPECT_FLOAT_EQ(4, output(0).val_);
+  EXPECT_FLOAT_EQ(-6, output(1).val_);
+  EXPECT_FLOAT_EQ(5, output(2).val_);
+  EXPECT_FLOAT_EQ(4, output(0).d_);
+  EXPECT_FLOAT_EQ(-2, output(1).d_);
+  EXPECT_FLOAT_EQ(-1, output(2).d_);
 }
 
 TEST(AgradFwdMatrixColumnsDotProduct, matrix_matrix_fd) {
@@ -135,28 +135,28 @@ TEST(AgradFwdMatrixColumnsDotProduct, matrix_matrix_fd) {
 
   row_vector_fd output;
   output = columns_dot_product(v1, d2);
-  EXPECT_DOUBLE_EQ(3, output(0).val_);
-  EXPECT_DOUBLE_EQ(3, output(1).val_);
-  EXPECT_DOUBLE_EQ(3, output(2).val_);
-  EXPECT_DOUBLE_EQ(1, output(0).d_);
-  EXPECT_DOUBLE_EQ(1, output(1).d_);
-  EXPECT_DOUBLE_EQ(1, output(2).d_);
+  EXPECT_FLOAT_EQ(3, output(0).val_);
+  EXPECT_FLOAT_EQ(3, output(1).val_);
+  EXPECT_FLOAT_EQ(3, output(2).val_);
+  EXPECT_FLOAT_EQ(1, output(0).d_);
+  EXPECT_FLOAT_EQ(1, output(1).d_);
+  EXPECT_FLOAT_EQ(1, output(2).d_);
 
   output = columns_dot_product(d1, v2);
-  EXPECT_DOUBLE_EQ(3, output(0).val_);
-  EXPECT_DOUBLE_EQ(3, output(1).val_);
-  EXPECT_DOUBLE_EQ(3, output(2).val_);
-  EXPECT_DOUBLE_EQ(-1, output(0).d_);
-  EXPECT_DOUBLE_EQ(-1, output(1).d_);
-  EXPECT_DOUBLE_EQ(-1, output(2).d_);
+  EXPECT_FLOAT_EQ(3, output(0).val_);
+  EXPECT_FLOAT_EQ(3, output(1).val_);
+  EXPECT_FLOAT_EQ(3, output(2).val_);
+  EXPECT_FLOAT_EQ(-1, output(0).d_);
+  EXPECT_FLOAT_EQ(-1, output(1).d_);
+  EXPECT_FLOAT_EQ(-1, output(2).d_);
 
   output = columns_dot_product(v1, v2);
-  EXPECT_DOUBLE_EQ(3, output(0).val_);
-  EXPECT_DOUBLE_EQ(3, output(1).val_);
-  EXPECT_DOUBLE_EQ(3, output(2).val_);
-  EXPECT_DOUBLE_EQ(0, output(0).d_);
-  EXPECT_DOUBLE_EQ(0, output(1).d_);
-  EXPECT_DOUBLE_EQ(0, output(2).d_);
+  EXPECT_FLOAT_EQ(3, output(0).val_);
+  EXPECT_FLOAT_EQ(3, output(1).val_);
+  EXPECT_FLOAT_EQ(3, output(2).val_);
+  EXPECT_FLOAT_EQ(0, output(0).d_);
+  EXPECT_FLOAT_EQ(0, output(1).d_);
+  EXPECT_FLOAT_EQ(0, output(2).d_);
 }
 
 TEST(AgradFwdMatrixColumnsDotProduct, matrix_matrix_fd_exception) {
@@ -239,12 +239,12 @@ TEST(AgradFwdMatrixColumnsDotProduct, vector_vector_ffd) {
   vd_2 << 4, -2, -1;
   vv_2 << d, e, f;
 
-  EXPECT_DOUBLE_EQ(3, columns_dot_product(vv_1, vd_2)(0).val_.val());
-  EXPECT_DOUBLE_EQ(3, columns_dot_product(vd_1, vv_2)(0).val_.val());
-  EXPECT_DOUBLE_EQ(3, columns_dot_product(vv_1, vv_2)(0).val_.val());
-  EXPECT_DOUBLE_EQ(1, columns_dot_product(vv_1, vd_2)(0).d_.val());
-  EXPECT_DOUBLE_EQ(-1, columns_dot_product(vd_1, vv_2)(0).d_.val());
-  EXPECT_DOUBLE_EQ(0, columns_dot_product(vv_1, vv_2)(0).d_.val());
+  EXPECT_FLOAT_EQ(3, columns_dot_product(vv_1, vd_2)(0).val_.val());
+  EXPECT_FLOAT_EQ(3, columns_dot_product(vd_1, vv_2)(0).val_.val());
+  EXPECT_FLOAT_EQ(3, columns_dot_product(vv_1, vv_2)(0).val_.val());
+  EXPECT_FLOAT_EQ(1, columns_dot_product(vv_1, vd_2)(0).d_.val());
+  EXPECT_FLOAT_EQ(-1, columns_dot_product(vd_1, vv_2)(0).d_.val());
+  EXPECT_FLOAT_EQ(0, columns_dot_product(vv_1, vv_2)(0).d_.val());
 }
 TEST(AgradFwdMatrixColumnsDotProduct, vector_vector_ffd_exception) {
   using stan::math::fvar;
@@ -330,12 +330,12 @@ TEST(AgradFwdMatrixColumnsDotProduct, rowvector_rowvector_ffd) {
   row_vector_ffd output;
   output = columns_dot_product(v1, d2);
 
-  EXPECT_DOUBLE_EQ(4, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(-6, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(5, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(4, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-2, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(0).val_.val());
+  EXPECT_FLOAT_EQ(-6, output(1).val_.val());
+  EXPECT_FLOAT_EQ(5, output(2).val_.val());
+  EXPECT_FLOAT_EQ(4, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-2, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(2).d_.val());
 }
 
 TEST(AgradFwdMatrixColumnsDotProduct, matrix_matrix_ffd) {
@@ -373,28 +373,28 @@ TEST(AgradFwdMatrixColumnsDotProduct, matrix_matrix_ffd) {
 
   row_vector_ffd output;
   output = columns_dot_product(v1, d2);
-  EXPECT_DOUBLE_EQ(3, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(3, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(3, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(1, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(1, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(1, output(2).d_.val());
+  EXPECT_FLOAT_EQ(3, output(0).val_.val());
+  EXPECT_FLOAT_EQ(3, output(1).val_.val());
+  EXPECT_FLOAT_EQ(3, output(2).val_.val());
+  EXPECT_FLOAT_EQ(1, output(0).d_.val());
+  EXPECT_FLOAT_EQ(1, output(1).d_.val());
+  EXPECT_FLOAT_EQ(1, output(2).d_.val());
 
   output = columns_dot_product(d1, v2);
-  EXPECT_DOUBLE_EQ(3, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(3, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(3, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(-1, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(-1, output(2).d_.val());
+  EXPECT_FLOAT_EQ(3, output(0).val_.val());
+  EXPECT_FLOAT_EQ(3, output(1).val_.val());
+  EXPECT_FLOAT_EQ(3, output(2).val_.val());
+  EXPECT_FLOAT_EQ(-1, output(0).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(1).d_.val());
+  EXPECT_FLOAT_EQ(-1, output(2).d_.val());
 
   output = columns_dot_product(v1, v2);
-  EXPECT_DOUBLE_EQ(3, output(0).val_.val());
-  EXPECT_DOUBLE_EQ(3, output(1).val_.val());
-  EXPECT_DOUBLE_EQ(3, output(2).val_.val());
-  EXPECT_DOUBLE_EQ(0, output(0).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(1).d_.val());
-  EXPECT_DOUBLE_EQ(0, output(2).d_.val());
+  EXPECT_FLOAT_EQ(3, output(0).val_.val());
+  EXPECT_FLOAT_EQ(3, output(1).val_.val());
+  EXPECT_FLOAT_EQ(3, output(2).val_.val());
+  EXPECT_FLOAT_EQ(0, output(0).d_.val());
+  EXPECT_FLOAT_EQ(0, output(1).d_.val());
+  EXPECT_FLOAT_EQ(0, output(2).d_.val());
 }
 
 TEST(AgradFwdMatrixColumnsDotProduct, matrix_matrix_ffd_exception) {

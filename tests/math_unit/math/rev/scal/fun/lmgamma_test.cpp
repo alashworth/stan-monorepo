@@ -7,12 +7,12 @@ TEST(AgradRev, lmgamma) {
   using stan::math::lmgamma;
   AVAR a = 3.2;
   AVAR f = stan::math::lmgamma(3, a);
-  EXPECT_DOUBLE_EQ(lmgamma(3, 3.2), f.val());
+  EXPECT_FLOAT_EQ(lmgamma(3, 3.2), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(4.9138227 / 2.1, grad_f[0]);
+  EXPECT_FLOAT_EQ(4.9138227 / 2.1, grad_f[0]);
 }
 
 namespace {

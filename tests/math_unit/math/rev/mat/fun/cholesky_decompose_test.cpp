@@ -164,7 +164,7 @@ void test_gradients(int size, double prec) {
 
       for (int k = 0; k < numels; ++k)
         EXPECT_NEAR(grads_fd[i][j](k), grads_ad[i][j](k), prec);
-      EXPECT_DOUBLE_EQ(evals_fd(i, j), evals_ad(i, j));
+      EXPECT_FLOAT_EQ(evals_fd(i, j), evals_ad(i, j));
     }
   }
 }
@@ -213,7 +213,7 @@ void test_gradients_simple(int size, double prec) {
 
       for (int k = 0; k < size; ++k)
         EXPECT_NEAR(grads_fd[i][j](k), grads_ad[i][j](k), prec);
-      EXPECT_DOUBLE_EQ(evals_fd(i, j), evals_ad(i, j));
+      EXPECT_FLOAT_EQ(evals_fd(i, j), evals_ad(i, j));
     }
   }
 }
@@ -328,7 +328,7 @@ void test_simple_vec_mult(int size, double prec) {
   Eigen::VectorXd grad_fd;
   stan::math::finite_diff_gradient(f, x, eval_fd, grad_fd);
 
-  EXPECT_DOUBLE_EQ(eval_fd, eval_ad);
+  EXPECT_FLOAT_EQ(eval_fd, eval_ad);
   for (int k = 0; k < grad_fd.size(); ++k)
     EXPECT_NEAR(grad_fd(k), grad_ad(k), prec);
 }
@@ -350,7 +350,7 @@ double test_gradient(int size, double prec) {
 
   for (int k = 0; k < numels; ++k)
     EXPECT_NEAR(grads_fd(k), grads_ad(k), prec);
-  EXPECT_DOUBLE_EQ(evals_fd, evals_ad);
+  EXPECT_FLOAT_EQ(evals_fd, evals_ad);
   return grads_ad.sum();
 }
 }  // namespace
@@ -371,10 +371,10 @@ TEST(AgradRevMatrix, mat_cholesky) {
   matrix_v L = cholesky_decompose(X);
 
   matrix_v LL_trans = multiply(L, transpose(L));
-  EXPECT_DOUBLE_EQ(a.val(), LL_trans(0, 0).val());
-  EXPECT_DOUBLE_EQ(b.val(), LL_trans(0, 1).val());
-  EXPECT_DOUBLE_EQ(c.val(), LL_trans(1, 0).val());
-  EXPECT_DOUBLE_EQ(d.val(), LL_trans(1, 1).val());
+  EXPECT_FLOAT_EQ(a.val(), LL_trans(0, 0).val());
+  EXPECT_FLOAT_EQ(b.val(), LL_trans(0, 1).val());
+  EXPECT_FLOAT_EQ(c.val(), LL_trans(1, 0).val());
+  EXPECT_FLOAT_EQ(d.val(), LL_trans(1, 1).val());
 
   EXPECT_NO_THROW(singular_values(X));
 }

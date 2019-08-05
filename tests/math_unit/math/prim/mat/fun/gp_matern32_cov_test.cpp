@@ -47,7 +47,7 @@ TEST(MathPrimMat, vec_double_gp_matern32_cov1) {
   cov = stan::math::gp_matern32_cov(x, sigma, l);
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_DOUBLE_EQ(
+      EXPECT_FLOAT_EQ(
           sigma * sigma
               * (1.0
                  + (pow(3.0, 0.5) / l)
@@ -74,7 +74,7 @@ TEST(MathPrimMat, vec_eigen_gp_matern32_cov1) {
   cov = stan::math::gp_matern32_cov(x1, sigma, l);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(
+      EXPECT_FLOAT_EQ(
           sigma * sigma
               * (1.0
                  + (pow(3.0, 0.5) / l)
@@ -107,7 +107,7 @@ TEST(MathPrimMat, vec_double_double_gp_matern32_cov1) {
   cov = stan::math::gp_matern32_cov(x1, x2, sigma, l);
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 3; j++)
-      EXPECT_DOUBLE_EQ(
+      EXPECT_FLOAT_EQ(
           sigma * sigma
               * (1.0
                  + (pow(3.0, 0.5) / l)
@@ -134,7 +134,7 @@ TEST(MathPrimMat, vec_eigen_gp_matern32_cov2) {
   cov = stan::math::gp_matern32_cov(x1, sigma, l);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(
+      EXPECT_FLOAT_EQ(
           sigma * sigma
               * (1.0
                  + (pow(3.0, 0.5) / l)
@@ -169,7 +169,7 @@ TEST(MathPrimMat, vec_eigen_vec_eigen_gp_matern32_cov1) {
   cov = stan::math::gp_matern32_cov(x1, x2, sigma, l);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(
+      EXPECT_FLOAT_EQ(
           sigma * sigma
               * (1.0
                  + (pow(3.0, 0.5) / l)
@@ -186,7 +186,7 @@ TEST(MathPrimMat, vec_eigen_vec_eigen_gp_matern32_cov1) {
   cov = stan::math::gp_matern32_cov(x2, x1, sigma, l);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(
+      EXPECT_FLOAT_EQ(
           sigma * sigma
               * (1.0
                  + (pow(3.0, 0.5) / l)
@@ -541,22 +541,22 @@ TEST(MathPrimMat, calculations_ard_1) {
   cov = stan::math::gp_matern32_cov(x, sigma, l);
   cov2 = stan::math::gp_matern32_cov(x, x, sigma, l);
 
-  EXPECT_DOUBLE_EQ(1.0, cov(0, 0));
-  EXPECT_DOUBLE_EQ(1.0, cov2(0, 0));
-  EXPECT_DOUBLE_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
-                       * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
+  EXPECT_FLOAT_EQ(1.0, cov(0, 0));
+  EXPECT_FLOAT_EQ(1.0, cov2(0, 0));
+  EXPECT_FLOAT_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
+                      * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
                   cov(1, 0));
-  EXPECT_DOUBLE_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
-                       * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
+  EXPECT_FLOAT_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
+                      * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
                   cov2(1, 0));
-  EXPECT_DOUBLE_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
-                       * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
+  EXPECT_FLOAT_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
+                      * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
                   cov(0, 1));
-  EXPECT_DOUBLE_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
-                       * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
+  EXPECT_FLOAT_EQ((1.0 + sqrt(3.0) * sqrt(1 + 9.0 / 4.0))
+                      * exp(-sqrt(3.0) * sqrt(1 + 9.0 / 4.0)),
                   cov2(0, 1));
-  EXPECT_DOUBLE_EQ(1.0, cov(1, 1));
-  EXPECT_DOUBLE_EQ(1.0, cov2(1, 1));
+  EXPECT_FLOAT_EQ(1.0, cov(1, 1));
+  EXPECT_FLOAT_EQ(1.0, cov2(1, 1));
 }
 
 TEST(MathPrimMat, check_dim_mismatch_1) {

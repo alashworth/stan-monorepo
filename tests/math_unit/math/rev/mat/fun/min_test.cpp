@@ -19,10 +19,10 @@ TEST(AgradRevMatrix, min_vector) {
 
   AVAR output;
   output = min(d1);
-  EXPECT_DOUBLE_EQ(-3, output.val());
+  EXPECT_FLOAT_EQ(-3, output.val());
 
   output = min(v1);
-  EXPECT_DOUBLE_EQ(-3, output.val());
+  EXPECT_FLOAT_EQ(-3, output.val());
 }
 TEST(AgradRevMatrix, min_vector_exception) {
   using stan::math::min;
@@ -48,17 +48,17 @@ TEST(AgradRevMatrix, min_rowvector) {
 
   AVAR output;
   output = min(d1);
-  EXPECT_DOUBLE_EQ(-3, output.val());
+  EXPECT_FLOAT_EQ(-3, output.val());
 
   output = min(v1);
-  EXPECT_DOUBLE_EQ(-3, output.val());
+  EXPECT_FLOAT_EQ(-3, output.val());
 }
 TEST(AgradRevMatrix, min_rowvector_exception) {
   using stan::math::min;
   using stan::math::row_vector_v;
 
   row_vector_v v;
-  EXPECT_DOUBLE_EQ(std::numeric_limits<double>::infinity(), min(v).val());
+  EXPECT_FLOAT_EQ(std::numeric_limits<double>::infinity(), min(v).val());
 }
 TEST(AgradRevMatrix, min_matrix) {
   using stan::math::matrix_d;
@@ -73,17 +73,17 @@ TEST(AgradRevMatrix, min_matrix) {
 
   AVAR output;
   output = min(d1);
-  EXPECT_DOUBLE_EQ(-3, output.val());
+  EXPECT_FLOAT_EQ(-3, output.val());
 
   output = min(v1);
-  EXPECT_DOUBLE_EQ(-3, output.val());
+  EXPECT_FLOAT_EQ(-3, output.val());
 }
 TEST(AgradRevMatrix, min_matrix_exception) {
   using stan::math::matrix_v;
   using stan::math::min;
 
   matrix_v v;
-  EXPECT_DOUBLE_EQ(std::numeric_limits<double>::infinity(), min(v).val());
+  EXPECT_FLOAT_EQ(std::numeric_limits<double>::infinity(), min(v).val());
 }
 TEST(AgradRevMatrix, check_varis_on_stack_32) {
   stan::math::vector_v v(3);

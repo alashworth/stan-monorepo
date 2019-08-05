@@ -9,7 +9,7 @@ TEST(AgradFwdMatrixVariance, fd_vector) {
 
   vector_d d(1);
   d << 12.9;
-  EXPECT_DOUBLE_EQ(0.0, variance(d));
+  EXPECT_FLOAT_EQ(0.0, variance(d));
 
   vector_d d1(6);
   vector_fd v1(6);
@@ -23,16 +23,16 @@ TEST(AgradFwdMatrixVariance, fd_vector) {
   v1(4).d_ = 2.0;
   v1(5).d_ = 2.0;
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val_);
-  EXPECT_DOUBLE_EQ(1.0, variance(v1).d_);
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val_);
+  EXPECT_FLOAT_EQ(1.0, variance(v1).d_);
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_DOUBLE_EQ(0.0, variance(d1));
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).val_);
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).d_);
+  EXPECT_FLOAT_EQ(0.0, variance(d1));
+  EXPECT_FLOAT_EQ(0.0, variance(v1).val_);
+  EXPECT_FLOAT_EQ(0.0, variance(v1).d_);
 }
 TEST(AgradFwdMatrixVariance, fd_vector_exception) {
   using stan::math::variance;
@@ -51,7 +51,7 @@ TEST(AgradFwdMatrixVariance, fd_rowvector) {
 
   row_vector_d d(1);
   d << 12.9;
-  EXPECT_DOUBLE_EQ(0.0, variance(d));
+  EXPECT_FLOAT_EQ(0.0, variance(d));
 
   row_vector_d d1(6);
   row_vector_fd v1(6);
@@ -65,16 +65,16 @@ TEST(AgradFwdMatrixVariance, fd_rowvector) {
   v1(4).d_ = 2.0;
   v1(5).d_ = 2.0;
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val_);
-  EXPECT_DOUBLE_EQ(-9.0, variance(v1).d_);
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val_);
+  EXPECT_FLOAT_EQ(-9.0, variance(v1).d_);
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_DOUBLE_EQ(0.0, variance(d1));
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).val_);
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).d_);
+  EXPECT_FLOAT_EQ(0.0, variance(d1));
+  EXPECT_FLOAT_EQ(0.0, variance(v1).val_);
+  EXPECT_FLOAT_EQ(0.0, variance(v1).d_);
 }
 TEST(AgradFwdMatrixVariance, fd_rowvector_exception) {
   using stan::math::row_vector_d;
@@ -93,7 +93,7 @@ TEST(AgradFwdMatrixVariance, fd_matrix) {
 
   matrix_d m(1, 1);
   m << 12.9;
-  EXPECT_DOUBLE_EQ(0.0, variance(m));
+  EXPECT_FLOAT_EQ(0.0, variance(m));
 
   matrix_d d1(2, 3);
   matrix_fd v1(2, 3);
@@ -107,16 +107,16 @@ TEST(AgradFwdMatrixVariance, fd_matrix) {
   v1(1, 1).d_ = 2.0;
   v1(1, 2).d_ = 2.0;
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val_);
-  EXPECT_DOUBLE_EQ(1.0, variance(v1).d_);
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val_);
+  EXPECT_FLOAT_EQ(1.0, variance(v1).d_);
 
   d1.resize(1, 1);
   v1.resize(1, 1);
-  EXPECT_DOUBLE_EQ(0.0, variance(d1));
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).val_);
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).d_);
+  EXPECT_FLOAT_EQ(0.0, variance(d1));
+  EXPECT_FLOAT_EQ(0.0, variance(v1).val_);
+  EXPECT_FLOAT_EQ(0.0, variance(v1).d_);
 }
 TEST(AgradFwdMatrixVariance, fd_matrix_exception) {
   using stan::math::matrix_d;
@@ -154,8 +154,8 @@ TEST(AgradFwdMatrixVariance, fd_StdVector) {
   y1.push_back(x3);
   fvar<double> f1 = variance(y1);
 
-  EXPECT_DOUBLE_EQ(2.25, f1.val_);
-  EXPECT_DOUBLE_EQ(1.5, f1.d_);
+  EXPECT_FLOAT_EQ(2.25, f1.val_);
+  EXPECT_FLOAT_EQ(1.5, f1.d_);
 }
 TEST(AgradFwdMatrixVariance, ffd_vector) {
   using stan::math::variance;
@@ -164,7 +164,7 @@ TEST(AgradFwdMatrixVariance, ffd_vector) {
 
   vector_d d(1);
   d << 12.9;
-  EXPECT_DOUBLE_EQ(0.0, variance(d));
+  EXPECT_FLOAT_EQ(0.0, variance(d));
 
   vector_d d1(6);
   vector_ffd v1(6);
@@ -178,16 +178,16 @@ TEST(AgradFwdMatrixVariance, ffd_vector) {
   v1(4).d_ = 2.0;
   v1(5).d_ = 2.0;
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val_.val());
-  EXPECT_DOUBLE_EQ(1.0, variance(v1).d_.val());
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val_.val());
+  EXPECT_FLOAT_EQ(1.0, variance(v1).d_.val());
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_DOUBLE_EQ(0.0, variance(d1));
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).val_.val());
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).d_.val());
+  EXPECT_FLOAT_EQ(0.0, variance(d1));
+  EXPECT_FLOAT_EQ(0.0, variance(v1).val_.val());
+  EXPECT_FLOAT_EQ(0.0, variance(v1).d_.val());
 }
 TEST(AgradFwdMatrixVariance, ffd_vector_exception) {
   using stan::math::variance;
@@ -206,7 +206,7 @@ TEST(AgradFwdMatrixVariance, ffd_rowvector) {
 
   row_vector_d d(1);
   d << 12.9;
-  EXPECT_DOUBLE_EQ(0.0, variance(d));
+  EXPECT_FLOAT_EQ(0.0, variance(d));
 
   row_vector_d d1(6);
   row_vector_ffd v1(6);
@@ -220,16 +220,16 @@ TEST(AgradFwdMatrixVariance, ffd_rowvector) {
   v1(4).d_ = 2.0;
   v1(5).d_ = 2.0;
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val_.val());
-  EXPECT_DOUBLE_EQ(-9.0, variance(v1).d_.val());
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val_.val());
+  EXPECT_FLOAT_EQ(-9.0, variance(v1).d_.val());
 
   d1.resize(1);
   v1.resize(1);
-  EXPECT_DOUBLE_EQ(0.0, variance(d1));
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).val_.val());
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).d_.val());
+  EXPECT_FLOAT_EQ(0.0, variance(d1));
+  EXPECT_FLOAT_EQ(0.0, variance(v1).val_.val());
+  EXPECT_FLOAT_EQ(0.0, variance(v1).d_.val());
 }
 TEST(AgradFwdMatrixVariance, ffd_rowvector_exception) {
   using stan::math::row_vector_d;
@@ -248,7 +248,7 @@ TEST(AgradFwdMatrixVariance, ffd_matrix) {
 
   matrix_d m(1, 1);
   m << 12.9;
-  EXPECT_DOUBLE_EQ(0.0, variance(m));
+  EXPECT_FLOAT_EQ(0.0, variance(m));
 
   matrix_d d1(2, 3);
   matrix_ffd v1(2, 3);
@@ -262,16 +262,16 @@ TEST(AgradFwdMatrixVariance, ffd_matrix) {
   v1(1, 1).d_ = 2.0;
   v1(1, 2).d_ = 2.0;
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(d1));
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(d1));
 
-  EXPECT_DOUBLE_EQ(17.5 / 5.0, variance(v1).val_.val());
-  EXPECT_DOUBLE_EQ(1.0, variance(v1).d_.val());
+  EXPECT_FLOAT_EQ(17.5 / 5.0, variance(v1).val_.val());
+  EXPECT_FLOAT_EQ(1.0, variance(v1).d_.val());
 
   d1.resize(1, 1);
   v1.resize(1, 1);
-  EXPECT_DOUBLE_EQ(0.0, variance(d1));
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).val_.val());
-  EXPECT_DOUBLE_EQ(0.0, variance(v1).d_.val());
+  EXPECT_FLOAT_EQ(0.0, variance(d1));
+  EXPECT_FLOAT_EQ(0.0, variance(v1).val_.val());
+  EXPECT_FLOAT_EQ(0.0, variance(v1).d_.val());
 }
 TEST(AgradFwdMatrixVariance, ffd_matrix_exception) {
   using stan::math::matrix_d;
@@ -309,6 +309,6 @@ TEST(AgradFwdMatrixVariance, ffd_StdVector) {
   y1.push_back(x3);
   fvar<fvar<double> > f1 = variance(y1);
 
-  EXPECT_DOUBLE_EQ(2.25, f1.val_.val());
-  EXPECT_DOUBLE_EQ(1.5, f1.d_.val());
+  EXPECT_FLOAT_EQ(2.25, f1.val_.val());
+  EXPECT_FLOAT_EQ(1.5, f1.d_.val());
 }

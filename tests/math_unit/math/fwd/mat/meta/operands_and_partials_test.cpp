@@ -17,8 +17,8 @@ TEST(AgradPartialsVari, OperandsAndPartialsFvarScal) {
   o.edge1_.partials_[0] += 23.0;
   fvar<double> y = o.build(-1.0);
 
-  EXPECT_DOUBLE_EQ(2 * 4 * 23, y.d_);
-  EXPECT_DOUBLE_EQ(-1, y.val_);
+  EXPECT_FLOAT_EQ(2 * 4 * 23, y.d_);
+  EXPECT_FLOAT_EQ(-1, y.val_);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsFvarVec) {
@@ -46,8 +46,8 @@ TEST(AgradPartialsVari, OperandsAndPartialsFvarVec) {
   o.edge3_.partials_[0] += 23.0;
   fvar<double> y = o.build(-1.0);
 
-  EXPECT_DOUBLE_EQ(2 * 17 + 3 * 13 - 2 * 19 + 2 * 4 * 23, y.d_);
-  EXPECT_DOUBLE_EQ(-1, y.val_);
+  EXPECT_FLOAT_EQ(2 * 17 + 3 * 13 - 2 * 19 + 2 * 4 * 23, y.d_);
+  EXPECT_FLOAT_EQ(-1, y.val_);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsFvarMat) {
@@ -66,6 +66,6 @@ TEST(AgradPartialsVari, OperandsAndPartialsFvarMat) {
 
   fvar<double> y = o.build(-1.0);
 
-  EXPECT_DOUBLE_EQ(2 * 17 + 3 * 13 + 5 * 23 + 7 * 32, y.d_);
-  EXPECT_DOUBLE_EQ(-1, y.val_);
+  EXPECT_FLOAT_EQ(2 * 17 + 3 * 13 + 5 * 23 + 7 * 32, y.d_);
+  EXPECT_FLOAT_EQ(-1, y.val_);
 }

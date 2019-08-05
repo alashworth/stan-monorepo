@@ -22,9 +22,9 @@ TEST(AgradRev, multiple_grads) {
   VEC grad_f;
   f.grad(x, grad_f);
 
-  EXPECT_DOUBLE_EQ(3.0, d.adj());
-  EXPECT_DOUBLE_EQ(2.0, e.adj());
+  EXPECT_FLOAT_EQ(3.0, d.adj());
+  EXPECT_FLOAT_EQ(2.0, e.adj());
 
-  EXPECT_DOUBLE_EQ(3.0, grad_f[0]);
-  EXPECT_DOUBLE_EQ(2.0, grad_f[1]);
+  EXPECT_FLOAT_EQ(3.0, grad_f[0]);
+  EXPECT_FLOAT_EQ(2.0, grad_f[1]);
 }

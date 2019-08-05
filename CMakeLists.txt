@@ -1,10 +1,6 @@
 # Preamble
 cmake_minimum_required(VERSION 3.15.1 FATAL_ERROR)
 
-# CMake policies
-cmake_policy(SET CMP0056 NEW)  # check_cxx_compiler_flag respects linker flags
-cmake_policy(SET CMP0090 NEW)  # export(PKG) does not populate system package registry
-
 find_program(CCACHE_PROGRAM ccache)
 if (CCACHE_PROGRAM)
 	set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
@@ -168,12 +164,12 @@ if(STAN_BUILD_TESTS)
 	endif ()
 
 	# Diagnostic compile warnings and static analysis
-	#	find_program(CLANG_TIDY_PROGRAM NAMES "clang-tidy")
+    #	find_program(CLANG_TIDY_PROGRAM NAMES clang-tidy)
 	#	if(CLANG_TIDY_PROGRAM)
 	#		set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_PROGRAM};-checks=*")
 	#	endif()
 	#
-	#	find_program(CPPLINT_PROGRAM NAMES "cpplint")
+    #	find_program(CPPLINT_PROGRAM NAMES cpplint)
 	#	if(CPPLINT_PROGRAM)
 	#		set(CMAKE_CXX_CPPLINT "${CPPLINT_PROGRAM}")
 	#	endif()
@@ -184,7 +180,7 @@ if(STAN_BUILD_TESTS)
 	#		set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE "${IWYU_PROGRAM};-Xiwyu;any;-Xiwyu;iwyu;-Xiwyu;args")
 	#	endif()
 	#
-	#	find_program(CPPCHECK_PROGRAM NAMES "cppcheck")
+    #	find_program(CPPCHECK_PROGRAM NAMES cppcheck)
 	#	if(CPPCHECK_PROGRAM)
 	#		set(CMAKE_CXX_CPPCHECK "${CPPCHECK_PROGRAM};--std=c++11")
 	#	endif()

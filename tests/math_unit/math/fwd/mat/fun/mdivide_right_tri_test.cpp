@@ -21,14 +21,14 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_fd_matrix_fd_lower) {
   Ad(1, 1).d_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1.0833334, I(1, 0).val_);
-  EXPECT_DOUBLE_EQ(1.75, I(1, 1).val_);
-  EXPECT_DOUBLE_EQ(-0.076388888, I(0, 0).d_);
-  EXPECT_DOUBLE_EQ(0.0625, I(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-0.5486111, I(1, 0).d_);
-  EXPECT_DOUBLE_EQ(-0.1875, I(1, 1).d_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_);
+  EXPECT_FLOAT_EQ(1.0833334, I(1, 0).val_);
+  EXPECT_FLOAT_EQ(1.75, I(1, 1).val_);
+  EXPECT_FLOAT_EQ(-0.076388888, I(0, 0).d_);
+  EXPECT_FLOAT_EQ(0.0625, I(0, 1).d_);
+  EXPECT_FLOAT_EQ(-0.5486111, I(1, 0).d_);
+  EXPECT_FLOAT_EQ(-0.1875, I(1, 1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_fd_row_vector_fd_lower) {
   using stan::math::matrix_fd;
@@ -49,10 +49,10 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_fd_row_vector_fd_lower) {
   Ad(1).d_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(1).val_);
-  EXPECT_DOUBLE_EQ(-0.0763888889, I(0).d_);
-  EXPECT_DOUBLE_EQ(0.0625, I(1).d_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(1).val_);
+  EXPECT_FLOAT_EQ(-0.0763888889, I(0).d_);
+  EXPECT_FLOAT_EQ(0.0625, I(1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_fd_matrix_d_lower) {
   using stan::math::matrix_d;
@@ -71,14 +71,14 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_fd_matrix_d_lower) {
   Ad << 2.0, 3.0, 5.0, 7.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1.0833334, I(1, 0).val_);
-  EXPECT_DOUBLE_EQ(1.75, I(1, 1).val_);
-  EXPECT_DOUBLE_EQ(-0.3263889, I(0, 0).d_);
-  EXPECT_DOUBLE_EQ(-0.1875, I(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-0.7986111, I(1, 0).d_);
-  EXPECT_DOUBLE_EQ(-0.4375, I(1, 1).d_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_);
+  EXPECT_FLOAT_EQ(1.0833334, I(1, 0).val_);
+  EXPECT_FLOAT_EQ(1.75, I(1, 1).val_);
+  EXPECT_FLOAT_EQ(-0.3263889, I(0, 0).d_);
+  EXPECT_FLOAT_EQ(-0.1875, I(0, 1).d_);
+  EXPECT_FLOAT_EQ(-0.7986111, I(1, 0).d_);
+  EXPECT_FLOAT_EQ(-0.4375, I(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightTri, matrix_fd_row_vector_d_lower) {
@@ -99,10 +99,10 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_fd_row_vector_d_lower) {
   Ad << 2.0, 3.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(1).val_);
-  EXPECT_DOUBLE_EQ(-0.3263889, I(0).d_);
-  EXPECT_DOUBLE_EQ(-0.1875, I(1).d_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(1).val_);
+  EXPECT_FLOAT_EQ(-0.3263889, I(0).d_);
+  EXPECT_FLOAT_EQ(-0.1875, I(1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_d_matrix_fd_lower) {
   using stan::math::matrix_d;
@@ -121,14 +121,14 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_d_matrix_fd_lower) {
   Ad(1, 1).d_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1.0833334, I(1, 0).val_);
-  EXPECT_DOUBLE_EQ(1.75, I(1, 1).val_);
-  EXPECT_DOUBLE_EQ(0.25, I(0, 0).d_);
-  EXPECT_DOUBLE_EQ(0.25, I(0, 1).d_);
-  EXPECT_DOUBLE_EQ(0.25, I(1, 0).d_);
-  EXPECT_DOUBLE_EQ(0.25, I(1, 1).d_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_);
+  EXPECT_FLOAT_EQ(1.0833334, I(1, 0).val_);
+  EXPECT_FLOAT_EQ(1.75, I(1, 1).val_);
+  EXPECT_FLOAT_EQ(0.25, I(0, 0).d_);
+  EXPECT_FLOAT_EQ(0.25, I(0, 1).d_);
+  EXPECT_FLOAT_EQ(0.25, I(1, 0).d_);
+  EXPECT_FLOAT_EQ(0.25, I(1, 1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_d_row_vector_fd_lower) {
   using stan::math::matrix_d;
@@ -145,10 +145,10 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_d_row_vector_fd_lower) {
   Ad(1).d_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(1).val_);
-  EXPECT_DOUBLE_EQ(0.25, I(0).d_);
-  EXPECT_DOUBLE_EQ(0.25, I(1).d_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(1).val_);
+  EXPECT_FLOAT_EQ(0.25, I(0).d_);
+  EXPECT_FLOAT_EQ(0.25, I(1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightTri, fd_exceptions_lower) {
@@ -239,14 +239,14 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_ffd_matrix_ffd_lower) {
   Ad(1, 1).d_.val_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1.0833334, I(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(1.75, I(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.0763888889, I(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.0625, I(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.5486111, I(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.1875, I(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1.0833334, I(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(1.75, I(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.0763888889, I(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(0.0625, I(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(-0.5486111, I(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.1875, I(1, 1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_ffd_row_vector_ffd_lower) {
   using stan::math::matrix_ffd;
@@ -267,10 +267,10 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_ffd_row_vector_ffd_lower) {
   Ad(1).d_.val_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.0763888889, I(0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.0625, I(1).d_.val_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.0763888889, I(0).d_.val_);
+  EXPECT_FLOAT_EQ(0.0625, I(1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_ffd_matrix_d_lower) {
   using stan::math::matrix_d;
@@ -289,14 +289,14 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_ffd_matrix_d_lower) {
   Ad << 2.0, 3.0, 5.0, 7.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.416666667, I(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1.0833334, I(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(1.75, I(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.3263889, I(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.1875, I(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.7986111, I(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.4375, I(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.416666667, I(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1.0833334, I(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(1.75, I(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.3263889, I(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.1875, I(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(-0.7986111, I(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.4375, I(1, 1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_ffd_row_vector_d_lower) {
   using stan::math::matrix_ffd;
@@ -316,10 +316,10 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_ffd_row_vector_d_lower) {
   Ad << 2.0, 3.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.41666667, I(0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.3263889, I(0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.1875, I(1).d_.val_);
+  EXPECT_FLOAT_EQ(0.41666667, I(0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.3263889, I(0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.1875, I(1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_d_matrix_ffd_lower) {
   using stan::math::matrix_d;
@@ -338,14 +338,14 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_d_matrix_ffd_lower) {
   Ad(1, 1).d_.val_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.41666667, I(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1.0833334, I(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(1.75, I(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.41666667, I(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1.0833334, I(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(1.75, I(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(1, 1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightTri, matrix_d_row_vector_ffd_lower) {
   using stan::math::matrix_d;
@@ -362,10 +362,10 @@ TEST(AgradFwdMatrixMdivideRightTri, matrix_d_row_vector_ffd_lower) {
   Ad(1).d_.val_ = 1.0;
 
   I = mdivide_right_tri<Eigen::Lower>(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.41666667, I(0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(1).val_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(1).d_.val_);
+  EXPECT_FLOAT_EQ(0.41666667, I(0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(1).val_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(0).d_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightTri, ffd_exceptions_lower) {

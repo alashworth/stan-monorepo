@@ -8,57 +8,57 @@ TEST(AgradRev, pow_var_var) {
   AVAR a(3.0);
   AVAR b(4.0);
   AVAR f = pow(a, b);
-  EXPECT_DOUBLE_EQ(81.0, f.val());
+  EXPECT_FLOAT_EQ(81.0, f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(4.0 * pow(3.0, 4.0 - 1.0), g[0]);
-  EXPECT_DOUBLE_EQ(log(3.0) * pow(3.0, 4.0), g[1]);
+  EXPECT_FLOAT_EQ(4.0 * pow(3.0, 4.0 - 1.0), g[0]);
+  EXPECT_FLOAT_EQ(log(3.0) * pow(3.0, 4.0), g[1]);
 }
 
 TEST(AgradRev, pow_var_double) {
   AVAR a(4.0);
   double b = 4.0;
   AVAR f = pow(a, b);
-  EXPECT_DOUBLE_EQ(256.0, f.val());
+  EXPECT_FLOAT_EQ(256.0, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(4.0 * pow(4.0, 4.0 - 1.0), g[0]);
+  EXPECT_FLOAT_EQ(4.0 * pow(4.0, 4.0 - 1.0), g[0]);
 
   b = 2.0;
   f = pow(a, b);
-  EXPECT_DOUBLE_EQ(16.0, f.val());
+  EXPECT_FLOAT_EQ(16.0, f.val());
 
   b = 0.5;
   f = pow(a, b);
-  EXPECT_DOUBLE_EQ(2.0, f.val());
+  EXPECT_FLOAT_EQ(2.0, f.val());
 
   b = 1.0;
   f = pow(a, b);
-  EXPECT_DOUBLE_EQ(a.val(), f.val());
+  EXPECT_FLOAT_EQ(a.val(), f.val());
 
   b = -0.5;
   f = pow(a, b);
-  EXPECT_DOUBLE_EQ(0.5, f.val());
+  EXPECT_FLOAT_EQ(0.5, f.val());
 
   b = -2.0;
   f = pow(a, b);
-  EXPECT_DOUBLE_EQ(1 / 16.0, f.val());
+  EXPECT_FLOAT_EQ(1 / 16.0, f.val());
 }
 
 TEST(AgradRev, pow_double_var) {
   double a = 3.0;
   AVAR b(4.0);
   AVAR f = pow(a, b);
-  EXPECT_DOUBLE_EQ(81.0, f.val());
+  EXPECT_FLOAT_EQ(81.0, f.val());
 
   AVEC x = createAVEC(b);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(log(3.0) * pow(3.0, 4.0), g[0]);
+  EXPECT_FLOAT_EQ(log(3.0) * pow(3.0, 4.0), g[0]);
 }
 
 TEST(AgradRev, pow_boundry) {
@@ -66,19 +66,19 @@ TEST(AgradRev, pow_boundry) {
   AVAR a = inf;
   AVAR b = 5;
   AVAR f = pow(a, b);
-  EXPECT_DOUBLE_EQ(inf, f.val());
+  EXPECT_FLOAT_EQ(inf, f.val());
   AVAR g = pow(b, a);
-  EXPECT_DOUBLE_EQ(inf, g.val());
+  EXPECT_FLOAT_EQ(inf, g.val());
 
   AVAR c = -inf;
   AVAR d = 6;
   AVAR h = pow(c, b);
-  EXPECT_DOUBLE_EQ(-inf, h.val());
+  EXPECT_FLOAT_EQ(-inf, h.val());
   AVAR i = pow(c, d);
-  EXPECT_DOUBLE_EQ(inf, i.val());
+  EXPECT_FLOAT_EQ(inf, i.val());
 
   AVAR j = pow(b, c);
-  EXPECT_DOUBLE_EQ(0.0, j.val());
+  EXPECT_FLOAT_EQ(0.0, j.val());
 }
 
 namespace {

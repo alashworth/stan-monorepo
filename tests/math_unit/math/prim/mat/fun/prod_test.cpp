@@ -14,36 +14,36 @@ TEST(MathMatrix, prod_vector_int) {
 TEST(MathMatrix, prod_vector_double) {
   using stan::math::prod;
   std::vector<double> x;
-  EXPECT_DOUBLE_EQ(1.0, prod(x));
+  EXPECT_FLOAT_EQ(1.0, prod(x));
   x.push_back(2.0);
-  EXPECT_DOUBLE_EQ(2.0, prod(x));
+  EXPECT_FLOAT_EQ(2.0, prod(x));
   x.push_back(3);
-  EXPECT_DOUBLE_EQ(6.0, prod(x));
+  EXPECT_FLOAT_EQ(6.0, prod(x));
 
   stan::math::vector_d v;
-  EXPECT_DOUBLE_EQ(1.0, prod(v));
+  EXPECT_FLOAT_EQ(1.0, prod(v));
   v = stan::math::vector_d(1);
   v << 2.0;
-  EXPECT_DOUBLE_EQ(2.0, prod(v));
+  EXPECT_FLOAT_EQ(2.0, prod(v));
   v = stan::math::vector_d(2);
   v << 2.0, 3.0;
-  EXPECT_DOUBLE_EQ(6.0, prod(v));
+  EXPECT_FLOAT_EQ(6.0, prod(v));
 
   stan::math::row_vector_d rv;
-  EXPECT_DOUBLE_EQ(1.0, prod(rv));
+  EXPECT_FLOAT_EQ(1.0, prod(rv));
   rv = stan::math::row_vector_d(1);
   rv << 2.0;
-  EXPECT_DOUBLE_EQ(2.0, prod(rv));
+  EXPECT_FLOAT_EQ(2.0, prod(rv));
   rv = stan::math::row_vector_d(2);
   rv << 2.0, 3.0;
-  EXPECT_DOUBLE_EQ(6.0, prod(rv));
+  EXPECT_FLOAT_EQ(6.0, prod(rv));
 
   stan::math::matrix_d m;
-  EXPECT_DOUBLE_EQ(1.0, prod(m));
+  EXPECT_FLOAT_EQ(1.0, prod(m));
   m = stan::math::matrix_d(1, 1);
   m << 2.0;
-  EXPECT_DOUBLE_EQ(2.0, prod(m));
+  EXPECT_FLOAT_EQ(2.0, prod(m));
   m = stan::math::matrix_d(2, 3);
   m << 1.0, 2.0, 3.0, 4.0, 5.0, 6.0;
-  EXPECT_DOUBLE_EQ(720.0, prod(m));
+  EXPECT_FLOAT_EQ(720.0, prod(m));
 }

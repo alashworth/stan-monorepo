@@ -10,7 +10,7 @@ static inline void expect_val_eq(double exp_val, double test_val) {
     SUCCEED();
     return;
   }
-  EXPECT_DOUBLE_EQ(exp_val, test_val);
+  EXPECT_FLOAT_EQ(exp_val, test_val);
 }
 
 #endif

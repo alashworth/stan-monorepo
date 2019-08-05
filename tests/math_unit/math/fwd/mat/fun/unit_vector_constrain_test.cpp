@@ -17,7 +17,7 @@ TEST(AgradFwdMatrixUnitVectorConstrain, fd) {
 
   Matrix<fvar<double>, Dynamic, 1> theta = unit_vector_constrain(x);
   EXPECT_EQ(1, theta.size());
-  EXPECT_DOUBLE_EQ(1.0, theta[0].val_);
+  EXPECT_FLOAT_EQ(1.0, theta[0].val_);
   EXPECT_NEAR(0.0, theta[0].d_, 3e-16);
 
   Matrix<fvar<double>, Dynamic, 1> x3(3);
@@ -39,7 +39,7 @@ TEST(AgradFwdMatrixUnitVectorConstrain, fd) {
     for (int j = 0; j < x3.size(); ++j)
       SN += cx3(j) * cx3(j);
     Matrix<double, Dynamic, 1> d = ((cx3 / sqrt(SN)) / eps).imag();
-    EXPECT_DOUBLE_EQ(d.coeff(i), theta3[i].d_);
+    EXPECT_FLOAT_EQ(d.coeff(i), theta3[i].d_);
   }
 }
 
@@ -58,7 +58,7 @@ TEST(AgradFwdMatrixSoftmax, ffd_1) {
 
   Matrix<fvar<fvar<double> >, Dynamic, 1> theta = unit_vector_constrain(x);
   EXPECT_EQ(1, theta.size());
-  EXPECT_DOUBLE_EQ(1.0, theta[0].val_.val());
+  EXPECT_FLOAT_EQ(1.0, theta[0].val_.val());
   EXPECT_NEAR(0.0, theta[0].d_.val(), 3e-16);
 
   Matrix<fvar<fvar<double> >, Dynamic, 1> x3(3);
@@ -80,6 +80,6 @@ TEST(AgradFwdMatrixSoftmax, ffd_1) {
     for (int j = 0; j < x3.size(); ++j)
       SN += cx3(j) * cx3(j);
     Matrix<double, Dynamic, 1> d = ((cx3 / sqrt(SN)) / eps).imag();
-    EXPECT_DOUBLE_EQ(d.coeff(i), theta3[i].d_.val());
+    EXPECT_FLOAT_EQ(d.coeff(i), theta3[i].d_.val());
   }
 }

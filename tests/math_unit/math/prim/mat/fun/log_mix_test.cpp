@@ -27,7 +27,7 @@ void val_test(T_a a, T_b b) {
 
   double out = log_mix(a, b);
 
-  EXPECT_DOUBLE_EQ(out, -6.86528599744793);
+  EXPECT_FLOAT_EQ(out, -6.86528599744793);
 
   T_b b2(4), b3(4);
 
@@ -45,7 +45,7 @@ void val_test(T_a a, T_b b) {
 
   double std_out = log_mix(a, c);
 
-  EXPECT_DOUBLE_EQ(std_out, -17.0784535665594);
+  EXPECT_FLOAT_EQ(std_out, -17.0784535665594);
 }
 
 TEST(MatrixFunctions, LogMix_Combin) {
@@ -99,8 +99,8 @@ TEST(MatrixFunctions, LogMix_Values) {
   double log_mix_stan_2 = log_mix(prob_2, dens_2);
   double log_mix_stan_scal = log_mix(0.1, -5.65, -7.62);
 
-  EXPECT_DOUBLE_EQ(log_mix_stan_1, log_mix_sumexp);
-  EXPECT_DOUBLE_EQ(log_mix_stan_2, log_mix_stan_scal);
+  EXPECT_FLOAT_EQ(log_mix_stan_1, log_mix_sumexp);
+  EXPECT_FLOAT_EQ(log_mix_stan_2, log_mix_stan_scal);
 }
 
 TEST(MatrixFunctions, LogMix_Throws) {

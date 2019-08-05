@@ -62,8 +62,8 @@ TEST_F(AgradFwdMatrixInverseSPD, matrix_fd) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(m2(i, j).val_, m3(i, j).val_);
-      EXPECT_DOUBLE_EQ(m2(i, j).d_, m3(i, j).d_);
+      EXPECT_FLOAT_EQ(m2(i, j).val_, m3(i, j).val_);
+      EXPECT_FLOAT_EQ(m2(i, j).d_, m3(i, j).d_);
     }
   }
 }
@@ -88,8 +88,8 @@ TEST_F(AgradFwdMatrixInverseSPD, matrix_ffd) {
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(m2(i, j).val_.val_, m3(i, j).val_.val_);
-      EXPECT_DOUBLE_EQ(m2(i, j).d_.val_, m3(i, j).d_.val_);
+      EXPECT_FLOAT_EQ(m2(i, j).val_.val_, m3(i, j).val_.val_);
+      EXPECT_FLOAT_EQ(m2(i, j).d_.val_, m3(i, j).d_.val_);
     }
   }
 }

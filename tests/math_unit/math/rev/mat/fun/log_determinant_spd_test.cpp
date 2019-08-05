@@ -25,10 +25,10 @@ TEST(AgradRevMatrix, log_determinant_spd_diff) {
   std::vector<double> g2;
   det2.grad(x2, g2);
 
-  EXPECT_DOUBLE_EQ(det1.val(), det2.val());
+  EXPECT_FLOAT_EQ(det1.val(), det2.val());
   EXPECT_EQ(g1.size(), g2.size());
   for (size_t i = 0; i < g1.size(); ++i)
-    EXPECT_DOUBLE_EQ(g1[i], g2[i]);
+    EXPECT_FLOAT_EQ(g1[i], g2[i]);
 }
 
 TEST(AgradRevMatrix, log_determinant_spd) {
@@ -40,7 +40,7 @@ TEST(AgradRevMatrix, log_determinant_spd) {
 
   AVAR det;
   det = log_determinant_spd(v);
-  EXPECT_DOUBLE_EQ(std::log(3.0), det.val());
+  EXPECT_FLOAT_EQ(std::log(3.0), det.val());
 }
 
 TEST(AgradRevMatrix, check_varis_on_stack_19) {

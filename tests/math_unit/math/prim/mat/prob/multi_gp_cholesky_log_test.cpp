@@ -18,23 +18,23 @@ TEST(ProbMultiGpCholesky, log_matches_lpmf) {
   Eigen::Matrix<double, Eigen::Dynamic, 1> w(3, 1);
   w << 1.0, 0.5, 1.5;
 
-  EXPECT_DOUBLE_EQ((stan::math::multi_gp_cholesky_lpdf(y, L, w)),
-                   (stan::math::multi_gp_cholesky_log(y, L, w)));
-  EXPECT_DOUBLE_EQ((stan::math::multi_gp_cholesky_lpdf<true>(y, L, w)),
-                   (stan::math::multi_gp_cholesky_log<true>(y, L, w)));
-  EXPECT_DOUBLE_EQ((stan::math::multi_gp_cholesky_lpdf<false>(y, L, w)),
-                   (stan::math::multi_gp_cholesky_log<false>(y, L, w)));
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ((stan::math::multi_gp_cholesky_lpdf(y, L, w)),
+                  (stan::math::multi_gp_cholesky_log(y, L, w)));
+  EXPECT_FLOAT_EQ((stan::math::multi_gp_cholesky_lpdf<true>(y, L, w)),
+                  (stan::math::multi_gp_cholesky_log<true>(y, L, w)));
+  EXPECT_FLOAT_EQ((stan::math::multi_gp_cholesky_lpdf<false>(y, L, w)),
+                  (stan::math::multi_gp_cholesky_log<false>(y, L, w)));
+  EXPECT_FLOAT_EQ(
       (stan::math::multi_gp_cholesky_lpdf<true, double, double, double>(y, L,
                                                                         w)),
       (stan::math::multi_gp_cholesky_log<true, double, double, double>(y, L,
                                                                        w)));
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       (stan::math::multi_gp_cholesky_lpdf<false, double, double, double>(y, L,
                                                                          w)),
       (stan::math::multi_gp_cholesky_log<false, double, double, double>(y, L,
                                                                         w)));
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       (stan::math::multi_gp_cholesky_lpdf<double, double, double>(y, L, w)),
       (stan::math::multi_gp_cholesky_log<double, double, double>(y, L, w)));
 }

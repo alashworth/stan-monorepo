@@ -25,7 +25,7 @@ TEST(ProbDistributionsMultinomial, Multinomial) {
   ns.push_back(3);
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta << 0.2, 0.3, 0.5;
-  EXPECT_DOUBLE_EQ(-2.002481, stan::math::multinomial_log(ns, theta));
+  EXPECT_FLOAT_EQ(-2.0024805005437072, stan::math::multinomial_log(ns, theta));
 }
 TEST(ProbDistributionsMultinomial, Propto) {
   std::vector<int> ns;
@@ -34,7 +34,7 @@ TEST(ProbDistributionsMultinomial, Propto) {
   ns.push_back(3);
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta << 0.2, 0.3, 0.5;
-  EXPECT_DOUBLE_EQ(0.0, stan::math::multinomial_log<true>(ns, theta));
+  EXPECT_FLOAT_EQ(0.0, stan::math::multinomial_log<true>(ns, theta));
 }
 
 using stan::math::multinomial_log;
@@ -96,7 +96,7 @@ TEST(ProbDistributionsMultinomial, zeros) {
   ns2.push_back(0);
 
   double result2 = multinomial_log(ns2, theta);
-  EXPECT_DOUBLE_EQ(0.0, result2);
+  EXPECT_FLOAT_EQ(0.0, result2);
 }
 
 TEST(ProbDistributionsMultinomial, error_check) {

@@ -4,7 +4,7 @@ list(APPEND math_sources
 		../math.hpp
 		${CMAKE_CURRENT_BINARY_DIR}/version.hpp)
 
-# Base math configuration
+# Base math configuration. Subconfigurations inherit behavior from this target.
 message(STATUS "Configuring Stan math...")
 add_library(stan_math INTERFACE)
 add_library(Stan::Math ALIAS stan_math)
@@ -31,7 +31,7 @@ target_compile_features(stan_math INTERFACE
 message(STATUS "Configuring Stan math... [DONE]")
 
 # OpenCL
-if(OpenCL_FOUND)
+if (TARGET OpenCL::OpenCL AND TARGET Threads::Threads)
 	message(STATUS "Configuring Stan math with OpenCL support...")
 	message(VERBOSE "Stan math using OpenCL version: ${OpenCL_VERSION_STRING}")
 	message(VERBOSE "OpenCL library: ${OpenCL_LIBRARY}")
@@ -39,8 +39,9 @@ if(OpenCL_FOUND)
     add_library(Stan::MathOpenCl ALIAS stan_math_opencl)
 	set_property(TARGET stan_math_opencl PROPERTY EXPORT_NAME MathOpenCL)
 	target_link_libraries(stan_math_opencl INTERFACE
-            stan_math OpenCL::OpenCl)
+            stan_math OpenCL::OpenCL Threads::Threads)
 	target_compile_definitions(stan_math_opencl INTERFACE
+            STAN_THREADS
 			STAN_OPENCL
 			OPENCL_DEVICE_ID=${STAN_OPENCL_DEVICE_ID}
 			OPENCL_PLATFORM_ID=${STAN_OPENCL_PLATFORM_ID}

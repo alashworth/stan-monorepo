@@ -7,8 +7,8 @@ TEST(MetaTraits, ScalarSeqViewDouble) {
 
   double d = 10;
   scalar_seq_view<double> sv(d);
-  EXPECT_DOUBLE_EQ(d, sv[0]);
-  EXPECT_DOUBLE_EQ(d, sv[12]);
+  EXPECT_FLOAT_EQ(d, sv[0]);
+  EXPECT_FLOAT_EQ(d, sv[12]);
 
   EXPECT_EQ(1, sv.size());
 }

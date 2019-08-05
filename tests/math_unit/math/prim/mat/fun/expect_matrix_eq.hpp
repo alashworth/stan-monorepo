@@ -11,7 +11,7 @@ static inline void expect_matrix_eq(
   EXPECT_EQ(a.cols(), b.cols());
   for (int i = 0; i < a.rows(); ++i)
     for (int j = 0; j < a.cols(); ++j)
-      EXPECT_DOUBLE_EQ(a(i, j), b(i, j));
+      EXPECT_FLOAT_EQ(a(i, j), b(i, j));
 }
 
 #endif

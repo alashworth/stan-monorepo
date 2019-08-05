@@ -7,7 +7,7 @@
 TEST(MathFunctions, owens_t) {
   double a = 1.0;
   double b = 2.0;
-  EXPECT_DOUBLE_EQ(stan::math::owens_t(a, b), boost::math::owens_t(a, b));
+  EXPECT_FLOAT_EQ(stan::math::owens_t(a, b), boost::math::owens_t(a, b));
 }
 
 TEST(MathFunctions, owens_t_nan) {

@@ -6,10 +6,10 @@
 
 TEST(MathFunctions, tgamma) {
   using stan::math::tgamma;
-  EXPECT_DOUBLE_EQ(1.772453850905516, tgamma(0.5));
-  EXPECT_DOUBLE_EQ(1, tgamma(1));
-  EXPECT_DOUBLE_EQ(2.423965479935368, tgamma(3.2));
-  EXPECT_DOUBLE_EQ(6402373705728000, tgamma(19));
+  EXPECT_FLOAT_EQ(1.772453850905516, tgamma(0.5));
+  EXPECT_FLOAT_EQ(1, tgamma(1));
+  EXPECT_FLOAT_EQ(2.423965479935368, tgamma(3.2));
+  EXPECT_FLOAT_EQ(6402373705728000, tgamma(19));
 }
 
 TEST(MathFunctions, tgammaStanMath) {

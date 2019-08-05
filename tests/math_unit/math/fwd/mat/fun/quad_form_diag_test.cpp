@@ -22,14 +22,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_fd_vector_fd) {
   bd(1).d_ = 1.0;
 
   matrix_fd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(10400, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1330, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(1440, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(200, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(10400, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(1330, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(1440, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(200, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_fd_row_vector_fd) {
@@ -51,14 +51,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_fd_row_vector_fd) {
   bd(1).d_ = 1.0;
 
   matrix_fd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(10400, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1330, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(1440, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(200, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(10400, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(1330, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(1440, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(200, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_fd_vector_fd_exception) {
@@ -107,14 +107,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_d_vector_fd) {
   bd(1).d_ = 1.0;
 
   matrix_fd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(400, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(330, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(440, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(400, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(330, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(440, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_d_row_vector_fd) {
@@ -133,14 +133,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_d_row_vector_fd) {
   bd(1).d_ = 1.0;
 
   matrix_fd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(400, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(330, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(440, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(400, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(330, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(440, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_d_vector_fd_exception) {
@@ -191,14 +191,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_fd_vector_d) {
   ad(1, 1).d_ = 1.0;
 
   matrix_fd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(10000, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1000, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(1000, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(10000, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(1000, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(1000, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_fd_row_vector_d) {
@@ -218,14 +218,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_fd_row_vector_d) {
   ad(1, 1).d_ = 1.0;
 
   matrix_fd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_);
-  EXPECT_DOUBLE_EQ(10000, resd(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1000, resd(0, 1).d_);
-  EXPECT_DOUBLE_EQ(1000, resd(1, 0).d_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_);
+  EXPECT_FLOAT_EQ(10000, resd(0, 0).d_);
+  EXPECT_FLOAT_EQ(1000, resd(0, 1).d_);
+  EXPECT_FLOAT_EQ(1000, resd(1, 0).d_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_fd_vector_d_exception) {
@@ -278,14 +278,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_vector_ffd) {
   bd(1).d_ = 1.0;
 
   matrix_ffd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(10400, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(1330, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(1440, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(200, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(10400, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(1330, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(1440, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(200, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_row_vector_ffd) {
@@ -307,14 +307,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_row_vector_ffd) {
   bd(1).d_ = 1.0;
 
   matrix_ffd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(10400, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(1330, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(1440, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(200, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(10400, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(1330, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(1440, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(200, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_vector_ffd_exception) {
@@ -363,14 +363,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_d_vector_ffd) {
   bd(1).d_ = 1.0;
 
   matrix_ffd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(400, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(330, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(440, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(400, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(330, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(440, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_d_row_vector_ffd) {
@@ -389,14 +389,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_d_row_vector_ffd) {
   bd(1).d_ = 1.0;
 
   matrix_ffd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(400, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(330, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(440, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(400, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(330, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(440, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_d_vector_ffd_exception) {
@@ -447,14 +447,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_vector_d) {
   ad(1, 1).d_ = 1.0;
 
   matrix_ffd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(10000, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(1000, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(1000, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(10000, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(1000, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(1000, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_row_vector_d) {
@@ -474,14 +474,14 @@ TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_row_vector_d) {
   ad(1, 1).d_ = 1.0;
 
   matrix_ffd resd = quad_form_diag(ad, bd);
-  EXPECT_DOUBLE_EQ(20000, resd(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(3000, resd(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(4000, resd(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(500, resd(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(10000, resd(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(1000, resd(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(1000, resd(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(100, resd(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(20000, resd(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(3000, resd(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(4000, resd(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(500, resd(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(10000, resd(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(1000, resd(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(1000, resd(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(100, resd(1, 1).d_.val_);
 }
 
 TEST(AgradFwdMatrixQuadFormDiag, mat_ffd_vector_d_exception) {

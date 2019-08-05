@@ -11,12 +11,12 @@ TEST(AgradRev, log_sum_exp_vector) {
   x.push_back(2.0);
 
   AVAR f = log_sum_exp(x);
-  EXPECT_DOUBLE_EQ(std::log(std::exp(5) + std::exp(2)), f.val());
+  EXPECT_FLOAT_EQ(std::log(std::exp(5) + std::exp(2)), f.val());
 
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(std::exp(5.0) / (std::exp(5.0) + std::exp(2.0)), grad_f[0]);
-  EXPECT_DOUBLE_EQ(std::exp(2.0) / (std::exp(5.0) + std::exp(2.0)), grad_f[1]);
+  EXPECT_FLOAT_EQ(std::exp(5.0) / (std::exp(5.0) + std::exp(2.0)), grad_f[0]);
+  EXPECT_FLOAT_EQ(std::exp(2.0) / (std::exp(5.0) + std::exp(2.0)), grad_f[1]);
 
   // longer test
   x.clear();
@@ -28,29 +28,28 @@ TEST(AgradRev, log_sum_exp_vector) {
   f = log_sum_exp(x);
   double expected_log_sum_exp = std::log(std::exp(1) + std::exp(2) + std::exp(3)
                                          + std::exp(4) + std::exp(5));
-  EXPECT_DOUBLE_EQ(expected_log_sum_exp, f.val());
+  EXPECT_FLOAT_EQ(expected_log_sum_exp, f.val());
 
   grad_f.clear();
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(std::exp(1.0) / exp(expected_log_sum_exp), grad_f[0]);
-  EXPECT_DOUBLE_EQ(std::exp(2.0) / exp(expected_log_sum_exp), grad_f[1]);
-  EXPECT_DOUBLE_EQ(std::exp(3.0) / exp(expected_log_sum_exp), grad_f[2]);
-  EXPECT_DOUBLE_EQ(std::exp(4.0) / exp(expected_log_sum_exp), grad_f[3]);
-  EXPECT_DOUBLE_EQ(std::exp(5.0) / exp(expected_log_sum_exp), grad_f[4]);
+  EXPECT_FLOAT_EQ(std::exp(1.0) / exp(expected_log_sum_exp), grad_f[0]);
+  EXPECT_FLOAT_EQ(std::exp(2.0) / exp(expected_log_sum_exp), grad_f[1]);
+  EXPECT_FLOAT_EQ(std::exp(3.0) / exp(expected_log_sum_exp), grad_f[2]);
+  EXPECT_FLOAT_EQ(std::exp(4.0) / exp(expected_log_sum_exp), grad_f[3]);
+  EXPECT_FLOAT_EQ(std::exp(5.0) / exp(expected_log_sum_exp), grad_f[4]);
 
   // underflow example
   x.clear();
   x.push_back(1000.0);
   x.push_back(10.0);
   f = log_sum_exp(x);
-  EXPECT_DOUBLE_EQ(std::log(std::exp(0.0) + std::exp(-990.0)) + 1000.0,
-                   f.val());
+  EXPECT_FLOAT_EQ(std::log(std::exp(0.0) + std::exp(-990.0)) + 1000.0, f.val());
 
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       std::exp(1000.0 - (std::log(std::exp(0.0) + std::exp(-999.0)) + 1000)),
       grad_f[0]);
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       std::exp(10.0 - (std::log(std::exp(0.0) + std::exp(-999.0)) + 1000)),
       grad_f[1]);
 
@@ -66,14 +65,14 @@ TEST(AgradRev, log_sum_exp_vector) {
       = std::log(std::exp(0.0) + std::exp(-100) + std::exp(-890.0)
                  + std::exp(-900.0) + std::exp(-1000.0))
         + 900.0;
-  EXPECT_DOUBLE_EQ(expected_log_sum_exp, f.val());
+  EXPECT_FLOAT_EQ(expected_log_sum_exp, f.val());
 
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(std::exp(800.0 - expected_log_sum_exp), grad_f[0]);
-  EXPECT_DOUBLE_EQ(std::exp(900.0 - expected_log_sum_exp), grad_f[1]);
-  EXPECT_DOUBLE_EQ(std::exp(10.0 - expected_log_sum_exp), grad_f[2]);
-  EXPECT_DOUBLE_EQ(std::exp(0.0 - expected_log_sum_exp), grad_f[3]);
-  EXPECT_DOUBLE_EQ(std::exp(-100.0 - expected_log_sum_exp), grad_f[4]);
+  EXPECT_FLOAT_EQ(std::exp(800.0 - expected_log_sum_exp), grad_f[0]);
+  EXPECT_FLOAT_EQ(std::exp(900.0 - expected_log_sum_exp), grad_f[1]);
+  EXPECT_FLOAT_EQ(std::exp(10.0 - expected_log_sum_exp), grad_f[2]);
+  EXPECT_FLOAT_EQ(std::exp(0.0 - expected_log_sum_exp), grad_f[3]);
+  EXPECT_FLOAT_EQ(std::exp(-100.0 - expected_log_sum_exp), grad_f[4]);
 }
 
 TEST(AgradRev, log_sum_exp_vec_1) {
@@ -82,11 +81,11 @@ TEST(AgradRev, log_sum_exp_vec_1) {
   AVEC as = createAVEC(a);
   AVEC x = createAVEC(a);
   AVAR f = log_sum_exp(as);
-  EXPECT_DOUBLE_EQ(5.0, f.val());
+  EXPECT_FLOAT_EQ(5.0, f.val());
   VEC g;
   f.grad(x, g);
   EXPECT_EQ(1U, g.size());
-  EXPECT_DOUBLE_EQ(1.0, g[0]);
+  EXPECT_FLOAT_EQ(1.0, g[0]);
 }
 
 TEST(AgradRev, log_sum_exp_vec_2) {
@@ -96,7 +95,7 @@ TEST(AgradRev, log_sum_exp_vec_2) {
   AVEC as = createAVEC(a, b);
   AVEC x = createAVEC(a, b);
   AVAR f = log_sum_exp(as);
-  EXPECT_DOUBLE_EQ(log(exp(5.0) + exp(-7.0)), f.val());
+  EXPECT_FLOAT_EQ(log(exp(5.0) + exp(-7.0)), f.val());
   VEC g;
   f.grad(x, g);
 
@@ -110,11 +109,11 @@ TEST(AgradRev, log_sum_exp_vec_2) {
   VEC g2;
   f2.grad(x2, g2);
 
-  EXPECT_DOUBLE_EQ(f2.val(), f_val);
+  EXPECT_FLOAT_EQ(f2.val(), f_val);
   EXPECT_EQ(2U, g.size());
   EXPECT_EQ(2U, g2.size());
-  EXPECT_DOUBLE_EQ(g[0], g2[0]);
-  EXPECT_DOUBLE_EQ(g[1], g2[1]);
+  EXPECT_FLOAT_EQ(g[0], g2[0]);
+  EXPECT_FLOAT_EQ(g[1], g2[1]);
 }
 
 TEST(AgradRev, log_sum_exp_vec_3) {
@@ -125,7 +124,7 @@ TEST(AgradRev, log_sum_exp_vec_3) {
   AVEC as = createAVEC(a, b, c);
   AVEC x = createAVEC(a, b, c);
   AVAR f = log_sum_exp(as);
-  EXPECT_DOUBLE_EQ(log(exp(5.0) + exp(-7.0) + exp(2.3)), f.val());
+  EXPECT_FLOAT_EQ(log(exp(5.0) + exp(-7.0) + exp(2.3)), f.val());
   VEC g;
   f.grad(x, g);
 
@@ -140,12 +139,12 @@ TEST(AgradRev, log_sum_exp_vec_3) {
   VEC g2;
   f2.grad(x2, g2);
 
-  EXPECT_DOUBLE_EQ(f2.val(), f_val);
+  EXPECT_FLOAT_EQ(f2.val(), f_val);
   EXPECT_EQ(3U, g.size());
   EXPECT_EQ(3U, g2.size());
-  EXPECT_DOUBLE_EQ(g[0], g2[0]);
-  EXPECT_DOUBLE_EQ(g[1], g2[1]);
-  EXPECT_DOUBLE_EQ(g[2], g2[2]);
+  EXPECT_FLOAT_EQ(g[0], g2[0]);
+  EXPECT_FLOAT_EQ(g[1], g2[1]);
+  EXPECT_FLOAT_EQ(g[2], g2[2]);
 }
 
 namespace {

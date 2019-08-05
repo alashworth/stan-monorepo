@@ -8,17 +8,17 @@ TEST(AgradRev, falling_factorial_var_int) {
   int a(2);
   AVAR b(4.0);
   AVAR f = stan::math::falling_factorial(b, a);
-  EXPECT_DOUBLE_EQ(12, f.val());
+  EXPECT_FLOAT_EQ(12, f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(0, g[0]);
-  EXPECT_DOUBLE_EQ((digamma(5) - digamma(3)) * 12.0, g[1]);
+  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_FLOAT_EQ((digamma(5) - digamma(3)) * 12.0, g[1]);
 
   double eps = 1e-6;
-  EXPECT_DOUBLE_EQ((stan::math::falling_factorial(4.0 + eps, 2)
-                    - stan::math::falling_factorial(4.0 - eps, 2))
+  EXPECT_FLOAT_EQ((stan::math::falling_factorial(4.0 + eps, 2)
+                   - stan::math::falling_factorial(4.0 - eps, 2))
                       / (2 * eps),
                   g[1]);
 }

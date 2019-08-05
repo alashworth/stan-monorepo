@@ -21,10 +21,10 @@ TEST(ProbDistributionsPoissonLogGLM, glm_matches_poisson_log_doubles) {
   Matrix<double, Dynamic, 1> alphavec = alpha * Matrix<double, 3, 1>::Ones();
   Matrix<double, Dynamic, 1> theta(3, 1);
   theta = x * beta + alphavec;
-  EXPECT_DOUBLE_EQ((stan::math::poisson_log_lpmf(y, theta)),
-                   (stan::math::poisson_log_glm_lpmf(y, x, alpha, beta)));
-  EXPECT_DOUBLE_EQ((stan::math::poisson_log_lpmf<true>(y, theta)),
-                   (stan::math::poisson_log_glm_lpmf<true>(y, x, alpha, beta)));
+  EXPECT_FLOAT_EQ((stan::math::poisson_log_lpmf(y, theta)),
+                  (stan::math::poisson_log_glm_lpmf(y, x, alpha, beta)));
+  EXPECT_FLOAT_EQ((stan::math::poisson_log_lpmf<true>(y, theta)),
+                  (stan::math::poisson_log_glm_lpmf<true>(y, x, alpha, beta)));
 }
 //  We check that the values of the new regression match those of one built
 //  from existing primitives.
@@ -43,9 +43,9 @@ TEST(ProbDistributionsPoissonLogGLM, glm_matches_poisson_log_doubles_rand) {
     Matrix<double, Dynamic, 1> alphavec = alpha * Matrix<double, 3, 1>::Ones();
     Matrix<double, Dynamic, 1> theta(3, 1);
     theta = x * beta + alphavec;
-    EXPECT_DOUBLE_EQ((stan::math::poisson_log_lpmf(y, theta)),
-                     (stan::math::poisson_log_glm_lpmf(y, x, alpha, beta)));
-    EXPECT_DOUBLE_EQ(
+    EXPECT_FLOAT_EQ((stan::math::poisson_log_lpmf(y, theta)),
+                    (stan::math::poisson_log_glm_lpmf(y, x, alpha, beta)));
+    EXPECT_FLOAT_EQ(
         (stan::math::poisson_log_lpmf<true>(y, theta)),
         (stan::math::poisson_log_glm_lpmf<true>(y, x, alpha, beta)));
   }
@@ -88,12 +88,12 @@ TEST(ProbDistributionsPoissonLogGLM, glm_matches_poisson_log_vars) {
   var alpha2 = 0.3;
   var lp2 = stan::math::poisson_log_glm_lpmf(y2, x2, alpha2, beta2);
   lp2.grad();
-  EXPECT_DOUBLE_EQ(lp_val, lp2.val());
-  EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
+  EXPECT_FLOAT_EQ(lp_val, lp2.val());
+  EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
   for (size_t i = 0; i < 2; i++) {
-    EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
+    EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
+      EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
     }
   }
 }
@@ -137,12 +137,12 @@ TEST(ProbDistributionsPoissonLogGLM, glm_matches_poisson_log_vars_rand) {
     var alpha2 = alphareal[0];
     var lp2 = stan::math::poisson_log_glm_lpmf(y, x2, alpha2, beta2);
     lp2.grad();
-    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
-    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
+    EXPECT_FLOAT_EQ(lp_val, lp2.val());
+    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
       for (size_t j = 0; j < 3; j++) {
-        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
   }
@@ -185,11 +185,11 @@ TEST(ProbDistributionsPoissonLogGLM,
     var alpha2 = alphareal[0];
     var lp2 = stan::math::poisson_log_glm_lpmf(y, x2, alpha2, beta2);
     lp2.grad();
-    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
-    EXPECT_DOUBLE_EQ(beta_adj, beta2.adj());
-    EXPECT_DOUBLE_EQ(alpha_adj, alpha2.adj());
+    EXPECT_FLOAT_EQ(lp_val, lp2.val());
+    EXPECT_FLOAT_EQ(beta_adj, beta2.adj());
+    EXPECT_FLOAT_EQ(alpha_adj, alpha2.adj());
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(x_adj(j, 0), x2(j, 0).adj());
+      EXPECT_FLOAT_EQ(x_adj(j, 0), x2(j, 0).adj());
     }
   }
 }
@@ -241,15 +241,15 @@ TEST(ProbDistributionsPoissonLogGLM, glm_matches_poisson_varying_intercept) {
     var lp2 = stan::math::poisson_log_glm_lpmf(y, x2, alpha2, beta2);
     lp2.grad();
 
-    EXPECT_DOUBLE_EQ(lp_val, lp2.val());
+    EXPECT_FLOAT_EQ(lp_val, lp2.val());
     for (size_t i = 0; i < 2; i++) {
-      EXPECT_DOUBLE_EQ(beta_adj[i], beta2[i].adj());
+      EXPECT_FLOAT_EQ(beta_adj[i], beta2[i].adj());
       for (size_t j = 0; j < 3; j++) {
-        EXPECT_DOUBLE_EQ(x_adj(j, i), x2(j, i).adj());
+        EXPECT_FLOAT_EQ(x_adj(j, i), x2(j, i).adj());
       }
     }
     for (size_t j = 0; j < 3; j++) {
-      EXPECT_DOUBLE_EQ(alpha_adj[j], alpha2[j].adj());
+      EXPECT_FLOAT_EQ(alpha_adj[j], alpha2[j].adj());
     }
   }
 }
@@ -293,7 +293,7 @@ TEST(ProbDistributionsPoissonLogGLM, glm_matches_poisson_log_interface_types) {
   value2 += stan::math::poisson_log_glm_lpmf(vi, mv, evv, evv).val();
   value2 += stan::math::poisson_log_glm_lpmf(vi, mv, rvv, rvv).val();
 
-  EXPECT_DOUBLE_EQ(value, value2);
+  EXPECT_FLOAT_EQ(value, value2);
 }
 
 //  We check that the right errors are thrown.

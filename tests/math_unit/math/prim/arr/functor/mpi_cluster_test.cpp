@@ -95,7 +95,7 @@ TEST(mpi_cluster, communication_apply) {
 
   boost::mpi::scatter(world, msgs, root_value, 0);
 
-  EXPECT_DOUBLE_EQ(msgs[0], root_value);
+  EXPECT_FLOAT_EQ(msgs[0], root_value);
 
   double root_secret = common * root_value;
 
@@ -104,7 +104,7 @@ TEST(mpi_cluster, communication_apply) {
   boost::mpi::gather(world, root_secret, secrets, 0);
 
   for (std::size_t i = 0; i < world_size; ++i)
-    EXPECT_DOUBLE_EQ(common * msgs[i], secrets[i]);
+    EXPECT_FLOAT_EQ(common * msgs[i], secrets[i]);
 }
 
 // example using command which is serialized (which adds extra MPI
@@ -164,7 +164,7 @@ TEST(mpi_cluster, communication_command) {
 
   boost::mpi::scatter(world, msgs, root_value, 0);
 
-  EXPECT_DOUBLE_EQ(msgs[0], root_value);
+  EXPECT_FLOAT_EQ(msgs[0], root_value);
 
   double root_secret = common * root_value;
 
@@ -173,7 +173,7 @@ TEST(mpi_cluster, communication_command) {
   boost::mpi::gather(world, root_secret, secrets, 0);
 
   for (std::size_t i = 0; i < world_size; ++i)
-    EXPECT_DOUBLE_EQ(common * msgs[i], secrets[i]);
+    EXPECT_FLOAT_EQ(common * msgs[i], secrets[i]);
 }
 
 #endif

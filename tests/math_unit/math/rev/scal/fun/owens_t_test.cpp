@@ -11,13 +11,13 @@ TEST(AgradRev, owens_t_vv) {
   var h = 1.0;
   var a = 2.0;
   var f = owens_t(h, a);
-  EXPECT_DOUBLE_EQ(owens_t(1.0, 2.0), f.val());
+  EXPECT_FLOAT_EQ(owens_t(1.0, 2.0), f.val());
 
   AVEC x = createAVEC(h, a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.0026128467, grad_f[1]);
-  EXPECT_DOUBLE_EQ(-0.1154804963, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.0026128467, grad_f[1]);
+  EXPECT_FLOAT_EQ(-0.1154804963, grad_f[0]);
 }
 TEST(AgradRev, owens_t_vd) {
   using boost::math::owens_t;
@@ -27,13 +27,13 @@ TEST(AgradRev, owens_t_vd) {
   AVAR h = 1.0;
   double a = 2.0;
   AVAR f = owens_t(h, a);
-  EXPECT_DOUBLE_EQ(owens_t(1.0, 2.0), f.val());
+  EXPECT_FLOAT_EQ(owens_t(1.0, 2.0), f.val());
 
   AVEC x = createAVEC(h, a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0, grad_f[1]);
-  EXPECT_DOUBLE_EQ(-0.1154804963, grad_f[0]);
+  EXPECT_FLOAT_EQ(0, grad_f[1]);
+  EXPECT_FLOAT_EQ(-0.1154804963, grad_f[0]);
 }
 TEST(AgradRev, owens_t_dv) {
   using boost::math::owens_t;
@@ -43,13 +43,13 @@ TEST(AgradRev, owens_t_dv) {
   double h = 1.0;
   AVAR a = 2.0;
   AVAR f = owens_t(h, a);
-  EXPECT_DOUBLE_EQ(owens_t(1.0, 2.0), f.val());
+  EXPECT_FLOAT_EQ(owens_t(1.0, 2.0), f.val());
 
   AVEC x = createAVEC(h, a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.0026128467, grad_f[1]);
-  EXPECT_DOUBLE_EQ(0, grad_f[0]);
+  EXPECT_FLOAT_EQ(0.0026128467, grad_f[1]);
+  EXPECT_FLOAT_EQ(0, grad_f[0]);
 }
 
 namespace {

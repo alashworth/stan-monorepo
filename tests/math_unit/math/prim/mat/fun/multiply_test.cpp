@@ -5,28 +5,28 @@ TEST(MathMatrix, multiply_c_v) {
   stan::math::vector_d v(3);
   v << 1, 2, 3;
   stan::math::vector_d result = stan::math::multiply(2.0, v);
-  EXPECT_DOUBLE_EQ(2.0, result(0));
-  EXPECT_DOUBLE_EQ(4.0, result(1));
-  EXPECT_DOUBLE_EQ(6.0, result(2));
+  EXPECT_FLOAT_EQ(2.0, result(0));
+  EXPECT_FLOAT_EQ(4.0, result(1));
+  EXPECT_FLOAT_EQ(6.0, result(2));
 }
 TEST(MathMatrix, multiply_c_rv) {
   stan::math::row_vector_d rv(3);
   rv << 1, 2, 3;
   stan::math::row_vector_d result = stan::math::multiply(2.0, rv);
-  EXPECT_DOUBLE_EQ(2.0, result(0));
-  EXPECT_DOUBLE_EQ(4.0, result(1));
-  EXPECT_DOUBLE_EQ(6.0, result(2));
+  EXPECT_FLOAT_EQ(2.0, result(0));
+  EXPECT_FLOAT_EQ(4.0, result(1));
+  EXPECT_FLOAT_EQ(6.0, result(2));
 }
 TEST(MathMatrix, multiply_c_m) {
   stan::math::matrix_d m(2, 3);
   m << 1, 2, 3, 4, 5, 6;
   stan::math::matrix_d result = stan::math::multiply(2.0, m);
-  EXPECT_DOUBLE_EQ(2.0, result(0, 0));
-  EXPECT_DOUBLE_EQ(4.0, result(0, 1));
-  EXPECT_DOUBLE_EQ(6.0, result(0, 2));
-  EXPECT_DOUBLE_EQ(8.0, result(1, 0));
-  EXPECT_DOUBLE_EQ(10.0, result(1, 1));
-  EXPECT_DOUBLE_EQ(12.0, result(1, 2));
+  EXPECT_FLOAT_EQ(2.0, result(0, 0));
+  EXPECT_FLOAT_EQ(4.0, result(0, 1));
+  EXPECT_FLOAT_EQ(6.0, result(0, 2));
+  EXPECT_FLOAT_EQ(8.0, result(1, 0));
+  EXPECT_FLOAT_EQ(10.0, result(1, 1));
+  EXPECT_FLOAT_EQ(12.0, result(1, 2));
 }
 
 TEST(MathMatrix, multiply_rv_v_exception) {

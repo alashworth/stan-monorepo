@@ -12,13 +12,13 @@ TEST(AgradRevMatrix, mv_squaredNorm) {
   AVEC x = createAVEC(a(0, 0), a(0, 1), a(1, 0), a(1, 1));
 
   AVAR s = a.squaredNorm();
-  EXPECT_DOUBLE_EQ(130.0, s.val());
+  EXPECT_FLOAT_EQ(130.0, s.val());
 
   VEC g = cgradvec(s, x);
-  EXPECT_DOUBLE_EQ(-2.0, g[0]);
-  EXPECT_DOUBLE_EQ(4.0, g[1]);
-  EXPECT_DOUBLE_EQ(10.0, g[2]);
-  EXPECT_DOUBLE_EQ(20.0, g[3]);
+  EXPECT_FLOAT_EQ(-2.0, g[0]);
+  EXPECT_FLOAT_EQ(4.0, g[1]);
+  EXPECT_FLOAT_EQ(10.0, g[2]);
+  EXPECT_FLOAT_EQ(20.0, g[3]);
 }
 TEST(AgradRevMatrix, mv_norm) {
   using stan::math::matrix_v;
@@ -29,12 +29,12 @@ TEST(AgradRevMatrix, mv_norm) {
   AVEC x = createAVEC(a(0, 0), a(1, 0));
 
   AVAR s = a.norm();
-  EXPECT_DOUBLE_EQ(5.0, s.val());
+  EXPECT_FLOAT_EQ(5.0, s.val());
 
   // (see hypot in special_functions_test)
   VEC g = cgradvec(s, x);
-  EXPECT_DOUBLE_EQ(-3.0 / 5.0, g[0]);
-  EXPECT_DOUBLE_EQ(4.0 / 5.0, g[1]);
+  EXPECT_FLOAT_EQ(-3.0 / 5.0, g[0]);
+  EXPECT_FLOAT_EQ(4.0 / 5.0, g[1]);
 }
 TEST(AgradRevMatrix, mv_lp_norm) {
   using stan::math::matrix_v;
@@ -45,14 +45,14 @@ TEST(AgradRevMatrix, mv_lp_norm) {
   AVEC x = createAVEC(a(0, 0), a(0, 1), a(1, 0), a(1, 1));
 
   AVAR s = a.lpNorm<1>();
-  EXPECT_DOUBLE_EQ(8.0, s.val());
+  EXPECT_FLOAT_EQ(8.0, s.val());
 
   VEC g = cgradvec(s, x);
-  EXPECT_DOUBLE_EQ(-1.0, g[0]);
-  EXPECT_DOUBLE_EQ(1.0, g[1]);
-  EXPECT_DOUBLE_EQ(1.0, g[2]);
+  EXPECT_FLOAT_EQ(-1.0, g[0]);
+  EXPECT_FLOAT_EQ(1.0, g[1]);
+  EXPECT_FLOAT_EQ(1.0, g[2]);
   // ? depends on impl here, could be -1 or 1
-  EXPECT_DOUBLE_EQ(0.0, g[3]);
+  EXPECT_FLOAT_EQ(0.0, g[3]);
 }
 TEST(AgradRevMatrix, mv_lp_norm_inf) {
   using stan::math::matrix_v;
@@ -63,13 +63,13 @@ TEST(AgradRevMatrix, mv_lp_norm_inf) {
   AVEC x = createAVEC(a(0, 0), a(0, 1), a(1, 0), a(1, 1));
 
   AVAR s = a.lpNorm<Eigen::Infinity>();
-  EXPECT_DOUBLE_EQ(5.0, s.val());
+  EXPECT_FLOAT_EQ(5.0, s.val());
 
   VEC g = cgradvec(s, x);
-  EXPECT_DOUBLE_EQ(0.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
-  EXPECT_DOUBLE_EQ(-1.0, g[2]);
-  EXPECT_DOUBLE_EQ(0.0, g[3]);
+  EXPECT_FLOAT_EQ(0.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(-1.0, g[2]);
+  EXPECT_FLOAT_EQ(0.0, g[3]);
 }
 
 TEST(AgradRevMatrix, UserCase1_1) {

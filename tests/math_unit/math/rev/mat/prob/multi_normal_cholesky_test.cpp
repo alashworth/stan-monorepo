@@ -16,8 +16,8 @@ TEST(ProbDistributionsMultiNormalCholesky, MultiNormalVar) {
   Matrix<var, Dynamic, Dynamic> Sigma(3, 3);
   Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
   Matrix<var, Dynamic, Dynamic> L = Sigma.llt().matrixL();
-  EXPECT_DOUBLE_EQ(-11.73908,
-                   stan::math::multi_normal_cholesky_log(y, mu, L).val());
+  EXPECT_FLOAT_EQ(-11.73908,
+                  stan::math::multi_normal_cholesky_log(y, mu, L).val());
 }
 
 TEST(AgradRev, check_varis_on_stack_305) {

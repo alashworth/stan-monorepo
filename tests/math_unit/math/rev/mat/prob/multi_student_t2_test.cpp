@@ -344,29 +344,36 @@ void test_all() {
 }  // namespace
 
 TEST_F(agrad_distributions_multi_student_t, Propto) {
+  using stan::math::to_var;
   expect_propto(to_var(y), to_var(nu), to_var(mu), to_var(Sigma), to_var(y2),
                 to_var(nu), to_var(mu2), to_var(Sigma2),
                 "All vars: y, nu, mu, sigma");
 }
 TEST_F(agrad_distributions_multi_student_t, ProptoY) {
+  using stan::math::to_var;
   expect_propto(to_var(y), nu, mu, Sigma, to_var(y2), nu, mu, Sigma, "var: y");
 }
 TEST_F(agrad_distributions_multi_student_t, ProptoYMu) {
+  using stan::math::to_var;
   expect_propto(to_var(y), nu, to_var(mu), Sigma, to_var(y2), nu, to_var(mu2),
                 Sigma, "var: y and mu");
 }
 TEST_F(agrad_distributions_multi_student_t, ProptoYSigma) {
+  using stan::math::to_var;
   expect_propto(to_var(y), nu, mu, to_var(Sigma), to_var(y2), nu, mu,
                 to_var(Sigma2), "var: y and sigma");
 }
 TEST_F(agrad_distributions_multi_student_t, ProptoMu) {
+  using stan::math::to_var;
   expect_propto(y, nu, to_var(mu), Sigma, y, nu, to_var(mu2), Sigma, "var: mu");
 }
 TEST_F(agrad_distributions_multi_student_t, ProptoMuSigma) {
+  using stan::math::to_var;
   expect_propto(y, nu, to_var(mu), to_var(Sigma), y, nu, to_var(mu2),
                 to_var(Sigma2), "var: mu and sigma");
 }
 TEST_F(agrad_distributions_multi_student_t, ProptoSigma) {
+  using stan::math::to_var;
   expect_propto(y, nu, mu, to_var(Sigma), y, nu, mu, to_var(Sigma2),
                 "var: sigma");
 }
@@ -380,8 +387,8 @@ TEST(ProbDistributionsMultiStudentT, MultiStudentTVar) {
   mu << 1.0, -1.0, 3.0;
   Matrix<var, Dynamic, Dynamic> Sigma(3, 3);
   Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
-  EXPECT_DOUBLE_EQ(-10.213695,
-                   stan::math::multi_student_t_log(y, nu, mu, Sigma).val());
+  EXPECT_FLOAT_EQ(-10.213695,
+                  stan::math::multi_student_t_log(y, nu, mu, Sigma).val());
 }
 TEST(ProbDistributionsMultiStudentT, MultiStudentTGradientUnivariate) {
   using Eigen::VectorXd;
@@ -432,7 +439,7 @@ TEST(ProbDistributionsMultiStudentT, MultiStudentTGradientUnivariate) {
   double grad_diff = (multi_student_t_log(y_p, nu, mu, Sigma)
                       - multi_student_t_log(y_m, nu, mu, Sigma))
                      / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[0]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[0]);
 
   Matrix<double, Dynamic, 1> mu_m(1, 1);
   Matrix<double, Dynamic, 1> mu_p(1, 1);
@@ -441,7 +448,7 @@ TEST(ProbDistributionsMultiStudentT, MultiStudentTGradientUnivariate) {
   grad_diff = (multi_student_t_log(y, nu, mu_p, Sigma)
                - multi_student_t_log(y, nu, mu_m, Sigma))
               / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[1]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[1]);
 
   Matrix<double, Dynamic, Dynamic> Sigma_m(1, 1);
   Matrix<double, Dynamic, Dynamic> Sigma_p(1, 1);
@@ -450,14 +457,14 @@ TEST(ProbDistributionsMultiStudentT, MultiStudentTGradientUnivariate) {
   grad_diff = (multi_student_t_log(y, nu, mu, Sigma_p)
                - multi_student_t_log(y, nu, mu, Sigma_m))
               / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[2]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[2]);
 
   double nu_p(nu + epsilon);
   double nu_m(nu - epsilon);
   grad_diff = (multi_student_t_log(y, nu_p, mu, Sigma)
                - multi_student_t_log(y, nu_m, mu, Sigma))
               / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[3]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[3]);
 }
 
 TEST(MultiStudentT, TestGradFunctional) {

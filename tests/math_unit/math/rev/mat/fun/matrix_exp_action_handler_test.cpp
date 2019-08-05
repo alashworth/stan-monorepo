@@ -98,7 +98,7 @@ TEST(MathMatrix, matrix_exp_action_matrix) {
 
   for (int i = 0; i < N; ++i) {
     for (int j = 0; j < M; ++j) {
-      EXPECT_DOUBLE_EQ(res(i, j), expb(i, j));
+      EXPECT_FLOAT_EQ(res(i, j), expb(i, j));
     }
   }
 }

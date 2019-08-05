@@ -9,5 +9,5 @@
 TEST(AgradRevFunctionsPromoteScalar, Mismatch) {
   using stan::math::promote_scalar;
   using stan::math::var;
-  EXPECT_DOUBLE_EQ(2.3, promote_scalar<var>(2.3).val());
+  EXPECT_FLOAT_EQ(2.3, promote_scalar<var>(2.3).val());
 }

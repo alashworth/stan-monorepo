@@ -28,7 +28,7 @@ TEST(prob_transform, positive_ordered_jacobian_ad) {
 
   EXPECT_EQ(y.size(), yv.size());
   for (int i = 0; i < y.size(); ++i)
-    EXPECT_DOUBLE_EQ(y(i), yv(i).val());
+    EXPECT_FLOAT_EQ(y(i), yv(i).val());
 
   std::vector<var> yvec(3);
   for (unsigned int i = 0; i < 3; ++i)
@@ -43,7 +43,7 @@ TEST(prob_transform, positive_ordered_jacobian_ad) {
       J(m, n) = j[m][n];
 
   double log_abs_jacobian_det = log(fabs(determinant(J)));
-  EXPECT_DOUBLE_EQ(log_abs_jacobian_det, lp);
+  EXPECT_FLOAT_EQ(log_abs_jacobian_det, lp);
 }
 
 TEST(prob_transform, positive_ordered_constrain_length_zero_no_segfault) {
@@ -62,7 +62,7 @@ TEST(prob_transform, positive_ordered_constrain_length_one_no_segfault) {
 
   out.grad();
 
-  EXPECT_DOUBLE_EQ(xv(0).adj(), exp(xv(0).val()));
+  EXPECT_FLOAT_EQ(xv(0).adj(), exp(xv(0).val()));
 }
 
 TEST(prob_transform, positive_ordered_constrain_analytical_grads) {
@@ -73,10 +73,10 @@ TEST(prob_transform, positive_ordered_constrain_analytical_grads) {
 
   out.grad();
 
-  EXPECT_DOUBLE_EQ(xv(0).adj(), 4.0 * exp(xv(0).val()));
-  EXPECT_DOUBLE_EQ(xv(1).adj(), 3.0 * exp(xv(1).val()));
-  EXPECT_DOUBLE_EQ(xv(2).adj(), 2.0 * exp(xv(2).val()));
-  EXPECT_DOUBLE_EQ(xv(3).adj(), exp(xv(3).val()));
+  EXPECT_FLOAT_EQ(xv(0).adj(), 4.0 * exp(xv(0).val()));
+  EXPECT_FLOAT_EQ(xv(1).adj(), 3.0 * exp(xv(1).val()));
+  EXPECT_FLOAT_EQ(xv(2).adj(), 2.0 * exp(xv(2).val()));
+  EXPECT_FLOAT_EQ(xv(3).adj(), exp(xv(3).val()));
 }
 
 TEST(prob_transform, positive_ordered_constrain_analytical_grads_rng) {
@@ -95,7 +95,7 @@ TEST(prob_transform, positive_ordered_constrain_analytical_grads_rng) {
     out.grad();
 
     for (int j = 0; j < xv.size(); ++j) {
-      EXPECT_DOUBLE_EQ(xv(j).adj(), (xv.size() - j) * exp(xv(j).val()));
+      EXPECT_FLOAT_EQ(xv(j).adj(), (xv.size() - j) * exp(xv(j).val()));
     }
   }
 }

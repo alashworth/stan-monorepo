@@ -26,12 +26,12 @@ TEST(AgradFwdMatrixMdivideRightTriLow, fd__rowvector_fd_matrix_fd) {
 
   matrix_fd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_);
-  EXPECT_DOUBLE_EQ(5.0 / 3.0, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_);
+  EXPECT_FLOAT_EQ(5.0 / 3.0, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 2).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, fd__rowvector_matrix_fd) {
   using stan::math::matrix_fd;
@@ -54,12 +54,12 @@ TEST(AgradFwdMatrixMdivideRightTriLow, fd__rowvector_matrix_fd) {
 
   matrix_fd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_);
-  EXPECT_DOUBLE_EQ(11.0 / 9.0, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(5.0 / 90.0, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_);
+  EXPECT_FLOAT_EQ(11.0 / 9.0, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(5.0 / 90.0, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 2).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, fd__rowvector_fd_matrix) {
   using stan::math::matrix_d;
@@ -77,12 +77,12 @@ TEST(AgradFwdMatrixMdivideRightTriLow, fd__rowvector_fd_matrix) {
 
   matrix_fd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_);
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(3.0 / 9.0, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_);
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(3.0 / 9.0, output(0, 2).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, fd__matrix_fd_matrix_fd) {
   using stan::math::matrix_fd;
@@ -114,24 +114,24 @@ TEST(AgradFwdMatrixMdivideRightTriLow, fd__matrix_fd_matrix_fd) {
 
   matrix_fd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_);
-  EXPECT_DOUBLE_EQ(20.0 / 9.0, output(1, 0).val_);
-  EXPECT_DOUBLE_EQ(5.0 / 9.0, output(1, 1).val_);
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(1, 2).val_);
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(2, 0).val_);
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(2, 1).val_);
-  EXPECT_DOUBLE_EQ(1.5, output(2, 2).val_);
-  EXPECT_DOUBLE_EQ(15.0 / 9.0, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 2).d_);
-  EXPECT_DOUBLE_EQ(-14.0 / 3.0, output(1, 0).d_);
-  EXPECT_DOUBLE_EQ(-3.0 / 9.0, output(1, 1).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(1, 2).d_);
-  EXPECT_DOUBLE_EQ(-5.0 / 3.0, output(2, 0).d_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(2, 1).d_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(2, 2).d_);
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_);
+  EXPECT_FLOAT_EQ(20.0 / 9.0, output(1, 0).val_);
+  EXPECT_FLOAT_EQ(5.0 / 9.0, output(1, 1).val_);
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(1, 2).val_);
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(2, 0).val_);
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(2, 1).val_);
+  EXPECT_FLOAT_EQ(1.5, output(2, 2).val_);
+  EXPECT_FLOAT_EQ(15.0 / 9.0, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(-14.0 / 3.0, output(1, 0).d_);
+  EXPECT_FLOAT_EQ(-3.0 / 9.0, output(1, 1).d_);
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(1, 2).d_);
+  EXPECT_FLOAT_EQ(-5.0 / 3.0, output(2, 0).d_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(2, 1).d_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(2, 2).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, fd__matrix_fd_matrix) {
   using stan::math::matrix_d;
@@ -155,24 +155,24 @@ TEST(AgradFwdMatrixMdivideRightTriLow, fd__matrix_fd_matrix) {
 
   matrix_fd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_);
-  EXPECT_DOUBLE_EQ(20.0 / 9.0, output(1, 0).val_);
-  EXPECT_DOUBLE_EQ(5.0 / 9.0, output(1, 1).val_);
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(1, 2).val_);
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(2, 0).val_);
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(2, 1).val_);
-  EXPECT_DOUBLE_EQ(1.5, output(2, 2).val_);
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(2.0 / 6.0, output(0, 2).d_);
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(1, 0).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(1, 1).d_);
-  EXPECT_DOUBLE_EQ(3.0 / 9.0, output(1, 2).d_);
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(2, 0).d_);
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(2, 1).d_);
-  EXPECT_DOUBLE_EQ(2.0 / 6.0, output(2, 2).d_);
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_);
+  EXPECT_FLOAT_EQ(20.0 / 9.0, output(1, 0).val_);
+  EXPECT_FLOAT_EQ(5.0 / 9.0, output(1, 1).val_);
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(1, 2).val_);
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(2, 0).val_);
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(2, 1).val_);
+  EXPECT_FLOAT_EQ(1.5, output(2, 2).val_);
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(2.0 / 6.0, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(1, 0).d_);
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(1, 1).d_);
+  EXPECT_FLOAT_EQ(3.0 / 9.0, output(1, 2).d_);
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(2, 0).d_);
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(2, 1).d_);
+  EXPECT_FLOAT_EQ(2.0 / 6.0, output(2, 2).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, fd__matrix_matrix_fd) {
   using stan::math::matrix_d;
@@ -196,24 +196,24 @@ TEST(AgradFwdMatrixMdivideRightTriLow, fd__matrix_matrix_fd) {
 
   matrix_fd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_);
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_);
-  EXPECT_DOUBLE_EQ(20.0 / 9.0, output(1, 0).val_);
-  EXPECT_DOUBLE_EQ(5.0 / 9.0, output(1, 1).val_);
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(1, 2).val_);
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(2, 0).val_);
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(2, 1).val_);
-  EXPECT_DOUBLE_EQ(1.5, output(2, 2).val_);
-  EXPECT_DOUBLE_EQ(11.0 / 9.0, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(5.0 / 90.0, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 2).d_);
-  EXPECT_DOUBLE_EQ(-46.0 / 9.0, output(1, 0).d_);
-  EXPECT_DOUBLE_EQ(-4.0 / 9.0, output(1, 1).d_);
-  EXPECT_DOUBLE_EQ(-2.0 / 9.0, output(1, 2).d_);
-  EXPECT_DOUBLE_EQ(-19.0 / 9.0, output(2, 0).d_);
-  EXPECT_DOUBLE_EQ(-25.0 / 90.0, output(2, 1).d_);
-  EXPECT_DOUBLE_EQ(-3.0 / 6.0, output(2, 2).d_);
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_);
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_);
+  EXPECT_FLOAT_EQ(20.0 / 9.0, output(1, 0).val_);
+  EXPECT_FLOAT_EQ(5.0 / 9.0, output(1, 1).val_);
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(1, 2).val_);
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(2, 0).val_);
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(2, 1).val_);
+  EXPECT_FLOAT_EQ(1.5, output(2, 2).val_);
+  EXPECT_FLOAT_EQ(11.0 / 9.0, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(5.0 / 90.0, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(-46.0 / 9.0, output(1, 0).d_);
+  EXPECT_FLOAT_EQ(-4.0 / 9.0, output(1, 1).d_);
+  EXPECT_FLOAT_EQ(-2.0 / 9.0, output(1, 2).d_);
+  EXPECT_FLOAT_EQ(-19.0 / 9.0, output(2, 0).d_);
+  EXPECT_FLOAT_EQ(-25.0 / 90.0, output(2, 1).d_);
+  EXPECT_FLOAT_EQ(-3.0 / 6.0, output(2, 2).d_);
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, fd__rowvector_matrix_exceptions) {
   using stan::math::matrix_d;
@@ -287,12 +287,12 @@ TEST(AgradFwdMatrixMdivideRightTriLow, ffd__rowvector_ffd_matrix_ffd) {
 
   matrix_ffd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(5.0 / 3.0, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(5.0 / 3.0, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 2).d_.val());
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, ffd__rowvector_matrix_ffd) {
   using stan::math::matrix_ffd;
@@ -323,12 +323,12 @@ TEST(AgradFwdMatrixMdivideRightTriLow, ffd__rowvector_matrix_ffd) {
 
   matrix_ffd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(11.0 / 9.0, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(5.0 / 90.0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(11.0 / 9.0, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(5.0 / 90.0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 2).d_.val());
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, ffd__rowvector_ffd_matrix) {
   using stan::math::matrix_d;
@@ -352,12 +352,12 @@ TEST(AgradFwdMatrixMdivideRightTriLow, ffd__rowvector_ffd_matrix) {
 
   matrix_ffd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(3.0 / 9.0, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(3.0 / 9.0, output(0, 2).d_.val());
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, ffd__matrix_ffd_matrix_ffd) {
   using stan::math::matrix_ffd;
@@ -394,24 +394,24 @@ TEST(AgradFwdMatrixMdivideRightTriLow, ffd__matrix_ffd_matrix_ffd) {
 
   matrix_ffd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(20.0 / 9.0, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(5.0 / 9.0, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(1, 2).val_.val());
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(2, 0).val_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(2, 1).val_.val());
-  EXPECT_DOUBLE_EQ(1.5, output(2, 2).val_.val());
-  EXPECT_DOUBLE_EQ(15.0 / 9.0, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(-14.0 / 3.0, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-3.0 / 9.0, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(-5.0 / 3.0, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(20.0 / 9.0, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(5.0 / 9.0, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(1, 2).val_.val());
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(2, 0).val_.val());
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(2, 1).val_.val());
+  EXPECT_FLOAT_EQ(1.5, output(2, 2).val_.val());
+  EXPECT_FLOAT_EQ(15.0 / 9.0, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(-14.0 / 3.0, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(-3.0 / 9.0, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(-5.0 / 3.0, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(2, 2).d_.val());
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, ffd__matrix_ffd_matrix) {
   using stan::math::matrix_d;
@@ -449,24 +449,24 @@ TEST(AgradFwdMatrixMdivideRightTriLow, ffd__matrix_ffd_matrix) {
 
   matrix_ffd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(20.0 / 9.0, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(5.0 / 9.0, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(1, 2).val_.val());
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(2, 0).val_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(2, 1).val_.val());
-  EXPECT_DOUBLE_EQ(1.5, output(2, 2).val_.val());
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(2.0 / 6.0, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(3.0 / 9.0, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(4.0 / 9.0, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 9.0, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(2.0 / 6.0, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(20.0 / 9.0, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(5.0 / 9.0, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(1, 2).val_.val());
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(2, 0).val_.val());
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(2, 1).val_.val());
+  EXPECT_FLOAT_EQ(1.5, output(2, 2).val_.val());
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(2.0 / 6.0, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(3.0 / 9.0, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(4.0 / 9.0, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0 / 9.0, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(2.0 / 6.0, output(2, 2).d_.val());
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, ffd__matrix_matrix_ffd) {
   using stan::math::matrix_d;
@@ -498,24 +498,24 @@ TEST(AgradFwdMatrixMdivideRightTriLow, ffd__matrix_matrix_ffd) {
 
   matrix_ffd output = stan::math::mdivide_right_tri_low(Z, Y);
 
-  EXPECT_DOUBLE_EQ(-2.0 / 3.0, output(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(0.5, output(0, 2).val_.val());
-  EXPECT_DOUBLE_EQ(20.0 / 9.0, output(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(5.0 / 9.0, output(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(1, 2).val_.val());
-  EXPECT_DOUBLE_EQ(6.0 / 9.0, output(2, 0).val_.val());
-  EXPECT_DOUBLE_EQ(1.0 / 6.0, output(2, 1).val_.val());
-  EXPECT_DOUBLE_EQ(1.5, output(2, 2).val_.val());
-  EXPECT_DOUBLE_EQ(11.0 / 9.0, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(5.0 / 90.0, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-1.0 / 6.0, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(-46.0 / 9.0, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-4.0 / 9.0, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-2.0 / 9.0, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(-19.0 / 9.0, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-25.0 / 90.0, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(-3.0 / 6.0, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(-2.0 / 3.0, output(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(0.5, output(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(20.0 / 9.0, output(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(5.0 / 9.0, output(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(1, 2).val_.val());
+  EXPECT_FLOAT_EQ(6.0 / 9.0, output(2, 0).val_.val());
+  EXPECT_FLOAT_EQ(1.0 / 6.0, output(2, 1).val_.val());
+  EXPECT_FLOAT_EQ(1.5, output(2, 2).val_.val());
+  EXPECT_FLOAT_EQ(11.0 / 9.0, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(5.0 / 90.0, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(-1.0 / 6.0, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(-46.0 / 9.0, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(-4.0 / 9.0, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(-2.0 / 9.0, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(-19.0 / 9.0, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(-25.0 / 90.0, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(-3.0 / 6.0, output(2, 2).d_.val());
 }
 TEST(AgradFwdMatrixMdivideRightTriLow, ffd__rowvector_matrix_exceptions) {
   using stan::math::matrix_d;

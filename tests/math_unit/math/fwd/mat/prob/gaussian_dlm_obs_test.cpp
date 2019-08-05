@@ -33,8 +33,8 @@ TEST(ProbDistributionsGaussianDLM, LoglikeUU_fvar_double) {
   double ll_expected = -16.2484978375184;
 
   fvar<double> lp_ref = gaussian_dlm_obs_log(y, FF, GG, V, W, m0, C0);
-  EXPECT_DOUBLE_EQ(ll_expected, lp_ref.val_);
-  EXPECT_DOUBLE_EQ(-3.8427677, lp_ref.d_);
+  EXPECT_FLOAT_EQ(ll_expected, lp_ref.val_);
+  EXPECT_FLOAT_EQ(-3.8427677, lp_ref.d_);
 }
 
 TEST(ProbDistributionsGaussianDLM, LoglikeMM_fvar_double) {
@@ -128,8 +128,8 @@ TEST(ProbDistributionsGaussianDLM, LoglikeUU_fvar_fvar_double) {
   double ll_expected = -16.2484978375184;
 
   fvar<fvar<double> > lp_ref = gaussian_dlm_obs_log(y, FF, GG, V, W, m0, C0);
-  EXPECT_DOUBLE_EQ(ll_expected, lp_ref.val_.val_);
-  EXPECT_DOUBLE_EQ(-3.8427677, lp_ref.d_.val_);
+  EXPECT_FLOAT_EQ(ll_expected, lp_ref.val_.val_);
+  EXPECT_FLOAT_EQ(-3.8427677, lp_ref.d_.val_);
 }
 
 TEST(ProbDistributionsGaussianDLM, LoglikeMM_fvar_fvar_double) {

@@ -133,10 +133,10 @@ TEST_F(StanMathRevOdeCVode, cvodes_ode_data_dv) {
 
   std::vector<double> dy_dt_coupled = nvec.get_coupled_state_dot();
 
-  EXPECT_DOUBLE_EQ(0.5, dy_dt_coupled[0]);
-  EXPECT_DOUBLE_EQ(-1.075, dy_dt_coupled[1]);
-  EXPECT_DOUBLE_EQ(2, dy_dt_coupled[2]);
-  EXPECT_DOUBLE_EQ(-1.8, dy_dt_coupled[3]);
+  EXPECT_FLOAT_EQ(0.5, dy_dt_coupled[0]);
+  EXPECT_FLOAT_EQ(-1.075, dy_dt_coupled[1]);
+  EXPECT_FLOAT_EQ(2, dy_dt_coupled[2]);
+  EXPECT_FLOAT_EQ(-1.8, dy_dt_coupled[3]);
 }
 TEST_F(StanMathRevOdeCVode, memory_recovery_dv) {
   using stan::math::cvodes_ode_data;
@@ -264,14 +264,14 @@ TEST_F(StanMathRevOdeCVode, cvodes_ode_data_vd) {
 
   std::vector<double> dy_dt_coupled = nvec.get_coupled_state_dot();
 
-  // EXPECT_DOUBLE_EQ(1.0, dy_dt_coupled[0]); // old expectation
-  // EXPECT_DOUBLE_EQ(-2.0 - 0.15 * 1.0, dy_dt_coupled[1]); // old expectation
-  EXPECT_DOUBLE_EQ(0.5, dy_dt_coupled[0]);
-  EXPECT_DOUBLE_EQ(-1.0 - 0.15 * 0.5, dy_dt_coupled[1]);
-  EXPECT_DOUBLE_EQ(0 + 1.0 * 0 + 3.0 * 1 + 0, dy_dt_coupled[2]);
-  EXPECT_DOUBLE_EQ(-1.0 - 1.0 * 1.0 - 0.15 * 3.0, dy_dt_coupled[3]);
-  EXPECT_DOUBLE_EQ(1.0 + 2.0 * 0 + 5.0 * 1.0, dy_dt_coupled[4]);
-  EXPECT_DOUBLE_EQ(-0.15 - 1.0 * 2.0 - 0.15 * 5.0, dy_dt_coupled[5]);
+  // EXPECT_FLOAT_EQ(1.0, dy_dt_coupled[0]); // old expectation
+  // EXPECT_FLOAT_EQ(-2.0 - 0.15 * 1.0, dy_dt_coupled[1]); // old expectation
+  EXPECT_FLOAT_EQ(0.5, dy_dt_coupled[0]);
+  EXPECT_FLOAT_EQ(-1.0 - 0.15 * 0.5, dy_dt_coupled[1]);
+  EXPECT_FLOAT_EQ(0 + 1.0 * 0 + 3.0 * 1 + 0, dy_dt_coupled[2]);
+  EXPECT_FLOAT_EQ(-1.0 - 1.0 * 1.0 - 0.15 * 3.0, dy_dt_coupled[3]);
+  EXPECT_FLOAT_EQ(1.0 + 2.0 * 0 + 5.0 * 1.0, dy_dt_coupled[4]);
+  EXPECT_FLOAT_EQ(-0.15 - 1.0 * 2.0 - 0.15 * 5.0, dy_dt_coupled[5]);
 }
 TEST_F(StanMathRevOdeCVode, memory_recovery_vd) {
   using stan::math::cvodes_ode_data;
@@ -388,14 +388,14 @@ TEST_F(StanMathRevOdeCVode, cvodes_ode_data_vv) {
   std::vector<double> dy_dt_base
       = harm_osc(0.0, y0_d, theta_d, x, x_int, &msgs);
 
-  EXPECT_DOUBLE_EQ(dy_dt_base[0], dy_dt_coupled[0]);
-  EXPECT_DOUBLE_EQ(dy_dt_base[1], dy_dt_coupled[1]);
-  EXPECT_DOUBLE_EQ(0, dy_dt_coupled[2]);
-  EXPECT_DOUBLE_EQ(-1, dy_dt_coupled[3]);
-  EXPECT_DOUBLE_EQ(1, dy_dt_coupled[4]);
-  EXPECT_DOUBLE_EQ(-0.15, dy_dt_coupled[5]);
-  EXPECT_DOUBLE_EQ(0, dy_dt_coupled[6]);
-  EXPECT_DOUBLE_EQ(-0.5, dy_dt_coupled[7]);
+  EXPECT_FLOAT_EQ(dy_dt_base[0], dy_dt_coupled[0]);
+  EXPECT_FLOAT_EQ(dy_dt_base[1], dy_dt_coupled[1]);
+  EXPECT_FLOAT_EQ(0, dy_dt_coupled[2]);
+  EXPECT_FLOAT_EQ(-1, dy_dt_coupled[3]);
+  EXPECT_FLOAT_EQ(1, dy_dt_coupled[4]);
+  EXPECT_FLOAT_EQ(-0.15, dy_dt_coupled[5]);
+  EXPECT_FLOAT_EQ(0, dy_dt_coupled[6]);
+  EXPECT_FLOAT_EQ(-0.5, dy_dt_coupled[7]);
 }
 TEST_F(StanMathRevOdeCVode, memory_recovery_vv) {
   using stan::math::cvodes_ode_data;

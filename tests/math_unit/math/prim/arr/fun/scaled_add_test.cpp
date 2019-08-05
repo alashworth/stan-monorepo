@@ -18,9 +18,9 @@ TEST(MathFunctions, scaled_add) {
   lambda = 0.5;
 
   EXPECT_NO_THROW(stan::math::scaled_add(x, y, lambda));
-  EXPECT_DOUBLE_EQ(1.0, x[0]);
-  EXPECT_DOUBLE_EQ(1.5, x[1]);
-  EXPECT_DOUBLE_EQ(2.0, x[2]);
+  EXPECT_FLOAT_EQ(1.0, x[0]);
+  EXPECT_FLOAT_EQ(1.5, x[1]);
+  EXPECT_FLOAT_EQ(2.0, x[2]);
 }
 
 TEST(MathFunctions, scaled_add_nan) {
@@ -47,9 +47,9 @@ TEST(MathFunctions, scaled_add_nan) {
   x[2] = 0;
   y[1] = nan;
   EXPECT_NO_THROW(stan::math::scaled_add(x, y, lambda));
-  EXPECT_DOUBLE_EQ(1.0, x[0]);
+  EXPECT_FLOAT_EQ(1.0, x[0]);
   EXPECT_PRED1(boost::math::isnan<double>, x[1]);
-  EXPECT_DOUBLE_EQ(2.0, x[2]);
+  EXPECT_FLOAT_EQ(2.0, x[2]);
 
   x[0] = 0;
   x[1] = 0;

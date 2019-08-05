@@ -50,12 +50,12 @@ TEST(ProbDistributions, ordered_logistic_vals) {
     sum += theta(k);
     log_sum += log(theta(k));
   }
-  EXPECT_DOUBLE_EQ(1.0, sum);
+  EXPECT_FLOAT_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[k], c));
+    EXPECT_FLOAT_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[k], c));
 
-  EXPECT_DOUBLE_EQ(log_sum, ordered_logistic_log(y, lambda, c));
+  EXPECT_FLOAT_EQ(log_sum, ordered_logistic_log(y, lambda, c));
 
   EXPECT_THROW(ordered_logistic_log(0, lambda[0], c), std::domain_error);
   EXPECT_THROW(ordered_logistic_log(6, lambda[0], c), std::domain_error);
@@ -89,12 +89,12 @@ TEST(ProbDistributions, ordered_logistic_vals_2) {
     sum += theta(k);
     log_sum += log(theta(k));
   }
-  EXPECT_DOUBLE_EQ(1.0, sum);
+  EXPECT_FLOAT_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[0], c));
+    EXPECT_FLOAT_EQ(log(theta(k)), ordered_logistic_log(k + 1, lambda[0], c));
 
-  EXPECT_DOUBLE_EQ(log_sum, ordered_logistic_log(y, lambda, c));
+  EXPECT_FLOAT_EQ(log_sum, ordered_logistic_log(y, lambda, c));
 
   EXPECT_THROW(ordered_logistic_log(0, lambda[0], c), std::domain_error);
   EXPECT_THROW(ordered_logistic_log(4, lambda[0], c), std::domain_error);

@@ -7,11 +7,11 @@ TEST(AgradRev, exp_a) {
   AVAR a(6.0);
   // mix exp() functs w/o namespace
   AVAR f = exp(a);
-  EXPECT_DOUBLE_EQ(exp(6.0), f.val());
+  EXPECT_FLOAT_EQ(exp(6.0), f.val());
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(exp(6.0), g[0]);
+  EXPECT_FLOAT_EQ(exp(6.0), g[0]);
 }
 
 namespace {

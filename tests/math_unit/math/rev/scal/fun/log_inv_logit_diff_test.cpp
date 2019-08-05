@@ -11,7 +11,7 @@ TEST(AgradRev, log_inv_logit_diff) {
 
   z.grad();
 
-  EXPECT_DOUBLE_EQ(-2.09664078617, z.val());
-  EXPECT_DOUBLE_EQ(1.44784443166, x.adj());
-  EXPECT_DOUBLE_EQ(-1.86202552139, y.adj());
+  EXPECT_FLOAT_EQ(-2.09664078617, z.val());
+  EXPECT_FLOAT_EQ(1.44784443166, x.adj());
+  EXPECT_FLOAT_EQ(-1.86202552139, y.adj());
 }

@@ -22,7 +22,7 @@ TEST(ProbDistributionsMatrixNormal, MatrixNormalPrec) {
 
   double lp_ref;
   lp_ref = stan::math::matrix_normal_prec_log(y, mu, D, Sigma);
-  EXPECT_DOUBLE_EQ(lp_ref, -2132.0748232368409845);
+  EXPECT_FLOAT_EQ(lp_ref, -2132.0748232368409845);
 }
 
 TEST(ProbDistributionsMatrixNormal, ErrorSigma) {

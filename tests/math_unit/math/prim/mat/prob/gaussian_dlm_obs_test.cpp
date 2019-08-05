@@ -32,7 +32,7 @@ TEST(ProbDistributionsGaussianDLM, LoglikeUU) {
   double ll_expected = -16.2484978375184;
 
   double lp_ref = gaussian_dlm_obs_log(y, FF, GG, V, W, m0, C0);
-  EXPECT_DOUBLE_EQ(lp_ref, ll_expected);
+  EXPECT_FLOAT_EQ(lp_ref, ll_expected);
 }
 
 TEST(ProbDistributionsGaussianDLM, LoglikeMM) {
@@ -89,7 +89,7 @@ TEST(ProbDistributionsGaussianDLM, LoglikeUUSeq) {
   double ll_expected = -16.2484978375184;
 
   double lp_ref = gaussian_dlm_obs_log(y, FF, GG, V, W, m0, C0);
-  EXPECT_DOUBLE_EQ(lp_ref, ll_expected);
+  EXPECT_FLOAT_EQ(lp_ref, ll_expected);
 }
 
 TEST(ProbDistributionsGaussianDLM, LoglikeMMSeq) {
@@ -119,7 +119,7 @@ TEST(ProbDistributionsGaussianDLM, LoglikeMMSeq) {
   double ll_expected = -89.1533619880878;
 
   double lp_ref = gaussian_dlm_obs_log(y, FF, GG, V, W, m0, C0);
-  EXPECT_DOUBLE_EQ(lp_ref, ll_expected);
+  EXPECT_FLOAT_EQ(lp_ref, ll_expected);
 }
 
 class ProbDistributionsGaussianDLMInputs : public ::testing::Test {

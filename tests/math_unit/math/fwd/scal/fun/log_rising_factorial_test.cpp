@@ -10,13 +10,13 @@ TEST(AgradFwdLogRisingFactorial, Fvar) {
 
   fvar<double> a(4.0, 1.0);
   fvar<double> x = log_rising_factorial(a, 1.0);
-  EXPECT_DOUBLE_EQ(std::log(4.0), x.val_);
-  EXPECT_DOUBLE_EQ(0.25, x.d_);
+  EXPECT_FLOAT_EQ(std::log(4.0), x.val_);
+  EXPECT_FLOAT_EQ(0.25, x.d_);
 
   // finite diff
   double eps = 1e-6;
-  EXPECT_DOUBLE_EQ((stan::math::log_rising_factorial(4.0 + eps, 1.0)
-                    - stan::math::log_rising_factorial(4.0 - eps, 1.0))
+  EXPECT_FLOAT_EQ((stan::math::log_rising_factorial(4.0 + eps, 1.0)
+                   - stan::math::log_rising_factorial(4.0 - eps, 1.0))
                       / (2 * eps),
                   x.d_);
 
@@ -27,16 +27,16 @@ TEST(AgradFwdLogRisingFactorial, Fvar) {
   EXPECT_THROW(log_rising_factorial(c, c), std::domain_error);
 
   x = log_rising_factorial(a, a);
-  EXPECT_DOUBLE_EQ(std::log(840.0), x.val_);
-  EXPECT_DOUBLE_EQ((2 * digamma(8) - digamma(4)), x.d_);
+  EXPECT_FLOAT_EQ(std::log(840.0), x.val_);
+  EXPECT_FLOAT_EQ((2 * digamma(8) - digamma(4)), x.d_);
 
   x = log_rising_factorial(5, a);
-  EXPECT_DOUBLE_EQ(std::log(1680.0), x.val_);
-  EXPECT_DOUBLE_EQ(digamma(9), x.d_);
+  EXPECT_FLOAT_EQ(std::log(1680.0), x.val_);
+  EXPECT_FLOAT_EQ(digamma(9), x.d_);
 
   // finite diff
-  EXPECT_DOUBLE_EQ((stan::math::log_rising_factorial(5.0, 4.0 + eps)
-                    - stan::math::log_rising_factorial(5.0, 4.0 - eps))
+  EXPECT_FLOAT_EQ((stan::math::log_rising_factorial(5.0, 4.0 + eps)
+                   - stan::math::log_rising_factorial(5.0, 4.0 - eps))
                       / (2 * eps),
                   x.d_);
 }
@@ -56,10 +56,10 @@ TEST(AgradFwdLogRisingFactorial, FvarFvarDouble) {
 
   fvar<fvar<double> > a = log_rising_factorial(x, y);
 
-  EXPECT_DOUBLE_EQ(std::log(120.0), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0.61666667, a.val_.d_);
-  EXPECT_DOUBLE_EQ(1.8727844, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0.15354517, a.d_.d_);
+  EXPECT_FLOAT_EQ(std::log(120.0), a.val_.val_);
+  EXPECT_FLOAT_EQ(0.61666667, a.val_.d_);
+  EXPECT_FLOAT_EQ(1.8727844, a.d_.val_);
+  EXPECT_FLOAT_EQ(0.15354517, a.d_.d_);
 }
 
 struct log_rising_factorial_fun {

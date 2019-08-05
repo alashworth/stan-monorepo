@@ -168,7 +168,7 @@ double get_value(const ffv& z1) { return z1.val().val().val(); }
  */
 template <typename T1, typename T2>
 void check_eq(const T1& z1, const T2& z2) {
-  EXPECT_DOUBLE_EQ(get_value(z1), get_value(z2));
+  EXPECT_FLOAT_EQ(get_value(z1), get_value(z2));
 }
 
 /**

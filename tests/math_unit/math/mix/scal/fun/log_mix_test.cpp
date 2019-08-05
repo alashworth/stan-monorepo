@@ -44,11 +44,11 @@ void test_log_mix_3xfvar_var_D1(double theta, double lambda1, double lambda2,
 
   VEC g = cgrad(res.val_, theta_fv.val_, lambda1_fv.val_, lambda2_fv.val_);
 
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
-  EXPECT_DOUBLE_EQ(theta_deriv, g[0]);
-  EXPECT_DOUBLE_EQ(lambda1_deriv, g[1]);
-  EXPECT_DOUBLE_EQ(lambda2_deriv, g[2]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(theta_deriv, g[0]);
+  EXPECT_FLOAT_EQ(lambda1_deriv, g[1]);
+  EXPECT_FLOAT_EQ(lambda2_deriv, g[2]);
 
   fvar<var> theta_fv_invalid(-1.0, theta_d);
   EXPECT_THROW(log_mix(theta_fv_invalid, lambda1_fv, lambda2_fv),
@@ -276,9 +276,9 @@ void test_log_mix_3xfvar_var_D2(double theta, double lambda1, double lambda2,
     ++k;
   }
 
-  EXPECT_DOUBLE_EQ(res.d_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(res.d_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
   stan::math::recover_memory();
 }
 
@@ -308,7 +308,7 @@ void test_log_mix_2xdouble_fvar_fvar_var_theta_D3(double theta, double lambda1,
   EXPECT_NEAR(auto_calc[8], g2_func[0], 8e-13);
 
   EXPECT_NEAR(auto_calc[1], res.d_.d_.val(), 8e-13);
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
   EXPECT_NEAR(result, res.val_.val_.val(), 8e-13);
 
   fvar<fvar<var> > theta_ffv_invalid;
@@ -346,7 +346,7 @@ void test_log_mix_2xdouble_fvar_fvar_var_lam_1_D3(double theta, double lambda1,
   EXPECT_NEAR(auto_calc[9], g2_func[0], 8e-13);
 
   EXPECT_NEAR(auto_calc[1], res.d_.d_.val(), 8e-13);
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
   EXPECT_NEAR(result, res.val_.val_.val(), 8e-13);
 
   EXPECT_THROW(log_mix(-1.0, lambda1_ffv, lambda2), std::domain_error);
@@ -379,7 +379,7 @@ void test_log_mix_2xdouble_fvar_fvar_var_lam_2_D3(double theta, double lambda1,
   EXPECT_NEAR(auto_calc[10], g2_func[0], 8e-13);
 
   EXPECT_NEAR(auto_calc[1], res.d_.d_.val(), 8e-13);
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
   EXPECT_NEAR(result, res.val_.val_.val(), 8e-13);
 
   EXPECT_THROW(log_mix(-1.0, lambda1, lambda2_ffv), std::domain_error);
@@ -426,7 +426,7 @@ void test_log_mix_2xfvar_fvar_var_ex_theta_D3(double theta, double lambda1,
   }
 
   EXPECT_NEAR(auto_calc[1], res.d_.d_.val(), 8e-13);
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
   EXPECT_NEAR(result, res.val_.val_.val(), 8e-13);
 
   EXPECT_THROW(log_mix(-1.0, lambda1_ffv, lambda2_ffv), std::domain_error);
@@ -469,7 +469,7 @@ void test_log_mix_2xfvar_fvar_var_ex_lam_1_D3(double theta, double lambda1,
   EXPECT_NEAR(auto_calc[10], g2_func[1], 8e-13);
 
   EXPECT_NEAR(auto_calc[1], res.d_.d_.val(), 8e-13);
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
   EXPECT_NEAR(result, res.val_.val_.val(), 8e-13);
 
   fvar<fvar<var> > theta_ffv_invalid;
@@ -522,7 +522,7 @@ void test_log_mix_2xfvar_fvar_var_ex_lam_2_D3(double theta, double lambda1,
   }
 
   EXPECT_NEAR(auto_calc[1], res.d_.d_.val(), 8e-13);
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
   EXPECT_NEAR(result, res.val_.val_.val(), 8e-13);
 
   fvar<fvar<var> > theta_ffv_invalid;
@@ -558,8 +558,8 @@ void test_log_mix_2xdouble_fvar_fvar_var_theta_D2(double theta, double lambda1,
 
   EXPECT_NEAR(auto_calc[5], g2_func[0], 8e-13);
 
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val_.val());
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val_.val());
 
   fvar<fvar<var> > theta_ffv_invalid;
   theta_ffv_invalid.val_.val_ = -1.0;
@@ -593,8 +593,8 @@ void test_log_mix_2xdouble_fvar_fvar_var_lam_1_D2(double theta, double lambda1,
 
   EXPECT_NEAR(auto_calc[6], g2_func[0], 8e-13);
 
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val_.val());
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val_.val());
 
   EXPECT_THROW(log_mix(-1.0, lambda1_ffv, lambda2), std::domain_error);
   stan::math::recover_memory();
@@ -623,8 +623,8 @@ void test_log_mix_2xdouble_fvar_fvar_var_lam_2_D2(double theta, double lambda1,
 
   EXPECT_NEAR(auto_calc[7], g2_func[0], 8e-13);
 
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val_.val());
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val_.val());
 
   EXPECT_THROW(log_mix(-1.0, lambda1, lambda2_ffv), std::domain_error);
   stan::math::recover_memory();
@@ -663,8 +663,8 @@ void test_log_mix_2xfvar_fvar_var_ex_lam_1_D2(double theta, double lambda1,
   EXPECT_NEAR(auto_calc[5], g2_func[0], 8e-13);
   EXPECT_NEAR(auto_calc[7], g2_func[1], 8e-13);
 
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val_.val());
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val_.val());
 
   fvar<fvar<var> > theta_ffv_invalid;
   theta_ffv_invalid.val_.val_ = -1.0;
@@ -713,8 +713,8 @@ void test_log_mix_2xfvar_fvar_var_ex_lam_2_D2(double theta, double lambda1,
     ++k;
   }
 
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val_.val());
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val_.val());
 
   fvar<fvar<var> > theta_ffv_invalid;
   theta_ffv_invalid.val_.val_ = -1.0;
@@ -764,8 +764,8 @@ void test_log_mix_2xfvar_fvar_var_ex_theta_D2(double theta, double lambda1,
     ++k;
   }
 
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val_.val());
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val_.val());
 
   EXPECT_THROW(log_mix(-1.0, lambda1_ffv, lambda2_ffv), std::domain_error);
   stan::math::recover_memory();
@@ -817,7 +817,7 @@ void test_log_mix_3xfvar_fvar_var_D3(double theta, double lambda1,
   }
 
   EXPECT_NEAR(auto_calc[1], res.d_.d_.val(), 8e-13);
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
   EXPECT_NEAR(result, res.val_.val_.val(), 8e-13);
 
   fvar<fvar<var> > theta_ffv_invalid;
@@ -873,8 +873,8 @@ void test_log_mix_3xfvar_fvar_var_D2(double theta, double lambda1,
     ++k;
   }
 
-  EXPECT_DOUBLE_EQ(res.d_.val_.val(), auto_calc[0]);
-  EXPECT_DOUBLE_EQ(result, res.val_.val_.val());
+  EXPECT_FLOAT_EQ(res.d_.val_.val(), auto_calc[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val_.val());
   stan::math::recover_memory();
 }
 
@@ -903,10 +903,10 @@ void test_log_mix_2xfvar_var_lam_2_double(double theta, double lambda1,
   AVEC y = createAVEC(theta_fv.val_, lambda1_fv.val_);
   VEC g;
   res.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
-  EXPECT_DOUBLE_EQ(theta_deriv, g[0]);
-  EXPECT_DOUBLE_EQ(lambda1_deriv, g[1]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(theta_deriv, g[0]);
+  EXPECT_FLOAT_EQ(lambda1_deriv, g[1]);
 
   fvar<var> theta_fv_invalid(-1.0, theta_d);
 
@@ -940,10 +940,10 @@ void test_log_mix_2xfvar_var_lam_1_double(double theta, double lambda1,
   AVEC y = createAVEC(theta_fv.val_, lambda2_fv.val_);
   VEC g;
   res.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
-  EXPECT_DOUBLE_EQ(theta_deriv, g[0]);
-  EXPECT_DOUBLE_EQ(lambda2_deriv, g[1]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(theta_deriv, g[0]);
+  EXPECT_FLOAT_EQ(lambda2_deriv, g[1]);
 
   fvar<var> theta_fv_invalid(-1.0, theta_d);
 
@@ -976,10 +976,10 @@ void test_log_mix_2xfvar_var_theta_double(double theta, double lambda1,
   AVEC y = createAVEC(lambda1_fv.val_, lambda2_fv.val_);
   VEC g;
   res.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
-  EXPECT_DOUBLE_EQ(lambda1_deriv, g[0]);
-  EXPECT_DOUBLE_EQ(lambda2_deriv, g[1]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(lambda1_deriv, g[0]);
+  EXPECT_FLOAT_EQ(lambda2_deriv, g[1]);
 
   EXPECT_THROW(log_mix(-1.0, lambda1_fv, lambda2_fv), std::domain_error);
   stan::math::recover_memory();
@@ -1004,9 +1004,9 @@ void test_log_mix_2xdouble_theta_fvar_var(double theta, double lambda1,
   AVEC y = createAVEC(theta_fv.val_);
   VEC g;
   res.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
-  EXPECT_DOUBLE_EQ(theta_deriv, g[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(theta_deriv, g[0]);
 
   fvar<var> theta_fv_invalid(-1.0, theta_d);
 
@@ -1033,9 +1033,9 @@ void test_log_mix_2xdouble_lam_1_fvar_var(double theta, double lambda1,
   AVEC y = createAVEC(lambda1_fv.val_);
   VEC g;
   res.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
-  EXPECT_DOUBLE_EQ(lambda1_deriv, g[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(lambda1_deriv, g[0]);
 
   EXPECT_THROW(log_mix(-1.0, lambda1_fv, lambda2), std::domain_error);
   stan::math::recover_memory();
@@ -1061,9 +1061,9 @@ void test_log_mix_2xdouble_lam_2_fvar_var(double theta, double lambda1,
   AVEC y = createAVEC(lambda2_fv.val_);
   VEC g;
   res.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(result, res.val_.val());
-  EXPECT_DOUBLE_EQ(deriv, res.d_.val());
-  EXPECT_DOUBLE_EQ(lambda2_deriv, g[0]);
+  EXPECT_FLOAT_EQ(result, res.val_.val());
+  EXPECT_FLOAT_EQ(deriv, res.d_.val());
+  EXPECT_FLOAT_EQ(lambda2_deriv, g[0]);
 
   EXPECT_THROW(log_mix(-1.0, lambda1, lambda2_fv), std::domain_error);
   stan::math::recover_memory();

@@ -22,8 +22,8 @@ TEST(AgradFwdMatrixAssign, vector_fvar_double) {
   EXPECT_EQ(3U, x.size());
   EXPECT_EQ(3U, y.size());
   for (size_t i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_, x[i].val_);
-    EXPECT_DOUBLE_EQ(y[i].d_, x[i].d_);
+    EXPECT_FLOAT_EQ(y[i].val_, x[i].val_);
+    EXPECT_FLOAT_EQ(y[i].d_, x[i].d_);
   }
 
   vector<fvar<double> > z(2);
@@ -48,8 +48,8 @@ TEST(AgradFwdMatrixAssign, eigen_row_vector_fvar_double_to_fvar_double) {
   EXPECT_EQ(3, x.size());
   EXPECT_EQ(3, y.size());
   for (int i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_, x[i].val_);
-    EXPECT_DOUBLE_EQ(y[i].d_, x[i].d_);
+    EXPECT_FLOAT_EQ(y[i].val_, x[i].val_);
+    EXPECT_FLOAT_EQ(y[i].d_, x[i].d_);
   }
 }
 
@@ -101,8 +101,8 @@ TEST(AgradFwdMatrixAssign, eigen_matrix_fvar_double_to_fvar_double) {
   EXPECT_EQ(2, x.cols());
   EXPECT_EQ(2, y.cols());
   for (size_t i = 0; i < 6; ++i) {
-    EXPECT_DOUBLE_EQ(y(i).val_, x(i).val_);
-    EXPECT_DOUBLE_EQ(y(i).d_, x(i).d_);
+    EXPECT_FLOAT_EQ(y(i).val_, x(i).val_);
+    EXPECT_FLOAT_EQ(y(i).d_, x(i).d_);
   }
 }
 
@@ -143,9 +143,9 @@ TEST(AgradFwdMatrixAssign, block) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_);
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_);
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_);
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_);
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_);
 }
 
 TEST(AgradFwdMatrixAssign, vector_vector_fvar_double) {
@@ -165,8 +165,8 @@ TEST(AgradFwdMatrixAssign, vector_vector_fvar_double) {
   for (size_t i = 0; i < 3U; ++i) {
     EXPECT_EQ(2U, y[i].size());
     for (size_t j = 0; j < 2U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i][j].val_, y[i][j].val_);
-      EXPECT_DOUBLE_EQ(x[i][j].d_, y[i][j].d_);
+      EXPECT_FLOAT_EQ(x[i][j].val_, y[i][j].val_);
+      EXPECT_FLOAT_EQ(x[i][j].d_, y[i][j].d_);
     }
   }
 }
@@ -193,8 +193,8 @@ TEST(AgradFwdMatrixAssign, vector_vector_vector_fvar_double) {
     for (size_t i = 0; i < 3U; ++i) {
       EXPECT_EQ(2U, y[k][i].size());
       for (size_t j = 0; j < 2U; ++j) {
-        EXPECT_DOUBLE_EQ(x[k][i][j].val_, y[k][i][j].val_);
-        EXPECT_DOUBLE_EQ(x[k][i][j].d_, y[k][i][j].d_);
+        EXPECT_FLOAT_EQ(x[k][i][j].val_, y[k][i][j].val_);
+        EXPECT_FLOAT_EQ(x[k][i][j].d_, y[k][i][j].d_);
       }
     }
   }
@@ -223,8 +223,8 @@ TEST(AgradFwdMatrixAssign, vector_eigen_vector_fvar_double) {
   for (size_t i = 0; i < 2U; ++i) {
     EXPECT_EQ(3U, y[i].size());
     for (size_t j = 0; j < 3U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i](j).val_, y[i](j).val_);
-      EXPECT_DOUBLE_EQ(x[i](j).d_, y[i](j).d_);
+      EXPECT_FLOAT_EQ(x[i](j).val_, y[i](j).val_);
+      EXPECT_FLOAT_EQ(x[i](j).d_, y[i](j).d_);
     }
   }
 }
@@ -242,9 +242,9 @@ TEST(AgradFwdMatrixAssign, get_assign_row_fvar_double) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_);
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_);
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_);
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_);
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_);
 }
 
 TEST(AgradFwdMatrixAssign, vector_fvar_fvar_double) {
@@ -270,10 +270,10 @@ TEST(AgradFwdMatrixAssign, vector_fvar_fvar_double) {
   EXPECT_EQ(3U, x.size());
   EXPECT_EQ(3U, y.size());
   for (size_t i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_.val_, x[i].val_.val_);
-    EXPECT_DOUBLE_EQ(y[i].d_.val_, x[i].d_.val_);
-    EXPECT_DOUBLE_EQ(y[i].val_.d_, x[i].val_.d_);
-    EXPECT_DOUBLE_EQ(y[i].d_.d_, x[i].d_.d_);
+    EXPECT_FLOAT_EQ(y[i].val_.val_, x[i].val_.val_);
+    EXPECT_FLOAT_EQ(y[i].d_.val_, x[i].d_.val_);
+    EXPECT_FLOAT_EQ(y[i].val_.d_, x[i].val_.d_);
+    EXPECT_FLOAT_EQ(y[i].d_.d_, x[i].d_.d_);
   }
 
   vector<fvar<fvar<double> > > z(2);
@@ -305,10 +305,10 @@ TEST(AgradFwdMatrixAssign,
   EXPECT_EQ(3, x.size());
   EXPECT_EQ(3, y.size());
   for (int i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_.val_, x[i].val_.val_);
-    EXPECT_DOUBLE_EQ(y[i].d_.val_, x[i].d_.val_);
-    EXPECT_DOUBLE_EQ(y[i].val_.d_, x[i].val_.d_);
-    EXPECT_DOUBLE_EQ(y[i].d_.d_, x[i].d_.d_);
+    EXPECT_FLOAT_EQ(y[i].val_.val_, x[i].val_.val_);
+    EXPECT_FLOAT_EQ(y[i].d_.val_, x[i].d_.val_);
+    EXPECT_FLOAT_EQ(y[i].val_.d_, x[i].val_.d_);
+    EXPECT_FLOAT_EQ(y[i].d_.d_, x[i].d_.d_);
   }
 }
 
@@ -372,10 +372,10 @@ TEST(AgradFwdMatrixAssign, eigen_matrix_fvar_fvar_double_to_fvar_fvar_double) {
   EXPECT_EQ(2, x.cols());
   EXPECT_EQ(2, y.cols());
   for (size_t i = 0; i < 6; ++i) {
-    EXPECT_DOUBLE_EQ(y(i).val_.val_, x(i).val_.val_);
-    EXPECT_DOUBLE_EQ(y(i).d_.val_, x(i).d_.val_);
-    EXPECT_DOUBLE_EQ(y(i).val_.d_, x(i).val_.d_);
-    EXPECT_DOUBLE_EQ(y(i).d_.d_, x(i).d_.d_);
+    EXPECT_FLOAT_EQ(y(i).val_.val_, x(i).val_.val_);
+    EXPECT_FLOAT_EQ(y(i).d_.val_, x(i).d_.val_);
+    EXPECT_FLOAT_EQ(y(i).val_.d_, x(i).val_.d_);
+    EXPECT_FLOAT_EQ(y(i).d_.d_, x(i).d_.d_);
   }
 }
 
@@ -416,9 +416,9 @@ TEST(AgradFwdMatrixAssign, block_fvar_fvar_double) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_.val_);
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_.val_);
 }
 
 TEST(AgradFwdMatrixAssign, vector_vector_fvar_fvar_double) {
@@ -440,10 +440,10 @@ TEST(AgradFwdMatrixAssign, vector_vector_fvar_fvar_double) {
   for (size_t i = 0; i < 3U; ++i) {
     EXPECT_EQ(2U, y[i].size());
     for (size_t j = 0; j < 2U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i][j].val_.val_, y[i][j].val_.val_);
-      EXPECT_DOUBLE_EQ(x[i][j].d_.val_, y[i][j].d_.val_);
-      EXPECT_DOUBLE_EQ(x[i][j].val_.d_, y[i][j].val_.d_);
-      EXPECT_DOUBLE_EQ(x[i][j].d_.d_, y[i][j].d_.d_);
+      EXPECT_FLOAT_EQ(x[i][j].val_.val_, y[i][j].val_.val_);
+      EXPECT_FLOAT_EQ(x[i][j].d_.val_, y[i][j].d_.val_);
+      EXPECT_FLOAT_EQ(x[i][j].val_.d_, y[i][j].val_.d_);
+      EXPECT_FLOAT_EQ(x[i][j].d_.d_, y[i][j].d_.d_);
     }
   }
 }
@@ -474,10 +474,10 @@ TEST(AgradFwdMatrixAssign, vector_vector_vector_fvar_fvar_double) {
     for (size_t i = 0; i < 3U; ++i) {
       EXPECT_EQ(2U, y[k][i].size());
       for (size_t j = 0; j < 2U; ++j) {
-        EXPECT_DOUBLE_EQ(x[k][i][j].val_.val_, y[k][i][j].val_.val_);
-        EXPECT_DOUBLE_EQ(x[k][i][j].d_.val_, y[k][i][j].d_.val_);
-        EXPECT_DOUBLE_EQ(x[k][i][j].val_.d_, y[k][i][j].val_.d_);
-        EXPECT_DOUBLE_EQ(x[k][i][j].d_.d_, y[k][i][j].d_.d_);
+        EXPECT_FLOAT_EQ(x[k][i][j].val_.val_, y[k][i][j].val_.val_);
+        EXPECT_FLOAT_EQ(x[k][i][j].d_.val_, y[k][i][j].d_.val_);
+        EXPECT_FLOAT_EQ(x[k][i][j].val_.d_, y[k][i][j].val_.d_);
+        EXPECT_FLOAT_EQ(x[k][i][j].d_.d_, y[k][i][j].d_.d_);
       }
     }
   }
@@ -507,10 +507,10 @@ TEST(AgradFwdMatrixAssign, vector_eigen_vector_fvar_fvar_double) {
   for (size_t i = 0; i < 2U; ++i) {
     EXPECT_EQ(3U, y[i].size());
     for (size_t j = 0; j < 3U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i](j).val_.val_, y[i](j).val_.val_);
-      EXPECT_DOUBLE_EQ(x[i](j).d_.val_, y[i](j).d_.val_);
-      EXPECT_DOUBLE_EQ(x[i](j).val_.d_, y[i](j).val_.d_);
-      EXPECT_DOUBLE_EQ(x[i](j).d_.d_, y[i](j).d_.d_);
+      EXPECT_FLOAT_EQ(x[i](j).val_.val_, y[i](j).val_.val_);
+      EXPECT_FLOAT_EQ(x[i](j).d_.val_, y[i](j).d_.val_);
+      EXPECT_FLOAT_EQ(x[i](j).val_.d_, y[i](j).val_.d_);
+      EXPECT_FLOAT_EQ(x[i](j).d_.d_, y[i](j).d_.d_);
     }
   }
 }
@@ -528,7 +528,7 @@ TEST(AgradFwdMatrixAssign, get_assign_row_fvar_fvar_double) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_.val_);
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_.val_);
 }

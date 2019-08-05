@@ -68,7 +68,7 @@ TEST(ProbDistributionsInvWishart, Propto) {
 
   double dof = 4.0;
 
-  EXPECT_DOUBLE_EQ(0.0, stan::math::inv_wishart_log<true>(Y, dof, Sigma));
+  EXPECT_FLOAT_EQ(0.0, stan::math::inv_wishart_log<true>(Y, dof, Sigma));
 }
 TEST(ProbDistributionsInvWishart, Error) {
   Matrix<double, Dynamic, Dynamic> Sigma;

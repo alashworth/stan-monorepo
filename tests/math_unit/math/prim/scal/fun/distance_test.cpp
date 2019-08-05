@@ -6,10 +6,10 @@ TEST(MathFunctions, distance) {
   double x1 = 1;
   double x2 = 4;
 
-  EXPECT_DOUBLE_EQ(3, stan::math::distance(x1, x2));
-  EXPECT_DOUBLE_EQ(3, stan::math::distance(x2, x1));
-  EXPECT_DOUBLE_EQ(0, stan::math::distance(x1, x1));
-  EXPECT_DOUBLE_EQ(0, stan::math::distance(x2, x2));
+  EXPECT_FLOAT_EQ(3, stan::math::distance(x1, x2));
+  EXPECT_FLOAT_EQ(3, stan::math::distance(x2, x1));
+  EXPECT_FLOAT_EQ(0, stan::math::distance(x1, x1));
+  EXPECT_FLOAT_EQ(0, stan::math::distance(x2, x2));
 }
 
 TEST(MathFunctions, distance_nan) {

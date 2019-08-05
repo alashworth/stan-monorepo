@@ -28,7 +28,7 @@ TEST(ProbDistributionsMultiGPCholesky, MultiGPCholesky) {
     lp_ref += stan::math::multi_normal_log(cy, mu, cSigma);
   }
 
-  EXPECT_DOUBLE_EQ(lp_ref, stan::math::multi_gp_cholesky_log(y, L, w));
+  EXPECT_FLOAT_EQ(lp_ref, stan::math::multi_gp_cholesky_log(y, L, w));
 }
 
 TEST(ProbDistributionsMultiGPCholesky, ErrorL) {

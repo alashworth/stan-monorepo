@@ -9,8 +9,8 @@ TEST(AgradFwdModifiedBesselSecondKind, Fvar) {
   fvar<double> a(4.0, 1.0);
   int b = 1;
   fvar<double> x = modified_bessel_second_kind(b, a);
-  EXPECT_DOUBLE_EQ(0.0124834988872684314, x.val_);
-  EXPECT_DOUBLE_EQ(-0.014280550807670132, x.d_);
+  EXPECT_FLOAT_EQ(0.0124834988872684314, x.val_);
+  EXPECT_FLOAT_EQ(-0.014280550807670132, x.d_);
 
   fvar<double> c(-3.0, 1.0);
   EXPECT_THROW(modified_bessel_second_kind(1, c), std::domain_error);
@@ -31,17 +31,17 @@ TEST(AgradFwdModifiedBesselSecondKind, FvarFvarDouble) {
 
   fvar<fvar<double> > a = modified_bessel_second_kind(1, y);
 
-  EXPECT_DOUBLE_EQ(modified_bessel_second_kind(1, 4.0), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(-0.014280550807670132, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(modified_bessel_second_kind(1, 4.0), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(-0.014280550807670132, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > b = modified_bessel_second_kind(1, x);
 
-  EXPECT_DOUBLE_EQ(modified_bessel_second_kind(1, 4.0), b.val_.val_);
-  EXPECT_DOUBLE_EQ(-0.014280550807670132, b.val_.d_);
-  EXPECT_DOUBLE_EQ(0, b.d_.val_);
-  EXPECT_DOUBLE_EQ(0, b.d_.d_);
+  EXPECT_FLOAT_EQ(modified_bessel_second_kind(1, 4.0), b.val_.val_);
+  EXPECT_FLOAT_EQ(-0.014280550807670132, b.val_.d_);
+  EXPECT_FLOAT_EQ(0, b.d_.val_);
+  EXPECT_FLOAT_EQ(0, b.d_.d_);
 }
 
 struct modified_bessel_second_kind_fun {

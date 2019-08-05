@@ -23,8 +23,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_fd_matrix_fd_matrix_fd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_);
-  EXPECT_DOUBLE_EQ(-51.64, I.d_);
+  EXPECT_FLOAT_EQ(653.4, I.val_);
+  EXPECT_FLOAT_EQ(-51.64, I.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_fd_matrix_fd_matrix_d) {
@@ -46,8 +46,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_fd_matrix_fd_matrix_d) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_);
-  EXPECT_DOUBLE_EQ(-297.04, I.d_);
+  EXPECT_FLOAT_EQ(653.4, I.val_);
+  EXPECT_FLOAT_EQ(-297.04, I.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_fd_matrix_d_matrix_fd) {
@@ -69,8 +69,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_fd_matrix_d_matrix_fd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_);
-  EXPECT_DOUBLE_EQ(306.8, I.d_);
+  EXPECT_FLOAT_EQ(653.4, I.val_);
+  EXPECT_FLOAT_EQ(306.8, I.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_fd_matrix_fd) {
@@ -92,8 +92,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_fd_matrix_fd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_);
-  EXPECT_DOUBLE_EQ(-113.04, I.d_);
+  EXPECT_FLOAT_EQ(653.4, I.val_);
+  EXPECT_FLOAT_EQ(-113.04, I.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_fd_matrix_d_matrix_d) {
@@ -113,8 +113,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_fd_matrix_d_matrix_d) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_);
-  EXPECT_DOUBLE_EQ(61.4, I.d_);
+  EXPECT_FLOAT_EQ(653.4, I.val_);
+  EXPECT_FLOAT_EQ(61.4, I.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_fd_matrix_d) {
@@ -134,8 +134,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_fd_matrix_d) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_);
-  EXPECT_DOUBLE_EQ(-358.44, I.d_);
+  EXPECT_FLOAT_EQ(653.4, I.val_);
+  EXPECT_FLOAT_EQ(-358.44, I.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_d_matrix_fd) {
@@ -155,8 +155,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_d_matrix_fd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_);
-  EXPECT_DOUBLE_EQ(245.4, I.d_);
+  EXPECT_FLOAT_EQ(653.4, I.val_);
+  EXPECT_FLOAT_EQ(245.4, I.d_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, exceptions_fd) {
@@ -233,8 +233,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_ffd_matrix_ffd_matrix_ffd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_.val_);
-  EXPECT_DOUBLE_EQ(-51.64, I.d_.val_);
+  EXPECT_FLOAT_EQ(653.4, I.val_.val_);
+  EXPECT_FLOAT_EQ(-51.64, I.d_.val_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_ffd_matrix_ffd_matrix_d) {
@@ -256,8 +256,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_ffd_matrix_ffd_matrix_d) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_.val_);
-  EXPECT_DOUBLE_EQ(-297.04, I.d_.val_);
+  EXPECT_FLOAT_EQ(653.4, I.val_.val_);
+  EXPECT_FLOAT_EQ(-297.04, I.d_.val_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_ffd_matrix_d_matrix_ffd) {
@@ -279,8 +279,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_ffd_matrix_d_matrix_ffd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_.val_);
-  EXPECT_DOUBLE_EQ(306.8, I.d_.val_);
+  EXPECT_FLOAT_EQ(653.4, I.val_.val_);
+  EXPECT_FLOAT_EQ(306.8, I.d_.val_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_ffd_matrix_ffd) {
@@ -302,8 +302,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_ffd_matrix_ffd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_.val_);
-  EXPECT_DOUBLE_EQ(-113.04, I.d_.val_);
+  EXPECT_FLOAT_EQ(653.4, I.val_.val_);
+  EXPECT_FLOAT_EQ(-113.04, I.d_.val_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_ffd_matrix_d_matrix_d) {
@@ -323,8 +323,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_ffd_matrix_d_matrix_d) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_.val_);
-  EXPECT_DOUBLE_EQ(61.4, I.d_.val_);
+  EXPECT_FLOAT_EQ(653.4, I.val_.val_);
+  EXPECT_FLOAT_EQ(61.4, I.d_.val_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_ffd_matrix_d) {
@@ -344,8 +344,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_ffd_matrix_d) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_.val_);
-  EXPECT_DOUBLE_EQ(-358.44, I.d_.val_);
+  EXPECT_FLOAT_EQ(653.4, I.val_.val_);
+  EXPECT_FLOAT_EQ(-358.44, I.d_.val_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_d_matrix_ffd) {
@@ -365,8 +365,8 @@ TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, matrix_d_matrix_d_matrix_ffd) {
   ASSERT_TRUE(ldlt_A.success());
 
   I = trace_gen_inv_quad_form_ldlt(D, ldlt_A, B);
-  EXPECT_DOUBLE_EQ(653.4, I.val_.val_);
-  EXPECT_DOUBLE_EQ(245.4, I.d_.val_);
+  EXPECT_FLOAT_EQ(653.4, I.val_.val_);
+  EXPECT_FLOAT_EQ(245.4, I.d_.val_);
 }
 
 TEST(AgradFwdMatrixTraceGenInvQuadFormLDLT, exceptions_ffd) {

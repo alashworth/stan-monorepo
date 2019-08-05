@@ -50,7 +50,7 @@ TEST_F(StanMathOde, observe_states_dddd) {
 
   for (int t = 0; t < T; t++)
     for (int n = 0; n < 2; n++)
-      EXPECT_DOUBLE_EQ(ys_coupled[t][n], y[t][n])
+      EXPECT_FLOAT_EQ(ys_coupled[t][n], y[t][n])
           << "(" << n << ", " << t << "): "
           << "for (double, double) the coupled system is the base system";
 

@@ -41,10 +41,10 @@ TEST(ProbDistributions, ordered_probit_vals) {
   double sum = 0.0;
   for (int k = 0; k < theta.size(); ++k)
     sum += theta(k);
-  EXPECT_DOUBLE_EQ(1.0, sum);
+  EXPECT_FLOAT_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
+    EXPECT_FLOAT_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
 
   EXPECT_THROW(ordered_probit_log(0, lambda, c), std::domain_error);
   EXPECT_THROW(ordered_probit_log(6, lambda, c), std::domain_error);
@@ -67,10 +67,10 @@ TEST(ProbDistributions, ordered_probit_vals_2) {
   double sum = 0.0;
   for (int k = 0; k < theta.size(); ++k)
     sum += theta(k);
-  EXPECT_DOUBLE_EQ(1.0, sum);
+  EXPECT_FLOAT_EQ(1.0, sum);
 
   for (int k = 0; k < K; ++k)
-    EXPECT_DOUBLE_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
+    EXPECT_FLOAT_EQ(log(theta(k)), ordered_probit_log(k + 1, lambda, c));
 
   EXPECT_THROW(ordered_probit_log(0, lambda, c), std::domain_error);
   EXPECT_THROW(ordered_probit_log(4, lambda, c), std::domain_error);

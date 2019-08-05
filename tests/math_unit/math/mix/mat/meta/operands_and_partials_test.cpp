@@ -37,12 +37,12 @@ TEST(AgradPartialsVari, OperandsAndPartialsUniMixMat) {
   // call grad(f.d_) afterwards
   v.d_.grad(d_dxs, gradient);
 
-  EXPECT_DOUBLE_EQ(10.0, v.val().val());
-  EXPECT_DOUBLE_EQ(4.0, v.d_.val());
-  EXPECT_DOUBLE_EQ(1.0, gradient[0]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[1]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[2]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val().val());
+  EXPECT_FLOAT_EQ(4.0, v.d_.val());
+  EXPECT_FLOAT_EQ(1.0, gradient[0]);
+  EXPECT_FLOAT_EQ(0.0, gradient[1]);
+  EXPECT_FLOAT_EQ(0.0, gradient[2]);
+  EXPECT_FLOAT_EQ(0.0, gradient[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsUniMixMat_dbl) {
@@ -85,12 +85,12 @@ TEST(AgradPartialsVari, OperandsAndPartialsUniMixMat_dbl) {
   // call grad(f.d_) afterwards
   v.d_.grad(d_dxs, gradient);
 
-  EXPECT_DOUBLE_EQ(10.0, v.val().val());
-  EXPECT_DOUBLE_EQ(4.0, v.d_.val());
-  EXPECT_DOUBLE_EQ(1.0, gradient[0]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[1]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[2]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val().val());
+  EXPECT_FLOAT_EQ(4.0, v.d_.val());
+  EXPECT_FLOAT_EQ(1.0, gradient[0]);
+  EXPECT_FLOAT_EQ(0.0, gradient[1]);
+  EXPECT_FLOAT_EQ(0.0, gradient[2]);
+  EXPECT_FLOAT_EQ(0.0, gradient[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMultiMix) {
@@ -147,12 +147,12 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultiMix) {
   // call grad(f.d_) afterwards
   v.d_.grad(d_dxs, gradient);
 
-  EXPECT_DOUBLE_EQ(10.0, v.val().val());
-  EXPECT_DOUBLE_EQ(4.0, v.d_.val());
-  EXPECT_DOUBLE_EQ(1.0, gradient[0]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[1]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[2]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val().val());
+  EXPECT_FLOAT_EQ(4.0, v.d_.val());
+  EXPECT_FLOAT_EQ(1.0, gradient[0]);
+  EXPECT_FLOAT_EQ(0.0, gradient[1]);
+  EXPECT_FLOAT_EQ(0.0, gradient[2]);
+  EXPECT_FLOAT_EQ(0.0, gradient[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMultiMix_dbl) {
@@ -213,12 +213,12 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultiMix_dbl) {
   // call grad(f.d_) afterwards
   v.d_.grad(d_dxs, gradient);
 
-  EXPECT_DOUBLE_EQ(10.0, v.val().val());
-  EXPECT_DOUBLE_EQ(4.0, v.d_.val());
-  EXPECT_DOUBLE_EQ(1.0, gradient[0]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[1]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[2]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val().val());
+  EXPECT_FLOAT_EQ(4.0, v.d_.val());
+  EXPECT_FLOAT_EQ(1.0, gradient[0]);
+  EXPECT_FLOAT_EQ(0.0, gradient[1]);
+  EXPECT_FLOAT_EQ(0.0, gradient[2]);
+  EXPECT_FLOAT_EQ(0.0, gradient[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMultiStdMix) {
@@ -279,12 +279,12 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultiStdMix) {
   // call grad(f.d_) afterwards
   v.d_.grad(d_dxs, gradient);
 
-  EXPECT_DOUBLE_EQ(10.0, v.val().val());
-  EXPECT_DOUBLE_EQ(4.0, v.d_.val());
-  EXPECT_DOUBLE_EQ(1.0, gradient[0]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[1]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[2]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val().val());
+  EXPECT_FLOAT_EQ(4.0, v.d_.val());
+  EXPECT_FLOAT_EQ(1.0, gradient[0]);
+  EXPECT_FLOAT_EQ(0.0, gradient[1]);
+  EXPECT_FLOAT_EQ(0.0, gradient[2]);
+  EXPECT_FLOAT_EQ(0.0, gradient[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMultiStdMix_dbl) {
@@ -349,12 +349,12 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultiStdMix_dbl) {
   // call grad(f.d_) afterwards
   v.d_.grad(d_dxs, gradient);
 
-  EXPECT_DOUBLE_EQ(10.0, v.val().val());
-  EXPECT_DOUBLE_EQ(4.0, v.d_.val());
-  EXPECT_DOUBLE_EQ(1.0, gradient[0]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[1]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[2]);
-  EXPECT_DOUBLE_EQ(0.0, gradient[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val().val());
+  EXPECT_FLOAT_EQ(4.0, v.d_.val());
+  EXPECT_FLOAT_EQ(1.0, gradient[0]);
+  EXPECT_FLOAT_EQ(0.0, gradient[1]);
+  EXPECT_FLOAT_EQ(0.0, gradient[2]);
+  EXPECT_FLOAT_EQ(0.0, gradient[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMultiMixInt) {
@@ -383,7 +383,7 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultiMixInt) {
 
   double v = ops_partials.build(10.0);
 
-  EXPECT_DOUBLE_EQ(10.0, v);
+  EXPECT_FLOAT_EQ(10.0, v);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMultiMixInt_dbl) {
@@ -416,5 +416,5 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultiMixInt_dbl) {
 
   double v = ops_partials.build(10.0);
 
-  EXPECT_DOUBLE_EQ(10.0, v);
+  EXPECT_FLOAT_EQ(10.0, v);
 }

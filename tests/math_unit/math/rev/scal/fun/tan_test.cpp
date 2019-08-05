@@ -7,23 +7,23 @@
 TEST(AgradRev, tan_var) {
   AVAR a = 0.68;
   AVAR f = tan(a);
-  EXPECT_DOUBLE_EQ(0.80866137, f.val());
+  EXPECT_FLOAT_EQ(0.80866137, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(1 + tan(0.68) * tan(0.68), g[0]);
+  EXPECT_FLOAT_EQ(1 + tan(0.68) * tan(0.68), g[0]);
 }
 
 TEST(AgradRev, tan_neg_var) {
   AVAR a = -.68;
   AVAR f = tan(a);
-  EXPECT_DOUBLE_EQ(-0.80866137, f.val());
+  EXPECT_FLOAT_EQ(-0.80866137, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(1 + tan(-0.68) * tan(-0.68), g[0]);
+  EXPECT_FLOAT_EQ(1 + tan(-0.68) * tan(-0.68), g[0]);
 }
 
 TEST(AgradRev, tan_boundry) {

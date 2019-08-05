@@ -10,17 +10,17 @@ TEST(MathMatrix, sumVector) {
   using stan::math::sum;
 
   stan::math::vector_d v;
-  EXPECT_DOUBLE_EQ(0.0, sum(v));
+  EXPECT_FLOAT_EQ(0.0, sum(v));
 
   v = stan::math::vector_d(1);
   v[0] = 5.0;
-  EXPECT_DOUBLE_EQ(5.0, sum(v));
+  EXPECT_FLOAT_EQ(5.0, sum(v));
 
   v = stan::math::vector_d(3);
   v[0] = 5.0;
   v[1] = 10.0;
   v[2] = 100.0;
-  EXPECT_DOUBLE_EQ(115.0, sum(v));
+  EXPECT_FLOAT_EQ(115.0, sum(v));
 }
 
 TEST(MathMatrix, sumRowVector) {
@@ -29,17 +29,17 @@ TEST(MathMatrix, sumRowVector) {
   using stan::math::sum;
 
   stan::math::row_vector_d rv;
-  EXPECT_DOUBLE_EQ(0.0, sum(rv));
+  EXPECT_FLOAT_EQ(0.0, sum(rv));
 
   rv = stan::math::row_vector_d(1);
   rv[0] = 5.0;
-  EXPECT_DOUBLE_EQ(5.0, sum(rv));
+  EXPECT_FLOAT_EQ(5.0, sum(rv));
 
   rv = stan::math::row_vector_d(3);
   rv[0] = 5.0;
   rv[1] = 10.0;
   rv[2] = 100.0;
-  EXPECT_DOUBLE_EQ(115.0, sum(rv));
+  EXPECT_FLOAT_EQ(115.0, sum(rv));
 }
 
 TEST(MathMatrix, sumMatrix) {
@@ -47,15 +47,15 @@ TEST(MathMatrix, sumMatrix) {
   using Eigen::Matrix;
   using stan::math::sum;
   stan::math::matrix_d m;
-  EXPECT_DOUBLE_EQ(0.0, sum(m));
+  EXPECT_FLOAT_EQ(0.0, sum(m));
 
   m = stan::math::matrix_d(1, 1);
   m << 5.0;
-  EXPECT_DOUBLE_EQ(5.0, sum(m));
+  EXPECT_FLOAT_EQ(5.0, sum(m));
 
   m = stan::math::matrix_d(3, 2);
   m << 1, 2, 3, 4, 5, 6;
-  EXPECT_DOUBLE_EQ(21.0, sum(m));
+  EXPECT_FLOAT_EQ(21.0, sum(m));
 }
 
 template <typename T>

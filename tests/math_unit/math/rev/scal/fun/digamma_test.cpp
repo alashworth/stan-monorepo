@@ -8,12 +8,12 @@
 TEST(AgradRev, digamma) {
   AVAR a = 0.5;
   AVAR f = digamma(a);
-  EXPECT_DOUBLE_EQ(boost::math::digamma(0.5), f.val());
+  EXPECT_FLOAT_EQ(boost::math::digamma(0.5), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(4.9348022005446793094, grad_f[0]);
+  EXPECT_FLOAT_EQ(4.9348022005446793094, grad_f[0]);
 }
 
 namespace {

@@ -22,18 +22,18 @@ TEST(AgradFwdMatrixMultiplyLowerTriSelfTranspose, fd_3x3_matrix) {
   matrix_fd output = stan::math::multiply_lower_tri_self_transpose(Y);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_DOUBLE_EQ(X(i, j), output(i, j).val_);
+      EXPECT_FLOAT_EQ(X(i, j), output(i, j).val_);
   }
 
-  EXPECT_DOUBLE_EQ(4, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(6, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(10, output(0, 2).d_);
-  EXPECT_DOUBLE_EQ(6, output(1, 0).d_);
-  EXPECT_DOUBLE_EQ(20, output(1, 1).d_);
-  EXPECT_DOUBLE_EQ(28, output(1, 2).d_);
-  EXPECT_DOUBLE_EQ(10, output(2, 0).d_);
-  EXPECT_DOUBLE_EQ(28, output(2, 1).d_);
-  EXPECT_DOUBLE_EQ(60, output(2, 2).d_);
+  EXPECT_FLOAT_EQ(4, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(6, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(10, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(6, output(1, 0).d_);
+  EXPECT_FLOAT_EQ(20, output(1, 1).d_);
+  EXPECT_FLOAT_EQ(28, output(1, 2).d_);
+  EXPECT_FLOAT_EQ(10, output(2, 0).d_);
+  EXPECT_FLOAT_EQ(28, output(2, 1).d_);
+  EXPECT_FLOAT_EQ(60, output(2, 2).d_);
 }
 TEST(AgradFwdMatrixMultiplyLowerTriSelfTranspose, fd_3x2_matrix) {
   using stan::math::matrix_d;
@@ -52,18 +52,18 @@ TEST(AgradFwdMatrixMultiplyLowerTriSelfTranspose, fd_3x2_matrix) {
   matrix_fd output = stan::math::multiply_lower_tri_self_transpose(Y);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_DOUBLE_EQ(X(i, j), output(i, j).val_);
+      EXPECT_FLOAT_EQ(X(i, j), output(i, j).val_);
   }
 
-  EXPECT_DOUBLE_EQ(4, output(0, 0).d_);
-  EXPECT_DOUBLE_EQ(2, output(0, 1).d_);
-  EXPECT_DOUBLE_EQ(8, output(0, 2).d_);
-  EXPECT_DOUBLE_EQ(2, output(1, 0).d_);
-  EXPECT_DOUBLE_EQ(8, output(1, 1).d_);
-  EXPECT_DOUBLE_EQ(10, output(1, 2).d_);
-  EXPECT_DOUBLE_EQ(8, output(2, 0).d_);
-  EXPECT_DOUBLE_EQ(10, output(2, 1).d_);
-  EXPECT_DOUBLE_EQ(12, output(2, 2).d_);
+  EXPECT_FLOAT_EQ(4, output(0, 0).d_);
+  EXPECT_FLOAT_EQ(2, output(0, 1).d_);
+  EXPECT_FLOAT_EQ(8, output(0, 2).d_);
+  EXPECT_FLOAT_EQ(2, output(1, 0).d_);
+  EXPECT_FLOAT_EQ(8, output(1, 1).d_);
+  EXPECT_FLOAT_EQ(10, output(1, 2).d_);
+  EXPECT_FLOAT_EQ(8, output(2, 0).d_);
+  EXPECT_FLOAT_EQ(10, output(2, 1).d_);
+  EXPECT_FLOAT_EQ(12, output(2, 2).d_);
 }
 TEST(AgradFwdMatrixMultiplyLowerTriSelfTranspose, ffd_3x3_matrix) {
   using stan::math::matrix_d;
@@ -93,18 +93,18 @@ TEST(AgradFwdMatrixMultiplyLowerTriSelfTranspose, ffd_3x3_matrix) {
   matrix_ffd output = stan::math::multiply_lower_tri_self_transpose(Y);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_DOUBLE_EQ(X(i, j), output(i, j).val_.val());
+      EXPECT_FLOAT_EQ(X(i, j), output(i, j).val_.val());
   }
 
-  EXPECT_DOUBLE_EQ(4, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(6, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(10, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(6, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(20, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(28, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(10, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(28, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(60, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(6, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(10, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(6, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(20, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(28, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(10, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(28, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(60, output(2, 2).d_.val());
 }
 TEST(AgradFwdMatrixMultiplyLowerTriSelfTranspose, ffd_3x2_matrix) {
   using stan::math::matrix_d;
@@ -129,16 +129,16 @@ TEST(AgradFwdMatrixMultiplyLowerTriSelfTranspose, ffd_3x2_matrix) {
   matrix_ffd output = stan::math::multiply_lower_tri_self_transpose(Y);
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++)
-      EXPECT_DOUBLE_EQ(X(i, j), output(i, j).val_.val());
+      EXPECT_FLOAT_EQ(X(i, j), output(i, j).val_.val());
   }
 
-  EXPECT_DOUBLE_EQ(4, output(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(2, output(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(8, output(0, 2).d_.val());
-  EXPECT_DOUBLE_EQ(2, output(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(8, output(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(10, output(1, 2).d_.val());
-  EXPECT_DOUBLE_EQ(8, output(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(10, output(2, 1).d_.val());
-  EXPECT_DOUBLE_EQ(12, output(2, 2).d_.val());
+  EXPECT_FLOAT_EQ(4, output(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(2, output(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(8, output(0, 2).d_.val());
+  EXPECT_FLOAT_EQ(2, output(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(8, output(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(10, output(1, 2).d_.val());
+  EXPECT_FLOAT_EQ(8, output(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(10, output(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(12, output(2, 2).d_.val());
 }

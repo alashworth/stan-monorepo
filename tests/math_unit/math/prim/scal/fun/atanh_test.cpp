@@ -7,9 +7,9 @@
 
 TEST(MathFunctions, atanh) {
   using stan::math::atanh;
-  EXPECT_DOUBLE_EQ(-3.341680472883148, atanh(-0.9975));
-  EXPECT_DOUBLE_EQ(0, atanh(0));
-  EXPECT_DOUBLE_EQ(0.5493061443340549, atanh(0.5));
+  EXPECT_FLOAT_EQ(-3.341680472883148, atanh(-0.9975));
+  EXPECT_FLOAT_EQ(0, atanh(0));
+  EXPECT_FLOAT_EQ(0.5493061443340549, atanh(0.5));
 }
 
 TEST(MathFunctions, atanh_exception) {

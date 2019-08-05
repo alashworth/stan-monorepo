@@ -33,25 +33,25 @@ TEST(AgradMixMatrixQrR, fv1) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 2; j++) {
-      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_.val());
+      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_.val());
       vars.push_back(m1(i, j).val_);
     }
 
-  EXPECT_DOUBLE_EQ(1.5212777, res(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.6371845, res(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(0, res(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(-0.21293451, res(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(0, res(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(0, res(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(1.5212777, res(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.6371845, res(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(0, res(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(-0.21293451, res(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(0, res(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(0, res(2, 1).d_.val());
 
   std::vector<double> grads;
   res(0, 0).val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0.16903085, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0.50709254, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(0.84515423, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(0.16903085, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0.50709254, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0.84515423, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixQrR, fv2) {
@@ -79,18 +79,18 @@ TEST(AgradMixMatrixQrR, fv2) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 2; j++) {
-      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_.val());
+      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_.val());
       vars.push_back(m1(i, j).val_);
     }
 
   std::vector<double> grads;
   res(0, 0).d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0.12556578, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0.038635623, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(-0.048294529, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(0.12556578, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0.038635623, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(-0.048294529, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixQrR, ffv1) {
@@ -121,25 +121,25 @@ TEST(AgradMixMatrixQrR, ffv1) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 2; j++) {
-      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_.val_.val());
+      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_.val_.val());
       vars.push_back(m1(i, j).val_.val_);
     }
 
-  EXPECT_DOUBLE_EQ(1.5212777, res(0, 0).d_.val_.val());
-  EXPECT_DOUBLE_EQ(1.6371845, res(0, 1).d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, res(1, 0).d_.val_.val());
-  EXPECT_DOUBLE_EQ(-0.21293451, res(1, 1).d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, res(2, 0).d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, res(2, 1).d_.val_.val());
+  EXPECT_FLOAT_EQ(1.5212777, res(0, 0).d_.val_.val());
+  EXPECT_FLOAT_EQ(1.6371845, res(0, 1).d_.val_.val());
+  EXPECT_FLOAT_EQ(0, res(1, 0).d_.val_.val());
+  EXPECT_FLOAT_EQ(-0.21293451, res(1, 1).d_.val_.val());
+  EXPECT_FLOAT_EQ(0, res(2, 0).d_.val_.val());
+  EXPECT_FLOAT_EQ(0, res(2, 1).d_.val_.val());
 
   std::vector<double> grads;
   res(0, 0).val_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0.16903085, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0.50709254, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(0.84515423, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(0.16903085, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0.50709254, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0.84515423, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixQrR, ffv2) {
@@ -167,18 +167,18 @@ TEST(AgradMixMatrixQrR, ffv2) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 2; j++) {
-      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_.val_.val());
+      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_.val_.val());
       vars.push_back(m1(i, j).val_.val_);
     }
 
   std::vector<double> grads;
   res(0, 0).d_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0.12556578, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0.038635623, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(-0.048294529, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(0.12556578, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0.038635623, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(-0.048294529, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixQrR, ffv3) {
@@ -212,18 +212,18 @@ TEST(AgradMixMatrixQrR, ffv3) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 2; j++) {
-      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_.val_.val());
+      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_.val_.val());
       vars.push_back(m1(i, j).val_.val_);
     }
 
   std::vector<double> grads;
   res(0, 0).val_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0.12556578, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0.038635623, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(-0.048294529, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(0.12556578, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0.038635623, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(-0.048294529, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixQrR, ffv4) {
@@ -257,16 +257,16 @@ TEST(AgradMixMatrixQrR, ffv4) {
 
   for (int i = 0; i < 3; i++)
     for (int j = 0; j < 2; j++) {
-      EXPECT_DOUBLE_EQ(res2(i, j), res(i, j).val_.val_.val());
+      EXPECT_FLOAT_EQ(res2(i, j), res(i, j).val_.val_.val());
       vars.push_back(m1(i, j).val_.val_);
     }
 
   std::vector<double> grads;
   res(0, 0).d_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(-0.067888312, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(-0.029804623, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(0.0082790619, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(-0.067888312, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(-0.029804623, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0.0082790619, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }

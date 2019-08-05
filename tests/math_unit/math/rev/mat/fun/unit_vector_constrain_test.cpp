@@ -45,7 +45,7 @@ TEST(AgradRevUnitVectorConstrain, Grad) {
     std::vector<double> grad_expected = unit_vector_grad(y_dbl, k);
     EXPECT_EQ(grad_expected.size(), grad.size());
     for (size_t i = 0; i < grad_expected.size(); ++i)
-      EXPECT_DOUBLE_EQ(grad_expected[i], grad[i]);
+      EXPECT_FLOAT_EQ(grad_expected[i], grad[i]);
   }
 }
 TEST(AgradRevUnitVectorConstrain, exceptions) {

@@ -5,13 +5,13 @@
 
 TEST(MathFunctions, inv_sqrt) {
   double y = 4.0;
-  EXPECT_DOUBLE_EQ(1 / 2.0, stan::math::inv_sqrt(y));
+  EXPECT_FLOAT_EQ(1 / 2.0, stan::math::inv_sqrt(y));
 
   y = 25.0;
-  EXPECT_DOUBLE_EQ(1 / 5.0, stan::math::inv_sqrt(y));
+  EXPECT_FLOAT_EQ(1 / 5.0, stan::math::inv_sqrt(y));
 
   y = 0.0;
-  EXPECT_DOUBLE_EQ(stan::math::positive_infinity(), stan::math::inv_sqrt(y));
+  EXPECT_FLOAT_EQ(stan::math::positive_infinity(), stan::math::inv_sqrt(y));
 
   y = -50.0;
   std::isnan(stan::math::inv_sqrt(y));

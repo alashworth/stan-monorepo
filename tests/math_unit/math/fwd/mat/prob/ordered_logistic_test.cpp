@@ -33,13 +33,13 @@ TEST(ProbDistributionsOrdLog, fd_fd) {
 
   fvar<double> out_fd = ordered_logistic_lpmf(y, lam_fd, c_fd);
 
-  EXPECT_DOUBLE_EQ(out_fd.val_, -0.52516294973063);
-  EXPECT_DOUBLE_EQ(out_fd.d_ + 1, 0.0 + 1);
+  EXPECT_FLOAT_EQ(out_fd.val_, -0.52516294973063);
+  EXPECT_FLOAT_EQ(out_fd.d_ + 1, 0.0 + 1);
 
   fvar<fvar<double>> out_ffd = ordered_logistic_lpmf(y, lam_ffd, c_ffd);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -0.52516294973063);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_ + 1, 0.0 + 1);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -0.52516294973063);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_ + 1, 0.0 + 1);
 }
 
 TEST(ProbDistributionsOrdLog, fd_d) {
@@ -78,23 +78,23 @@ TEST(ProbDistributionsOrdLog, fd_d) {
 
   fvar<double> out = ordered_logistic_lpmf(y, lam_fd, c_d);
 
-  EXPECT_DOUBLE_EQ(out.val_, -0.52516294973063);
-  EXPECT_DOUBLE_EQ(out.d_, -0.40854102156722);
+  EXPECT_FLOAT_EQ(out.val_, -0.52516294973063);
+  EXPECT_FLOAT_EQ(out.d_, -0.40854102156722);
 
   out = ordered_logistic_lpmf(y, lam_d, c_fd);
 
-  EXPECT_DOUBLE_EQ(out.val_, -0.52516294973063);
-  EXPECT_DOUBLE_EQ(out.d_, 0.40854102156722);
+  EXPECT_FLOAT_EQ(out.val_, -0.52516294973063);
+  EXPECT_FLOAT_EQ(out.d_, 0.40854102156722);
 
   fvar<fvar<double>> out_ffd = ordered_logistic_lpmf(y, lam_ffd, c_d);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -0.52516294973063);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_, -0.40854102156722);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -0.52516294973063);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_, -0.40854102156722);
 
   out_ffd = ordered_logistic_lpmf(y, lam_d, c_ffd);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -0.52516294973063);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_, 0.40854102156722);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -0.52516294973063);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_, 0.40854102156722);
 }
 
 TEST(ProbDistributionsOrdLog, fd_fd_vec) {
@@ -132,13 +132,13 @@ TEST(ProbDistributionsOrdLog, fd_fd_vec) {
 
   fvar<double> out_fd = ordered_logistic_lpmf(y, lam_fd, c_fd);
 
-  EXPECT_DOUBLE_EQ(out_fd.val_, -3.9442226297351447171906);
-  EXPECT_DOUBLE_EQ(out_fd.d_ + 1, 0.0 + 1);
+  EXPECT_FLOAT_EQ(out_fd.val_, -3.9442226297351447171906);
+  EXPECT_FLOAT_EQ(out_fd.d_ + 1, 0.0 + 1);
 
   fvar<fvar<double>> out_ffd = ordered_logistic_lpmf(y, lam_ffd, c_ffd);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -3.9442226297351447171906);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_ + 1, 0.0 + 1);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -3.9442226297351447171906);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_ + 1, 0.0 + 1);
 }
 
 TEST(ProbDistributionsOrdLog, fd_d_vec) {
@@ -182,23 +182,23 @@ TEST(ProbDistributionsOrdLog, fd_d_vec) {
 
   fvar<double> out = ordered_logistic_lpmf(y, lam_fd, c_d);
 
-  EXPECT_DOUBLE_EQ(out.val_, -3.9442226297351447171906);
-  EXPECT_DOUBLE_EQ(out.d_, -0.340621916056826);
+  EXPECT_FLOAT_EQ(out.val_, -3.9442226297351447171906);
+  EXPECT_FLOAT_EQ(out.d_, -0.340621916056826);
 
   out = ordered_logistic_lpmf(y, lam_d, c_fd);
 
-  EXPECT_DOUBLE_EQ(out.val_, -3.9442226297351447171906);
-  EXPECT_DOUBLE_EQ(out.d_, 0.340621916056825);
+  EXPECT_FLOAT_EQ(out.val_, -3.9442226297351447171906);
+  EXPECT_FLOAT_EQ(out.d_, 0.340621916056825);
 
   fvar<fvar<double>> out_ffd = ordered_logistic_lpmf(y, lam_ffd, c_d);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -3.9442226297351447171906);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_, -0.340621916056826);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -3.9442226297351447171906);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_, -0.340621916056826);
 
   out_ffd = ordered_logistic_lpmf(y, lam_d, c_ffd);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -3.9442226297351447171906);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_, 0.340621916056826);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -3.9442226297351447171906);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_, 0.340621916056826);
 }
 
 TEST(ProbDistributionsOrdLog, fd_fd_stvec) {
@@ -275,13 +275,13 @@ TEST(ProbDistributionsOrdLog, fd_fd_stvec) {
 
   fvar<double> out_fd = ordered_logistic_lpmf(y, lam_fd, std_c_fd);
 
-  EXPECT_DOUBLE_EQ(out_fd.val_, -4.59528666878753);
-  EXPECT_DOUBLE_EQ(out_fd.d_ + 1, 0.0 + 1);
+  EXPECT_FLOAT_EQ(out_fd.val_, -4.59528666878753);
+  EXPECT_FLOAT_EQ(out_fd.d_ + 1, 0.0 + 1);
 
   fvar<fvar<double>> out_ffd = ordered_logistic_lpmf(y, lam_ffd, std_c_ffd);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -4.59528666878753);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_ + 1, 0.0 + 1);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -4.59528666878753);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_ + 1, 0.0 + 1);
 }
 
 TEST(ProbDistributionsOrdLog, fd_d_stvec) {
@@ -374,21 +374,21 @@ TEST(ProbDistributionsOrdLog, fd_d_stvec) {
 
   fvar<double> out_fd = ordered_logistic_lpmf(y, lam_fd, std_c_d);
 
-  EXPECT_DOUBLE_EQ(out_fd.val_, -3.22180483131937);
-  EXPECT_DOUBLE_EQ(out_fd.d_, -0.395394804770271);
+  EXPECT_FLOAT_EQ(out_fd.val_, -3.22180483131937);
+  EXPECT_FLOAT_EQ(out_fd.d_, -0.395394804770271);
 
   out_fd = ordered_logistic_lpmf(y, lam_d, std_c_fd);
 
-  EXPECT_DOUBLE_EQ(out_fd.val_, -3.22180483131937);
-  EXPECT_DOUBLE_EQ(out_fd.d_, 0.395394804770271);
+  EXPECT_FLOAT_EQ(out_fd.val_, -3.22180483131937);
+  EXPECT_FLOAT_EQ(out_fd.d_, 0.395394804770271);
 
   fvar<fvar<double>> out_ffd = ordered_logistic_lpmf(y, lam_ffd, std_c_d);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -3.22180483131937);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_, -0.395394804770271);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -3.22180483131937);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_, -0.395394804770271);
 
   out_ffd = ordered_logistic_lpmf(y, lam_d, std_c_ffd);
 
-  EXPECT_DOUBLE_EQ(out_ffd.val_.val_, -3.22180483131937);
-  EXPECT_DOUBLE_EQ(out_ffd.d_.val_, 0.395394804770271);
+  EXPECT_FLOAT_EQ(out_ffd.val_.val_, -3.22180483131937);
+  EXPECT_FLOAT_EQ(out_ffd.d_.val_, 0.395394804770271);
 }

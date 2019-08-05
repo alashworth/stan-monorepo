@@ -12,9 +12,9 @@ void assert_val_grad(Eigen::Matrix<stan::math::var, R, C>& v) {
   VEC g;
   f.grad(x, g);
 
-  EXPECT_DOUBLE_EQ(-2.0, g[0]);
-  EXPECT_DOUBLE_EQ(0.0, g[1]);
-  EXPECT_DOUBLE_EQ(6.0, g[2]);
+  EXPECT_FLOAT_EQ(-2.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[1]);
+  EXPECT_FLOAT_EQ(6.0, g[2]);
 }
 }
 

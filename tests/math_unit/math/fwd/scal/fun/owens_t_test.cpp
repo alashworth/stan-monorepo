@@ -10,16 +10,16 @@ TEST(AgradFwdOwensT, Fvar) {
   fvar<double> h(1.0, 1.0);
   fvar<double> a(2.0, 1.0);
   fvar<double> f = owens_t(h, a);
-  EXPECT_DOUBLE_EQ(owens_t(1.0, 2.0), f.val_);
-  EXPECT_DOUBLE_EQ(0.0026128467 - 0.1154804963, f.d_);
+  EXPECT_FLOAT_EQ(owens_t(1.0, 2.0), f.val_);
+  EXPECT_FLOAT_EQ(0.0026128467 - 0.1154804963, f.d_);
 
   f = owens_t(1.0, a);
-  EXPECT_DOUBLE_EQ(owens_t(1.0, 2.0), f.val_);
-  EXPECT_DOUBLE_EQ(0.0026128467, f.d_);
+  EXPECT_FLOAT_EQ(owens_t(1.0, 2.0), f.val_);
+  EXPECT_FLOAT_EQ(0.0026128467, f.d_);
 
   f = owens_t(h, 2.0);
-  EXPECT_DOUBLE_EQ(owens_t(1.0, 2.0), f.val_);
-  EXPECT_DOUBLE_EQ(-0.1154804963, f.d_);
+  EXPECT_FLOAT_EQ(owens_t(1.0, 2.0), f.val_);
+  EXPECT_FLOAT_EQ(-0.1154804963, f.d_);
 }
 
 TEST(AgradFwdOwensT, FvarFvarDouble) {
@@ -35,10 +35,10 @@ TEST(AgradFwdOwensT, FvarFvarDouble) {
 
   fvar<fvar<double> > f = owens_t(h, a);
 
-  EXPECT_DOUBLE_EQ(owens_t(1.0, 2.0), f.val_.val_);
-  EXPECT_DOUBLE_EQ(-0.1154804963, f.val_.d_);
-  EXPECT_DOUBLE_EQ(0.0026128467, f.d_.val_);
-  EXPECT_DOUBLE_EQ(-0.013064234, f.d_.d_);
+  EXPECT_FLOAT_EQ(owens_t(1.0, 2.0), f.val_.val_);
+  EXPECT_FLOAT_EQ(-0.1154804963, f.val_.d_);
+  EXPECT_FLOAT_EQ(0.0026128467, f.d_.val_);
+  EXPECT_FLOAT_EQ(-0.013064234, f.d_.d_);
 }
 
 struct owens_t_fun {

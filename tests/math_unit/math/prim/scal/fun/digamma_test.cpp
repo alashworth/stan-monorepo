@@ -5,8 +5,8 @@
 #include <limits>
 
 TEST(MathFunctions, digamma) {
-  EXPECT_DOUBLE_EQ(boost::math::digamma(0.5), stan::math::digamma(0.5));
-  EXPECT_DOUBLE_EQ(boost::math::digamma(-1.5), stan::math::digamma(-1.5));
+  EXPECT_FLOAT_EQ(boost::math::digamma(0.5), stan::math::digamma(0.5));
+  EXPECT_FLOAT_EQ(boost::math::digamma(-1.5), stan::math::digamma(-1.5));
 }
 
 TEST(MathFunctions, digamma_nan) {

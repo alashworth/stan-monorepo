@@ -7,36 +7,36 @@
 TEST(AgradRev, atanh) {
   AVAR a = 0.3;
   AVAR f = atanh(a);
-  EXPECT_DOUBLE_EQ(atanh(0.3), f.val());
+  EXPECT_FLOAT_EQ(atanh(0.3), f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(1.0 / (1.0 - 0.3 * 0.3), g[0]);
+  EXPECT_FLOAT_EQ(1.0 / (1.0 - 0.3 * 0.3), g[0]);
 }
 
 TEST(AgradRev, atanh_1) {
   double inf = std::numeric_limits<double>::infinity();
   AVAR a = 1;
   AVAR f = atanh(a);
-  EXPECT_DOUBLE_EQ(inf, f.val());
+  EXPECT_FLOAT_EQ(inf, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(1.0 / (1.0 - 1.0 * 1.0), g[0]);
+  EXPECT_FLOAT_EQ(1.0 / (1.0 - 1.0 * 1.0), g[0]);
 }
 
 TEST(AgradRev, atanh_neg_1) {
   double inf = std::numeric_limits<double>::infinity();
   AVAR a = -1;
   AVAR f = atanh(a);
-  EXPECT_DOUBLE_EQ(-inf, f.val());
+  EXPECT_FLOAT_EQ(-inf, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(1.0 / (1.0 - (-1.0 * -1.0)), g[0]);
+  EXPECT_FLOAT_EQ(1.0 / (1.0 - (-1.0 * -1.0)), g[0]);
 }
 
 TEST(AgradRev, atanh_out_of_bounds) {

@@ -59,10 +59,10 @@ TEST_F(StanRevOde, observe_states_dvdd) {
 
   for (size_t t = 0; t < T; t++) {
     for (size_t n = 0; n < 2; n++)
-      EXPECT_DOUBLE_EQ(ys_coupled[t][n], y[t][n].val());
+      EXPECT_FLOAT_EQ(ys_coupled[t][n], y[t][n].val());
     for (size_t n = 0; n < 2; n++) {
       y[t][n].grad();
-      EXPECT_DOUBLE_EQ(ys_coupled[t][2 + n], theta[0].adj());
+      EXPECT_FLOAT_EQ(ys_coupled[t][2 + n], theta[0].adj());
       stan::math::set_zero_all_adjoints();
     }
   }
@@ -111,12 +111,12 @@ TEST_F(StanRevOde, observe_states_vddd) {
 
   for (size_t t = 0; t < T; t++) {
     for (size_t n = 0; n < 2; n++) {
-      EXPECT_DOUBLE_EQ(ys_coupled[t][n], y[t][n].val());
+      EXPECT_FLOAT_EQ(ys_coupled[t][n], y[t][n].val());
     }
     for (size_t n = 0; n < 2; n++) {
       y[t][n].grad();
-      EXPECT_DOUBLE_EQ(ys_coupled[t][2 + n], y0[0].adj());
-      EXPECT_DOUBLE_EQ(ys_coupled[t][2 + 2 + n], y0[1].adj());
+      EXPECT_FLOAT_EQ(ys_coupled[t][2 + n], y0[0].adj());
+      EXPECT_FLOAT_EQ(ys_coupled[t][2 + 2 + n], y0[1].adj());
       stan::math::set_zero_all_adjoints();
     }
   }
@@ -164,13 +164,13 @@ TEST_F(StanRevOde, observe_states_vvdd) {
 
   for (size_t t = 0; t < T; t++) {
     for (size_t n = 0; n < 2; n++)
-      EXPECT_DOUBLE_EQ(ys_coupled[t][n], y[t][n].val());
+      EXPECT_FLOAT_EQ(ys_coupled[t][n], y[t][n].val());
 
     for (size_t n = 0; n < 2; n++) {
       y[t][n].grad();
-      EXPECT_DOUBLE_EQ(ys_coupled[t][2 + n], y0[0].adj());
-      EXPECT_DOUBLE_EQ(ys_coupled[t][2 + 2 + n], y0[1].adj());
-      EXPECT_DOUBLE_EQ(ys_coupled[t][2 + 2 * 2 + n], theta[0].adj());
+      EXPECT_FLOAT_EQ(ys_coupled[t][2 + n], y0[0].adj());
+      EXPECT_FLOAT_EQ(ys_coupled[t][2 + 2 + n], y0[1].adj());
+      EXPECT_FLOAT_EQ(ys_coupled[t][2 + 2 * 2 + n], theta[0].adj());
       stan::math::set_zero_all_adjoints();
     }
   }
@@ -219,10 +219,10 @@ TEST_F(StanRevOde, observe_states_ddvd) {
 
   for (size_t t = 0; t < T; t++) {
     for (size_t n = 0; n < 2; n++)
-      EXPECT_DOUBLE_EQ(ys_coupled[t][n], y[t][n].val());
+      EXPECT_FLOAT_EQ(ys_coupled[t][n], y[t][n].val());
     for (size_t n = 0; n < 2; n++) {
       y[t][n].grad();
-      EXPECT_DOUBLE_EQ(0.0, t0.adj());
+      EXPECT_FLOAT_EQ(0.0, t0.adj());
       stan::math::set_zero_all_adjoints();
     }
   }
@@ -271,7 +271,7 @@ TEST_F(StanRevOde, observe_states_dddv) {
 
   for (size_t t = 0; t < T; t++) {
     for (size_t n = 0; n < 2; n++)
-      EXPECT_DOUBLE_EQ(ys_coupled[t][n], y[t][n].val());
+      EXPECT_FLOAT_EQ(ys_coupled[t][n], y[t][n].val());
 
     std::vector<double> yt(2);
     yt[0] = ys_coupled[t][0];
@@ -280,7 +280,7 @@ TEST_F(StanRevOde, observe_states_dddv) {
         = harm_osc(value_of(ts[t]), yt, theta, x, x_int, &msgs);
     for (size_t n = 0; n < 2; n++) {
       y[t][n].grad();
-      EXPECT_DOUBLE_EQ(ts[t].adj(), dy_dt[n]);
+      EXPECT_FLOAT_EQ(ts[t].adj(), dy_dt[n]);
       stan::math::set_zero_all_adjoints();
     }
   }

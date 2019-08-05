@@ -24,10 +24,10 @@ void test_log1m_inv_logit(const double x) {
 
   EXPECT_EQ(1U, grad_f1.size());
   EXPECT_EQ(1U, grad_f2.size());
-  EXPECT_DOUBLE_EQ(grad_f2[0], grad_f1[0]);
+  EXPECT_FLOAT_EQ(grad_f2[0], grad_f1[0]);
 
   // test value
-  EXPECT_DOUBLE_EQ(log(1.0 - inv_logit(x)), log1m_inv_logit(var(x)).val());
+  EXPECT_FLOAT_EQ(log(1.0 - inv_logit(x)), log1m_inv_logit(var(x)).val());
 }
 
 struct log1m_inv_logit_fun {

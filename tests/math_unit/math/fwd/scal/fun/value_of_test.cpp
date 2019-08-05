@@ -9,10 +9,10 @@ TEST(AgradFwd, value_of) {
   using stan::math::value_of;
 
   fvar<double> a = 5.0;
-  EXPECT_DOUBLE_EQ(5.0, value_of(a));
+  EXPECT_FLOAT_EQ(5.0, value_of(a));
   // make sure all work together
-  EXPECT_DOUBLE_EQ(5.0, value_of(5.0));
-  EXPECT_DOUBLE_EQ(5.0, value_of(5));
+  EXPECT_FLOAT_EQ(5.0, value_of(5.0));
+  EXPECT_FLOAT_EQ(5.0, value_of(5));
 }
 
 TEST(AgradFwd, value_of_nan) {

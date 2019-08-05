@@ -319,7 +319,7 @@ TEST(ProbDistributionsMultiNormal, MultiNormalVar) {
   mu << 1.0, -1.0, 3.0;
   Matrix<var, Dynamic, Dynamic> Sigma(3, 3);
   Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
-  EXPECT_DOUBLE_EQ(-11.73908, stan::math::multi_normal_log(y, mu, Sigma).val());
+  EXPECT_FLOAT_EQ(-11.73908, stan::math::multi_normal_log(y, mu, Sigma).val());
 }
 TEST(ProbDistributionsMultiNormal, MultiNormalGradientUnivariate) {
   using Eigen::VectorXd;
@@ -365,7 +365,7 @@ TEST(ProbDistributionsMultiNormal, MultiNormalGradientUnivariate) {
   double grad_diff
       = (multi_normal_log(y_p, mu, Sigma) - multi_normal_log(y_m, mu, Sigma))
         / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[0]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[0]);
 
   Matrix<double, Dynamic, 1> mu_m(1, 1);
   Matrix<double, Dynamic, 1> mu_p(1, 1);
@@ -374,7 +374,7 @@ TEST(ProbDistributionsMultiNormal, MultiNormalGradientUnivariate) {
   grad_diff
       = (multi_normal_log(y, mu_p, Sigma) - multi_normal_log(y, mu_m, Sigma))
         / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[1]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[1]);
 
   Matrix<double, Dynamic, Dynamic> Sigma_m(1, 1);
   Matrix<double, Dynamic, Dynamic> Sigma_p(1, 1);
@@ -383,7 +383,7 @@ TEST(ProbDistributionsMultiNormal, MultiNormalGradientUnivariate) {
   grad_diff
       = (multi_normal_log(y, mu, Sigma_p) - multi_normal_log(y, mu, Sigma_m))
         / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[2]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[2]);
 }
 
 TEST(MultiNormal, TestGradFunctional) {

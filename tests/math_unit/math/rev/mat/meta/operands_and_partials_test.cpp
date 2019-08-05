@@ -22,8 +22,8 @@ TEST(AgradPartialsVari, OperandsAndPartialsScal) {
   std::vector<double> grad;
   var v = o4.build(10.0);
   v.grad(v_stdvec, grad);
-  EXPECT_DOUBLE_EQ(10.0, v.val());
-  EXPECT_DOUBLE_EQ(10.0, grad[0]);
+  EXPECT_FLOAT_EQ(10.0, v.val());
+  EXPECT_FLOAT_EQ(10.0, grad[0]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsVec) {
@@ -58,11 +58,11 @@ TEST(AgradPartialsVari, OperandsAndPartialsVec) {
   std::vector<double> grad;
   var v = o4.build(10.0);
   v.grad(v_stdvec, grad);
-  EXPECT_DOUBLE_EQ(10.0, v.val());
-  EXPECT_DOUBLE_EQ(10.0, grad[0]);
-  EXPECT_DOUBLE_EQ(20.0, grad[1]);
-  EXPECT_DOUBLE_EQ(30.0, grad[2]);
-  EXPECT_DOUBLE_EQ(40.0, grad[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val());
+  EXPECT_FLOAT_EQ(10.0, grad[0]);
+  EXPECT_FLOAT_EQ(20.0, grad[1]);
+  EXPECT_FLOAT_EQ(30.0, grad[2]);
+  EXPECT_FLOAT_EQ(40.0, grad[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsStdVec) {
@@ -92,11 +92,11 @@ TEST(AgradPartialsVari, OperandsAndPartialsStdVec) {
   std::vector<double> grad;
   var v = o4.build(10.0);
   v.grad(v_vec, grad);
-  EXPECT_DOUBLE_EQ(10.0, v.val());
-  EXPECT_DOUBLE_EQ(10.0, grad[0]);
-  EXPECT_DOUBLE_EQ(20.0, grad[1]);
-  EXPECT_DOUBLE_EQ(30.0, grad[2]);
-  EXPECT_DOUBLE_EQ(40.0, grad[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val());
+  EXPECT_FLOAT_EQ(10.0, grad[0]);
+  EXPECT_FLOAT_EQ(20.0, grad[1]);
+  EXPECT_FLOAT_EQ(30.0, grad[2]);
+  EXPECT_FLOAT_EQ(40.0, grad[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMat) {
@@ -133,11 +133,11 @@ TEST(AgradPartialsVari, OperandsAndPartialsMat) {
   std::vector<double> grad;
   var v = o4.build(10.0);
   v.grad(v_stdvec, grad);
-  EXPECT_DOUBLE_EQ(10.0, v.val());
-  EXPECT_DOUBLE_EQ(30.0, grad[0]);
-  EXPECT_DOUBLE_EQ(60.0, grad[1]);
-  EXPECT_DOUBLE_EQ(90.0, grad[2]);
-  EXPECT_DOUBLE_EQ(120.0, grad[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val());
+  EXPECT_FLOAT_EQ(30.0, grad[0]);
+  EXPECT_FLOAT_EQ(60.0, grad[1]);
+  EXPECT_FLOAT_EQ(90.0, grad[2]);
+  EXPECT_FLOAT_EQ(120.0, grad[3]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMatMultivar) {
@@ -191,15 +191,15 @@ TEST(AgradPartialsVari, OperandsAndPartialsMatMultivar) {
   std::vector<double> grad;
   var v = o4.build(10.0);
   v.grad(v_stdvec, grad);
-  EXPECT_DOUBLE_EQ(10.0, v.val());
-  EXPECT_DOUBLE_EQ(10.0, grad[0]);
-  EXPECT_DOUBLE_EQ(20.0, grad[1]);
-  EXPECT_DOUBLE_EQ(30.0, grad[2]);
-  EXPECT_DOUBLE_EQ(40.0, grad[3]);
-  EXPECT_DOUBLE_EQ(20.0, grad[4]);
-  EXPECT_DOUBLE_EQ(40.0, grad[5]);
-  EXPECT_DOUBLE_EQ(60.0, grad[6]);
-  EXPECT_DOUBLE_EQ(80.0, grad[7]);
+  EXPECT_FLOAT_EQ(10.0, v.val());
+  EXPECT_FLOAT_EQ(10.0, grad[0]);
+  EXPECT_FLOAT_EQ(20.0, grad[1]);
+  EXPECT_FLOAT_EQ(30.0, grad[2]);
+  EXPECT_FLOAT_EQ(40.0, grad[3]);
+  EXPECT_FLOAT_EQ(20.0, grad[4]);
+  EXPECT_FLOAT_EQ(40.0, grad[5]);
+  EXPECT_FLOAT_EQ(60.0, grad[6]);
+  EXPECT_FLOAT_EQ(80.0, grad[7]);
 }
 
 TEST(AgradPartialsVari, OperandsAndPartialsMultivar) {
@@ -244,11 +244,11 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultivar) {
   std::vector<double> grad;
   var v = o4.build(10.0);
   v.grad(v_stdvec, grad);
-  EXPECT_DOUBLE_EQ(10.0, v.val());
-  EXPECT_DOUBLE_EQ(10.0, grad[0]);
-  EXPECT_DOUBLE_EQ(20.0, grad[1]);
-  EXPECT_DOUBLE_EQ(30.0, grad[2]);
-  EXPECT_DOUBLE_EQ(40.0, grad[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val());
+  EXPECT_FLOAT_EQ(10.0, grad[0]);
+  EXPECT_FLOAT_EQ(20.0, grad[1]);
+  EXPECT_FLOAT_EQ(30.0, grad[2]);
+  EXPECT_FLOAT_EQ(40.0, grad[3]);
 }
 
 // XXX Test mixed - operands_and_partials<std::vector<matrix_v>,
@@ -297,11 +297,11 @@ TEST(AgradPartialsVari, OperandsAndPartialsMultivarMixed) {
   std::vector<double> grad;
   var v = o4.build(10.0);
   v.grad(v_stdvec, grad);
-  EXPECT_DOUBLE_EQ(10.0, v.val());
-  EXPECT_DOUBLE_EQ(10.0, grad[0]);
-  EXPECT_DOUBLE_EQ(20.0, grad[1]);
-  EXPECT_DOUBLE_EQ(30.0, grad[2]);
-  EXPECT_DOUBLE_EQ(40.0, grad[3]);
+  EXPECT_FLOAT_EQ(10.0, v.val());
+  EXPECT_FLOAT_EQ(10.0, grad[0]);
+  EXPECT_FLOAT_EQ(20.0, grad[1]);
+  EXPECT_FLOAT_EQ(30.0, grad[2]);
+  EXPECT_FLOAT_EQ(40.0, grad[3]);
 
   // when given vector_d in place of vector_v all expressions must
   // still compile

@@ -12,16 +12,16 @@ TEST(AgradRevMatrix, subtract_scalar) {
   matrix_v result;
 
   result = subtract(2.0, v);
-  EXPECT_DOUBLE_EQ(1.0, result(0, 0).val());
-  EXPECT_DOUBLE_EQ(0.0, result(0, 1).val());
-  EXPECT_DOUBLE_EQ(-1.0, result(1, 0).val());
-  EXPECT_DOUBLE_EQ(-2.0, result(1, 1).val());
+  EXPECT_FLOAT_EQ(1.0, result(0, 0).val());
+  EXPECT_FLOAT_EQ(0.0, result(0, 1).val());
+  EXPECT_FLOAT_EQ(-1.0, result(1, 0).val());
+  EXPECT_FLOAT_EQ(-2.0, result(1, 1).val());
 
   result = subtract(v, 2.0);
-  EXPECT_DOUBLE_EQ(-1.0, result(0, 0).val());
-  EXPECT_DOUBLE_EQ(0.0, result(0, 1).val());
-  EXPECT_DOUBLE_EQ(1.0, result(1, 0).val());
-  EXPECT_DOUBLE_EQ(2.0, result(1, 1).val());
+  EXPECT_FLOAT_EQ(-1.0, result(0, 0).val());
+  EXPECT_FLOAT_EQ(0.0, result(0, 1).val());
+  EXPECT_FLOAT_EQ(1.0, result(1, 0).val());
+  EXPECT_FLOAT_EQ(2.0, result(1, 1).val());
 }
 
 TEST(AgradRevMatrix, subtract_vector_vector) {
@@ -43,32 +43,32 @@ TEST(AgradRevMatrix, subtract_vector_vector) {
   expected_output << -2, -1, -10, 5, 0;
 
   output_d = subtract(vd_1, vd_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output_d(0));
-  EXPECT_DOUBLE_EQ(expected_output(1), output_d(1));
-  EXPECT_DOUBLE_EQ(expected_output(2), output_d(2));
-  EXPECT_DOUBLE_EQ(expected_output(3), output_d(3));
-  EXPECT_DOUBLE_EQ(expected_output(4), output_d(4));
+  EXPECT_FLOAT_EQ(expected_output(0), output_d(0));
+  EXPECT_FLOAT_EQ(expected_output(1), output_d(1));
+  EXPECT_FLOAT_EQ(expected_output(2), output_d(2));
+  EXPECT_FLOAT_EQ(expected_output(3), output_d(3));
+  EXPECT_FLOAT_EQ(expected_output(4), output_d(4));
 
   output = subtract(vv_1, vd_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output(0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1), output(1).val());
-  EXPECT_DOUBLE_EQ(expected_output(2), output(2).val());
-  EXPECT_DOUBLE_EQ(expected_output(3), output(3).val());
-  EXPECT_DOUBLE_EQ(expected_output(4), output(4).val());
+  EXPECT_FLOAT_EQ(expected_output(0), output(0).val());
+  EXPECT_FLOAT_EQ(expected_output(1), output(1).val());
+  EXPECT_FLOAT_EQ(expected_output(2), output(2).val());
+  EXPECT_FLOAT_EQ(expected_output(3), output(3).val());
+  EXPECT_FLOAT_EQ(expected_output(4), output(4).val());
 
   output = subtract(vd_1, vv_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output(0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1), output(1).val());
-  EXPECT_DOUBLE_EQ(expected_output(2), output(2).val());
-  EXPECT_DOUBLE_EQ(expected_output(3), output(3).val());
-  EXPECT_DOUBLE_EQ(expected_output(4), output(4).val());
+  EXPECT_FLOAT_EQ(expected_output(0), output(0).val());
+  EXPECT_FLOAT_EQ(expected_output(1), output(1).val());
+  EXPECT_FLOAT_EQ(expected_output(2), output(2).val());
+  EXPECT_FLOAT_EQ(expected_output(3), output(3).val());
+  EXPECT_FLOAT_EQ(expected_output(4), output(4).val());
 
   output = subtract(vv_1, vv_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output(0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1), output(1).val());
-  EXPECT_DOUBLE_EQ(expected_output(2), output(2).val());
-  EXPECT_DOUBLE_EQ(expected_output(3), output(3).val());
-  EXPECT_DOUBLE_EQ(expected_output(4), output(4).val());
+  EXPECT_FLOAT_EQ(expected_output(0), output(0).val());
+  EXPECT_FLOAT_EQ(expected_output(1), output(1).val());
+  EXPECT_FLOAT_EQ(expected_output(2), output(2).val());
+  EXPECT_FLOAT_EQ(expected_output(3), output(3).val());
+  EXPECT_FLOAT_EQ(expected_output(4), output(4).val());
 }
 TEST(AgradRevMatrix, subtract_vector_vector_exception) {
   using stan::math::subtract;
@@ -103,32 +103,32 @@ TEST(AgradRevMatrix, subtract_rowvector_rowvector) {
   expected_output << -2, -1, -10, 5, 0;
 
   output_d = subtract(rvd_1, rvd_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output_d(0));
-  EXPECT_DOUBLE_EQ(expected_output(1), output_d(1));
-  EXPECT_DOUBLE_EQ(expected_output(2), output_d(2));
-  EXPECT_DOUBLE_EQ(expected_output(3), output_d(3));
-  EXPECT_DOUBLE_EQ(expected_output(4), output_d(4));
+  EXPECT_FLOAT_EQ(expected_output(0), output_d(0));
+  EXPECT_FLOAT_EQ(expected_output(1), output_d(1));
+  EXPECT_FLOAT_EQ(expected_output(2), output_d(2));
+  EXPECT_FLOAT_EQ(expected_output(3), output_d(3));
+  EXPECT_FLOAT_EQ(expected_output(4), output_d(4));
 
   output = subtract(rvv_1, rvd_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output(0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1), output(1).val());
-  EXPECT_DOUBLE_EQ(expected_output(2), output(2).val());
-  EXPECT_DOUBLE_EQ(expected_output(3), output(3).val());
-  EXPECT_DOUBLE_EQ(expected_output(4), output(4).val());
+  EXPECT_FLOAT_EQ(expected_output(0), output(0).val());
+  EXPECT_FLOAT_EQ(expected_output(1), output(1).val());
+  EXPECT_FLOAT_EQ(expected_output(2), output(2).val());
+  EXPECT_FLOAT_EQ(expected_output(3), output(3).val());
+  EXPECT_FLOAT_EQ(expected_output(4), output(4).val());
 
   output = subtract(rvd_1, rvv_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output(0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1), output(1).val());
-  EXPECT_DOUBLE_EQ(expected_output(2), output(2).val());
-  EXPECT_DOUBLE_EQ(expected_output(3), output(3).val());
-  EXPECT_DOUBLE_EQ(expected_output(4), output(4).val());
+  EXPECT_FLOAT_EQ(expected_output(0), output(0).val());
+  EXPECT_FLOAT_EQ(expected_output(1), output(1).val());
+  EXPECT_FLOAT_EQ(expected_output(2), output(2).val());
+  EXPECT_FLOAT_EQ(expected_output(3), output(3).val());
+  EXPECT_FLOAT_EQ(expected_output(4), output(4).val());
 
   output = subtract(rvv_1, rvv_2);
-  EXPECT_DOUBLE_EQ(expected_output(0), output(0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1), output(1).val());
-  EXPECT_DOUBLE_EQ(expected_output(2), output(2).val());
-  EXPECT_DOUBLE_EQ(expected_output(3), output(3).val());
-  EXPECT_DOUBLE_EQ(expected_output(4), output(4).val());
+  EXPECT_FLOAT_EQ(expected_output(0), output(0).val());
+  EXPECT_FLOAT_EQ(expected_output(1), output(1).val());
+  EXPECT_FLOAT_EQ(expected_output(2), output(2).val());
+  EXPECT_FLOAT_EQ(expected_output(3), output(3).val());
+  EXPECT_FLOAT_EQ(expected_output(4), output(4).val());
 }
 TEST(AgradRevMatrix, subtract_rowvector_rowvector_exception) {
   using stan::math::row_vector_d;
@@ -164,28 +164,28 @@ TEST(AgradRevMatrix, subtract_matrix_matrix) {
   expected_output << -20, 11, 9, -2;
 
   matrix_d output_d = subtract(md_1, md_2);
-  EXPECT_DOUBLE_EQ(expected_output(0, 0), output_d(0, 0));
-  EXPECT_DOUBLE_EQ(expected_output(0, 1), output_d(0, 1));
-  EXPECT_DOUBLE_EQ(expected_output(1, 0), output_d(1, 0));
-  EXPECT_DOUBLE_EQ(expected_output(1, 1), output_d(1, 1));
+  EXPECT_FLOAT_EQ(expected_output(0, 0), output_d(0, 0));
+  EXPECT_FLOAT_EQ(expected_output(0, 1), output_d(0, 1));
+  EXPECT_FLOAT_EQ(expected_output(1, 0), output_d(1, 0));
+  EXPECT_FLOAT_EQ(expected_output(1, 1), output_d(1, 1));
 
   output = subtract(mv_1, md_2);
-  EXPECT_DOUBLE_EQ(expected_output(0, 0), output(0, 0).val());
-  EXPECT_DOUBLE_EQ(expected_output(0, 1), output(0, 1).val());
-  EXPECT_DOUBLE_EQ(expected_output(1, 0), output(1, 0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1, 1), output(1, 1).val());
+  EXPECT_FLOAT_EQ(expected_output(0, 0), output(0, 0).val());
+  EXPECT_FLOAT_EQ(expected_output(0, 1), output(0, 1).val());
+  EXPECT_FLOAT_EQ(expected_output(1, 0), output(1, 0).val());
+  EXPECT_FLOAT_EQ(expected_output(1, 1), output(1, 1).val());
 
   output = subtract(md_1, mv_2);
-  EXPECT_DOUBLE_EQ(expected_output(0, 0), output(0, 0).val());
-  EXPECT_DOUBLE_EQ(expected_output(0, 1), output(0, 1).val());
-  EXPECT_DOUBLE_EQ(expected_output(1, 0), output(1, 0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1, 1), output(1, 1).val());
+  EXPECT_FLOAT_EQ(expected_output(0, 0), output(0, 0).val());
+  EXPECT_FLOAT_EQ(expected_output(0, 1), output(0, 1).val());
+  EXPECT_FLOAT_EQ(expected_output(1, 0), output(1, 0).val());
+  EXPECT_FLOAT_EQ(expected_output(1, 1), output(1, 1).val());
 
   output = subtract(mv_1, mv_2);
-  EXPECT_DOUBLE_EQ(expected_output(0, 0), output(0, 0).val());
-  EXPECT_DOUBLE_EQ(expected_output(0, 1), output(0, 1).val());
-  EXPECT_DOUBLE_EQ(expected_output(1, 0), output(1, 0).val());
-  EXPECT_DOUBLE_EQ(expected_output(1, 1), output(1, 1).val());
+  EXPECT_FLOAT_EQ(expected_output(0, 0), output(0, 0).val());
+  EXPECT_FLOAT_EQ(expected_output(0, 1), output(0, 1).val());
+  EXPECT_FLOAT_EQ(expected_output(1, 0), output(1, 0).val());
+  EXPECT_FLOAT_EQ(expected_output(1, 1), output(1, 1).val());
 }
 TEST(AgradRevMatrix, subtract_matrix_matrix_exception) {
   using stan::math::matrix_d;

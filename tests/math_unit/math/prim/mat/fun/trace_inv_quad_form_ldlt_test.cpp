@@ -10,7 +10,7 @@ TEST(MathMatrix, trace_inv_quad_form_ldlt) {
   ldlt_A.compute(A);
   ASSERT_TRUE(ldlt_A.success());
 
-  EXPECT_DOUBLE_EQ(1439.1061766207, trace_inv_quad_form_ldlt(ldlt_A, B));
-  EXPECT_DOUBLE_EQ((B.transpose() * A.inverse() * B).trace(),
-                   trace_inv_quad_form_ldlt(ldlt_A, B));
+  EXPECT_FLOAT_EQ(1439.1061766207, trace_inv_quad_form_ldlt(ldlt_A, B));
+  EXPECT_FLOAT_EQ((B.transpose() * A.inverse() * B).trace(),
+                  trace_inv_quad_form_ldlt(ldlt_A, B));
 }

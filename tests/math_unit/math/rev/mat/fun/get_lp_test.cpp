@@ -10,11 +10,11 @@ TEST(mathMatrix, getLp_1) {
 
   var lp = 12.5;
   accumulator<var> lp_accum;
-  EXPECT_DOUBLE_EQ(12.5, get_lp(lp, lp_accum).val());
+  EXPECT_FLOAT_EQ(12.5, get_lp(lp, lp_accum).val());
 
   lp_accum.add(2);
   lp_accum.add(3);
-  EXPECT_DOUBLE_EQ(17.5, get_lp(lp, lp_accum).val());
+  EXPECT_FLOAT_EQ(17.5, get_lp(lp, lp_accum).val());
 }
 
 TEST(AgradRevMatrix, check_varis_on_stack_13) {

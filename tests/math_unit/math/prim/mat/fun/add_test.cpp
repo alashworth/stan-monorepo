@@ -53,16 +53,16 @@ TEST(MathMatrix, add_c_m) {
   stan::math::matrix_d result;
 
   result = stan::math::add(2.0, v);
-  EXPECT_DOUBLE_EQ(3.0, result(0, 0));
-  EXPECT_DOUBLE_EQ(4.0, result(0, 1));
-  EXPECT_DOUBLE_EQ(5.0, result(1, 0));
-  EXPECT_DOUBLE_EQ(6.0, result(1, 1));
+  EXPECT_FLOAT_EQ(3.0, result(0, 0));
+  EXPECT_FLOAT_EQ(4.0, result(0, 1));
+  EXPECT_FLOAT_EQ(5.0, result(1, 0));
+  EXPECT_FLOAT_EQ(6.0, result(1, 1));
 
   result = stan::math::add(v, 2.0);
-  EXPECT_DOUBLE_EQ(3.0, result(0, 0));
-  EXPECT_DOUBLE_EQ(4.0, result(0, 1));
-  EXPECT_DOUBLE_EQ(5.0, result(1, 0));
-  EXPECT_DOUBLE_EQ(6.0, result(1, 1));
+  EXPECT_FLOAT_EQ(3.0, result(0, 0));
+  EXPECT_FLOAT_EQ(4.0, result(0, 1));
+  EXPECT_FLOAT_EQ(5.0, result(1, 0));
+  EXPECT_FLOAT_EQ(6.0, result(1, 1));
 }
 
 TEST(MathMatrix, add_c_rv) {
@@ -71,14 +71,14 @@ TEST(MathMatrix, add_c_rv) {
   stan::math::row_vector_d result;
 
   result = stan::math::add(2.0, v);
-  EXPECT_DOUBLE_EQ(3.0, result(0));
-  EXPECT_DOUBLE_EQ(4.0, result(1));
-  EXPECT_DOUBLE_EQ(5.0, result(2));
+  EXPECT_FLOAT_EQ(3.0, result(0));
+  EXPECT_FLOAT_EQ(4.0, result(1));
+  EXPECT_FLOAT_EQ(5.0, result(2));
 
   result = stan::math::add(v, 2.0);
-  EXPECT_DOUBLE_EQ(3.0, result(0));
-  EXPECT_DOUBLE_EQ(4.0, result(1));
-  EXPECT_DOUBLE_EQ(5.0, result(2));
+  EXPECT_FLOAT_EQ(3.0, result(0));
+  EXPECT_FLOAT_EQ(4.0, result(1));
+  EXPECT_FLOAT_EQ(5.0, result(2));
 }
 
 TEST(MathMatrix, add_c_v) {
@@ -87,14 +87,14 @@ TEST(MathMatrix, add_c_v) {
   stan::math::vector_d result;
 
   result = stan::math::add(2.0, v);
-  EXPECT_DOUBLE_EQ(3.0, result(0));
-  EXPECT_DOUBLE_EQ(4.0, result(1));
-  EXPECT_DOUBLE_EQ(5.0, result(2));
+  EXPECT_FLOAT_EQ(3.0, result(0));
+  EXPECT_FLOAT_EQ(4.0, result(1));
+  EXPECT_FLOAT_EQ(5.0, result(2));
 
   result = stan::math::add(v, 2.0);
-  EXPECT_DOUBLE_EQ(3.0, result(0));
-  EXPECT_DOUBLE_EQ(4.0, result(1));
-  EXPECT_DOUBLE_EQ(5.0, result(2));
+  EXPECT_FLOAT_EQ(3.0, result(0));
+  EXPECT_FLOAT_EQ(4.0, result(1));
+  EXPECT_FLOAT_EQ(5.0, result(2));
 }
 
 TEST(MathMatrix, add) {

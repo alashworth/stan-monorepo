@@ -5,21 +5,21 @@
 
 TEST(MathFunctions, inv_Phi_0) {
   using stan::math::Phi;
-  using stan::math::fvar;
+  using stan::math::inv_Phi;
   using stan::math::Phi;
-  EXPECT_DOUBLE_EQ(0.0, inv_Phi(0.5));
+  EXPECT_FLOAT_EQ(0.0, inv_Phi(0.5));
   fvar<double> p = 0.123456789;
-  EXPECT_DOUBLE_EQ(p.val_, Phi(inv_Phi(p)).val_);
+  EXPECT_FLOAT_EQ(p.val_, Phi(inv_Phi(p)).val_);
   p = 8e-311;
-  EXPECT_DOUBLE_EQ(p.val_, Phi(inv_Phi(p)).val_);
+  EXPECT_FLOAT_EQ(p.val_, Phi(inv_Phi(p)).val_);
   p = 0.99;
-  EXPECT_DOUBLE_EQ(p.val_, Phi(inv_Phi(p)).val_);
+  EXPECT_FLOAT_EQ(p.val_, Phi(inv_Phi(p)).val_);
 
   // breakpoints
   p = 0.02425;
-  EXPECT_DOUBLE_EQ(p.val_, Phi(inv_Phi(p)).val_);
+  EXPECT_FLOAT_EQ(p.val_, Phi(inv_Phi(p)).val_);
   p = 0.97575;
-  EXPECT_DOUBLE_EQ(p.val_, Phi(inv_Phi(p)).val_);
+  EXPECT_FLOAT_EQ(p.val_, Phi(inv_Phi(p)).val_);
 }
 TEST(MathFunctions, inv_Phi_inf_0) {
   using stan::math::fvar;
@@ -49,8 +49,8 @@ TEST(AgradFwdinv_Phi, Fvar) {
 
   fvar<double> y = Phi(inv_Phi(x));
 
-  EXPECT_DOUBLE_EQ(0.1, y.val_);
-  EXPECT_DOUBLE_EQ(1.0, y.d_);
+  EXPECT_FLOAT_EQ(0.1, y.val_);
+  EXPECT_FLOAT_EQ(1.0, y.d_);
 }
 TEST(AgradFwdinv_Phi, FvarFvarDouble) {
   using stan::math::Phi;
@@ -63,10 +63,10 @@ TEST(AgradFwdinv_Phi, FvarFvarDouble) {
 
   fvar<fvar<double> > a = Phi(inv_Phi(x));
 
-  EXPECT_DOUBLE_EQ(0.1, a.val_.val_);
-  EXPECT_DOUBLE_EQ(1.0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(0.1, a.val_.val_);
+  EXPECT_FLOAT_EQ(1.0, a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 }
 
 struct inv_Phi_fun {

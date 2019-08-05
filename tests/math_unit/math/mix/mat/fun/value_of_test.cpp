@@ -49,17 +49,17 @@ TEST(AgradMixMatrix, value_of) {
   Eigen::Matrix<fvar<var>, -1, -1> d_ffv_b = value_of(ffv_b);
 
   for (size_type i = 0; i < 5; ++i) {
-    EXPECT_DOUBLE_EQ(b(i), d_b(i));
-    EXPECT_DOUBLE_EQ(b(i), d_v_b(i));
-    EXPECT_DOUBLE_EQ(b(i), d_fv_b(i).val());
-    EXPECT_DOUBLE_EQ(b(i), d_ffv_b(i).val_.val());
+    EXPECT_FLOAT_EQ(b(i), d_b(i));
+    EXPECT_FLOAT_EQ(b(i), d_v_b(i));
+    EXPECT_FLOAT_EQ(b(i), d_fv_b(i).val());
+    EXPECT_FLOAT_EQ(b(i), d_ffv_b(i).val_.val());
   }
 
   for (size_type i = 0; i < 2; ++i)
     for (size_type j = 0; j < 5; ++j) {
-      EXPECT_DOUBLE_EQ(a(i, j), d_a(i, j));
-      EXPECT_DOUBLE_EQ(a(i, j), d_v_a(i, j));
-      EXPECT_DOUBLE_EQ(a(i, j), d_fv_a(i, j).val());
-      EXPECT_DOUBLE_EQ(a(i, j), d_ffv_a(i, j).val_.val());
+      EXPECT_FLOAT_EQ(a(i, j), d_a(i, j));
+      EXPECT_FLOAT_EQ(a(i, j), d_v_a(i, j));
+      EXPECT_FLOAT_EQ(a(i, j), d_fv_a(i, j).val());
+      EXPECT_FLOAT_EQ(a(i, j), d_ffv_a(i, j).val_.val());
     }
 }

@@ -15,8 +15,8 @@ TEST(grad_reg_inc_beta, 1) {
   double g2 = 0;
   stan::math::grad_reg_inc_beta(g1, g2, alpha, beta, y, digamma_alpha,
                                 digamma_beta, digamma_sum, betafunc);
-  EXPECT_DOUBLE_EQ(0, g1);
-  EXPECT_DOUBLE_EQ(-std::numeric_limits<double>::infinity(), g2);
+  EXPECT_FLOAT_EQ(0, g1);
+  EXPECT_FLOAT_EQ(-std::numeric_limits<double>::infinity(), g2);
 }
 
 TEST(grad_reg_inc_beta, 2) {

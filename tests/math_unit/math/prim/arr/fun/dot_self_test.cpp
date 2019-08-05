@@ -13,8 +13,8 @@ TEST(MathFunctions, dot_self) {
   y[1] = 4.45;
   y[2] = 1.03;
 
-  EXPECT_DOUBLE_EQ(180.5194, stan::math::dot_self(x));
-  EXPECT_DOUBLE_EQ(26.915, stan::math::dot_self(y));
+  EXPECT_FLOAT_EQ(180.5194, stan::math::dot_self(x));
+  EXPECT_FLOAT_EQ(26.915, stan::math::dot_self(y));
 }
 
 TEST(MathFunctions, dot_self_nan) {

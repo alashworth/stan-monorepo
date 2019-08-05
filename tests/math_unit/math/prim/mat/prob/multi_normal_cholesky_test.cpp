@@ -17,7 +17,7 @@ TEST(ProbDistributionsMultiNormalCholesky, NotVectorized) {
   Matrix<double, Dynamic, Dynamic> Sigma(3, 3);
   Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
   Matrix<double, Dynamic, Dynamic> L = Sigma.llt().matrixL();
-  EXPECT_DOUBLE_EQ(-11.73908, stan::math::multi_normal_cholesky_log(y, mu, L));
+  EXPECT_FLOAT_EQ(-11.73908, stan::math::multi_normal_cholesky_log(y, mu, L));
   EXPECT_NO_THROW(stan::math::multi_normal_cholesky_rng(mu, L, rng));
 }
 TEST(ProbDistributionsMultiNormalCholesky, Vectorized) {
@@ -51,34 +51,34 @@ TEST(ProbDistributionsMultiNormalCholesky, Vectorized) {
   Matrix<double, Dynamic, Dynamic> L = Sigma.llt().matrixL();
 
   // y and mu vectorized
-  EXPECT_DOUBLE_EQ(-11.928077 - 6.5378327,
-                   stan::math::multi_normal_cholesky_log(vec_y, vec_mu, L));
-  EXPECT_DOUBLE_EQ(-11.928077 - 6.5378327,
-                   stan::math::multi_normal_cholesky_log(vec_y_t, vec_mu, L));
-  EXPECT_DOUBLE_EQ(-11.928077 - 6.5378327,
-                   stan::math::multi_normal_cholesky_log(vec_y, vec_mu_t, L));
-  EXPECT_DOUBLE_EQ(-11.928077 - 6.5378327,
-                   stan::math::multi_normal_cholesky_log(vec_y_t, vec_mu_t, L));
+  EXPECT_FLOAT_EQ(-11.928077 - 6.5378327,
+                  stan::math::multi_normal_cholesky_log(vec_y, vec_mu, L));
+  EXPECT_FLOAT_EQ(-11.928077 - 6.5378327,
+                  stan::math::multi_normal_cholesky_log(vec_y_t, vec_mu, L));
+  EXPECT_FLOAT_EQ(-11.928077 - 6.5378327,
+                  stan::math::multi_normal_cholesky_log(vec_y, vec_mu_t, L));
+  EXPECT_FLOAT_EQ(-11.928077 - 6.5378327,
+                  stan::math::multi_normal_cholesky_log(vec_y_t, vec_mu_t, L));
 
   // y vectorized
-  EXPECT_DOUBLE_EQ(-10.44027 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(vec_y, mu, L));
-  EXPECT_DOUBLE_EQ(-10.44027 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(vec_y_t, mu, L));
-  EXPECT_DOUBLE_EQ(-10.44027 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(vec_y, mu_t, L));
-  EXPECT_DOUBLE_EQ(-10.44027 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(vec_y_t, mu_t, L));
+  EXPECT_FLOAT_EQ(-10.44027 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(vec_y, mu, L));
+  EXPECT_FLOAT_EQ(-10.44027 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(vec_y_t, mu, L));
+  EXPECT_FLOAT_EQ(-10.44027 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(vec_y, mu_t, L));
+  EXPECT_FLOAT_EQ(-10.44027 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(vec_y_t, mu_t, L));
 
   // mu vectorized
-  EXPECT_DOUBLE_EQ(-6.26954 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(y, vec_mu, L));
-  EXPECT_DOUBLE_EQ(-6.26954 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(y_t, vec_mu, L));
-  EXPECT_DOUBLE_EQ(-6.26954 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(y, vec_mu_t, L));
-  EXPECT_DOUBLE_EQ(-6.26954 - 6.537833,
-                   stan::math::multi_normal_cholesky_log(y_t, vec_mu_t, L));
+  EXPECT_FLOAT_EQ(-6.26954 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(y, vec_mu, L));
+  EXPECT_FLOAT_EQ(-6.26954 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(y_t, vec_mu, L));
+  EXPECT_FLOAT_EQ(-6.26954 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(y, vec_mu_t, L));
+  EXPECT_FLOAT_EQ(-6.26954 - 6.537833,
+                  stan::math::multi_normal_cholesky_log(y_t, vec_mu_t, L));
   EXPECT_NO_THROW(stan::math::multi_normal_cholesky_rng(vec_mu, L, rng));
   EXPECT_NO_THROW(stan::math::multi_normal_cholesky_rng(vec_mu_t, L, rng));
 }
@@ -92,7 +92,7 @@ TEST(ProbDistributionsMultiNormalCholesky, MultiNormalOneRow) {
   Matrix<double, Dynamic, Dynamic> Sigma(3, 3);
   Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
   Matrix<double, Dynamic, Dynamic> L = Sigma.llt().matrixL();
-  EXPECT_DOUBLE_EQ(-11.73908, stan::math::multi_normal_cholesky_log(y, mu, L));
+  EXPECT_FLOAT_EQ(-11.73908, stan::math::multi_normal_cholesky_log(y, mu, L));
   EXPECT_NO_THROW(stan::math::multi_normal_cholesky_rng(mu, L, rng));
 }
 

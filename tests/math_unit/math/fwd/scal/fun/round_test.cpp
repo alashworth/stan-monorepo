@@ -11,22 +11,22 @@ TEST(AgradFwdRound, Fvar) {
   fvar<double> y(2.4, 2.0);
 
   fvar<double> a = round(x);
-  EXPECT_DOUBLE_EQ(round(0.5), a.val_);
-  EXPECT_DOUBLE_EQ(0.0, a.d_);
+  EXPECT_FLOAT_EQ(round(0.5), a.val_);
+  EXPECT_FLOAT_EQ(0.0, a.d_);
 
   fvar<double> b = round(y);
-  EXPECT_DOUBLE_EQ(round(2.4), b.val_);
-  EXPECT_DOUBLE_EQ(0.0, b.d_);
+  EXPECT_FLOAT_EQ(round(2.4), b.val_);
+  EXPECT_FLOAT_EQ(0.0, b.d_);
 
   fvar<double> c = round(2 * x);
-  EXPECT_DOUBLE_EQ(round(2 * 0.5), c.val_);
-  EXPECT_DOUBLE_EQ(0.0, c.d_);
+  EXPECT_FLOAT_EQ(round(2 * 0.5), c.val_);
+  EXPECT_FLOAT_EQ(0.0, c.d_);
 
   fvar<double> z(1.25, 1.0);
 
   fvar<double> d = round(2 * z);
-  EXPECT_DOUBLE_EQ(round(2 * 1.25), d.val_);
-  EXPECT_DOUBLE_EQ(0.0, d.d_);
+  EXPECT_FLOAT_EQ(round(2 * 1.25), d.val_);
+  EXPECT_FLOAT_EQ(0.0, d.d_);
 }
 
 TEST(AgradFwdRound, FvarFvarDouble) {
@@ -39,20 +39,20 @@ TEST(AgradFwdRound, FvarFvarDouble) {
 
   fvar<fvar<double> > a = round(x);
 
-  EXPECT_DOUBLE_EQ(round(1.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(round(1.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   a = round(y);
-  EXPECT_DOUBLE_EQ(round(1.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(round(1.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 }
 
 struct round_fun {

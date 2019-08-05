@@ -36,7 +36,7 @@ TEST(AgradRevMatrix, append_row_matrix) {
   size_t idx = 0;
   for (int i = 0; i < 2; i++)
     for (int j = 0; j < 2; j++)
-      EXPECT_DOUBLE_EQ(a(i, j).val() * 2.0, g[idx++]);
+      EXPECT_FLOAT_EQ(a(i, j).val() * 2.0, g[idx++]);
   stan::math::recover_memory();
 }
 
@@ -60,7 +60,7 @@ TEST(AgradRevMatrix, append_row_row_vector) {
 
   size_t idx = 0;
   for (int i = 0; i < 3; i++)
-    EXPECT_DOUBLE_EQ(a(i).val() * 2.0, g[idx++]);
+    EXPECT_FLOAT_EQ(a(i).val() * 2.0, g[idx++]);
 
   set_zero_all_adjoints();
   append_row_ab = sum(append_row(a_square, 2.1));
@@ -68,7 +68,7 @@ TEST(AgradRevMatrix, append_row_row_vector) {
 
   idx = 0;
   for (int i = 0; i < 3; i++)
-    EXPECT_DOUBLE_EQ(a(i).val() * 2.0, g[idx++]);
+    EXPECT_FLOAT_EQ(a(i).val() * 2.0, g[idx++]);
 
   set_zero_all_adjoints();
   append_row_ab = sum(append_row(2.1, a_square));
@@ -76,17 +76,17 @@ TEST(AgradRevMatrix, append_row_row_vector) {
 
   idx = 0;
   for (int i = 0; i < 3; i++)
-    EXPECT_DOUBLE_EQ(a(i).val() * 2.0, g[idx++]);
+    EXPECT_FLOAT_EQ(a(i).val() * 2.0, g[idx++]);
 
   set_zero_all_adjoints();
   append_row_ab = sum(append_row(a_square(2) * 3.0, b));
   append_row_ab.grad();
-  EXPECT_DOUBLE_EQ(a(2).val() * 6.0, x[2].adj());
+  EXPECT_FLOAT_EQ(a(2).val() * 6.0, x[2].adj());
 
   set_zero_all_adjoints();
   append_row_ab = sum(append_row(b, a_square(1) * 3.0));
   append_row_ab.grad();
-  EXPECT_DOUBLE_EQ(a(1).val() * 6.0, x[1].adj());
+  EXPECT_FLOAT_EQ(a(1).val() * 6.0, x[1].adj());
   stan::math::recover_memory();
 }
 

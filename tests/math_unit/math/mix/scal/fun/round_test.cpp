@@ -13,13 +13,13 @@ TEST(AgradFwdRound, FvarVar_1stDeriv) {
   fvar<var> x(1.5, 1.3);
   fvar<var> a = round(x);
 
-  EXPECT_DOUBLE_EQ(round(1.5), a.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val());
+  EXPECT_FLOAT_EQ(round(1.5), a.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val());
 
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(0, g[0]);
+  EXPECT_FLOAT_EQ(0, g[0]);
 }
 TEST(AgradFwdRound, FvarVar_2ndDeriv) {
   using stan::math::fvar;
@@ -32,7 +32,7 @@ TEST(AgradFwdRound, FvarVar_2ndDeriv) {
   AVEC y = createAVEC(x.val_);
   VEC g;
   a.d_.grad(y, g);
-  EXPECT_DOUBLE_EQ(0, g[0]);
+  EXPECT_FLOAT_EQ(0, g[0]);
 }
 
 TEST(AgradFwdRound, FvarFvarVar_1stDeriv) {
@@ -46,30 +46,30 @@ TEST(AgradFwdRound, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = round(x);
 
-  EXPECT_DOUBLE_EQ(round(1.5), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(round(1.5), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(0, g[0]);
+  EXPECT_FLOAT_EQ(0, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.5;
   y.d_.val_ = 2.0;
 
   fvar<fvar<var> > b = round(y);
-  EXPECT_DOUBLE_EQ(round(1.5), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.d_.val());
+  EXPECT_FLOAT_EQ(round(1.5), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.d_.val());
 
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.val_.val_.grad(q, r);
-  EXPECT_DOUBLE_EQ(0, r[0]);
+  EXPECT_FLOAT_EQ(0, r[0]);
 }
 TEST(AgradFwdRound, FvarFvarVar_2ndDeriv) {
   using stan::math::fvar;
@@ -85,7 +85,7 @@ TEST(AgradFwdRound, FvarFvarVar_2ndDeriv) {
   AVEC p = createAVEC(x.val_.val_);
   VEC g;
   a.val_.d_.grad(p, g);
-  EXPECT_DOUBLE_EQ(0, g[0]);
+  EXPECT_FLOAT_EQ(0, g[0]);
 
   fvar<fvar<var> > y;
   y.val_.val_ = 1.5;
@@ -96,7 +96,7 @@ TEST(AgradFwdRound, FvarFvarVar_2ndDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.val_.grad(q, r);
-  EXPECT_DOUBLE_EQ(0, r[0]);
+  EXPECT_FLOAT_EQ(0, r[0]);
 }
 TEST(AgradFwdRound, FvarFvarVar_3rdDeriv) {
   using stan::math::fvar;
@@ -113,7 +113,7 @@ TEST(AgradFwdRound, FvarFvarVar_3rdDeriv) {
   AVEC q = createAVEC(y.val_.val_);
   VEC r;
   b.d_.d_.grad(q, r);
-  EXPECT_DOUBLE_EQ(0, r[0]);
+  EXPECT_FLOAT_EQ(0, r[0]);
 }
 
 struct round_fun {

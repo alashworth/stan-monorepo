@@ -9,11 +9,11 @@ TEST(prob_transform, simplex_rt0) {
   Matrix<double, Dynamic, 1> x(4);
   x << 0.0, 0.0, 0.0, 0.0;
   Matrix<double, Dynamic, 1> y = stan::math::simplex_constrain(x);
-  EXPECT_DOUBLE_EQ(1.0 / 5.0, y(0));
-  EXPECT_DOUBLE_EQ(1.0 / 5.0, y(1));
-  EXPECT_DOUBLE_EQ(1.0 / 5.0, y(2));
-  EXPECT_DOUBLE_EQ(1.0 / 5.0, y(3));
-  EXPECT_DOUBLE_EQ(1.0 / 5.0, y(4));
+  EXPECT_FLOAT_EQ(1.0 / 5.0, y(0));
+  EXPECT_FLOAT_EQ(1.0 / 5.0, y(1));
+  EXPECT_FLOAT_EQ(1.0 / 5.0, y(2));
+  EXPECT_FLOAT_EQ(1.0 / 5.0, y(3));
+  EXPECT_FLOAT_EQ(1.0 / 5.0, y(4));
 
   Matrix<double, Dynamic, 1> xrt = stan::math::simplex_free(y);
   EXPECT_EQ(x.size() + 1, y.size());
@@ -30,7 +30,7 @@ TEST(prob_transform, simplex_rt) {
   EXPECT_EQ(x.size() + 1, y.size());
   EXPECT_EQ(x.size(), xrt.size());
   for (int i = 0; i < x.size(); ++i) {
-    EXPECT_DOUBLE_EQ(x[i], xrt[i]);
+    EXPECT_FLOAT_EQ(x[i], xrt[i]);
   }
 }
 TEST(prob_transform, simplex_match) {
@@ -43,7 +43,7 @@ TEST(prob_transform, simplex_match) {
   EXPECT_EQ(4, y.size());
   EXPECT_EQ(4, y2.size());
   for (int i = 0; i < x.size(); ++i)
-    EXPECT_DOUBLE_EQ(y[i], y2[i]);
+    EXPECT_FLOAT_EQ(y[i], y2[i]);
 }
 TEST(prob_transform, simplex_f_exception) {
   Matrix<double, Dynamic, 1> y(2);

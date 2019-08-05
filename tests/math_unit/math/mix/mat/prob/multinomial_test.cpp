@@ -19,9 +19,8 @@ TEST(ProbDistributionsMultinomial, fvar_var) {
   for (int i = 0; i < 3; i++)
     theta(i).d_ = 1.0;
 
-  EXPECT_DOUBLE_EQ(-2.002481,
-                   stan::math::multinomial_log(ns, theta).val_.val());
-  EXPECT_DOUBLE_EQ(17.666666, stan::math::multinomial_log(ns, theta).d_.val());
+  EXPECT_FLOAT_EQ(-2.002481, stan::math::multinomial_log(ns, theta).val_.val());
+  EXPECT_FLOAT_EQ(17.666666, stan::math::multinomial_log(ns, theta).d_.val());
 }
 
 TEST(ProbDistributionsMultinomial, fvar_fvar_var) {
@@ -36,8 +35,8 @@ TEST(ProbDistributionsMultinomial, fvar_fvar_var) {
   for (int i = 0; i < 3; i++)
     theta(i).d_.val_ = 1.0;
 
-  EXPECT_DOUBLE_EQ(-2.002481,
-                   stan::math::multinomial_log(ns, theta).val_.val_.val());
-  EXPECT_DOUBLE_EQ(17.666666,
-                   stan::math::multinomial_log(ns, theta).d_.val_.val());
+  EXPECT_FLOAT_EQ(-2.002481,
+                  stan::math::multinomial_log(ns, theta).val_.val_.val());
+  EXPECT_FLOAT_EQ(17.666666,
+                  stan::math::multinomial_log(ns, theta).d_.val_.val());
 }

@@ -27,7 +27,7 @@ void test_scale_matrix_exp_multiply_dv(int N, int M) {
       = stan::math::scale_matrix_exp_multiply(t, A, Bv);
   EXPECT_EQ(res_dv.size(), expAB.size());
   for (int l = 0; l < res_dv.size(); ++l) {
-    EXPECT_DOUBLE_EQ(res_dv(l).val(), expAB(l).val());
+    EXPECT_FLOAT_EQ(res_dv(l).val(), expAB(l).val());
   }
 
   // compare adjoints
@@ -39,7 +39,7 @@ void test_scale_matrix_exp_multiply_dv(int N, int M) {
       stan::math::set_zero_all_adjoints();
       expAB(k, l).grad(Bvec, g0);
       for (size_t j = 0; j < g.size(); ++j) {
-        EXPECT_DOUBLE_EQ(g[j], g0[j]);
+        EXPECT_FLOAT_EQ(g[j], g0[j]);
       }
     }
   }
@@ -52,7 +52,7 @@ void test_scale_matrix_exp_multiply_dv(int N, int M) {
   stan::math::set_zero_all_adjoints();
   f0.grad(Bvec, g0);
   for (size_t j = 0; j < g.size(); ++j) {
-    EXPECT_DOUBLE_EQ(g[j], g0[j]);
+    EXPECT_FLOAT_EQ(g[j], g0[j]);
   }
 }
 void test_scale_matrix_exp_multiply_vd(int N, int M) {
@@ -77,7 +77,7 @@ void test_scale_matrix_exp_multiply_vd(int N, int M) {
       = stan::math::scale_matrix_exp_multiply(t, Av, B);
   EXPECT_EQ(res_vd.size(), expAB.size());
   for (int l = 0; l < res_vd.size(); ++l) {
-    EXPECT_DOUBLE_EQ(res_vd(l).val(), expAB(l).val());
+    EXPECT_FLOAT_EQ(res_vd(l).val(), expAB(l).val());
   }
 
   // compare adjoints
@@ -89,7 +89,7 @@ void test_scale_matrix_exp_multiply_vd(int N, int M) {
       stan::math::set_zero_all_adjoints();
       expAB(k, l).grad(Avec, g0);
       for (size_t j = 0; j < g.size(); ++j) {
-        EXPECT_DOUBLE_EQ(g[j], g0[j]);
+        EXPECT_FLOAT_EQ(g[j], g0[j]);
       }
     }
   }
@@ -102,7 +102,7 @@ void test_scale_matrix_exp_multiply_vd(int N, int M) {
   stan::math::set_zero_all_adjoints();
   f0.grad(Avec, g0);
   for (size_t j = 0; j < g.size(); ++j) {
-    EXPECT_DOUBLE_EQ(g[j], g0[j]);
+    EXPECT_FLOAT_EQ(g[j], g0[j]);
   }
 }
 void test_scale_matrix_exp_multiply_vv(int N, int M) {
@@ -126,7 +126,7 @@ void test_scale_matrix_exp_multiply_vv(int N, int M) {
       = stan::math::scale_matrix_exp_multiply(t, Av, Bv);
   EXPECT_EQ(res_vv.size(), expAB.size());
   for (int l = 0; l < res_vv.size(); ++l) {
-    EXPECT_DOUBLE_EQ(res_vv(l).val(), expAB(l).val());
+    EXPECT_FLOAT_EQ(res_vv(l).val(), expAB(l).val());
   }
 
   // compare adjoints
@@ -139,7 +139,7 @@ void test_scale_matrix_exp_multiply_vv(int N, int M) {
       stan::math::set_zero_all_adjoints();
       expAB(k, l).grad(Avec, g0);
       for (size_t j = 0; j < g.size(); ++j) {
-        EXPECT_DOUBLE_EQ(g[j], g0[j]);
+        EXPECT_FLOAT_EQ(g[j], g0[j]);
       }
     }
   }
@@ -152,7 +152,7 @@ void test_scale_matrix_exp_multiply_vv(int N, int M) {
   stan::math::set_zero_all_adjoints();
   f0.grad(Avec, g0);
   for (size_t j = 0; j < g.size(); ++j) {
-    EXPECT_DOUBLE_EQ(g[j], g0[j]);
+    EXPECT_FLOAT_EQ(g[j], g0[j]);
   }
 }
 }  // namespace

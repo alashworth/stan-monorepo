@@ -5,7 +5,7 @@
 #include <limits>
 
 TEST(MathFunctions, log1m) {
-  EXPECT_DOUBLE_EQ(stan::math::log1p(-0.1), stan::math::log1m(0.1));
+  EXPECT_FLOAT_EQ(stan::math::log1p(-0.1), stan::math::log1m(0.1));
 }
 
 TEST(MathFunctions, log1mOverflow) {

@@ -16,9 +16,9 @@ TEST(MathFunctions, sub) {
   y[2] = 4.0;
 
   EXPECT_NO_THROW(stan::math::sub(x, y, result));
-  EXPECT_DOUBLE_EQ(0.5, result[0]);
-  EXPECT_DOUBLE_EQ(1.0, result[1]);
-  EXPECT_DOUBLE_EQ(-1.0, result[2]);
+  EXPECT_FLOAT_EQ(0.5, result[0]);
+  EXPECT_FLOAT_EQ(1.0, result[1]);
+  EXPECT_FLOAT_EQ(-1.0, result[2]);
 }
 
 TEST(MathFunctions, sub_nan) {
@@ -34,18 +34,18 @@ TEST(MathFunctions, sub_nan) {
   y[2] = 4.0;
 
   EXPECT_NO_THROW(stan::math::sub(x, y, result));
-  EXPECT_DOUBLE_EQ(0.5, result[0]);
-  EXPECT_DOUBLE_EQ(1.0, result[1]);
+  EXPECT_FLOAT_EQ(0.5, result[0]);
+  EXPECT_FLOAT_EQ(1.0, result[1]);
   EXPECT_PRED1(boost::math::isnan<double>, result[2]);
 
   EXPECT_NO_THROW(stan::math::sub(y, x, result));
-  EXPECT_DOUBLE_EQ(-0.5, result[0]);
-  EXPECT_DOUBLE_EQ(-1.0, result[1]);
+  EXPECT_FLOAT_EQ(-0.5, result[0]);
+  EXPECT_FLOAT_EQ(-1.0, result[1]);
   EXPECT_PRED1(boost::math::isnan<double>, result[2]);
 
   y[2] = nan;
   EXPECT_NO_THROW(stan::math::sub(x, y, result));
-  EXPECT_DOUBLE_EQ(0.5, result[0]);
-  EXPECT_DOUBLE_EQ(1.0, result[1]);
+  EXPECT_FLOAT_EQ(0.5, result[0]);
+  EXPECT_FLOAT_EQ(1.0, result[1]);
   EXPECT_PRED1(boost::math::isnan<double>, result[2]);
 }

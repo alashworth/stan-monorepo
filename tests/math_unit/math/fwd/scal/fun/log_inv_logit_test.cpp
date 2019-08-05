@@ -12,16 +12,16 @@ TEST(AgradFwdLogInvLogit, Fvar) {
   fvar<double> z(0.0, 3.0);
 
   fvar<double> a = log_inv_logit(x);
-  EXPECT_DOUBLE_EQ(log_inv_logit(0.5), a.val_);
-  EXPECT_DOUBLE_EQ(1.0 * exp(-0.5) / (1 + exp(-0.5)), a.d_);
+  EXPECT_FLOAT_EQ(log_inv_logit(0.5), a.val_);
+  EXPECT_FLOAT_EQ(1.0 * exp(-0.5) / (1 + exp(-0.5)), a.d_);
 
   fvar<double> b = log_inv_logit(y);
-  EXPECT_DOUBLE_EQ(log_inv_logit(-1.0), b.val_);
-  EXPECT_DOUBLE_EQ(2.0 * exp(1.0) / (1 + exp(1.0)), b.d_);
+  EXPECT_FLOAT_EQ(log_inv_logit(-1.0), b.val_);
+  EXPECT_FLOAT_EQ(2.0 * exp(1.0) / (1 + exp(1.0)), b.d_);
 
   fvar<double> c = log_inv_logit(z);
-  EXPECT_DOUBLE_EQ(log_inv_logit(0.0), c.val_);
-  EXPECT_DOUBLE_EQ(3.0 * exp(0.0) / (1 + exp(0.0)), c.d_);
+  EXPECT_FLOAT_EQ(log_inv_logit(0.0), c.val_);
+  EXPECT_FLOAT_EQ(3.0 * exp(0.0) / (1 + exp(0.0)), c.d_);
 }
 
 TEST(AgradFwdLogInvLogit, FvarFvarDouble_1) {
@@ -35,20 +35,20 @@ TEST(AgradFwdLogInvLogit, FvarFvarDouble_1) {
 
   fvar<fvar<double> > a = log_inv_logit(x);
 
-  EXPECT_DOUBLE_EQ(log_inv_logit(0.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(exp(-0.5) / (1 + exp(-0.5)), a.val_.d_);
-  EXPECT_DOUBLE_EQ(0, a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(log_inv_logit(0.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(exp(-0.5) / (1 + exp(-0.5)), a.val_.d_);
+  EXPECT_FLOAT_EQ(0, a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 
   fvar<fvar<double> > y;
   y.val_.val_ = 0.5;
   y.d_.val_ = 1.0;
 
   a = log_inv_logit(y);
-  EXPECT_DOUBLE_EQ(log_inv_logit(0.5), a.val_.val_);
-  EXPECT_DOUBLE_EQ(0, a.val_.d_);
-  EXPECT_DOUBLE_EQ(exp(-0.5) / (1 + exp(-0.5)), a.d_.val_);
-  EXPECT_DOUBLE_EQ(0, a.d_.d_);
+  EXPECT_FLOAT_EQ(log_inv_logit(0.5), a.val_.val_);
+  EXPECT_FLOAT_EQ(0, a.val_.d_);
+  EXPECT_FLOAT_EQ(exp(-0.5) / (1 + exp(-0.5)), a.d_.val_);
+  EXPECT_FLOAT_EQ(0, a.d_.d_);
 }
 
 struct log_inv_logit_fun {

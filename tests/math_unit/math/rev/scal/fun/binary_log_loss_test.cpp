@@ -46,24 +46,24 @@ TEST(AgradRev, binary_log_loss) {
   x = createAVEC(y_hat);
   f = stan::math::binary_log_loss(y, y_hat);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.0, f.val());
-  EXPECT_DOUBLE_EQ(deriv(0, 0.0), grad_f[0]);
+  EXPECT_FLOAT_EQ(0.0, f.val());
+  EXPECT_FLOAT_EQ(deriv(0, 0.0), grad_f[0]);
 
   y = 1;
   y_hat = 1.0;
   x = createAVEC(y_hat);
   f = stan::math::binary_log_loss(y, y_hat);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(0.0, f.val());
-  EXPECT_DOUBLE_EQ(deriv(1, 1.0), grad_f[0]);
+  EXPECT_FLOAT_EQ(0.0, f.val());
+  EXPECT_FLOAT_EQ(deriv(1, 1.0), grad_f[0]);
 
   y = 0;
   y_hat = 0.5;
   x = createAVEC(y_hat);
   f = stan::math::binary_log_loss(y, y_hat);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-std::log(0.5), f.val());
-  EXPECT_DOUBLE_EQ(deriv(0, 0.5), grad_f[0]);
+  EXPECT_FLOAT_EQ(-std::log(0.5), f.val());
+  EXPECT_FLOAT_EQ(deriv(0, 0.5), grad_f[0]);
   EXPECT_NEAR(finite_diff(0, 0.5), grad_f[0], 1e-5);
 
   y = 1;
@@ -71,8 +71,8 @@ TEST(AgradRev, binary_log_loss) {
   x = createAVEC(y_hat);
   f = stan::math::binary_log_loss(y, y_hat);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-std::log(0.5), f.val());
-  EXPECT_DOUBLE_EQ(deriv(1, 0.5), grad_f[0]);
+  EXPECT_FLOAT_EQ(-std::log(0.5), f.val());
+  EXPECT_FLOAT_EQ(deriv(1, 0.5), grad_f[0]);
   EXPECT_NEAR(finite_diff(1, 0.5), grad_f[0], 1e-5);
 
   y = 0;
@@ -80,8 +80,8 @@ TEST(AgradRev, binary_log_loss) {
   x = createAVEC(y_hat);
   f = stan::math::binary_log_loss(y, y_hat);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-std::log(0.75), f.val());
-  EXPECT_DOUBLE_EQ(deriv(0, 0.25), grad_f[0]);
+  EXPECT_FLOAT_EQ(-std::log(0.75), f.val());
+  EXPECT_FLOAT_EQ(deriv(0, 0.25), grad_f[0]);
   EXPECT_NEAR(finite_diff(0, 0.25), grad_f[0], 1e-5);
 
   y = 1;
@@ -89,8 +89,8 @@ TEST(AgradRev, binary_log_loss) {
   x = createAVEC(y_hat);
   f = stan::math::binary_log_loss(y, y_hat);
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-std::log(0.75), f.val());
-  EXPECT_DOUBLE_EQ(deriv(1, 0.75), grad_f[0]);
+  EXPECT_FLOAT_EQ(-std::log(0.75), f.val());
+  EXPECT_FLOAT_EQ(deriv(1, 0.75), grad_f[0]);
   EXPECT_NEAR(finite_diff(1, 0.75), grad_f[0], 1e-5);
 }
 

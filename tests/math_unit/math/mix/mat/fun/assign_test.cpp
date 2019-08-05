@@ -23,8 +23,8 @@ TEST(AgradMixMatrixAssign, vector_fvar_var) {
   EXPECT_EQ(3U, x.size());
   EXPECT_EQ(3U, y.size());
   for (size_t i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_.val(), x[i].val_.val());
-    EXPECT_DOUBLE_EQ(y[i].d_.val(), x[i].d_.val());
+    EXPECT_FLOAT_EQ(y[i].val_.val(), x[i].val_.val());
+    EXPECT_FLOAT_EQ(y[i].d_.val(), x[i].d_.val());
   }
 
   vector<fvar<var> > z(2);
@@ -37,9 +37,9 @@ TEST(AgradMixMatrixAssign, vector_fvar_var) {
   vars.push_back(y[2].val_);
 
   x[0].val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
 }
 
 TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_var_to_fvar_var) {
@@ -60,8 +60,8 @@ TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_var_to_fvar_var) {
   EXPECT_EQ(3, x.size());
   EXPECT_EQ(3, y.size());
   for (int i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_.val(), x[i].val_.val());
-    EXPECT_DOUBLE_EQ(y[i].d_.val(), x[i].d_.val());
+    EXPECT_FLOAT_EQ(y[i].val_.val(), x[i].val_.val());
+    EXPECT_FLOAT_EQ(y[i].d_.val(), x[i].d_.val());
   }
 
   std::vector<double> grads;
@@ -71,9 +71,9 @@ TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_var_to_fvar_var) {
   vars.push_back(y[2].val_);
 
   x[0].d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
 }
 TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_var_shape_mismatch) {
   using Eigen::Dynamic;
@@ -123,8 +123,8 @@ TEST(AgradMixMatrixAssign, eigen_matrix_fvar_var_to_fvar_var) {
   EXPECT_EQ(2, x.cols());
   EXPECT_EQ(2, y.cols());
   for (size_t i = 0; i < 6; ++i) {
-    EXPECT_DOUBLE_EQ(y(i).val_.val(), x(i).val_.val());
-    EXPECT_DOUBLE_EQ(y(i).d_.val(), x(i).d_.val());
+    EXPECT_FLOAT_EQ(y(i).val_.val(), x(i).val_.val());
+    EXPECT_FLOAT_EQ(y(i).d_.val(), x(i).d_.val());
   }
 
   std::vector<double> grads;
@@ -137,12 +137,12 @@ TEST(AgradMixMatrixAssign, eigen_matrix_fvar_var_to_fvar_var) {
   vars.push_back(y(2, 1).val_);
 
   x(0).val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(0, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixAssign, eigen_matrix_fvar_var_shape_mismatch) {
@@ -182,9 +182,9 @@ TEST(AgradMixMatrixAssign, block_fvar_var) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_.val());
 }
 
 TEST(AgradMixMatrixAssign, vector_vector_fvar_var) {
@@ -204,8 +204,8 @@ TEST(AgradMixMatrixAssign, vector_vector_fvar_var) {
   for (size_t i = 0; i < 3U; ++i) {
     EXPECT_EQ(2U, y[i].size());
     for (size_t j = 0; j < 2U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i][j].val_.val(), y[i][j].val_.val());
-      EXPECT_DOUBLE_EQ(x[i][j].d_.val(), y[i][j].d_.val());
+      EXPECT_FLOAT_EQ(x[i][j].val_.val(), y[i][j].val_.val());
+      EXPECT_FLOAT_EQ(x[i][j].d_.val(), y[i][j].d_.val());
     }
   }
 
@@ -219,12 +219,12 @@ TEST(AgradMixMatrixAssign, vector_vector_fvar_var) {
   vars.push_back(x[2][1].val_);
 
   y[0][0].val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(0, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixAssign, vector_vector_vector_fvar_var) {
@@ -251,8 +251,8 @@ TEST(AgradMixMatrixAssign, vector_vector_vector_fvar_var) {
     for (size_t i = 0; i < 3U; ++i) {
       EXPECT_EQ(2U, y[k][i].size());
       for (size_t j = 0; j < 2U; ++j) {
-        EXPECT_DOUBLE_EQ(x[k][i][j].val_.val(), y[k][i][j].val_.val());
-        EXPECT_DOUBLE_EQ(x[k][i][j].d_.val(), y[k][i][j].d_.val());
+        EXPECT_FLOAT_EQ(x[k][i][j].val_.val(), y[k][i][j].val_.val());
+        EXPECT_FLOAT_EQ(x[k][i][j].d_.val(), y[k][i][j].d_.val());
       }
     }
   }
@@ -260,9 +260,9 @@ TEST(AgradMixMatrixAssign, vector_vector_vector_fvar_var) {
   std::vector<double> grads;
 
   y[0][0][0].val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
   for (int i = 1; i < 24; i++)
-    EXPECT_DOUBLE_EQ(0, grads[i]);
+    EXPECT_FLOAT_EQ(0, grads[i]);
 }
 
 TEST(AgradMixMatrixAssign, vector_eigen_vector_fvar_var) {
@@ -286,16 +286,16 @@ TEST(AgradMixMatrixAssign, vector_eigen_vector_fvar_var) {
   for (size_t i = 0; i < 2U; ++i) {
     EXPECT_EQ(3U, y[i].size());
     for (size_t j = 0; j < 3U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i](j).val_.val(), y[i](j).val_.val());
-      EXPECT_DOUBLE_EQ(x[i](j).d_.val(), y[i](j).d_.val());
+      EXPECT_FLOAT_EQ(x[i](j).val_.val(), y[i](j).val_.val());
+      EXPECT_FLOAT_EQ(x[i](j).d_.val(), y[i](j).d_.val());
     }
   }
 
   std::vector<double> grads;
   y[0](0).val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
   for (int i = 1; i < 6; i++)
-    EXPECT_DOUBLE_EQ(0, grads[i]);
+    EXPECT_FLOAT_EQ(0, grads[i]);
 }
 
 TEST(AgradMixMatrixAssign, get_assign_row_fvar_var) {
@@ -311,9 +311,9 @@ TEST(AgradMixMatrixAssign, get_assign_row_fvar_var) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_.val());
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_.val());
 }
 
 TEST(AgradMixMatrixAssign, vector_fvar_fvar_var) {
@@ -339,10 +339,10 @@ TEST(AgradMixMatrixAssign, vector_fvar_fvar_var) {
   EXPECT_EQ(3U, x.size());
   EXPECT_EQ(3U, y.size());
   for (size_t i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_.val_.val(), x[i].val_.val_.val());
-    EXPECT_DOUBLE_EQ(y[i].d_.val_.val(), x[i].d_.val_.val());
-    EXPECT_DOUBLE_EQ(y[i].val_.d_.val(), x[i].val_.d_.val());
-    EXPECT_DOUBLE_EQ(y[i].d_.d_.val(), x[i].d_.d_.val());
+    EXPECT_FLOAT_EQ(y[i].val_.val_.val(), x[i].val_.val_.val());
+    EXPECT_FLOAT_EQ(y[i].d_.val_.val(), x[i].d_.val_.val());
+    EXPECT_FLOAT_EQ(y[i].val_.d_.val(), x[i].val_.d_.val());
+    EXPECT_FLOAT_EQ(y[i].d_.d_.val(), x[i].d_.d_.val());
   }
 
   vector<fvar<fvar<var> > > z(2);
@@ -355,9 +355,9 @@ TEST(AgradMixMatrixAssign, vector_fvar_fvar_var) {
   vars.push_back(y[2].val_.val_);
 
   x[0].val_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
 }
 
 TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_fvar_var_to_fvar_fvar_var) {
@@ -384,10 +384,10 @@ TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_fvar_var_to_fvar_fvar_var) {
   EXPECT_EQ(3, x.size());
   EXPECT_EQ(3, y.size());
   for (int i = 0; i < 3; ++i) {
-    EXPECT_DOUBLE_EQ(y[i].val_.val_.val(), x[i].val_.val_.val());
-    EXPECT_DOUBLE_EQ(y[i].d_.val_.val(), x[i].d_.val_.val());
-    EXPECT_DOUBLE_EQ(y[i].val_.d_.val(), x[i].val_.d_.val());
-    EXPECT_DOUBLE_EQ(y[i].d_.d_.val(), x[i].d_.d_.val());
+    EXPECT_FLOAT_EQ(y[i].val_.val_.val(), x[i].val_.val_.val());
+    EXPECT_FLOAT_EQ(y[i].d_.val_.val(), x[i].d_.val_.val());
+    EXPECT_FLOAT_EQ(y[i].val_.d_.val(), x[i].val_.d_.val());
+    EXPECT_FLOAT_EQ(y[i].d_.d_.val(), x[i].d_.d_.val());
   }
 
   std::vector<double> grads;
@@ -397,9 +397,9 @@ TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_fvar_var_to_fvar_fvar_var) {
   vars.push_back(y[2].val_.val_);
 
   x[0].val_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
 }
 
 TEST(AgradMixMatrixAssign, eigen_row_vector_fvar_fvar_var_shape_mismatch) {
@@ -462,10 +462,10 @@ TEST(AgradMixMatrixAssign, eigen_matrix_fvar_fvar_var_to_fvar_fvar_var) {
   EXPECT_EQ(2, x.cols());
   EXPECT_EQ(2, y.cols());
   for (size_t i = 0; i < 6; ++i) {
-    EXPECT_DOUBLE_EQ(y(i).val_.val_.val(), x(i).val_.val_.val());
-    EXPECT_DOUBLE_EQ(y(i).d_.val_.val(), x(i).d_.val_.val());
-    EXPECT_DOUBLE_EQ(y(i).val_.d_.val(), x(i).val_.d_.val());
-    EXPECT_DOUBLE_EQ(y(i).d_.d_.val(), x(i).d_.d_.val());
+    EXPECT_FLOAT_EQ(y(i).val_.val_.val(), x(i).val_.val_.val());
+    EXPECT_FLOAT_EQ(y(i).d_.val_.val(), x(i).d_.val_.val());
+    EXPECT_FLOAT_EQ(y(i).val_.d_.val(), x(i).val_.d_.val());
+    EXPECT_FLOAT_EQ(y(i).d_.d_.val(), x(i).d_.d_.val());
   }
 
   std::vector<double> grads;
@@ -478,12 +478,12 @@ TEST(AgradMixMatrixAssign, eigen_matrix_fvar_fvar_var_to_fvar_fvar_var) {
   vars.push_back(y(2, 1).val_.val_);
 
   x(0).d_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(0, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixAssign, eigen_matrix_fvar_fvar_var_shape_mismatch) {
@@ -523,9 +523,9 @@ TEST(AgradMixMatrixAssign, block_fvar_fvar_var) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_.val_.val());
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_.val_.val());
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_.val_.val());
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_.val_.val());
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_.val_.val());
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_.val_.val());
 }
 
 TEST(AgradMixMatrixAssign, vector_vector_fvar_fvar_var) {
@@ -547,10 +547,10 @@ TEST(AgradMixMatrixAssign, vector_vector_fvar_fvar_var) {
   for (size_t i = 0; i < 3U; ++i) {
     EXPECT_EQ(2U, y[i].size());
     for (size_t j = 0; j < 2U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i][j].val_.val_.val(), y[i][j].val_.val_.val());
-      EXPECT_DOUBLE_EQ(x[i][j].d_.val_.val(), y[i][j].d_.val_.val());
-      EXPECT_DOUBLE_EQ(x[i][j].val_.d_.val(), y[i][j].val_.d_.val());
-      EXPECT_DOUBLE_EQ(x[i][j].d_.d_.val(), y[i][j].d_.d_.val());
+      EXPECT_FLOAT_EQ(x[i][j].val_.val_.val(), y[i][j].val_.val_.val());
+      EXPECT_FLOAT_EQ(x[i][j].d_.val_.val(), y[i][j].d_.val_.val());
+      EXPECT_FLOAT_EQ(x[i][j].val_.d_.val(), y[i][j].val_.d_.val());
+      EXPECT_FLOAT_EQ(x[i][j].d_.d_.val(), y[i][j].d_.d_.val());
     }
   }
 
@@ -564,12 +564,12 @@ TEST(AgradMixMatrixAssign, vector_vector_fvar_fvar_var) {
   vars.push_back(x[2][1].val_.val_);
 
   y[0][0].d_.d_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(0, grads[0]);
-  EXPECT_DOUBLE_EQ(0, grads[1]);
-  EXPECT_DOUBLE_EQ(0, grads[2]);
-  EXPECT_DOUBLE_EQ(0, grads[3]);
-  EXPECT_DOUBLE_EQ(0, grads[4]);
-  EXPECT_DOUBLE_EQ(0, grads[5]);
+  EXPECT_FLOAT_EQ(0, grads[0]);
+  EXPECT_FLOAT_EQ(0, grads[1]);
+  EXPECT_FLOAT_EQ(0, grads[2]);
+  EXPECT_FLOAT_EQ(0, grads[3]);
+  EXPECT_FLOAT_EQ(0, grads[4]);
+  EXPECT_FLOAT_EQ(0, grads[5]);
 }
 
 TEST(AgradMixMatrixAssign, vector_vector_vector_fvar_fvar_var) {
@@ -598,11 +598,10 @@ TEST(AgradMixMatrixAssign, vector_vector_vector_fvar_fvar_var) {
     for (size_t i = 0; i < 3U; ++i) {
       EXPECT_EQ(2U, y[k][i].size());
       for (size_t j = 0; j < 2U; ++j) {
-        EXPECT_DOUBLE_EQ(x[k][i][j].val_.val_.val(),
-                         y[k][i][j].val_.val_.val());
-        EXPECT_DOUBLE_EQ(x[k][i][j].d_.val_.val(), y[k][i][j].d_.val_.val());
-        EXPECT_DOUBLE_EQ(x[k][i][j].val_.d_.val(), y[k][i][j].val_.d_.val());
-        EXPECT_DOUBLE_EQ(x[k][i][j].d_.d_.val(), y[k][i][j].d_.d_.val());
+        EXPECT_FLOAT_EQ(x[k][i][j].val_.val_.val(), y[k][i][j].val_.val_.val());
+        EXPECT_FLOAT_EQ(x[k][i][j].d_.val_.val(), y[k][i][j].d_.val_.val());
+        EXPECT_FLOAT_EQ(x[k][i][j].val_.d_.val(), y[k][i][j].val_.d_.val());
+        EXPECT_FLOAT_EQ(x[k][i][j].d_.d_.val(), y[k][i][j].d_.d_.val());
       }
     }
   }
@@ -610,9 +609,9 @@ TEST(AgradMixMatrixAssign, vector_vector_vector_fvar_fvar_var) {
   std::vector<double> grads;
 
   y[0][0][0].val_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
   for (int i = 1; i < 24; i++)
-    EXPECT_DOUBLE_EQ(0, grads[i]);
+    EXPECT_FLOAT_EQ(0, grads[i]);
 }
 
 TEST(AgradMixMatrixAssign, vector_eigen_vector_fvar_fvar_var) {
@@ -640,18 +639,18 @@ TEST(AgradMixMatrixAssign, vector_eigen_vector_fvar_fvar_var) {
   for (size_t i = 0; i < 2U; ++i) {
     EXPECT_EQ(3U, y[i].size());
     for (size_t j = 0; j < 3U; ++j) {
-      EXPECT_DOUBLE_EQ(x[i](j).val_.val_.val(), y[i](j).val_.val_.val());
-      EXPECT_DOUBLE_EQ(x[i](j).d_.val_.val(), y[i](j).d_.val_.val());
-      EXPECT_DOUBLE_EQ(x[i](j).val_.d_.val(), y[i](j).val_.d_.val());
-      EXPECT_DOUBLE_EQ(x[i](j).d_.d_.val(), y[i](j).d_.d_.val());
+      EXPECT_FLOAT_EQ(x[i](j).val_.val_.val(), y[i](j).val_.val_.val());
+      EXPECT_FLOAT_EQ(x[i](j).d_.val_.val(), y[i](j).d_.val_.val());
+      EXPECT_FLOAT_EQ(x[i](j).val_.d_.val(), y[i](j).val_.d_.val());
+      EXPECT_FLOAT_EQ(x[i](j).d_.d_.val(), y[i](j).d_.d_.val());
     }
   }
 
   std::vector<double> grads;
   y[0](0).val_.val_.grad(vars, grads);
-  EXPECT_DOUBLE_EQ(1, grads[0]);
+  EXPECT_FLOAT_EQ(1, grads[0]);
   for (int i = 1; i < 6; i++)
-    EXPECT_DOUBLE_EQ(0, grads[i]);
+    EXPECT_FLOAT_EQ(0, grads[i]);
 }
 
 TEST(AgradMixMatrixAssign, get_assign_row_fvar_fvar_var) {
@@ -667,7 +666,7 @@ TEST(AgradMixMatrixAssign, get_assign_row_fvar_fvar_var) {
   rv << 10, 100, 1000;
 
   assign(get_base1_lhs(m, 1, "m", 1), rv);
-  EXPECT_DOUBLE_EQ(10.0, m(0, 0).val_.val_.val());
-  EXPECT_DOUBLE_EQ(100.0, m(0, 1).val_.val_.val());
-  EXPECT_DOUBLE_EQ(1000.0, m(0, 2).val_.val_.val());
+  EXPECT_FLOAT_EQ(10.0, m(0, 0).val_.val_.val());
+  EXPECT_FLOAT_EQ(100.0, m(0, 1).val_.val_.val());
+  EXPECT_FLOAT_EQ(1000.0, m(0, 2).val_.val_.val());
 }

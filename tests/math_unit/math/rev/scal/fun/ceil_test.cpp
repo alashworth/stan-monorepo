@@ -6,12 +6,12 @@
 TEST(AgradRev, ceil_var) {
   AVAR a = 1.9;
   AVAR f = ceil(a);
-  EXPECT_DOUBLE_EQ(2.0, f.val());
+  EXPECT_FLOAT_EQ(2.0, f.val());
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(0.0, g[0]);
+  EXPECT_FLOAT_EQ(0.0, g[0]);
 }
 
 namespace {

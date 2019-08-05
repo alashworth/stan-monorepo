@@ -4,7 +4,7 @@
 
 TEST(MathFunctionsPromoteScalar, Match) {
   using stan::math::promote_scalar;
-  EXPECT_DOUBLE_EQ(1.3, promote_scalar<double>(1.3));
+  EXPECT_FLOAT_EQ(1.3, promote_scalar<double>(1.3));
   EXPECT_EQ(3, promote_scalar<int>(3));
 
   expect_type<double>(promote_scalar<double>(2.3));
@@ -12,6 +12,6 @@ TEST(MathFunctionsPromoteScalar, Match) {
 }
 TEST(MathFunctionsPromoteScalar, Mismatch) {
   using stan::math::promote_scalar;
-  EXPECT_DOUBLE_EQ(2.0, promote_scalar<double>(2));
+  EXPECT_FLOAT_EQ(2.0, promote_scalar<double>(2));
   expect_type<double>(promote_scalar<double>(2));
 }

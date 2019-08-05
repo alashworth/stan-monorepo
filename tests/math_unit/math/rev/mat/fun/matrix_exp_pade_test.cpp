@@ -17,7 +17,7 @@ TEST(MathMatrix, matrix_exp_pade_1x1_2) {
   AVEC x = createAVEC(m1(0, 0));
   VEC g;
   m1_exp(0, 0).grad(x, g);
-  EXPECT_DOUBLE_EQ(m1_exp(0, 0).val(), g[0]);
+  EXPECT_FLOAT_EQ(m1_exp(0, 0).val(), g[0]);
 }
 
 TEST(MathMatrix, matrix_exp_pade_2x2_2) {
@@ -41,8 +41,8 @@ TEST(MathMatrix, matrix_exp_pade_2x2_2) {
       AVEC x = createAVEC(a, b);
       VEC g;
       m1_exp(k, l).grad(x, g);
-      EXPECT_DOUBLE_EQ(dm1_exp_da(k, l).val(), g[0]);
-      EXPECT_DOUBLE_EQ(dm1_exp_db(k, l).val(), g[1]);
+      EXPECT_FLOAT_EQ(dm1_exp_da(k, l).val(), g[0]);
+      EXPECT_FLOAT_EQ(dm1_exp_db(k, l).val(), g[1]);
     }
   }
 }

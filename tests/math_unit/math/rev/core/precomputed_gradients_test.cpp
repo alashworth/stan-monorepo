@@ -19,13 +19,13 @@ TEST(StanAgradRevInternal, precomputed_gradients) {
 
   EXPECT_NO_THROW(y
                   = stan::math::precomputed_gradients(value, vars, gradients));
-  EXPECT_DOUBLE_EQ(value, y.val());
+  EXPECT_FLOAT_EQ(value, y.val());
 
   std::vector<double> g;
   EXPECT_NO_THROW(y.grad(vars, g));
   ASSERT_EQ(2U, g.size());
-  EXPECT_DOUBLE_EQ(gradients[0], g[0]);
-  EXPECT_DOUBLE_EQ(gradients[1], g[1]);
+  EXPECT_FLOAT_EQ(gradients[0], g[0]);
+  EXPECT_FLOAT_EQ(gradients[1], g[1]);
 
   stan::math::recover_memory();
 }
@@ -36,8 +36,8 @@ TEST(StanAgradRevInternal, precomputed_gradients_vari_no_independent_vars) {
   std::vector<double> gradients;
 
   stan::math::precomputed_gradients_vari vi(value, vars, gradients);
-  EXPECT_DOUBLE_EQ(value, vi.val_);
-  EXPECT_DOUBLE_EQ(0, vi.adj_);
+  EXPECT_FLOAT_EQ(value, vi.val_);
+  EXPECT_FLOAT_EQ(0, vi.adj_);
   EXPECT_NO_THROW(vi.chain());
 }
 
@@ -65,23 +65,23 @@ TEST(StanAgradRevInternal, precomputed_gradients_vari) {
   gradients.push_back(5);
 
   stan::math::precomputed_gradients_vari vi(value, vars, gradients);
-  EXPECT_DOUBLE_EQ(value, vi.val_);
-  EXPECT_DOUBLE_EQ(0, vi.adj_);
+  EXPECT_FLOAT_EQ(value, vi.val_);
+  EXPECT_FLOAT_EQ(0, vi.adj_);
 
   EXPECT_NO_THROW(vi.chain())
       << "running vi.chain() with no independent variables";
-  EXPECT_DOUBLE_EQ(value, vi.val_);
-  EXPECT_DOUBLE_EQ(0, vi.adj_);
-  EXPECT_DOUBLE_EQ(0, x1.vi_->adj_);
-  EXPECT_DOUBLE_EQ(0, x2.vi_->adj_);
+  EXPECT_FLOAT_EQ(value, vi.val_);
+  EXPECT_FLOAT_EQ(0, vi.adj_);
+  EXPECT_FLOAT_EQ(0, x1.vi_->adj_);
+  EXPECT_FLOAT_EQ(0, x2.vi_->adj_);
 
   vi.init_dependent();
   EXPECT_NO_THROW(vi.chain())
       << "running vari.chain() with vari initialized as dependent variable";
-  EXPECT_DOUBLE_EQ(value, vi.val_);
-  EXPECT_DOUBLE_EQ(1, vi.adj_);
-  EXPECT_DOUBLE_EQ(gradients[0], x1.vi_->adj_);
-  EXPECT_DOUBLE_EQ(gradients[1], x2.vi_->adj_);
+  EXPECT_FLOAT_EQ(value, vi.val_);
+  EXPECT_FLOAT_EQ(1, vi.adj_);
+  EXPECT_FLOAT_EQ(gradients[0], x1.vi_->adj_);
+  EXPECT_FLOAT_EQ(gradients[1], x2.vi_->adj_);
 }
 
 TEST(StanAgradRevInternal, precomputed_gradients_mismatched_sizes) {

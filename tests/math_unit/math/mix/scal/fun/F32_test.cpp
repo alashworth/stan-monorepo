@@ -12,7 +12,7 @@ TEST(ProbInternalMath, F32_fd) {
   fvar<double> e = -41.0;
   fvar<double> z = 1.0;
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       stan::math::F32(a, b, c, d, e, z).val_);
 }
@@ -26,7 +26,7 @@ TEST(ProbInternalMath, F32_ffd) {
   fvar<fvar<double> > e = -41.0;
   fvar<fvar<double> > z = 1.0;
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       stan::math::F32(a, b, c, d, e, z).val_.val_);
 }
@@ -44,7 +44,7 @@ TEST(ProbInternalMath, F32_fv_1stderiv1) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -68,7 +68,7 @@ TEST(ProbInternalMath, F32_fv_1stderiv2) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -92,7 +92,7 @@ TEST(ProbInternalMath, F32_fv_1stderiv3) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -115,7 +115,7 @@ TEST(ProbInternalMath, F32_fv_1stderiv4) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -139,7 +139,7 @@ TEST(ProbInternalMath, F32_fv_1stderiv5) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -164,7 +164,7 @@ TEST(ProbInternalMath, F32_fv_1stderiv6) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -189,7 +189,7 @@ TEST(ProbInternalMath, F32_fv_2ndderiv1) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -214,7 +214,7 @@ TEST(ProbInternalMath, F32_fv_2ndderiv2) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -238,7 +238,7 @@ TEST(ProbInternalMath, F32_fv_2ndderiv3) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 
@@ -302,7 +302,7 @@ TEST(ProbInternalMath, F32_fv_2ndderiv6) {
 
   fvar<var> z1 = stan::math::F32(a, b, c, d, e, z);
 
-  EXPECT_DOUBLE_EQ(
+  EXPECT_FLOAT_EQ(
       11.28915378492300834453857665243661995978358572684678329916652,
       z1.val_.val());
 

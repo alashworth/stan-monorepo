@@ -57,14 +57,14 @@ TEST(AgradFwdLogFallingFactorial, FvarVar_1stDeriv) {
   fvar<var> b(3.0, 1.0);
   fvar<var> c = log_falling_factorial(a, b);
 
-  EXPECT_DOUBLE_EQ(std::log(60), c.val_.val());
-  EXPECT_DOUBLE_EQ(first_deriv_a + first_deriv_b, c.d_.val());
+  EXPECT_FLOAT_EQ(std::log(60), c.val_.val());
+  EXPECT_FLOAT_EQ(first_deriv_a + first_deriv_b, c.d_.val());
 
   AVEC y = createAVEC(a.val_, b.val_);
   VEC g;
   c.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(first_deriv_a, g[0]);
-  EXPECT_DOUBLE_EQ(first_deriv_b, g[1]);
+  EXPECT_FLOAT_EQ(first_deriv_a, g[0]);
+  EXPECT_FLOAT_EQ(first_deriv_b, g[1]);
 }
 TEST(AgradFwdLogFallingFactorial, FvarVar_2ndDeriv_x) {
   using stan::math::fvar;
@@ -109,16 +109,16 @@ TEST(AgradFwdLogFallingFactorial, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = log_falling_factorial(x, y);
 
-  EXPECT_DOUBLE_EQ(log_falling_factorial(5, 3.0), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(first_deriv_a, a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(first_deriv_b, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(log_falling_factorial(5, 3.0), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(first_deriv_a, a.val_.d_.val());
+  EXPECT_FLOAT_EQ(first_deriv_b, a.d_.val_.val());
   ASSERT_NEAR(second_deriv_ab, a.d_.d_.val(), .01);
 
   AVEC p = createAVEC(x.val_.val_, y.val_.val_);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(first_deriv_a, g[0]);
-  EXPECT_DOUBLE_EQ(first_deriv_b, g[1]);
+  EXPECT_FLOAT_EQ(first_deriv_a, g[0]);
+  EXPECT_FLOAT_EQ(first_deriv_b, g[1]);
 }
 
 TEST(AgradFwdLogFallingFactorial, FvarFvarVar_2ndDeriv_x) {

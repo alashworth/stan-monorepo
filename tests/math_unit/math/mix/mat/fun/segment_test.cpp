@@ -32,7 +32,7 @@ TEST(AgradMixMatrixSegment, SegmentVector4_fv) {
   stan::math::vector_fv v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val(), v23[n].val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val(), v23[n].val_.val());
 }
 
 TEST(AgradMixMatrixSegment, SegmentRowVector1_fv) {
@@ -61,7 +61,7 @@ TEST(AgradMixMatrixSegment, SegmentRowVector4_fv) {
   stan::math::row_vector_fv v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val(), v23[n].val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val(), v23[n].val_.val());
 }
 
 TEST(AgradMixMatrixSegment, SegmentStdVector1_fv) {
@@ -97,7 +97,7 @@ TEST(AgradMixMatrixSegment, SegmentStdVector4_fv) {
   std::vector<fvar<var> > v23 = segment(v, 2, 2);
   EXPECT_EQ(2U, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val(), v23[n].val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val(), v23[n].val_.val());
 }
 TEST(AgradMixMatrixSegment, SegmentVector1_ffv) {
   using stan::math::segment;
@@ -125,7 +125,7 @@ TEST(AgradMixMatrixSegment, SegmentVector4_ffv) {
   stan::math::vector_ffv v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_.val(), v23[n].val_.val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val_.val(), v23[n].val_.val_.val());
 }
 
 TEST(AgradMixMatrixSegment, SegmentRowVector1_ffv) {
@@ -154,7 +154,7 @@ TEST(AgradMixMatrixSegment, SegmentRowVector4_ffv) {
   stan::math::row_vector_ffv v23 = segment(v, 2, 2);
   EXPECT_EQ(2, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_.val(), v23[n].val_.val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val_.val(), v23[n].val_.val_.val());
 }
 
 TEST(AgradMixMatrixSegment, SegmentStdVector1_ffv) {
@@ -190,5 +190,5 @@ TEST(AgradMixMatrixSegment, SegmentStdVector4_ffv) {
   std::vector<fvar<fvar<var> > > v23 = segment(v, 2, 2);
   EXPECT_EQ(2U, v23.size());
   for (int n = 0; n < 2; ++n)
-    EXPECT_DOUBLE_EQ(v[n + 1].val_.val_.val(), v23[n].val_.val_.val());
+    EXPECT_FLOAT_EQ(v[n + 1].val_.val_.val(), v23[n].val_.val_.val());
 }

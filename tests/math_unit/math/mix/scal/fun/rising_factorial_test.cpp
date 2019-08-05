@@ -12,16 +12,15 @@ TEST(AgradFwdRisingFactorial, FvarVar_1stDeriv) {
   fvar<var> a(5.0, 1.0);
   fvar<var> c = rising_factorial(a, 3);
 
-  EXPECT_DOUBLE_EQ(rising_factorial(5, 3), c.val_.val());
-  EXPECT_DOUBLE_EQ(rising_factorial(5, 3) * (digamma(5 + 3) - digamma(5)),
-                   c.d_.val());
+  EXPECT_FLOAT_EQ(rising_factorial(5, 3), c.val_.val());
+  EXPECT_FLOAT_EQ(rising_factorial(5, 3) * (digamma(5 + 3) - digamma(5)),
+                  c.d_.val());
 
   AVEC y = createAVEC(a.val_, 3);
   VEC g;
   c.val_.grad(y, g);
-  EXPECT_DOUBLE_EQ(rising_factorial(5, 3) * (digamma(5 + 3) - digamma(5)),
-                   g[0]);
-  EXPECT_DOUBLE_EQ(0, g[1]);
+  EXPECT_FLOAT_EQ(rising_factorial(5, 3) * (digamma(5 + 3) - digamma(5)), g[0]);
+  EXPECT_FLOAT_EQ(0, g[1]);
 }
 
 TEST(AgradFwdRisingFactorial, FvarVar_2ndDeriv_x) {
@@ -75,17 +74,16 @@ TEST(AgradFwdRisingFactorial, FvarFvarVar_1stDeriv) {
 
   fvar<fvar<var> > a = rising_factorial(x, 3);
 
-  EXPECT_DOUBLE_EQ(rising_factorial(5, 3), a.val_.val_.val());
-  EXPECT_DOUBLE_EQ(107.0, a.val_.d_.val());
-  EXPECT_DOUBLE_EQ(0, a.d_.val_.val());
+  EXPECT_FLOAT_EQ(rising_factorial(5, 3), a.val_.val_.val());
+  EXPECT_FLOAT_EQ(107.0, a.val_.d_.val());
+  EXPECT_FLOAT_EQ(0, a.d_.val_.val());
   ASSERT_NEAR(0, a.d_.d_.val(), .01);
 
   AVEC p = createAVEC(x.val_.val_, 3);
   VEC g;
   a.val_.val_.grad(p, g);
-  EXPECT_DOUBLE_EQ(rising_factorial(5, 3) * (digamma(5 + 3) - digamma(5)),
-                   g[0]);
-  EXPECT_DOUBLE_EQ(0, g[1]);
+  EXPECT_FLOAT_EQ(rising_factorial(5, 3) * (digamma(5 + 3) - digamma(5)), g[0]);
+  EXPECT_FLOAT_EQ(0, g[1]);
 }
 
 TEST(AgradFwdRisingFactorial, FvarFvarVar_2ndDeriv_x) {

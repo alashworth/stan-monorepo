@@ -17,12 +17,12 @@ TEST(AgradMixMatrixArrayBuilder, fvar_var) {
                              .add(fvar<var>(2, 4))
                              .array();
   EXPECT_EQ(3U, x.size());
-  EXPECT_DOUBLE_EQ(1.0, x[0].val_.val());
-  EXPECT_DOUBLE_EQ(3.0, x[1].val_.val());
-  EXPECT_DOUBLE_EQ(2.0, x[2].val_.val());
-  EXPECT_DOUBLE_EQ(4.0, x[0].d_.val());
-  EXPECT_DOUBLE_EQ(4.0, x[1].d_.val());
-  EXPECT_DOUBLE_EQ(4.0, x[2].d_.val());
+  EXPECT_FLOAT_EQ(1.0, x[0].val_.val());
+  EXPECT_FLOAT_EQ(3.0, x[1].val_.val());
+  EXPECT_FLOAT_EQ(2.0, x[2].val_.val());
+  EXPECT_FLOAT_EQ(4.0, x[0].d_.val());
+  EXPECT_FLOAT_EQ(4.0, x[1].d_.val());
+  EXPECT_FLOAT_EQ(4.0, x[2].d_.val());
 
   vector<vector<fvar<var> > > xx = array_builder<vector<fvar<var> > >()
                                        .add(array_builder<fvar<var> >()
@@ -68,12 +68,12 @@ TEST(AgradMixMatrixArrayBuilder, fvar_fvar_var) {
                                     .add(fvar<fvar<var> >(2, 4))
                                     .array();
   EXPECT_EQ(3U, x.size());
-  EXPECT_DOUBLE_EQ(1.0, x[0].val_.val_.val());
-  EXPECT_DOUBLE_EQ(3.0, x[1].val_.val_.val());
-  EXPECT_DOUBLE_EQ(2.0, x[2].val_.val_.val());
-  EXPECT_DOUBLE_EQ(4.0, x[0].d_.val_.val());
-  EXPECT_DOUBLE_EQ(4.0, x[1].d_.val_.val());
-  EXPECT_DOUBLE_EQ(4.0, x[2].d_.val_.val());
+  EXPECT_FLOAT_EQ(1.0, x[0].val_.val_.val());
+  EXPECT_FLOAT_EQ(3.0, x[1].val_.val_.val());
+  EXPECT_FLOAT_EQ(2.0, x[2].val_.val_.val());
+  EXPECT_FLOAT_EQ(4.0, x[0].d_.val_.val());
+  EXPECT_FLOAT_EQ(4.0, x[1].d_.val_.val());
+  EXPECT_FLOAT_EQ(4.0, x[2].d_.val_.val());
 
   vector<vector<fvar<fvar<var> > > > xx
       = array_builder<vector<fvar<fvar<var> > > >()

@@ -8,12 +8,12 @@ TEST(AgradRev, log1m) {
   using stan::math::log1m;
   AVAR a = 0.1;
   AVAR f = log1m(a);
-  EXPECT_DOUBLE_EQ(log(1 - 0.1), f.val());
+  EXPECT_FLOAT_EQ(log(1 - 0.1), f.val());
 
   AVEC x = createAVEC(a);
   VEC grad_f;
   f.grad(x, grad_f);
-  EXPECT_DOUBLE_EQ(-1 / (1 - 0.1), grad_f[0]);
+  EXPECT_FLOAT_EQ(-1 / (1 - 0.1), grad_f[0]);
 }
 TEST(AgradRev, excepts) {
   using stan::math::log1m;

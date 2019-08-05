@@ -19,10 +19,10 @@ TEST(AgradMixMatrixCol, matrix_fv) {
 
   vector_fv z = col(y, 1);
   EXPECT_EQ(2, z.size());
-  EXPECT_DOUBLE_EQ(1.0, z[0].val_.val());
-  EXPECT_DOUBLE_EQ(4.0, z[1].val_.val());
-  EXPECT_DOUBLE_EQ(1.0, z[0].d_.val());
-  EXPECT_DOUBLE_EQ(1.0, z[1].d_.val());
+  EXPECT_FLOAT_EQ(1.0, z[0].val_.val());
+  EXPECT_FLOAT_EQ(4.0, z[1].val_.val());
+  EXPECT_FLOAT_EQ(1.0, z[0].d_.val());
+  EXPECT_FLOAT_EQ(1.0, z[1].d_.val());
 
   vector_fv w = col(y, 2);
   EXPECT_EQ(2, w.size());
@@ -98,10 +98,10 @@ TEST(AgradMixMatrixCol, matrix_ffv) {
 
   vector_ffv z = col(y, 1);
   EXPECT_EQ(2, z.size());
-  EXPECT_DOUBLE_EQ(1.0, z[0].val_.val().val());
-  EXPECT_DOUBLE_EQ(4.0, z[1].val_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, z[0].d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, z[1].d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, z[0].val_.val().val());
+  EXPECT_FLOAT_EQ(4.0, z[1].val_.val().val());
+  EXPECT_FLOAT_EQ(1.0, z[0].d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, z[1].d_.val().val());
 
   vector_ffv w = col(y, 2);
   EXPECT_EQ(2, w.size());

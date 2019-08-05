@@ -17,12 +17,12 @@ TEST(AgradFwdMatrixArrayBuilder, fvar_double) {
                                 .array();
 
   EXPECT_EQ(3U, x.size());
-  EXPECT_DOUBLE_EQ(1.0, x[0].val_);
-  EXPECT_DOUBLE_EQ(3.0, x[1].val_);
-  EXPECT_DOUBLE_EQ(2.0, x[2].val_);
-  EXPECT_DOUBLE_EQ(4.0, x[0].d_);
-  EXPECT_DOUBLE_EQ(4.0, x[1].d_);
-  EXPECT_DOUBLE_EQ(4.0, x[2].d_);
+  EXPECT_FLOAT_EQ(1.0, x[0].val_);
+  EXPECT_FLOAT_EQ(3.0, x[1].val_);
+  EXPECT_FLOAT_EQ(2.0, x[2].val_);
+  EXPECT_FLOAT_EQ(4.0, x[0].d_);
+  EXPECT_FLOAT_EQ(4.0, x[1].d_);
+  EXPECT_FLOAT_EQ(4.0, x[2].d_);
 
   vector<vector<fvar<double> > > xx = array_builder<vector<fvar<double> > >()
                                           .add(array_builder<fvar<double> >()
@@ -70,12 +70,12 @@ TEST(AgradFwdMatrixArrayBuilder, fvar_fvar_double) {
                                        .array();
 
   EXPECT_EQ(3U, x.size());
-  EXPECT_DOUBLE_EQ(1.0, x[0].val_.val_);
-  EXPECT_DOUBLE_EQ(3.0, x[1].val_.val_);
-  EXPECT_DOUBLE_EQ(2.0, x[2].val_.val_);
-  EXPECT_DOUBLE_EQ(4.0, x[0].d_.val_);
-  EXPECT_DOUBLE_EQ(4.0, x[1].d_.val_);
-  EXPECT_DOUBLE_EQ(4.0, x[2].d_.val_);
+  EXPECT_FLOAT_EQ(1.0, x[0].val_.val_);
+  EXPECT_FLOAT_EQ(3.0, x[1].val_.val_);
+  EXPECT_FLOAT_EQ(2.0, x[2].val_.val_);
+  EXPECT_FLOAT_EQ(4.0, x[0].d_.val_);
+  EXPECT_FLOAT_EQ(4.0, x[1].d_.val_);
+  EXPECT_FLOAT_EQ(4.0, x[2].d_.val_);
 
   vector<vector<fvar<fvar<double> > > > xx
       = array_builder<vector<fvar<fvar<double> > > >()

@@ -80,8 +80,8 @@ TEST_F(MpiJob, hard_work_vv) {
 
   for (std::size_t i = 0, ij = 0; i < job_params_v_vec.size(); ++i) {
     for (std::size_t j = 0; j < 2; ++j, ++ij) {
-      EXPECT_DOUBLE_EQ(stan::math::value_of(result_mpi(ij)),
-                       stan::math::value_of(result_concurrent(ij)));
+      EXPECT_FLOAT_EQ(stan::math::value_of(result_mpi(ij)),
+                      stan::math::value_of(result_concurrent(ij)));
 
       std::vector<stan::math::var> z_var1, z_var2;
 
@@ -101,7 +101,7 @@ TEST_F(MpiJob, hard_work_vv) {
       result_concurrent(ij).grad(z_var2, z_grad2);
 
       for (std::size_t k = 0; k < z_grad1.size(); ++k) {
-        EXPECT_DOUBLE_EQ(z_grad1[k], z_grad2[k]);
+        EXPECT_FLOAT_EQ(z_grad1[k], z_grad2[k]);
       }
     }
   }

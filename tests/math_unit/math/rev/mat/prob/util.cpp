@@ -29,5 +29,5 @@ void test_grad_eq(Eigen::Matrix<double, -1, 1> grad_1,
                   Eigen::Matrix<double, -1, 1> grad_2) {
   ASSERT_EQ(grad_1.size(), grad_2.size());
   for (int i = 0; i < grad_1.size(); ++i)
-    EXPECT_DOUBLE_EQ(grad_1(i), grad_2(i));
+    EXPECT_FLOAT_EQ(grad_1(i), grad_2(i));
 }

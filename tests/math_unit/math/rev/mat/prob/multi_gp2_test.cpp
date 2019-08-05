@@ -57,7 +57,7 @@ TEST(ProbDistributionsMultiGP, MultiGPVar) {
   w << 1.0, 0.5, 3.0;
   Matrix<var, Dynamic, Dynamic> Sigma(3, 3);
   Sigma << 9.0, -3.0, 0.0, -3.0, 4.0, 0.0, 0.0, 0.0, 5.0;
-  EXPECT_DOUBLE_EQ(-46.087162, stan::math::multi_gp_log(y, Sigma, w).val());
+  EXPECT_FLOAT_EQ(-46.087162, stan::math::multi_gp_log(y, Sigma, w).val());
 }
 
 TEST(ProbDistributionsMultiGP, MultiGPGradientUnivariate) {
@@ -103,7 +103,7 @@ TEST(ProbDistributionsMultiGP, MultiGPGradientUnivariate) {
   y_m(0) = y(0) - epsilon;
   double grad_diff = (multi_gp_log(y_p, Sigma, w) - multi_gp_log(y_m, Sigma, w))
                      / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[0]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[0]);
 
   Matrix<double, Dynamic, 1> w_m(1, 1);
   Matrix<double, Dynamic, 1> w_p(1, 1);
@@ -111,7 +111,7 @@ TEST(ProbDistributionsMultiGP, MultiGPGradientUnivariate) {
   w_m[0] = w[0] - epsilon;
   grad_diff = (multi_gp_log(y, Sigma, w_p) - multi_gp_log(y, Sigma, w_m))
               / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[1]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[1]);
 
   Matrix<double, Dynamic, Dynamic> Sigma_m(1, 1);
   Matrix<double, Dynamic, Dynamic> Sigma_p(1, 1);
@@ -119,7 +119,7 @@ TEST(ProbDistributionsMultiGP, MultiGPGradientUnivariate) {
   Sigma_m(0) = Sigma(0) - epsilon;
   grad_diff = (multi_gp_log(y, Sigma_p, w) - multi_gp_log(y, Sigma_m, w))
               / (2 * epsilon);
-  EXPECT_DOUBLE_EQ(grad_diff, grad[2]);
+  EXPECT_FLOAT_EQ(grad_diff, grad[2]);
 }
 
 struct multi_gp_fun {

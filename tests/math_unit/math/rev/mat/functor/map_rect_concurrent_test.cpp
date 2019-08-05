@@ -46,22 +46,22 @@ TEST_F(map_rect, concurrent_eval_ok_vd) {
 
   for (std::size_t i = 0, j = 0; i < N; i++) {
     j = 2 * i;
-    EXPECT_DOUBLE_EQ(
+    EXPECT_FLOAT_EQ(
         stan::math::value_of(res1(j)),
         job_params_d[i](0) * job_params_d[i](0) + shared_params_d(0));
-    EXPECT_DOUBLE_EQ(stan::math::value_of(res1(j + 1)),
-                     x_r[i][0] * job_params_d[i](1) * job_params_d[i](0)
+    EXPECT_FLOAT_EQ(stan::math::value_of(res1(j + 1)),
+                    x_r[i][0] * job_params_d[i](1) * job_params_d[i](0)
                         + 2 * shared_params_d(0) + shared_params_d(1));
 
     stan::math::set_zero_all_adjoints();
     res1(j).grad();
-    EXPECT_DOUBLE_EQ(shared_params_v(0).vi_->adj_, 1.0);
-    EXPECT_DOUBLE_EQ(shared_params_v(1).vi_->adj_, 0.0);
+    EXPECT_FLOAT_EQ(shared_params_v(0).vi_->adj_, 1.0);
+    EXPECT_FLOAT_EQ(shared_params_v(1).vi_->adj_, 0.0);
 
     stan::math::set_zero_all_adjoints();
     res1(j + 1).grad();
-    EXPECT_DOUBLE_EQ(shared_params_v(0).vi_->adj_, 2.0);
-    EXPECT_DOUBLE_EQ(shared_params_v(1).vi_->adj_, 1.0);
+    EXPECT_FLOAT_EQ(shared_params_v(0).vi_->adj_, 2.0);
+    EXPECT_FLOAT_EQ(shared_params_v(1).vi_->adj_, 1.0);
   }
 }
 
@@ -76,23 +76,22 @@ TEST_F(map_rect, concurrent_eval_ok_dv) {
 
   for (std::size_t i = 0, j = 0; i < N; i++) {
     j = 2 * i;
-    EXPECT_DOUBLE_EQ(
+    EXPECT_FLOAT_EQ(
         stan::math::value_of(res1(j)),
         job_params_d[i](0) * job_params_d[i](0) + shared_params_d(0));
-    EXPECT_DOUBLE_EQ(stan::math::value_of(res1(j + 1)),
-                     x_r[i][0] * job_params_d[i](1) * job_params_d[i](0)
+    EXPECT_FLOAT_EQ(stan::math::value_of(res1(j + 1)),
+                    x_r[i][0] * job_params_d[i](1) * job_params_d[i](0)
                         + 2 * shared_params_d(0) + shared_params_d(1));
 
     stan::math::set_zero_all_adjoints();
     res1(j).grad();
     for (std::size_t k = 0; k < N; k++) {
       if (k == i) {
-        EXPECT_DOUBLE_EQ(job_params_v[i](0).vi_->adj_,
-                         2.0 * job_params_d[i](0));
-        EXPECT_DOUBLE_EQ(job_params_v[i](1).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[i](0).vi_->adj_, 2.0 * job_params_d[i](0));
+        EXPECT_FLOAT_EQ(job_params_v[i](1).vi_->adj_, 0.0);
       } else {
-        EXPECT_DOUBLE_EQ(job_params_v[k](0).vi_->adj_, 0.0);
-        EXPECT_DOUBLE_EQ(job_params_v[k](1).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](0).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](1).vi_->adj_, 0.0);
       }
     }
 
@@ -100,13 +99,13 @@ TEST_F(map_rect, concurrent_eval_ok_dv) {
     res1(j + 1).grad();
     for (std::size_t k = 0; k < N; k++) {
       if (k == i) {
-        EXPECT_DOUBLE_EQ(job_params_v[i](0).vi_->adj_,
-                         x_r[i][0] * job_params_d[i](1));
-        EXPECT_DOUBLE_EQ(job_params_v[i](1).vi_->adj_,
-                         x_r[i][0] * job_params_d[i](0));
+        EXPECT_FLOAT_EQ(job_params_v[i](0).vi_->adj_,
+                        x_r[i][0] * job_params_d[i](1));
+        EXPECT_FLOAT_EQ(job_params_v[i](1).vi_->adj_,
+                        x_r[i][0] * job_params_d[i](0));
       } else {
-        EXPECT_DOUBLE_EQ(job_params_v[k](0).vi_->adj_, 0.0);
-        EXPECT_DOUBLE_EQ(job_params_v[k](1).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](0).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](1).vi_->adj_, 0.0);
       }
     }
   }
@@ -124,43 +123,42 @@ TEST_F(map_rect, concurrent_eval_ok_vv) {
 
   for (std::size_t i = 0, j = 0; i < N; i++) {
     j = 2 * i;
-    EXPECT_DOUBLE_EQ(
+    EXPECT_FLOAT_EQ(
         stan::math::value_of(res1(j)),
         job_params_d[i](0) * job_params_d[i](0) + shared_params_d(0));
-    EXPECT_DOUBLE_EQ(stan::math::value_of(res1(j + 1)),
-                     x_r[i][0] * job_params_d[i](1) * job_params_d[i](0)
+    EXPECT_FLOAT_EQ(stan::math::value_of(res1(j + 1)),
+                    x_r[i][0] * job_params_d[i](1) * job_params_d[i](0)
                         + 2 * shared_params_d(0) + shared_params_d(1));
 
     stan::math::set_zero_all_adjoints();
     res1(j).grad();
-    EXPECT_DOUBLE_EQ(shared_params_v(0).vi_->adj_, 1.0);
-    EXPECT_DOUBLE_EQ(shared_params_v(1).vi_->adj_, 0.0);
+    EXPECT_FLOAT_EQ(shared_params_v(0).vi_->adj_, 1.0);
+    EXPECT_FLOAT_EQ(shared_params_v(1).vi_->adj_, 0.0);
 
     for (std::size_t k = 0; k < N; k++) {
       if (k == i) {
-        EXPECT_DOUBLE_EQ(job_params_v[i](0).vi_->adj_,
-                         2.0 * job_params_d[i](0));
-        EXPECT_DOUBLE_EQ(job_params_v[i](1).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[i](0).vi_->adj_, 2.0 * job_params_d[i](0));
+        EXPECT_FLOAT_EQ(job_params_v[i](1).vi_->adj_, 0.0);
       } else {
-        EXPECT_DOUBLE_EQ(job_params_v[k](0).vi_->adj_, 0.0);
-        EXPECT_DOUBLE_EQ(job_params_v[k](1).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](0).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](1).vi_->adj_, 0.0);
       }
     }
 
     stan::math::set_zero_all_adjoints();
     res1(j + 1).grad();
-    EXPECT_DOUBLE_EQ(shared_params_v(0).vi_->adj_, 2.0);
-    EXPECT_DOUBLE_EQ(shared_params_v(1).vi_->adj_, 1.0);
+    EXPECT_FLOAT_EQ(shared_params_v(0).vi_->adj_, 2.0);
+    EXPECT_FLOAT_EQ(shared_params_v(1).vi_->adj_, 1.0);
 
     for (std::size_t k = 0; k < N; k++) {
       if (k == i) {
-        EXPECT_DOUBLE_EQ(job_params_v[i](0).vi_->adj_,
-                         x_r[i][0] * job_params_d[i](1));
-        EXPECT_DOUBLE_EQ(job_params_v[i](1).vi_->adj_,
-                         x_r[i][0] * job_params_d[i](0));
+        EXPECT_FLOAT_EQ(job_params_v[i](0).vi_->adj_,
+                        x_r[i][0] * job_params_d[i](1));
+        EXPECT_FLOAT_EQ(job_params_v[i](1).vi_->adj_,
+                        x_r[i][0] * job_params_d[i](0));
       } else {
-        EXPECT_DOUBLE_EQ(job_params_v[k](0).vi_->adj_, 0.0);
-        EXPECT_DOUBLE_EQ(job_params_v[k](1).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](0).vi_->adj_, 0.0);
+        EXPECT_FLOAT_EQ(job_params_v[k](1).vi_->adj_, 0.0);
       }
     }
   }

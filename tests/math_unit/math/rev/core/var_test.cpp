@@ -6,74 +6,76 @@
 #include <string>
 #include <vector>
 
-struct AgradRev : public testing::Test {
+namespace {
+struct AgradRevF : public testing::Test {
   void SetUp() {
     // make sure memory's clean before starting each test
     stan::math::recover_memory();
   }
 };
+}  // namespace
 
-TEST_F(AgradRev, ctorOverloads) {
+TEST_F(AgradRevF, ctorOverloads) {
   using stan::math::var;
   using stan::math::vari;
 
   // make sure copy ctor is used rather than casting vari* to unsigned int
-  EXPECT_DOUBLE_EQ(12.3, var(new vari(12.3)).val());
+  EXPECT_FLOAT_EQ(12.3, var(new vari(12.3)).val());
 
   // double
-  EXPECT_DOUBLE_EQ(3.7, var(3.7).val());
+  EXPECT_FLOAT_EQ(3.7, var(3.7).val());
 
   // long double
-  EXPECT_DOUBLE_EQ(3.7, var(static_cast<long double>(3.7)).val());
+  EXPECT_FLOAT_EQ(3.7, var(static_cast<long double>(3.7)).val());
 
   // float
-  EXPECT_DOUBLE_EQ(3.7, var(static_cast<float>(3.7)).val());
+  EXPECT_FLOAT_EQ(3.7, var(static_cast<float>(3.7)).val());
 
   // bool
-  EXPECT_DOUBLE_EQ(1, var(static_cast<bool>(true)).val());
+  EXPECT_FLOAT_EQ(1, var(static_cast<bool>(true)).val());
 
   // char
-  EXPECT_DOUBLE_EQ(3, var(static_cast<char>(3)).val());
+  EXPECT_FLOAT_EQ(3, var(static_cast<char>(3)).val());
 
   // short
-  EXPECT_DOUBLE_EQ(1, var(static_cast<int16_t>(1)).val());
+  EXPECT_FLOAT_EQ(1, var(static_cast<int16_t>(1)).val());
 
   // int
-  EXPECT_DOUBLE_EQ(37, var(static_cast<int>(37)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<int>(37)).val());
 
   // long
-  EXPECT_DOUBLE_EQ(37, var(static_cast<int32_t>(37)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<int32_t>(37)).val());
 
   // unsigned char
-  EXPECT_DOUBLE_EQ(37, var(static_cast<unsigned char>(37)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<unsigned char>(37)).val());
 
   // unsigned short
-  EXPECT_DOUBLE_EQ(37, var(static_cast<uint16_t>(37)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<uint16_t>(37)).val());
 
   // unsigned int
-  EXPECT_DOUBLE_EQ(37, var(static_cast<unsigned int>(37)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<unsigned int>(37)).val());
 
   // unsigned int (test conflict with null pointer)
-  EXPECT_DOUBLE_EQ(0, var(static_cast<unsigned int>(0)).val());
+  EXPECT_FLOAT_EQ(0, var(static_cast<unsigned int>(0)).val());
 
   // unsigned long
-  EXPECT_DOUBLE_EQ(37, var(static_cast<uint32_t>(37)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<uint32_t>(37)).val());
 
   // unsigned long (test for conflict with pointer)
-  EXPECT_DOUBLE_EQ(0, var(static_cast<uint32_t>(0)).val());
+  EXPECT_FLOAT_EQ(0, var(static_cast<uint32_t>(0)).val());
 
   // size_t
-  EXPECT_DOUBLE_EQ(37, var(static_cast<size_t>(37)).val());
-  EXPECT_DOUBLE_EQ(0, var(static_cast<size_t>(0)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<size_t>(37)).val());
+  EXPECT_FLOAT_EQ(0, var(static_cast<size_t>(0)).val());
 
   // ptrdiff_t
-  EXPECT_DOUBLE_EQ(37, var(static_cast<ptrdiff_t>(37)).val());
-  EXPECT_DOUBLE_EQ(0, var(static_cast<ptrdiff_t>(0)).val());
+  EXPECT_FLOAT_EQ(37, var(static_cast<ptrdiff_t>(37)).val());
+  EXPECT_FLOAT_EQ(0, var(static_cast<ptrdiff_t>(0)).val());
 
   // complex but with zero imaginary part
-  EXPECT_DOUBLE_EQ(37, var(std::complex<double>(37, 0)).val());
-  EXPECT_DOUBLE_EQ(37, var(std::complex<float>(37, 0)).val());
-  EXPECT_DOUBLE_EQ(37, var(std::complex<long double>(37, 0)).val());
+  EXPECT_FLOAT_EQ(37, var(std::complex<double>(37, 0)).val());
+  EXPECT_FLOAT_EQ(37, var(std::complex<float>(37, 0)).val());
+  EXPECT_FLOAT_EQ(37, var(std::complex<long double>(37, 0)).val());
 
   // complex but with non-zero imaginary part
   EXPECT_THROW(var(std::complex<double>(37, 10)), std::invalid_argument);
@@ -81,32 +83,32 @@ TEST_F(AgradRev, ctorOverloads) {
   EXPECT_THROW(var(std::complex<long double>(37, 10)), std::invalid_argument);
 }
 
-TEST_F(AgradRev, a_eq_x) {
+TEST_F(AgradRevF, a_eq_x) {
   AVAR a = 5.0;
-  EXPECT_DOUBLE_EQ(5.0, a.val());
+  EXPECT_FLOAT_EQ(5.0, a.val());
 }
 
-TEST_F(AgradRev, a_of_x) {
+TEST_F(AgradRevF, a_of_x) {
   AVAR a(6.0);
-  EXPECT_DOUBLE_EQ(6.0, a.val());
+  EXPECT_FLOAT_EQ(6.0, a.val());
 }
 
-TEST_F(AgradRev, a__a_eq_x) {
+TEST_F(AgradRevF, a__a_eq_x) {
   AVAR a;
   a = 7.0;
-  EXPECT_DOUBLE_EQ(7.0, a.val());
+  EXPECT_FLOAT_EQ(7.0, a.val());
 }
 
-TEST_F(AgradRev, eq_a) {
+TEST_F(AgradRevF, eq_a) {
   AVAR a = 5.0;
   AVAR f = a;
   AVEC x = createAVEC(a);
   VEC dx;
   f.grad(x, dx);
-  EXPECT_DOUBLE_EQ(1.0, dx[0]);
+  EXPECT_FLOAT_EQ(1.0, dx[0]);
 }
 
-TEST_F(AgradRev, a_ostream) {
+TEST_F(AgradRevF, a_ostream) {
   AVAR a = 6.0;
   std::ostringstream os;
 
@@ -119,16 +121,16 @@ TEST_F(AgradRev, a_ostream) {
   EXPECT_EQ("10.5", os.str());
 }
 
-TEST_F(AgradRev, smart_ptrs) {
+TEST_F(AgradRevF, smart_ptrs) {
   AVAR a = 2.0;
-  EXPECT_DOUBLE_EQ(2.0, (*a).val_);
-  EXPECT_DOUBLE_EQ(2.0, a->val_);
+  EXPECT_FLOAT_EQ(2.0, (*a).val_);
+  EXPECT_FLOAT_EQ(2.0, a->val_);
 
-  EXPECT_DOUBLE_EQ(2.0, (*a.vi_).val_);
-  EXPECT_DOUBLE_EQ(2.0, a.vi_->val_);
+  EXPECT_FLOAT_EQ(2.0, (*a.vi_).val_);
+  EXPECT_FLOAT_EQ(2.0, a.vi_->val_);
 }
 
-TEST_F(AgradRev, stackAllocation) {
+TEST_F(AgradRevF, stackAllocation) {
   using stan::math::var;
   using stan::math::vari;
 
@@ -145,11 +147,11 @@ TEST_F(AgradRev, stackAllocation) {
   f.grad(x, g);
 
   EXPECT_EQ(2U, g.size());
-  EXPECT_DOUBLE_EQ(2.0, g[0]);
-  EXPECT_DOUBLE_EQ(1.0, g[1]);
+  EXPECT_FLOAT_EQ(2.0, g[0]);
+  EXPECT_FLOAT_EQ(1.0, g[1]);
 }
 
-TEST_F(AgradRev, print) {
+TEST_F(AgradRevF, print) {
   using stan::math::var;
 
   std::ostringstream output;
@@ -168,6 +170,7 @@ TEST_F(AgradRev, print) {
   EXPECT_STREQ("uninitialized", output.str().c_str());
 }
 
+namespace {
 // should really be doing this test with a mock object using ctor
 // vari_(double, bool);  as in:
 //
@@ -202,7 +205,7 @@ struct gradable {
     f_.grad(x_, g);
     EXPECT_EQ(g_expected_.size(), static_cast<int>(g.size()));
     for (int i = 0; i < g_expected_.size(); ++i)
-      EXPECT_DOUBLE_EQ(g_expected_(i), g[i]);
+      EXPECT_FLOAT_EQ(g_expected_(i), g[i]);
   }
 };
 
@@ -244,8 +247,9 @@ gradable setup_simple() {
   g_expected << 14, 6;
   return gradable(x, f, g_expected);
 }
+}  // namespace
 
-TEST_F(AgradRev, basicGradient1) {
+TEST_F(AgradRevF, basicGradient1) {
   using stan::math::recover_memory;
 
   for (int i = 0; i < 100; ++i) {
@@ -255,7 +259,7 @@ TEST_F(AgradRev, basicGradient1) {
   }
 }
 
-TEST_F(AgradRev, basicGradient2) {
+TEST_F(AgradRevF, basicGradient2) {
   using stan::math::recover_memory;
 
   for (int i = 0; i < 100; ++i) {
@@ -265,7 +269,7 @@ TEST_F(AgradRev, basicGradient2) {
   }
 }
 
-TEST_F(AgradRev, nestedGradient1) {
+TEST_F(AgradRevF, nestedGradient1) {
   using stan::math::recover_memory;
   using stan::math::recover_memory_nested;
   using stan::math::start_nested;
@@ -286,7 +290,7 @@ TEST_F(AgradRev, nestedGradient1) {
   recover_memory();
 }
 
-TEST_F(AgradRev, nestedGradient2) {
+TEST_F(AgradRevF, nestedGradient2) {
   using stan::math::recover_memory;
   using stan::math::recover_memory_nested;
   using stan::math::start_nested;
@@ -307,7 +311,7 @@ TEST_F(AgradRev, nestedGradient2) {
   recover_memory();
 }
 
-TEST_F(AgradRev, nestedGradient3) {
+TEST_F(AgradRevF, nestedGradient3) {
   using stan::math::recover_memory;
   using stan::math::recover_memory_nested;
   using stan::math::start_nested;
@@ -331,18 +335,18 @@ TEST_F(AgradRev, nestedGradient3) {
   recover_memory();
 }
 
-TEST_F(AgradRev, grad) {
+TEST_F(AgradRevF, grad) {
   AVAR a = 5.0;
   AVAR b = 10.0;
   AVAR f = a * b + a;
 
   EXPECT_NO_THROW(f.grad()) << "testing the grad function with no args";
 
-  EXPECT_DOUBLE_EQ(5.0, a.val());
-  EXPECT_DOUBLE_EQ(10.0, b.val());
-  EXPECT_DOUBLE_EQ(55.0, f.val());
+  EXPECT_FLOAT_EQ(5.0, a.val());
+  EXPECT_FLOAT_EQ(10.0, b.val());
+  EXPECT_FLOAT_EQ(55.0, f.val());
 
-  EXPECT_DOUBLE_EQ(1.0, f.adj());
-  EXPECT_DOUBLE_EQ(11.0, a.adj());
-  EXPECT_DOUBLE_EQ(5.0, b.adj());
+  EXPECT_FLOAT_EQ(1.0, f.adj());
+  EXPECT_FLOAT_EQ(11.0, a.adj());
+  EXPECT_FLOAT_EQ(5.0, b.adj());
 }

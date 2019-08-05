@@ -38,8 +38,8 @@ void test_cholesky_correlation_jacobian(
   double det_J = J.determinant();
   double log_det_J = log(fabs(det_J));
 
-  EXPECT_DOUBLE_EQ(log_det_J, lp.val()) << "J = " << J << std::endl
-                                        << "det_J = " << det_J;
+  EXPECT_FLOAT_EQ(log_det_J, lp.val()) << "J = " << J << std::endl
+                                       << "det_J = " << det_J;
 }
 }  // namespace
 

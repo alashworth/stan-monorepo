@@ -15,16 +15,16 @@ TEST(AgradFwdLogDiffExp, Fvar) {
   double z = 1.1;
 
   fvar<double> a = log_diff_exp(x, y);
-  EXPECT_DOUBLE_EQ(log_diff_exp(1.2, 0.5), a.val_);
-  EXPECT_DOUBLE_EQ(1 / (1 - exp(0.5 - 1.2)) + 2 / (1 - exp(1.2 - 0.5)), a.d_);
+  EXPECT_FLOAT_EQ(log_diff_exp(1.2, 0.5), a.val_);
+  EXPECT_FLOAT_EQ(1 / (1 - exp(0.5 - 1.2)) + 2 / (1 - exp(1.2 - 0.5)), a.d_);
 
   fvar<double> b = log_diff_exp(x, z);
-  EXPECT_DOUBLE_EQ(log_diff_exp(1.2, 1.1), b.val_);
-  EXPECT_DOUBLE_EQ(1 / (1 - exp(1.1 - 1.2)), b.d_);
+  EXPECT_FLOAT_EQ(log_diff_exp(1.2, 1.1), b.val_);
+  EXPECT_FLOAT_EQ(1 / (1 - exp(1.1 - 1.2)), b.d_);
 
   fvar<double> c = log_diff_exp(z, y);
-  EXPECT_DOUBLE_EQ(log_diff_exp(1.1, 0.5), c.val_);
-  EXPECT_DOUBLE_EQ(2 / (1 - exp(1.1 - 0.5)), c.d_);
+  EXPECT_FLOAT_EQ(log_diff_exp(1.1, 0.5), c.val_);
+  EXPECT_FLOAT_EQ(2 / (1 - exp(1.1 - 0.5)), c.d_);
 }
 
 TEST(AgradFwdLogDiffExp, AgradFvar_exception) {
@@ -49,10 +49,10 @@ TEST(AgradFwdLogDiffExp, FvarFvarDouble) {
 
   fvar<fvar<double> > a = log_diff_exp(x, y);
 
-  EXPECT_DOUBLE_EQ(log_diff_exp(9.0, 6.0), a.val_.val_);
-  EXPECT_DOUBLE_EQ(exp(9.0) / (exp(9.0) - exp(6.0)), a.val_.d_);
-  EXPECT_DOUBLE_EQ(-exp(6.0) / (exp(9.0) - exp(6.0)), a.d_.val_);
-  EXPECT_DOUBLE_EQ(0.055141006, a.d_.d_);
+  EXPECT_FLOAT_EQ(log_diff_exp(9.0, 6.0), a.val_.val_);
+  EXPECT_FLOAT_EQ(exp(9.0) / (exp(9.0) - exp(6.0)), a.val_.d_);
+  EXPECT_FLOAT_EQ(-exp(6.0) / (exp(9.0) - exp(6.0)), a.d_.val_);
+  EXPECT_FLOAT_EQ(0.055141006, a.d_.d_);
 }
 
 struct log_diff_exp_fun {

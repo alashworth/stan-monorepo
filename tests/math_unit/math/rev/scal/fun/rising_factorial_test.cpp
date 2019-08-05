@@ -9,17 +9,17 @@ TEST(AgradRev, rising_factorial_var_int) {
   int a(1);
   AVAR b(4.0);
   AVAR f = stan::math::rising_factorial(b, a);
-  EXPECT_DOUBLE_EQ(4, f.val());
+  EXPECT_FLOAT_EQ(4, f.val());
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(0, g[0]);
-  EXPECT_DOUBLE_EQ((digamma(5.0) - digamma(4.0)) * 4.0, g[1]);
+  EXPECT_FLOAT_EQ(0, g[0]);
+  EXPECT_FLOAT_EQ((digamma(5.0) - digamma(4.0)) * 4.0, g[1]);
 
   double eps = 1e-6;
-  EXPECT_DOUBLE_EQ((stan::math::rising_factorial(4.0 + eps, 1)
-                    - stan::math::rising_factorial(4.0 - eps, 1))
+  EXPECT_FLOAT_EQ((stan::math::rising_factorial(4.0 + eps, 1)
+                   - stan::math::rising_factorial(4.0 - eps, 1))
                       / (2 * eps),
                   g[1]);
 }

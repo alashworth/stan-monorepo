@@ -20,18 +20,18 @@ TEST(AgradMixMatrixTranspose, fv_matrix) {
   a(1, 2).d_ = 1.0;
 
   matrix_fv c = transpose(a);
-  EXPECT_DOUBLE_EQ(-1.0, c(0, 0).val_.val());
-  EXPECT_DOUBLE_EQ(5.0, c(0, 1).val_.val());
-  EXPECT_DOUBLE_EQ(2.0, c(1, 0).val_.val());
-  EXPECT_DOUBLE_EQ(10.0, c(1, 1).val_.val());
-  EXPECT_DOUBLE_EQ(-3.0, c(2, 0).val_.val());
-  EXPECT_DOUBLE_EQ(100.0, c(2, 1).val_.val());
-  EXPECT_DOUBLE_EQ(1.0, c(0, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, c(0, 1).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, c(1, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, c(1, 1).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, c(2, 0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, c(2, 1).d_.val());
+  EXPECT_FLOAT_EQ(-1.0, c(0, 0).val_.val());
+  EXPECT_FLOAT_EQ(5.0, c(0, 1).val_.val());
+  EXPECT_FLOAT_EQ(2.0, c(1, 0).val_.val());
+  EXPECT_FLOAT_EQ(10.0, c(1, 1).val_.val());
+  EXPECT_FLOAT_EQ(-3.0, c(2, 0).val_.val());
+  EXPECT_FLOAT_EQ(100.0, c(2, 1).val_.val());
+  EXPECT_FLOAT_EQ(1.0, c(0, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0, c(0, 1).d_.val());
+  EXPECT_FLOAT_EQ(1.0, c(1, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0, c(1, 1).d_.val());
+  EXPECT_FLOAT_EQ(1.0, c(2, 0).d_.val());
+  EXPECT_FLOAT_EQ(1.0, c(2, 1).d_.val());
   EXPECT_EQ(3, c.rows());
   EXPECT_EQ(2, c.cols());
 }
@@ -50,10 +50,10 @@ TEST(AgradMixMatrixTranspose, fv_vector) {
   row_vector_fv a_tr = transpose(a);
   EXPECT_EQ(a.size(), a_tr.size());
   for (size_type i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(a(i).val_.val(), a_tr(i).val_.val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(1).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(2).d_.val());
+    EXPECT_FLOAT_EQ(a(i).val_.val(), a_tr(i).val_.val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(0).d_.val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(1).d_.val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(2).d_.val());
 }
 TEST(AgradMixMatrixTranspose, fv_row_vector) {
   using stan::math::row_vector_fv;
@@ -70,10 +70,10 @@ TEST(AgradMixMatrixTranspose, fv_row_vector) {
   vector_fv a_tr = transpose(a);
   EXPECT_EQ(a.size(), a_tr.size());
   for (size_type i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(a(i).val_.val(), a_tr(i).val_.val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(0).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(1).d_.val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(2).d_.val());
+    EXPECT_FLOAT_EQ(a(i).val_.val(), a_tr(i).val_.val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(0).d_.val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(1).d_.val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(2).d_.val());
 }
 TEST(AgradMixMatrixTranspose, ffv_matrix) {
   using stan::math::matrix_d;
@@ -93,18 +93,18 @@ TEST(AgradMixMatrixTranspose, ffv_matrix) {
   a(1, 2).d_ = 1.0;
 
   matrix_ffv c = transpose(a);
-  EXPECT_DOUBLE_EQ(-1.0, c(0, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(5.0, c(0, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(2.0, c(1, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(10.0, c(1, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(-3.0, c(2, 0).val_.val().val());
-  EXPECT_DOUBLE_EQ(100.0, c(2, 1).val_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, c(0, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, c(0, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, c(1, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, c(1, 1).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, c(2, 0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, c(2, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(-1.0, c(0, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(5.0, c(0, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(2.0, c(1, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(10.0, c(1, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(-3.0, c(2, 0).val_.val().val());
+  EXPECT_FLOAT_EQ(100.0, c(2, 1).val_.val().val());
+  EXPECT_FLOAT_EQ(1.0, c(0, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, c(0, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, c(1, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, c(1, 1).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, c(2, 0).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, c(2, 1).d_.val().val());
   EXPECT_EQ(3, c.rows());
   EXPECT_EQ(2, c.cols());
 }
@@ -123,10 +123,10 @@ TEST(AgradMixMatrixTranspose, ffv_vector) {
   row_vector_ffv a_tr = transpose(a);
   EXPECT_EQ(a.size(), a_tr.size());
   for (size_type i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(a(i).val_.val().val(), a_tr(i).val_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(2).d_.val().val());
+    EXPECT_FLOAT_EQ(a(i).val_.val().val(), a_tr(i).val_.val().val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(0).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(1).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(2).d_.val().val());
 }
 TEST(AgradMixMatrixTranspose, ffv_row_vector) {
   using stan::math::row_vector_ffv;
@@ -143,8 +143,8 @@ TEST(AgradMixMatrixTranspose, ffv_row_vector) {
   vector_ffv a_tr = transpose(a);
   EXPECT_EQ(a.size(), a_tr.size());
   for (size_type i = 0; i < 3; ++i)
-    EXPECT_DOUBLE_EQ(a(i).val_.val().val(), a_tr(i).val_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(0).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(1).d_.val().val());
-  EXPECT_DOUBLE_EQ(1.0, a_tr(2).d_.val().val());
+    EXPECT_FLOAT_EQ(a(i).val_.val().val(), a_tr(i).val_.val().val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(0).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(1).d_.val().val());
+  EXPECT_FLOAT_EQ(1.0, a_tr(2).d_.val().val());
 }

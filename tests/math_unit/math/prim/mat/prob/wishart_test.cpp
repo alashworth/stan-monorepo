@@ -82,7 +82,7 @@ TEST(ProbDistributionsWishart, 2x2Propto) {
 
   unsigned int dof = 3;
 
-  EXPECT_DOUBLE_EQ(0.0, stan::math::wishart_log<true>(Y, dof, Sigma));
+  EXPECT_FLOAT_EQ(0.0, stan::math::wishart_log<true>(Y, dof, Sigma));
 }
 TEST(ProbDistributionsWishart, 4x4Propto) {
   Matrix<double, Dynamic, Dynamic> Y(4, 4);
@@ -96,10 +96,10 @@ TEST(ProbDistributionsWishart, 4x4Propto) {
       0.1055911, -3.1129955, -3.586685, 1.4482736;
 
   double dof = 4;
-  EXPECT_DOUBLE_EQ(0.0, stan::math::wishart_log<true>(Y, dof, Sigma));
+  EXPECT_FLOAT_EQ(0.0, stan::math::wishart_log<true>(Y, dof, Sigma));
 
   dof = 5;
-  EXPECT_DOUBLE_EQ(0.0, stan::math::wishart_log<true>(Y, dof, Sigma));
+  EXPECT_FLOAT_EQ(0.0, stan::math::wishart_log<true>(Y, dof, Sigma));
 }
 
 using stan::math::wishart_log;

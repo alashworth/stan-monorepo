@@ -30,5 +30,5 @@ TEST(MathMatrix, mdivide_right_val2) {
 
   ASSERT_EQ(expected.size(), x.size());
   for (int n = 0; n < expected.size(); n++)
-    EXPECT_DOUBLE_EQ(expected(n), x(n));
+    EXPECT_FLOAT_EQ(expected(n), x(n));
 }

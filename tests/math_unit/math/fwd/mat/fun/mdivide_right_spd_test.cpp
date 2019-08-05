@@ -22,14 +22,14 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_fd_matrix_fd) {
   Ad(1, 1).d_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1.6666666, I(1, 0).val_);
-  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_);
-  EXPECT_DOUBLE_EQ(-0.1388889, I(0, 0).d_);
-  EXPECT_DOUBLE_EQ(-0.10416666, I(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-0.80555558, I(1, 0).d_);
-  EXPECT_DOUBLE_EQ(-0.60416669, I(1, 1).d_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_);
+  EXPECT_FLOAT_EQ(1.6666666, I(1, 0).val_);
+  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_);
+  EXPECT_FLOAT_EQ(-0.1388889, I(0, 0).d_);
+  EXPECT_FLOAT_EQ(-0.10416666, I(0, 1).d_);
+  EXPECT_FLOAT_EQ(-0.80555558, I(1, 0).d_);
+  EXPECT_FLOAT_EQ(-0.60416669, I(1, 1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_fd_row_vector_fd) {
   using stan::math::matrix_fd;
@@ -50,10 +50,10 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_fd_row_vector_fd) {
   Ad(1).d_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_);
-  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_);
-  EXPECT_DOUBLE_EQ(-0.1388889, I(0).d_);
-  EXPECT_DOUBLE_EQ(-0.10416666, I(1).d_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0).val_);
+  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_);
+  EXPECT_FLOAT_EQ(-0.1388889, I(0).d_);
+  EXPECT_FLOAT_EQ(-0.10416666, I(1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_fd_matrix_d) {
   using stan::math::matrix_d;
@@ -72,14 +72,14 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_fd_matrix_d) {
   Ad << 2.0, 3.0, 5.0, 7.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1.6666666, I(1, 0).val_);
-  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_);
-  EXPECT_DOUBLE_EQ(-0.47222221, I(0, 0).d_);
-  EXPECT_DOUBLE_EQ(-0.35416666, I(0, 1).d_);
-  EXPECT_DOUBLE_EQ(-1.1388888, I(1, 0).d_);
-  EXPECT_DOUBLE_EQ(-0.85416669, I(1, 1).d_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_);
+  EXPECT_FLOAT_EQ(1.6666666, I(1, 0).val_);
+  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_);
+  EXPECT_FLOAT_EQ(-0.47222221, I(0, 0).d_);
+  EXPECT_FLOAT_EQ(-0.35416666, I(0, 1).d_);
+  EXPECT_FLOAT_EQ(-1.1388888, I(1, 0).d_);
+  EXPECT_FLOAT_EQ(-0.85416669, I(1, 1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_fd_row_vector_d) {
   using stan::math::matrix_fd;
@@ -99,10 +99,10 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_fd_row_vector_d) {
   Ad << 2.0, 3.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_);
-  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_);
-  EXPECT_DOUBLE_EQ(-0.47222221, I(0).d_);
-  EXPECT_DOUBLE_EQ(-0.35416666, I(1).d_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0).val_);
+  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_);
+  EXPECT_FLOAT_EQ(-0.47222221, I(0).d_);
+  EXPECT_FLOAT_EQ(-0.35416666, I(1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_matrix_fd) {
   using stan::math::matrix_d;
@@ -121,14 +121,14 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_matrix_fd) {
   Ad(1, 1).d_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_);
-  EXPECT_DOUBLE_EQ(1.6666666, I(1, 0).val_);
-  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_);
-  EXPECT_DOUBLE_EQ(0.33333334, I(0, 0).d_);
-  EXPECT_DOUBLE_EQ(0.25, I(0, 1).d_);
-  EXPECT_DOUBLE_EQ(0.33333334, I(1, 0).d_);
-  EXPECT_DOUBLE_EQ(0.25, I(1, 1).d_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_);
+  EXPECT_FLOAT_EQ(1.6666666, I(1, 0).val_);
+  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_);
+  EXPECT_FLOAT_EQ(0.33333334, I(0, 0).d_);
+  EXPECT_FLOAT_EQ(0.25, I(0, 1).d_);
+  EXPECT_FLOAT_EQ(0.33333334, I(1, 0).d_);
+  EXPECT_FLOAT_EQ(0.25, I(1, 1).d_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_row_vector_fd) {
   using stan::math::matrix_d;
@@ -145,10 +145,10 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_row_vector_fd) {
   Ad(1).d_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_);
-  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_);
-  EXPECT_DOUBLE_EQ(0.33333334, I(0).d_);
-  EXPECT_DOUBLE_EQ(0.25, I(1).d_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0).val_);
+  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_);
+  EXPECT_FLOAT_EQ(0.33333334, I(0).d_);
+  EXPECT_FLOAT_EQ(0.25, I(1).d_);
 }
 
 TEST(AgradFwdMatrixMdivideRightSPD, fd_exceptions) {
@@ -223,14 +223,14 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_ffd_matrix_ffd) {
   Ad(1, 1).d_.val_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1.6666666, I(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.1388889, I(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.10416666, I(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.80555558, I(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.60416669, I(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1.6666666, I(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.1388889, I(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.10416666, I(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(-0.80555558, I(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.60416669, I(1, 1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_ffd_row_vector_ffd) {
   using stan::math::matrix_ffd;
@@ -251,10 +251,10 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_ffd_row_vector_ffd) {
   Ad(1).d_.val_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val_);
-  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.1388889, I(0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.10416666, I(1).d_.val_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val_);
+  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.1388889, I(0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.10416666, I(1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_ffd_matrix_d) {
   using stan::math::matrix_d;
@@ -273,14 +273,14 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_ffd_matrix_d) {
   Ad << 2.0, 3.0, 5.0, 7.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1.6666666, I(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(1.75, I(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.47222221, I(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.35416666, I(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(-1.1388888, I(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.85416669, I(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1.6666666, I(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(1.75, I(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.47222221, I(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.35416666, I(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(-1.1388888, I(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.85416669, I(1, 1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_ffd_row_vector_d) {
   using stan::math::matrix_ffd;
@@ -300,10 +300,10 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_ffd_row_vector_d) {
   Ad << 2.0, 3.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val_);
-  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val_);
-  EXPECT_DOUBLE_EQ(-0.47222221, I(0).d_.val_);
-  EXPECT_DOUBLE_EQ(-0.35416666, I(1).d_.val_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val_);
+  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val_);
+  EXPECT_FLOAT_EQ(-0.47222221, I(0).d_.val_);
+  EXPECT_FLOAT_EQ(-0.35416666, I(1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_matrix_ffd) {
   using stan::math::matrix_d;
@@ -322,14 +322,14 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_matrix_ffd) {
   Ad(1, 1).d_.val_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(0.75, I(0, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(1.6666666, I(1, 0).val_.val_);
-  EXPECT_DOUBLE_EQ(7.0 / 4.0, I(1, 1).val_.val_);
-  EXPECT_DOUBLE_EQ(0.33333334, I(0, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(0, 1).d_.val_);
-  EXPECT_DOUBLE_EQ(0.33333334, I(1, 0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(1, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0, 0).val_.val_);
+  EXPECT_FLOAT_EQ(0.75, I(0, 1).val_.val_);
+  EXPECT_FLOAT_EQ(1.6666666, I(1, 0).val_.val_);
+  EXPECT_FLOAT_EQ(7.0 / 4.0, I(1, 1).val_.val_);
+  EXPECT_FLOAT_EQ(0.33333334, I(0, 0).d_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(0, 1).d_.val_);
+  EXPECT_FLOAT_EQ(0.33333334, I(1, 0).d_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(1, 1).d_.val_);
 }
 TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_row_vector_ffd) {
   using stan::math::matrix_d;
@@ -346,10 +346,10 @@ TEST(AgradFwdMatrixMdivideRightSPD, matrix_d_row_vector_ffd) {
   Ad(1).d_.val_ = 1.0;
 
   I = mdivide_right_spd(Ad, Av);
-  EXPECT_DOUBLE_EQ(0.66666669, I(0).val_.val_);
-  EXPECT_DOUBLE_EQ(3.0 / 4.0, I(1).val_.val_);
-  EXPECT_DOUBLE_EQ(0.33333334, I(0).d_.val_);
-  EXPECT_DOUBLE_EQ(0.25, I(1).d_.val_);
+  EXPECT_FLOAT_EQ(0.66666669, I(0).val_.val_);
+  EXPECT_FLOAT_EQ(3.0 / 4.0, I(1).val_.val_);
+  EXPECT_FLOAT_EQ(0.33333334, I(0).d_.val_);
+  EXPECT_FLOAT_EQ(0.25, I(1).d_.val_);
 }
 
 TEST(AgradFwdMatrixMdivideRightSPD, ffd_exceptions) {

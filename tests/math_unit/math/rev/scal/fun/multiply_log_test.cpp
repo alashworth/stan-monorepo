@@ -13,8 +13,8 @@ TEST(AgradRev, multiplyLogChainVV) {
   VEC grad_f;
   f.grad(x, grad_f);
 
-  EXPECT_DOUBLE_EQ(2.0 * std::log(b.val()), grad_f[0]);
-  EXPECT_DOUBLE_EQ(2.0 * a.val() / b.val(), grad_f[1]);
+  EXPECT_FLOAT_EQ(2.0 * std::log(b.val()), grad_f[0]);
+  EXPECT_FLOAT_EQ(2.0 * a.val() / b.val(), grad_f[1]);
 }
 TEST(AgradRev, multiplyLogChainDV) {
   double a = 19.7;
@@ -25,7 +25,7 @@ TEST(AgradRev, multiplyLogChainDV) {
   VEC grad_f;
   f.grad(x, grad_f);
 
-  EXPECT_DOUBLE_EQ(2.0 * a / b.val(), grad_f[0]);
+  EXPECT_FLOAT_EQ(2.0 * a / b.val(), grad_f[0]);
 }
 TEST(AgradRev, multiplyLogChainVD) {
   AVAR a = 19.7;
@@ -36,73 +36,73 @@ TEST(AgradRev, multiplyLogChainVD) {
   VEC grad_f;
   f.grad(x, grad_f);
 
-  EXPECT_DOUBLE_EQ(2.0 * std::log(b), grad_f[0]);
+  EXPECT_FLOAT_EQ(2.0 * std::log(b), grad_f[0]);
 }
 TEST(AgradRev, multiply_log_var_var) {
   AVAR a = 2.2;
   AVAR b = 3.3;
   AVAR f = multiply_log(a, b);
-  EXPECT_DOUBLE_EQ(2.2 * std::log(3.3), f.val()) << "Reasonable values";
+  EXPECT_FLOAT_EQ(2.2 * std::log(3.3), f.val()) << "Reasonable values";
 
   AVEC x = createAVEC(a, b);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(std::log(b.val()), g[0]);
-  EXPECT_DOUBLE_EQ(a.val() / b.val(), g[1]);
+  EXPECT_FLOAT_EQ(std::log(b.val()), g[0]);
+  EXPECT_FLOAT_EQ(a.val() / b.val(), g[1]);
 
   a = 0.0;
   b = 0.0;
   f = multiply_log(a, b);
-  EXPECT_DOUBLE_EQ(0.0, f.val()) << "a and b both 0";
+  EXPECT_FLOAT_EQ(0.0, f.val()) << "a and b both 0";
 
   x = createAVEC(a, b);
   g.resize(0);
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(std::log(b.val()), g[0]);
-  EXPECT_DOUBLE_EQ(std::numeric_limits<double>::infinity(), g[1]);
+  EXPECT_FLOAT_EQ(std::log(b.val()), g[0]);
+  EXPECT_FLOAT_EQ(std::numeric_limits<double>::infinity(), g[1]);
 }
 
 TEST(AgradRev, multiply_log_var_double) {
   AVAR a = 2.2;
   double b = 3.3;
   AVAR f = multiply_log(a, b);
-  EXPECT_DOUBLE_EQ(2.2 * std::log(3.3), f.val()) << "Reasonable values";
+  EXPECT_FLOAT_EQ(2.2 * std::log(3.3), f.val()) << "Reasonable values";
 
   AVEC x = createAVEC(a);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(std::log(b), g[0]);
+  EXPECT_FLOAT_EQ(std::log(b), g[0]);
 
   a = 0.0;
   b = 0.0;
   f = multiply_log(a, b);
-  EXPECT_DOUBLE_EQ(0.0, f.val()) << "a and b both 0";
+  EXPECT_FLOAT_EQ(0.0, f.val()) << "a and b both 0";
 
   x = createAVEC(a);
   g.resize(0);
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(std::log(b), g[0]);
+  EXPECT_FLOAT_EQ(std::log(b), g[0]);
 }
 TEST(AgradRev, multiply_log_double_var) {
   double a = 2.2;
   AVAR b = 3.3;
   AVAR f = multiply_log(a, b);
-  EXPECT_DOUBLE_EQ(2.2 * std::log(3.3), f.val()) << "Reasonable values";
+  EXPECT_FLOAT_EQ(2.2 * std::log(3.3), f.val()) << "Reasonable values";
 
   AVEC x = createAVEC(b);
   VEC g;
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(a / b.val(), g[0]);
+  EXPECT_FLOAT_EQ(a / b.val(), g[0]);
 
   a = 0.0;
   b = 0.0;
   f = multiply_log(a, b);
-  EXPECT_DOUBLE_EQ(0.0, f.val()) << "a and b both 0";
+  EXPECT_FLOAT_EQ(0.0, f.val()) << "a and b both 0";
 
   x = createAVEC(b);
   g.resize(0);
   f.grad(x, g);
-  EXPECT_DOUBLE_EQ(std::numeric_limits<double>::infinity(), g[0]);
+  EXPECT_FLOAT_EQ(std::numeric_limits<double>::infinity(), g[0]);
 }
 
 namespace {

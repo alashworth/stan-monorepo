@@ -86,8 +86,8 @@ TEST(AgradFwdMatrixCholeskyDecompose, mat_fd) {
   deriv_chol_fwd(m0, res_mat, d_mat);
   for (int i = 0; i < 2; ++i)
     for (int j = 0; j < i; ++j) {
-      EXPECT_DOUBLE_EQ(res_mat(i, j), res(i, j).val_);
-      EXPECT_DOUBLE_EQ(d_mat(i, j), res(i, j).d_)
+      EXPECT_FLOAT_EQ(res_mat(i, j), res(i, j).val_);
+      EXPECT_FLOAT_EQ(d_mat(i, j), res(i, j).d_)
           << "Row: " << i << "Col: " << j;
     }
 }
@@ -108,8 +108,8 @@ TEST(AgradFwdMatrixCholeskyDecompose, mat_ffd) {
   deriv_chol_fwd(m0, res_mat, d_mat);
   for (int i = 0; i < 2; ++i)
     for (int j = 0; j < i; ++j) {
-      EXPECT_DOUBLE_EQ(res_mat(i, j), res(i, j).val_.val_);
-      EXPECT_DOUBLE_EQ(d_mat(i, j), res(i, j).d_.val_)
+      EXPECT_FLOAT_EQ(res_mat(i, j), res(i, j).val_.val_);
+      EXPECT_FLOAT_EQ(d_mat(i, j), res(i, j).d_.val_)
           << "Row: " << i << " Col: " << j;
     }
 }
