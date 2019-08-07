@@ -20,9 +20,9 @@ struct op_plus_plus_post_f {
   }
 };
 
-TEST(mathMixCore, operatorPlusPlusPre) {
+TEST(MathMixCore, operatorPlusPlusPre) {
   stan::math::test::test_common_args<op_plus_plus_pre_f, false>();
 }
-TEST(mathMixCore, operatorPlusPlusPost) {
+TEST(MathMixCore, operatorPlusPlusPost) {
   stan::math::test::test_common_args<op_plus_plus_post_f, false>();
 }

@@ -1,11 +1,11 @@
 #ifndef STAN_SERVICES_SAMPLE_HMC_NUTS_UNIT_E_ADAPT_HPP
 #define STAN_SERVICES_SAMPLE_HMC_NUTS_UNIT_E_ADAPT_HPP
 
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
 #include <stan/math/prim/mat/fun/Eigen.hpp>
-#include <stan/mcmc/hmc/nuts/adapt_unit_e_nuts.hpp>
+#include <stan/algorithms/hmc/nuts/adapt_unit_e_nuts.hpp>
 #include <stan/services/error_codes.hpp>
 #include <stan/services/util/create_rng.hpp>
 #include <stan/services/util/initialize.hpp>

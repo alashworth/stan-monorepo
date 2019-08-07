@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_NUTS_UNIT_E_NUTS_HPP
 #define STAN_MCMC_HMC_NUTS_UNIT_E_NUTS_HPP
 
-#include <stan/mcmc/hmc/nuts/base_nuts.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_point.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_metric.hpp>
-#include <stan/mcmc/hmc/integrators/expl_leapfrog.hpp>
+#include "base_nuts.hpp"
+#include "stan/algorithms/hmc/hamiltonians/unit_e_point.hpp"
+#include "stan/algorithms/hmc/hamiltonians/unit_e_metric.hpp"
+#include "stan/algorithms/hmc/integrators/expl_leapfrog.hpp"
 
 namespace stan {
   namespace mcmc {

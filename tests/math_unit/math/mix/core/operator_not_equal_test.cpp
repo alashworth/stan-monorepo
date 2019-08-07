@@ -8,6 +8,6 @@ struct op_not_equal_f {
   }
 };
 
-TEST(mathMixCore, operatorNotEqual) {
+TEST(MathMixCore, operatorNotEqual) {
   stan::math::test::test_common_args<op_not_equal_f, true>();
 }

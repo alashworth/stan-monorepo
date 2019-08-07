@@ -1,9 +1,9 @@
 #ifndef STAN_SERVICES_UTIL_GENERATE_TRANSITIONS_HPP
 #define STAN_SERVICES_UTIL_GENERATE_TRANSITIONS_HPP
 
-#include <stan/callbacks/writer.hpp>
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/mcmc/base_mcmc.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/algorithms/mcmc/base_mcmc.hpp>
 #include <stan/services/util/mcmc_writer.hpp>
 #include <string>
 

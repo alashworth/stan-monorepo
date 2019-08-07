@@ -1,9 +1,9 @@
 #ifndef STAN_MCMC_HMC_STATIC_ADAPT_SOFTABS_STATIC_HMC_HPP
 #define STAN_MCMC_HMC_STATIC_ADAPT_SOFTABS_STATIC_HMC_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/mcmc/hmc/static/softabs_static_hmc.hpp>
-#include <stan/mcmc/stepsize_adapter.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include "softabs_static_hmc.hpp"
+#include "stan/algorithms/mcmc/stepsize_adapter.hpp"
 
 namespace stan {
   namespace mcmc {
@@ -20,7 +20,7 @@ namespace stan {
       adapt_softabs_static_hmc(const Model& model, BaseRNG& rng)
         : softabs_static_hmc<Model, BaseRNG>(model, rng) { }
 
-      ~adapt_softabs_static_hmc() { }
+      ~adapt_softabs_static_hmc() = default;
 
       sample transition(sample& init_sample, callbacks::logger& logger) {
         sample s = softabs_static_hmc<Model, BaseRNG>::transition(init_sample,
@@ -35,7 +35,7 @@ namespace stan {
         return s;
       }
 
-      void disengage_adaptation() {
+      void disengage_adaptation() override {
         base_adapter::disengage_adaptation();
         this->stepsize_adaptation_.complete_adaptation(this->nom_epsilon_);
       }

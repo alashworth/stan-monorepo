@@ -1,7 +1,7 @@
 #ifndef STAN_SERVICES_UTIL_EXPERIMENTAL_MESSAGE_HPP
 #define STAN_SERVICES_UTIL_EXPERIMENTAL_MESSAGE_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 
 namespace stan {
   namespace services {

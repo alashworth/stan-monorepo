@@ -1,10 +1,9 @@
 #ifndef STAN_LANG_GENERATOR_WRITE_CONSTRAINTS_FN_HPP
 #define STAN_LANG_GENERATOR_WRITE_CONSTRAINTS_FN_HPP
 
-
-#include <stan/lang/ast.hpp>
-#include <stan/lang/generator/constants.hpp>
-#include <stan/lang/generator/generate_expression.hpp>
+#include "constants.hpp"
+#include "generate_expression.hpp"
+#include "stan/language/ast.hpp"
 #include <ostream>
 #include <sstream>
 #include <string>

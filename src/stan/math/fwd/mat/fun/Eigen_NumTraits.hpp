@@ -4,6 +4,7 @@
 #include <stan/math/fwd/core.hpp>
 #include <stan/math/fwd/core/std_numeric_limits.hpp>
 #include <stan/math/prim/mat/fun/Eigen.hpp>
+
 #include <limits>
 
 namespace Eigen {

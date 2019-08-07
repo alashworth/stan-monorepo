@@ -1,9 +1,9 @@
 #ifndef STAN_MCMC_HMC_XHMC_ADAPT_UNIT_E_XHMC_HPP
 #define STAN_MCMC_HMC_XHMC_ADAPT_UNIT_E_XHMC_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/mcmc/hmc/xhmc/unit_e_xhmc.hpp>
-#include <stan/mcmc/stepsize_adapter.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include "stan/algorithms/hmc/xhmc/unit_e_xhmc.hpp"
+#include "stan/algorithms/mcmc/stepsize_adapter.hpp"
 
 namespace stan {
   namespace mcmc {

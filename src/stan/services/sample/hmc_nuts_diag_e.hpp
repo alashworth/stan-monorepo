@@ -3,12 +3,12 @@
 
 #include <stan/math/prim/mat/fun/Eigen.hpp>
 #include <stan/math/prim/mat.hpp>
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
-#include <stan/mcmc/fixed_param_sampler.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include <stan/algorithms/mcmc/fixed_param_sampler.hpp>
 #include <stan/services/error_codes.hpp>
-#include <stan/mcmc/hmc/nuts/diag_e_nuts.hpp>
+#include <stan/algorithms/hmc/nuts/diag_e_nuts.hpp>
 #include <stan/services/util/run_sampler.hpp>
 #include <stan/services/util/create_rng.hpp>
 #include <stan/services/util/initialize.hpp>

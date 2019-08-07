@@ -8,6 +8,6 @@ struct op_subtraction_f {
   }
 };
 
-TEST(mathMixCore, opratorSubraction) {
+TEST(MathMixCore, operatorSubtraction) {
   stan::math::test::test_common_args<op_subtraction_f, false>();
 }

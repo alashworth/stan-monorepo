@@ -1,10 +1,10 @@
 #ifndef STAN_LANG_AST_BLOCK_VAR_TYPE_HPP
 #define STAN_LANG_AST_BLOCK_VAR_TYPE_HPP
 
+#include "stan/language/ast/node/expression.hpp"
+#include "stan/language/ast/node/offset_multiplier.hpp"
+#include "stan/language/ast/node/range.hpp"
 #include <boost/variant/recursive_variant.hpp>
-#include <stan/lang/ast/node/expression.hpp>
-#include <stan/lang/ast/node/offset_multiplier.hpp>
-#include <stan/lang/ast/node/range.hpp>
 #include <cstddef>
 #include <string>
 #include <vector>

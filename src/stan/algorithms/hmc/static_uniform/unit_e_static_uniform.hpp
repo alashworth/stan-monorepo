@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_STATIC_UNIFORM_UNIT_E_STATIC_UNIFORM_HPP
 #define STAN_MCMC_HMC_STATIC_UNIFORM_UNIT_E_STATIC_UNIFORM_HPP
 
-#include <stan/mcmc/hmc/static_uniform/base_static_uniform.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_point.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_metric.hpp>
-#include <stan/mcmc/hmc/integrators/expl_leapfrog.hpp>
+#include "stan/algorithms/hmc/static_uniform/base_static_uniform.hpp"
+#include "stan/algorithms/hmc/hamiltonians/unit_e_point.hpp"
+#include "stan/algorithms/hmc/hamiltonians/unit_e_metric.hpp"
+#include "stan/algorithms/hmc/integrators/expl_leapfrog.hpp"
 
 namespace stan {
   namespace mcmc {

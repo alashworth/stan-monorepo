@@ -1,4 +1,71 @@
 add_executable(generate_tests generate_tests.cpp)
 target_link_libraries(generate_tests PRIVATE Boost::headers)
-target_compile_definitions(generate_tests PRIVATE
-		$<$<BOOL:STAN_BUILD_RVECTESTS>:STAN_TEST_ROW_VECTORS>)
+# generate tests now always generates with STAN_TEST_ROW_VECTORS enabled
+# target_compile_definitions(generate_tests PRIVATE
+#		$<$<BOOL:STAN_BUILD_RVECTESTS>:STAN_TEST_ROW_VECTORS>)
+
+function(add_dist_test)
+	get_filename_component(id ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+	file(GLOB headers LIST_DIRECTORIES false RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CONFIGURE_DEPENDS *.hpp)
+	message(STATUS "Configuring ${id} distribution tests...")
+	set(cmd_str "")
+	set(custom_tgt "stan_dist_mk_${id}_tests")
+	foreach(hdr IN LISTS headers)
+		configure_file(${hdr} ${CMAKE_CURRENT_BINARY_DIR}/${hdr} COPYONLY)
+		list(APPEND cmd_str COMMAND generate_tests ${hdr} 20)
+	endforeach()
+
+	add_custom_target(${custom_tgt} ${cmd_str}
+			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+			VERBATIM)
+
+	set_property(SOURCE ${ARGN} PROPERTY GENERATED TRUE)
+
+	foreach(src IN LISTS ARGN)
+		get_filename_component(name ${src} NAME_WLE)
+		add_executable(${name} ${CMAKE_CURRENT_BINARY_DIR}/${src})
+		add_test(${name} COMMAND ${name})
+		add_dependencies(${name} ${custom_tgt})
+		target_link_libraries(${name} PRIVATE Stan::Math GTest::GTest GTest::Main)
+		target_include_directories(${name} PRIVATE
+				${CMAKE_CURRENT_SOURCE_DIR}
+				${PROJECT_SOURCE_DIR}/tests/math_prob)
+	endforeach()
+
+	message(STATUS "Configuring ${id} distribution tests... [DONE]")
+endfunction()
+
+add_subdirectory(bernoulli)
+add_subdirectory(beta)
+add_subdirectory(beta_binomial)
+add_subdirectory(beta_proportion)
+add_subdirectory(binomial)
+add_subdirectory(cauchy)
+add_subdirectory(chi_square)
+add_subdirectory(double_exponential)
+add_subdirectory(exp_mod_normal)
+add_subdirectory(exponential)
+add_subdirectory(frechet)
+add_subdirectory(gamma)
+add_subdirectory(gumbel)
+add_subdirectory(hypergeometric)
+add_subdirectory(inv_chi_square)
+add_subdirectory(inv_gamma)
+add_subdirectory(logistic)
+add_subdirectory(lognormal)
+add_subdirectory(neg_binomial)
+add_subdirectory(neg_binomial_2)
+add_subdirectory(normal)
+add_subdirectory(normal_sufficient)
+add_subdirectory(pareto)
+add_subdirectory(pareto_type_2)
+add_subdirectory(poisson)
+add_subdirectory(rayleigh)
+add_subdirectory(scaled_inv_chi_square)
+add_subdirectory(skew_normal)
+add_subdirectory(std_normal)
+add_subdirectory(student_t)
+add_subdirectory(uniform)
+add_subdirectory(von_mises)
+add_subdirectory(weibull)
+add_subdirectory(wiener)

@@ -2,7 +2,7 @@
 #define STAN_MCMC_HMC_INTEGRATORS_IMPL_LEAPFROG_HPP
 
 #include <Eigen/Dense>
-#include <stan/mcmc/hmc/integrators/base_leapfrog.hpp>
+#include "base_leapfrog.hpp"
 
 namespace stan {
   namespace mcmc {

@@ -10,6 +10,6 @@ struct op_multiply_equal_f {
   }
 };
 
-TEST(mathMixCore, operatorMultiplyEqual) {
+TEST(MathMixCore, operatorMultiplyEqual) {
   stan::math::test::test_common_args<op_multiply_equal_f, false>();
 }

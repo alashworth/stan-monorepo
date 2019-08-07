@@ -1,11 +1,11 @@
 #ifndef STAN_SERVICES_UTIL_GQ_WRITER_HPP
 #define STAN_SERVICES_UTIL_GQ_WRITER_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
-#include <stan/mcmc/base_mcmc.hpp>
-#include <stan/mcmc/sample.hpp>
-#include <stan/model/prob_grad.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include <stan/algorithms/mcmc/base_mcmc.hpp>
+#include <stan/algorithms/mcmc/sample.hpp>
+#include <stan/language/model/prob_grad.hpp>
 #include <sstream>
 #include <iomanip>
 #include <string>

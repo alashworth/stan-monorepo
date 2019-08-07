@@ -8,6 +8,6 @@ struct op_multiplication_f {
   }
 };
 
-TEST(mathMixCore, operatorMultiplication) {
+TEST(MathMixCore, operatorMultiplication) {
   stan::math::test::test_common_args<op_multiplication_f, false>();
 }

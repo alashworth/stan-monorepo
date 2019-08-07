@@ -1,9 +1,9 @@
 #ifndef STAN_LANG_AST_NODE_DOUBLE_LITERAL_HPP
 #define STAN_LANG_AST_NODE_DOUBLE_LITERAL_HPP
 
-#include <stan/lang/ast/type/bare_expr_type.hpp>
-#include <string>
+#include "stan/language/ast/type/bare_expr_type.hpp"
 #include <cstddef>
+#include <string>
 
 namespace stan {
 namespace lang {

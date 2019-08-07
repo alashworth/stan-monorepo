@@ -18,9 +18,9 @@ struct op_minus_minus_post_f {
   }
 };
 
-TEST(mathMixCore, operatorMinusMinusPre) {
+TEST(MathMixCore, operatorMinusMinusPre) {
   stan::math::test::test_common_args<op_minus_minus_pre_f, false>();
 }
-TEST(mathMixCore, operatorMinusMinusPost) {
+TEST(MathMixCore, operatorMinusMinusPost) {
   stan::math::test::test_common_args<op_minus_minus_post_f, false>();
 }

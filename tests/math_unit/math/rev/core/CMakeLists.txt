@@ -25,11 +25,5 @@ add_math_unit_test(stan_math_rev_core_unit_tests
         dvd_vari_test.cpp
         )
 
-if (TARGET Stan::MathMt)
-    target_sources(stan_math_mt_unit_tests PRIVATE
-            thread_stack_instance_test.cpp)
-endif ()
-
-
 target_link_libraries(stan_math_rev_core_unit_tests
         PRIVATE stan_math_rev_scal_utils)

@@ -1,13 +1,13 @@
 #ifndef STAN_SERVICES_DIAGNOSE_DIAGNOSE_HPP
 #define STAN_SERVICES_DIAGNOSE_DIAGNOSE_HPP
 
-#include <stan/io/var_context.hpp>
-#include <stan/io/chained_var_context.hpp>
-#include <stan/io/random_var_context.hpp>
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
-#include <stan/model/test_gradients.hpp>
+#include <stan/util/io/var_context.hpp>
+#include <stan/util/io/chained_var_context.hpp>
+#include <stan/util/io/random_var_context.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include <stan/language/model/test_gradients.hpp>
 #include <stan/services/util/create_rng.hpp>
 #include <stan/services/util/initialize.hpp>
 #include <vector>

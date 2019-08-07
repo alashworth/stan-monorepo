@@ -1,10 +1,9 @@
 #ifndef STAN_LANG_AST_BLOCK_VAR_TYPE_DEF_HPP
 #define STAN_LANG_AST_BLOCK_VAR_TYPE_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/get.hpp>
-
 #include <ostream>
 #include <string>
 #include <vector>

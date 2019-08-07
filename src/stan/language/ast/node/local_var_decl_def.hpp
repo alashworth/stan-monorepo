@@ -1,8 +1,8 @@
 #ifndef STAN_LANG_AST_NODE_LOCAL_VAR_DECL_DEF_HPP
 #define STAN_LANG_AST_NODE_LOCAL_VAR_DECL_DEF_HPP
 
-#include <stan/lang/ast/node/expression_def.hpp>
-#include <stan/lang/ast/node/var_decl_def.hpp>
+#include "expression_def.hpp"
+#include "var_decl_def.hpp"
 #include <string>
 
 namespace stan {
@@ -13,16 +13,14 @@ local_var_decl::local_var_decl()
 
 local_var_decl::local_var_decl(const std::string& name,
                                const local_var_type& type)
-  : var_decl(name, type.bare_type(), nil()), type_(type) {}
+    : var_decl(name, type.bare_type(), nil()), type_(type) {}
 
 local_var_decl::local_var_decl(const std::string& name,
                                const local_var_type& type,
                                const expression& def)
     : var_decl(name, type.bare_type(), def), type_(type) {}
 
-bare_expr_type local_var_decl::bare_type() const {
-  return type_.bare_type();
-}
+bare_expr_type local_var_decl::bare_type() const { return type_.bare_type(); }
 
 expression local_var_decl::def() const { return def_; }
 

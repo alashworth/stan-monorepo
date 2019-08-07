@@ -16,13 +16,3 @@ target_sources(stan_math_rev_mat_unit_tests PRIVATE
         integrate_ode_adams_rev_test.cpp
         integrate_ode_cvodes_grad_rev_test.cpp
         )
-
-if (TARGET Stan::MathMt)
-    target_sources(stan_math_mt_unit_tests PRIVATE
-            map_rect_prim_test.cpp
-            gradient_test.cpp
-            map_rect_concurrent_test.cpp
-            map_rect_concurrent_threads_test.cpp
-            map_rect_concurrent_prim_test.cpp
-            )
-endif ()

@@ -8,6 +8,6 @@ struct op_equal_f {
   }
 };
 
-TEST(mathMixCore, operatorEqual) {
+TEST(MathMixCore, operatorEqual) {
   stan::math::test::test_common_args<op_equal_f, true>();
 }

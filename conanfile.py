@@ -13,6 +13,3 @@ class StanConan(ConanFile):
     default_options = {
         "boost:header_only": True
     }
-
-# TODO: This could be optimized even more to only download if an appropriate system
-# package is not available.

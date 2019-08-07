@@ -1,8 +1,8 @@
 #ifndef STAN_MCMC_HMC_STATIC_UNIFORM_ADAPT_DENSE_E_STATIC_UNIFORM_HPP
 #define STAN_MCMC_HMC_STATIC_UNIFORM_ADAPT_DENSE_E_STATIC_UNIFORM_HPP
 
-#include <stan/mcmc/stepsize_covar_adapter.hpp>
-#include <stan/mcmc/hmc/static_uniform/dense_e_static_uniform.hpp>
+#include "stan/algorithms/mcmc/stepsize_covar_adapter.hpp"
+#include "stan/algorithms/hmc/static_uniform/dense_e_static_uniform.hpp"
 
 namespace stan {
   namespace mcmc {

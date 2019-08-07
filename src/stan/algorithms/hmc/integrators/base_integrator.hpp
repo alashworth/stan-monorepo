@@ -1,7 +1,7 @@
 #ifndef STAN_MCMC_HMC_INTEGRATORS_BASE_INTEGRATOR_HPP
 #define STAN_MCMC_HMC_INTEGRATORS_BASE_INTEGRATOR_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 
 namespace stan {
   namespace mcmc {

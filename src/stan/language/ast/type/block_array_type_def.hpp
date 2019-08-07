@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_BLOCK_ARRAY_TYPE_DEF_HPP
 #define STAN_LANG_AST_BLOCK_ARRAY_TYPE_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <vector>
 
 namespace stan {
@@ -13,7 +13,6 @@ block_array_type::block_array_type(const block_var_type& el_type,
 
 block_array_type::block_array_type()
     : block_array_type(ill_formed_type(), nil()) {}
-
 
 block_array_type::block_array_type(const block_var_type& el_type,
                                    const std::vector<expression>& lens)

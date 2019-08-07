@@ -1,26 +1,23 @@
 #ifndef STAN_LANG_AST_BARE_EXPR_TYPE_DEF_HPP
 #define STAN_LANG_AST_BARE_EXPR_TYPE_DEF_HPP
 
-#include <stan/lang/ast/type/bare_array_type.hpp>
-#include <stan/lang/ast/type/bare_expr_type.hpp>
-#include <stan/lang/ast/type/double_type.hpp>
-#include <stan/lang/ast/type/ill_formed_type.hpp>
-#include <stan/lang/ast/type/int_type.hpp>
-#include <stan/lang/ast/type/matrix_type.hpp>
-#include <stan/lang/ast/type/row_vector_type.hpp>
-#include <stan/lang/ast/type/vector_type.hpp>
-#include <stan/lang/ast/type/void_type.hpp>
-
-#include <stan/lang/ast/fun/bare_type_is_data_vis.hpp>
-#include <stan/lang/ast/fun/bare_type_order_id_vis.hpp>
-#include <stan/lang/ast/fun/bare_type_set_is_data_vis.hpp>
-#include <stan/lang/ast/fun/bare_type_total_dims_vis.hpp>
-#include <stan/lang/ast/fun/bare_type_vis.hpp>
-#include <stan/lang/ast/fun/write_bare_expr_type.hpp>
-
+#include "bare_array_type.hpp"
+#include "bare_expr_type.hpp"
+#include "double_type.hpp"
+#include "ill_formed_type.hpp"
+#include "int_type.hpp"
+#include "matrix_type.hpp"
+#include "row_vector_type.hpp"
+#include "vector_type.hpp"
+#include "void_type.hpp"
+#include "stan/language/ast/fun/bare_type_is_data_vis.hpp"
+#include "stan/language/ast/fun/bare_type_order_id_vis.hpp"
+#include "stan/language/ast/fun/bare_type_set_is_data_vis.hpp"
+#include "stan/language/ast/fun/bare_type_total_dims_vis.hpp"
+#include "stan/language/ast/fun/bare_type_vis.hpp"
+#include "stan/language/ast/fun/write_bare_expr_type.hpp"
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/get.hpp>
-
 #include <ostream>
 #include <string>
 

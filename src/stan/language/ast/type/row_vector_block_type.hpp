@@ -1,9 +1,9 @@
 #ifndef STAN_LANG_AST_ROW_VECTOR_BLOCK_TYPE_HPP
 #define STAN_LANG_AST_ROW_VECTOR_BLOCK_TYPE_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
-#include <stan/lang/ast/node/offset_multiplier.hpp>
-#include <stan/lang/ast/node/range.hpp>
+#include "stan/language/ast/node/expression.hpp"
+#include "stan/language/ast/node/offset_multiplier.hpp"
+#include "stan/language/ast/node/range.hpp"
 
 namespace stan {
 namespace lang {

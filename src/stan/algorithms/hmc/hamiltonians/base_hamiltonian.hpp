@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_HAMILTONIANS_BASE_HAMILTONIAN_HPP
 #define STAN_MCMC_HMC_HAMILTONIANS_BASE_HAMILTONIAN_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 #include <stan/math/prim/mat/fun/Eigen.hpp>
-#include <stan/model/gradient.hpp>
-#include <stan/model/log_prob_propto.hpp>
+#include <stan/language/model/gradient.hpp>
+#include <stan/language/model/log_prob_propto.hpp>
 #include <Eigen/Dense>
 #include <iostream>
 #include <limits>

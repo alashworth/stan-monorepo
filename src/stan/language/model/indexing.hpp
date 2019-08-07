@@ -1,11 +1,11 @@
 #ifndef STAN_MODEL_INDEXING_HPP
 #define STAN_MODEL_INDEXING_HPP
 
-#include <stan/model/indexing/deep_copy.hpp>
-#include <stan/model/indexing/index.hpp>
-#include <stan/model/indexing/index_list.hpp>
-#include <stan/model/indexing/lvalue.hpp>
-#include <stan/model/indexing/rvalue.hpp>
-#include <stan/model/indexing/rvalue_return.hpp>
+#include "indexing/deep_copy.hpp"
+#include "indexing/index.hpp"
+#include "indexing/index_list.hpp"
+#include "indexing/lvalue.hpp"
+#include "indexing/rvalue.hpp"
+#include "indexing/rvalue_return.hpp"
 
 #endif

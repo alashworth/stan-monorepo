@@ -7,6 +7,7 @@ TEST(MathFunctions, inv_Phi_0) {
   using stan::math::Phi;
   using stan::math::inv_Phi;
   using stan::math::Phi;
+  using stan::math::fvar;
   EXPECT_FLOAT_EQ(0.0, inv_Phi(0.5));
   fvar<double> p = 0.123456789;
   EXPECT_FLOAT_EQ(p.val_, Phi(inv_Phi(p)).val_);

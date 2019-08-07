@@ -3,8 +3,8 @@
 
 #include <boost/lexical_cast.hpp>
 
-#include <stan/io/validate_zero_buf.hpp>
-#include <stan/io/json/json_error.hpp>
+#include <stan/util/io/validate_zero_buf.hpp>
+#include <stan/util/io/json/json_error.hpp>
 
 #include <stdexcept>
 #include <iostream>

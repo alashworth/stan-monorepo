@@ -80,7 +80,7 @@ endif()
 # Project options
 option(STAN_BUILD_DOCS "Enable documentation building." OFF)
 option(STAN_BUILD_TESTS "Enable project tests." ON)
-option(STAN_BUILD_RVECTESTS "Enable generation of extended row-vector tests." OFF)
+option(STAN_BUILD_RVECTESTS "Enable generation of extended row-vector distribution tests." OFF)
 set(STAN_OPENCL_DEVICE_ID "0" CACHE STRING "Desired device to run OpenCL-accelerated functions on.")
 set(STAN_OPENCL_PLATFORM_ID "0" CACHE STRING "Desired OpenCL platform to run OpenCL-accelerated functions on.")
 
@@ -141,29 +141,38 @@ set_package_properties(Threads PROPERTIES
 feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
 		FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-# are these still necessary?
+# Are these still necessary? Reading the boost documentation, these should
+# not need to be defined explicitly.
 target_compile_definitions(Boost::headers INTERFACE
-		BOOST_RESULT_OF_USE_TR1
-		BOOST_NO_DECLTYPE
+#		BOOST_RESULT_OF_USE_TR1
+#		BOOST_NO_DECLTYPE
 #		BOOST_DISABLE_ASSERTS
-#		BOOST_PHOENIX_NO_VARIADIC_EXPRESSION
+		BOOST_PHOENIX_NO_VARIADIC_EXPRESSION
 		)
 
-if (TARGET GTest::GTest AND APPLE) # is this still necessary?
-	target_compile_definitions(GTest::GTest INTERFACE GTEST_USE_OWN_TR1_TUPLE)
-endif()
+# Again, is this still necessary? https://codereview.appspot.com/6332052/
+# supposedly fixed this 6 years ago.
+#if (TARGET GTest::GTest)
+#	target_compile_definitions(GTest::GTest INTERFACE GTEST_USE_OWN_TR1_TUPLE)
+#endif()
 
 # Main targets built by this project
 include(GNUInstallDirs)
 add_subdirectory(src/stan/math)
+add_subdirectory(src/stan/language)
 add_subdirectory(src/stan/util)
+add_subdirectory(src/stan/cmdstan)
+add_subdirectory(src/stan/services)
+add_subdirectory(src/stan/algorithms)
 
 if(STAN_BUILD_TESTS)
 	if (NOT TARGET GTest::GTest)
 		message(FATAL_ERROR "GTest is a required dependency if you want to run tests.")
 	endif ()
 
-	# Diagnostic compile warnings and static analysis
+	# FIXME: These commands probably ought to go in a script directory where we define particular CI builds
+	# then contributors could just run the scripts that would set up an appropriate build
+	# e.g. tools/cpplint.cmake, and inside, kick off ctest --build-and-test ...
     #	find_program(CLANG_TIDY_PROGRAM NAMES clang-tidy)
 	#	if(CLANG_TIDY_PROGRAM)
 	#		set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_PROGRAM};-checks=*")
@@ -191,12 +200,16 @@ if(STAN_BUILD_TESTS)
 	#		set(CMAKE_LINK_WHAT_YOU_USE TRUE)
 	#	endif()
 
-	# FIXME: There ought to be lots more use of boost::numeric_cast in the code.
+	# FIXME: Someday code will compile without warnings.
 	#	add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wcast-qual)
 	#	add_compile_options(-Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes)
 
 	include(GoogleTest)
 	add_subdirectory(tests/math_unit)
-	#	add_subdirectory(tests/math_prob)
-	#	add_subdirectory(tests/util_unit)
+	if(STAN_BUILD_RVECTESTS)
+		add_subdirectory(tests/math_prob)
+	endif()
+	add_subdirectory(tests/util_unit)
+#	add_subdirectory(tests/test-models)
+	add_subdirectory(tests/algorithms_unit)
 endif()

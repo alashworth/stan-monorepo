@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_FUN_INFER_TYPE_INDEXING_DEF_HPP
 #define STAN_LANG_AST_FUN_INFER_TYPE_INDEXING_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
 namespace lang {
@@ -10,9 +10,9 @@ bare_expr_type infer_type_indexing(const bare_expr_type& bare_type,
                                    size_t num_index_dims) {
   if (num_index_dims == 0)
     return bare_type;
-  if (bare_type.num_dims() >= 0 &&
-      num_index_dims > static_cast<size_t>(bare_type.num_dims()))
-      return ill_formed_type();
+  if (bare_type.num_dims() >= 0
+      && num_index_dims > static_cast<size_t>(bare_type.num_dims()))
+    return ill_formed_type();
 
   bare_expr_type tmp = bare_type;
   while (tmp.array_dims() > 0 && num_index_dims > 0) {

@@ -10,6 +10,6 @@ struct plus_equal_f {
   }
 };
 
-TEST(mathMixCore, operatorPlusEqual) {
+TEST(MathMixCore, operatorPlusEqual) {
   stan::math::test::test_common_args<plus_equal_f, false>();
 }

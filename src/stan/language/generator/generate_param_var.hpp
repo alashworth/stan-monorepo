@@ -1,15 +1,15 @@
 #ifndef STAN_LANG_GENERATOR_GENERATE_PARAM_VAR_HPP
 #define STAN_LANG_GENERATOR_GENERATE_PARAM_VAR_HPP
 
-#include <stan/lang/ast.hpp>
-#include <stan/lang/generator/constants.hpp>
-#include <stan/lang/generator/generate_bare_type.hpp>
-#include <stan/lang/generator/generate_expression.hpp>
-#include <stan/lang/generator/generate_indent.hpp>
-#include <stan/lang/generator/write_constraints_fn.hpp>
-#include <stan/lang/generator/write_end_loop.hpp>
-#include <stan/lang/generator/write_nested_resize_loop_begin.hpp>
-#include <stan/lang/generator/write_resize_var_idx.hpp>
+#include "constants.hpp"
+#include "generate_bare_type.hpp"
+#include "generate_expression.hpp"
+#include "generate_indent.hpp"
+#include "write_constraints_fn.hpp"
+#include "write_end_loop.hpp"
+#include "write_nested_resize_loop_begin.hpp"
+#include "write_resize_var_idx.hpp"
+#include "stan/language/ast.hpp"
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -37,8 +37,8 @@ void generate_param_var(const block_var_decl &var_decl, bool gen_decl_stmt,
   std::string constrain_str = write_constraints_fn(btype, "constrain");
   // lp__ is single or last arg to write_constraints_fn
   std::string lp_arg("lp__)");
-  if (btype.has_def_bounds() || btype.has_def_offset_multiplier() ||
-      !btype.bare_type().is_double_type())
+  if (btype.has_def_bounds() || btype.has_def_offset_multiplier()
+      || !btype.bare_type().is_double_type())
     lp_arg = ", lp__)";
 
   // declare

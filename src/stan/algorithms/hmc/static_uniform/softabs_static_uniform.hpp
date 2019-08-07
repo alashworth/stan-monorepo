@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_STATIC_UNIFORM_SOFTABS_STATIC_UNIFORM_HPP
 #define STAN_MCMC_HMC_STATIC_UNIFORM_SOFTABS_STATIC_UNIFORM_HPP
 
-#include <stan/mcmc/hmc/static_uniform/base_static_uniform.hpp>
-#include <stan/mcmc/hmc/hamiltonians/softabs_point.hpp>
-#include <stan/mcmc/hmc/hamiltonians/softabs_metric.hpp>
-#include <stan/mcmc/hmc/integrators/impl_leapfrog.hpp>
+#include "stan/algorithms/hmc/static_uniform/base_static_uniform.hpp"
+#include "stan/algorithms/hmc/hamiltonians/softabs_point.hpp"
+#include "stan/algorithms/hmc/hamiltonians/softabs_metric.hpp"
+#include "stan/algorithms/hmc/integrators/impl_leapfrog.hpp"
 
 namespace stan {
   namespace mcmc {

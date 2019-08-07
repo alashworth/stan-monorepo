@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_NODE_INDEX_OP_DEF_HPP
 #define STAN_LANG_AST_NODE_INDEX_OP_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <vector>
 
 namespace stan {

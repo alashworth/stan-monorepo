@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_FUN_BARE_TYPE_TOTAL_DIMS_VIS_DEF_HPP
 #define STAN_LANG_AST_FUN_BARE_TYPE_TOTAL_DIMS_VIS_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
 namespace lang {
@@ -19,9 +19,7 @@ int bare_type_total_dims_vis::operator()(const ill_formed_type& x) const {
   return 0;
 }
 
-int bare_type_total_dims_vis::operator()(const int_type& x) const {
-  return 0;
-}
+int bare_type_total_dims_vis::operator()(const int_type& x) const { return 0; }
 
 int bare_type_total_dims_vis::operator()(const matrix_type& x) const {
   return 2;
@@ -35,9 +33,7 @@ int bare_type_total_dims_vis::operator()(const vector_type& x) const {
   return 1;
 }
 
-int bare_type_total_dims_vis::operator()(const void_type& x) const {
-  return 0;
-}
+int bare_type_total_dims_vis::operator()(const void_type& x) const { return 0; }
 }  // namespace lang
 }  // namespace stan
 #endif

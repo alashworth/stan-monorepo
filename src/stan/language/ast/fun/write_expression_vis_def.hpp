@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_FUN_WRITE_EXPRESSION_VIS_DEF_HPP
 #define STAN_LANG_AST_FUN_WRITE_EXPRESSION_VIS_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <boost/lexical_cast.hpp>
 #include <sstream>
 #include <string>

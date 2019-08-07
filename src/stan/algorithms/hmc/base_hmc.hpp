@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_BASE_HMC_HPP
 #define STAN_MCMC_HMC_BASE_HMC_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
-#include <stan/mcmc/base_mcmc.hpp>
-#include <stan/mcmc/hmc/hamiltonians/ps_point.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include "stan/algorithms/mcmc/base_mcmc.hpp"
+#include "stan/algorithms/hmc/hamiltonians/ps_point.hpp"
 #include <boost/math/special_functions/fpclassify.hpp>
 #include <boost/random/variate_generator.hpp>
 #include <boost/random/uniform_01.hpp>

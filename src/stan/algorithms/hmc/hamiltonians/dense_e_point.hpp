@@ -1,8 +1,8 @@
 #ifndef STAN_MCMC_HMC_HAMILTONIANS_DENSE_E_POINT_HPP
 #define STAN_MCMC_HMC_HAMILTONIANS_DENSE_E_POINT_HPP
 
-#include <stan/callbacks/writer.hpp>
-#include <stan/mcmc/hmc/hamiltonians/ps_point.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include "ps_point.hpp"
 
 namespace stan {
   namespace mcmc {

@@ -1,14 +1,14 @@
 #ifndef STAN_SERVICES_EXPERIMENTAL_ADVI_MEANFIELD_HPP
 #define STAN_SERVICES_EXPERIMENTAL_ADVI_MEANFIELD_HPP
 
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
 #include <stan/services/util/experimental_message.hpp>
 #include <stan/services/util/initialize.hpp>
 #include <stan/services/util/create_rng.hpp>
-#include <stan/io/var_context.hpp>
-#include <stan/variational/advi.hpp>
+#include <stan/util/io/var_context.hpp>
+#include <stan/algorithms/variational/advi.hpp>
 #include <boost/random/additive_combine.hpp>
 #include <string>
 #include <vector>

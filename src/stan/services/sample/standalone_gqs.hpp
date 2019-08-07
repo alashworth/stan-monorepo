@@ -1,10 +1,10 @@
 #ifndef STAN_SERVICES_SAMPLE_STANDALONE_GQS_HPP
 #define STAN_SERVICES_SAMPLE_STANDALONE_GQS_HPP
 
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
-#include <stan/io/array_var_context.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include <stan/util/io/array_var_context.hpp>
 #include <stan/services/error_codes.hpp>
 #include <stan/services/util/create_rng.hpp>
 #include <stan/services/util/gq_writer.hpp>

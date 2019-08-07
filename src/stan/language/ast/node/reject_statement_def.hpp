@@ -1,17 +1,17 @@
 #ifndef STAN_LANG_AST_NODE_REJECT_STATEMENT_DEF_HPP
 #define STAN_LANG_AST_NODE_REJECT_STATEMENT_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <vector>
 
 namespace stan {
-  namespace lang {
+namespace lang {
 
-    reject_statement::reject_statement() { }
+reject_statement::reject_statement() {}
 
-    reject_statement::reject_statement(const std::vector<printable>& printables)
-      : printables_(printables) { }
+reject_statement::reject_statement(const std::vector<printable>& printables)
+    : printables_(printables) {}
 
-  }
-}
+}  // namespace lang
+}  // namespace stan
 #endif

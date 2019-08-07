@@ -1,7 +1,7 @@
 #ifndef STAN_IO_ARRAY_VAR_CONTEXT_HPP
 #define STAN_IO_ARRAY_VAR_CONTEXT_HPP
 
-#include <stan/io/var_context.hpp>
+#include <stan/util/io/var_context.hpp>
 #include <boost/throw_exception.hpp>
 #include <stan/math/prim/mat/fun/Eigen.hpp>
 #include <map>

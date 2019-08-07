@@ -1,8 +1,8 @@
 #ifndef STAN_SERVICES_UTIL_RUN_ADAPTIVE_SAMPLER_HPP
 #define STAN_SERVICES_UTIL_RUN_ADAPTIVE_SAMPLER_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
 #include <stan/services/util/generate_transitions.hpp>
 #include <stan/services/util/mcmc_writer.hpp>
 #include <ctime>

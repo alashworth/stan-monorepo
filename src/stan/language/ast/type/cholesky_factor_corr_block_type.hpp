@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_CHOLESKY_FACTOR_CORR_BLOCK_TYPE_HPP
 #define STAN_LANG_AST_CHOLESKY_FACTOR_CORR_BLOCK_TYPE_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
+#include "stan/language/ast/node/expression.hpp"
 
 namespace stan {
 namespace lang {
@@ -25,8 +25,7 @@ struct cholesky_factor_corr_block_type {
    *
    * @param K corr matrix num rows, columns
    */
-  explicit cholesky_factor_corr_block_type(
-      const expression& K);
+  explicit cholesky_factor_corr_block_type(const expression& K);
 
   /**
    * Get K (corr matrix num rows, columns)

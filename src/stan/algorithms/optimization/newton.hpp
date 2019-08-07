@@ -1,8 +1,8 @@
 #ifndef STAN_OPTIMIZATION_NEWTON_HPP
 #define STAN_OPTIMIZATION_NEWTON_HPP
 
-#include <stan/model/grad_hess_log_prob.hpp>
-#include <stan/model/log_prob_grad.hpp>
+#include <stan/language/model/grad_hess_log_prob.hpp>
+#include <stan/language/model/log_prob_grad.hpp>
 #include <Eigen/Dense>
 #include <Eigen/Cholesky>
 #include <Eigen/Eigenvalues>

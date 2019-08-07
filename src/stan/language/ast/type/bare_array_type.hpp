@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_BARE_ARRAY_TYPE_HPP
 #define STAN_LANG_AST_BARE_ARRAY_TYPE_HPP
 
-#include <stan/lang/ast/type/bare_expr_type.hpp>
+#include "bare_expr_type.hpp"
 #include <string>
 
 namespace stan {

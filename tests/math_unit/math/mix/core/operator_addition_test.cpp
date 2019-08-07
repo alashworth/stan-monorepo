@@ -8,6 +8,6 @@ struct op_addition_f {
   }
 };
 
-TEST(mathMixCore, opratorAddition) {
+TEST(MathMixCore, operatorAddition) {
   stan::math::test::test_common_args<op_addition_f, false>();
 }

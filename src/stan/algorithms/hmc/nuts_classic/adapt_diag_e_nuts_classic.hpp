@@ -1,9 +1,9 @@
 #ifndef STAN_MCMC_HMC_NUTS_CLASSIC_ADAPT_DIAG_E_NUTS_CLASSIC_HPP
 #define STAN_MCMC_HMC_NUTS_CLASSIC_ADAPT_DIAG_E_NUTS_CLASSIC_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/mcmc/stepsize_var_adapter.hpp>
-#include <stan/mcmc/hmc/nuts_classic/diag_e_nuts_classic.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include "stan/algorithms/mcmc/stepsize_var_adapter.hpp"
+#include "stan/algorithms/hmc/nuts_classic/diag_e_nuts_classic.hpp"
 
 namespace stan {
   namespace mcmc {

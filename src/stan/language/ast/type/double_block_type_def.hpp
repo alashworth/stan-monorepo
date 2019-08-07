@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_DOUBLE_BLOCK_TYPE_DEF_HPP
 #define STAN_LANG_AST_DOUBLE_BLOCK_TYPE_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
 namespace lang {
@@ -10,8 +10,9 @@ double_block_type::double_block_type(const range &bounds,
     : bounds_(bounds), ls_(ls) {
   if (bounds.has_low() || bounds.has_high())
     if (ls.has_offset() || ls.has_multiplier())
-      throw std::invalid_argument("Block type cannot have both a bound and"
-                                  "an offset/multiplier.");
+      throw std::invalid_argument(
+          "Block type cannot have both a bound and"
+          "an offset/multiplier.");
 }
 
 double_block_type::double_block_type(const range &bounds) : bounds_(bounds) {}

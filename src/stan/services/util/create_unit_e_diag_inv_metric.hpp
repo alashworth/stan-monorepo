@@ -1,7 +1,7 @@
 #ifndef STAN_SERVICES_UTIL_CREATE_UNIT_E_DIAG_INV_METRIC_HPP
 #define STAN_SERVICES_UTIL_CREATE_UNIT_E_DIAG_INV_METRIC_HPP
 
-#include <stan/io/dump.hpp>
+#include <stan/util/io/dump.hpp>
 #include <sstream>
 
 namespace stan {

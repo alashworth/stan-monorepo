@@ -1,8 +1,8 @@
 #ifndef STAN_LANG_AST_ORDERED_BLOCK_TYPE_HPP
 #define STAN_LANG_AST_ORDERED_BLOCK_TYPE_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
-#include <stan/lang/ast/node/range.hpp>
+#include "stan/language/ast/node/expression.hpp"
+#include "stan/language/ast/node/range.hpp"
 
 namespace stan {
 namespace lang {

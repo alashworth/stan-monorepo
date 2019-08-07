@@ -8,6 +8,6 @@ struct op_divide_f {
   }
 };
 
-TEST(mathMixCore, operatorDivision) {
+TEST(MathMixCore, operatorDivision) {
   stan::math::test::test_common_args<op_divide_f, false>();
 }

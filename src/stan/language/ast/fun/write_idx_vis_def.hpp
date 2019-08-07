@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_FUN_WRITE_IDX_VIS_DEF_HPP
 #define STAN_LANG_AST_FUN_WRITE_IDX_VIS_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <sstream>
 #include <string>
 
@@ -28,9 +28,7 @@ std::string write_idx_vis::operator()(const multi_idx& idx) const {
   return idx.idxs_.to_string();
 }
 
-std::string write_idx_vis::operator()(const omni_idx& idx) const {
-  return ":";
-}
+std::string write_idx_vis::operator()(const omni_idx& idx) const { return ":"; }
 
 std::string write_idx_vis::operator()(const ub_idx& idx) const {
   std::stringstream ss;

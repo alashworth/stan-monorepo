@@ -2,14 +2,14 @@
 #define STAN_VARIATIONAL_ADVI_HPP
 
 #include <stan/math.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
-#include <stan/callbacks/stream_writer.hpp>
-#include <stan/io/dump.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include <stan/services/callbacks/stream_writer.hpp>
+#include <stan/util/io/dump.hpp>
 #include <stan/services/error_codes.hpp>
-#include <stan/variational/print_progress.hpp>
-#include <stan/variational/families/normal_fullrank.hpp>
-#include <stan/variational/families/normal_meanfield.hpp>
+#include "stan/algorithms/variational/print_progress.hpp"
+#include "stan/algorithms/variational/families/normal_fullrank.hpp"
+#include "stan/algorithms/variational/families/normal_meanfield.hpp"
 #include <boost/circular_buffer.hpp>
 #include <boost/lexical_cast.hpp>
 #include <algorithm>

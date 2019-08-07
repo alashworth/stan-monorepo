@@ -1,9 +1,9 @@
 #ifndef STAN_MCMC_HMC_NUTS_ADAPT_DENSE_E_NUTS_HPP
 #define STAN_MCMC_HMC_NUTS_ADAPT_DENSE_E_NUTS_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/mcmc/stepsize_covar_adapter.hpp>
-#include <stan/mcmc/hmc/nuts/dense_e_nuts.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include "stan/algorithms/mcmc/stepsize_covar_adapter.hpp"
+#include "dense_e_nuts.hpp"
 
 namespace stan {
   namespace mcmc {

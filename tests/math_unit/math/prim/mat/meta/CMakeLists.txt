@@ -17,6 +17,6 @@ target_sources(stan_math_prim_mat_unit_tests PRIVATE
         vector_seq_view_test.cpp
         VectorBuilder_test.cpp
         VectorBuilderHelper_test.cpp
-        boost_precompiler_options_test.cpp
+#        boost_precompiler_options_test.cpp
         append_return_type_test.cpp
         common.hpp)

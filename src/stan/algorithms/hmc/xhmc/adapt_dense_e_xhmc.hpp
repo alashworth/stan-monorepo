@@ -1,9 +1,9 @@
 #ifndef STAN_MCMC_HMC_XHMC_ADAPT_DENSE_E_XHMC_HPP
 #define STAN_MCMC_HMC_XHMC_ADAPT_DENSE_E_XHMC_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/mcmc/stepsize_covar_adapter.hpp>
-#include <stan/mcmc/hmc/xhmc/dense_e_xhmc.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include "stan/algorithms/mcmc/stepsize_covar_adapter.hpp"
+#include "stan/algorithms/hmc/xhmc/dense_e_xhmc.hpp"
 
 namespace stan {
   namespace mcmc {

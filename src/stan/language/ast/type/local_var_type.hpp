@@ -1,11 +1,11 @@
 #ifndef STAN_LANG_AST_LOCAL_VAR_TYPE_HPP
 #define STAN_LANG_AST_LOCAL_VAR_TYPE_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
+#include "stan/language/ast/node/expression.hpp"
 #include <boost/variant/recursive_variant.hpp>
+#include <cstddef>
 #include <string>
 #include <vector>
-#include <cstddef>
 
 namespace stan {
 namespace lang {
@@ -85,8 +85,7 @@ struct local_var_type {
    *
    * @param x local variable type
    */
-  local_var_type(
-      const row_vector_local_type& x);  // NOLINT(runtime/explicit)
+  local_var_type(const row_vector_local_type& x);  // NOLINT(runtime/explicit)
 
   /**
    * Construct a local var type with the specified type.

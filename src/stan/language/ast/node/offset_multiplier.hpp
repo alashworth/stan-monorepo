@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_NODE_OFFSET_MULTIPLIER_HPP
 #define STAN_LANG_AST_NODE_OFFSET_MULTIPLIER_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
+#include "expression.hpp"
 
 namespace stan {
 namespace lang {

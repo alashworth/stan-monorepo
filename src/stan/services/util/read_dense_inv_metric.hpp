@@ -1,8 +1,8 @@
 #ifndef STAN_SERVICES_UTIL_READ_DENSE_INV_METRIC_HPP
 #define STAN_SERVICES_UTIL_READ_DENSE_INV_METRIC_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/io/var_context.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/util/io/var_context.hpp>
 #include <stan/math/prim/mat.hpp>
 #include <limits>
 #include <sstream>

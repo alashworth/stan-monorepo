@@ -12,7 +12,7 @@ namespace stan {
 	const std::string MINOR_VERSION = "@Stan_VERSION_MINOR@";
 
 /** Patch version for Stan math library. */
-	const std::string PATCH_VERSION = "@Stan_VERSION_PATCH";
+	const std::string PATCH_VERSION = "@Stan_VERSION_PATCH@";
 
 }
 

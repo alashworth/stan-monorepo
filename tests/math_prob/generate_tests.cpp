@@ -16,7 +16,7 @@ using std::string;
 using std::stringstream;
 using std::vector;
 
-#ifdef STAN_TEST_ROW_VECTORS
+#if 1
 int ROW_VECTORS = 1;
 #else
 int ROW_VECTORS = 0;

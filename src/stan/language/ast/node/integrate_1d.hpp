@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_NODE_INTEGRATE_1D_HPP
 #define STAN_LANG_AST_NODE_INTEGRATE_1D_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
+#include "expression.hpp"
 #include <string>
 
 namespace stan {
@@ -43,7 +43,6 @@ struct integrate_1d {
    */
   expression rel_tol_;
 
-
   /**
    * Construct a 1D integrator AST node.
    */
@@ -68,6 +67,6 @@ struct integrate_1d {
                const expression& rel_tol);
 };
 
-}
-}
+}  // namespace lang
+}  // namespace stan
 #endif

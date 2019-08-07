@@ -8,7 +8,7 @@ void test_unary_not(double x) {
   EXPECT_EQ(!x, !x_v);
 }
 
-TEST(AgradRev, unaryNot) {
+TEST(MathRevCore, operatorUnaryNot) {
   test_unary_not(6.1);
   test_unary_not(0);
   test_unary_not(-13.2);

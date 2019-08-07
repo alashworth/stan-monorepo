@@ -1,7 +1,7 @@
 #ifndef STAN_VARIATIONAL_PRINT_PROGRESS_HPP
 #define STAN_VARIATIONAL_PRINT_PROGRESS_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 #include <stan/math/prim/scal/err/check_positive.hpp>
 #include <stan/math/prim/scal/err/check_nonnegative.hpp>
 #include <cmath>

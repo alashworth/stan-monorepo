@@ -1,9 +1,9 @@
 #ifndef STAN_LANG_AST_NODE_BLOCK_VAR_DECL_HPP
 #define STAN_LANG_AST_NODE_BLOCK_VAR_DECL_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
-#include <stan/lang/ast/node/var_decl.hpp>
-#include <stan/lang/ast/type/block_var_type.hpp>
+#include "expression.hpp"
+#include "var_decl.hpp"
+#include "stan/language/ast/type/block_var_type.hpp"
 #include <string>
 
 namespace stan {

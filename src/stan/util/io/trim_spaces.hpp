@@ -1,7 +1,7 @@
 #ifndef STAN_IO_TRIM_SPACES_HPP
 #define STAN_IO_TRIM_SPACES_HPP
 
-#include <stan/io/is_whitespace.hpp>
+#include <stan/util/io/is_whitespace.hpp>
 #include <string>
 
 namespace stan {

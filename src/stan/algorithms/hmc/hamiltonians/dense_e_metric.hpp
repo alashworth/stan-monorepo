@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_HAMILTONIANS_DENSE_E_METRIC_HPP
 #define STAN_MCMC_HMC_HAMILTONIANS_DENSE_E_METRIC_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 #include <stan/math/prim/mat.hpp>
-#include <stan/mcmc/hmc/hamiltonians/base_hamiltonian.hpp>
-#include <stan/mcmc/hmc/hamiltonians/dense_e_point.hpp>
+#include "base_hamiltonian.hpp"
+#include "dense_e_point.hpp"
 #include <boost/random/variate_generator.hpp>
 #include <boost/random/normal_distribution.hpp>
 #include <Eigen/Cholesky>

@@ -1,8 +1,8 @@
 #ifndef STAN_LANG_AST_LOCAL_ARRAY_TYPE_HPP
 #define STAN_LANG_AST_LOCAL_ARRAY_TYPE_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
-#include <stan/lang/ast/type/local_var_type.hpp>
+#include "local_var_type.hpp"
+#include "stan/language/ast/node/expression.hpp"
 #include <vector>
 
 namespace stan {

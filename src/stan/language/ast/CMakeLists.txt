@@ -1,0 +1,12 @@
+target_sources(stan_language PUBLIC
+        nil.hpp
+        origin_block.hpp
+        scope.hpp
+        scope_def.hpp
+        variable_map.hpp
+        variable_map_def.hpp)
+
+add_subdirectory(fun)
+add_subdirectory(node)
+add_subdirectory(sigs)
+add_subdirectory(type)

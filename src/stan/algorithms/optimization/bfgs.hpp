@@ -2,11 +2,11 @@
 #define STAN_OPTIMIZATION_BFGS_HPP
 
 #include <stan/math/prim/mat.hpp>
-#include <stan/model/log_prob_propto.hpp>
-#include <stan/model/log_prob_grad.hpp>
-#include <stan/optimization/bfgs_linesearch.hpp>
-#include <stan/optimization/bfgs_update.hpp>
-#include <stan/optimization/lbfgs_update.hpp>
+#include <stan/language/model/log_prob_propto.hpp>
+#include <stan/language/model/log_prob_grad.hpp>
+#include "stan/algorithms/optimization/bfgs_linesearch.hpp"
+#include "stan/algorithms/optimization/bfgs_update.hpp"
+#include "stan/algorithms/optimization/lbfgs_update.hpp"
 #include <boost/math/special_functions/fpclassify.hpp>
 #include <algorithm>
 #include <cmath>

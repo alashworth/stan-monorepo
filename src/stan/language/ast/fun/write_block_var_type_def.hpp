@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_FUN_WRITE_BLOCK_VAR_TYPE_DEF_HPP
 #define STAN_LANG_AST_FUN_WRITE_BLOCK_VAR_TYPE_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <ostream>
 
 namespace stan {

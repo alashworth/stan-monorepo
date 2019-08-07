@@ -1,13 +1,13 @@
 #ifndef STAN_LANG_GRAMMARS_BLOCK_VAR_DECLS_GRAMMAR_HPP
 #define STAN_LANG_GRAMMARS_BLOCK_VAR_DECLS_GRAMMAR_HPP
 
+#include "expression07_grammar.hpp"
+#include "expression_grammar.hpp"
+#include "semantic_actions.hpp"
+#include "whitespace_grammar.hpp"
+#include "stan/language/ast.hpp"
+#include <stan/util/io/program_reader.hpp>
 #include <boost/spirit/include/qi.hpp>
-#include <stan/io/program_reader.hpp>
-#include <stan/lang/ast.hpp>
-#include <stan/lang/grammars/expression07_grammar.hpp>
-#include <stan/lang/grammars/expression_grammar.hpp>
-#include <stan/lang/grammars/semantic_actions.hpp>
-#include <stan/lang/grammars/whitespace_grammar.hpp>
 #include <sstream>
 #include <string>
 #include <utility>

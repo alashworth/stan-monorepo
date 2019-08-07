@@ -1,15 +1,15 @@
 #ifndef STAN_LANG_AST_NODE_LB_IDX_DEF_HPP
 #define STAN_LANG_AST_NODE_LB_IDX_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
-  namespace lang {
+namespace lang {
 
-    lb_idx::lb_idx() { }
+lb_idx::lb_idx() {}
 
-    lb_idx::lb_idx(const expression& lb) : lb_(lb) { }
+lb_idx::lb_idx(const expression& lb) : lb_(lb) {}
 
-  }
-}
+}  // namespace lang
+}  // namespace stan
 #endif

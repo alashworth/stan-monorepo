@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_STATIC_DENSE_E_STATIC_HMC_HPP
 #define STAN_MCMC_HMC_STATIC_DENSE_E_STATIC_HMC_HPP
 
-#include <stan/mcmc/hmc/static/base_static_hmc.hpp>
-#include <stan/mcmc/hmc/hamiltonians/dense_e_point.hpp>
-#include <stan/mcmc/hmc/hamiltonians/dense_e_metric.hpp>
-#include <stan/mcmc/hmc/integrators/expl_leapfrog.hpp>
+#include "base_static_hmc.hpp"
+#include "stan/algorithms/hmc/hamiltonians/dense_e_point.hpp"
+#include "stan/algorithms/hmc/hamiltonians/dense_e_metric.hpp"
+#include "stan/algorithms/hmc/integrators/expl_leapfrog.hpp"
 
 namespace stan {
   namespace mcmc {

@@ -1,30 +1,30 @@
 #ifndef STAN_LANG_AST_NODE_MULTI_IDX_HPP
 #define STAN_LANG_AST_NODE_MULTI_IDX_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
+#include "expression.hpp"
 
 namespace stan {
-  namespace lang {
+namespace lang {
 
-    struct multi_idx {
-      /**
-       * Multiple indexes (array of integers).
-       */
-      expression idxs_;
+struct multi_idx {
+  /**
+   * Multiple indexes (array of integers).
+   */
+  expression idxs_;
 
-      /**
-       * Construct a default (nil) multi-index.
-       */
-      multi_idx();
+  /**
+   * Construct a default (nil) multi-index.
+   */
+  multi_idx();
 
-      /**
-       * Construct a multiple index from the specified indexes.
-       *
-       * @param idxs indexes expression (array of integers)
-       */
-      multi_idx(const expression& idxs);  // NOLINT(runtime/explicit)
-    };
+  /**
+   * Construct a multiple index from the specified indexes.
+   *
+   * @param idxs indexes expression (array of integers)
+   */
+  multi_idx(const expression& idxs);  // NOLINT(runtime/explicit)
+};
 
-  }
-}
+}  // namespace lang
+}  // namespace stan
 #endif

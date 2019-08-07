@@ -1,8 +1,8 @@
 #ifndef STAN_LANG_AST_BLOCK_ARRAY_TYPE_HPP
 #define STAN_LANG_AST_BLOCK_ARRAY_TYPE_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
-#include <stan/lang/ast/type/block_var_type.hpp>
+#include "block_var_type.hpp"
+#include "stan/language/ast/node/expression.hpp"
 #include <vector>
 
 namespace stan {

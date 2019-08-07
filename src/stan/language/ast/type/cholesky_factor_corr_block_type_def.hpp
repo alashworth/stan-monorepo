@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_CHOLESKY_FACTOR_CORR_BLOCK_TYPE_DEF_HPP
 #define STAN_LANG_AST_CHOLESKY_FACTOR_CORR_BLOCK_TYPE_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
 namespace lang {

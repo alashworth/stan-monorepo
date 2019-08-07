@@ -1,7 +1,7 @@
 #ifndef STAN_CALLBACKS_STREAM_WRITER_HPP
 #define STAN_CALLBACKS_STREAM_WRITER_HPP
 
-#include <stan/callbacks/writer.hpp>
+#include <stan/services/callbacks/writer.hpp>
 #include <ostream>
 #include <vector>
 #include <string>

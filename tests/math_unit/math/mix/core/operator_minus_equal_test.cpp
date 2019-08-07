@@ -10,6 +10,6 @@ struct minus_equal_f {
   }
 };
 
-TEST(mathMixCore, operatorMinusEqual) {
+TEST(MathMixCore, operatorMinusEqual) {
   stan::math::test::test_common_args<minus_equal_f, false>();
 }

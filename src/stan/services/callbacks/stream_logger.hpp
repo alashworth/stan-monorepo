@@ -1,7 +1,7 @@
 #ifndef STAN_CALLBACKS_STREAM_LOGGER_HPP
 #define STAN_CALLBACKS_STREAM_LOGGER_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 #include <ostream>
 #include <string>
 #include <sstream>

@@ -10,6 +10,6 @@ struct op_divide_equal_f {
   }
 };
 
-TEST(mathMixCore, opratorDivideEqual) {
+TEST(MathMixCore, operatorDivideEqual) {
   stan::math::test::test_common_args<op_divide_equal_f, false>();
 }

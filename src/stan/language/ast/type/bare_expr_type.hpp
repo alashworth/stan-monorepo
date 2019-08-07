@@ -1,11 +1,11 @@
 #ifndef STAN_LANG_AST_BARE_EXPR_TYPE_HPP
 #define STAN_LANG_AST_BARE_EXPR_TYPE_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
+#include "stan/language/ast/node/expression.hpp"
 #include <boost/variant/recursive_variant.hpp>
-#include <string>
-#include <ostream>
 #include <cstddef>
+#include <ostream>
+#include <string>
 
 namespace stan {
 namespace lang {

@@ -8,6 +8,6 @@ struct less_than_f {
   }
 };
 
-TEST(mathMixCore, operatorEqual) {
+TEST(MathMixCore, operatorLessThan) {
   stan::math::test::test_common_args<less_than_f, true>();
 }

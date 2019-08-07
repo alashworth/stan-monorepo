@@ -1,7 +1,7 @@
 #ifndef STAN_MCMC_HMC_HAMILTONIANS_PS_POINT_HPP
 #define STAN_MCMC_HMC_HAMILTONIANS_PS_POINT_HPP
 
-#include <stan/callbacks/writer.hpp>
+#include <stan/services/callbacks/writer.hpp>
 #include <stan/math/prim/mat/fun/Eigen.hpp>
 #include <boost/lexical_cast.hpp>
 #include <Eigen/Dense>

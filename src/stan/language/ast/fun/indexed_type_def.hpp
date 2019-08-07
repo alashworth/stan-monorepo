@@ -1,10 +1,9 @@
 #ifndef STAN_LANG_AST_FUN_INDEXED_TYPE_DEF_HPP
 #define STAN_LANG_AST_FUN_INDEXED_TYPE_DEF_HPP
 
-#include <stan/lang/ast.hpp>
-#include <vector>
-
+#include "stan/language/ast.hpp"
 #include <iostream>
+#include <vector>
 
 namespace stan {
 namespace lang {

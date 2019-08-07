@@ -1,12 +1,12 @@
 #ifndef STAN_SERVICES_SAMPLE_HMC_NUTS_DENSE_E_HPP
 #define STAN_SERVICES_SAMPLE_HMC_NUTS_DENSE_E_HPP
 
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
 #include <stan/math/prim/mat/fun/Eigen.hpp>
 #include <stan/math/prim/mat.hpp>
-#include <stan/mcmc/hmc/nuts/dense_e_nuts.hpp>
+#include <stan/algorithms/hmc/nuts/dense_e_nuts.hpp>
 #include <stan/services/error_codes.hpp>
 #include <stan/services/util/run_sampler.hpp>
 #include <stan/services/util/create_rng.hpp>

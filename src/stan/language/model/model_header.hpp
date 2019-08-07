@@ -2,23 +2,19 @@
 #define STAN_MODEL_MODEL_HEADER_HPP
 
 #include <stan/math.hpp>
-
-#include <stan/io/cmd_line.hpp>
-#include <stan/io/dump.hpp>
-#include <stan/io/reader.hpp>
-#include <stan/io/writer.hpp>
-
-#include <stan/lang/rethrow_located.hpp>
-#include <stan/model/model_base.hpp>
-#include <stan/model/model_base_crtp.hpp>
-#include <stan/model/prob_grad.hpp>
-#include <stan/model/indexing.hpp>
+#include "indexing.hpp"
+#include "model_base.hpp"
+#include "model_base_crtp.hpp"
+#include "prob_grad.hpp"
+#include "stan/language/rethrow_located.hpp"
 #include <stan/services/util/create_rng.hpp>
-
+#include <stan/util/io/cmd_line.hpp>
+#include <stan/util/io/dump.hpp>
+#include <stan/util/io/reader.hpp>
+#include <stan/util/io/writer.hpp>
 #include <boost/exception/all.hpp>
 #include <boost/random/additive_combine.hpp>
 #include <boost/random/linear_congruential.hpp>
-
 #include <cmath>
 #include <cstddef>
 #include <fstream>

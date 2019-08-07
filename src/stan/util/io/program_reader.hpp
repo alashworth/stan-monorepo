@@ -1,10 +1,10 @@
 #ifndef STAN_IO_PROGRAM_READER_HPP
 #define STAN_IO_PROGRAM_READER_HPP
 
-#include <stan/io/ends_with.hpp>
-#include <stan/io/read_line.hpp>
-#include <stan/io/starts_with.hpp>
-#include <stan/io/trim_spaces.hpp>
+#include <stan/util/io/ends_with.hpp>
+#include <stan/util/io/read_line.hpp>
+#include <stan/util/io/starts_with.hpp>
+#include <stan/util/io/trim_spaces.hpp>
 #include <cstdio>
 #include <istream>
 #include <iostream>

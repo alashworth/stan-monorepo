@@ -1,15 +1,15 @@
 #ifndef STAN_LANG_AST_NODE_MULTI_IDX_DEF_HPP
 #define STAN_LANG_AST_NODE_MULTI_IDX_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
-  namespace lang {
+namespace lang {
 
-    multi_idx::multi_idx() { }
+multi_idx::multi_idx() {}
 
-    multi_idx::multi_idx(const expression& idxs) : idxs_(idxs) { }
+multi_idx::multi_idx(const expression& idxs) : idxs_(idxs) {}
 
-  }
-}
+}  // namespace lang
+}  // namespace stan
 #endif

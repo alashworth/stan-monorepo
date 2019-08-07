@@ -1,5 +1,5 @@
-#include <stan/mcmc/chains.hpp>
-#include <stan/io/stan_csv_reader.hpp>
+#include <stan/algorithms/mcmc/chains.hpp>
+#include <stan/util/io/stan_csv_reader.hpp>
 #include <gtest/gtest.h>
 #include <fstream>
 #include <sstream>
@@ -7,8 +7,8 @@
 class ComputeEss : public testing::Test {
 public:
     void SetUp() {
-    blocker1_stream.open("src/test/unit/mcmc/test_csv_files/blocker.1.csv");
-    blocker2_stream.open("src/test/unit/mcmc/test_csv_files/blocker.2.csv");
+    blocker1_stream.open("analyze/mcmc/blocker.1.csv");
+    blocker2_stream.open("analyze/mcmc/blocker.2.csv");
   }
 
   void TearDown() {

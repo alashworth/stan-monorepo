@@ -1,7 +1,7 @@
 #ifndef STAN_VARIATIONAL_BASE_FAMILY_HPP
 #define STAN_VARIATIONAL_BASE_FAMILY_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 #include <stan/math/prim/mat.hpp>
 #include <algorithm>
 #include <ostream>

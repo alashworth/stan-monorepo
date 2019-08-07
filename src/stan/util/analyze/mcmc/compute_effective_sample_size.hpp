@@ -2,8 +2,8 @@
 #define STAN_ANALYZE_MCMC_COMPUTE_EFFECTIVE_SAMPLE_SIZE_HPP
 
 #include <stan/math/prim/mat/fun/Eigen.hpp>
-#include <stan/analyze/mcmc/autocovariance.hpp>
-#include <stan/analyze/mcmc/split_chains.hpp>
+#include <stan/util/analyze/mcmc/autocovariance.hpp>
+#include <stan/util/analyze/mcmc/split_chains.hpp>
 #include <algorithm>
 #include <cmath>
 #include <vector>

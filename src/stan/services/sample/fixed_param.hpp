@@ -1,11 +1,11 @@
 #ifndef STAN_SERVICES_SAMPLE_FIXED_PARAM_HPP
 #define STAN_SERVICES_SAMPLE_FIXED_PARAM_HPP
 
-#include <stan/callbacks/interrupt.hpp>
-#include <stan/callbacks/logger.hpp>
-#include <stan/callbacks/writer.hpp>
+#include <stan/services/callbacks/interrupt.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include <stan/services/callbacks/writer.hpp>
 #include <stan/math/prim/mat/fun/Eigen.hpp>
-#include <stan/mcmc/fixed_param_sampler.hpp>
+#include <stan/algorithms/mcmc/fixed_param_sampler.hpp>
 #include <stan/services/error_codes.hpp>
 #include <stan/services/util/mcmc_writer.hpp>
 #include <stan/services/util/generate_transitions.hpp>

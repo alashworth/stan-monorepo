@@ -1,8 +1,8 @@
 #ifndef STAN_IO_DUMP_HPP
 #define STAN_IO_DUMP_HPP
 
-#include <stan/io/validate_zero_buf.hpp>
-#include <stan/io/var_context.hpp>
+#include <stan/util/io/validate_zero_buf.hpp>
+#include <stan/util/io/var_context.hpp>
 #include <stan/math/prim/mat.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/throw_exception.hpp>

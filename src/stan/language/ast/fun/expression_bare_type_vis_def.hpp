@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_FUN_EXPRESSION_BARE_TYPE_VIS_DEF_HPP
 #define STAN_LANG_AST_FUN_EXPRESSION_BARE_TYPE_VIS_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
 namespace lang {

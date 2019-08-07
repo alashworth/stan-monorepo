@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_NODE_MAP_RECT_HPP
 #define STAN_LANG_AST_NODE_MAP_RECT_HPP
 
-#include <stan/lang/ast/node/expression.hpp>
+#include "expression.hpp"
 #include <string>
 #include <utility>
 #include <vector>
@@ -113,6 +113,6 @@ struct map_rect {
   void register_id();
 };
 
-}
-}
+}  // namespace lang
+}  // namespace stan
 #endif

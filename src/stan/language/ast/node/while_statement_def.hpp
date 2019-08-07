@@ -1,17 +1,17 @@
 #ifndef STAN_LANG_AST_NODE_WHILE_STATEMENT_DEF_HPP
 #define STAN_LANG_AST_NODE_WHILE_STATEMENT_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
-  namespace lang {
+namespace lang {
 
-    while_statement::while_statement() { }
+while_statement::while_statement() {}
 
-    while_statement::while_statement(const expression& condition,
-                                     const statement& body)
-      : condition_(condition), body_(body) { }
+while_statement::while_statement(const expression& condition,
+                                 const statement& body)
+    : condition_(condition), body_(body) {}
 
-  }
-}
+}  // namespace lang
+}  // namespace stan
 #endif

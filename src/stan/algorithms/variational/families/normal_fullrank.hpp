@@ -1,10 +1,10 @@
 #ifndef STAN_VARIATIONAL_NORMAL_FULLRANK_HPP
 #define STAN_VARIATIONAL_NORMAL_FULLRANK_HPP
 
-#include <stan/callbacks/logger.hpp>
+#include <stan/services/callbacks/logger.hpp>
 #include <stan/math/prim/mat.hpp>
-#include <stan/model/gradient.hpp>
-#include <stan/variational/base_family.hpp>
+#include <stan/language/model/gradient.hpp>
+#include "stan/algorithms/variational/base_family.hpp"
 #include <algorithm>
 #include <ostream>
 #include <vector>

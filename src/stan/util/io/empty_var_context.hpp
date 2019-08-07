@@ -1,7 +1,7 @@
 #ifndef STAN_IO_EMPTY_VAR_CONTEXT_HPP
 #define STAN_IO_EMPTY_VAR_CONTEXT_HPP
 
-#include <stan/io/var_context.hpp>
+#include <stan/util/io/var_context.hpp>
 #include <string>
 #include <vector>
 

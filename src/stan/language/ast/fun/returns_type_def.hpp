@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_AST_FUN_RETURNS_TYPE_DEF_HPP
 #define STAN_LANG_AST_FUN_RETURNS_TYPE_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 #include <boost/variant/apply_visitor.hpp>
 #include <ostream>
 

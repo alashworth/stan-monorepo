@@ -8,6 +8,6 @@ struct op_unary_minus_f {
   }
 };
 
-TEST(mathMixCore, opratorUnaryMinus) {
+TEST(MathMixCore, operatorUnaryMinus) {
   stan::math::test::test_common_args<op_unary_minus_f, false>();
 }

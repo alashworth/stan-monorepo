@@ -1,10 +1,10 @@
 #ifndef STAN_MCMC_HMC_NUTS_CLASSIC_DIAG_E_NUTS_CLASSIC_HPP
 #define STAN_MCMC_HMC_NUTS_CLASSIC_DIAG_E_NUTS_CLASSIC_HPP
 
-#include <stan/mcmc/hmc/nuts_classic/base_nuts_classic.hpp>
-#include <stan/mcmc/hmc/hamiltonians/diag_e_point.hpp>
-#include <stan/mcmc/hmc/hamiltonians/diag_e_metric.hpp>
-#include <stan/mcmc/hmc/integrators/expl_leapfrog.hpp>
+#include "stan/algorithms/hmc/nuts_classic/base_nuts_classic.hpp"
+#include "stan/algorithms/hmc/hamiltonians/diag_e_point.hpp"
+#include "stan/algorithms/hmc/hamiltonians/diag_e_metric.hpp"
+#include "stan/algorithms/hmc/integrators/expl_leapfrog.hpp"
 
 namespace stan {
   namespace mcmc {

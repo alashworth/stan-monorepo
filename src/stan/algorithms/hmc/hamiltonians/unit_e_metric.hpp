@@ -1,8 +1,8 @@
 #ifndef STAN_MCMC_HMC_HAMILTONIANS_UNIT_E_METRIC_HPP
 #define STAN_MCMC_HMC_HAMILTONIANS_UNIT_E_METRIC_HPP
 
-#include <stan/mcmc/hmc/hamiltonians/base_hamiltonian.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_point.hpp>
+#include "base_hamiltonian.hpp"
+#include "unit_e_point.hpp"
 #include <boost/random/variate_generator.hpp>
 #include <boost/random/normal_distribution.hpp>
 

@@ -1,9 +1,9 @@
 #ifndef STAN_MCMC_HMC_STATIC_BASE_STATIC_HMC_HPP
 #define STAN_MCMC_HMC_STATIC_BASE_STATIC_HMC_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/mcmc/hmc/base_hmc.hpp>
-#include <stan/mcmc/hmc/hamiltonians/ps_point.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include "stan/algorithms/hmc/base_hmc.hpp"
+#include "stan/algorithms/hmc/hamiltonians/ps_point.hpp"
 #include <boost/math/special_functions/fpclassify.hpp>
 #include <cmath>
 #include <limits>

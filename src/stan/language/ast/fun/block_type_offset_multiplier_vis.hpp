@@ -1,23 +1,23 @@
 #ifndef STAN_LANG_AST_FUN_BLOCK_TYPE_OFFSET_MULTIPLIER_VIS_HPP
 #define STAN_LANG_AST_FUN_BLOCK_TYPE_OFFSET_MULTIPLIER_VIS_HPP
 
+#include "stan/language/ast/node/offset_multiplier.hpp"
+#include "stan/language/ast/type/block_array_type.hpp"
+#include "stan/language/ast/type/cholesky_factor_corr_block_type.hpp"
+#include "stan/language/ast/type/cholesky_factor_cov_block_type.hpp"
+#include "stan/language/ast/type/corr_matrix_block_type.hpp"
+#include "stan/language/ast/type/cov_matrix_block_type.hpp"
+#include "stan/language/ast/type/double_block_type.hpp"
+#include "stan/language/ast/type/ill_formed_type.hpp"
+#include "stan/language/ast/type/int_block_type.hpp"
+#include "stan/language/ast/type/matrix_block_type.hpp"
+#include "stan/language/ast/type/ordered_block_type.hpp"
+#include "stan/language/ast/type/positive_ordered_block_type.hpp"
+#include "stan/language/ast/type/row_vector_block_type.hpp"
+#include "stan/language/ast/type/simplex_block_type.hpp"
+#include "stan/language/ast/type/unit_vector_block_type.hpp"
+#include "stan/language/ast/type/vector_block_type.hpp"
 #include <boost/variant/static_visitor.hpp>
-#include <stan/lang/ast/node/offset_multiplier.hpp>
-#include <stan/lang/ast/type/block_array_type.hpp>
-#include <stan/lang/ast/type/cholesky_factor_corr_block_type.hpp>
-#include <stan/lang/ast/type/cholesky_factor_cov_block_type.hpp>
-#include <stan/lang/ast/type/corr_matrix_block_type.hpp>
-#include <stan/lang/ast/type/cov_matrix_block_type.hpp>
-#include <stan/lang/ast/type/double_block_type.hpp>
-#include <stan/lang/ast/type/ill_formed_type.hpp>
-#include <stan/lang/ast/type/int_block_type.hpp>
-#include <stan/lang/ast/type/matrix_block_type.hpp>
-#include <stan/lang/ast/type/ordered_block_type.hpp>
-#include <stan/lang/ast/type/positive_ordered_block_type.hpp>
-#include <stan/lang/ast/type/row_vector_block_type.hpp>
-#include <stan/lang/ast/type/simplex_block_type.hpp>
-#include <stan/lang/ast/type/unit_vector_block_type.hpp>
-#include <stan/lang/ast/type/vector_block_type.hpp>
 
 namespace stan {
 namespace lang {

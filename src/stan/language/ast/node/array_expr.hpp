@@ -1,11 +1,11 @@
 #ifndef STAN_LANG_AST_NODE_ARRAY_EXPR_HPP
 #define STAN_LANG_AST_NODE_ARRAY_EXPR_HPP
 
-#include <stan/lang/ast/type/bare_expr_type.hpp>
-#include <stan/lang/ast/scope.hpp>
-#include <stan/lang/ast/node/expression.hpp>
-#include <vector>
+#include "expression.hpp"
+#include "stan/language/ast/scope.hpp"
+#include "stan/language/ast/type/bare_expr_type.hpp"
 #include <cstddef>
+#include <vector>
 
 namespace stan {
 namespace lang {

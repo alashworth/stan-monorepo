@@ -1,23 +1,21 @@
 #ifndef STAN_LANG_GENERATOR_GENERATE_PUBLIC_DECL_HPP
 #define STAN_LANG_GENERATOR_GENERATE_PUBLIC_DECL_HPP
 
-#include <stan/lang/ast.hpp>
-#include <stan/lang/generator/constants.hpp>
+#include "constants.hpp"
+#include "stan/language/ast.hpp"
 #include <ostream>
 
 namespace stan {
-  namespace lang {
+namespace lang {
 
-    /**
-     * Generate the public declaration scope for a class to the
-     * specified stream.
-     *
-     * @param[in,out] o stream for generating
-     */
-    void generate_public_decl(std::ostream& o) {
-      o << "public:" << EOL;
-    }
+/**
+ * Generate the public declaration scope for a class to the
+ * specified stream.
+ *
+ * @param[in,out] o stream for generating
+ */
+void generate_public_decl(std::ostream& o) { o << "public:" << EOL; }
 
-  }
-}
+}  // namespace lang
+}  // namespace stan
 #endif

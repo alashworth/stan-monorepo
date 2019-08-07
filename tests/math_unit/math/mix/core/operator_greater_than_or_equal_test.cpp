@@ -8,6 +8,6 @@ struct greater_than_or_equal_f {
   }
 };
 
-TEST(mathMixCore, operatorEqual) {
+TEST(MathMixCore, operatorGreaterThanOrEqual) {
   stan::math::test::test_common_args<greater_than_or_equal_f, true>();
 }

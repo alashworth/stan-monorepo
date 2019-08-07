@@ -3,6 +3,7 @@
 
 #include <stan/math/fwd/core.hpp>
 #include <stan/math/fwd/scal/fun/to_fvar.hpp>
+
 #include <vector>
 
 namespace stan {

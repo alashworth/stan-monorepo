@@ -1,20 +1,16 @@
 #ifndef STAN_LANG_AST_NODE_UNARY_OP_DEF_HPP
 #define STAN_LANG_AST_NODE_UNARY_OP_DEF_HPP
 
-#include <stan/lang/ast.hpp>
+#include "stan/language/ast.hpp"
 
 namespace stan {
-  namespace lang {
+namespace lang {
 
-    unary_op::unary_op() { }
+unary_op::unary_op() {}
 
-    unary_op::unary_op(char op, const expression& subject)
-      : op(op), subject(subject),
-        type_(promote_primitive(subject.bare_type())) {
-    }
+unary_op::unary_op(char op, const expression& subject)
+    : op(op), subject(subject), type_(promote_primitive(subject.bare_type())) {}
 
-  }
-}
+}  // namespace lang
+}  // namespace stan
 #endif
-
-

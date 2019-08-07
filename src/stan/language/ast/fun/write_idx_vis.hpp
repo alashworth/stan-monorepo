@@ -1,12 +1,12 @@
 #ifndef STAN_LANG_AST_FUN_WRITE_IDX_VIS_HPP
 #define STAN_LANG_AST_FUN_WRITE_IDX_VIS_HPP
 
-#include <stan/lang/ast/node/lb_idx.hpp>
-#include <stan/lang/ast/node/lub_idx.hpp>
-#include <stan/lang/ast/node/multi_idx.hpp>
-#include <stan/lang/ast/node/omni_idx.hpp>
-#include <stan/lang/ast/node/ub_idx.hpp>
-#include <stan/lang/ast/node/uni_idx.hpp>
+#include "stan/language/ast/node/lb_idx.hpp"
+#include "stan/language/ast/node/lub_idx.hpp"
+#include "stan/language/ast/node/multi_idx.hpp"
+#include "stan/language/ast/node/omni_idx.hpp"
+#include "stan/language/ast/node/ub_idx.hpp"
+#include "stan/language/ast/node/uni_idx.hpp"
 #include <boost/variant/static_visitor.hpp>
 #include <ostream>
 #include <string>

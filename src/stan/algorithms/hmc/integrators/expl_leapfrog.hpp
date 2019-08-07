@@ -1,8 +1,8 @@
 #ifndef STAN_MCMC_HMC_INTEGRATORS_EXPL_LEAPFROG_HPP
 #define STAN_MCMC_HMC_INTEGRATORS_EXPL_LEAPFROG_HPP
 
-#include <stan/callbacks/logger.hpp>
-#include <stan/mcmc/hmc/integrators/base_leapfrog.hpp>
+#include <stan/services/callbacks/logger.hpp>
+#include "base_leapfrog.hpp"
 #include <stan/math/prim/mat/fun/Eigen.hpp>
 
 namespace stan {

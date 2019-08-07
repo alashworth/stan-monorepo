@@ -1,7 +1,7 @@
 #ifndef STAN_MCMC_HMC_HAMILTONIANS_UNIT_E_POINT_HPP
 #define STAN_MCMC_HMC_HAMILTONIANS_UNIT_E_POINT_HPP
 
-#include <stan/mcmc/hmc/hamiltonians/ps_point.hpp>
+#include "ps_point.hpp"
 
 namespace stan {
   namespace mcmc {
