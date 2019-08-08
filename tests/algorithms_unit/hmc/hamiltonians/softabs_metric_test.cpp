@@ -1,9 +1,8 @@
-#include <stan/io/dump.hpp>
-#include <stan/mcmc/hmc/hamiltonians/softabs_metric.hpp>
-#include <stan/callbacks/stream_logger.hpp>
-#include <test/unit/mcmc/hmc/mock_hmc.hpp>
-#include <test/test-models/good/mcmc/hmc/hamiltonians/funnel.hpp>
-#include <test/unit/util.hpp>
+#include <stan/util/io/dump.hpp>
+#include <stan/algorithms/hmc/hamiltonians/softabs_metric.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
+#include "hmc/mock_hmc.hpp"
+#include "hmc/hamiltonians/funnel.hpp"
 
 #include <boost/random/additive_combine.hpp>
 
@@ -155,7 +154,6 @@ TEST(McmcSoftAbs, gradients) {
 }
 
 TEST(McmcSoftAbs, streams) {
-  stan::test::capture_std_streams();
   rng_t base_rng(0);
 
   Eigen::VectorXd q(2);
@@ -167,8 +165,4 @@ TEST(McmcSoftAbs, streams) {
   typedef stan::mcmc::softabs_metric<stan::mcmc::mock_model, rng_t> softabs;
 
   EXPECT_NO_THROW(softabs metric(model));
-
-  stan::test::reset_std_streams();
-  EXPECT_EQ("", stan::test::cout_ss.str());
-  EXPECT_EQ("", stan::test::cerr_ss.str());
 }

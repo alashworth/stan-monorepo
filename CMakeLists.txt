@@ -144,8 +144,6 @@ feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
 # Are these still necessary? Reading the boost documentation, these should
 # not need to be defined explicitly.
 target_compile_definitions(Boost::headers INTERFACE
-#		BOOST_RESULT_OF_USE_TR1
-#		BOOST_NO_DECLTYPE
 #		BOOST_DISABLE_ASSERTS
 		BOOST_PHOENIX_NO_VARIADIC_EXPRESSION
 		)
@@ -205,11 +203,5 @@ if(STAN_BUILD_TESTS)
 	#	add_compile_options(-Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes)
 
 	include(GoogleTest)
-	add_subdirectory(tests/math_unit)
-	if(STAN_BUILD_RVECTESTS)
-		add_subdirectory(tests/math_prob)
-	endif()
-	add_subdirectory(tests/util_unit)
-#	add_subdirectory(tests/test-models)
-	add_subdirectory(tests/algorithms_unit)
+	add_subdirectory(tests)
 endif()

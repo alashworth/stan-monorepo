@@ -1,13 +1,13 @@
-#include <test/test-models/good/mcmc/hmc/common/gauss3D.hpp>
-#include <stan/callbacks/stream_writer.hpp>
-#include <stan/mcmc/hmc/nuts_classic/unit_e_nuts_classic.hpp>
-#include <stan/mcmc/hmc/nuts_classic/diag_e_nuts_classic.hpp>
-#include <stan/mcmc/hmc/nuts_classic/dense_e_nuts_classic.hpp>
-#include <stan/mcmc/hmc/nuts_classic/adapt_unit_e_nuts_classic.hpp>
-#include <stan/mcmc/hmc/nuts_classic/adapt_diag_e_nuts_classic.hpp>
-#include <stan/mcmc/hmc/nuts_classic/adapt_dense_e_nuts_classic.hpp>
+#include "hmc/nuts/gauss3D.hpp"
+#include <stan/services/callbacks/stream_writer.hpp>
+#include <stan/algorithms/hmc/nuts_classic/unit_e_nuts_classic.hpp>
+#include <stan/algorithms/hmc/nuts_classic/diag_e_nuts_classic.hpp>
+#include <stan/algorithms/hmc/nuts_classic/dense_e_nuts_classic.hpp>
+#include <stan/algorithms/hmc/nuts_classic/adapt_unit_e_nuts_classic.hpp>
+#include <stan/algorithms/hmc/nuts_classic/adapt_diag_e_nuts_classic.hpp>
+#include <stan/algorithms/hmc/nuts_classic/adapt_dense_e_nuts_classic.hpp>
 #include <boost/random/additive_combine.hpp>
-#include <stan/io/dump.hpp>
+#include <stan/util/io/dump.hpp>
 #include <fstream>
 
 #include <gtest/gtest.h>

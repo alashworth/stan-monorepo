@@ -1,9 +1,8 @@
-#include <test/unit/mcmc/hmc/mock_hmc.hpp>
-#include <stan/callbacks/stream_writer.hpp>
-#include <stan/mcmc/hmc/base_hmc.hpp>
+#include "hmc/mock_hmc.hpp"
+#include <stan/services/callbacks/stream_writer.hpp>
+#include <stan/algorithms/hmc/base_hmc.hpp>
 #include <boost/random/additive_combine.hpp>
 #include <boost/algorithm/string/split.hpp>
-#include <test/unit/util.hpp>
 #include <gtest/gtest.h>
 
 typedef boost::ecuyer1988 rng_t;
@@ -105,8 +104,6 @@ TEST(McmcBaseHMC, set_stepsize_jitter) {
 
 
 TEST(McmcBaseHMC, streams) {
-  stan::test::capture_std_streams();
-
   rng_t base_rng(0);
 
   Eigen::VectorXd q(2);
@@ -125,8 +122,4 @@ TEST(McmcBaseHMC, streams) {
   EXPECT_NO_THROW(sampler.write_sampler_state(writer));
   EXPECT_EQ("Step size = 0.1\n",
             output.str());
-
-  stan::test::reset_std_streams();
-  EXPECT_EQ("", stan::test::cout_ss.str());
-  EXPECT_EQ("", stan::test::cerr_ss.str());
 }

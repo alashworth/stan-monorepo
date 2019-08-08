@@ -1,5 +1,6 @@
-#include "funnel.hpp"
+#include "hmc/hamiltonians/funnel.hpp"
 #include "hmc/mock_hmc.hpp"
+#include <stan/algorithms/hmc/hamiltonians/base_hamiltonian.hpp>
 #include <stan/algorithms/hmc/hamiltonians/ps_point.hpp>
 #include <stan/services/callbacks/stream_logger.hpp>
 #include <stan/services/callbacks/stream_writer.hpp>
@@ -61,8 +62,6 @@ namespace {
 };
 
 TEST(BaseHamiltonian, streams) {
-  capture_std_stream c();
-
   std::fstream data_stream(std::string("").c_str(), std::fstream::in);
   stan::io::dump data_var_context(data_stream);
   data_stream.close();
@@ -73,8 +72,4 @@ TEST(BaseHamiltonian, streams) {
   EXPECT_NO_THROW(
       funnel_model_namespace::funnel_model model(data_var_context, &output));
   EXPECT_EQ("", output.str());
-
-  stan::test::reset_std_streams();
-  EXPECT_EQ("", stan::test::cout_ss.str());
-  EXPECT_EQ("", stan::test::cerr_ss.str());
 }

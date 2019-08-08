@@ -2,10 +2,10 @@
 #define STAN__MCMC__MOCK__HMC__BETA
 
 #include <stan/math/prim/mat.hpp>
-#include <stan/model/prob_grad.hpp>
-#include <stan/mcmc/hmc/hamiltonians/ps_point.hpp>
-#include <stan/mcmc/hmc/hamiltonians/base_hamiltonian.hpp>
-#include <stan/mcmc/hmc/integrators/base_integrator.hpp>
+#include <stan/language/model/prob_grad.hpp>
+#include <stan/algorithms/hmc/hamiltonians/ps_point.hpp>
+#include <stan/algorithms/hmc/hamiltonians/base_hamiltonian.hpp>
+#include <stan/algorithms/hmc/integrators/base_integrator.hpp>
 
 namespace stan {
   namespace mcmc {

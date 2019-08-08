@@ -1,8 +1,8 @@
-#include <test/test-models/good/mcmc/hmc/common/gauss3D.hpp>
-#include <stan/callbacks/stream_logger.hpp>
-#include <stan/mcmc/hmc/nuts/softabs_nuts.hpp>
+#include "hmc/nuts/gauss3D.hpp"
+#include <stan/services/callbacks/stream_logger.hpp>
+#include <stan/algorithms/hmc/nuts/softabs_nuts.hpp>
 #include <boost/random/additive_combine.hpp>
-#include <stan/io/dump.hpp>
+#include <stan/util/io/dump.hpp>
 #include <fstream>
 
 #include <gtest/gtest.h>

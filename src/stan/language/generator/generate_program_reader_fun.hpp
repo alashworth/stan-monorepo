@@ -22,7 +22,7 @@ namespace lang {
  */
 void generate_program_reader_fun(const std::vector<io::preproc_event>& history,
                                  std::ostream& o) {
-  o << "stan::io::program_reader prog_reader__() {" << std::endl;
+  o << "static stan::io::program_reader prog_reader__() {" << std::endl;
   o << INDENT << "stan::io::program_reader reader;" << std::endl;
   for (size_t i = 0; i < history.size(); ++i)
     o << INDENT << "reader.add_event(" << history[i].concat_line_num_ << ", "

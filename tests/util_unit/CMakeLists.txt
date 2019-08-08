@@ -1,9 +1,11 @@
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/io/test_lp.hpp
         COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/io/test_lp.hpp ${CMAKE_CURRENT_SOURCE_DIR}/io/test_lp.stan
+        DEPENDS stan_stanc
         VERBATIM)
 
 add_executable(stan_util_unit_tests util.hpp)
+gtest_discover_tests(stan_util_unit_tests)
 
 target_link_libraries(stan_util_unit_tests PRIVATE
         Stan::Math

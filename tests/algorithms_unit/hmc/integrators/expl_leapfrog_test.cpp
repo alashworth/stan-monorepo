@@ -1,16 +1,16 @@
-#include <stan/mcmc/hmc/integrators/expl_leapfrog.hpp>
+#include <stan/algorithms/hmc/integrators/expl_leapfrog.hpp>
 #include <gtest/gtest.h>
 
 #include <sstream>
-#include <stan/callbacks/stream_logger.hpp>
-#include <test/test-models/good/mcmc/hmc/integrators/command.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
 
-#include <stan/io/dump.hpp>
+#include "hmc/integrators/command.hpp"
 
-#include <stan/mcmc/hmc/hamiltonians/unit_e_metric.hpp>
-#include <stan/mcmc/hmc/hamiltonians/diag_e_metric.hpp>
+#include <stan/util/io/dump.hpp>
+
+#include <stan/algorithms/hmc/hamiltonians/unit_e_metric.hpp>
+#include <stan/algorithms/hmc/hamiltonians/diag_e_metric.hpp>
 #include <boost/random/additive_combine.hpp> // L'Ecuyer RNG
-#include <test/unit/util.hpp>
 
 // namespace
 //************************************************************
@@ -25,7 +25,7 @@ public:
       diag_e_integrator() {}
 
   void SetUp() {
-    static const std::string DATA("mu <- 0.0\ny <- 0\n");
+    static const std::string DATA("mu = 0.0\ny = 0\n");
     std::stringstream data_stream(DATA);
     // setup hamiltonian
     stan::io::dump data_var_context(data_stream);
@@ -446,15 +446,9 @@ TEST_F(McmcHmcIntegratorsExplLeapfrogF, evolve_9) {
 }
 
 TEST_F(McmcHmcIntegratorsExplLeapfrogF, streams) {
-  stan::test::capture_std_streams();
-
   typedef stan::mcmc::expl_leapfrog<
     stan::mcmc::unit_e_metric<command_model_namespace::command_model,rng_t> >
     integrator;
 
   EXPECT_NO_THROW(integrator i);
-
-  stan::test::reset_std_streams();
-  EXPECT_EQ("", stan::test::cout_ss.str());
-  EXPECT_EQ("", stan::test::cerr_ss.str());
 }

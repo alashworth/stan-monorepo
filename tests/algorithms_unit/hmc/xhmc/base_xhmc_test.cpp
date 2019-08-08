@@ -1,7 +1,7 @@
-#include <test/unit/mcmc/hmc/mock_hmc.hpp>
-#include <stan/callbacks/stream_logger.hpp>
-#include <stan/mcmc/hmc/xhmc/base_xhmc.hpp>
-#include <stan/mcmc/hmc/integrators/expl_leapfrog.hpp>
+#include "hmc/mock_hmc.hpp"
+#include <stan/services/callbacks/stream_logger.hpp>
+#include <stan/algorithms/hmc/xhmc/base_xhmc.hpp>
+#include <stan/algorithms/hmc/integrators/expl_leapfrog.hpp>
 #include <boost/random/additive_combine.hpp>
 #include <gtest/gtest.h>
 

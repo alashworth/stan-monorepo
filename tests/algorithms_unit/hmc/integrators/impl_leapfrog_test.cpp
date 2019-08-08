@@ -1,12 +1,11 @@
-#include <stan/io/dump.hpp>
-#include <stan/callbacks/stream_logger.hpp>
-#include <stan/mcmc/hmc/hamiltonians/softabs_metric.hpp>
-#include <stan/mcmc/hmc/integrators/impl_leapfrog.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_metric.hpp>
-#include <stan/mcmc/hmc/hamiltonians/diag_e_metric.hpp>
+#include <stan/util/io/dump.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
+#include <stan/algorithms/hmc/hamiltonians/softabs_metric.hpp>
+#include <stan/algorithms/hmc/integrators/impl_leapfrog.hpp>
+#include <stan/algorithms/hmc/hamiltonians/unit_e_metric.hpp>
+#include <stan/algorithms/hmc/hamiltonians/diag_e_metric.hpp>
 
-#include <test/test-models/good/mcmc/hmc/integrators/command.hpp>
-#include <test/unit/util.hpp>
+#include "hmc/integrators/command.hpp"
 
 #include <boost/random/additive_combine.hpp> // L'Ecuyer RNG
 
@@ -27,7 +26,7 @@ public:
       diag_e_integrator() {}
 
   void SetUp() {
-    static const std::string DATA("mu <- 0.0\ny <- 0\n");
+    static const std::string DATA("mu = 0.0\ny = 0\n");
     std::stringstream data_stream(DATA);
     // setup hamiltonian
     stan::io::dump data_var_context(data_stream);
@@ -585,29 +584,17 @@ TEST_F(McmcHmcIntegratorsImplLeapfrogF, softabs_evolve) {
 }
 
 TEST_F(McmcHmcIntegratorsImplLeapfrogF, streams) {
-  stan::test::capture_std_streams();
-
   typedef stan::mcmc::impl_leapfrog<
     stan::mcmc::unit_e_metric<command_model_namespace::command_model,rng_t> >
     integrator;
 
   EXPECT_NO_THROW(integrator i);
-
-  stan::test::reset_std_streams();
-  EXPECT_EQ("", stan::test::cout_ss.str());
-  EXPECT_EQ("", stan::test::cerr_ss.str());
 }
 
 TEST_F(McmcHmcIntegratorsImplLeapfrogF, softabs_streams) {
-  stan::test::capture_std_streams();
-
   typedef stan::mcmc::impl_leapfrog<
     stan::mcmc::softabs_metric<command_model_namespace::command_model, rng_t> >
     integrator;
 
   EXPECT_NO_THROW(integrator i);
-
-  stan::test::reset_std_streams();
-  EXPECT_EQ("", stan::test::cout_ss.str());
-  EXPECT_EQ("", stan::test::cerr_ss.str());
 }

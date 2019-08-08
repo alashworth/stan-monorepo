@@ -103,7 +103,8 @@ if(Boost_mpi_FOUND)
 				${MPIEXEC_PREFLAGS}
 				${CMAKE_CURRENT_BINARY_DIR}/${src_fn}
 				${MPIEXEC_POSTFLAGS})
-		message(STATUS "Configuring Stan math MPI unit tests... [DONE]")
+    endforeach()
+    message(STATUS "Configuring Stan math MPI unit tests... [DONE]")
 else()
 	message(STATUS "Configuring Stan math MPI unit tests... [SKIPPED]")
 endif()

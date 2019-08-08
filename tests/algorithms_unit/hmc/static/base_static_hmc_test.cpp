@@ -1,7 +1,7 @@
-#include <test/unit/mcmc/hmc/mock_hmc.hpp>
-#include <stan/mcmc/hmc/static/base_static_hmc.hpp>
-#include <stan/callbacks/writer.hpp>
-#include <stan/callbacks/stream_writer.hpp>
+#include "hmc/mock_hmc.hpp"
+#include <stan/algorithms/hmc/static/base_static_hmc.hpp>
+#include <stan/services/callbacks/writer.hpp>
+#include <stan/services/callbacks/stream_writer.hpp>
 #include <boost/random/additive_combine.hpp>
 #include <gtest/gtest.h>
 

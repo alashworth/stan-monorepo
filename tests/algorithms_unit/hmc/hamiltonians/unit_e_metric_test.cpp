@@ -1,11 +1,10 @@
 #include <string>
 #include <boost/random/additive_combine.hpp>
-#include <stan/io/dump.hpp>
-#include <test/unit/mcmc/hmc/mock_hmc.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_metric.hpp>
-#include <stan/callbacks/stream_logger.hpp>
-#include <test/test-models/good/mcmc/hmc/hamiltonians/funnel.hpp>
-#include <test/unit/util.hpp>
+#include <stan/util/io/dump.hpp>
+#include "hmc/mock_hmc.hpp"
+#include <stan/algorithms/hmc/hamiltonians/unit_e_metric.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
+#include "hmc/hamiltonians/funnel.hpp"
 #include <gtest/gtest.h>
 
 typedef boost::ecuyer1988 rng_t;
@@ -136,7 +135,6 @@ TEST(McmcUnitEMetric, gradients) {
 }
 
 TEST(McmcUnitEMetric, streams) {
-  stan::test::capture_std_streams();
   rng_t base_rng(0);
 
   Eigen::VectorXd q(2);
@@ -148,8 +146,4 @@ TEST(McmcUnitEMetric, streams) {
   typedef stan::mcmc::unit_e_metric<stan::mcmc::mock_model, rng_t> unit_e;
 
   EXPECT_NO_THROW(unit_e metric(model));
-
-  stan::test::reset_std_streams();
-  EXPECT_EQ("", stan::test::cout_ss.str());
-  EXPECT_EQ("", stan::test::cerr_ss.str());
 }

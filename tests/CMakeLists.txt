@@ -1,0 +1,8 @@
+add_subdirectory(math_unit)
+if(STAN_BUILD_RVECTESTS)
+    add_subdirectory(math_prob)
+endif()
+add_subdirectory(util_unit)
+#	add_subdirectory(tests/test-models)
+add_subdirectory(algorithms_unit)
+add_subdirectory(language_unit)

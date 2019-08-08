@@ -22,7 +22,7 @@ public:
   std::ifstream blocker1_stream, blocker2_stream;
 };
 
-TEST_F(SplitChains,split_chains) {
+TEST_F(SplitChains, split_chains) {
   std::stringstream out;
   stan::io::stan_csv blocker1 = stan::io::stan_csv_reader::parse(blocker1_stream, &out);
   stan::io::stan_csv blocker2 = stan::io::stan_csv_reader::parse(blocker2_stream, &out);

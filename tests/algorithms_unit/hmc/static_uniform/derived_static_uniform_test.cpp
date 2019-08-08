@@ -1,14 +1,14 @@
-#include <stan/mcmc/hmc/static_uniform/softabs_static_uniform.hpp>
-#include <stan/mcmc/hmc/static_uniform/unit_e_static_uniform.hpp>
-#include <stan/mcmc/hmc/static_uniform/diag_e_static_uniform.hpp>
-#include <stan/mcmc/hmc/static_uniform/dense_e_static_uniform.hpp>
-#include <stan/mcmc/hmc/static_uniform/adapt_unit_e_static_uniform.hpp>
-#include <stan/mcmc/hmc/static_uniform/adapt_diag_e_static_uniform.hpp>
-#include <stan/mcmc/hmc/static_uniform/adapt_dense_e_static_uniform.hpp>
-#include <stan/mcmc/hmc/static_uniform/adapt_softabs_static_uniform.hpp>
-#include <stan/callbacks/stream_logger.hpp>
+#include <stan/algorithms/hmc/static_uniform/softabs_static_uniform.hpp>
+#include <stan/algorithms/hmc/static_uniform/unit_e_static_uniform.hpp>
+#include <stan/algorithms/hmc/static_uniform/diag_e_static_uniform.hpp>
+#include <stan/algorithms/hmc/static_uniform/dense_e_static_uniform.hpp>
+#include <stan/algorithms/hmc/static_uniform/adapt_unit_e_static_uniform.hpp>
+#include <stan/algorithms/hmc/static_uniform/adapt_diag_e_static_uniform.hpp>
+#include <stan/algorithms/hmc/static_uniform/adapt_dense_e_static_uniform.hpp>
+#include <stan/algorithms/hmc/static_uniform/adapt_softabs_static_uniform.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
 
-#include <test/test-models/good/mcmc/hmc/common/gauss.hpp>
+#include "hmc/integrators/gauss.hpp"
 
 #include <boost/random/additive_combine.hpp>
 

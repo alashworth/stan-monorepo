@@ -1,8 +1,8 @@
-#include <stan/callbacks/stream_logger.hpp>
-#include <stan/mcmc/hmc/xhmc/unit_e_xhmc.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
+#include <stan/algorithms/hmc/xhmc/unit_e_xhmc.hpp>
 #include <boost/random/additive_combine.hpp>
-#include <test/test-models/good/mcmc/hmc/common/gauss3D.hpp>
-#include <stan/io/dump.hpp>
+#include "hmc/nuts/gauss3D.hpp"
+#include <stan/util/io/dump.hpp>
 #include <fstream>
 
 #include <gtest/gtest.h>

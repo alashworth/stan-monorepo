@@ -1,10 +1,10 @@
-#include <stan/io/dump.hpp>
-#include <stan/mcmc/hmc/hamiltonians/softabs_metric.hpp>
-#include <stan/callbacks/stream_logger.hpp>
-#include <stan/mcmc/hmc/hamiltonians/unit_e_metric.hpp>
-#include <stan/mcmc/hmc/integrators/impl_leapfrog.hpp>
+#include <stan/util/io/dump.hpp>
+#include <stan/algorithms/hmc/hamiltonians/softabs_metric.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
+#include <stan/algorithms/hmc/hamiltonians/unit_e_metric.hpp>
+#include <stan/algorithms/hmc/integrators/impl_leapfrog.hpp>
 
-#include <test/test-models/good/mcmc/hmc/integrators/gauss.hpp>
+#include "hmc/integrators/gauss.hpp"
 
 #include <boost/random/additive_combine.hpp>  // L'Ecuyer RNG
 

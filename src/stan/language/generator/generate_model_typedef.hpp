@@ -21,7 +21,7 @@ void generate_model_typedef(const std::string& model_name, std::ostream& o) {
   o << "typedef " << model_name << "_namespace::" << model_name
     << " stan_model;" << EOL2;
 
-  o << "stan::model::model_base& new_model(" << EOL
+  o << "static stan::model::model_base& new_model(" << EOL
     << "        stan::io::var_context& data_context," << EOL
     << "        unsigned int seed," << EOL
     << "        std::ostream* msg_stream) {" << EOL

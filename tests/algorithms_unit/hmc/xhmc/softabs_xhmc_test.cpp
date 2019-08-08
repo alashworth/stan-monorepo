@@ -1,15 +1,15 @@
-#include <stan/callbacks/stream_logger.hpp>
-#include <stan/mcmc/hmc/xhmc/softabs_xhmc.hpp>
+#include <stan/services/callbacks/stream_logger.hpp>
+#include <stan/algorithms/hmc/xhmc/softabs_xhmc.hpp>
 #include <boost/random/additive_combine.hpp>
-#include <test/test-models/good/mcmc/hmc/common/gauss3D.hpp>
-#include <stan/io/dump.hpp>
+#include "hmc/nuts/gauss3D.hpp"
+#include <stan/util/io/dump.hpp>
 #include <fstream>
 
 #include <gtest/gtest.h>
 
 typedef boost::ecuyer1988 rng_t;
 
-TEST(McmcUnitEXHMC, build_tree) {
+TEST(McmcUnitEXHMC, build_tree_softabs) {
   rng_t base_rng(4839294);
 
   stan::mcmc::softabs_point z_init(3);
@@ -81,7 +81,7 @@ TEST(McmcUnitEXHMC, build_tree) {
   EXPECT_EQ("", fatal.str());
 }
 
-TEST(McmcUnitEXHMC, transition) {
+TEST(McmcUnitEXHMC, transition_softabs) {
   rng_t base_rng(4839294);
 
   stan::mcmc::softabs_point z_init(3);

@@ -1,0 +1,30 @@
+target_sources(stan_algorithms_unit_tests PRIVATE
+        families/normal_fullrank_test.cpp
+        families/normal_meanfield_test.cpp
+        advi_messages_test.cpp
+        advi_multivar_no_constraint_test.cpp
+        advi_multivar_with_constraint_test.cpp
+        advi_univar_no_constraint_test.cpp
+        advi_univar_with_constraint_test.cpp
+        eta_adapt_big_test.cpp
+        eta_adapt_fail_test.cpp
+        eta_adapt_mock_models_test.cpp
+        eta_adapt_small_test.cpp
+        gradient_warn_test.cpp
+        hier_logistic_cp_test.cpp
+        hier_logistic_test.cpp
+        print_progress_test.cpp
+        stochastic_gradient_ascent_test.cpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/eta_should_be_big.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/eta_should_be_small.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/eta_should_fail.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/gradient_warn.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/hier_logistic.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/hier_logistic_cp.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/multivariate_no_constraint.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/multivariate_with_constraint.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/univariate_no_constraint.hpp
+        ${CMAKE_CURRENT_BINARY_DIR}/models/univariate_with_constraint.hpp
+        )
+
+add_subdirectory(models)
