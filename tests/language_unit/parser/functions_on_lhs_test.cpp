@@ -5,7 +5,7 @@
 #include <sstream>
 #include <exception>
 #include <stdexcept>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(stmtGrammar, fun_as_lhs_sampling) {
   test_parsable("fun_as_lhs_sampling");

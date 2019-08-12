@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <exception>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParserStatement2Grammar, addConditionalCondition) {
   test_parsable("conditional_condition_good");

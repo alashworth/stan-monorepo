@@ -1,13 +1,13 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 
 #include <gtest/gtest.h>
 #include "util.hpp"
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
-#include <stan/callbacks/stream_writer.hpp>
+#include <stan/services/callbacks/stream_writer.hpp>
 #include <stan/util/io/dump.hpp>
 
-#include <test/test-models/good/parser-generator/deep-copy-warning.hpp>
+#include "generator/deep-copy-warning.hpp"
 
 #include <boost/random/additive_combine.hpp>
 #include <fstream>

@@ -1,10 +1,10 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 
 #include <gtest/gtest.h>
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 #include "util.hpp"
 
 TEST(lang, data_block_var_ast) {

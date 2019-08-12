@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParser, lkjCovDeprecationSampling) {
   test_warning("lkj_cov_deprecation1",

@@ -1,61 +1,61 @@
 target_sources(stan_language PUBLIC
         bare_array_type.hpp
-        bare_array_type_def.hpp
         bare_expr_type.hpp
-        bare_expr_type_def.hpp
         block_array_type.hpp
-        block_array_type_def.hpp
         block_var_type.hpp
-        block_var_type_def.hpp
         cholesky_factor_corr_block_type.hpp
-        cholesky_factor_corr_block_type_def.hpp
         cholesky_factor_cov_block_type.hpp
-        cholesky_factor_cov_block_type_def.hpp
         corr_matrix_block_type.hpp
-        corr_matrix_block_type_def.hpp
         cov_matrix_block_type.hpp
-        cov_matrix_block_type_def.hpp
         double_block_type.hpp
-        double_block_type_def.hpp
         double_type.hpp
-        double_type_def.hpp
         ill_formed_type.hpp
-        ill_formed_type_def.hpp
         int_block_type.hpp
-        int_block_type_def.hpp
         int_type.hpp
-        int_type_def.hpp
         local_array_type.hpp
-        local_array_type_def.hpp
         local_var_type.hpp
-        local_var_type_def.hpp
         matrix_block_type.hpp
-        matrix_block_type_def.hpp
         matrix_local_type.hpp
-        matrix_local_type_def.hpp
         matrix_type.hpp
-        matrix_type_def.hpp
         order_id.hpp
         ordered_block_type.hpp
-        ordered_block_type_def.hpp
         positive_ordered_block_type.hpp
-        positive_ordered_block_type_def.hpp
         row_vector_block_type.hpp
-        row_vector_block_type_def.hpp
         row_vector_local_type.hpp
-        row_vector_local_type_def.hpp
         row_vector_type.hpp
-        row_vector_type_def.hpp
         simplex_block_type.hpp
-        simplex_block_type_def.hpp
         unit_vector_block_type.hpp
-        unit_vector_block_type_def.hpp
         vector_block_type.hpp
-        vector_block_type_def.hpp
         vector_local_type.hpp
-        vector_local_type_def.hpp
         vector_type.hpp
-        vector_type_def.hpp
         void_type.hpp
+        bare_array_type_def.hpp
+        bare_expr_type_def.hpp
+        block_array_type_def.hpp
+        block_var_type_def.hpp
+        cholesky_factor_corr_block_type_def.hpp
+        cholesky_factor_cov_block_type_def.hpp
+        corr_matrix_block_type_def.hpp
+        cov_matrix_block_type_def.hpp
+        double_block_type_def.hpp
+        double_type_def.hpp
+        ill_formed_type_def.hpp
+        int_block_type_def.hpp
+        int_type_def.hpp
+        local_array_type_def.hpp
+        local_var_type_def.hpp
+        matrix_block_type_def.hpp
+        matrix_local_type_def.hpp
+        matrix_type_def.hpp
+        ordered_block_type_def.hpp
+        positive_ordered_block_type_def.hpp
+        row_vector_block_type_def.hpp
+        row_vector_local_type_def.hpp
+        row_vector_type_def.hpp
+        simplex_block_type_def.hpp
+        unit_vector_block_type_def.hpp
+        vector_block_type_def.hpp
+        vector_local_type_def.hpp
+        vector_type_def.hpp
         void_type_def.hpp
         )

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 #include <exception>
 
 TEST(lang_parser, break_continue_parsable) {

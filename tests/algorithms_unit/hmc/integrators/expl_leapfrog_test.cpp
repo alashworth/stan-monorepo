@@ -30,7 +30,9 @@ public:
     // setup hamiltonian
     stan::io::dump data_var_context(data_stream);
 
-    model = new command_model_namespace::command_model(data_var_context);
+    ASSERT_NO_THROW(
+        model = new command_model_namespace::command_model(data_var_context);
+        );
     debug.str("");
     info.str("");
     warn.str("");

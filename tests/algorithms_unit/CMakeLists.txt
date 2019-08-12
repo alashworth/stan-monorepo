@@ -12,6 +12,7 @@ add_executable(stan_algorithms_unit_tests
         var_adaptation_test.cpp
         windowed_adaptation_test.cpp
         instrumented_callbacks.hpp
+        util.cpp
         util.hpp
         )
 

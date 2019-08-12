@@ -1,6 +1,8 @@
+#include "util.hpp"
 #include <fstream>
 #include <iostream>
 #include <gtest/gtest.h>
+
 
 void read_file(const std::string& path,
                std::string& contents) {
@@ -13,7 +15,7 @@ void read_file(const std::string& path,
 
 void test_pg(const std::string& program_name,
              const std::string& expected_substring) {
-  std::string path = "test/test-models/good/parser-generator";
+  std::string path = TEST_MODEL_DIR + "/good/parser-generator";
   path += "/";
   path += program_name;
   path += ".hpp";
@@ -42,7 +44,7 @@ int count_occurrences(const std::string target,
 void test_pg_count(const std::string& program_name,
                    const std::string& expected_substring,
                    const int expected_count) {
-  std::string path = "test/test-models/good/parser-generator";
+  std::string path = TEST_MODEL_DIR + "/good/parser-generator";
   path += "/";
   path += program_name;
   path += ".hpp";

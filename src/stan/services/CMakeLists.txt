@@ -10,3 +10,4 @@ target_link_libraries(stan_services INTERFACE
 
 add_library(Stan::Services ALIAS stan_services)
 set_property(TARGET stan_services PROPERTY EXPORT_NAME Services)
+

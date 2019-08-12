@@ -1,6 +1,6 @@
 #include <stdexcept>
-#include <test/test-models/good/lang/reject_func_call_generated_quantities.hpp>
-#include <test/unit/lang/reject/reject_helper.hpp>
+#include "reject/reject_func_call_generated_quantities.hpp"
+#include "reject/reject_helper.hpp"
 
 #include <gtest/gtest.h>
 

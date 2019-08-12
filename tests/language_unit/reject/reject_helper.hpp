@@ -7,9 +7,9 @@
 #include <fstream>
 #include <boost/random/additive_combine.hpp>
 #include <stan/util/io/dump.hpp>
-#include <stan/callbacks/stream_writer.hpp>
+#include <stan/services/callbacks/stream_writer.hpp>
 
-void expect_substring(const std::string& msg,
+static inline void expect_substring(const std::string& msg,
                       const std::string& expected_substring) {
   if (msg.find(expected_substring) == std::string::npos)
     FAIL() << "expected to find substring=" << expected_substring

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParser, if_elseDeprecationFunction) {
   test_warning("function-signatures/math/functions/if_else",

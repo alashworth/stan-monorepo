@@ -1,4 +1,4 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 
 // using these to check row/col args for specialized types
 #include <stan/language/generator/expression_visgen.hpp>

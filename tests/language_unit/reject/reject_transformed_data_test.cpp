@@ -1,6 +1,6 @@
 #include <stdexcept>
-#include <test/test-models/good/lang/reject_transformed_data.hpp>
-#include <test/unit/lang/reject/reject_helper.hpp>
+#include "reject/reject_transformed_data.hpp"
+#include "reject/reject_helper.hpp"
 #include <gtest/gtest.h>
 
 // test that reject() throws excception in transformed data

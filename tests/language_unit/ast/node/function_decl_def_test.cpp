@@ -1,4 +1,4 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 #include <stan/language/generator.hpp>
 #include <gtest/gtest.h>
 #include <cmath>

@@ -1,107 +1,107 @@
 target_sources(stan_language PUBLIC
         bare_type_is_data_vis.hpp
-        bare_type_is_data_vis_def.hpp
         bare_type_order_id_vis.hpp
-        bare_type_order_id_vis_def.hpp
         bare_type_set_is_data_vis.hpp
-        bare_type_set_is_data_vis_def.hpp
         bare_type_total_dims_vis.hpp
-        bare_type_total_dims_vis_def.hpp
         bare_type_vis.hpp
-        bare_type_vis_def.hpp
         block_type_bounds_vis.hpp
-        block_type_bounds_vis_def.hpp
         block_type_is_specialized_vis.hpp
-        block_type_is_specialized_vis_def.hpp
         block_type_offset_multiplier_vis.hpp
-        block_type_offset_multiplier_vis_def.hpp
         block_type_params_total_vis.hpp
-        block_type_params_total_vis_def.hpp
         ends_with.hpp
-        ends_with_def.hpp
         expression_bare_type_vis.hpp
-        expression_bare_type_vis_def.hpp
         fun_name_exists.hpp
-        fun_name_exists_def.hpp
         generate_expression.hpp
         get_ccdf.hpp
-        get_ccdf_def.hpp
         get_cdf.hpp
-        get_cdf_def.hpp
         get_prob_fun.hpp
-        get_prob_fun_def.hpp
         has_ccdf_suffix.hpp
-        has_ccdf_suffix_def.hpp
         has_cdf_suffix.hpp
-        has_cdf_suffix_def.hpp
         has_lp_suffix.hpp
-        has_lp_suffix_def.hpp
         has_non_param_var.hpp
-        has_non_param_var_def.hpp
         has_non_param_var_vis.hpp
-        has_non_param_var_vis_def.hpp
         has_prob_fun_suffix.hpp
-        has_prob_fun_suffix_def.hpp
         has_rng_suffix.hpp
-        has_rng_suffix_def.hpp
         has_var.hpp
-        has_var_def.hpp
         has_var_vis.hpp
-        has_var_vis_def.hpp
         indexed_type.hpp
-        indexed_type_def.hpp
         infer_type_indexing.hpp
-        infer_type_indexing_def.hpp
         is_assignable.hpp
-        is_assignable_def.hpp
         is_multi_index.hpp
-        is_multi_index_def.hpp
         is_multi_index_vis.hpp
-        is_multi_index_vis_def.hpp
         is_nil.hpp
-        is_nil_def.hpp
         is_nil_vis.hpp
-        is_nil_vis_def.hpp
         is_no_op_statement_vis.hpp
-        is_no_op_statement_vis_def.hpp
         is_nonempty.hpp
-        is_nonempty_def.hpp
         is_space.hpp
+        num_index_op_dims.hpp
+        print_scope.hpp
+        promote_primitive.hpp
+        returns_type.hpp
+        returns_type_vis.hpp
+        strip_ccdf_suffix.hpp
+        strip_cdf_suffix.hpp
+        strip_prob_fun_suffix.hpp
+        var_occurs_vis.hpp
+        var_type_arg1_vis.hpp
+        var_type_arg2_vis.hpp
+        var_type_name_vis.hpp
+        write_bare_expr_type.hpp
+        write_block_var_type.hpp
+        write_expression_vis.hpp
+        write_idx_vis.hpp
+        bare_type_is_data_vis_def.hpp
+        bare_type_order_id_vis_def.hpp
+        bare_type_set_is_data_vis_def.hpp
+        bare_type_total_dims_vis_def.hpp
+        bare_type_vis_def.hpp
+        block_type_bounds_vis_def.hpp
+        block_type_is_specialized_vis_def.hpp
+        block_type_offset_multiplier_vis_def.hpp
+        block_type_params_total_vis_def.hpp
+        ends_with_def.hpp
+        expression_bare_type_vis_def.hpp
+        fun_name_exists_def.hpp
+        get_ccdf_def.hpp
+        get_cdf_def.hpp
+        get_prob_fun_def.hpp
+        has_ccdf_suffix_def.hpp
+        has_cdf_suffix_def.hpp
+        has_lp_suffix_def.hpp
+        has_non_param_var_def.hpp
+        has_non_param_var_vis_def.hpp
+        has_prob_fun_suffix_def.hpp
+        has_rng_suffix_def.hpp
+        has_var_def.hpp
+        has_var_vis_def.hpp
+        indexed_type_def.hpp
+        infer_type_indexing_def.hpp
+        is_assignable_def.hpp
+        is_multi_index_def.hpp
+        is_multi_index_vis_def.hpp
+        is_nil_def.hpp
+        is_nil_vis_def.hpp
+        is_no_op_statement_vis_def.hpp
+        is_nonempty_def.hpp
         is_space_def.hpp
         is_user_defined.hpp
         is_user_defined_def.hpp
         is_user_defined_prob_function.hpp
         is_user_defined_prob_function_def.hpp
-        num_index_op_dims.hpp
         num_index_op_dims_def.hpp
-        print_scope.hpp
         print_scope_def.hpp
-        promote_primitive.hpp
         promote_primitive_def.hpp
-        returns_type.hpp
         returns_type_def.hpp
-        returns_type_vis.hpp
         returns_type_vis_def.hpp
-        strip_ccdf_suffix.hpp
         strip_ccdf_suffix_def.hpp
-        strip_cdf_suffix.hpp
         strip_cdf_suffix_def.hpp
-        strip_prob_fun_suffix.hpp
         strip_prob_fun_suffix_def.hpp
-        template.hpp
-        var_occurs_vis.hpp
         var_occurs_vis_def.hpp
-        var_type_arg1_vis.hpp
         var_type_arg1_vis_def.hpp
-        var_type_arg2_vis.hpp
         var_type_arg2_vis_def.hpp
-        var_type_name_vis.hpp
         var_type_name_vis_def.hpp
-        write_bare_expr_type.hpp
         write_bare_expr_type_def.hpp
-        write_block_var_type.hpp
         write_block_var_type_def.hpp
-        write_expression_vis.hpp
         write_expression_vis_def.hpp
-        write_idx_vis.hpp
-        write_idx_vis_def.hpp)
+        write_idx_vis_def.hpp
+        )

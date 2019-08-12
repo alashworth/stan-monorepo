@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(LangGrammars,test1) {
   test_throws("err-open-block",

@@ -1,6 +1,6 @@
 #include <stdexcept>
-#include <test/test-models/good/lang/reject_mult_args.hpp>
-#include <test/unit/lang/reject/reject_helper.hpp>
+#include "reject/reject_mult_args.hpp"
+#include "reject/reject_helper.hpp"
 #include <gtest/gtest.h>
 
 // test throw in model block through function call

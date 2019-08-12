@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <exception>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 TEST(langParserStatementGrammar, validateAssignmentTypes) {
   test_throws("bad_var_assignment_type1",
               "mismatch in assignment");

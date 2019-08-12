@@ -1,4 +1,4 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 
 // use to check expressions
 #include <stan/language/generator/expression_visgen.hpp>

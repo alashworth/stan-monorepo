@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParserTermGrammar, vector_expr) {
   test_parsable("vec-expr/row_vector_expr_terms");

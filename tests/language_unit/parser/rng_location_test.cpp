@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 void verify_bad_rng(const std::string& model_name) {
   test_throws(model_name,

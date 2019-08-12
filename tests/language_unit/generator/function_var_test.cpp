@@ -1,8 +1,8 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 
 #include <gtest/gtest.h>
 #include "util.hpp"
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 #include <sstream>
 #include <string>
 #include <iostream>

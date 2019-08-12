@@ -1,8 +1,9 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 #include <stan/language/generator.hpp>
 #include <stan/util/io/dump.hpp>
-#include <test/test-models/good/lang/test_lp.hpp>
-#include <test/unit/lang/utility.hpp>
+#include "generator/test_lp.hpp"
+#include "util.hpp"
+#include "utility.hpp"
 #include <gtest/gtest.h>
 #include <boost/random/additive_combine.hpp>
 #include <iostream>

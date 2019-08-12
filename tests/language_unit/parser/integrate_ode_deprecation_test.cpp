@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParser, integrate_ode_deprecation) {
   test_warning("integrate_ode_deprecation",

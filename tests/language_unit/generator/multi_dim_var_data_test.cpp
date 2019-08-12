@@ -1,10 +1,10 @@
-#include <stan/language/ast_def.cpp>
-#include <test/test-models/good/parser-generator/multidim_var_data_ar45_mat23.hpp>
+#include <stan/language/ast.hpp>
+#include "generator/multidim_var_data_ar45_mat23.hpp"
 #include <stan/util/io/array_var_context.hpp>
 
 #include <gtest/gtest.h>
 #include "util.hpp"
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 #include <sstream>
 #include <string>
 #include <iostream>
@@ -17,7 +17,7 @@ typedef multidim_var_data_ar45_mat23_model_namespace::multidim_var_data_ar45_mat
 TEST(lang, multidim_data_good) {
   std::stringstream out;
   // Create mock data_var_context
-  std::fstream data_stream("src/test/test-models/good/parser-generator/multidim_var_data_ar45_mat23_good.data.R",
+  std::fstream data_stream(TEST_MODEL_DIR + "/good/parser-generator/multidim_var_data_ar45_mat23_good.data.R",
                            std::fstream::in);
   stan::io::dump data_var_context(data_stream);
   data_stream.close();
@@ -33,7 +33,7 @@ TEST(lang, multidim_data_good) {
 TEST(lang, multidim_data_bad) {
   std::stringstream out;
   // Create mock data_var_context
-  std::fstream data_stream("src/test/test-models/good/parser-generator/multidim_var_data_ar45_mat23_bad.data.R",
+  std::fstream data_stream(TEST_MODEL_DIR + "/good/parser-generator/multidim_var_data_ar45_mat23_bad.data.R",
                            std::fstream::in);
   stan::io::dump data_var_context(data_stream);
   data_stream.close();

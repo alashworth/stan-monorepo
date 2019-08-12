@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParser, duplicateWarnings) {
   test_num_warnings("duplicate-warns",

@@ -2,7 +2,7 @@ add_library(stan_algorithms INTERFACE)
 
 target_include_directories(stan_algorithms INTERFACE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
-        $<INSTALL_INTERFACE:include)
+        $<INSTALL_INTERFACE:include>)
 
 target_link_libraries(stan_algorithms INTERFACE
         Stan::Math
