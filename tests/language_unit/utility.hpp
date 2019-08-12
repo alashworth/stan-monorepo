@@ -30,7 +30,7 @@ bool is_parsable(const std::string& file_name,
  * @param msgs Warning message
  */
 bool is_parsable_folder(const std::string& model_name,
-                        const std::string& folder = TEST_MODEL_DIR + "good",
+                        const std::string& folder = "/good",
                         std::ostream* msgs = 0,
                         const std::string& extension = ".stan");
 

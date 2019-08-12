@@ -115,13 +115,14 @@ There are too many unit-test targets to name; if you want a run a specific test,
 
 * None of the OpenCL unit tests work right now, due to errors in the 2.20 release.
 
+* For some reason, Doxygen tries to parse the Latex in the beta distribution comment and Miktex dies because something is malformed.
+
 * There were hundreds of GTest cases that had duplicate names, I renamed some of them with a regex but that's not very descriptive. It would be best to go over them and pick meaningful names, and enforce a naming standard.
 
 * After reordering all the files, need to rename namespaces and include header guards. Alternative: use `pragma once`. 
 
 * FIXME: I use `#pragma once` in some files and I haven't yet renamed them to proper include header guards.
 
-* FIX: language unit tests - or sit tight for stanc3 release
 * FIX: cmdstan unit tests - paths all broken, lots of hardcoded strings.
 
 ##### Misc

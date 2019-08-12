@@ -68,7 +68,7 @@ TEST(parserFunctions, funsBad2) {
 }
 
 TEST(parserFunctions, funsBad2_good) {
-  is_parsable("src/test/test-models/bad/functions-bad2.stan",0, true);
+  is_parsable(TEST_MODEL_DIR + "/bad/functions-bad2.stan",0, true);
 }
 
 TEST(parserFunctions, funsBad3) {

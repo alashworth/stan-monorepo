@@ -1,3 +1,5 @@
+message(STATUS "Configuring Stan language library...")
+
 add_library(stan_language
         ast.hpp
         ast_def.cpp
@@ -25,9 +27,13 @@ target_link_libraries(stan_language PUBLIC
         Stan::Services
         )
 
-target_compile_options(stan_language PUBLIC -Os)
+target_compile_options(stan_language PUBLIC
+        -Os
+        $<$<CXX_COMPILER_ID:GNU>:-fno-var-tracking-assignments>)
 
 add_library(Stan::Language ALIAS stan_language)
 set_property(TARGET stan_language PROPERTY EXPORT_NAME Language)
 
 set_target_properties(stan_language PROPERTIES LINKER_LANGUAGE CXX)
+
+message(STATUS "Configuring Stan language library... [DONE]")

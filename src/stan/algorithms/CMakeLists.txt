@@ -1,3 +1,5 @@
+message(STATUS "Configuring Stan algorithms library...")
+
 add_library(stan_algorithms INTERFACE)
 
 target_include_directories(stan_algorithms INTERFACE
@@ -16,3 +18,5 @@ add_subdirectory(hmc)
 add_subdirectory(mcmc)
 add_subdirectory(optimization)
 add_subdirectory(variational)
+
+message(STATUS "Configuring Stan algorithms library... [DONE]")

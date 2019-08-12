@@ -1,3 +1,5 @@
+message(STATUS "Configuring Stan algorithms unit tests...")
+
 CONFIGURE_FILE(test_csv_files/blocker.1.csv blocker.1.csv COPYONLY)
 CONFIGURE_FILE(test_csv_files/blocker.2.csv blocker.2.csv COPYONLY)
 CONFIGURE_FILE(test_csv_files/epil.1.csv epil.1.csv COPYONLY)
@@ -95,3 +97,5 @@ foreach(model IN LISTS variational_models)
             COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/variational/models/${name}.hpp ${model}
             DEPENDS stan_stanc VERBATIM)
 endforeach()
+
+message(STATUS "Configuring Stan algorithms unit tests... [DONE]")

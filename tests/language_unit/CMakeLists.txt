@@ -1,10 +1,7 @@
-# FIXME: Paths are all broken. I need to review every source file by hand.
-message(WARNING "Skipping language unit tests... FIXME.")
-return()
-
 # FIXME: argh, why does nothing in Stan::Lang have a header definition?
 check_cxx_compiler_flag("-Wl,--allow-multiple-definition" STAN_FLAGS_MULDEF)
 if(NOT STAN_FLAGS_MULDEF)
+    message(STATUS "Stan language unit tests... [SKIPPED]")
     return()
 endif()
 
@@ -78,5 +75,5 @@ target_link_libraries(stan_language_unit_tests
 
 target_link_options(stan_language_unit_tests PRIVATE "LINKER:--allow-multiple-definition")
 
-gtest_discover_tests(stan_language_unit_tests
-        PROPERTIES WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tests/test_models)
+#gtest_discover_tests(stan_language_unit_tests
+#        PROPERTIES WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tests/test_models)

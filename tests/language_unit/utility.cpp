@@ -25,17 +25,15 @@ std::string file_name_to_model_name(const std::string& name) {
 }
 
 bool is_parsable_folder(const std::string& model_name,
-                        const std::string& folder,
-                        std::ostream* msgs,
+                        const std::string& folder, std::ostream* msgs,
                         const std::string& extension) {
-  std::string path("src/test/test-models/");
+  std::string path = TEST_MODEL_DIR;
   path += folder;
   path += "/";
   path += model_name;
   path += extension;
   return is_parsable(path, msgs, false);
 }
-
 
 namespace stan {
 namespace lang {
@@ -53,7 +51,8 @@ bool compile(std::ostream* msgs, std::istream& in, std::ostream& out,
              const std::vector<std::string>& include_paths
              = std::vector<std::string>());
 
-}}
+}  // namespace lang
+}  // namespace stan
 
 bool is_parsable(const std::string& file_name, std::ostream* msgs,
                  bool allow_undefined) {
@@ -77,7 +76,7 @@ void test_parsable(const std::string& model_name) {
   bool result;
   std::stringstream msgs;
   SCOPED_TRACE("parsing: " + model_name);
-  result = is_parsable_folder(model_name, "good", &msgs);
+  result = is_parsable_folder(model_name, "/good", &msgs);
   if (!result) {
     FAIL() << std::endl
            << "*********************************" << std::endl
@@ -91,14 +90,14 @@ std::string test_parse_msgs(const std::string& model_name) {
   bool result;
   std::stringstream msgs;
   SCOPED_TRACE("parsing: " + model_name);
-  result = is_parsable_folder(model_name, "good", &msgs);
+  result = is_parsable_folder(model_name, "/good", &msgs);
   return msgs.str();
 }
 
 void test_parsable_standalone_functions(const std::string& model_name) {
   {
     SCOPED_TRACE("parsing standalone functions: " + model_name);
-    EXPECT_TRUE(is_parsable_folder(model_name, "good-standalone-functions", 0,
+    EXPECT_TRUE(is_parsable_folder(model_name, "/good-standalone-functions", 0,
                                    ".stanfuncs"));
   }
 }
@@ -109,7 +108,7 @@ void test_throws(const std::string& model_name, const std::string& error_msg) {
   std::string expected_lc = boost::algorithm::to_lower_copy(error_msg);
   bool pass = false;
   try {
-    is_parsable_folder(model_name, "bad", &msgs);
+    is_parsable_folder(model_name, "/bad", &msgs);
     if (msgs.str().length() > 0)
       FAIL() << std::endl
              << "*********************************" << std::endl
@@ -159,7 +158,7 @@ void test_throws(const std::string& model_name, const std::string& error_msg1,
 void test_warning(const std::string& model_name,
                   const std::string& warning_msg) {
   std::stringstream msgs;
-  EXPECT_TRUE(is_parsable_folder(model_name, "good", &msgs));
+  EXPECT_TRUE(is_parsable_folder(model_name, "/good", &msgs));
   bool found = msgs.str().find(warning_msg) != std::string::npos;
   EXPECT_TRUE(found) << std::endl
                      << "FOUND: " << msgs.str() << std::endl
@@ -215,7 +214,7 @@ std::string get_file_name(const std::string& folder,
 void expect_match(const std::string& model_name, const std::string& target,
                   bool allow_undefined) {
   std::stringstream msgs;
-  std::string file_name = get_file_name("good", model_name);
+  std::string file_name = get_file_name("/good", model_name);
   std::ifstream file_stream(file_name.c_str());
   std::stringstream cpp_out_stream;
   stan::lang::compile(&msgs, file_stream, cpp_out_stream, model_name,
@@ -230,7 +229,7 @@ void expect_match(const std::string& model_name, const std::string& target,
 void test_num_warnings(const std::string& model_name,
                        const std::string& warning_msg, int n) {
   std::stringstream msgs;
-  EXPECT_TRUE(is_parsable_folder(model_name, "good", &msgs));
+  EXPECT_TRUE(is_parsable_folder(model_name, "/good", &msgs));
   EXPECT_EQ(n, count_matches(warning_msg, msgs.str()))
       << "looking for: " << warning_msg;
 }
