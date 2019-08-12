@@ -42,6 +42,7 @@ Stan on Windows must be built with MinGW. However, Conan defaults to Visual Stud
 An example profile for use with RTools 3.5 is listed below. Your own file should reflect your RTools installation directory.
 ```
 [build_requires]
+cmake_installer/3.15.2@conan/stable
 [settings]
 os_build=Windows
 os=Windows
