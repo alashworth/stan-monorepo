@@ -1,4 +1,4 @@
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 #include <gtest/gtest.h>
 #include <boost/variant/polymorphic_get.hpp>
 #include <cmath>

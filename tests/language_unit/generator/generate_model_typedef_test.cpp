@@ -1,5 +1,6 @@
 #include <stan/language/generator.hpp>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
+#include "util.hpp"
 #include <gtest/gtest.h>
 #include <sstream>
 

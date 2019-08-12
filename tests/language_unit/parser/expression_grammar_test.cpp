@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParserExpressionGrammarDef, intDivUserFacing) {
   test_warning("int_div_user",

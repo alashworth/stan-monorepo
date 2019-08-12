@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 // these tests make sure the built-in and user-defined
 // discrete and continuous distributions generate the right code

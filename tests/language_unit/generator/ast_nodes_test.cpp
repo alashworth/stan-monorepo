@@ -1,11 +1,11 @@
 #include <iostream>
 #include <sstream>
 #include <boost/random/additive_combine.hpp>
-#include <stan/language/ast_def.cpp>
+#include <stan/language/ast.hpp>
 #include <stan/language/generator.hpp>
 #include <stan/util/io/dump.hpp>
-#include <test/test-models/good/lang/test_lp.hpp>
-#include <test/unit/lang/utility.hpp>
+#include "generator/test_lp.hpp"
+#include "utility.hpp"
 #include <gtest/gtest.h>
 
 // These next tests depend on the parser to build up a prog instance,

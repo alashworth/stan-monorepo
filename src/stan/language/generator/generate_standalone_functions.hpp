@@ -33,7 +33,7 @@ void generate_standalone_functions(
     const std::vector<io::preproc_event>& history, std::ostream& o) {
   generate_version_comment(o);
 
-  generate_include("stan/model/standalone_functions_header.hpp", o);
+  generate_include("stan/language/model/standalone_functions_header.hpp", o);
   o << EOL;
 
   // generate namespace starts

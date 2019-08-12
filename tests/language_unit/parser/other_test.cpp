@@ -5,7 +5,7 @@
 #include <sstream>
 #include <exception>
 #include <stdexcept>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(lang_parser,good_trunc) {
   EXPECT_TRUE(is_parsable("src/test/test-models/bad/lang/good_trunc.stan"));

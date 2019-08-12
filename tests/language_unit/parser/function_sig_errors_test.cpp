@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <exception>
 #include <stdexcept>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(langParser, functionSigErrorsFunUnknown) {
   test_throws("signature_function_unknown",

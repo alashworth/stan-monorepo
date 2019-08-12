@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(parserFunctions, funsGood0) {
   test_parsable("validate_functions"); // tests proper definitions and use

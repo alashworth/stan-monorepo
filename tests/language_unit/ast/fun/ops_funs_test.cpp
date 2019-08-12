@@ -1,9 +1,14 @@
-#include <stan/language/ast_def.cpp>
 #include <gtest/gtest.h>
 #include <string>
 
-// test operator functions
-// was part of test/unit/lang/ast_test.hpp
+namespace stan {
+namespace lang {
+bool is_binary_operator(std::string const&);
+bool is_unary_operator(std::string const&);
+bool is_unary_postfix_operator(std::string const&);
+std::string fun_name_to_operator(std::string const&);
+}
+}  // namespace stan
 
 TEST(gmAst, isBinaryOperator) {
   using stan::lang::is_binary_operator;

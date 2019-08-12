@@ -1,4 +1,4 @@
-#include <test/unit/lang/parser/test_functions_grammar_def.hpp>
+#include "parser/test_functions_grammar_def.hpp"
 #include <stan/language/grammars/iterator_typedefs.hpp>
 
 namespace stan {

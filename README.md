@@ -25,7 +25,7 @@ Optional dependencies:
 
 ### Quick Start
 
-The following assumes you have a valid Conan (https://conan.io) package manager installation and are in the Stan source directory. The Conan script in the base directory will install all required and optional dependencies for you that are vendor agnostic (i.e., everything except an OpenCL or MPI implementation, and Boost MPI). Users who need such functionality will need to understand CMake and make sure such libraries can be found in $PATH during configuration.
+The following assumes you have a valid Conan (https://conan.io) package manager installation and are in the Stan source directory. The Conan script in the base directory will install all required and optional dependencies for you that are vendor agnostic (i.e., everything except an OpenCL or MPI implementation, and Boost MPI). Users who need such functionality will need to understand CMake and make sure such libraries can be found on their $PATH during configuration.
 ```
 # There is no official Sundials Conan package, so please add the following PPA
 conan remote add alashworth_stan https://api.bintray.com/conan/alashworth/stan
@@ -38,23 +38,24 @@ ctest --output-on-failure
  
 #### Windows-specific notes
 Stan on Windows must be built with MinGW. However, Conan defaults to Visual Studio on Windows if Visual Studio is found. To override and build dependencies with GCC, you will need to create a MinGW profile (i.e. a plain text file) inside `~/.conan/profiles`. 
- 
-In addition, users attempting to build with the RTools toolchain should change `compiler.libcxx` to `libstdc++`, which has the effect of defining `_GLIBCXX_USE_CXX11_ABI=0`. All users should adjust the compiler version. More documentation can be found at the Conan website (https://docs.conan.io/en/latest/systems_cross_building/windows_subsystems.html).
+
+An example profile for use with RTools 3.5 is listed below. Your own file should reflect your RTools installation directory.
 ```
 [build_requires]
 [settings]
-    os=Windows
-    os_build=Windows
-    arch=x86_64
-    arch_build=x86_64
-    compiler=gcc
-    compiler.exception=seh
-    compiler.threads=posix
-    compiler.version=9.1
-    compiler.libcxx=libstdc++11
-    build_type=Release
-[options]
+os_build=Windows
+os=Windows
+arch=x86_64
+arch_build=x86_64
+compiler=gcc
+compiler.exception=seh
+compiler.libcxx=libstdc++
+compiler.threads=posix
+compiler.version=4.9
+build_type=Release
 [env]
+CC="C:/rtools/mingw_64/bin/x86_64-w64-mingw32-gcc-4.9.3.exe"
+CXX="C:/rtools/mingw_64/bin/x86_64-w64-mingw32-g++.exe"
 ```
 Install dependencies using:
 ```
@@ -67,7 +68,6 @@ conan install .. -s build_type=Release --build=missing --profile <YOURTEXTFILE>
 
 The following build options are provided:
 
-* `STAN_BUILD_DOCS`           [default: OFF]
 * `STAN_BUILD_TESTS`          [default: ON]
 * `STAN_BUILD_RVECTESTS`      [default: OFF]
 * `STAN_OPENCL_DEVICE_ID`     [default: 0]
@@ -82,7 +82,7 @@ The following are the public, exported CMake targets of Stan:
 * `Stan::Math`
 * Optional: `Stan::MathOpenCl`
 * Optional: `Stan::MathMpi`
-* Optional: `Stan::MathMt` (although, seeing as how much depends on threads in Stan, this may as well replace the base configuration)
+* Optional: `Stan::MathMt` (Maybe this should be the default? You can't compile cmdstan without pthreads anyway.)
 * `Stan::Util`
 * `Stan::Services`
 * `Stan::Language`
@@ -102,6 +102,8 @@ There are too many unit-test targets to name; if you want a run a specific test,
 
 * Don't forget to purge git history of generated files in the /doc folder
 
+* Need to finish writing logic for exporting CMake build targets.
+
 ##### Important
 
 * Some EXPECT_DEATH unit tests don't work with empty strings in the Stan math unit tests. This is after I changed the existing string matching test code to use std::regex, which had to be done since the original string matching code didn't work if the compiler error string format changed.
@@ -118,6 +120,9 @@ There are too many unit-test targets to name; if you want a run a specific test,
 
 * FIXME: I use `#pragma once` in some files and I haven't yet renamed them to proper include header guards.
 
+* FIX: language unit tests - or sit tight for stanc3 release
+* FIX: cmdstan unit tests - paths all broken, lots of hardcoded strings.
+
 ##### Misc
 
 * StanC needs a `--quiet` option to suppress output while building. The unit tests had their own StanC that redirected cout and cerr, but that's the wrong way to fix this problem.
@@ -131,3 +136,5 @@ There are too many unit-test targets to name; if you want a run a specific test,
 * The original makefiles had an ad-hoc implementation of precompiled headers; this behavior should be duplicated using Cotire (https://github.com/sakra/cotire). Eventually, we can hope that https://gitlab.kitware.com/cmake/cmake/merge_requests/3553 lands in a future version of CMake and use that directly. 
 
 * The probability distribution tests...
+
+* Should add COST estimates to the generated unit tests so the test runner runs them first.

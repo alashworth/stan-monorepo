@@ -3,7 +3,7 @@
 
 #include <stan/math.hpp>
 #include "indexing.hpp"
-#include "rethrow_located.hpp"
+#include <stan/language/rethrow_located.hpp>
 #include <stan/util/io/program_reader.hpp>
 #include <boost/random/additive_combine.hpp>
 #include <cmath>

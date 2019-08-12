@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(parserTruncTest, poisson_log_log) {
   test_throws("prob-poisson_log-trunc-low",

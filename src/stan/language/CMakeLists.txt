@@ -6,11 +6,17 @@ add_library(stan_language
         function_signatures.h
         generator.hpp
         parser.hpp
-        rethrow_located.hpp)
+        rethrow_located.hpp
+        )
+
+add_subdirectory(ast)
+add_subdirectory(grammars)
+add_subdirectory(model)
+add_subdirectory(generator)
 
 target_include_directories(stan_language PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
-        $<INSTALL_INTERFACE:include)
+        $<INSTALL_INTERFACE:include>)
 
 target_link_libraries(stan_language PUBLIC
         Stan::Util
@@ -19,14 +25,9 @@ target_link_libraries(stan_language PUBLIC
         Stan::Services
         )
 
-# Unfortunately, you can't build stan_language in debug config
-# without some form of optimizations enabled.
-target_compile_options(stan_language PUBLIC $<$<CONFIG:Debug>:-Os>)
+target_compile_options(stan_language PUBLIC -Os)
 
 add_library(Stan::Language ALIAS stan_language)
 set_property(TARGET stan_language PROPERTY EXPORT_NAME Language)
 
-add_subdirectory(ast)
-add_subdirectory(generator)
-add_subdirectory(grammars)
-add_subdirectory(model)
+set_target_properties(stan_language PROPERTIES LINKER_LANGUAGE CXX)

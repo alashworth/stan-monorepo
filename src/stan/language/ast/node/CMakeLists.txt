@@ -1,103 +1,104 @@
 target_sources(stan_language PUBLIC
         algebra_solver.hpp
         algebra_solver_control.hpp
-        algebra_solver_control_def.hpp
-        algebra_solver_def.hpp
         array_expr.hpp
-        array_expr_def.hpp
         assgn.hpp
-        assgn_def.hpp
         binary_op.hpp
-        binary_op_def.hpp
         block_var_decl.hpp
-        block_var_decl_def.hpp
         break_continue_statement.hpp
-        break_continue_statement_def.hpp
         conditional_op.hpp
-        conditional_op_def.hpp
         conditional_statement.hpp
-        conditional_statement_def.hpp
         distribution.hpp
         double_literal.hpp
-        double_literal_def.hpp
         expression.hpp
-        expression_def.hpp
         for_array_statement.hpp
-        for_array_statement_def.hpp
         for_matrix_statement.hpp
-        for_matrix_statement_def.hpp
         for_statement.hpp
-        for_statement_def.hpp
         fun.hpp
+        idx.hpp
+        increment_log_prob_statement.hpp
+        index_op.hpp
+        index_op_sliced.hpp
+        int_literal.hpp
+        integrate_1d.hpp
+        integrate_ode.hpp
+        integrate_ode_control.hpp
+        lb_idx.hpp
+        local_var_decl.hpp
+        lub_idx.hpp
+        map_rect.hpp
+        matrix_expr.hpp
+        multi_idx.hpp
+        no_op_statement.hpp
+        offset_multiplier.hpp
+        omni_idx.hpp
+        print_statement.hpp
+        printable.hpp
+        program.hpp
+        range.hpp
+        reject_statement.hpp
+        return_statement.hpp
+        row_vector_expr.hpp
+        sample.hpp
+        statement.hpp
+        statements.hpp
+        ub_idx.hpp
+        unary_op.hpp
+        uni_idx.hpp
+        var_decl.hpp
+        variable.hpp
+        variable_dims.hpp
+        while_statement.hpp
+        algebra_solver_control_def.hpp
+        algebra_solver_def.hpp
+        array_expr_def.hpp
+        assgn_def.hpp
+        binary_op_def.hpp
+        block_var_decl_def.hpp
+        break_continue_statement_def.hpp
+        conditional_op_def.hpp
+        conditional_statement_def.hpp
+        double_literal_def.hpp
+        expression_def.hpp
+        for_array_statement_def.hpp
+        for_matrix_statement_def.hpp
+        for_statement_def.hpp
         fun_def.hpp
         function_decl_def.hpp
         function_decl_def_def.hpp
         function_decl_defs.hpp
         function_decl_defs_def.hpp
-        idx.hpp
         idx_def.hpp
-        increment_log_prob_statement.hpp
         increment_log_prob_statement_def.hpp
-        index_op.hpp
         index_op_def.hpp
-        index_op_sliced.hpp
         index_op_sliced_def.hpp
-        int_literal.hpp
         int_literal_def.hpp
-        integrate_1d.hpp
         integrate_1d_def.hpp
-        integrate_ode.hpp
-        integrate_ode_control.hpp
         integrate_ode_control_def.hpp
         integrate_ode_def.hpp
-        lb_idx.hpp
         lb_idx_def.hpp
-        local_var_decl.hpp
         local_var_decl_def.hpp
-        lub_idx.hpp
         lub_idx_def.hpp
-        map_rect.hpp
         map_rect_def.hpp
-        matrix_expr.hpp
         matrix_expr_def.hpp
-        multi_idx.hpp
         multi_idx_def.hpp
-        no_op_statement.hpp
-        offset_multiplier.hpp
         offset_multiplier_def.hpp
-        omni_idx.hpp
         omni_idx_def.hpp
-        print_statement.hpp
         print_statement_def.hpp
-        printable.hpp
         printable_def.hpp
-        program.hpp
         program_def.hpp
-        range.hpp
         range_def.hpp
-        reject_statement.hpp
         reject_statement_def.hpp
-        return_statement.hpp
         return_statement_def.hpp
-        row_vector_expr.hpp
         row_vector_expr_def.hpp
-        sample.hpp
         sample_def.hpp
-        statement.hpp
         statement_def.hpp
-        statements.hpp
         statements_def.hpp
-        ub_idx.hpp
         ub_idx_def.hpp
-        unary_op.hpp
         unary_op_def.hpp
-        uni_idx.hpp
         uni_idx_def.hpp
-        var_decl.hpp
         var_decl_def.hpp
-        variable.hpp
         variable_def.hpp
-        variable_dims.hpp
         variable_dims_def.hpp
-        while_statement.hpp
-        while_statement_def.hpp)
+        while_statement_def.hpp
+        )

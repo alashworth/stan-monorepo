@@ -1,6 +1,6 @@
 #include <stdexcept>
-#include <test/test-models/good/lang/print_reject_gq_block.hpp>
-#include <test/unit/lang/reject/reject_helper.hpp>
+#include "reject/print_reject_gq_block.hpp"
+#include "reject/reject_helper.hpp"
 #include <gtest/gtest.h>
 
 TEST(StanCommon, printRejectGQ) {

@@ -1,7 +1,7 @@
 #ifndef STAN_LANG_GRAMMARS_TEST_FUNCTIONS_GRAMMAR_DEF_HPP
 #define STAN_LANG_GRAMMARS_TEST_FUNCTIONS_GRAMMAR_DEF_HPP
 
-#include <test/unit/lang/parser/test_functions_grammar.hpp>
+#include "parser/test_functions_grammar.hpp"
 
 #include <stan/util/io/program_reader.hpp>
 #include <stan/language/ast.hpp>

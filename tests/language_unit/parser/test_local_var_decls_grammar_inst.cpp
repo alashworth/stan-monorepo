@@ -1,4 +1,4 @@
-#include <test/unit/lang/parser/test_local_var_decls_grammar_def.hpp>
+#include "parser/test_local_var_decls_grammar_def.hpp"
 #include <stan/language/grammars/iterator_typedefs.hpp>
 
 namespace stan {

@@ -1,5 +1,6 @@
+#include "utility.hpp"
+#include <boost/lexical_cast.hpp>
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
 
 TEST(langParserVarDeclsGrammarDef, addVar) {
   test_throws("validate_add_var_bad1", "Duplicate declaration of variable");

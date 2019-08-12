@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <test/unit/lang/utility.hpp>
+#include "utility.hpp"
 
 TEST(lang_parser, bernoulli_distribution_function_signatures) {
   test_parsable("function-signatures/distributions/univariate/discrete/poisson/poisson_cdf_log");

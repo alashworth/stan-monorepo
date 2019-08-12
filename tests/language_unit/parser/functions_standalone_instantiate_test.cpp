@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <sstream>
-#include <test/test-models/good-standalone-functions/basic.hpp>
-#include <test/test-models/good-standalone-functions/special_functions.hpp>
-#include <test/test-models/good-standalone-functions/integrate.hpp>
+#include "parser/basic.hpp"
+#include "parser/special_functions.hpp"
+#include "parser/integrate.hpp"
 
 using namespace stan::math;
 

@@ -6,7 +6,7 @@ Provides the following imported targets:
 #]]
 
 include(FindPackageHandleStandardArgs)
-find_package(PkgConfig)
+find_package(PkgConfig QUIET)
 pkg_check_modules(PC_Sundials QUIET Sundials)
 
 find_path(base_INCLUDE_DIR sundials_config.h

@@ -1,4 +1,5 @@
-#include <stan/math/prim/arr.hpp>
+#include <stan/math/prim/arr/meta/get.hpp>
+#include <stan/math/prim/scal/err/check_finite.hpp>
 #include <gtest/gtest.h>
 #include <limits>
 #include <vector>
@@ -8,7 +9,7 @@ using stan::math::check_finite;
 // ---------- check_finite: vector tests ----------
 TEST(ErrorHandlingScalar, CheckFinite_Vector) {
   const char* function = "check_finite";
-  std::vector<double> x = {-1, 0, 1};
+  std::vector<double> x{-1, 0, 1};
   ASSERT_NO_THROW(check_finite(function, "x", x))
       << "check_finite should be true with finite x";
 

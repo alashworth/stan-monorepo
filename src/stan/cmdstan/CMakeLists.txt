@@ -1,7 +1,6 @@
-#[[###########################################################################
+##############################################################################
 # STAN COMPILER                                                              #
-#]]
-###########################################################################
+##############################################################################
 
 configure_file(${PROJECT_SOURCE_DIR}/src/stan/version.hpp.in
         ${PROJECT_BINARY_DIR}/src/stan/version.hpp @ONLY)
@@ -9,22 +8,26 @@ configure_file(${PROJECT_SOURCE_DIR}/src/stan/version.hpp.in
 add_executable(stan_stanc
         stanc.cpp
         stanc_helper.hpp
-        ${PROJECT_BINARY_DIR}/src/stan/version.hpp)
+        ${PROJECT_BINARY_DIR}/src/stan/version.hpp
+        )
+
+add_subdirectory(arguments)
 
 set_target_properties(stan_stanc PROPERTIES OUTPUT_NAME "stanc")
 
 target_include_directories(stan_stanc PRIVATE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
-        $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/src>)
+        $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/src>
+        $<INSTALL_INTERFACE:include>)
 
 target_link_libraries(stan_stanc PRIVATE
         Stan::Language
-        Stan::Util)
+        Stan::Util
+        Boost::headers)
 
-#[[###########################################################################
+##############################################################################
 # STAN DIAGNOSE                                                              #
-#]]
-###########################################################################
+##############################################################################
 
 add_executable(stan_diagnose
         diagnose.cpp)
@@ -35,10 +38,9 @@ target_link_libraries(stan_diagnose PRIVATE
 
 set_target_properties(stan_diagnose PROPERTIES OUTPUT_NAME "diagnose")
 
-#[[###########################################################################
+##############################################################################
 # STAN PRINT                                                                 #
-#]]
-###########################################################################
+##############################################################################
 
 add_executable(stan_print
         print.cpp
@@ -49,10 +51,9 @@ target_link_libraries(stan_print PRIVATE
 
 set_target_properties(stan_print PROPERTIES OUTPUT_NAME "print")
 
-#[[###########################################################################
+##############################################################################
 # STAN SUMMARY                                                               #
-#]]
-###########################################################################
+##############################################################################
 
 add_executable(stan_summary
         stansummary.cpp
@@ -63,27 +64,27 @@ target_link_libraries(stan_summary PRIVATE
 
 set_target_properties(stan_summary PROPERTIES OUTPUT_NAME "summary")
 
-#[[###########################################################################
+##############################################################################
 # STAN LIBSTANC                                                              #
-#]]
-###########################################################################
+##############################################################################
 
-add_library(stan_libstanc
-        main.cpp
-        command.hpp)
+#add_library(stan_libstanc
+#        main.cpp # What is this for?
+#        command.hpp)
+
+add_library(stan_libstanc INTERFACE)
 
 add_library(Stan::StanC ALIAS stan_libstanc)
 
-target_link_libraries(stan_libstanc PRIVATE
+target_link_libraries(stan_libstanc INTERFACE
         Stan::Algorithms
         Stan::Services
         Boost::headers)
 
-target_include_directories(stan_libstanc PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_include_directories(stan_libstanc INTERFACE
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>)
 
 set_target_properties(stan_libstanc PROPERTIES EXPORT_NAME "StanC")
-set_target_properties(stan_libstanc PROPERTIES OUTPUT_NAME "stanc")
 
 #[[###########################################################################
 # STAN LIBSTANC MPI                                                          #
