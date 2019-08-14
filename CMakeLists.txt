@@ -36,7 +36,7 @@ endif ()
 # More global compiler specific flags and options
 include(CheckCXXCompilerFlag)
 
-# Stan has so many templates, we need to enable large section support for Windows COFF
+# Stan has many templates, so we need to enable large section support for Windows COFF
 if (MINGW AND CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     check_cxx_compiler_flag("-Wa,-mbig-obj" STAN_FLAGS_BIGOBJ)
     if (STAN_FLAGS_BIGOBJ)
@@ -55,7 +55,7 @@ endif ()
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     check_cxx_compiler_flag("-fuse-ld=gold" STAN_FLAGS_GOLD)
     # argh, why does RTools include the gold linker in its MinGW binutils when it's ELF only?
-    if(STAN_FLAGS_GOLD AND NOT MINGW)
+    if(STAN_FLAGS_GOLD AND NOT WIN32)
         list(APPEND CMAKE_EXE_LINKER_FLAGS "-fuse-ld=gold")
     endif ()
 endif()
@@ -96,7 +96,7 @@ set_package_properties(Boost PROPERTIES
         URL "https://www.boost.org/"
         TYPE REQUIRED)
 
-add_feature_info("Boost MPI" Boost_mpi_FOUND "Necessary for enabling MPI support. Disabled if library not found.")
+add_feature_info("MPI Support" Boost_mpi_FOUND "This requires Boost::MPI.")
 
 find_package(Eigen3 3.3.3 QUIET)
 set_package_properties(Eigen3 PROPERTIES
@@ -145,9 +145,8 @@ set_package_properties(Threads PROPERTIES
 feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
         FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-# Are these still necessary?
+# Is this still necessary?
 target_compile_definitions(Boost::headers INTERFACE
-        $<$<BOOL:${UNIX}>:BOOST_DISABLE_ASSERTS>
         $<$<BOOL:${UNIX}>:BOOST_PHOENIX_NO_VARIADIC_EXPRESSION>
         )
 
@@ -168,9 +167,8 @@ add_subdirectory(src/stan/algorithms)
 add_subdirectory(docs)
 
 if (STAN_BUILD_TESTS)
-    # FIXME: Someday code will compile without warnings. If every pull request fixed five of these, we'll get there.
-    # add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wcast-qual)
-    # add_compile_options(-Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes)
+    add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wcast-qual)
+    add_compile_options(-Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes)
     add_subdirectory(tests)
 endif ()
 

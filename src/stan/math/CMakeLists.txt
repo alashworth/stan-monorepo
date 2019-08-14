@@ -1,8 +1,6 @@
 file(GLOB_RECURSE math_sources CONFIGURE_DEPENDS *.hpp )
-configure_file(version.hpp.in version.hpp @ONLY)
 list(APPEND math_sources
-        ../math.hpp
-        ${CMAKE_CURRENT_BINARY_DIR}/version.hpp)
+        ../math.hpp)
 
 # Base math configuration. Subconfigurations inherit behavior from this target.
 message(STATUS "Configuring Stan math...")
