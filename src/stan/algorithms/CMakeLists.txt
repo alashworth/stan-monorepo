@@ -1,4 +1,4 @@
-message(STATUS "Configuring Stan algorithms library...")
+message(DEBUG "Configuring Stan algorithms library...")
 
 add_library(stan_algorithms INTERFACE)
 
@@ -19,4 +19,4 @@ add_subdirectory(mcmc)
 add_subdirectory(optimization)
 add_subdirectory(variational)
 
-message(STATUS "Configuring Stan algorithms library... [DONE]")
+message(DEBUG "Configuring Stan algorithms library... [DONE]")

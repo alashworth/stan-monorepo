@@ -1,4 +1,4 @@
-message(STATUS "Configuring Stan algorithms unit tests...")
+message(DEBUG "Configuring Stan algorithms unit tests...")
 
 CONFIGURE_FILE(test_csv_files/blocker.1.csv blocker.1.csv COPYONLY)
 CONFIGURE_FILE(test_csv_files/blocker.2.csv blocker.2.csv COPYONLY)
@@ -98,4 +98,4 @@ foreach(model IN LISTS variational_models)
             DEPENDS stan_stanc VERBATIM)
 endforeach()
 
-message(STATUS "Configuring Stan algorithms unit tests... [DONE]")
+message(DEBUG "Configuring Stan algorithms unit tests... [DONE]")

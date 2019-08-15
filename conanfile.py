@@ -9,9 +9,6 @@ class StanConan(ConanFile):
         "gtest/1.8.1@bincrafters/stable",
         "sundials/4.1.0@alashworth/stable",
     ]
-    build_requires = [
-        "cmake_installer/3.15.2@conan/stable"
-    ]
     generators = ["cmake_paths"]
     default_options = {
         "boost:header_only": True

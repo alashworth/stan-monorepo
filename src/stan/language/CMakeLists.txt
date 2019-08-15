@@ -1,4 +1,9 @@
-message(STATUS "Configuring Stan language library...")
+message(DEBUG "Configuring Stan language library...")
+
+if (CMAKE_BUILD_TYPE MATCHES "Debug")
+    message(WARNING "Certain template-heavy sections of Stan do not compile correctly without enabling optimizations."
+            "Consider compiling in RelWithDebInfo mode instead of Debug.")
+endif ()
 
 add_library(stan_language
         ast.hpp
@@ -27,13 +32,9 @@ target_link_libraries(stan_language PUBLIC
         Stan::Services
         )
 
-target_compile_options(stan_language PUBLIC
-        -Os
-        $<$<CXX_COMPILER_ID:GNU>:-fno-var-tracking-assignments>)
-
 add_library(Stan::Language ALIAS stan_language)
 set_property(TARGET stan_language PROPERTY EXPORT_NAME Language)
 
 set_target_properties(stan_language PROPERTIES LINKER_LANGUAGE CXX)
 
-message(STATUS "Configuring Stan language library... [DONE]")
+message(DEBUG "Configuring Stan language library... [DONE]")

@@ -3,7 +3,7 @@ list(APPEND math_sources
         ../math.hpp)
 
 # Base math configuration. Subconfigurations inherit behavior from this target.
-message(STATUS "Configuring Stan math...")
+message(DEBUG "Configuring Stan math...")
 add_library(stan_math INTERFACE)
 add_library(Stan::Math ALIAS stan_math)
 set_property(TARGET stan_math PROPERTY EXPORT_NAME Math)
@@ -26,13 +26,13 @@ target_compile_features(stan_math INTERFACE
         cxx_generic_lambdas
         cxx_decltype_auto)
 
-message(STATUS "Configuring Stan math... [DONE]")
+message(DEBUG "Configuring Stan math... [DONE]")
 
 # OpenCL
 if (TARGET OpenCL::OpenCL AND TARGET Threads::Threads)
-    message(STATUS "Configuring Stan math with OpenCL support...")
-    message(VERBOSE "Stan math using OpenCL version: ${OpenCL_VERSION_STRING}")
-    message(VERBOSE "OpenCL library: ${OpenCL_LIBRARY}")
+    message(DEBUG "Configuring Stan math with OpenCL support...")
+    message(DEBUG "Stan math using OpenCL version: ${OpenCL_VERSION_STRING}")
+    message(DEBUG "OpenCL library: ${OpenCL_LIBRARY}")
     add_library(stan_math_opencl INTERFACE)
     add_library(Stan::MathOpenCl ALIAS stan_math_opencl)
     set_property(TARGET stan_math_opencl PROPERTY EXPORT_NAME MathOpenCL)
@@ -46,9 +46,9 @@ if (TARGET OpenCL::OpenCL AND TARGET Threads::Threads)
             CL_TARGET_OPENCL_VERSION=120
             __CL_ENABLE_EXCEPTIONS)
 
-    message(STATUS "Configuring Stan math with OpenCL support... [DONE]")
+    message(DEBUG "Configuring Stan math with OpenCL support... [DONE]")
 else ()
-    message(STATUS "Configuring Stan math with OpenCL support... [SKIPPED]")
+    message(DEBUG "Configuring Stan math with OpenCL support... [SKIPPED]")
 endif ()
 
 # MPI

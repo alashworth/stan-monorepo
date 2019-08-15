@@ -49,16 +49,16 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     check_cxx_compiler_flag("-fuse-ld=lld" STAN_FLAGS_LLD)
     if (STAN_FLAGS_LLD)
         list(APPEND CMAKE_EXE_LINKER_FLAGS "-fuse-ld=lld")
-    endif()
+    endif ()
 endif ()
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     check_cxx_compiler_flag("-fuse-ld=gold" STAN_FLAGS_GOLD)
     # argh, why does RTools include the gold linker in its MinGW binutils when it's ELF only?
-    if(STAN_FLAGS_GOLD AND NOT WIN32)
+    if (STAN_FLAGS_GOLD AND NOT WIN32)
         list(APPEND CMAKE_EXE_LINKER_FLAGS "-fuse-ld=gold")
     endif ()
-endif()
+endif ()
 
 # Uncomment below command to enable a debug print of dependency search directories
 # set(CMAKE_FIND_DEBUG_MODE ON)
@@ -70,9 +70,7 @@ if (EXISTS ${PROJECT_BINARY_DIR}/conan_paths.cmake)
 endif ()
 
 # Set a default build type if none was specified
-# MinSizeRel is the safest since certain Stan libraries won't link successfully
-# if debug symbols are enabled due to the number of templates.
-set(default_build_type "MinSizeRel")
+set(default_build_type "RelWithDebInfo")
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
     set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
@@ -167,8 +165,14 @@ add_subdirectory(src/stan/algorithms)
 add_subdirectory(docs)
 
 if (STAN_BUILD_TESTS)
-    add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wcast-qual)
-    add_compile_options(-Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes)
+    # Global testing options
+#    check_cxx_compiler_flag("--coverage" STAN_GCOV_PRESENT)
+#    if (STAN_GCOV_PRESENT AND CMAKE_BUILD_TYPE STREQUAL "Debug" AND NOT WIN32)
+#        add_compile_options(--coverage)
+#    endif ()
+#    add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wcast-qual)
+#    add_compile_options(-Wmissing-declarations -Wmissing-include-dirs)
+
     add_subdirectory(tests)
 endif ()
 

@@ -1,4 +1,4 @@
-message(STATUS "Configuring Stan utility library...")
+message(DEBUG "Configuring Stan utility library...")
 file(GLOB_RECURSE srcs *.hpp)
 
 add_library(stan_util INTERFACE)
@@ -13,4 +13,4 @@ target_include_directories(stan_util INTERFACE
 
 target_link_libraries(stan_util INTERFACE
 		Stan::Math Boost::headers Eigen3::Eigen)
-message(STATUS "Configuring Stan utility library... [DONE]")
+message(DEBUG "Configuring Stan utility library... [DONE]")

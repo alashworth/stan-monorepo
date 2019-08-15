@@ -1,10 +1,3 @@
-# FIXME: argh, why does nothing in Stan::Lang have a header definition?
-check_cxx_compiler_flag("-Wl,--allow-multiple-definition" STAN_FLAGS_MULDEF)
-if(NOT STAN_FLAGS_MULDEF)
-    message(STATUS "Stan language unit tests... [SKIPPED]")
-    return()
-endif()
-
 set(TEST_MODEL_DIR ${PROJECT_SOURCE_DIR}/tests/test_models)
 configure_file(util.hpp.in util.hpp @ONLY)
 

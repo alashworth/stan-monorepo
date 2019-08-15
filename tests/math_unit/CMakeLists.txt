@@ -1,4 +1,4 @@
-message(STATUS "Configuring Stan math unit tests...")
+message(DEBUG "Configuring Stan math unit tests...")
 
 # convenience method for constructing "plain" math unit tests
 function(add_math_unit_test name)
@@ -89,7 +89,7 @@ set(mpi_test_srcs
         )
 
 if(Boost_mpi_FOUND)
-	message(STATUS "Configuring Stan math MPI unit tests...")
+	message(DEBUG "Configuring Stan math MPI unit tests...")
 	foreach(src IN LISTS mpi_test_srcs)
 		string(REPLACE ".cpp" ".mpi" src_fn ${src})
 		string(MAKE_C_IDENTIFIER ${src_fn} src_fn)
@@ -104,12 +104,12 @@ if(Boost_mpi_FOUND)
 				${CMAKE_CURRENT_BINARY_DIR}/${src_fn}
 				${MPIEXEC_POSTFLAGS})
     endforeach()
-    message(STATUS "Configuring Stan math MPI unit tests... [DONE]")
+    message(DEBUG "Configuring Stan math MPI unit tests... [DONE]")
 else()
-	message(STATUS "Configuring Stan math MPI unit tests... [SKIPPED]")
+	message(DEBUG "Configuring Stan math MPI unit tests... [SKIPPED]")
 endif()
 
 add_subdirectory(math)
 
-message(STATUS "Configuring Stan math unit tests... [DONE]")
+message(DEBUG "Configuring Stan math unit tests... [DONE]")
 
