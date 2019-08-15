@@ -1,12 +1,11 @@
 #ifndef STAN_MATH_FWD_SCAL_FUN_GAMMA_P_HPP
 #define STAN_MATH_FWD_SCAL_FUN_GAMMA_P_HPP
 
-#include <stan/math/fwd/core.hpp>
 #include <stan/math/fwd/meta.hpp>
+#include <stan/math/fwd/core.hpp>
 #include <stan/math/prim/scal/fun/gamma_p.hpp>
-#include <stan/math/prim/scal/fun/grad_reg_lower_inc_gamma.hpp>
 #include <stan/math/prim/scal/fun/lgamma.hpp>
-
+#include <stan/math/prim/scal/fun/grad_reg_lower_inc_gamma.hpp>
 #include <limits>
 
 namespace stan {

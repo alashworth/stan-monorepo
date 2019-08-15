@@ -22,10 +22,6 @@ target_link_libraries(stan_math INTERFACE
 
 target_compile_definitions(stan_math INTERFACE _USE_MATH_DEFINES)
 
-target_compile_features(stan_math INTERFACE
-        cxx_generic_lambdas
-        cxx_decltype_auto)
-
 message(DEBUG "Configuring Stan math... [DONE]")
 
 # OpenCL
@@ -73,4 +69,3 @@ if (TARGET Threads::Threads)
     target_compile_definitions(stan_math_mt INTERFACE STAN_THREADS)
 
 endif ()
-

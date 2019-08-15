@@ -2,6 +2,7 @@
 #define STAN_MATH_PRIM_SCAL_HPP
 
 #include <stan/math/prim/meta.hpp>
+
 #include <stan/math/prim/scal/err/check_2F1_converges.hpp>
 #include <stan/math/prim/scal/err/check_3F2_converges.hpp>
 #include <stan/math/prim/scal/err/check_bounded.hpp>

@@ -177,7 +177,7 @@ TEST(ErrorHandlingScalar, CheckGreaterOrEqual_Matrix_one_indexed_message) {
       << message;
 }
 
-TEST(ErrorHandlingScalar, CheckGreaterOrEqual_nan) {
+TEST(ErrorHandlingScalar, CheckGreaterOrEqual_nan_) {
   const char* function = "check_greater_or_equal";
   double nan = std::numeric_limits<double>::quiet_NaN();
 

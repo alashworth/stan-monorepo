@@ -3,7 +3,6 @@
 
 #include <stan/math/fwd/core.hpp>
 #include <stan/math/prim/arr/fun/sum.hpp>
-
 #include <vector>
 
 namespace stan {

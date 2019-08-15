@@ -1,11 +1,11 @@
 #ifndef STAN_MATH_FWD_SCAL_FUN_BINOMIAL_COEFFICIENT_LOG_HPP
 #define STAN_MATH_FWD_SCAL_FUN_BINOMIAL_COEFFICIENT_LOG_HPP
 
-#include <stan/math/fwd/core.hpp>
 #include <stan/math/fwd/meta.hpp>
-#include <stan/math/prim/scal/fun/binomial_coefficient_log.hpp>
+#include <stan/math/fwd/core.hpp>
 
 #include <boost/math/special_functions/digamma.hpp>
+#include <stan/math/prim/scal/fun/binomial_coefficient_log.hpp>
 
 namespace stan {
 namespace math {

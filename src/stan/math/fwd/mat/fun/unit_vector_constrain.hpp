@@ -6,8 +6,8 @@
 #include <stan/math/fwd/mat/fun/dot_self.hpp>
 #include <stan/math/fwd/mat/fun/tcrossprod.hpp>
 #include <stan/math/fwd/scal/fun/sqrt.hpp>
-#include <stan/math/prim/mat/fun/Eigen.hpp>
 #include <stan/math/prim/mat/fun/divide.hpp>
+#include <stan/math/prim/mat/fun/Eigen.hpp>
 #include <stan/math/prim/mat/fun/tcrossprod.hpp>
 #include <stan/math/prim/mat/fun/unit_vector_constrain.hpp>
 #include <stan/math/prim/scal/fun/inv.hpp>
