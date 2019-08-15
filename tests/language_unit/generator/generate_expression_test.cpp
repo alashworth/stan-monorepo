@@ -1,9 +1,5 @@
 #include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
-#include "utility.hpp"
 #include <gtest/gtest.h>
-#include <iostream>
-#include <sstream>
 #include <string>
 
 TEST(generateExpression, gen_int_lit_expr) {

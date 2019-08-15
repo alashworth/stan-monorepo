@@ -1,7 +1,6 @@
 #ifndef TEST_UNIT_LANG_PARSER_UTILITY_HPP
 #define TEST_UNIT_LANG_PARSER_UTILITY_HPP
 
-//#include <stan/language/ast/node/program.hpp>
 #include <string>
 #include <util.hpp>
 

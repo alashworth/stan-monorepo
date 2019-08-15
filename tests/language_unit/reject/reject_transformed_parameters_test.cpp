@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 
 // test reject() throws from transformed parameters
-TEST(StanCommon, rejectFuncCallTransformedParameters) {
+TEST(StanCommon, rejectFuncCallTransformedParameters1) {
   typedef 
     reject_transformed_parameters_model_namespace
     ::reject_transformed_parameters_model

@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include <stan/language/compiler.hpp>
 #include "util.hpp"
-#include <boost/algorithm/string.hpp>
 
 TEST(LangCompiler, compile) {
   std::stringstream msgs, stan_lang_in, cpp_out;

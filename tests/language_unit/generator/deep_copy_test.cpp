@@ -1,20 +1,9 @@
-#include <stan/language/ast.hpp>
-
 #include <gtest/gtest.h>
 #include "util.hpp"
 #include "utility.hpp"
-
-#include <stan/services/callbacks/stream_writer.hpp>
 #include <stan/util/io/dump.hpp>
-
 #include "generator/deep-copy-warning.hpp"
-
-#include <boost/random/additive_combine.hpp>
-#include <fstream>
-#include <stdexcept>
-#include <sstream>
 #include <string>
-#include <iostream>
 
 TEST(lang, deep_copy_hpp) {
   std::string m1("functions{\n"

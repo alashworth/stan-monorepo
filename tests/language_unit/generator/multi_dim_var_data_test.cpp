@@ -1,14 +1,8 @@
-#include <stan/language/ast.hpp>
 #include "generator/multidim_var_data_ar45_mat23.hpp"
-#include <stan/util/io/array_var_context.hpp>
-
 #include <gtest/gtest.h>
 #include "util.hpp"
-#include "utility.hpp"
-#include <sstream>
 #include <string>
 #include <iostream>
-#include <boost/random/additive_combine.hpp> // L'Ecuyer RNG
 
 //  TODO:morris run model on good/bad input data: src/test/test-models/good/parser-generator/multidim_var_data_ar45_mat23 + data file
 

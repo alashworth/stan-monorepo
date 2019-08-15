@@ -1,9 +1,15 @@
 #include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
 #include "utility.hpp"
 #include <gtest/gtest.h>
 #include <iostream>
 #include <sstream>
+
+namespace stan {
+namespace lang {
+void generate_idxs(const std::vector<idx>& idxs, std::ostream& o);
+void generate_statement(const statement& s, int indent, std::ostream& o);
+}
+}
 
 TEST(langGenerator, sliceIndexes) {
   // boundary condition of no indices

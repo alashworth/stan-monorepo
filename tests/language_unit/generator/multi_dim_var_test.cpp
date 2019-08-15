@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-TEST(lang, data_block_var_ast) {
+TEST(lang, data_block_var_ast_multidim) {
   std::string m1("data {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -38,7 +38,7 @@ TEST(lang, data_block_var_ast) {
   EXPECT_EQ("1",bounds.high_.to_string());
 }
 
-TEST(lang, data_block_var_hpp) {
+TEST(lang, data_block_var_hpp_multidim) {
   std::string m1("data {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -79,7 +79,7 @@ TEST(lang, data_block_var_hpp) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, transformed_data_block_var_ast) {
+TEST(lang, transformed_data_block_var_ast_multidim) {
   std::string m1("transformed data {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -91,7 +91,7 @@ TEST(lang, transformed_data_block_var_ast) {
 }
 
 
-TEST(lang, transformed_data_block_var_hpp) {
+TEST(lang, transformed_data_block_var_hpp_multidim) {
   std::string m1("transformed data {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -109,7 +109,7 @@ TEST(lang, transformed_data_block_var_hpp) {
 }
 
 
-TEST(lang, params_block_var_ast) {
+TEST(lang, params_block_var_ast_multidim) {
   std::string m1("parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -134,7 +134,7 @@ TEST(lang, params_block_var_hpp_ctor) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_xform_inits) {
+TEST(lang, params_block_var_hpp_xform_inits_multidim) {
   // transform_inits block has parameter initialization
   std::string m1("parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
@@ -180,7 +180,7 @@ TEST(lang, params_block_var_hpp_xform_inits) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_xform_log_prob) {
+TEST(lang, params_block_var_hpp_xform_log_prob_multidim) {
   // log_prob checks constraints on model param
   std::string m1("parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
@@ -205,7 +205,7 @@ TEST(lang, params_block_var_hpp_xform_log_prob) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }  
 
-TEST(lang, params_block_var_hpp_get_dims) {
+TEST(lang, params_block_var_hpp_get_dims_multidim) {
   // get_dims gets all dimensions
   std::string m1("parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
@@ -222,7 +222,7 @@ TEST(lang, params_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_write_array) {
+TEST(lang, params_block_var_hpp_write_array_multidim) {
   // write_array writes param
   std::string m1("parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
@@ -257,7 +257,7 @@ TEST(lang, params_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_param_names) {
+TEST(lang, params_block_var_hpp_param_names_multidim) {
   // constrained, unconstrained param names index order correctly
   std::string m1("parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
@@ -282,7 +282,7 @@ TEST(lang, params_block_var_hpp_param_names) {
   EXPECT_EQ(2, count_matches(expected,hpp)); // matches 2 methods:  constrained_param_names, unconstrained_param_names
 }
 
-TEST(lang, transformed_params_block_var_ast) {
+TEST(lang, transformed_params_block_var_ast_multidim) {
   std::string m1("transformed parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -292,7 +292,7 @@ TEST(lang, transformed_params_block_var_ast) {
   EXPECT_EQ("ar_mat", bvd.name());
 }
 
-TEST(lang, transformed_params_block_var_hpp_log_prob) {
+TEST(lang, transformed_params_block_var_hpp_log_prob_multidim) {
   std::string m1("transformed parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -350,7 +350,7 @@ TEST(lang, transformed_params_block_var_hpp_log_prob) {
 
 }
 
-TEST(lang, transformed_params_block_var_hpp_get_dims) {
+TEST(lang, transformed_params_block_var_hpp_get_dims_multidim) {
   std::string m1("transformed parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -366,7 +366,7 @@ TEST(lang, transformed_params_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, transformed_params_block_var_hpp_write_array) {
+TEST(lang, transformed_params_block_var_hpp_write_array_multidim) {
   std::string m1("transformed parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -418,7 +418,7 @@ TEST(lang, transformed_params_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected_3,hpp));
 }
 
-TEST(lang, transformed_params_block_var_hpp_param_names) {
+TEST(lang, transformed_params_block_var_hpp_param_names_multidim) {
   std::string m1("transformed parameters {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -446,7 +446,7 @@ TEST(lang, transformed_params_block_var_hpp_param_names) {
 
 
 
-TEST(lang, generated_quantities_block_var_ast) {
+TEST(lang, generated_quantities_block_var_ast_multidim) {
   std::string m1("generated quantities {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -456,7 +456,7 @@ TEST(lang, generated_quantities_block_var_ast) {
   EXPECT_EQ("ar_mat", bvd.name());
 }
 
-TEST(lang, generated_quantities_block_var_hpp_get_dims) {
+TEST(lang, generated_quantities_block_var_hpp_get_dims_multidim) {
   std::string m1("generated quantities {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -472,7 +472,7 @@ TEST(lang, generated_quantities_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, generated_quantities_block_var_hpp_write_array) {
+TEST(lang, generated_quantities_block_var_hpp_write_array_multidim) {
   std::string m1("generated quantities {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");
@@ -521,7 +521,7 @@ TEST(lang, generated_quantities_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected_3,hpp));
 }
 
-TEST(lang, generated_quantities_block_var_hpp_param_names) {
+TEST(lang, generated_quantities_block_var_hpp_param_names_multidim) {
   std::string m1("generated quantities {\n"
                  "  matrix<lower=0,upper=1>[2,3] ar_mat[4,5];\n"
                  "}\n");

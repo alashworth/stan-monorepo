@@ -66,7 +66,4 @@ target_link_libraries(stan_language_unit_tests
         GTest::GTest
         GTest::Main)
 
-target_link_options(stan_language_unit_tests PRIVATE "LINKER:--allow-multiple-definition")
-
-#gtest_discover_tests(stan_language_unit_tests
-#        PROPERTIES WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/tests/test_models)
+gtest_discover_tests(stan_language_unit_tests)

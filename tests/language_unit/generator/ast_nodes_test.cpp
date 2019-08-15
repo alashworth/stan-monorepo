@@ -1,9 +1,4 @@
 #include <iostream>
-#include <sstream>
-#include <boost/random/additive_combine.hpp>
-#include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
-#include <stan/util/io/dump.hpp>
 #include "generator/test_lp.hpp"
 #include "utility.hpp"
 #include <gtest/gtest.h>

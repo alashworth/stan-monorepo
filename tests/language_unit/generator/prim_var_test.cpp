@@ -1,13 +1,11 @@
 #include <stan/language/ast.hpp>
 
 #include <gtest/gtest.h>
-#include <iostream>
-#include <sstream>
 #include <string>
 #include "utility.hpp"
 #include "util.hpp"
 
-TEST(lang, data_block_var_ast) {
+TEST(lang, data_block_var_ast_primvar) {
   std::string m1("data {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -46,7 +44,7 @@ TEST(lang, data_block_var_ast) {
   EXPECT_EQ("1", bounds.high_.to_string());
 }
 
-TEST(lang, data_block_var_hpp_class_member_vars) {
+TEST(lang, data_block_var_hpp_class_member_vars_primvar) {
   std::string m1("data {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -64,7 +62,7 @@ TEST(lang, data_block_var_hpp_class_member_vars) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, data_block_var_hpp_ctor) {
+TEST(lang, data_block_var_hpp_ctor_primvar) {
   std::string m1("data {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -141,7 +139,7 @@ TEST(lang, data_block_var_hpp_ctor) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, transformed_data_block_var_ast) {
+TEST(lang, transformed_data_block_var_ast_primvar) {
   std::string m1("transformed data {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -161,7 +159,7 @@ TEST(lang, transformed_data_block_var_ast) {
   EXPECT_EQ("ar_p2", bvd4.name());
 }
 
-TEST(lang, transformed_data_block_var_hpp_ctor) {
+TEST(lang, transformed_data_block_var_hpp_ctor_primvar) {
   std::string m1("transformed data {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -208,7 +206,7 @@ TEST(lang, transformed_data_block_var_hpp_ctor) {
   EXPECT_EQ(1, count_matches(expected_2, hpp));
 }
 
-TEST(lang, params_block_var_ast) {
+TEST(lang, params_block_var_ast_primvar) {
   std::string m1("parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -224,7 +222,7 @@ TEST(lang, params_block_var_ast) {
   EXPECT_EQ("ar_p3", bvd3.name());
 }
 
-TEST(lang, params_block_var_hpp_ctor) {
+TEST(lang, params_block_var_hpp_ctor_primvar) {
   std::string m1("parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -247,7 +245,7 @@ TEST(lang, params_block_var_hpp_ctor) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, params_block_var_hpp_xform_inits) {
+TEST(lang, params_block_var_hpp_xform_inits_primvar) {
   // transform_inits block has parameter initialization
   std::string m1("parameters {\n"
                  "  real p2;\n"
@@ -334,7 +332,7 @@ TEST(lang, params_block_var_hpp_xform_inits) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, params_block_var_hpp_log_prob) {
+TEST(lang, params_block_var_hpp_log_prob_primvar) {
   // log_prob checks constraints on model param
   std::string m1("parameters {\n"
                  "  real p2;\n"
@@ -380,7 +378,7 @@ TEST(lang, params_block_var_hpp_log_prob) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, params_block_var_hpp_get_dims) {
+TEST(lang, params_block_var_hpp_get_dims_primvar) {
   // get_dims gets all dimensions
   std::string m1("parameters {\n"
                  "  real p2;\n"
@@ -399,7 +397,7 @@ TEST(lang, params_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, params_block_var_hpp_write_array) {
+TEST(lang, params_block_var_hpp_write_array_primvar) {
   std::string m1("parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -423,7 +421,7 @@ TEST(lang, params_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, params_block_var_hpp_param_names) {
+TEST(lang, params_block_var_hpp_param_names_primvar) {
   std::string m1("parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -446,7 +444,7 @@ TEST(lang, params_block_var_hpp_param_names) {
                                               // unconstrained_param_names
 }
 
-TEST(lang, transformed_params_block_var_ast) {
+TEST(lang, transformed_params_block_var_ast_primvar) {
   std::string m1("transformed parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -459,7 +457,7 @@ TEST(lang, transformed_params_block_var_ast) {
   EXPECT_EQ("ar_p2", bvd2.name());
 }
 
-TEST(lang, transformed_params_block_var_hpp_log_prob) {
+TEST(lang, transformed_params_block_var_hpp_log_prob_primvar) {
   std::string m1("transformed parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -524,7 +522,7 @@ TEST(lang, transformed_params_block_var_hpp_log_prob) {
   EXPECT_EQ(1, count_matches(expected_2, hpp));
 }
 
-TEST(lang, transformed_params_block_var_hpp_get_dims) {
+TEST(lang, transformed_params_block_var_hpp_get_dims_primvar) {
   std::string m1("transformed parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -541,7 +539,7 @@ TEST(lang, transformed_params_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, transformed_params_block_var_hpp_write_array) {
+TEST(lang, transformed_params_block_var_hpp_write_array_primvar) {
   std::string m1("transformed parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -590,7 +588,7 @@ TEST(lang, transformed_params_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected_2, hpp));
 }
 
-TEST(lang, transformed_params_block_var_hpp_param_names) {
+TEST(lang, transformed_params_block_var_hpp_param_names_primvar) {
   std::string m1("transformed parameters {\n"
                  "  real p2;\n"
                  "  real<lower=0, upper=1> ar_p2[4];\n"
@@ -612,7 +610,7 @@ TEST(lang, transformed_params_block_var_hpp_param_names) {
   EXPECT_EQ(2, count_matches(expected, hpp));
 }
 
-TEST(lang, generated_quantities_block_var_ast) {
+TEST(lang, generated_quantities_block_var_ast_primvar) {
   std::string m1("generated quantities {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -631,7 +629,7 @@ TEST(lang, generated_quantities_block_var_ast) {
   EXPECT_EQ("ar_p2", bvd4.name());
 }
 
-TEST(lang, generated_quantities_block_var_hpp_get_dims) {
+TEST(lang, generated_quantities_block_var_hpp_get_dims_primvar) {
   std::string m1("generated quantities {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -655,7 +653,7 @@ TEST(lang, generated_quantities_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, generated_quantities_block_var_hpp_write_array) {
+TEST(lang, generated_quantities_block_var_hpp_write_array_primvar) {
   std::string m1("generated quantities {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"
@@ -726,7 +724,7 @@ TEST(lang, generated_quantities_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected_3, hpp));
 }
 
-TEST(lang, generated_quantities_block_var_hpp_param_names) {
+TEST(lang, generated_quantities_block_var_hpp_param_names_primvar) {
   std::string m1("generated quantities {\n"
                  "  int<lower=0, upper=1> p1;\n"
                  "  real p2;\n"

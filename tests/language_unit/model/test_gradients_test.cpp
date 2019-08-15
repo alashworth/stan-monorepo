@@ -7,7 +7,7 @@
 #include <gtest/gtest.h>
 
 
-TEST(ModelUtil, streams) {
+TEST(ModelUtil, streams1) {
   std::fstream data_stream(std::string("").c_str(), std::fstream::in);
   stan::io::dump data_var_context(data_stream);
   data_stream.close();

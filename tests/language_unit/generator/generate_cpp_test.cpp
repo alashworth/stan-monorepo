@@ -1,10 +1,18 @@
-#include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
-#include "utility.hpp"
 #include "util.hpp"
+#include <stan/language/ast.hpp>
+#include <stan/util/io/program_reader.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <sstream>
+
+namespace stan {
+namespace lang {
+void generate_cpp(const stan::lang::program& prog, const std::string& model_name,
+                  const std::vector<io::preproc_event>& history,
+                  std::ostream& o);
+void generate_transform_inits_method(const std::vector<block_var_decl>& vs,
+                                     std::ostream& o);
+}
+}
 
 TEST(lang, generate_cpp) {
   stan::lang::program prog;

@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-TEST(lang, data_block_ast) {
+TEST(lang, data_block_ast_chol) {
   std::string m1("data {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -37,7 +37,7 @@ TEST(lang, data_block_ast) {
   EXPECT_EQ("3",bvt2.arg2().to_string());
 }
 
-TEST(lang, data_block_hpp_members) {
+TEST(lang, data_block_hpp_members_chol) {
   std::string m1("data {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -51,7 +51,7 @@ TEST(lang, data_block_hpp_members) {
 }
 
 
-TEST(lang, data_block_hpp_ctor) {
+TEST(lang, data_block_hpp_ctor_chol) {
   std::string m1("data {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -94,7 +94,7 @@ TEST(lang, data_block_hpp_ctor) {
   EXPECT_EQ(1, count_matches(expected, hpp));
 }
 
-TEST(lang, transformed_data_block_ast) {
+TEST(lang, transformed_data_block_ast_chol) {
   std::string m1("transformed data {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -108,7 +108,7 @@ TEST(lang, transformed_data_block_ast) {
   EXPECT_EQ("cfcov_33", bvd2.name());
 }
 
-TEST(lang, transformed_data_block_hpp_members) {
+TEST(lang, transformed_data_block_hpp_members_chol) {
   std::string m1("transformed data {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -122,7 +122,7 @@ TEST(lang, transformed_data_block_hpp_members) {
 }
 
 
-TEST(lang, transformed_data_block_hpp_ctor) {
+TEST(lang, transformed_data_block_hpp_ctor_chol) {
   std::string m1("transformed data {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -153,7 +153,7 @@ TEST(lang, transformed_data_block_hpp_ctor) {
   EXPECT_EQ(1, count_matches(expected_2, hpp));
 }
 
-TEST(lang, params_block_ast) {
+TEST(lang, params_block_ast_chol) {
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -166,7 +166,7 @@ TEST(lang, params_block_ast) {
   EXPECT_EQ("cfcov_33", bvd2.name());
 }
 
-TEST(lang, params_block_var_hpp_ctor) {
+TEST(lang, params_block_var_hpp_ctor_chol) {
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -188,7 +188,7 @@ TEST(lang, params_block_var_hpp_ctor) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_xform_inits) {
+TEST(lang, params_block_var_hpp_xform_inits_chol) {
   // transform_inits block has parameter initialization
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
@@ -243,7 +243,7 @@ TEST(lang, params_block_var_hpp_xform_inits) {
   EXPECT_EQ(1, count_matches(expected_2,hpp));
 }
 
-TEST(lang, params_block_var_hpp_xform_log_prob) {
+TEST(lang, params_block_var_hpp_xform_log_prob_chol) {
   // log_prob checks constraints on model param
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
@@ -269,7 +269,7 @@ TEST(lang, params_block_var_hpp_xform_log_prob) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }  
 
-TEST(lang, params_block_var_hpp_get_dims) {
+TEST(lang, params_block_var_hpp_get_dims_chol) {
   // get_dims gets all dimensions
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
@@ -293,7 +293,7 @@ TEST(lang, params_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_write_array) {
+TEST(lang, params_block_var_hpp_write_array_chol) {
   // write_array writes param
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
@@ -323,7 +323,7 @@ TEST(lang, params_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_constrained_param_names) {
+TEST(lang, params_block_var_hpp_constrained_param_names_chol) {
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -352,7 +352,7 @@ TEST(lang, params_block_var_hpp_constrained_param_names) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, params_block_var_hpp_unconstrained_param_names) {
+TEST(lang, params_block_var_hpp_unconstrained_param_names_chol) {
   std::string m1("parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -374,7 +374,7 @@ TEST(lang, params_block_var_hpp_unconstrained_param_names) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, transformed_parameters_block_ast) {
+TEST(lang, transformed_parameters_block_ast_chol) {
   std::string m1("transformed parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -385,7 +385,7 @@ TEST(lang, transformed_parameters_block_ast) {
   EXPECT_EQ("cfcov_54", bvd1.name());
 }
 
-TEST(lang, transformed_params_block_var_hpp_log_prob) {
+TEST(lang, transformed_params_block_var_hpp_log_prob_chol) {
   std::string m1("transformed parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -444,7 +444,7 @@ TEST(lang, transformed_params_block_var_hpp_log_prob) {
   EXPECT_EQ(1, count_matches(expected_2,hpp));
 }
 
-TEST(lang, transformed_params_block_var_hpp_get_dims) {
+TEST(lang, transformed_params_block_var_hpp_get_dims_chol) {
   std::string m1("transformed parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -466,7 +466,7 @@ TEST(lang, transformed_params_block_var_hpp_get_dims) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, transformed_params_block_var_hpp_write_array) {
+TEST(lang, transformed_params_block_var_hpp_write_array_chol) {
   std::string m1("transformed parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -520,7 +520,7 @@ TEST(lang, transformed_params_block_var_hpp_write_array) {
   EXPECT_EQ(1, count_matches(expected_3,hpp));
 }
 
-TEST(lang, xform_params_block_var_hpp_constrained_param_names) {
+TEST(lang, xform_params_block_var_hpp_constrained_param_names_chol) {
   std::string m1("transformed parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -550,7 +550,7 @@ TEST(lang, xform_params_block_var_hpp_constrained_param_names) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, xform_params_block_var_hpp_unconstrained_param_names) {
+TEST(lang, xform_params_block_var_hpp_unconstrained_param_names_chol) {
   std::string m1("transformed parameters {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -574,7 +574,7 @@ TEST(lang, xform_params_block_var_hpp_unconstrained_param_names) {
   EXPECT_EQ(1, count_matches(expected,hpp));
 }
 
-TEST(lang, generated_quantities_block_var_ast) {
+TEST(lang, generated_quantities_block_var_ast_chol) {
   std::string m1("generated quantities {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"
@@ -585,7 +585,7 @@ TEST(lang, generated_quantities_block_var_ast) {
   EXPECT_EQ("cfcov_54", bvd.name());
 }
 
-TEST(lang, generated_quantities_block_var_hpp_write_array) {
+TEST(lang, generated_quantities_block_var_hpp_write_array_chol) {
   std::string m1("generated quantities {\n"
                  "  cholesky_factor_cov[5,4] cfcov_54;\n"
                  "  cholesky_factor_cov[3] cfcov_33;\n"

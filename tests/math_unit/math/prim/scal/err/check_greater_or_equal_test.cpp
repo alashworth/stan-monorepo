@@ -36,7 +36,7 @@ TEST(ErrorHandlingScalar, CheckGreaterOrEqual) {
       << "x == Inf and lb == Inf";
 }
 
-TEST(ErrorHandlingScalar, CheckGreaterOrEqual_nan) {
+TEST(ErrorHandlingScalar, CheckGreaterOrEqual_nan_1) {
   const char* function = "check_greater_or_equal";
   double x = 10.0;
   double lb = 0.0;

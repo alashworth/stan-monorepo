@@ -1,11 +1,10 @@
 #include <stan/language/model/finite_diff_grad.hpp>
 #include "test_model.hpp"
 #include "model/valid.hpp"
-#include "util.hpp"
 #include <stan/services/callbacks/interrupt.hpp>
 #include <gtest/gtest.h>
 
-TEST(ModelUtil, finite_diff_grad__false_false) {
+TEST(ModelUtil,   finite_diff_grad__false_false_diffgrad_diffgrad) {
   TestModel_uniform_01 model;
   std::vector<double> params_r(1);
   std::vector<int> params_i(0);
@@ -22,7 +21,7 @@ TEST(ModelUtil, finite_diff_grad__false_false) {
     EXPECT_FLOAT_EQ(0.0, gradient[0]);
   }
 }
-TEST(ModelUtil, finite_diff_grad__false_true) {
+TEST(ModelUtil,   finite_diff_grad__false_true_diffgrad_diffgrad) {
   TestModel_uniform_01 model;
   std::vector<double> params_r(1);
   std::vector<int> params_i(0);
@@ -44,7 +43,7 @@ TEST(ModelUtil, finite_diff_grad__false_true) {
   }
 }
 
-TEST(ModelUtil, finite_diff_grad__true_false) {
+TEST(ModelUtil,   finite_diff_grad__true_false_diffgrad_diffgrad) {
   TestModel_uniform_01 model;
   std::vector<double> params_r(1);
   std::vector<int> params_i(0);
@@ -64,7 +63,7 @@ TEST(ModelUtil, finite_diff_grad__true_false) {
   }
 }
 
-TEST(ModelUtil, finite_diff_grad__true_true) {
+TEST(ModelUtil,  finite_diff_grad__true_true_diffgrad) {
   TestModel_uniform_01 model;
   std::vector<double> params_r(1);
   std::vector<int> params_i(0);
@@ -85,7 +84,7 @@ TEST(ModelUtil, finite_diff_grad__true_true) {
   }
 }
 
-TEST(ModelUtil, streams) {
+TEST(ModelUtil,  streams_diffgrad) {
   std::fstream data_stream(std::string("").c_str(), std::fstream::in);
   stan::io::dump data_var_context(data_stream);
   data_stream.close();

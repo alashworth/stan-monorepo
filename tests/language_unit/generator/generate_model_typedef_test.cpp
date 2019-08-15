@@ -1,8 +1,14 @@
-#include <stan/language/generator.hpp>
+#include <stan/language/ast.hpp>
 #include "utility.hpp"
 #include "util.hpp"
 #include <gtest/gtest.h>
 #include <sstream>
+
+namespace stan {
+namespace lang {
+void generate_model_typedef(const std::string& model_name, std::ostream& o);
+}
+}
 
 TEST(lang, generate_model_typedef) {
   std::string model_name = "name";

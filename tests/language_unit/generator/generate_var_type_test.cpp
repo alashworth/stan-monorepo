@@ -1,10 +1,18 @@
 #include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
 #include "utility.hpp"
 #include "util.hpp"
 #include <gtest/gtest.h>
 #include <iostream>
 #include <sstream>
+
+namespace stan {
+namespace lang {
+void generate_real_var_type(const scope& var_scope, bool has_var,
+                            std::ostream& o);
+void generate_bare_type(const bare_expr_type& t,
+                        const std::string& scalar_t_name, std::ostream& o);
+}
+}
 
 TEST(langGenerator, genRealVars) {
   using stan::lang::scope;

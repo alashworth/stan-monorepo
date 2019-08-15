@@ -145,14 +145,8 @@ feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
 
 # Is this still necessary?
 target_compile_definitions(Boost::headers INTERFACE
-        $<$<BOOL:${UNIX}>:BOOST_PHOENIX_NO_VARIADIC_EXPRESSION>
+        BOOST_DISABLE_ASSERTS
         )
-
-## Again, is this still necessary? https://codereview.appspot.com/6332052/ supposedly fixes.
-#if (TARGET GTest::GTest)
-#	target_compile_definitions(GTest::GTest INTERFACE
-#            $<$<BOOL:${APPLE}>:GTEST_USE_OWN_TR1_TUPLE>)
-#endif()
 
 # Main targets built by this project
 include(GNUInstallDirs)

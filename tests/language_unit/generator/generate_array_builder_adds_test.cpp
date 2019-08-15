@@ -1,9 +1,16 @@
-#include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
-#include "utility.hpp"
 #include "util.hpp"
+#include <stan/language/ast.hpp>
+#include <stan/language/ast/node/double_literal.hpp>
 #include <gtest/gtest.h>
 #include <sstream>
+
+namespace stan {
+namespace lang {
+void generate_array_builder_adds(const std::vector<expression>& elements,
+                                 bool user_facing, std::ostream& o);
+}
+}
+
 
 TEST(genArrayBuilderAdds, addScalars) {
   stan::lang::expression e_d3(stan::lang::double_literal(3));

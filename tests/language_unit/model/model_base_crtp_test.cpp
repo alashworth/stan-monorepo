@@ -100,7 +100,7 @@ struct mock_model : public stan::model::model_base_crtp<mock_model> {
   }
 };
 
-TEST(model, modelBaseInheritance) {
+TEST(model, modelBaseInheritance1) {
   // check that base_model and prob_grad inheritance works
   mock_model m(17);
   EXPECT_EQ(17u, m.num_params_r());
@@ -108,7 +108,7 @@ TEST(model, modelBaseInheritance) {
   EXPECT_THROW(m.param_range_i(0), std::out_of_range);
 }
 
-TEST(model, modelTemplateLogProb) {
+TEST(model, modelTemplateLogProb1) {
   mock_model m(17);
   stan::model::model_base& bm = m;
   Eigen::VectorXd params_r(2);

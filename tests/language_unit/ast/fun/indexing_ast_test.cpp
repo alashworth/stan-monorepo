@@ -1,10 +1,6 @@
 #include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
 #include <gtest/gtest.h>
 #include <cmath>
-#include <sstream>
-#include <string>
-#include <set>
 #include <vector>
 
 using stan::lang::idx;

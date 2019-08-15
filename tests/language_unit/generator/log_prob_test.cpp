@@ -1,5 +1,4 @@
 #include <stan/language/ast.hpp>
-#include <stan/language/generator.hpp>
 #include <stan/util/io/dump.hpp>
 #include "generator/test_lp.hpp"
 #include "util.hpp"
@@ -9,7 +8,7 @@
 #include <iostream>
 #include <sstream>
 
-TEST(lang, logProbPolymorphismDouble) {
+TEST(lang,  logProbPolymorphismDouble_logprob) {
   using std::vector;
   using Eigen::Matrix;
   using Eigen::Dynamic;
@@ -85,7 +84,7 @@ TEST(lang, logProbPolymorphismDouble) {
   }
 
 }
-TEST(lang, logProbPolymorphismVar) {
+TEST(lang,  logProbPolymorphismVar_logprob) {
   using std::vector;
   using Eigen::Matrix;
   using Eigen::Dynamic;
