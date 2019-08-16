@@ -1,8 +1,9 @@
 message(DEBUG "Configuring Stan language library...")
 
 if (CMAKE_BUILD_TYPE MATCHES "Debug")
-    message(WARNING "Certain template-heavy sections of Stan do not compile correctly without enabling optimizations."
-            "Consider compiling in RelWithDebInfo mode instead of Debug.")
+    message(WARNING "Certain template-heavy sections of Stan do not compile correctly "
+            "without enabling optimizations. Consider compiling in RelWithDebInfo "
+            "mode instead of Debug.")
 endif ()
 
 add_library(stan_language

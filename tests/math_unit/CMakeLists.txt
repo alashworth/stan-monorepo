@@ -36,21 +36,24 @@ if (TARGET Stan::MathOpenCl)
             math/opencl/async_test.cpp
             math/opencl/check_opencl_test.cpp
             math/opencl/check_test.cpp
+            math/opencl/check_vector_test.cpp
             math/opencl/cholesky_decompose_test.cpp
             math/opencl/copy_test.cpp
             math/opencl/copy_triangular_test.cpp
             math/opencl/diagonal_multiply_test.cpp
+            math/opencl/divide_columns_test.cpp
             math/opencl/identity_test.cpp
             math/opencl/kernel_cl_test.cpp
+            math/opencl/matrix_cl_test.cpp
+            math/opencl/matrix_cl_view.cpp
             math/opencl/multiply_test.cpp
             math/opencl/multiply_transpose_test.cpp
             math/opencl/opencl_context_test.cpp
-            math/opencl/opencl_matrix_test.cpp
-            math/opencl/subtract_test.cpp
             math/opencl/sub_block_test.cpp
+            math/opencl/subtract_test.cpp
             math/opencl/transpose_test.cpp
-            math/opencl/triangular_transpose_test.cpp
             math/opencl/tri_inverse_test.cpp
+            math/opencl/triangular_transpose_test.cpp
             math/opencl/zeros_test.cpp
             math/prim/mat/fun/mdivide_left_tri_test.cpp
             math/rev/mat/fun/cholesky_decompose_test.cpp
@@ -110,6 +113,12 @@ else()
 endif()
 
 add_subdirectory(math)
+
+add_executable(die
+        math/prim/mat/err/check_pos_definite_test.cpp)
+
+target_link_libraries(die PUBLIC Stan::Math GTest::GTest GTest::Main)
+target_include_directories(die PUBLIC .)
 
 message(DEBUG "Configuring Stan math unit tests... [DONE]")
 

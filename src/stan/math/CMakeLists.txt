@@ -62,10 +62,13 @@ endif ()
 # Multithreaded
 if (TARGET Threads::Threads)
     add_library(stan_math_mt INTERFACE)
-    add_library(Stan::MathMT ALIAS stan_math_mt)
-    set_property(TARGET stan_math_mt PROPERTY EXPORT_NAME MathMT)
+    add_library(Stan::MathMt ALIAS stan_math_mt)
+    set_property(TARGET stan_math_mt PROPERTY EXPORT_NAME MathMt)
 
-    target_link_libraries(stan_math_mt INTERFACE Threads::Threads)
+    target_link_libraries(stan_math_mt INTERFACE Threads::Threads Stan::Math)
     target_compile_definitions(stan_math_mt INTERFACE STAN_THREADS)
-
+    target_compile_options(stan_math_mt INTERFACE
+            # FIXME: This flag may only be necessary for MinGW, or when
+            # Clang is using libstdc++ instead of libc++ - need to verify.
+            $<$<CXX_COMPILER_ID:Clang,AppleClang>:-femulated-tls>)
 endif ()
