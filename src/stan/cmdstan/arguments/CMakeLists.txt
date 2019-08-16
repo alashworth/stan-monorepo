@@ -83,8 +83,8 @@ set(argument_srcs
         unvalued_argument.hpp
         valued_argument.hpp)
 
-target_sources(stan_stanc PUBLIC ${argument_srcs})
+target_sources(cmdstan PUBLIC ${argument_srcs})
 
-if (TARGET stan_libstanc_mpi)
-    target_sources(stan_libstanc_mpi PUBLIC ${argument_srcs})
-endif ()
+#if (TARGET stan_libstanc_mpi)
+#    target_sources(stan_libstanc_mpi PUBLIC ${argument_srcs})
+#endif ()

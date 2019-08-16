@@ -1,11 +1,11 @@
 ##############################################################################
-# STAN COMPILER                                                              #
+# CMDSTAN                                                                    #
 ##############################################################################
 
 configure_file(${PROJECT_SOURCE_DIR}/src/stan/version.hpp.in
         ${PROJECT_BINARY_DIR}/src/stan/version.hpp @ONLY)
 
-add_executable(stan_stanc
+add_executable(cmdstan
         stanc.cpp
         stanc_helper.hpp
         ${PROJECT_BINARY_DIR}/src/stan/version.hpp
@@ -13,14 +13,12 @@ add_executable(stan_stanc
 
 add_subdirectory(arguments)
 
-set_target_properties(stan_stanc PROPERTIES OUTPUT_NAME "stanc")
-
-target_include_directories(stan_stanc PRIVATE
+target_include_directories(cmdstan PRIVATE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/src>
         $<INSTALL_INTERFACE:include>)
 
-target_link_libraries(stan_stanc PRIVATE
+target_link_libraries(cmdstan PRIVATE
         Stan::Language
         Stan::Util
         Boost::headers)
@@ -65,26 +63,18 @@ target_link_libraries(stan_summary PRIVATE
 set_target_properties(stan_summary PROPERTIES OUTPUT_NAME "summary")
 
 ##############################################################################
-# STAN LIBSTANC                                                              #
+# STANC                                                                      #
 ##############################################################################
 
-#add_library(stan_libstanc
-#        main.cpp # What is this for?
-#        command.hpp)
+add_executable(stanc main.cpp)
 
-add_library(stan_libstanc INTERFACE)
-
-add_library(Stan::StanC ALIAS stan_libstanc)
-
-target_link_libraries(stan_libstanc INTERFACE
+target_link_libraries(stanc INTERFACE
         Stan::Algorithms
         Stan::Services
         Boost::headers)
 
-target_include_directories(stan_libstanc INTERFACE
+target_include_directories(stanc INTERFACE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>)
-
-set_target_properties(stan_libstanc PROPERTIES EXPORT_NAME "StanC")
 
 #[[###########################################################################
 # STAN LIBSTANC MPI                                                          #
