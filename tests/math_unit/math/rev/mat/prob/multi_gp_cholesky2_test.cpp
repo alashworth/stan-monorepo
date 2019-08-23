@@ -11,7 +11,7 @@ using Eigen::Dynamic;
 using Eigen::Matrix;
 
 template <typename T_y, typename T_scale, typename T_w>
-void expect_propto(T_y y1, T_scale L1, T_w w1, T_y y2, T_scale L2, T_w w2,
+void expect_propto_mgpc(T_y y1, T_scale L1, T_w w1, T_y y2, T_scale L2, T_w w2,
                    std::string message = "") {
   expect_eq_diffs(stan::math::multi_gp_cholesky_log<false>(y1, L1, w1),
                   stan::math::multi_gp_cholesky_log<false>(y2, L2, w2),
@@ -23,29 +23,29 @@ using stan::math::to_var;
 using stan::math::var;
 
 TEST_F(agrad_distributions_multi_gp_cholesky, Propto) {
-  expect_propto(to_var(y), to_var(L), to_var(w), to_var(y2), to_var(L2),
+  expect_propto_mgpc(to_var(y), to_var(L), to_var(w), to_var(y2), to_var(L2),
                 to_var(w2), "All vars: y, w, sigma");
 }
 TEST_F(agrad_distributions_multi_gp_cholesky, ProptoY) {
-  expect_propto(to_var(y), L, w, to_var(y2), L, w, "var: y");
+  expect_propto_mgpc(to_var(y), L, w, to_var(y2), L, w, "var: y");
 }
 TEST_F(agrad_distributions_multi_gp_cholesky, ProptoYMu) {
-  expect_propto(to_var(y), L, to_var(w), to_var(y2), L, to_var(w2),
+  expect_propto_mgpc(to_var(y), L, to_var(w), to_var(y2), L, to_var(w2),
                 "var: y and w");
 }
 TEST_F(agrad_distributions_multi_gp_cholesky, ProptoYSigma) {
-  expect_propto(to_var(y), to_var(L), w, to_var(y2), to_var(L2), w,
+  expect_propto_mgpc(to_var(y), to_var(L), w, to_var(y2), to_var(L2), w,
                 "var: y and sigma");
 }
 TEST_F(agrad_distributions_multi_gp_cholesky, ProptoMu) {
-  expect_propto(y, L, to_var(w), y, L, to_var(w2), "var: w");
+  expect_propto_mgpc(y, L, to_var(w), y, L, to_var(w2), "var: w");
 }
 TEST_F(agrad_distributions_multi_gp_cholesky, ProptoMuSigma) {
-  expect_propto(y, to_var(L), to_var(w), y, to_var(L2), to_var(w2),
+  expect_propto_mgpc(y, to_var(L), to_var(w), y, to_var(L2), to_var(w2),
                 "var: w and sigma");
 }
 TEST_F(agrad_distributions_multi_gp_cholesky, ProptoSigma) {
-  expect_propto(y, to_var(L), w, y, to_var(L2), w, "var: sigma");
+  expect_propto_mgpc(y, to_var(L), w, y, to_var(L2), w, "var: sigma");
 }
 
 TEST(ProbDistributionsMultiGPCholesky, MultiGPCholeskyVar) {
