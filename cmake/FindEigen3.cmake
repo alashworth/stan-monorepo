@@ -22,11 +22,14 @@ find_file(Eigen3_version_file
         NAME "Eigen/src/Core/util/Macros.h"
         PATHS ${Eigen3_INCLUDE_DIR})
 
-file(STRINGS ${Eigen3_version_file} version_vars
-        REGEX "EIGEN_WORLD_VERSION [0-9]|EIGEN_MAJOR_VERSION [0-9]|EIGEN_MINOR_VERSION [0-9]")
-
-list(TRANSFORM version_vars REPLACE "#define EIGEN_(WORLD|MAJOR|MINOR)_VERSION ([0-9])" "\\2")
-list(JOIN version_vars "." Eigen3_VERSION)
+if(NOT EXISTS ${Eigen3_version_file})
+    message(DEBUG "Eigen3 was not found.")
+else()
+    file(STRINGS ${Eigen3_version_file} version_vars
+            REGEX "EIGEN_WORLD_VERSION [0-9]|EIGEN_MAJOR_VERSION [0-9]|EIGEN_MINOR_VERSION [0-9]")
+    list(TRANSFORM version_vars REPLACE "#define EIGEN_(WORLD|MAJOR|MINOR)_VERSION ([0-9])" "\\2")
+    list(JOIN version_vars "." Eigen3_VERSION)
+endif()
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Eigen3

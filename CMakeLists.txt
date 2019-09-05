@@ -1,20 +1,10 @@
 # Preamble
-cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-
-# The following causes generated makefiles to be more verbose in their output.
-# set(CMAKE_VERBOSE_MAKEFILE TRUE)
-
-# Developers who work on multiple branches should consider enabling ccache.
-# find_program(CCACHE_PROGRAM ccache)
-# if (CCACHE_PROGRAM)
-#   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
-# endif ()
+cmake_minimum_required(VERSION 3.15.2)
 
 project(Stan
         VERSION 2.20.0
         DESCRIPTION "State-of-the-art package for statistical inference."
-        HOMEPAGE_URL "https://github.com/stan-dev/stan"
-        LANGUAGES CXX)
+        HOMEPAGE_URL "https://github.com/stan-dev/stan")
 include(CTest)
 
 # Project setup & global configuration
@@ -54,14 +44,11 @@ endif ()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     check_cxx_compiler_flag("-fuse-ld=gold" STAN_FLAGS_GOLD)
-    # argh, why does RTools include the gold linker in its MinGW binutils when it's ELF only?
+    # RTools includes the gold linker in its MinGW binutils even though it's incompatible
     if (STAN_FLAGS_GOLD AND NOT WIN32)
         list(APPEND CMAKE_EXE_LINKER_FLAGS "-fuse-ld=gold")
     endif ()
 endif ()
-
-# Uncomment below command to enable a debug print of dependency search directories
-# set(CMAKE_FIND_DEBUG_MODE ON)
 
 # If Conan was used to install dependencies, the following include prepends
 # the Conan install directory onto CMake's search path.
@@ -82,13 +69,14 @@ endif ()
 
 # Project options
 option(STAN_BUILD_TESTS "Enable project tests." ${BUILD_TESTING})
-option(STAN_BUILD_RVECTESTS "Enable generation of extended row-vector distribution tests." OFF)
+option(STAN_BUILD_DIST_TESTS "Enable generation of probability distribution tests." OFF)
+option(STAN_BUILD_MORE_DIST_TESTS "Enable generation of extra row-vector inputs to distribution tests." OFF)
 set(STAN_OPENCL_DEVICE_ID "0" CACHE STRING "Desired device to run OpenCL-accelerated functions on.")
 set(STAN_OPENCL_PLATFORM_ID "0" CACHE STRING "Desired OpenCL platform to run OpenCL-accelerated functions on.")
 
 # External project dependencies
 include(FeatureSummary)
-find_package(Boost 1.69 QUIET OPTIONAL_COMPONENTS serialization mpi)
+find_package(Boost 1.71 QUIET COMPONENTS serialization mpi PATHS E:/projects/boost)
 set_package_properties(Boost PROPERTIES
         DESCRIPTION "Free peer-reviewed portable C++ source libraries"
         URL "https://www.boost.org/"
@@ -143,10 +131,7 @@ set_package_properties(Threads PROPERTIES
 feature_summary(INCLUDE_QUIET_PACKAGES WHAT ALL
         FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-# Is this still necessary?
-target_compile_definitions(Boost::headers INTERFACE
-        BOOST_DISABLE_ASSERTS
-        )
+target_compile_definitions(Boost::headers INTERFACE BOOST_DISABLE_ASSERTS)
 
 # Main targets built by this project
 include(GNUInstallDirs)
@@ -159,14 +144,8 @@ add_subdirectory(src/stan/algorithms)
 add_subdirectory(docs)
 
 if (STAN_BUILD_TESTS)
-    # Global testing options
-#    check_cxx_compiler_flag("--coverage" STAN_GCOV_PRESENT)
-#    if (STAN_GCOV_PRESENT AND CMAKE_BUILD_TYPE STREQUAL "Debug" AND NOT WIN32)
-#        add_compile_options(--coverage)
-#    endif ()
-#    add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wcast-qual)
-#    add_compile_options(-Wmissing-declarations -Wmissing-include-dirs)
-
+#    add_compile_options(-Wall -Wextra -Wpedantic -Wconversion -Wshadow
+#            -Wcast-qual -Wmissing-declarations -Wmissing-include-dirs)
     add_subdirectory(tests)
 endif ()
 

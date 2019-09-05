@@ -50,12 +50,12 @@ endif ()
 # MPI
 if (MPI_CXX_FOUND)
     add_library(stan_math_mpi)
-    add_library(Stan::MathMPI ALIAS stan_math_mpi)
-    set_property(TARGET stan_math_mpi PROPERTY EXPORT_NAME MathMPI)
+    add_library(Stan::MathMpi ALIAS stan_math_mpi)
+    set_property(TARGET stan_math_mpi PROPERTY EXPORT_NAME MathMpi)
 
     target_sources(stan_math_mpi PUBLIC prim/arr/functor/mpi_cluster_inst.cpp)
 
-    target_link_libraries(stan_math_mpi INTERFACE stan_math MPI::MPI_CXX)
+    target_link_libraries(stan_math_mpi INTERFACE stan_math Boost::serialization Boost::mpi )
     target_compile_definitions(stan_math_mpi INTERFACE STAN_MPI)
 endif ()
 

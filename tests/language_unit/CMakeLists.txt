@@ -41,9 +41,9 @@ foreach(model IN LISTS compiled_models)
     string(REGEX REPLACE "(.*)(.stan|.stanfuncs)$" "\\1.hpp" name ${model})
     add_custom_command(
             OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${name}
-            COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/${name}
+            COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/${name}
             ${CMAKE_CURRENT_SOURCE_DIR}/${model}
-            DEPENDS stan_stanc VERBATIM
+            DEPENDS stanc VERBATIM
     )
     target_sources(stan_language_unit_tests PRIVATE
             ${CMAKE_CURRENT_BINARY_DIR}/${name})

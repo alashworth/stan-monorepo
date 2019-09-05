@@ -1,8 +1,7 @@
 add_executable(generate_tests generate_tests.cpp)
 target_link_libraries(generate_tests PRIVATE Boost::headers)
-# generate tests now always generates with STAN_TEST_ROW_VECTORS enabled
-# target_compile_definitions(generate_tests PRIVATE
-#		$<$<BOOL:STAN_BUILD_RVECTESTS>:STAN_TEST_ROW_VECTORS>)
+
+target_compile_definitions(generate_tests PRIVATE $<$<BOOL:STAN_BUILD_MORE_DIST_TESTS>:STAN_TEST_ROW_VECTORS>)
 
 function(add_dist_test)
 	get_filename_component(id ${CMAKE_CURRENT_SOURCE_DIR} NAME)

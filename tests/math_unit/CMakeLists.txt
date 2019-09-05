@@ -87,18 +87,18 @@ set(mpi_test_srcs
         math/rev/mat/functor/map_rect_mpi_test.cpp
         math/rev/mat/functor/map_rect_prim_test.cpp
         math/rev/mat/functor/map_rect_mpi_prim_test.cpp
-        prim/mat/functor/mpi_parallel_call_test.cpp
-        prim/arr/functor/mpi_cluster_test.cpp
+        math/prim/mat/functor/mpi_parallel_call_test.cpp
+        math/prim/arr/functor/mpi_cluster_test.cpp
         )
 
-if(Boost_mpi_FOUND)
+if(TARGET Stan::MathMpi)
 	message(DEBUG "Configuring Stan math MPI unit tests...")
 	foreach(src IN LISTS mpi_test_srcs)
 		string(REPLACE ".cpp" ".mpi" src_fn ${src})
 		string(MAKE_C_IDENTIFIER ${src_fn} src_fn)
 		add_executable(${src_fn} ${src})
-		target_link_libraries(${src_fn} Stan::MathMPI
-				GTest::GTest GTest::Main MPI::MPI_CXX)
+		target_link_libraries(${src_fn} Stan::MathMpi
+				GTest::GTest GTest::Main MPI::MPI_CXX Boost::serialization Boost::mpi)
 		add_test(NAME ${src_fn}
 				COMMAND ${MPIEXEC_EXECUTABLE}
 				${MPIEXEC_NUMPROC_FLAG}
@@ -113,12 +113,6 @@ else()
 endif()
 
 add_subdirectory(math)
-
-add_executable(die
-        math/prim/mat/err/check_pos_definite_test.cpp)
-
-target_link_libraries(die PUBLIC Stan::Math GTest::GTest GTest::Main)
-target_include_directories(die PUBLIC .)
 
 message(DEBUG "Configuring Stan math unit tests... [DONE]")
 

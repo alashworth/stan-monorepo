@@ -39,43 +39,43 @@ add_subdirectory(variational)
 # Once fixed, we can locate this in the CMakeLists file adjacent to the source
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/hmc/hamiltonians/funnel.hpp
-        COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/hamiltonians/funnel.hpp
+        COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/hamiltonians/funnel.hpp
             ${CMAKE_CURRENT_SOURCE_DIR}/hmc/hamiltonians/funnel.stan
-        DEPENDS stan_stanc VERBATIM)
+        DEPENDS stanc VERBATIM)
 
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/hmc/integrators/gauss.hpp
-        COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/integrators/gauss.hpp
+        COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/integrators/gauss.hpp
             ${CMAKE_CURRENT_SOURCE_DIR}/hmc/integrators/gauss.stan
-        DEPENDS stan_stanc VERBATIM
+        DEPENDS stanc VERBATIM
 )
 
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/hmc/integrators/command.hpp
-        COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/integrators/command.hpp
+        COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/integrators/command.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/hmc/integrators/command.stan
-        DEPENDS stan_stanc VERBATIM
+        DEPENDS stanc VERBATIM
 )
 
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/hmc/nuts/gauss3D.hpp
-        COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/nuts/gauss3D.hpp
+        COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/hmc/nuts/gauss3D.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/hmc/nuts/gauss3D.stan
-        DEPENDS stan_stanc VERBATIM
+        DEPENDS stanc VERBATIM
 )
 
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/optimization/exponential_boundary.hpp
-        COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/optimization/exponential_boundary.hpp
+        COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/optimization/exponential_boundary.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/optimization/exponential_boundary.stan
-        DEPENDS stan_stanc VERBATIM
+        DEPENDS stanc VERBATIM
 )
 
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/optimization/rosenbrock.hpp
-        COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/optimization/rosenbrock.hpp
+        COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/optimization/rosenbrock.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/optimization/rosenbrock.stan
-        DEPENDS stan_stanc VERBATIM
+        DEPENDS stanc VERBATIM
 )
 
 set(variational_models
@@ -94,8 +94,8 @@ foreach(model IN LISTS variational_models)
     get_filename_component(name ${model} NAME_WLE)
     add_custom_command(
             OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/variational/models/${name}.hpp
-            COMMAND stan_stanc --o=${CMAKE_CURRENT_BINARY_DIR}/variational/models/${name}.hpp ${model}
-            DEPENDS stan_stanc VERBATIM)
+            COMMAND stanc --o=${CMAKE_CURRENT_BINARY_DIR}/variational/models/${name}.hpp ${model}
+            DEPENDS stanc VERBATIM)
 endforeach()
 
 message(DEBUG "Configuring Stan algorithms unit tests... [DONE]")

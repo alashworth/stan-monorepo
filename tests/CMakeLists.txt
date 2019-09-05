@@ -4,7 +4,7 @@ endif ()
 include(GoogleTest)
 
 add_subdirectory(math_unit)
-if(STAN_BUILD_RVECTESTS)
+if(STAN_BUILD_DIST_TESTS)
     add_subdirectory(math_prob)
 endif()
 add_subdirectory(util_unit)
