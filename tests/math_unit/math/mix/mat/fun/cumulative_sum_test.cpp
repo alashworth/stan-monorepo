@@ -3,7 +3,6 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <vector>
 
-namespace {
 template <typename T>
 void test_cumulative_sum() {
   using stan::math::cumulative_sum;
@@ -183,7 +182,6 @@ void test_cumulative_sum4() {
   EXPECT_FLOAT_EQ(1.0, grad[1]);
   EXPECT_FLOAT_EQ(1.0, grad[2]);
 }
-}  // namespace
 TEST(AgradMixMatrixCumulativeSum, fv) {
   using stan::math::cumulative_sum;
   using stan::math::fvar;

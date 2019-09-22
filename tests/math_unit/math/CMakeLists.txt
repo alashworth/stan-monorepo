@@ -1,4 +1,10 @@
 target_sources(stan_math_misc_unit_tests PRIVATE
+        ad_tolerances.hpp
+        expect_near_rel.hpp
+        expect_near_rel_test.cpp
+        is_finite.hpp
+        serializer.hpp
+        serializer_test.cpp
         test_ad.hpp
         test_ad_test.cpp
         util.hpp

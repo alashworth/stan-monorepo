@@ -3,7 +3,6 @@
 #include <vector>
 #include <random>
 
-namespace {
 using stan::math::fvar;
 using stan::math::var;
 
@@ -292,7 +291,6 @@ void check() {
     checkvv<T1, T2, T3>();
   }
 }
-}  // namespace
 
 TEST(MathFunctions, append_array_prim) {
   check<int, int, int>();

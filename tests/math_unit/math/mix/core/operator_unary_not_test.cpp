@@ -12,7 +12,7 @@ void test_unary_not(double x) {
   EXPECT_EQ(!x, !fvar<fvar<var> >(x));
 }
 
-TEST(MathMixCore, operatorUnaryNot) {
+TEST(AgradRev, unaryNot) {
   test_unary_not(6.1);
   test_unary_not(0);
   test_unary_not(-13.2);

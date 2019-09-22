@@ -6,7 +6,7 @@
 #include <stan/math/opencl/kernels/gp_exp_quad_cov.hpp>
 #include <stan/math/opencl/err/check_matching_dims.hpp>
 #include <stan/math/prim/meta.hpp>
-#include <cl.hpp>
+#include <CL/cl.hpp>
 
 namespace stan {
 namespace math {

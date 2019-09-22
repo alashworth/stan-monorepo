@@ -1,7 +1,6 @@
 #include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
 #include <math/rev/mat/fun/util.hpp>
-#include <math/rev/scal/util.hpp>
 #include <vector>
 
 TEST(AgradMixMatrixDotProduct, vector_vector_fv_1stDeriv) {
@@ -2115,9 +2114,12 @@ TEST(AgradMixMatrixDotProduct, vector_vector_ffv_length_1stDeriv) {
   vd_2 << 4, -2, -1;
   vv_2 << d, e, f;
 
-  EXPECT_FLOAT_EQ(-2, stan::math::dot_product(vv_1, vd_2, length).val_.val().val());
-  EXPECT_FLOAT_EQ(-2, stan::math::dot_product(vd_1, vv_2, length).val_.val().val());
-  EXPECT_FLOAT_EQ(-2, stan::math::dot_product(vv_1, vv_2, length).val_.val().val());
+  EXPECT_FLOAT_EQ(-2,
+                  stan::math::dot_product(vv_1, vd_2, length).val_.val().val());
+  EXPECT_FLOAT_EQ(-2,
+                  stan::math::dot_product(vd_1, vv_2, length).val_.val().val());
+  EXPECT_FLOAT_EQ(-2,
+                  stan::math::dot_product(vv_1, vv_2, length).val_.val().val());
   EXPECT_FLOAT_EQ(2,
                   stan::math::dot_product(vv_1, vd_2, length).d_.val().val());
   EXPECT_FLOAT_EQ(4,

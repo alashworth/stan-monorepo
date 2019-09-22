@@ -9,7 +9,7 @@
 #include <stan/math/prim/arr/fun/vec_concat.hpp>
 #include <stan/math/prim/scal/err/check_size_match.hpp>
 #include <stan/math/prim/scal/err/domain_error.hpp>
-#include <cl.hpp>
+#include <CL/cl.hpp>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,7 +18,7 @@
 /**
  *  @file stan/math/opencl/matrix_cl.hpp
  *  @brief The matrix_cl class - allocates memory space on the OpenCL device,
- *    functions for transfering matrices to and from OpenCL devices
+ *    functions for transferring matrices to and from OpenCL devices
  */
 namespace stan {
 namespace math {

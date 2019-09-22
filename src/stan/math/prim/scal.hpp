@@ -1,8 +1,6 @@
 #ifndef STAN_MATH_PRIM_SCAL_HPP
 #define STAN_MATH_PRIM_SCAL_HPP
 
-#include <stan/math/version.hpp>
-
 #include <stan/math/prim/meta.hpp>
 
 #include <stan/math/prim/scal/err/check_2F1_converges.hpp>

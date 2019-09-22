@@ -3,7 +3,7 @@
 
 #ifdef STAN_OPENCL
 #ifndef STAN_OPENCL_NOCACHE
-#include <cl.hpp>
+#include <CL/cl.hpp>
 #endif
 #endif
 

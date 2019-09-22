@@ -5,12 +5,11 @@
 using stan::math::fvar;
 using stan::math::var;
 
-namespace {  // test sum of first n numbers for sum of a
+// test sum of first n numbers for sum of a
 template <typename T>
 void test_sum(stan::math::accumulator<T>& a, int n) {
   EXPECT_TRUE((n * (n + 1)) / 2 == a.sum());
 }
-}  // namespace
 
 TEST(AgradMixMatrixAccumulate, fvar_var) {
   using stan::math::accumulator;

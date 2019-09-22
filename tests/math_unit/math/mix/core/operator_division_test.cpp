@@ -1,13 +1,7 @@
-#include <math/mix/mat/util/autodiff_tester.hpp>
+#include <math/test_ad.hpp>
 
-struct op_divide_f {
-  template <typename T1, typename T2>
-  static typename boost::math::tools::promote_args<T1, T2>::type apply(
-      const T1& x1, const T2& x2) {
-    return x1 / x2;
-  }
-};
-
-TEST(MathMixCore, operatorDivision) {
-  stan::math::test::test_common_args<op_divide_f, false>();
+TEST(mathMixCore, operatorDivision) {
+  auto f = [](const auto& x1, const auto& x2) { return x1 / x2; };
+  bool disable_lhs_int = true;
+  stan::test::expect_common_binary(f, disable_lhs_int);
 }

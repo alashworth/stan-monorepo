@@ -1,7 +1,6 @@
 #include <stan/math/mix/mat.hpp>
 #include <gtest/gtest.h>
 #include <math/rev/mat/fun/util.hpp>
-#include <math/rev/scal/util.hpp>
 
 TEST(AgradMixMatrixEigenvaluesSym, exceptions_matrix_fv) {
   stan::math::matrix_fv m0;

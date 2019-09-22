@@ -3,7 +3,6 @@
 #include <math/rev/mat/fun/util.hpp>
 #include <vector>
 
-namespace {
 struct chol_functor {
   int i, j, K;
   chol_functor(int i_, int j_, int K_) : i(i_), j(j_), K(K_) {}
@@ -104,7 +103,6 @@ void test_grad_hessians(int size) {
       EXPECT_FLOAT_EQ(evals_fd(i, j), evals_ad(i, j));
     }
 }
-}  // namespace
 
 TEST(AgradMixMatrixCholeskyDecompose, exception_mat_fv) {
   stan::math::matrix_fv m;
